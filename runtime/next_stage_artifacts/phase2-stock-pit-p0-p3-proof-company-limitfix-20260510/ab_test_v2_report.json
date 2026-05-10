@@ -1,0 +1,3959 @@
+{
+  "proof_suite_version": "phase2-stock-pit-proof-suite-v2-2026-05-10",
+  "experiment_id": "stock_pit_search_ab_test_v2",
+  "created_at": "2026-05-10T16:06:38+00:00",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "output_root": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2",
+  "candidate_budget": 128,
+  "validation_contract": {
+    "signal_clock": "after_open",
+    "execution_lag_days": 1,
+    "feature_lag_days": 0,
+    "top_bottom_quantile": 0.02,
+    "recent_quarter_window_count": 2,
+    "recent_warmup_days": 60,
+    "use_fast_context": true
+  },
+  "previous_search_roots": [
+    "D:\\HermesWorker\\runtime\\company-v2-fast-context-full-search-20260508-max3-gated",
+    "D:\\HermesWorker\\runtime\\company-v2-tail-search-20260508-shards128-256"
+  ],
+  "policy_active": true,
+  "variants": [
+    {
+      "variant": "rx_typed_beam_ucb",
+      "ledger_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\rx_typed_beam_ucb\\candidate_ledger.json",
+      "validation_report_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\rx_typed_beam_ucb\\stage1_validation_report.json",
+      "candidate_count": 128,
+      "search_version": "phase2-stock-pit-rx-typed-beam-search-v1-2026-05-10",
+      "summary": {
+        "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+        "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+        "evaluated_count": 128,
+        "unsupported_count": 0,
+        "strong_ic_threshold": 0.045,
+        "strong_sortino_threshold": 4.0,
+        "strong_ic_count": 0,
+        "strong_long_sortino_count": 0,
+        "strong_spread_sortino_count": 0,
+        "joint_strong_count": 0,
+        "strong_ic_per_1000": 0.0,
+        "strong_long_sortino_per_1000": 0.0,
+        "joint_strong_per_1000": 0.0,
+        "mean_reward": 0.069393,
+        "top_reward": 0.647138,
+        "mean_rank_ic": 0.003196,
+        "mean_long_sortino": 0.151888,
+        "mean_spread_sortino": -0.893284,
+        "top_candidates": [
+          {
+            "candidate_id": "stockpit-ff-05c81dddece1",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.647138,
+            "mean_window_rank_ic": 0.012326,
+            "mean_window_long_sortino": 1.916776,
+            "mean_window_sortino": 2.971002,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),2))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-fde5965f19cf",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.635846,
+            "mean_window_rank_ic": 0.010111,
+            "mean_window_long_sortino": 1.711487,
+            "mean_window_sortino": 1.508615,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),4))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-d5019edbc317",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.628137,
+            "mean_window_rank_ic": 0.013032,
+            "mean_window_long_sortino": 1.68247,
+            "mean_window_sortino": 1.056375,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-9066c54744d2",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.622568,
+            "mean_window_rank_ic": 0.012613,
+            "mean_window_long_sortino": 1.610189,
+            "mean_window_sortino": 1.098253,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),7))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-45011b7a8058",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.613559,
+            "mean_window_rank_ic": 0.012205,
+            "mean_window_long_sortino": 1.635505,
+            "mean_window_sortino": 0.900741,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0d0348ed9702",
+            "primitive_family": "rx_vol_curve_inverted_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.591964,
+            "mean_window_rank_ic": 0.007091,
+            "mean_window_long_sortino": 1.781553,
+            "mean_window_sortino": 0.298864,
+            "expression": "Neg(CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),3))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-8009637fce1f",
+            "primitive_family": "rx_cross_prior_close_position_x_vol_curve",
+            "proposal_kind": "policy_crossover_probe",
+            "reward": 0.54398,
+            "mean_window_rank_ic": 0.010464,
+            "mean_window_long_sortino": 1.626227,
+            "mean_window_sortino": 1.525523,
+            "expression": "CSRank(Mul(Mul(ZScore(Div(Sub(Delay($close,1),Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),ZScore(Div(Mean(Abs($ret),1),Mean(Abs($ret),4)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,4))))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-2f570caf58e4",
+            "primitive_family": "rx_cross_prior_close_position_x_vol_curve",
+            "proposal_kind": "policy_crossover_probe",
+            "reward": 0.479101,
+            "mean_window_rank_ic": 0.003027,
+            "mean_window_long_sortino": 1.940891,
+            "mean_window_sortino": 3.012051,
+            "expression": "CSRank(Mul(Mul(ZScore(Div(Sub(Delay($close,1),Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),ZScore(Div(Mean(Abs($ret),1),Mean(Abs($ret),2)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2))))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-81cf59959773",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.447839,
+            "mean_window_rank_ic": 0.016619,
+            "mean_window_long_sortino": 0.682326,
+            "mean_window_sortino": 0.144666,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),3)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-4443b10e4d5e",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.431643,
+            "mean_window_rank_ic": 0.012092,
+            "mean_window_long_sortino": 0.852927,
+            "mean_window_sortino": -0.074376,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),2)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-d01d8be2287f",
+            "primitive_family": "rx_cross_prior_close_position_x_vol_curve",
+            "proposal_kind": "policy_crossover_probe",
+            "reward": 0.42332,
+            "mean_window_rank_ic": 0.008193,
+            "mean_window_long_sortino": 1.39807,
+            "mean_window_sortino": -0.16549,
+            "expression": "CSRank(Mul(Mul(ZScore(Div(Sub(Delay($close,1),Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),ZScore(Div(Mean(Abs($ret),1),Mean(Abs($ret),3)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,3))))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-cf6ec749c9d9",
+            "primitive_family": "rx_beam_momentum_x_turnover_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.413835,
+            "mean_window_rank_ic": 0.012174,
+            "mean_window_long_sortino": 0.889326,
+            "mean_window_sortino": -0.338124,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean($turnover_rate,1),Mean($turnover_rate,6)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-133adf2ae7f3",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.401401,
+            "mean_window_rank_ic": 0.015349,
+            "mean_window_long_sortino": 0.709283,
+            "mean_window_sortino": -0.287235,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),5)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-fc45c6794fea",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.396557,
+            "mean_window_rank_ic": 0.015079,
+            "mean_window_long_sortino": 0.605451,
+            "mean_window_sortino": -0.098179,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),4)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-6dafcfef82e2",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.370127,
+            "mean_window_rank_ic": 0.014032,
+            "mean_window_long_sortino": 0.489541,
+            "mean_window_sortino": -0.151872,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),6)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-d9c9419f4f87",
+            "primitive_family": "rx_beam_open_position_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.349276,
+            "mean_window_rank_ic": 0.025992,
+            "mean_window_long_sortino": 0.597762,
+            "mean_window_sortino": 1.810399,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),3)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-ea86a67c0383",
+            "primitive_family": "rx_beam_momentum_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.33274,
+            "mean_window_rank_ic": 0.013336,
+            "mean_window_long_sortino": 0.409502,
+            "mean_window_sortino": -0.443882,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),7)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-dd0ebcd510e9",
+            "primitive_family": "rx_beam_momentum_x_turnover_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.305324,
+            "mean_window_rank_ic": 0.01179,
+            "mean_window_long_sortino": 0.547215,
+            "mean_window_sortino": -0.624702,
+            "expression": "CSRank(CSResidual(CSRank(Mom($close,1)),CSRank(Div(Mean($turnover_rate,1),Mean($turnover_rate,5)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-3822524a5f53",
+            "primitive_family": "rx_beam_open_position_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.279772,
+            "mean_window_rank_ic": 0.02532,
+            "mean_window_long_sortino": 0.462754,
+            "mean_window_sortino": 1.020435,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),4)))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0e3e1b174103",
+            "primitive_family": "rx_beam_open_position_x_vol_curve",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.277252,
+            "mean_window_rank_ic": 0.025354,
+            "mean_window_long_sortino": 0.410531,
+            "mean_window_sortino": 1.270925,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),7)))))"
+          }
+        ],
+        "coverage_cluster_health": {
+          "row_count": 128,
+          "top_families": [
+            {
+              "key": "rx_beam_momentum_curve_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_momentum_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_open_position_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_cross_prior_close_position_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_prior_close_position_inverted_rank",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_vol_curve_inverted_rank",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_vol_curve_rank",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_vol_curve_zscore_rank",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_momentum_curve_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_momentum_x_turnover_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_momentum_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_turnover_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_volume_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_curve_inverted_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_curve_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_curve_zscore_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_inverted_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_rank",
+              "count": 5,
+              "share": 0.039062
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 64,
+              "share": 0.5
+            },
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 58,
+              "share": 0.453125
+            },
+            {
+              "key": "policy_crossover_probe",
+              "count": 6,
+              "share": 0.046875
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(ZScore(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "Neg(CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "Neg(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Mom(FIELD,WINDOW))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Mom(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "Neg(CSRank(Mom(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "close",
+              "count": 104,
+              "share": 0.348993
+            },
+            {
+              "key": "ret",
+              "count": 63,
+              "share": 0.211409
+            },
+            {
+              "key": "high",
+              "count": 51,
+              "share": 0.171141
+            },
+            {
+              "key": "low",
+              "count": 51,
+              "share": 0.171141
+            },
+            {
+              "key": "turnover_rate",
+              "count": 10,
+              "share": 0.033557
+            },
+            {
+              "key": "open",
+              "count": 6,
+              "share": 0.020134
+            },
+            {
+              "key": "volume",
+              "count": 5,
+              "share": 0.016779
+            },
+            {
+              "key": "amount",
+              "count": 4,
+              "share": 0.013423
+            },
+            {
+              "key": "final_float_market_cap",
+              "count": 4,
+              "share": 0.013423
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 128,
+              "share": 0.188513
+            },
+            {
+              "key": "Mean",
+              "count": 98,
+              "share": 0.14433
+            },
+            {
+              "key": "Div",
+              "count": 86,
+              "share": 0.126657
+            },
+            {
+              "key": "Sub",
+              "count": 77,
+              "share": 0.113402
+            },
+            {
+              "key": "Abs",
+              "count": 63,
+              "share": 0.092784
+            },
+            {
+              "key": "Mom",
+              "count": 62,
+              "share": 0.091311
+            },
+            {
+              "key": "CSResidual",
+              "count": 58,
+              "share": 0.08542
+            },
+            {
+              "key": "Delay",
+              "count": 45,
+              "share": 0.066274
+            },
+            {
+              "key": "ZScore",
+              "count": 27,
+              "share": 0.039764
+            },
+            {
+              "key": "Neg",
+              "count": 22,
+              "share": 0.032401
+            },
+            {
+              "key": "Mul",
+              "count": 6,
+              "share": 0.008837
+            },
+            {
+              "key": "Log",
+              "count": 4,
+              "share": 0.005891
+            },
+            {
+              "key": "Sign",
+              "count": 3,
+              "share": 0.004418
+            }
+          ],
+          "effective_family_count": 24.023776,
+          "effective_skeleton_count": 22.947001,
+          "unique_family_count": 25,
+          "unique_skeleton_count": 25,
+          "unique_field_count": 9,
+          "unique_operator_count": 13,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        },
+        "top_reward_coverage_cluster_health": {
+          "row_count": 20,
+          "top_families": [
+            {
+              "key": "rx_beam_momentum_x_vol_curve",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "rx_vol_curve_inverted_rank",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "rx_beam_open_position_x_vol_curve",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "rx_cross_prior_close_position_x_vol_curve",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "rx_beam_momentum_x_turnover_curve",
+              "count": 2,
+              "share": 0.1
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 11,
+              "share": 0.55
+            },
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "policy_crossover_probe",
+              "count": 3,
+              "share": 0.15
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "Neg(CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW))))",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(Mul(Mul(ZScore(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),ZScore(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 2,
+              "share": 0.1
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "ret",
+              "count": 18,
+              "share": 0.391304
+            },
+            {
+              "key": "close",
+              "count": 11,
+              "share": 0.23913
+            },
+            {
+              "key": "high",
+              "count": 6,
+              "share": 0.130435
+            },
+            {
+              "key": "low",
+              "count": 6,
+              "share": 0.130435
+            },
+            {
+              "key": "open",
+              "count": 3,
+              "share": 0.065217
+            },
+            {
+              "key": "turnover_rate",
+              "count": 2,
+              "share": 0.043478
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 20,
+              "share": 0.16129
+            },
+            {
+              "key": "Div",
+              "count": 20,
+              "share": 0.16129
+            },
+            {
+              "key": "Mean",
+              "count": 20,
+              "share": 0.16129
+            },
+            {
+              "key": "Abs",
+              "count": 18,
+              "share": 0.145161
+            },
+            {
+              "key": "CSResidual",
+              "count": 11,
+              "share": 0.08871
+            },
+            {
+              "key": "Mom",
+              "count": 11,
+              "share": 0.08871
+            },
+            {
+              "key": "Neg",
+              "count": 6,
+              "share": 0.048387
+            },
+            {
+              "key": "Sub",
+              "count": 6,
+              "share": 0.048387
+            },
+            {
+              "key": "Delay",
+              "count": 3,
+              "share": 0.024194
+            },
+            {
+              "key": "Mul",
+              "count": 3,
+              "share": 0.024194
+            },
+            {
+              "key": "Sign",
+              "count": 3,
+              "share": 0.024194
+            },
+            {
+              "key": "ZScore",
+              "count": 3,
+              "share": 0.024194
+            }
+          ],
+          "effective_family_count": 4.255319,
+          "effective_skeleton_count": 4.255319,
+          "unique_family_count": 5,
+          "unique_skeleton_count": 5,
+          "unique_field_count": 6,
+          "unique_operator_count": 12,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        }
+      }
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "ledger_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\rx_typed_beam_no_policy\\candidate_ledger.json",
+      "validation_report_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\rx_typed_beam_no_policy\\stage1_validation_report.json",
+      "candidate_count": 128,
+      "search_version": "phase2-stock-pit-rx-typed-beam-search-v1-2026-05-10",
+      "summary": {
+        "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+        "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+        "evaluated_count": 128,
+        "unsupported_count": 0,
+        "strong_ic_threshold": 0.045,
+        "strong_sortino_threshold": 4.0,
+        "strong_ic_count": 0,
+        "strong_long_sortino_count": 2,
+        "strong_spread_sortino_count": 1,
+        "joint_strong_count": 0,
+        "strong_ic_per_1000": 0.0,
+        "strong_long_sortino_per_1000": 15.625,
+        "joint_strong_per_1000": 0.0,
+        "mean_reward": 0.129141,
+        "top_reward": 1.104823,
+        "mean_rank_ic": 0.004314,
+        "mean_long_sortino": 0.459607,
+        "mean_spread_sortino": -0.191789,
+        "top_candidates": [
+          {
+            "candidate_id": "stockpit-ff-0a2a45bc6aad",
+            "primitive_family": "rx_beam_open_gap_x_float_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 1.104823,
+            "mean_window_rank_ic": 0.028418,
+            "mean_window_long_sortino": 4.850811,
+            "mean_window_sortino": 4.041842,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Log($final_float_market_cap))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-98b0ceb38df2",
+            "primitive_family": "rx_beam_open_gap_x_total_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 1.072001,
+            "mean_window_rank_ic": 0.028021,
+            "mean_window_long_sortino": 5.453051,
+            "mean_window_sortino": 2.994298,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Log($final_total_market_cap))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-82c786727379",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.951312,
+            "mean_window_rank_ic": 0.003204,
+            "mean_window_long_sortino": 3.934522,
+            "mean_window_sortino": 0.487119,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,5)),Mean(Abs($ret),5)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0475f5a2fd78",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.946112,
+            "mean_window_rank_ic": 0.003204,
+            "mean_window_long_sortino": 3.934522,
+            "mean_window_sortino": 0.487119,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,5)),Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-8d954eb80373",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.892923,
+            "mean_window_rank_ic": 0.026108,
+            "mean_window_long_sortino": 3.772264,
+            "mean_window_sortino": 2.343467,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),2))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0faf9700f853",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.860719,
+            "mean_window_rank_ic": 0.027608,
+            "mean_window_long_sortino": 2.962517,
+            "mean_window_sortino": 3.476152,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-99d1c1b0a43e",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.858551,
+            "mean_window_rank_ic": 0.026463,
+            "mean_window_long_sortino": 3.062397,
+            "mean_window_sortino": 3.188184,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),3))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0919b0ca2306",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.836973,
+            "mean_window_rank_ic": 0.014874,
+            "mean_window_long_sortino": 3.492783,
+            "mean_window_sortino": -0.196545,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,2)),Mean(Abs($ret),2)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-17d398b9b000",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.831773,
+            "mean_window_rank_ic": 0.014874,
+            "mean_window_long_sortino": 3.492783,
+            "mean_window_sortino": -0.196545,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,2)),Mean(Abs($ret),2))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-5b3163bc0211",
+            "primitive_family": "rx_open_gap_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.78566,
+            "mean_window_rank_ic": 0.028443,
+            "mean_window_long_sortino": 2.905181,
+            "mean_window_sortino": 2.765401,
+            "expression": "CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0c83c6ce1b4c",
+            "primitive_family": "rx_open_gap_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.78046,
+            "mean_window_rank_ic": 0.028443,
+            "mean_window_long_sortino": 2.905181,
+            "mean_window_sortino": 2.765401,
+            "expression": "CSRank(ZScore(Div(Sub($open,Delay($close,1)),Delay($close,1))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-9c564ba0a11c",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.777096,
+            "mean_window_rank_ic": 0.026584,
+            "mean_window_long_sortino": 2.543357,
+            "mean_window_sortino": 2.765622,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),4))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-7cf9f5708d4d",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.746317,
+            "mean_window_rank_ic": 0.006011,
+            "mean_window_long_sortino": 2.636111,
+            "mean_window_sortino": -0.051787,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,4)),Mean(Abs($ret),4)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-c232b1cd6a19",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.741117,
+            "mean_window_rank_ic": 0.006011,
+            "mean_window_long_sortino": 2.636111,
+            "mean_window_sortino": -0.051787,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,4)),Mean(Abs($ret),4))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0136d481412b",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.72925,
+            "mean_window_rank_ic": 0.009566,
+            "mean_window_long_sortino": 2.361774,
+            "mean_window_sortino": -0.19347,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,3)),Mean(Abs($ret),3)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-c0703f2a71b6",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.72405,
+            "mean_window_rank_ic": 0.009566,
+            "mean_window_long_sortino": 2.361774,
+            "mean_window_sortino": -0.19347,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,3)),Mean(Abs($ret),3))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-724d5e053420",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.701461,
+            "mean_window_rank_ic": 0.026565,
+            "mean_window_long_sortino": 2.210881,
+            "mean_window_sortino": 2.534221,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-4d76705468a4",
+            "primitive_family": "rx_beam_open_position_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.559802,
+            "mean_window_rank_ic": 0.02225,
+            "mean_window_long_sortino": 2.973658,
+            "mean_window_sortino": 1.036982,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-6e47d664d95d",
+            "primitive_family": "rx_beam_open_position_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.452291,
+            "mean_window_rank_ic": 0.022678,
+            "mean_window_long_sortino": 1.450801,
+            "mean_window_sortino": 2.728536,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-a6269d26611b",
+            "primitive_family": "rx_beam_open_gap_x_float_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.441527,
+            "mean_window_rank_ic": 0.013888,
+            "mean_window_long_sortino": 0.59989,
+            "mean_window_sortino": 2.141139,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,3)),Delay($close,3))),CSRank(Log($final_float_market_cap))))"
+          }
+        ],
+        "coverage_cluster_health": {
+          "row_count": 128,
+          "top_families": [
+            {
+              "key": "rx_beam_momentum_x_float_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_momentum_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_momentum_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_gap_x_float_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_gap_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_gap_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_position_x_float_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_position_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_position_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_float_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_turnover_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_vol_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_volume_curve",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_zscore_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_open_gap_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_open_gap_zscore_rank",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "rx_open_position_rank",
+              "count": 4,
+              "share": 0.03125
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 75,
+              "share": 0.585938
+            },
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 53,
+              "share": 0.414062
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Log(FIELD))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Log(FIELD))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Log(FIELD))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Log(FIELD))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Mom(FIELD,WINDOW))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Mom(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW)))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(Mean(Abs(FIELD),WINDOW))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW))))",
+              "count": 4,
+              "share": 0.03125
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "close",
+              "count": 87,
+              "share": 0.238356
+            },
+            {
+              "key": "high",
+              "count": 61,
+              "share": 0.167123
+            },
+            {
+              "key": "low",
+              "count": 61,
+              "share": 0.167123
+            },
+            {
+              "key": "open",
+              "count": 55,
+              "share": 0.150685
+            },
+            {
+              "key": "ret",
+              "count": 41,
+              "share": 0.112329
+            },
+            {
+              "key": "final_total_market_cap",
+              "count": 22,
+              "share": 0.060274
+            },
+            {
+              "key": "final_float_market_cap",
+              "count": 20,
+              "share": 0.054795
+            },
+            {
+              "key": "vwap",
+              "count": 8,
+              "share": 0.021918
+            },
+            {
+              "key": "turnover_rate",
+              "count": 5,
+              "share": 0.013699
+            },
+            {
+              "key": "volume",
+              "count": 5,
+              "share": 0.013699
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 128,
+              "share": 0.190476
+            },
+            {
+              "key": "Div",
+              "count": 93,
+              "share": 0.138393
+            },
+            {
+              "key": "Sub",
+              "count": 93,
+              "share": 0.138393
+            },
+            {
+              "key": "Mean",
+              "count": 87,
+              "share": 0.129464
+            },
+            {
+              "key": "CSResidual",
+              "count": 75,
+              "share": 0.111607
+            },
+            {
+              "key": "Delay",
+              "count": 62,
+              "share": 0.092262
+            },
+            {
+              "key": "Log",
+              "count": 42,
+              "share": 0.0625
+            },
+            {
+              "key": "Abs",
+              "count": 41,
+              "share": 0.061012
+            },
+            {
+              "key": "ZScore",
+              "count": 26,
+              "share": 0.03869
+            },
+            {
+              "key": "Mom",
+              "count": 25,
+              "share": 0.037202
+            }
+          ],
+          "effective_family_count": 27.490476,
+          "effective_skeleton_count": 19.366553,
+          "unique_family_count": 29,
+          "unique_skeleton_count": 24,
+          "unique_field_count": 10,
+          "unique_operator_count": 10,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        },
+        "top_reward_coverage_cluster_health": {
+          "row_count": 20,
+          "top_families": [
+            {
+              "key": "rx_beam_open_gap_x_volatility",
+              "count": 5,
+              "share": 0.25
+            },
+            {
+              "key": "rx_vwap_open_pressure_rank",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "rx_vwap_open_pressure_zscore_rank",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "rx_beam_open_gap_x_float_cap_level",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "rx_beam_open_position_x_volatility",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "rx_beam_open_gap_x_total_cap_level",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "rx_open_gap_rank",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "rx_open_gap_zscore_rank",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 10,
+              "share": 0.5
+            },
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 10,
+              "share": 0.5
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.25
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW)))",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW))))",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Log(FIELD))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))))",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "open",
+              "count": 20,
+              "share": 0.333333
+            },
+            {
+              "key": "ret",
+              "count": 15,
+              "share": 0.25
+            },
+            {
+              "key": "close",
+              "count": 10,
+              "share": 0.166667
+            },
+            {
+              "key": "vwap",
+              "count": 8,
+              "share": 0.133333
+            },
+            {
+              "key": "final_float_market_cap",
+              "count": 2,
+              "share": 0.033333
+            },
+            {
+              "key": "high",
+              "count": 2,
+              "share": 0.033333
+            },
+            {
+              "key": "low",
+              "count": 2,
+              "share": 0.033333
+            },
+            {
+              "key": "final_total_market_cap",
+              "count": 1,
+              "share": 0.016667
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Div",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Sub",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Abs",
+              "count": 15,
+              "share": 0.127119
+            },
+            {
+              "key": "Mean",
+              "count": 15,
+              "share": 0.127119
+            },
+            {
+              "key": "CSResidual",
+              "count": 10,
+              "share": 0.084746
+            },
+            {
+              "key": "Delay",
+              "count": 10,
+              "share": 0.084746
+            },
+            {
+              "key": "ZScore",
+              "count": 5,
+              "share": 0.042373
+            },
+            {
+              "key": "Log",
+              "count": 3,
+              "share": 0.025424
+            }
+          ],
+          "effective_family_count": 5.882353,
+          "effective_skeleton_count": 5.555556,
+          "unique_family_count": 8,
+          "unique_skeleton_count": 7,
+          "unique_field_count": 8,
+          "unique_operator_count": 9,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        }
+      }
+    },
+    {
+      "variant": "typed_random",
+      "ledger_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\typed_random\\candidate_ledger.json",
+      "validation_report_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\typed_random\\stage1_validation_report.json",
+      "candidate_count": 128,
+      "search_version": "phase2-stock-pit-rx-typed-beam-search-v1-2026-05-10",
+      "summary": {
+        "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+        "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+        "evaluated_count": 128,
+        "unsupported_count": 0,
+        "strong_ic_threshold": 0.045,
+        "strong_sortino_threshold": 4.0,
+        "strong_ic_count": 0,
+        "strong_long_sortino_count": 3,
+        "strong_spread_sortino_count": 0,
+        "joint_strong_count": 0,
+        "strong_ic_per_1000": 0.0,
+        "strong_long_sortino_per_1000": 23.4375,
+        "joint_strong_per_1000": 0.0,
+        "mean_reward": 0.09173,
+        "top_reward": 1.072001,
+        "mean_rank_ic": 0.001223,
+        "mean_long_sortino": 0.373112,
+        "mean_spread_sortino": -0.224693,
+        "top_candidates": [
+          {
+            "candidate_id": "stockpit-ff-98b0ceb38df2",
+            "primitive_family": "rx_beam_open_gap_x_total_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 1.072001,
+            "mean_window_rank_ic": 0.028021,
+            "mean_window_long_sortino": 5.453051,
+            "mean_window_sortino": 2.994298,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Log($final_total_market_cap))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0475f5a2fd78",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.946112,
+            "mean_window_rank_ic": 0.003204,
+            "mean_window_long_sortino": 3.934522,
+            "mean_window_sortino": 0.487119,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,5)),Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-8d954eb80373",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.892923,
+            "mean_window_rank_ic": 0.026108,
+            "mean_window_long_sortino": 3.772264,
+            "mean_window_sortino": 2.343467,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),2))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-0faf9700f853",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.860719,
+            "mean_window_rank_ic": 0.027608,
+            "mean_window_long_sortino": 2.962517,
+            "mean_window_sortino": 3.476152,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-99d1c1b0a43e",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.858551,
+            "mean_window_rank_ic": 0.026463,
+            "mean_window_long_sortino": 3.062397,
+            "mean_window_sortino": 3.188184,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),3))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-17d398b9b000",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.831773,
+            "mean_window_rank_ic": 0.014874,
+            "mean_window_long_sortino": 3.492783,
+            "mean_window_sortino": -0.196545,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,2)),Mean(Abs($ret),2))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-a0a33c873337",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.804716,
+            "mean_window_rank_ic": 0.00272,
+            "mean_window_long_sortino": 3.011881,
+            "mean_window_sortino": 0.091608,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,6)),Mean(Abs($ret),6)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-726d5a5aa71d",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.799516,
+            "mean_window_rank_ic": 0.00272,
+            "mean_window_long_sortino": 3.011881,
+            "mean_window_sortino": 0.091608,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,6)),Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-9c564ba0a11c",
+            "primitive_family": "rx_beam_open_gap_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.777096,
+            "mean_window_rank_ic": 0.026584,
+            "mean_window_long_sortino": 2.543357,
+            "mean_window_sortino": 2.765622,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Mean(Abs($ret),4))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-5e51b7605523",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.775517,
+            "mean_window_rank_ic": -0.001869,
+            "mean_window_long_sortino": 4.423229,
+            "mean_window_sortino": -0.016109,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,8)),Mean(Abs($ret),8)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-98fe7598c15c",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.770317,
+            "mean_window_rank_ic": -0.001869,
+            "mean_window_long_sortino": 4.423229,
+            "mean_window_sortino": -0.016109,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,8)),Mean(Abs($ret),8))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-66d087560efa",
+            "primitive_family": "rx_vwap_open_pressure_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.727318,
+            "mean_window_rank_ic": 0.000648,
+            "mean_window_long_sortino": 2.550694,
+            "mean_window_sortino": 0.082656,
+            "expression": "CSRank(Div(Sub($open,Mean($vwap,7)),Mean(Abs($ret),7)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-77de4ca9b9a0",
+            "primitive_family": "rx_vwap_open_pressure_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.722118,
+            "mean_window_rank_ic": 0.000648,
+            "mean_window_long_sortino": 2.550694,
+            "mean_window_sortino": 0.082656,
+            "expression": "CSRank(ZScore(Div(Sub($open,Mean($vwap,7)),Mean(Abs($ret),7))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-4d76705468a4",
+            "primitive_family": "rx_beam_open_position_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.559802,
+            "mean_window_rank_ic": 0.02225,
+            "mean_window_long_sortino": 2.973658,
+            "mean_window_sortino": 1.036982,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Mean(Abs($ret),5))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-6e47d664d95d",
+            "primitive_family": "rx_beam_open_position_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.452291,
+            "mean_window_rank_ic": 0.022678,
+            "mean_window_long_sortino": 1.450801,
+            "mean_window_sortino": 2.728536,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Mean(Abs($ret),6))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-a6269d26611b",
+            "primitive_family": "rx_beam_open_gap_x_float_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.441527,
+            "mean_window_rank_ic": 0.013888,
+            "mean_window_long_sortino": 0.59989,
+            "mean_window_sortino": 2.141139,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,3)),Delay($close,3))),CSRank(Log($final_float_market_cap))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-22be18b8d018",
+            "primitive_family": "rx_open_gap_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.404367,
+            "mean_window_rank_ic": 0.012275,
+            "mean_window_long_sortino": 0.378159,
+            "mean_window_sortino": 2.503358,
+            "expression": "CSRank(Div(Sub($open,Delay($close,3)),Delay($close,3)))"
+          },
+          {
+            "candidate_id": "stockpit-ff-3bf5a0d22600",
+            "primitive_family": "rx_beam_open_position_x_volatility",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.4023,
+            "mean_window_rank_ic": 0.022995,
+            "mean_window_long_sortino": 0.988516,
+            "mean_window_sortino": 2.749116,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Mean(Abs($ret),7))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-153e5a50383b",
+            "primitive_family": "rx_open_gap_zscore_rank",
+            "proposal_kind": "rx_typed_beam_transform",
+            "reward": 0.398874,
+            "mean_window_rank_ic": 0.012275,
+            "mean_window_long_sortino": 0.378159,
+            "mean_window_sortino": 2.496032,
+            "expression": "CSRank(ZScore(Div(Sub($open,Delay($close,3)),Delay($close,3))))"
+          },
+          {
+            "candidate_id": "stockpit-ff-1d145ea94544",
+            "primitive_family": "rx_beam_open_gap_x_total_cap_level",
+            "proposal_kind": "rx_typed_beam_interaction",
+            "reward": 0.375049,
+            "mean_window_rank_ic": 0.014298,
+            "mean_window_long_sortino": 0.623119,
+            "mean_window_sortino": 1.097614,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,3)),Delay($close,3))),CSRank(Log($final_total_market_cap))))"
+          }
+        ],
+        "coverage_cluster_health": {
+          "row_count": 128,
+          "top_families": [
+            {
+              "key": "rx_beam_prior_close_position_x_volatility",
+              "count": 8,
+              "share": 0.0625
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_volume_curve",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "rx_volatility_rank",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "rx_beam_momentum_x_float_cap_level",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_momentum_x_volatility",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_open_gap_x_volatility",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_vol_curve",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "rx_beam_open_gap_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_position_x_total_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_open_position_x_volatility",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_float_cap_level",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_momentum_zscore_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_open_gap_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_open_position_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_vwap_open_pressure_zscore_rank",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "rx_beam_momentum_x_total_cap_level",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "rx_beam_open_position_x_float_cap_level",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_total_cap_level",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "rx_beam_prior_close_position_x_turnover_curve",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "rx_open_gap_zscore_rank",
+              "count": 4,
+              "share": 0.03125
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 77,
+              "share": 0.601562
+            },
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 51,
+              "share": 0.398438
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 11,
+              "share": 0.085938
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Log(FIELD))))",
+              "count": 10,
+              "share": 0.078125
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Log(FIELD))))",
+              "count": 9,
+              "share": 0.070312
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Log(FIELD))))",
+              "count": 9,
+              "share": 0.070312
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 8,
+              "share": 0.0625
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Log(FIELD))))",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "CSRank(Mean(Abs(FIELD),WINDOW))",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Div(Mean(Abs(FIELD),WINDOW),Mean(Abs(FIELD),WINDOW)))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Mom(FIELD,WINDOW)),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 6,
+              "share": 0.046875
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Mom(FIELD,WINDOW)))",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))))",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW)))",
+              "count": 3,
+              "share": 0.023438
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "close",
+              "count": 86,
+              "share": 0.231806
+            },
+            {
+              "key": "high",
+              "count": 64,
+              "share": 0.172507
+            },
+            {
+              "key": "low",
+              "count": 64,
+              "share": 0.172507
+            },
+            {
+              "key": "open",
+              "count": 53,
+              "share": 0.142857
+            },
+            {
+              "key": "ret",
+              "count": 49,
+              "share": 0.132075
+            },
+            {
+              "key": "final_total_market_cap",
+              "count": 19,
+              "share": 0.051213
+            },
+            {
+              "key": "final_float_market_cap",
+              "count": 17,
+              "share": 0.045822
+            },
+            {
+              "key": "vwap",
+              "count": 8,
+              "share": 0.021563
+            },
+            {
+              "key": "volume",
+              "count": 7,
+              "share": 0.018868
+            },
+            {
+              "key": "turnover_rate",
+              "count": 4,
+              "share": 0.010782
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 128,
+              "share": 0.187135
+            },
+            {
+              "key": "Div",
+              "count": 94,
+              "share": 0.137427
+            },
+            {
+              "key": "Mean",
+              "count": 94,
+              "share": 0.137427
+            },
+            {
+              "key": "Sub",
+              "count": 94,
+              "share": 0.137427
+            },
+            {
+              "key": "CSResidual",
+              "count": 77,
+              "share": 0.112573
+            },
+            {
+              "key": "Delay",
+              "count": 63,
+              "share": 0.092105
+            },
+            {
+              "key": "Abs",
+              "count": 49,
+              "share": 0.071637
+            },
+            {
+              "key": "Log",
+              "count": 36,
+              "share": 0.052632
+            },
+            {
+              "key": "ZScore",
+              "count": 26,
+              "share": 0.038012
+            },
+            {
+              "key": "Mom",
+              "count": 23,
+              "share": 0.033626
+            }
+          ],
+          "effective_family_count": 25.052076,
+          "effective_skeleton_count": 19.0956,
+          "unique_family_count": 28,
+          "unique_skeleton_count": 23,
+          "unique_field_count": 10,
+          "unique_operator_count": 10,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        },
+        "top_reward_coverage_cluster_health": {
+          "row_count": 20,
+          "top_families": [
+            {
+              "key": "rx_vwap_open_pressure_zscore_rank",
+              "count": 5,
+              "share": 0.25
+            },
+            {
+              "key": "rx_beam_open_gap_x_volatility",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "rx_beam_open_position_x_volatility",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "rx_vwap_open_pressure_rank",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "rx_beam_open_gap_x_total_cap_level",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "rx_beam_open_gap_x_float_cap_level",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "rx_open_gap_rank",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "rx_open_gap_zscore_rank",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "rx_typed_beam_interaction",
+              "count": 10,
+              "share": 0.5
+            },
+            {
+              "key": "rx_typed_beam_transform",
+              "count": 10,
+              "share": 0.5
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW))))",
+              "count": 5,
+              "share": 0.25
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 4,
+              "share": 0.2
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))),CSRank(Log(FIELD))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))),CSRank(Mean(Abs(FIELD),WINDOW))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Mean(Abs(FIELD),WINDOW)))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))))",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "open",
+              "count": 20,
+              "share": 0.327869
+            },
+            {
+              "key": "ret",
+              "count": 15,
+              "share": 0.245902
+            },
+            {
+              "key": "close",
+              "count": 9,
+              "share": 0.147541
+            },
+            {
+              "key": "vwap",
+              "count": 8,
+              "share": 0.131148
+            },
+            {
+              "key": "high",
+              "count": 3,
+              "share": 0.04918
+            },
+            {
+              "key": "low",
+              "count": 3,
+              "share": 0.04918
+            },
+            {
+              "key": "final_total_market_cap",
+              "count": 2,
+              "share": 0.032787
+            },
+            {
+              "key": "final_float_market_cap",
+              "count": 1,
+              "share": 0.016393
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Div",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Sub",
+              "count": 20,
+              "share": 0.169492
+            },
+            {
+              "key": "Abs",
+              "count": 15,
+              "share": 0.127119
+            },
+            {
+              "key": "Mean",
+              "count": 15,
+              "share": 0.127119
+            },
+            {
+              "key": "CSResidual",
+              "count": 10,
+              "share": 0.084746
+            },
+            {
+              "key": "Delay",
+              "count": 9,
+              "share": 0.076271
+            },
+            {
+              "key": "ZScore",
+              "count": 6,
+              "share": 0.050847
+            },
+            {
+              "key": "Log",
+              "count": 3,
+              "share": 0.025424
+            }
+          ],
+          "effective_family_count": 6.060606,
+          "effective_skeleton_count": 5.714286,
+          "unique_family_count": 8,
+          "unique_skeleton_count": 7,
+          "unique_field_count": 8,
+          "unique_operator_count": 9,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        }
+      }
+    },
+    {
+      "variant": "unreached_space_only",
+      "ledger_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\unreached_space_only\\candidate_ledger.json",
+      "validation_report_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\unreached_space_only\\stage1_validation_report.json",
+      "candidate_count": 128,
+      "search_version": "phase2-stock-pit-unreached-shape-liquidity-v1-2026-05-04",
+      "summary": {
+        "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+        "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+        "evaluated_count": 128,
+        "unsupported_count": 0,
+        "strong_ic_threshold": 0.045,
+        "strong_sortino_threshold": 4.0,
+        "strong_ic_count": 0,
+        "strong_long_sortino_count": 3,
+        "strong_spread_sortino_count": 4,
+        "joint_strong_count": 0,
+        "strong_ic_per_1000": 0.0,
+        "strong_long_sortino_per_1000": 23.4375,
+        "joint_strong_per_1000": 0.0,
+        "mean_reward": -0.019513,
+        "top_reward": 1.012724,
+        "mean_rank_ic": 0.000602,
+        "mean_long_sortino": 0.106575,
+        "mean_spread_sortino": -0.672999,
+        "top_candidates": [
+          {
+            "candidate_id": "stockpit-ur-75397ddd1f3b",
+            "primitive_family": "gap_x_amount_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 1.012724,
+            "mean_window_rank_ic": 0.028264,
+            "mean_window_long_sortino": 4.623766,
+            "mean_window_sortino": 4.414807,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),CSRank(Div(Mean($amount,1),Add(Abs(Mean($amount,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-febf268d0fa7",
+            "primitive_family": "gap_x_volume_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 1.001075,
+            "mean_window_rank_ic": 0.028181,
+            "mean_window_long_sortino": 4.228994,
+            "mean_window_sortino": 5.203506,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),CSRank(Div(Mean($volume,1),Add(Abs(Mean($volume,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-f535aad0f4e3",
+            "primitive_family": "gap_x_turnover_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.979321,
+            "mean_window_rank_ic": 0.02818,
+            "mean_window_long_sortino": 4.277697,
+            "mean_window_sortino": 4.660508,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),CSRank(Div(Mean($turnover_rate,1),Add(Abs(Mean($turnover_rate,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-da593946714c",
+            "primitive_family": "open_location_x_prior_close_location",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.8557,
+            "mean_window_rank_ic": 0.025047,
+            "mean_window_long_sortino": 2.927901,
+            "mean_window_sortino": 4.135766,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Sub(Delay($close,1),Mean($low,2)),Add(Abs(Sub(Mean($high,2),Mean($low,2))),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-4f6953867abd",
+            "primitive_family": "gap_rank",
+            "proposal_kind": "shape_location_single_axis",
+            "reward": 0.773993,
+            "mean_window_rank_ic": 0.028445,
+            "mean_window_long_sortino": 2.905181,
+            "mean_window_sortino": 2.763482,
+            "expression": "CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001)))"
+          },
+          {
+            "candidate_id": "stockpit-ur-0cc266207e22",
+            "primitive_family": "gap_x_range_width_long",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.710662,
+            "mean_window_rank_ic": 0.02629,
+            "mean_window_long_sortino": 2.665777,
+            "mean_window_sortino": 2.025068,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),CSRank(Div(Sub(Mean($high,2),Mean($low,2)),Add(Abs(Mean($close,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-1d38feebe68f",
+            "primitive_family": "gap_local_z",
+            "proposal_kind": "shape_location_single_axis",
+            "reward": 0.69107,
+            "mean_window_rank_ic": 0.014456,
+            "mean_window_long_sortino": 3.296068,
+            "mean_window_sortino": 2.880401,
+            "expression": "CSRank(Div(Sub(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001)),Mean(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001)),2) ),Add(Abs(Std(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001)),2)),0.000001)))"
+          },
+          {
+            "candidate_id": "stockpit-ur-4dc5cebdc538",
+            "primitive_family": "momentum_curve_x_volume_liquidity",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.63757,
+            "mean_window_rank_ic": 0.032538,
+            "mean_window_long_sortino": 1.215101,
+            "mean_window_sortino": 2.390477,
+            "expression": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom($close,1),Mom($close,2))),CSRank(Div(Mean($volume,1),Add(Abs(Mean($volume,2)),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2)))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-f68f8ea1972d",
+            "primitive_family": "momentum_curve_x_turnover_liquidity",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.621207,
+            "mean_window_rank_ic": 0.032361,
+            "mean_window_long_sortino": 1.188,
+            "mean_window_sortino": 2.21701,
+            "expression": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom($close,1),Mom($close,2))),CSRank(Div(Mean($turnover_rate,1),Add(Abs(Mean($turnover_rate,2)),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2)))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-0d6fc01564c8",
+            "primitive_family": "momentum_curve_x_amount_liquidity",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.615766,
+            "mean_window_rank_ic": 0.032661,
+            "mean_window_long_sortino": 1.249999,
+            "mean_window_sortino": 1.821862,
+            "expression": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom($close,1),Mom($close,2))),CSRank(Div(Mean($amount,1),Add(Abs(Mean($amount,2)),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2)))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-491f75407e98",
+            "primitive_family": "open_location_x_range_width_long",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.598601,
+            "mean_window_rank_ic": 0.024807,
+            "mean_window_long_sortino": 2.599925,
+            "mean_window_sortino": 2.69506,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Sub(Mean($high,2),Mean($low,2)),Add(Abs(Mean($close,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-9f4dbd754bf1",
+            "primitive_family": "momentum_curve_x_range_width_long",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.592508,
+            "mean_window_rank_ic": 0.028381,
+            "mean_window_long_sortino": 1.34781,
+            "mean_window_sortino": 1.896441,
+            "expression": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom($close,1),Mom($close,2))),CSRank(Div(Sub(Mean($high,2),Mean($low,2)),Add(Abs(Mean($close,2)),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2)))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-7b525cc02b68",
+            "primitive_family": "momentum_curve_x_prior_close_location",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.520923,
+            "mean_window_rank_ic": 0.029952,
+            "mean_window_long_sortino": 1.121134,
+            "mean_window_sortino": 1.326008,
+            "expression": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom($close,1),Mom($close,2))),CSRank(Div(Sub(Delay($close,1),Mean($low,2)),Add(Abs(Sub(Mean($high,2),Mean($low,2))),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2)))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-350a4a39896f",
+            "primitive_family": "gap_x_range_width_long",
+            "proposal_kind": "unreached_product",
+            "reward": 0.497107,
+            "mean_window_rank_ic": 0.009458,
+            "mean_window_long_sortino": 2.132318,
+            "mean_window_sortino": 0.928472,
+            "expression": "CSRank(Mul(ZScore(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),ZScore(Div(Sub(Mean($high,2),Mean($low,2)),Add(Abs(Mean($close,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-05cf9b0ca4fa",
+            "primitive_family": "gap_x_prior_close_location",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.488918,
+            "mean_window_rank_ic": 0.025472,
+            "mean_window_long_sortino": 1.662565,
+            "mean_window_sortino": 2.566823,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Add(Abs(Delay($close,1)),0.000001))),CSRank(Div(Sub(Delay($close,1),Mean($low,2)),Add(Abs(Sub(Mean($high,2),Mean($low,2))),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-05f9d6da6698",
+            "primitive_family": "open_location_x_amount_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.432212,
+            "mean_window_rank_ic": 0.025927,
+            "mean_window_long_sortino": 1.679083,
+            "mean_window_sortino": 1.620805,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Mean($amount,1),Add(Abs(Mean($amount,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-2879ebbc860f",
+            "primitive_family": "open_location_x_turnover_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.404896,
+            "mean_window_rank_ic": 0.025807,
+            "mean_window_long_sortino": 1.477886,
+            "mean_window_sortino": 2.126703,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Mean($turnover_rate,1),Add(Abs(Mean($turnover_rate,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-f78b13d5ba72",
+            "primitive_family": "open_location_x_volume_liquidity",
+            "proposal_kind": "unreached_residual",
+            "reward": 0.402586,
+            "mean_window_rank_ic": 0.025833,
+            "mean_window_long_sortino": 1.435756,
+            "mean_window_sortino": 2.084548,
+            "expression": "CSRank(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Mean($volume,1),Add(Abs(Mean($volume,2)),0.000001)))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-66d9a8457104",
+            "primitive_family": "open_location_x_prior_close_location",
+            "proposal_kind": "unreached_momentum_gated_residual",
+            "reward": 0.353244,
+            "mean_window_rank_ic": 0.001683,
+            "mean_window_long_sortino": 1.690261,
+            "mean_window_sortino": -0.448077,
+            "expression": "CSRank(Mul(CSResidual(CSRank(Div(Sub($open,Mean($low,1)),Add(Abs(Sub(Mean($high,1),Mean($low,1))),0.000001))),CSRank(Div(Sub(Delay($close,1),Mean($low,2)),Add(Abs(Sub(Mean($high,2),Mean($low,2))),0.000001)))),Sign(ZScore(Sub(Mom($close,1),Mom($close,2))))))"
+          },
+          {
+            "candidate_id": "stockpit-ur-4933377590a9",
+            "primitive_family": "range_width_x_prior_close_location",
+            "proposal_kind": "unreached_product",
+            "reward": 0.313812,
+            "mean_window_rank_ic": 0.036548,
+            "mean_window_long_sortino": 0.061433,
+            "mean_window_sortino": 0.234232,
+            "expression": "CSRank(Mul(ZScore(Div(Sub(Mean($high,1),Mean($low,1)),Add(Abs(Mean($close,1)),0.000001))),ZScore(Div(Sub(Delay($close,1),Mean($low,2)),Add(Abs(Sub(Mean($high,2),Mean($low,2))),0.000001)))))"
+          }
+        ],
+        "coverage_cluster_health": {
+          "row_count": 128,
+          "top_families": [
+            {
+              "key": "gap_x_amount_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "gap_x_prior_close_location",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "gap_x_range_width_long",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "gap_x_turnover_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "gap_x_volume_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "momentum_curve_x_amount_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "momentum_curve_x_prior_close_location",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "momentum_curve_x_range_width_long",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "momentum_curve_x_turnover_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "momentum_curve_x_volume_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "open_location_x_amount_liquidity",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "open_location_x_prior_close_location",
+              "count": 5,
+              "share": 0.039062
+            },
+            {
+              "key": "open_location_x_range_width_long",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "open_location_x_turnover_liquidity",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "open_location_x_volume_liquidity",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "range_width_x_amount_liquidity",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "range_width_x_prior_close_location",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "range_width_x_range_width_long",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "range_width_x_turnover_liquidity",
+              "count": 4,
+              "share": 0.03125
+            },
+            {
+              "key": "range_width_x_volume_liquidity",
+              "count": 4,
+              "share": 0.03125
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "unreached_momentum_gated_residual",
+              "count": 50,
+              "share": 0.390625
+            },
+            {
+              "key": "unreached_product",
+              "count": 37,
+              "share": 0.289062
+            },
+            {
+              "key": "unreached_residual",
+              "count": 25,
+              "share": 0.195312
+            },
+            {
+              "key": "shape_location_single_axis",
+              "count": 16,
+              "share": 0.125
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Mean(Abs(FIELD),WINDOW),Add(Abs(Mean(Abs(FIELD),WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Div(Mean(Abs(FIELD),WINDOW),Add(Abs(Mean(Abs(FIELD),WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Mean(Abs(FIELD),WINDOW),Add(Abs(Mean(Abs(FIELD),WINDOW)),WINDOW.WINDOW))),ZScore(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),ZScore(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),ZScore(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW))),ZScore(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),ZScore(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Div(Mean(Abs(FIELD),WINDOW),Add(Abs(Mean(Abs(FIELD),WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.023438
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.023438
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "close",
+              "count": 111,
+              "share": 0.266187
+            },
+            {
+              "key": "high",
+              "count": 82,
+              "share": 0.196643
+            },
+            {
+              "key": "low",
+              "count": 82,
+              "share": 0.196643
+            },
+            {
+              "key": "open",
+              "count": 55,
+              "share": 0.131894
+            },
+            {
+              "key": "amount",
+              "count": 23,
+              "share": 0.055156
+            },
+            {
+              "key": "turnover_rate",
+              "count": 22,
+              "share": 0.052758
+            },
+            {
+              "key": "volume",
+              "count": 22,
+              "share": 0.052758
+            },
+            {
+              "key": "ret",
+              "count": 20,
+              "share": 0.047962
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "Abs",
+              "count": 128,
+              "share": 0.104235
+            },
+            {
+              "key": "Add",
+              "count": 128,
+              "share": 0.104235
+            },
+            {
+              "key": "CSRank",
+              "count": 128,
+              "share": 0.104235
+            },
+            {
+              "key": "Div",
+              "count": 128,
+              "share": 0.104235
+            },
+            {
+              "key": "Mean",
+              "count": 126,
+              "share": 0.102606
+            },
+            {
+              "key": "Sub",
+              "count": 122,
+              "share": 0.099349
+            },
+            {
+              "key": "Mul",
+              "count": 87,
+              "share": 0.070847
+            },
+            {
+              "key": "ZScore",
+              "count": 87,
+              "share": 0.070847
+            },
+            {
+              "key": "CSResidual",
+              "count": 75,
+              "share": 0.061075
+            },
+            {
+              "key": "Mom",
+              "count": 65,
+              "share": 0.052932
+            },
+            {
+              "key": "Delay",
+              "count": 51,
+              "share": 0.041531
+            },
+            {
+              "key": "Sign",
+              "count": 50,
+              "share": 0.040717
+            },
+            {
+              "key": "Neg",
+              "count": 45,
+              "share": 0.036645
+            },
+            {
+              "key": "Std",
+              "count": 8,
+              "share": 0.006515
+            }
+          ],
+          "effective_family_count": 30.341172,
+          "effective_skeleton_count": 63.01526,
+          "unique_family_count": 33,
+          "unique_skeleton_count": 84,
+          "unique_field_count": 8,
+          "unique_operator_count": 14,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        },
+        "top_reward_coverage_cluster_health": {
+          "row_count": 20,
+          "top_families": [
+            {
+              "key": "gap_x_range_width_long",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "open_location_x_prior_close_location",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "gap_local_z",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "gap_rank",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "gap_x_amount_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "gap_x_prior_close_location",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "gap_x_turnover_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "gap_x_volume_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "momentum_curve_x_amount_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "momentum_curve_x_prior_close_location",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "momentum_curve_x_range_width_long",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "momentum_curve_x_turnover_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "momentum_curve_x_volume_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "open_location_x_amount_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "open_location_x_range_width_long",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "open_location_x_turnover_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "open_location_x_volume_liquidity",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "range_width_x_prior_close_location",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "unreached_residual",
+              "count": 10,
+              "share": 0.5
+            },
+            {
+              "key": "unreached_momentum_gated_residual",
+              "count": 6,
+              "share": 0.3
+            },
+            {
+              "key": "shape_location_single_axis",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "unreached_product",
+              "count": 2,
+              "share": 0.1
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Mean(FIELD,WINDOW),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 3,
+              "share": 0.15
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(Div(Sub(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW)),Mean(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW)),WINDOW)),Add(Abs(Std(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW)),WINDOW)),WINDOW.WINDOW)))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW)))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(Mul(CSResidual(CSRank(Div(Sub(FIELD,Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW))),CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Add(Abs(Delay(FIELD,WINDOW)),WINDOW.WINDOW))),ZScore(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(Mul(ZScore(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW))),ZScore(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW)))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Sub(Delay(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "Neg(CSRank(Mul(CSResidual(CSRank(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW))),CSRank(Div(Sub(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)),Add(Abs(Mean(FIELD,WINDOW)),WINDOW.WINDOW)))),Sign(ZScore(Sub(Mom(FIELD,WINDOW),Mom(FIELD,WINDOW)))))))",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "close",
+              "count": 17,
+              "share": 0.265625
+            },
+            {
+              "key": "open",
+              "count": 14,
+              "share": 0.21875
+            },
+            {
+              "key": "high",
+              "count": 12,
+              "share": 0.1875
+            },
+            {
+              "key": "low",
+              "count": 12,
+              "share": 0.1875
+            },
+            {
+              "key": "amount",
+              "count": 3,
+              "share": 0.046875
+            },
+            {
+              "key": "turnover_rate",
+              "count": 3,
+              "share": 0.046875
+            },
+            {
+              "key": "volume",
+              "count": 3,
+              "share": 0.046875
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "Abs",
+              "count": 20,
+              "share": 0.110497
+            },
+            {
+              "key": "Add",
+              "count": 20,
+              "share": 0.110497
+            },
+            {
+              "key": "CSRank",
+              "count": 20,
+              "share": 0.110497
+            },
+            {
+              "key": "Div",
+              "count": 20,
+              "share": 0.110497
+            },
+            {
+              "key": "Sub",
+              "count": 20,
+              "share": 0.110497
+            },
+            {
+              "key": "Mean",
+              "count": 19,
+              "share": 0.104972
+            },
+            {
+              "key": "CSResidual",
+              "count": 16,
+              "share": 0.088398
+            },
+            {
+              "key": "Delay",
+              "count": 12,
+              "share": 0.066298
+            },
+            {
+              "key": "Mul",
+              "count": 8,
+              "share": 0.044199
+            },
+            {
+              "key": "ZScore",
+              "count": 8,
+              "share": 0.044199
+            },
+            {
+              "key": "Mom",
+              "count": 6,
+              "share": 0.033149
+            },
+            {
+              "key": "Sign",
+              "count": 6,
+              "share": 0.033149
+            },
+            {
+              "key": "Neg",
+              "count": 5,
+              "share": 0.027624
+            },
+            {
+              "key": "Std",
+              "count": 1,
+              "share": 0.005525
+            }
+          ],
+          "effective_family_count": 16.666667,
+          "effective_skeleton_count": 10.526316,
+          "unique_family_count": 18,
+          "unique_skeleton_count": 14,
+          "unique_field_count": 7,
+          "unique_operator_count": 14,
+          "warnings": [],
+          "decision": "PASS_CLUSTER_HEALTH"
+        }
+      }
+    },
+    {
+      "variant": "simple_template_baseline",
+      "ledger_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\simple_template_baseline\\candidate_ledger.json",
+      "validation_report_path": "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-limitfix-20260510\\ab_test_v2\\simple_template_baseline\\stage1_validation_report.json",
+      "candidate_count": 128,
+      "search_version": "phase2-stock-pit-simple-template-baseline-v1-2026-05-10",
+      "summary": {
+        "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+        "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+        "evaluated_count": 128,
+        "unsupported_count": 0,
+        "strong_ic_threshold": 0.045,
+        "strong_sortino_threshold": 4.0,
+        "strong_ic_count": 0,
+        "strong_long_sortino_count": 0,
+        "strong_spread_sortino_count": 1,
+        "joint_strong_count": 0,
+        "strong_ic_per_1000": 0.0,
+        "strong_long_sortino_per_1000": 0.0,
+        "joint_strong_per_1000": 0.0,
+        "mean_reward": 0.077292,
+        "top_reward": 1.175295,
+        "mean_rank_ic": 0.0,
+        "mean_long_sortino": 0.087557,
+        "mean_spread_sortino": -0.587815,
+        "top_candidates": [
+          {
+            "candidate_id": "stockpit-template-3640ff7d560d",
+            "primitive_family": "close_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 1.175295,
+            "mean_window_rank_ic": 0.016354,
+            "mean_window_long_sortino": 3.03652,
+            "mean_window_sortino": 4.438161,
+            "expression": "CSRank($close)"
+          },
+          {
+            "candidate_id": "stockpit-template-5b3163bc0211",
+            "primitive_family": "open_gap_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.78566,
+            "mean_window_rank_ic": 0.028443,
+            "mean_window_long_sortino": 2.905181,
+            "mean_window_sortino": 2.765401,
+            "expression": "CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1)))"
+          },
+          {
+            "candidate_id": "stockpit-template-53cdecea063f",
+            "primitive_family": "volatility_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.686916,
+            "mean_window_rank_ic": -0.006305,
+            "mean_window_long_sortino": 3.218471,
+            "mean_window_sortino": 1.597199,
+            "expression": "CSRank(Mean(Abs($ret),34))"
+          },
+          {
+            "candidate_id": "stockpit-template-91a71aac55d6",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.567155,
+            "mean_window_rank_ic": 0.025311,
+            "mean_window_long_sortino": 0.965218,
+            "mean_window_sortino": 1.249391,
+            "expression": "Neg(CSRank(Div(Mean($volume,5),Mean($volume,34))))"
+          },
+          {
+            "candidate_id": "stockpit-template-2822ee32c740",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.562494,
+            "mean_window_rank_ic": 0.02464,
+            "mean_window_long_sortino": 1.061425,
+            "mean_window_sortino": 1.312697,
+            "expression": "Neg(CSRank(Div(Mean($volume,5),Mean($volume,8))))"
+          },
+          {
+            "candidate_id": "stockpit-template-d04a4b868655",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.559225,
+            "mean_window_rank_ic": 0.005999,
+            "mean_window_long_sortino": 1.717718,
+            "mean_window_sortino": 1.438399,
+            "expression": "Neg(CSRank(Div(Mean($volume,2),Mean($volume,3))))"
+          },
+          {
+            "candidate_id": "stockpit-template-6928f7e29f4a",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.547422,
+            "mean_window_rank_ic": 0.025528,
+            "mean_window_long_sortino": 0.974432,
+            "mean_window_sortino": 1.115634,
+            "expression": "Neg(CSRank(Div(Mean($amount,5),Mean($amount,8))))"
+          },
+          {
+            "candidate_id": "stockpit-template-639c8f3fc646",
+            "primitive_family": "volatility_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.543019,
+            "mean_window_rank_ic": -0.00982,
+            "mean_window_long_sortino": 2.70044,
+            "mean_window_sortino": 1.386669,
+            "expression": "CSRank(Mean(Abs($ret),21))"
+          },
+          {
+            "candidate_id": "stockpit-template-a3431617cec3",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.535997,
+            "mean_window_rank_ic": 0.028033,
+            "mean_window_long_sortino": 0.830345,
+            "mean_window_sortino": 1.074674,
+            "expression": "Neg(CSRank(Div(Mean($volume,3),Mean($volume,34))))"
+          },
+          {
+            "candidate_id": "stockpit-template-9cf6acdf77ff",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.52786,
+            "mean_window_rank_ic": 0.020778,
+            "mean_window_long_sortino": 0.879735,
+            "mean_window_sortino": 0.687019,
+            "expression": "Neg(CSRank(Div(Mean($amount,8),Mean($amount,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-172800f760ae",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.520498,
+            "mean_window_rank_ic": 0.025399,
+            "mean_window_long_sortino": 0.723569,
+            "mean_window_sortino": 0.950543,
+            "expression": "Neg(CSRank(Div(Mean($amount,5),Mean($amount,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-cc57d83a504f",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.505945,
+            "mean_window_rank_ic": 0.027943,
+            "mean_window_long_sortino": 0.565136,
+            "mean_window_sortino": 1.194346,
+            "expression": "Neg(CSRank(Div(Mean($amount,3),Mean($amount,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-e30abd7f8bda",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.504253,
+            "mean_window_rank_ic": 0.024989,
+            "mean_window_long_sortino": 0.725698,
+            "mean_window_sortino": 0.819661,
+            "expression": "Neg(CSRank(Div(Mean($volume,5),Mean($volume,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-8df5285ed539",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.492164,
+            "mean_window_rank_ic": 0.023497,
+            "mean_window_long_sortino": 0.781901,
+            "mean_window_sortino": 1.153075,
+            "expression": "Neg(CSRank(Div(Mean($volume,3),Mean($volume,8))))"
+          },
+          {
+            "candidate_id": "stockpit-template-e124cd648c9d",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.488236,
+            "mean_window_rank_ic": 0.027905,
+            "mean_window_long_sortino": 0.705462,
+            "mean_window_sortino": 0.551265,
+            "expression": "Neg(CSRank(Div(Mean($volume,2),Mean($volume,34))))"
+          },
+          {
+            "candidate_id": "stockpit-template-73f0ca167593",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.484729,
+            "mean_window_rank_ic": 0.027291,
+            "mean_window_long_sortino": 0.533187,
+            "mean_window_sortino": 1.018307,
+            "expression": "Neg(CSRank(Div(Mean($volume,3),Mean($volume,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-453ddf72ba78",
+            "primitive_family": "volume_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.482608,
+            "mean_window_rank_ic": 0.026738,
+            "mean_window_long_sortino": 0.596746,
+            "mean_window_sortino": 0.926411,
+            "expression": "Neg(CSRank(Div(Mean($volume,2),Mean($volume,21))))"
+          },
+          {
+            "candidate_id": "stockpit-template-36e07b16a236",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.474724,
+            "mean_window_rank_ic": 0.025905,
+            "mean_window_long_sortino": 0.663926,
+            "mean_window_sortino": 0.435365,
+            "expression": "Neg(CSRank(Div(Mean($amount,5),Mean($amount,34))))"
+          },
+          {
+            "candidate_id": "stockpit-template-48b29cdb59ff",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.462124,
+            "mean_window_rank_ic": 0.028611,
+            "mean_window_long_sortino": 0.549079,
+            "mean_window_sortino": 0.512076,
+            "expression": "Neg(CSRank(Div(Mean($amount,2),Mean($amount,34))))"
+          },
+          {
+            "candidate_id": "stockpit-template-bac1bafad801",
+            "primitive_family": "amount_curve_rank",
+            "proposal_kind": "simple_template_baseline",
+            "reward": 0.447116,
+            "mean_window_rank_ic": 0.028733,
+            "mean_window_long_sortino": 0.435183,
+            "mean_window_sortino": 0.703277,
+            "expression": "Neg(CSRank(Div(Mean($amount,3),Mean($amount,34))))"
+          }
+        ],
+        "coverage_cluster_health": {
+          "row_count": 128,
+          "top_families": [
+            {
+              "key": "amount_curve_rank",
+              "count": 48,
+              "share": 0.375
+            },
+            {
+              "key": "volume_curve_rank",
+              "count": 46,
+              "share": 0.359375
+            },
+            {
+              "key": "momentum_rank",
+              "count": 16,
+              "share": 0.125
+            },
+            {
+              "key": "volatility_rank",
+              "count": 14,
+              "share": 0.109375
+            },
+            {
+              "key": "close_rank",
+              "count": 2,
+              "share": 0.015625
+            },
+            {
+              "key": "open_gap_rank",
+              "count": 2,
+              "share": 0.015625
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "simple_template_baseline",
+              "count": 128,
+              "share": 1.0
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW)))",
+              "count": 47,
+              "share": 0.367188
+            },
+            {
+              "key": "Neg(CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 47,
+              "share": 0.367188
+            },
+            {
+              "key": "CSRank(Mom(FIELD,WINDOW))",
+              "count": 8,
+              "share": 0.0625
+            },
+            {
+              "key": "Neg(CSRank(Mom(FIELD,WINDOW)))",
+              "count": 8,
+              "share": 0.0625
+            },
+            {
+              "key": "CSRank(Mean(Abs(FIELD),WINDOW))",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "Neg(CSRank(Mean(Abs(FIELD),WINDOW)))",
+              "count": 7,
+              "share": 0.054688
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 1,
+              "share": 0.007812
+            },
+            {
+              "key": "CSRank(FIELD)",
+              "count": 1,
+              "share": 0.007812
+            },
+            {
+              "key": "Neg(CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW))))",
+              "count": 1,
+              "share": 0.007812
+            },
+            {
+              "key": "Neg(CSRank(FIELD))",
+              "count": 1,
+              "share": 0.007812
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "amount",
+              "count": 48,
+              "share": 0.369231
+            },
+            {
+              "key": "volume",
+              "count": 46,
+              "share": 0.353846
+            },
+            {
+              "key": "close",
+              "count": 20,
+              "share": 0.153846
+            },
+            {
+              "key": "ret",
+              "count": 14,
+              "share": 0.107692
+            },
+            {
+              "key": "open",
+              "count": 2,
+              "share": 0.015385
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 128,
+              "share": 0.297674
+            },
+            {
+              "key": "Mean",
+              "count": 108,
+              "share": 0.251163
+            },
+            {
+              "key": "Div",
+              "count": 96,
+              "share": 0.223256
+            },
+            {
+              "key": "Neg",
+              "count": 64,
+              "share": 0.148837
+            },
+            {
+              "key": "Mom",
+              "count": 16,
+              "share": 0.037209
+            },
+            {
+              "key": "Abs",
+              "count": 14,
+              "share": 0.032558
+            },
+            {
+              "key": "Delay",
+              "count": 2,
+              "share": 0.004651
+            },
+            {
+              "key": "Sub",
+              "count": 2,
+              "share": 0.004651
+            }
+          ],
+          "effective_family_count": 3.357377,
+          "effective_skeleton_count": 3.524947,
+          "unique_family_count": 6,
+          "unique_skeleton_count": 10,
+          "unique_field_count": 5,
+          "unique_operator_count": 8,
+          "warnings": [
+            "skeleton_dominance"
+          ],
+          "decision": "FLAG_CLUSTER_HEALTH"
+        },
+        "top_reward_coverage_cluster_health": {
+          "row_count": 20,
+          "top_families": [
+            {
+              "key": "volume_curve_rank",
+              "count": 9,
+              "share": 0.45
+            },
+            {
+              "key": "amount_curve_rank",
+              "count": 7,
+              "share": 0.35
+            },
+            {
+              "key": "volatility_rank",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "close_rank",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "open_gap_rank",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_roles": [
+            {
+              "key": "simple_template_baseline",
+              "count": 20,
+              "share": 1.0
+            }
+          ],
+          "top_skeletons": [
+            {
+              "key": "Neg(CSRank(Div(Mean(FIELD,WINDOW),Mean(FIELD,WINDOW))))",
+              "count": 16,
+              "share": 0.8
+            },
+            {
+              "key": "CSRank(Mean(Abs(FIELD),WINDOW))",
+              "count": 2,
+              "share": 0.1
+            },
+            {
+              "key": "CSRank(Div(Sub(FIELD,Delay(FIELD,WINDOW)),Delay(FIELD,WINDOW)))",
+              "count": 1,
+              "share": 0.05
+            },
+            {
+              "key": "CSRank(FIELD)",
+              "count": 1,
+              "share": 0.05
+            }
+          ],
+          "top_fields": [
+            {
+              "key": "volume",
+              "count": 9,
+              "share": 0.428571
+            },
+            {
+              "key": "amount",
+              "count": 7,
+              "share": 0.333333
+            },
+            {
+              "key": "close",
+              "count": 2,
+              "share": 0.095238
+            },
+            {
+              "key": "ret",
+              "count": 2,
+              "share": 0.095238
+            },
+            {
+              "key": "open",
+              "count": 1,
+              "share": 0.047619
+            }
+          ],
+          "top_operators": [
+            {
+              "key": "CSRank",
+              "count": 20,
+              "share": 0.266667
+            },
+            {
+              "key": "Mean",
+              "count": 18,
+              "share": 0.24
+            },
+            {
+              "key": "Div",
+              "count": 17,
+              "share": 0.226667
+            },
+            {
+              "key": "Neg",
+              "count": 16,
+              "share": 0.213333
+            },
+            {
+              "key": "Abs",
+              "count": 2,
+              "share": 0.026667
+            },
+            {
+              "key": "Delay",
+              "count": 1,
+              "share": 0.013333
+            },
+            {
+              "key": "Sub",
+              "count": 1,
+              "share": 0.013333
+            }
+          ],
+          "effective_family_count": 2.941176,
+          "effective_skeleton_count": 1.526718,
+          "unique_family_count": 5,
+          "unique_skeleton_count": 4,
+          "unique_field_count": 5,
+          "unique_operator_count": 7,
+          "warnings": [
+            "skeleton_dominance"
+          ],
+          "decision": "FLAG_CLUSTER_HEALTH"
+        }
+      }
+    }
+  ],
+  "comparisons_to_simple_template_baseline": [
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.007899,
+      "delta_effective_family_count": 20.666399,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.051849,
+      "delta_effective_family_count": 24.133099,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "typed_random",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.014438,
+      "delta_effective_family_count": 21.694699,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.096805,
+      "delta_effective_family_count": 26.983795,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    }
+  ],
+  "comparisons_to_typed_random": [
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.022337,
+      "delta_effective_family_count": -1.0283,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.037411,
+      "delta_effective_family_count": 2.4384,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.111243,
+      "delta_effective_family_count": 5.289096,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "simple_template_baseline",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.014438,
+      "delta_effective_family_count": -21.694699,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "rx_typed_beam_ucb",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.059748,
+      "delta_effective_family_count": 3.4667,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "typed_random",
+      "baseline": "rx_typed_beam_ucb",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.022337,
+      "delta_effective_family_count": 1.0283,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "rx_typed_beam_ucb",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.088906,
+      "delta_effective_family_count": 6.317396,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "simple_template_baseline",
+      "baseline": "rx_typed_beam_ucb",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.007899,
+      "delta_effective_family_count": -20.666399,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "rx_typed_beam_no_policy",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.059748,
+      "delta_effective_family_count": -3.4667,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "typed_random",
+      "baseline": "rx_typed_beam_no_policy",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.037411,
+      "delta_effective_family_count": -2.4384,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "rx_typed_beam_no_policy",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.148654,
+      "delta_effective_family_count": 2.850696,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "simple_template_baseline",
+      "baseline": "rx_typed_beam_no_policy",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.051849,
+      "delta_effective_family_count": -24.133099,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.022337,
+      "delta_effective_family_count": -1.0283,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.037411,
+      "delta_effective_family_count": 2.4384,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.111243,
+      "delta_effective_family_count": 5.289096,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "simple_template_baseline",
+      "baseline": "typed_random",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.014438,
+      "delta_effective_family_count": -21.694699,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "unreached_space_only",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.088906,
+      "delta_effective_family_count": -6.317396,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "unreached_space_only",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.148654,
+      "delta_effective_family_count": -2.850696,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "typed_random",
+      "baseline": "unreached_space_only",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.111243,
+      "delta_effective_family_count": -5.289096,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "simple_template_baseline",
+      "baseline": "unreached_space_only",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.096805,
+      "delta_effective_family_count": -26.983795,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_ucb",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.007899,
+      "delta_effective_family_count": 20.666399,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "rx_typed_beam_no_policy",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.051849,
+      "delta_effective_family_count": 24.133099,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "typed_random",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": 0.014438,
+      "delta_effective_family_count": 21.694699,
+      "variant_gate_decision": "PASS_VARIANT_ADVANTAGE"
+    },
+    {
+      "variant": "unreached_space_only",
+      "baseline": "simple_template_baseline",
+      "delta_joint_strong_per_1000": 0.0,
+      "delta_strong_ic_per_1000": 0.0,
+      "delta_mean_reward": -0.096805,
+      "delta_effective_family_count": 26.983795,
+      "variant_gate_decision": "NO_VARIANT_ADVANTAGE"
+    }
+  ],
+  "best_variant_by_fast_metrics": "rx_typed_beam_no_policy",
+  "decision": "FAST_AB_ONLY_REQUIRES_STRICT_P0_P3_PROOF",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

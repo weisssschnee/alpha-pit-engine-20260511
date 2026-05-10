@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Data and heavy runtime artifacts
+*.parquet
+*.csv
+*.db
+*.sqlite
+*.duckdb
+*.zip
+*.7z
+runtime/**/shard*
+runtime/**/candidate_ledger.json
+runtime/**/ab_ucb_policy_state.json
+
+# Local machine state
+.env
+.idea/
+.vscode/
+*.log
+!runtime/next_stage_artifacts/**/stdout.log
+!runtime/next_stage_artifacts/**/stderr.log
+
+# Secrets
+*token*
+*secret*
+*.pem
+id_rsa*
+id_ed25519*

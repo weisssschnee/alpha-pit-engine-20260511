@@ -1,0 +1,35 @@
+{
+  "dataset": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "rows": 990549,
+  "codes": 5775,
+  "date_min": "2025-08-06 00:00:00",
+  "date_max": "2026-05-08 00:00:00",
+  "source_up": "tdxgp_gpjvalue_15_status==2",
+  "source_down": "tdxgp_gpjvalue_15_status==-2",
+  "derived_from_rt_change": false,
+  "tdxgp_status_non_null": 38882,
+  "tdxgp_status_counts": {
+    "-2.0": 3201,
+    "-1.0": 2470,
+    "0.0": 13305,
+    "1.0": 6060,
+    "2.0": 13846
+  },
+  "true_limit_up_count": 13846,
+  "true_limit_down_count": 3201,
+  "rt_9p8_limit_up_count": 16460,
+  "rt_9p8_limit_down_count": 3685,
+  "rt_up_not_tdxgp_up": 4825,
+  "tdxgp_up_not_rt_up": 2211,
+  "rt_down_not_tdxgp_down": 1921,
+  "tdxgp_down_not_rt_down": 1437,
+  "latest": {
+    "date": "2026-05-08",
+    "rows": 5490,
+    "tdxgp_status_non_null": 287,
+    "true_limit_up_count": 125,
+    "true_limit_down_count": 33,
+    "rt_9p8_limit_up_count": 132,
+    "rt_9p8_limit_down_count": 10
+  }
+}

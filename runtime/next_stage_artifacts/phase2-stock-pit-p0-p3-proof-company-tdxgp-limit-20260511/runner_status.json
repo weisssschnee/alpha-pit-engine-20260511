@@ -1,0 +1,10 @@
+﻿{
+    "created_at":  "2026-05-11T00:50:52.4106750+08:00",
+    "status":  "scheduled_running",
+    "task_name":  "phase2_tdxgp_limit_proof_20260511",
+    "output_root":  "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-tdxgp-limit-20260511",
+    "stdout":  "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-tdxgp-limit-20260511\\stdout.log",
+    "stderr":  "D:\\HermesWorker\\runtime\\phase2-stock-pit-p0-p3-proof-company-tdxgp-limit-20260511\\stderr.log",
+    "runner":  "D:\\HermesWorker\\workspace\\our_system_phase1_repo\\company_run_tdxgp_limit_proof_20260511.py",
+    "fix_scope":  "prefer TDXGP GPJYVALUE(15) close-locked limit-up/down status before rt_change_pct fallback"
+}

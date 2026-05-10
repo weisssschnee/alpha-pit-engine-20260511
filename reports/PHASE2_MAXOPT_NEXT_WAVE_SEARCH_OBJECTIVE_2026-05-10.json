@@ -1,0 +1,87 @@
+{
+  "experiment_id": "20260510_maxopt_rxbeam_nextwave_001",
+  "status": "prepared_not_launched",
+  "decision": "HOLD_RESEARCH",
+  "objective": "Run the next large stock-PIT discovery wave on the fixed maxopt stock panel with capacity-aware RX typed-beam generation, persistent reward memory, duplicate memory, A-share tradability filters, and successive halving.",
+  "active_dataset": {
+    "path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+    "role": "stock_pit_panel",
+    "rows": 1090783,
+    "symbols": 6333,
+    "date_min": "2025-08-06",
+    "date_max": "2026-05-08",
+    "quality_report": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt_report.json"
+  },
+  "previous_roots": [
+    "runtime\\next_stage_artifacts\\phase2-ashare-v2-fast-context-local-continue-20260508-from108-max4"
+  ],
+  "primary_line": {
+    "name": "rx_typed_beam_maxopt_capacity",
+    "launcher": "launch_phase2_maxopt_next_wave_pending_approval_20260510.ps1",
+    "approved_command": ".\\launch_phase2_maxopt_next_wave_pending_approval_20260510.ps1 -Approved -RunMode forward_first",
+    "root": "runtime\\next_stage_artifacts\\phase2-nextwave-rxbeam-maxopt-fast-context-20260510-max3",
+    "supervisor": "our_system_phase2.runtime.stock_pit_large_search_supervisor",
+    "generator_mode": "rx_typed_beam",
+    "shard_count": 64,
+    "max_active": 3,
+    "candidates_per_shard": 512,
+    "beam_width": 96,
+    "max_beam_records": 8192,
+    "use_successive_halving": true,
+    "halving_survivor_fraction": 0.35,
+    "halving_min_survivors": 96
+  },
+  "secondary_line": {
+    "name": "unreached_maxopt_capacity_context",
+    "launcher": "launch_phase2_maxopt_next_wave_pending_approval_20260510.ps1",
+    "approved_command": ".\\launch_phase2_maxopt_next_wave_pending_approval_20260510.ps1 -Approved -RunMode unreached_first",
+    "root": "runtime\\next_stage_artifacts\\phase2-nextwave-unreached-maxopt-fast-context-20260510-max4",
+    "supervisor": "our_system_phase2.runtime.stock_pit_unreached_search_supervisor",
+    "shard_count": 128,
+    "max_active": 4
+  },
+  "shared_validation_contract": {
+    "signal_clock": "after_open",
+    "execution_lag_days": 1,
+    "horizon_days": 1,
+    "feature_lag_days": 0,
+    "top_bottom_quantile": 0.02,
+    "recent_quarter_window_count": 2,
+    "recent_warmup_days": 60,
+    "target_window_count": 24,
+    "max_window": 126,
+    "parallel_workers": 1,
+    "use_fast_context": true
+  },
+  "search_control": {
+    "max_family_share": 0.12,
+    "reward_control_roots": [
+      "runtime\\next_stage_artifacts\\phase2-ashare-v2-fast-context-local-continue-20260508-from108-max4"
+    ],
+    "reward_exploration_share": 0.3,
+    "policy_state": "persistent UCB over production keys",
+    "collinear_field_policy": "one canonical capacity field per semantic family; redundant same-source fields diagnostics only"
+  },
+  "promotion_policy": {
+    "commercial_edge_claim_allowed": false,
+    "required_after_discovery": [
+      "strict_audit_expression_on_real_market_panel",
+      "portfolio replay",
+      "cost/slippage grid",
+      "capacity diagnostics",
+      "exposure audit",
+      "chronological forward shadow"
+    ]
+  },
+  "expected_success": [
+    "non-limit-pressure family with IC >= 0.045 and competitive Sortino",
+    "cap-normalized or liquidity-normalized family surviving tradability and capacity diagnostics",
+    "evidence that current winner family remains dominant even after opening capacity space",
+    "clean negative evidence that next work should prioritize data enrichment or portfolio construction"
+  ],
+  "continuation": {
+    "status_file_primary": "runtime\\next_stage_artifacts\\phase2-nextwave-rxbeam-maxopt-fast-context-20260510-max3\\supervisor_status.json",
+    "status_file_secondary": "runtime\\next_stage_artifacts\\phase2-nextwave-unreached-maxopt-fast-context-20260510-max4\\supervisor_status.json",
+    "preflight_audit": "runtime\\next_stage_artifacts\\phase2-nextwave-maxopt-chain-audit-20260510.json"
+  }
+}
