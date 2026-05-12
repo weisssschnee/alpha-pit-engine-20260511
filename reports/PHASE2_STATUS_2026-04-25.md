@@ -8449,3 +8449,277 @@ G:\PythonProject\.venv\Scripts\python.exe -m our_system_phase2.runtime.generatio
   breakout under threshold `0.045`, no sector neutralization/capacity/promotion
   grade universe proof yet, and high one-way turnover needs an execution/cost
   model before any capital claim.
+
+2026-05-11 true-limit search bakeoff v2 smoke:
+
+- implemented dedicated runner:
+  `src/our_system_phase2/services/stock_pit_true_limit_search_bakeoff_v2.py`
+  and CLI:
+  `src/our_system_phase2/runtime/stock_pit_true_limit_search_bakeoff_v2.py`.
+- original UCB is not in the main budget:
+  `DISABLED_PENDING_REDESIGN`.
+- accepted smoke output root:
+  `runtime\next_stage_artifacts\phase2-true-limit-search-bakeoff-v2-smoke2-local-20260511-seed1`.
+- first smoke root:
+  `runtime\next_stage_artifacts\phase2-true-limit-search-bakeoff-v2-smoke-local-20260511-seed1`
+  is diagnostic only; its gap/non-gap summary was polluted by a family-name
+  parser bug that treated `non_gap` as gap. Code was fixed and smoke2 reran.
+- true-limit source verified in all 8 lanes:
+  `tdxgp_gpjvalue_15_status==2/-2`; no 9.8 fallback.
+- smoke2 contract:
+  `32` candidates per lane, strict `top2 + stratified random2`, seed
+  `smoke2_seed1_20260511`, after-open, T+1, `10bps`, q `0.02`, recent
+  `2` quarters, warmup `60` days.
+- lanes:
+  simple template, unreached space, RX no-policy true-limit, RX diverse beam,
+  typed random dark, non-gap forced sampler, AST evolutionary mutation,
+  CEM adaptive grammar.
+- main smoke result:
+  simple template replay `1`, non-gap replay `1`;
+  AST replay `1`, non-gap replay `1`;
+  CEM replay `1`, non-gap replay `1`.
+  RX/no-policy and unreached had strict passes but no replay pass in this smoke.
+- decision:
+  `PASS` as search-method smoke only, not commercial proof.
+- detailed report:
+  `reports\PHASE2_TRUE_LIMIT_SEARCH_BAKEOFF_V2_2026-05-11.md`.
+- next target:
+  run medium bakeoff with `128` candidates per lane, strict `top8 + stratified
+  random4`, `3` seeds, fixed R0 true-limit reward, shadow rewards passive.
+
+2026-05-11 true-limit search bakeoff v2 medium launch:
+
+- added company launcher:
+  `launch_phase2_true_limit_search_bakeoff_medium_company_20260511.ps1`.
+- synchronized new bakeoff service/runtime/launcher to company PC workspace:
+  `D:\HermesWorker\workspace\our_system_phase1_repo`.
+- company py_compile passed for the new bakeoff service/runtime using absolute
+  remote paths.
+- company debug seed completed successfully:
+  `D:\HermesWorker\runtime\phase2-true-limit-search-bakeoff-v2-debug-company-20260511`.
+- launched medium via Windows Scheduled Task:
+  `Phase2TrueLimitBakeoffMedium20260511`.
+- remote medium root:
+  `D:\HermesWorker\runtime\phase2-true-limit-search-bakeoff-v2-medium-company-20260511`.
+- status file:
+  `D:\HermesWorker\runtime\phase2-true-limit-search-bakeoff-v2-medium-company-20260511\medium_status.jsonl`.
+- medium parameters:
+  seeds `1,2,3`, `128` candidates per lane, strict `top8 + stratified random4`,
+  after-open, T+1, `10bps`, q `0.02`, recent `2` quarters, warmup `60`.
+- first check confirmed seed1 started and is producing:
+  `medium_seed1_20260511\cem_internal\cem_round_00_candidate_ledger.json`.
+- process check confirmed company Python workers active:
+  `.venv` launcher Python plus real Python worker, real worker using about
+  `2.98GB` working set after startup.
+- next check recommendation:
+  inspect in about `45` to `60` minutes for seed1 stage1 progress; full 3-seed
+  medium is likely multi-hour.
+
+2026-05-11 03:29 medium bakeoff live check:
+
+- company medium remains active.
+- status file still shows seed1 running:
+  `seed_started`, output root
+  `D:\HermesWorker\runtime\phase2-true-limit-search-bakeoff-v2-medium-company-20260511\medium_seed1_20260511`.
+- active company Python processes observed:
+  `.venv` launcher Python PID `30456` and real worker PID `16364`.
+- seed1 CEM internal rounds completed:
+  `cem_round_00_stage1_validation_report.json` and
+  `cem_round_01_stage1_validation_report.json`.
+- seed1 formal stage1 progress:
+  `simple_template` done, `unreached_space` done,
+  `rx_no_policy_true_limit` running or pending completion.
+- stderr still empty at this check.
+
+2026-05-11 true-limit bakeoff medium final:
+
+- company medium completed successfully; no active company Python worker remained
+  at the final check.
+- status:
+  seed1 finished exit code `0` at `03:51:50 +08:00`;
+  seed2 finished exit code `0` at `04:25:52 +08:00`;
+  seed3 finished exit code `0` at `04:59:34 +08:00`;
+  root status `completed`.
+- pulled and expanded final archive locally:
+  `runtime\next_stage_artifacts\phase2-true-limit-search-bakeoff-v2-medium-company-20260511\phase2-true-limit-search-bakeoff-v2-medium-company-20260511-final.zip`
+  and
+  `runtime\next_stage_artifacts\phase2-true-limit-search-bakeoff-v2-medium-company-20260511\expanded`.
+- medium aggregate across `3` seeds, `128` candidates per lane per seed, strict
+  `top8 + stratified random4`:
+  - `cem_adaptive_grammar`: replay `22`, non-gap replay `22`,
+    low-corr strict `8`, replay yield per 100 valid candidates `5.729167`.
+  - `ast_evolutionary_mutation`: replay `13`, non-gap replay `13`,
+    low-corr strict `6`, replay yield per 100 `3.385417`.
+  - `simple_template`: replay `3`, non-gap replay `3`,
+    replay yield per 100 `0.781250`.
+  - `unreached_space`: replay `3`, non-gap replay `0`;
+    still gap-heavy, avg gap share `0.527778`.
+  - `non_gap_forced_sampler`: strict `24`, non-gap strict `24`, but replay `0`;
+    strong evidence that strict pass alone is not selection-sufficient.
+  - `rx_no_policy_true_limit`, `rx_diverse_beam`, and `typed_random_dark`:
+    replay `0` in this medium bakeoff.
+- interpretation:
+  CEM is the clear current winner for replay-useful non-gap discovery, AST is
+  second, simple template remains a serious but weaker baseline, and original RX
+  lanes should not be treated as current best search under true-limit replay.
+- decision:
+  `PASS` for search-method bakeoff only; no commercial claim.
+- next engineering target:
+  promote CEM + AST into the next budget, keep original UCB disabled, and use
+  the non-gap forced sampler result to improve replay-aware selection instead of
+  trusting strict pass counts alone.
+
+2026-05-11 replay-aware ranker flow:
+
+- structured true-limit bakeoff candidates into replay-training artifacts:
+  `data/candidates.parquet` (`3072` rows) and
+  `data/replay_results.parquet` (`288` replay rows).
+- added builder and leakage manifest:
+  `features/build_features.py`,
+  `data/candidate_feature_manifest.json`.
+- trained first replay-aware tree rankers:
+  `data/models/non_gap_replay_pass_ranker.joblib` and
+  `data/models/replay_pass_ranker.joblib`.
+- leakage guard:
+  ranker feature set has no overlap with forbidden replay/strict/shadow columns.
+- non-gap replay target:
+  grouped OOF baseline `0.131944`, top 5% pass rate `1.000000`,
+  lift `7.578947`, AUC `0.953947`, AP `0.875989`.
+- shadow selector output:
+  `data/replay_selector_shadow.parquet`;
+  selected `96` candidates with buckets `58` exploit, `18` lane-floor explore,
+  `14` low-corr diversity, `6` overflow.
+- fast-to-replay calibration output:
+  `data/replay_ranker_calibration_deciles.parquet` and
+  `data/replay_ranker_calibration_report.json`.
+  `p_non_gap_replay` and final `selection_score` both show top 5% non-gap
+  replay pass rate `1.000000` with lift `7.578947` on the internal replay
+  sample; `cheap_backtest_rank_ic` only reaches top 5% pass rate `0.200000`,
+  so rank IC alone is not a good replay selector here.
+- pure RL control artifact:
+  `data/pure_rl_selector_shadow.parquet`,
+  `data/models/pure_rl_control_policy.joblib`.
+  This is explicitly marked
+  `premature_shadow_diagnostic_not_formal_ablation`; it is not yet a formal
+  pure-RL generator/control group.
+- bandit output:
+  `data/lane_bandit_state.json`, `data/lane_bandit_allocation.json`;
+  example `1024` budget allocation gives CEM `359`, AST `273`, simple template
+  `89`, unreached `61`, RX no-policy `71`, RX diverse `66`,
+  typed random `53`, non-gap forced `52`.
+- report:
+  `reports/PHASE2_REPLAY_AWARE_RANKER_FLOW_2026-05-11.md`.
+- decision:
+  `HOLD_RESEARCH` for commercial/alpha promotion; infrastructure is ready for
+  shadow or small-slice live replay A/B, but not for replacing the search/replay
+  queue without fresh out-of-sample replay evidence.
+
+2026-05-11 replay-aware slice integration:
+
+- added optional true-limit bakeoff args:
+  `--replay-ranker-model-dir` and
+  `--replay-aware-slice-n-per-variant`.
+- default behavior is unchanged; replay-aware slice is disabled unless requested.
+- R0 remains the main decision/control table:
+  report field `main_table_scope = r0_control_only`.
+- replay-aware candidates are audited as extra capped strict/replay rows tagged
+  `selection_policy = replay_aware_shadow_slice`; pure RL does not control the
+  main search.
+- fixed selector tiny-budget behavior so `selection_budget=1` selects exactly
+  one candidate, not one per internal bucket.
+- smoke2 output:
+  `runtime\next_stage_artifacts\phase2-true-limit-replayaware-smoke2-local-20260511`.
+  R0 selected `8`, replay-aware selected `8`, strict rows `16`;
+  replay-aware slice replay pass `8`, non-gap replay pass `6`.
+- prepared medium local launcher:
+  `launch_phase2_true_limit_replayaware_slice_medium_local_20260511.ps1`.
+- launched medium local run at `2026-05-11T11:41:05+08:00`:
+  `runtime\next_stage_artifacts\phase2-true-limit-replayaware-slice-medium-local-20260511`.
+  Parameters: seeds `1,2,3`, candidate budget `64`, strict `top4 + random2`,
+  replay-aware slice `2` per lane, R0 control table remains the decision table.
+  Status file:
+  `runtime\next_stage_artifacts\phase2-true-limit-replayaware-slice-medium-local-20260511\medium_status.jsonl`.
+- detailed report:
+  `reports\PHASE2_REPLAY_AWARE_SLICE_INTEGRATION_2026-05-11.md`.
+
+2026-05-11 replay-aware slice medium final:
+
+- run completed successfully at `2026-05-11T14:01:39+08:00`; all seeds exit
+  code `0`, all seed `stderr.log` files empty.
+- root:
+  `runtime\next_stage_artifacts\phase2-true-limit-replayaware-slice-medium-local-20260511`.
+- R0 control aggregate:
+  CEM replay/non-gap replay `13/13`, replay yield per 100 valid `6.770833`;
+  AST `6/6`, yield `3.125000`; simple template `3/3`, yield `1.562500`.
+  Other lanes had zero replay passes.
+- replay-aware slice aggregate:
+  CEM replay/non-gap replay `5/5`, AST `1/1`, all other lanes `0`.
+  Total slice contribution `6` non-gap replay passes over `48` audited rows.
+- decision:
+  keep replay-aware selector as a capped additive slice only. It produced useful
+  incremental CEM/AST candidates, but it did not beat R0 per audited row and did
+  not unlock RX/random/unreached/non-gap-forced.
+- detailed result report:
+  `reports\PHASE2_REPLAY_AWARE_SLICE_MEDIUM_RESULTS_2026-05-11.md`.
+
+2026-05-11 Phase3 repair audit:
+
+- added audit runtime:
+  `src\our_system_phase2\runtime\stock_pit_phase3_repair_audit.py`.
+- outputs:
+  `reports\PHASE3_REPAIR_AUDIT_2026-05-11.md`,
+  `reports\PHASE3_REPAIR_AUDIT_2026-05-11.json`,
+  plus pass cluster, pool summary, score decile, failure detail, and scored
+  leftover tables.
+- independence check:
+  raw non-gap replay pass `28` compresses to `8` return-corr clusters and only
+  `5` cost/turnover deployable return-corr clusters. CEM count is therefore
+  materially inflated by repeated correlated structures.
+- slice increment check:
+  replay-aware slice was confirmed as `R0_leftover`, not common pool. It added
+  `6` non-gap replay passes, across `4` return-corr clusters, but only `2` new
+  clusters versus R0. This supports residual-miner status, not budget promotion.
+- score decile check:
+  all `6` replay-aware non-gap replay passes are in top score decile; deciles
+  `2-3` had `8` audited candidates and zero pass; deciles `4-10` were not
+  audited, so full monotonicity still needs score-decile random pass-through.
+- failure diagnosis:
+  `non_gap_forced_sampler` is not failing from gap/turnover; it is mostly
+  duplicate/pathology (`corr_duplicate 15/24`, `operator_pathology 23/24`).
+  RX lanes fail from mixed duplicate corr, turnover, price-shape/open field
+  pathology, and subperiod weakness. `unreached_space` is clear quarantine:
+  gap dependency `13/24`, high turnover `24/24`, complexity overfit `17/24`.
+- Phase3 definition:
+  `phase3_repair = CEM control + AST failure-aware repair + replay-aware
+  residual slice`; suggested budget R0/CEM-led `60%`, AST repair `20%`,
+  replay-aware residual `10%`, novelty/diagnostic `10%`.
+
+2026-05-11 Phase3A repair implementation:
+
+- primary KPI changed for Phase3A:
+  `cost/turnover deployable unique clusters / audited`.
+  Raw non-gap replay pass is diagnostic only.
+- added service/runtime:
+  `src\our_system_phase2\services\stock_pit_phase3_repair.py`,
+  `src\our_system_phase2\runtime\stock_pit_phase3_repair.py`.
+- CEM elite update now applies inverse-sqrt structural cluster downweight:
+  `fast_reward / sqrt(structural_cluster_count)`.
+- Phase3A selector implements:
+  R0/CEM-led cluster quota, AST `duplicate_escape` +
+  `operator_sanitize`, replay-aware residual decile pass-through, and
+  quarantine diagnostic budget.
+- added launcher:
+  `launch_phase3A_repair_medium_local_20260511.ps1`.
+- smoke2 root:
+  `runtime\next_stage_artifacts\phase3A-repair-smoke2-local-20260511`.
+  Smoke primary deployable unique clusters `6/16`, unique return-corr clusters
+  `10/16`, top cluster raw pass share `0.214286`. Smoke validates wiring, not
+  promotion.
+- launched Phase3A medium local at `2026-05-11T15:37:31+08:00`:
+  `runtime\next_stage_artifacts\phase3A-repair-medium-local-20260511`.
+  Seeds `1,2,3`, candidate budget `64`, strict audit budget `64`, KPI
+  `deployable_unique_clusters_per_audited`.
+  Status file:
+  `runtime\next_stage_artifacts\phase3A-repair-medium-local-20260511\medium_status.jsonl`.
+- detailed implementation report:
+  `reports\PHASE3A_REPAIR_IMPLEMENTATION_2026-05-11.md`.

@@ -29,6 +29,23 @@ The current algorithm-level conclusion is `HOLD_RESEARCH`: UCB/reward memory has
 - `reports/PHASE2_TDXGP_LIMIT_STATUS_AUDIT_2026-05-11.md`
 - `reports/PHASE2_TDXGP_LIMIT_P0_P3_RESULTS_2026-05-11.md`
 
+The latest exported research stack also includes:
+
+- Replay-aware candidate logging and selector diagnostics.
+- True-limit search bakeoff v2.
+- Phase3 failure-aware AST repair and global cluster aggregation.
+- Phase3B repair-aware quota experiment wiring.
+- Formula Generator V2, a motif-first role-based generator prototype.
+
+The current Phase3A aggregate result is `PASS_CONFIRM_PHASE3A` for search-structure confirmation, not a commercial alpha proof. Phase3B is designed to test whether direct R0 quota and child-side repair-aware soft quota can preserve AST repair yield while reducing cluster concentration.
+
+Key current reports:
+
+- `reports/PHASE3_REPAIR_AUDIT_2026-05-11.md`
+- `reports/PHASE3_ABLATION_GLOBAL_AGGREGATE_2026-05-12.md`
+- `reports/PHASE3B_REPAIR_QUOTA_FLOW_2026-05-12.md`
+- `reports/FORMULA_GEN_V2_DESIGN_2026-05-12.md`
+
 ## Quick Checks
 
 ```powershell

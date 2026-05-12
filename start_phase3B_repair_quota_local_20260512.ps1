@@ -1,0 +1,19 @@
+& "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\run_phase3_ablation_fresh_20260511.ps1" `
+    -RepoRoot "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo" `
+    -Python "G:\PythonProject\.venv\Scripts\python.exe" `
+    -DatasetPath "G:\Project_V7_Rotation\scripts\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet" `
+    -FailureDetailPath "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\reports\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv" `
+    -ModelDir "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\data\models" `
+    -OutputBase "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\runtime\next_stage_artifacts\phase3B-repair-quota-fresh-20260512-local" `
+    -Seeds 9,10,11,12 `
+    -Arms "Phase3B_B0_incumbent_best","Phase3B_B1_phase3A_full","Phase3B_B2_direct_R0_quota_only","Phase3B_B3_repair_aware_soft_quota" `
+    -CandidateBudget 64 `
+    -StrictAuditBudget 64 `
+    -TargetWindowCount 6 `
+    -MaxWindow 34 `
+    -BeamWidth 16 `
+    -MaxBeamRecords 256 `
+    -HeartbeatSeconds 30 `
+    -RunTag "20260512" `
+    -ExperimentId "20260512_phase3B_repair_quota_fresh" `
+    -Objective "Phase3B B0-B3 ablation for repair-aware quota interaction under true-limit evaluator"

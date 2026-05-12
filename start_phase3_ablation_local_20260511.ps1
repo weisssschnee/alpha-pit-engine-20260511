@@ -1,0 +1,15 @@
+& "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\run_phase3_ablation_fresh_20260511.ps1" `
+    -RepoRoot "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo" `
+    -Python "G:\PythonProject\.venv\Scripts\python.exe" `
+    -DatasetPath "G:\Project_V7_Rotation\scripts\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet" `
+    -FailureDetailPath "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\reports\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv" `
+    -ModelDir "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\data\models" `
+    -OutputBase "G:\Project_V7_Rotation\.worktrees\our_system_phase1_repo\runtime\next_stage_artifacts\phase3-ablation-fresh-20260511-local" `
+    -Seeds 7,8 `
+    -CandidateBudget 64 `
+    -StrictAuditBudget 64 `
+    -TargetWindowCount 6 `
+    -MaxWindow 34 `
+    -BeamWidth 16 `
+    -MaxBeamRecords 256 `
+    -HeartbeatSeconds 30

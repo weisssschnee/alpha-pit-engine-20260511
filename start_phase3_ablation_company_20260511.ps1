@@ -1,0 +1,15 @@
+& "D:\HermesWorker\workspace\our_system_phase1_repo\run_phase3_ablation_fresh_20260511.ps1" `
+    -RepoRoot "D:\HermesWorker\workspace\our_system_phase1_repo" `
+    -Python "D:\HermesWorker\workspace\.venv\Scripts\python.exe" `
+    -DatasetPath "D:\HermesWorker\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet" `
+    -FailureDetailPath "D:\HermesWorker\workspace\our_system_phase1_repo\reports\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv" `
+    -ModelDir "D:\HermesWorker\workspace\our_system_phase1_repo\data\models" `
+    -OutputBase "D:\HermesWorker\runtime\phase3-ablation-fresh-20260511-company" `
+    -Seeds 5,6 `
+    -CandidateBudget 64 `
+    -StrictAuditBudget 64 `
+    -TargetWindowCount 6 `
+    -MaxWindow 34 `
+    -BeamWidth 16 `
+    -MaxBeamRecords 256 `
+    -HeartbeatSeconds 30

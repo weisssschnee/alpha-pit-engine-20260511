@@ -1,0 +1,29 @@
+schema_version: formula_gen_v2_external_motif_pack_v1
+
+external_motifs:
+  ts_corr_family:
+    templates:
+      - "Corr({x},{y},{w1})"
+      - "Corr(Delta({x},1),Delay(Delta({y},1),1),{w1})"
+  ts_cov_family:
+    templates:
+      - "Cov({x},{y},{w1})"
+  delayed_interaction:
+    templates:
+      - "Mul(Delta({x},1),Delay(Delta({y},1),1))"
+      - "Mul(Sign(Delta({x},1)),Sign(Delay(Delta({y},1),1)))"
+  acceleration_family:
+    templates:
+      - "Sub(Delta({x},1),Delay(Delta({x},1),1))"
+      - "Sub(Mom({x},{w1}),Mom({x},{w2}))"
+  nonlinear_magnitude:
+    templates:
+      - "Mul(Sign(ZScore({x})),Mul(ZScore({x}),ZScore({x})))"
+  triple_interaction:
+    templates:
+      - "Mul({base},Mul({confirm},{state}))"
+
+notes:
+  role: "Public projects are motif/operator-bias dictionaries only. Their scorers and benchmark results are not imported."
+  validation_owner: "our_system true-limit replay and deployable cluster pipeline"
+
