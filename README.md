@@ -43,7 +43,8 @@ The latest exported Phase3G result confirms the signal-vector diversified select
 
 - `G2_E3_signal_vector_diversified`: 67 deployable clusters / 256 audited, top cluster share 4.9587%.
 - Global fixed aggregate: 144 deployable clusters / 1024 audited, global top cluster share 16.2577%.
-- Status: search-mechanics confirmation, not commercial alpha deployment proof.
+- Status: `PASS_CONFIRM_PHASE3G_ALGORITHMIC` with `HOLD_METADATA_ONLY`, not commercial alpha deployment proof.
+- Current metadata blocker: declared baseline `134` vs vector/recluster matchable `122`.
 
 Key current reports:
 
@@ -52,6 +53,8 @@ Key current reports:
 - `reports/PHASE3B_REPAIR_QUOTA_FLOW_2026-05-12.md`
 - `reports/FORMULA_GEN_V2_DESIGN_2026-05-12.md`
 - `reports/PHASE3G_DECISION_RECORD_2026-05-15.md`
+- `reports/phase3g_registry_qa_20260515/PHASE3G_REGISTRY_QA_2026-05-15.md`
+- `reports/phase3g_run_completion_audit_20260515/PHASE3G_RUN_COMPLETION_AUDIT_2026-05-15.md`
 - `reports/phase3g_s29_s32_company_fixed_mixed_aggregate_20260515/PHASE3G_S29_S32_COMPANY_FIXED_MIXED_GLOBAL_AGGREGATE_2026-05-15.md`
 
 ## Quick Checks

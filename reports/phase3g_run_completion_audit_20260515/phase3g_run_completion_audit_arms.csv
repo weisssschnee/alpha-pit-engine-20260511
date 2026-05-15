@@ -1,0 +1,5 @@
+short,arm,root,pid,exit_code,exit_code_missing_warning,report_exists,progress_report_written_completed,strict_rows_exists,artifact_success,final_status
+g0,Phase3G_G0_E0_stable,reports\phase3g_seed29_company_s29_20260515\s29\g0,22892,,True,True,True,True,True,success
+g1,Phase3G_G1_E3_current_proxy,reports\phase3g_seed29_company_s29_20260515\s29\g1,22960,,True,True,True,True,True,success
+g2,Phase3G_G2_E3_signal_vector_diversified,reports\phase3g_seed29_company_s29_20260515\s29\g2,33620,,True,True,True,True,True,success
+g3,Phase3G_G3_E3_strong_signal_vector_proxy,reports\phase3g_seed29_company_s29_20260515\s29\g3,33184,,True,True,True,True,True,success

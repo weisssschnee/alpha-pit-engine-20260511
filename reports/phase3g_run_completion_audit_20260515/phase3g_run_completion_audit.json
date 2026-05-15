@@ -1,0 +1,68 @@
+{
+  "created_at": "2026-05-15T15:17:52+08:00",
+  "decision": "PASS_ARTIFACT_COMPLETION",
+  "run_root": "reports\\phase3g_seed29_company_s29_20260515\\s29",
+  "status_json": "reports\\phase3g_seed29_company_s29_20260515\\s29\\phase3g_seed29_company_status.json",
+  "arm_count": 4,
+  "artifact_success_count": 4,
+  "launcher_status": "failed",
+  "launcher_failed_due_nullable_exit_code": true,
+  "completion_contract": {
+    "success": "phase3_repair_report.json exists AND phase3_progress.jsonl has report_written/completed AND phase3_strict_rows.json exists",
+    "exit_code_null": "warning only; not a failure if artifact contract passes"
+  },
+  "arms": [
+    {
+      "short": "g0",
+      "arm": "Phase3G_G0_E0_stable",
+      "root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g0",
+      "pid": 22892,
+      "exit_code": null,
+      "exit_code_missing_warning": true,
+      "report_exists": true,
+      "progress_report_written_completed": true,
+      "strict_rows_exists": true,
+      "artifact_success": true,
+      "final_status": "success"
+    },
+    {
+      "short": "g1",
+      "arm": "Phase3G_G1_E3_current_proxy",
+      "root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g1",
+      "pid": 22960,
+      "exit_code": null,
+      "exit_code_missing_warning": true,
+      "report_exists": true,
+      "progress_report_written_completed": true,
+      "strict_rows_exists": true,
+      "artifact_success": true,
+      "final_status": "success"
+    },
+    {
+      "short": "g2",
+      "arm": "Phase3G_G2_E3_signal_vector_diversified",
+      "root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g2",
+      "pid": 33620,
+      "exit_code": null,
+      "exit_code_missing_warning": true,
+      "report_exists": true,
+      "progress_report_written_completed": true,
+      "strict_rows_exists": true,
+      "artifact_success": true,
+      "final_status": "success"
+    },
+    {
+      "short": "g3",
+      "arm": "Phase3G_G3_E3_strong_signal_vector_proxy",
+      "root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g3",
+      "pid": 33184,
+      "exit_code": null,
+      "exit_code_missing_warning": true,
+      "report_exists": true,
+      "progress_report_written_completed": true,
+      "strict_rows_exists": true,
+      "artifact_success": true,
+      "final_status": "success"
+    }
+  ]
+}
