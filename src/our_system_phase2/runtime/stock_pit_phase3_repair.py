@@ -32,6 +32,7 @@ def main() -> None:
     parser.add_argument("--ablation-arm", choices=sorted(PHASE3_ABLATION_ARMS), default="Phase3A_full")
     parser.add_argument("--no-fast-context", action="store_true")
     parser.add_argument("--selection-only", action="store_true", help="Stop after writing frozen strict selection inputs for shared cache/replay.")
+    parser.add_argument("--shared-candidate-pool-output", type=Path, default=None, help="Write pre-selector Phase3 candidate pool for shared selector dry runs.")
     parser.add_argument("--quiet", action="store_true", help="Do not print the full report JSON to stdout.")
     args = parser.parse_args()
 
@@ -58,6 +59,7 @@ def main() -> None:
         use_fast_context=not bool(args.no_fast_context),
         ablation_arm=str(args.ablation_arm),
         selection_only=bool(args.selection_only),
+        shared_candidate_pool_output=args.shared_candidate_pool_output,
     )
     if not bool(args.quiet):
         print(json.dumps(report, ensure_ascii=False, indent=2))

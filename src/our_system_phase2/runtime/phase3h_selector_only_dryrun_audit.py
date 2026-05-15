@@ -114,17 +114,20 @@ def _summarize_arm(run_root: Path, short: str, arm_name: str) -> dict[str, Any]:
     audit_path = root / "phase3e_selector_audit.csv"
     inputs_path = root / "phase3_strict_selection_inputs.json"
     report = _read_json(report_path) if report_path.exists() else {}
+    inputs = _read_json(inputs_path) if inputs_path.exists() else {}
     audit_rows = _read_csv(audit_path)
     selected = _selected_rows(audit_rows)
+    selected_inputs = list(inputs.get("selected") or [])
+    selected_for_counts = selected_inputs or selected
 
-    selected_keys = {_queue_key(row) for row in selected if _queue_key(row)}
+    selected_keys = {_queue_key(row) for row in selected_for_counts if _queue_key(row)}
     turnover_proxy = [_safe_float(row.get("turnover_proxy")) for row in selected]
     turnover_proxy_values = [value for value in turnover_proxy if value is not None]
     turnover_structure = [_safe_float(row.get("turnover_structure_risk")) for row in selected]
     turnover_structure_values = [value for value in turnover_structure if value is not None]
     selected_signal_corr = [_safe_float(row.get("max_corr_to_selected_queue_signal")) for row in selected]
     selected_signal_corr_values = [value for value in selected_signal_corr if value is not None]
-    source_lanes = Counter(str(row.get("source_lane") or "unknown") for row in selected)
+    source_lanes = Counter(str(row.get("source_lane") or row.get("phase3_budget_bucket") or "unknown") for row in selected_for_counts)
     known_signal_clusters = Counter(str(row.get("known_signal_cluster_id") or "") for row in selected if row.get("known_signal_cluster_id"))
     cap_hits = sum(1 for row in audit_rows if str(row.get("cap_reject_reason") or ""))
     selected_cap_relaxed = sum(1 for row in selected if _truthy(row.get("cap_relaxed_for_backfill")))
@@ -147,7 +150,8 @@ def _summarize_arm(run_root: Path, short: str, arm_name: str) -> dict[str, Any]:
         "strict_vector_cluster_cap": design.get("strict_vector_cluster_cap"),
         "target_median_turnover": design.get("target_median_turnover"),
         "audit_rows": len(audit_rows),
-        "selected_count": len(selected),
+        "selected_count": len(selected_for_counts),
+        "selector_audit_selected_count": len(selected),
         "selected_keys": selected_keys,
         "median_turnover_proxy": _median(turnover_proxy_values),
         "median_turnover_structure_risk": _median(turnover_structure_values),

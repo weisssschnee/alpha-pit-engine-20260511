@@ -1915,6 +1915,7 @@ def run_phase3_repair(
     use_fast_context: bool = True,
     ablation_arm: str = "Phase3A_full",
     selection_only: bool = False,
+    shared_candidate_pool_output: Path | str | None = None,
 ) -> dict[str, Any]:
     root = Path(output_root)
     root.mkdir(parents=True, exist_ok=True)
@@ -2257,21 +2258,52 @@ def run_phase3_repair(
     selector_baseline_path = _selector_baseline_path(ablation_arm, arm_config)
     selector_audit_rows: list[dict[str, Any]] = []
     selector_preflight: dict[str, Any] = {}
-    if ablation_arm.startswith("Phase3E_") or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or ablation_arm.startswith("Phase3H_") or selector_profile != "standard_D3":
-        phase3e_pool = _phase3e_candidate_pool(
-            ablation_arm=ablation_arm,
-            r0_pool=r0_pool,
-            repair_pool=repair_pool,
-            formula_rows=fast_by_variant.get("formula_gen_v2_defined", []),
-            agnostic_rows=fast_by_variant.get("agnostic_freeform_ast", []),
-            repair_expansion_rows=repair_expansion_rows,
-            residual_rows=residual_selected,
-            diagnostic_rows=diagnostic_selected,
+    phase3e_pool_for_selector = _phase3e_candidate_pool(
+        ablation_arm=ablation_arm,
+        r0_pool=r0_pool,
+        repair_pool=repair_pool,
+        formula_rows=fast_by_variant.get("formula_gen_v2_defined", []),
+        agnostic_rows=fast_by_variant.get("agnostic_freeform_ast", []),
+        repair_expansion_rows=repair_expansion_rows,
+        residual_rows=residual_selected,
+        diagnostic_rows=diagnostic_selected,
+    )
+    if shared_candidate_pool_output is not None:
+        shared_pool_path = Path(shared_candidate_pool_output)
+        write_json_artifact(
+            shared_pool_path,
+            {
+                "created_at": utc_now_iso(),
+                "source_ablation_arm": ablation_arm,
+                "source_selector_profile": selector_profile,
+                "seed": str(seed),
+                "dataset_path": str(dataset),
+                "dataset_role": dataset_role_for_path(dataset),
+                "candidate_budget": int(candidate_budget),
+                "strict_audit_budget": int(strict_audit_budget),
+                "budgets": budgets,
+                "selector_baseline_path": str(selector_baseline_path),
+                "candidate_pool": phase3e_pool_for_selector,
+                "default_selected": strict_inputs,
+                "ablation_design": {
+                    "description": arm_config["description"],
+                    "phase3e_generation_profile": arm_config.get("generation_profile"),
+                    "phase3e_selector_profile": selector_profile,
+                    "phase3_metadata_policy": arm_config.get("phase3_metadata_policy"),
+                    "phase3_discovery_baseline_count": arm_config.get("phase3_discovery_baseline_count"),
+                    "phase3_selector_vector_baseline_count": arm_config.get("phase3_selector_vector_baseline_count"),
+                    "phase3_selector_vector_baseline_name": arm_config.get("phase3_selector_vector_baseline_name"),
+                    "strict_vector_cluster_cap": arm_config.get("strict_vector_cluster_cap"),
+                    "target_median_turnover": arm_config.get("target_median_turnover"),
+                },
+            },
         )
+        _write_progress(root, "shared_candidate_pool_written", path=str(shared_pool_path), candidate_pool_count=len(phase3e_pool_for_selector), default_selected_count=len(strict_inputs))
+    if ablation_arm.startswith("Phase3E_") or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or ablation_arm.startswith("Phase3H_") or selector_profile != "standard_D3":
         phase3e_context = Phase3ERegistryContext.from_path(selector_baseline_path)
         phase3g_signal_store = Phase3GSignalVectorStore(dataset_path=dataset_path) if selector_profile.startswith("signal_vector_") else None
         strict_inputs, selector_audit_rows, selector_preflight = select_phase3e_queue(
-            phase3e_pool,
+            phase3e_pool_for_selector,
             budgets=budgets,
             selector_profile=selector_profile,
             context=phase3e_context,
