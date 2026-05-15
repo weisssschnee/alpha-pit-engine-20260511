@@ -63,6 +63,11 @@ def _seed_name_from_root(root: Path) -> str:
     match = re.search(r"seed(\d+)", root.name)
     if match:
         return f"seed{match.group(1)}"
+    # Shared-pool Phase3H roots are shaped as .../s33/official_replay/h0.
+    # Preserve both the real seed and arm so source_run_id/aggregate_row_id stay unique.
+    parent_match = re.fullmatch(r"s(\d+)", root.parent.parent.name, flags=re.IGNORECASE)
+    if parent_match and re.fullmatch(r"h\d+", root.name, flags=re.IGNORECASE):
+        return f"s{parent_match.group(1)}_{root.name.lower()}"
     return root.name
 
 
