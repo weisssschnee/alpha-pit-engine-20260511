@@ -9,6 +9,7 @@ cluster accounting is required.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 from typing import Any
@@ -70,6 +71,39 @@ def _manifest_path(root: Path, seed: int) -> Path:
     return root / f"s{seed}" / "phase3h_shared_official_seed_manifest.json"
 
 
+def _selector_audit_csv_path(root: Path, seed: int, arm: str) -> Path:
+    return root / f"s{seed}" / "selector" / arm / "phase3e_selector_audit.csv"
+
+
+def _truthy(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def _selected_selector_rows(root: Path, seed: int, arm: str) -> list[dict[str, Any]]:
+    path = _selector_audit_csv_path(root, seed, arm)
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        return [row for row in csv.DictReader(handle) if _truthy(row.get("selected_for_audit"))]
+
+
+def _cluster_share(report: dict[str, Any], cluster_id: str) -> float | None:
+    clusters = report.get("signal_cluster_report", {}).get("clusters") or []
+    denominator = sum(int(cluster.get("cluster_replay_contribution_count") or 0) for cluster in clusters)
+    if denominator <= 0:
+        return None
+    numerator = sum(
+        int(cluster.get("cluster_replay_contribution_count") or 0)
+        for cluster in clusters
+        if str(cluster.get("signal_cluster_id") or "") == cluster_id
+    )
+    return numerator / denominator
+
+
 def _arm_metrics(root: Path, seeds: list[int], arm: str) -> dict[str, Any]:
     reports = []
     strict_rows: list[dict[str, Any]] = []
@@ -114,20 +148,49 @@ def _arm_metrics(root: Path, seeds: list[int], arm: str) -> dict[str, Any]:
         for value in (_safe_float(row.get("strict_mean_one_way_turnover")) for row in strict_rows)
         if value is not None
     ]
+    cluster_001 = [
+        value
+        for value in (_cluster_share(item["report"], "cluster_001") for item in reports)
+        if value is not None
+    ]
+    cluster_003 = [
+        value
+        for value in (_cluster_share(item["report"], "cluster_003") for item in reports)
+        if value is not None
+    ]
+    selected_queue_corrs = []
+    selected_queue_turnovers = []
+    for seed in seeds:
+        for row in _selected_selector_rows(root, seed, arm):
+            corr = _safe_float(row.get("max_corr_to_selected_queue_signal"))
+            if corr is not None:
+                selected_queue_corrs.append(corr)
+            turnover = _safe_float(row.get("turnover_proxy"))
+            if turnover is not None:
+                selected_queue_turnovers.append(turnover)
+    deployable_sum = sum(deployable)
+    raw_non_gap_sum = sum(raw_non_gap)
     return {
         "arm": arm,
         "label": ARM_LABELS.get(arm, arm),
         "reports_found": len(reports),
         "missing_reports": missing,
         "audited": sum(audited),
-        "deployable_clusters_sum": sum(deployable),
+        "deployable_clusters_sum": deployable_sum,
         "deployable_per_256": (sum(deployable) / sum(audited) * 256.0) if sum(audited) else None,
-        "raw_non_gap_pass_sum": sum(raw_non_gap),
+        "raw_non_gap_pass_sum": raw_non_gap_sum,
+        "raw_deployable_ratio": (raw_non_gap_sum / deployable_sum) if deployable_sum else None,
         "top_cluster_share_mean": _mean(top_share),
         "top_cluster_share_max": max(top_share) if top_share else None,
         "median_turnover_proxy": _median(median_turnover_proxy),
         "median_replay_turnover": _median(replay_turnovers),
         "median_strict_turnover": _median(strict_turnovers),
+        "selected_queue_signal_corr_median": _median(selected_queue_corrs),
+        "selected_queue_turnover_proxy_median": _median(selected_queue_turnovers),
+        "cluster_001_replay_share_mean": _mean(cluster_001),
+        "cluster_003_replay_share_mean": _mean(cluster_003),
+        "new_vs_134": None,
+        "new_vs_134_status": "not_available_without_cross_seed_registry_recluster",
         "strict_row_count": len(strict_rows),
     }
 
@@ -207,19 +270,22 @@ def _write_markdown(path: Path, payload: dict[str, Any]) -> None:
         "",
         "## Arm Metrics",
         "",
-        "| arm | audited | deployable_sum | raw_non_gap | top_share_max | median_replay_turnover | median_turnover_proxy | reports |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|",
+        "| arm | audited | deployable_sum | raw_non_gap | raw/deployable | top_share_max | cluster001 | cluster003 | replay_turnover | queue_corr | reports |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in payload["arms"]:
         lines.append(
-            "| {label} | {audited} | {deployable} | {raw} | {top} | {replay_turnover} | {proxy_turnover} | {reports} |".format(
+            "| {label} | {audited} | {deployable} | {raw} | {ratio} | {top} | {c001} | {c003} | {replay_turnover} | {queue_corr} | {reports} |".format(
                 label=row["label"],
                 audited=row["audited"],
                 deployable=row["deployable_clusters_sum"],
                 raw=row["raw_non_gap_pass_sum"],
+                ratio="" if row["raw_deployable_ratio"] is None else f"{row['raw_deployable_ratio']:.4f}",
                 top="" if row["top_cluster_share_max"] is None else f"{row['top_cluster_share_max']:.4f}",
+                c001="" if row["cluster_001_replay_share_mean"] is None else f"{row['cluster_001_replay_share_mean']:.4f}",
+                c003="" if row["cluster_003_replay_share_mean"] is None else f"{row['cluster_003_replay_share_mean']:.4f}",
                 replay_turnover="" if row["median_replay_turnover"] is None else f"{row['median_replay_turnover']:.6f}",
-                proxy_turnover="" if row["median_turnover_proxy"] is None else f"{row['median_turnover_proxy']:.6f}",
+                queue_corr="" if row["selected_queue_signal_corr_median"] is None else f"{row['selected_queue_signal_corr_median']:.6f}",
                 reports=row["reports_found"],
             )
         )
@@ -236,6 +302,7 @@ def _write_markdown(path: Path, payload: dict[str, Any]) -> None:
             "",
             "- This is a shared-pool official execution aggregate.",
             "- H3 is expected to be selector-only parity unless replay reports are present.",
+            "- `new_vs_134` requires cross-seed registry/global reclustering and is marked unavailable here when absent.",
             "- Cross-seed promotion-grade global reclustering remains a separate accounting step.",
         ]
     )

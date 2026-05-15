@@ -13,6 +13,7 @@ generation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
@@ -25,6 +26,10 @@ from our_system_phase2.services.artifact_schema import write_json_artifact
 
 DEFAULT_SELECTOR_ARMS = ["h0", "h1", "h2", "h3"]
 DEFAULT_REPLAY_ARMS = ["h0", "h1", "h2"]
+PHASE3H_PROOF_SUITE_VERSION = "scalar-turnover-fixed-2026-05-16"
+PHASE3H_RANKER_POLICY = "diagnostic_only"
+PHASE3H_DISCOVERY_BASELINE_COUNT = 134
+PHASE3H_SELECTOR_VECTOR_BASELINE_COUNT = 122
 
 
 def _run_module(module: str, args: list[str], *, cwd: Path, log_path: Path) -> None:
@@ -39,6 +44,16 @@ def _run_module(module: str, args: list[str], *, cwd: Path, log_path: Path) -> N
 
 def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def _sha256_file(path: Path) -> str | None:
+    if not path.exists():
+        return None
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def _seed_paths(root: Path, seed: int) -> dict[str, Path]:
@@ -160,6 +175,17 @@ def run_seed(
             "default_selected_count": len(pool.get("default_selected") or []),
             "source_ablation_arm": pool.get("source_ablation_arm"),
         }
+    frozen_queue_hashes = {}
+    selector_profiles = {}
+    for short in selector_arms:
+        queue_path = paths["selector_root"] / short / "phase3_strict_selection_inputs.json"
+        frozen_queue_hashes[short] = _sha256_file(queue_path)
+        if queue_path.exists():
+            queue = _read_json(queue_path)
+            selector_profiles[short] = (
+                queue.get("ablation_design", {}).get("phase3e_selector_profile")
+                or queue.get("selector_profile")
+            )
 
     manifest = {
         "created_at": utc_now_iso(),
@@ -174,6 +200,13 @@ def run_seed(
         "candidate_budget": int(candidate_budget),
         "strict_audit_budget": int(strict_audit_budget),
         "replay_audit_count": int(replay_audit_count),
+        "discovery_baseline": PHASE3H_DISCOVERY_BASELINE_COUNT,
+        "selector_vector_baseline": PHASE3H_SELECTOR_VECTOR_BASELINE_COUNT,
+        "ranker_policy": PHASE3H_RANKER_POLICY,
+        "proof_suite_version": PHASE3H_PROOF_SUITE_VERSION,
+        "shared_pool_hash": _sha256_file(paths["pool"]),
+        "frozen_queue_hashes": frozen_queue_hashes,
+        "selector_profiles": selector_profiles,
         "pool_summary": pool_summary,
         "paths": {name: str(path) for name, path in paths.items()},
         "steps": steps,
