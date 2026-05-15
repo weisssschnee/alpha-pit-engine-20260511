@@ -43,10 +43,12 @@ The latest exported Phase3G result confirms the signal-vector diversified select
 
 - `G2_E3_signal_vector_diversified`: 67 deployable clusters / 256 audited, top cluster share 4.9587%.
 - Global fixed aggregate: 144 deployable clusters / 1024 audited, global top cluster share 16.2577%.
-- Status: `PASS_CONFIRM_PHASE3G_ALGORITHMIC` with `HOLD_METADATA_ONLY`, not commercial alpha deployment proof.
-- Current metadata blocker: declared baseline `134` vs vector/recluster matchable `122`.
+- Status: `PASS_CONFIRM_PHASE3G_ALGORITHMIC`, not commercial alpha deployment proof.
+- Metadata policy: `DUAL_BASELINE_ACCEPTED`.
+- Discovery baseline: `134`; selector vector baseline: `122`.
+- G2 is promoted to Phase3H control / primary signal-vector selector candidate, not true book marginal.
 - Current true book-marginal blocker: no cheap return vectors for candidates or registry representatives.
-- Current ranker reproducibility blocker: company runtime loads old replay rankers with sklearn version warnings.
+- Current ranker reproducibility policy: old replay rankers are diagnostic-only until refit/re-serialized under the runtime sklearn environment.
 
 Key current reports:
 
@@ -55,7 +57,11 @@ Key current reports:
 - `reports/PHASE3B_REPAIR_QUOTA_FLOW_2026-05-12.md`
 - `reports/FORMULA_GEN_V2_DESIGN_2026-05-12.md`
 - `reports/PHASE3G_DECISION_RECORD_2026-05-15.md`
+- `reports/PHASE3G_G2_PROMOTION_RECORD_2026-05-15.md`
+- `reports/PHASE3H_DESIGN_RECORD_2026-05-15.md`
+- `reports/PHASE3_RANKER_REPRO_POLICY_2026-05-15.md`
 - `reports/phase3g_registry_qa_20260515/PHASE3G_REGISTRY_QA_2026-05-15.md`
+- `reports/phase3h_registry_canonicalization_20260515/PHASE3H_REGISTRY_CANONICALIZATION_2026-05-15.md`
 - `reports/phase3g_run_completion_audit_20260515/PHASE3G_RUN_COMPLETION_AUDIT_2026-05-15.md`
 - `reports/phase3_model_env_manifest_company_20260515/PHASE3_MODEL_ENV_MANIFEST_2026-05-15.md`
 - `reports/phase3h_book_vector_preflight_20260515/PHASE3H_BOOK_VECTOR_PREFLIGHT_2026-05-15.md`
