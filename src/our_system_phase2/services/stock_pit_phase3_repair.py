@@ -18,6 +18,7 @@ from our_system_phase2.formula_gen_v2.sampler import build_formula_gen_v2_ledger
 from our_system_phase2.services.phase3e_selectors import (
     Phase3ERegistryContext,
     select_phase3e_queue,
+    strip_forbidden_replay_label_rows,
     write_selector_artifacts,
 )
 from our_system_phase2.services.phase3g_signal_vector_store import Phase3GSignalVectorStore
@@ -2270,6 +2271,8 @@ def run_phase3_repair(
     )
     if shared_candidate_pool_output is not None:
         shared_pool_path = Path(shared_candidate_pool_output)
+        safe_phase3e_pool_for_selector = strip_forbidden_replay_label_rows(phase3e_pool_for_selector)
+        safe_strict_inputs = strip_forbidden_replay_label_rows(strict_inputs)
         write_json_artifact(
             shared_pool_path,
             {
@@ -2283,8 +2286,8 @@ def run_phase3_repair(
                 "strict_audit_budget": int(strict_audit_budget),
                 "budgets": budgets,
                 "selector_baseline_path": str(selector_baseline_path),
-                "candidate_pool": phase3e_pool_for_selector,
-                "default_selected": strict_inputs,
+                "candidate_pool": safe_phase3e_pool_for_selector,
+                "default_selected": safe_strict_inputs,
                 "ablation_design": {
                     "description": arm_config["description"],
                     "phase3e_generation_profile": arm_config.get("generation_profile"),

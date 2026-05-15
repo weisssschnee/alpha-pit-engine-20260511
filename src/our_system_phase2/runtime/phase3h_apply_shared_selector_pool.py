@@ -16,6 +16,7 @@ from our_system_phase2.services.artifact_schema import write_json_artifact
 from our_system_phase2.services.phase3e_selectors import (
     Phase3ERegistryContext,
     select_phase3e_queue,
+    strip_forbidden_replay_label_rows,
     write_selector_artifacts,
 )
 from our_system_phase2.services.phase3g_signal_vector_store import Phase3GSignalVectorStore
@@ -65,8 +66,8 @@ def _run_arm(pool: dict[str, Any], *, output_root: Path, short: str, arm: str) -
     budgets = _ablation_budgets(strict_audit_budget, arm)
     selector_profile = str(arm_config.get("selector_profile") or "standard_D3")
     selector_baseline_path = _selector_baseline_path(arm, arm_config)
-    candidate_pool = _retag_rows(list(pool.get("candidate_pool") or []), arm)
-    default_selected = _retag_rows(list(pool.get("default_selected") or []), arm)
+    candidate_pool = _retag_rows(strip_forbidden_replay_label_rows(list(pool.get("candidate_pool") or [])), arm)
+    default_selected = _retag_rows(strip_forbidden_replay_label_rows(list(pool.get("default_selected") or [])), arm)
 
     context = Phase3ERegistryContext.from_path(selector_baseline_path)
     signal_store = Phase3GSignalVectorStore(dataset_path=pool.get("dataset_path")) if selector_profile.startswith("signal_vector_") else None

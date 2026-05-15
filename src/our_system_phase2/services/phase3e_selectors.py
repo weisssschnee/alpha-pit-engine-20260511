@@ -39,6 +39,16 @@ FORBIDDEN_REPLAY_LABEL_FIELDS = {
 }
 
 
+def strip_forbidden_replay_label_fields(row: dict[str, Any]) -> dict[str, Any]:
+    """Remove post-replay/strict labels from selector-visible rows."""
+
+    return {key: value for key, value in dict(row).items() if key not in FORBIDDEN_REPLAY_LABEL_FIELDS}
+
+
+def strip_forbidden_replay_label_rows(rows: list[dict[str, Any]] | None) -> list[dict[str, Any]]:
+    return [strip_forbidden_replay_label_fields(row) for row in (rows or [])]
+
+
 def _safe_float(value: Any, default: float = 0.0) -> float:
     try:
         out = float(value)
@@ -760,7 +770,8 @@ def select_phase3e_queue(
     signal_vector_store: Phase3GSignalVectorStore | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     total_budget = int(total_budget if total_budget is not None else sum(max(0, int(value)) for value in budgets.values()))
-    default_selected = default_selected or []
+    candidate_pool = strip_forbidden_replay_label_rows(candidate_pool)
+    default_selected = strip_forbidden_replay_label_rows(default_selected)
     if signal_vector_store is None and is_signal_vector_selector(selector_profile):
         signal_vector_store = Phase3GSignalVectorStore.default()
     if selector_profile in {"standard_D3", "standard"}:
