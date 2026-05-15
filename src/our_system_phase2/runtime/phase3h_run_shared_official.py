@@ -59,6 +59,7 @@ def run_seed(
     *,
     repo_root: Path,
     root: Path,
+    dataset_path: Path | None,
     seed: int,
     candidate_budget: int,
     strict_audit_budget: int,
@@ -78,6 +79,7 @@ def run_seed(
             [
                 "--output-root",
                 str(paths["source_root"]),
+                *(["--dataset-path", str(dataset_path)] if dataset_path is not None else []),
                 "--ablation-arm",
                 "Phase3H_H0_G0_stable",
                 "--seed",
@@ -137,6 +139,7 @@ def run_seed(
                 str(paths["selector_root"]),
                 "--output-root",
                 str(paths["replay_root"]),
+                *(["--dataset-path", str(dataset_path)] if dataset_path is not None else []),
                 "--audit-count",
                 str(replay_audit_count),
                 "--arms",
@@ -164,6 +167,7 @@ def run_seed(
         "execution_path": "shared_pool_official",
         "seed": seed,
         "root": str(paths["seed_root"]),
+        "dataset_path": str(dataset_path) if dataset_path is not None else None,
         "selection_only": bool(selection_only),
         "selector_arms": selector_arms,
         "replay_arms": replay_arms,
@@ -182,6 +186,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--dataset-path", type=Path, default=None)
     parser.add_argument("--seeds", nargs="+", type=int, required=True)
     parser.add_argument("--candidate-budget", type=int, default=64)
     parser.add_argument("--strict-audit-budget", type=int, default=64)
@@ -198,6 +203,7 @@ def main() -> int:
         run_seed(
             repo_root=repo_root,
             root=root,
+            dataset_path=args.dataset_path,
             seed=seed,
             candidate_budget=args.candidate_budget,
             strict_audit_budget=args.strict_audit_budget,
