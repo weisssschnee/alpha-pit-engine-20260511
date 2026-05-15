@@ -1478,6 +1478,68 @@ PHASE3_ABLATION_ARMS = {
         "phase3_selector_baseline": "phase3E_cumulative_134",
         "book_marginal_mode": "signal_vector_proxy",
     },
+    "Phase3H_H0_G0_stable": {
+        "description": "Phase3H H0: G0/E0 stable historical control",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "standard_D3",
+        "generation_profile": "E0_D3_primary",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 134,
+        "phase3_selector_vector_baseline_count": 122,
+    },
+    "Phase3H_H1_G2_signal_vector_control": {
+        "description": "Phase3H H1: G2 signal-vector diversified control under dual-baseline policy",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_diversified_proxy",
+        "generation_profile": "G2_signal_vector_control",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 134,
+        "phase3_selector_vector_baseline_count": 122,
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3H_H2_G2_turnover_calibrated": {
+        "description": "Phase3H H2: G2 signal-vector selector with stronger turnover-structure penalty",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_turnover_calibrated_proxy",
+        "generation_profile": "G2_turnover_calibrated",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 134,
+        "phase3_selector_vector_baseline_count": 122,
+        "target_median_turnover": "0.18-0.20",
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3H_H3_G2_registry_canonicalized": {
+        "description": "Phase3H H3: G2 signal-vector selector with canonical 122-vector registry policy metadata",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_diversified_proxy",
+        "generation_profile": "G2_registry_canonicalized",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 134,
+        "phase3_selector_vector_baseline_count": 122,
+        "phase3_selector_vector_baseline_name": "canonical_122",
+        "strict_vector_cluster_cap": True,
+        "book_marginal_mode": "signal_vector_proxy",
+    },
 }
 
 
@@ -1529,7 +1591,7 @@ def _ablation_budgets(total: int, arm: str) -> dict[str, int]:
 
 def _selector_baseline_path(ablation_arm: str, arm_config: dict[str, Any]) -> Path:
     baseline = str(arm_config.get("phase3_selector_baseline") or "")
-    if baseline == "phase3E_cumulative_134" or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_"):
+    if baseline == "phase3E_cumulative_134" or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or ablation_arm.startswith("Phase3H_"):
         return PHASE3E_CUMULATIVE_BASELINE_PATH
     return PHASE3D_CUMULATIVE_BASELINE_PATH
 
@@ -2195,7 +2257,7 @@ def run_phase3_repair(
     selector_baseline_path = _selector_baseline_path(ablation_arm, arm_config)
     selector_audit_rows: list[dict[str, Any]] = []
     selector_preflight: dict[str, Any] = {}
-    if ablation_arm.startswith("Phase3E_") or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or selector_profile != "standard_D3":
+    if ablation_arm.startswith("Phase3E_") or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or ablation_arm.startswith("Phase3H_") or selector_profile != "standard_D3":
         phase3e_pool = _phase3e_candidate_pool(
             ablation_arm=ablation_arm,
             r0_pool=r0_pool,
@@ -2207,7 +2269,7 @@ def run_phase3_repair(
             diagnostic_rows=diagnostic_selected,
         )
         phase3e_context = Phase3ERegistryContext.from_path(selector_baseline_path)
-        phase3g_signal_store = Phase3GSignalVectorStore(dataset_path=dataset_path) if ablation_arm.startswith("Phase3G_") else None
+        phase3g_signal_store = Phase3GSignalVectorStore(dataset_path=dataset_path) if selector_profile.startswith("signal_vector_") else None
         strict_inputs, selector_audit_rows, selector_preflight = select_phase3e_queue(
             phase3e_pool,
             budgets=budgets,
@@ -2248,6 +2310,12 @@ def run_phase3_repair(
                 "phase3e_generation_profile": arm_config.get("generation_profile"),
                 "phase3e_selector_profile": selector_profile,
                 "phase3e_cumulative_baseline_path": str(selector_baseline_path),
+                "phase3_metadata_policy": arm_config.get("phase3_metadata_policy"),
+                "phase3_discovery_baseline_count": arm_config.get("phase3_discovery_baseline_count"),
+                "phase3_selector_vector_baseline_count": arm_config.get("phase3_selector_vector_baseline_count"),
+                "phase3_selector_vector_baseline_name": arm_config.get("phase3_selector_vector_baseline_name"),
+                "strict_vector_cluster_cap": arm_config.get("strict_vector_cluster_cap"),
+                "target_median_turnover": arm_config.get("target_median_turnover"),
                 "fresh_seed_required_for_formal_ablation": True,
                 "raw_pass_is_diagnostic_only": True,
                 "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
@@ -2296,6 +2364,12 @@ def run_phase3_repair(
                 "phase3e_generation_profile": arm_config.get("generation_profile"),
                 "phase3e_selector_profile": selector_profile,
                 "phase3e_cumulative_baseline_path": str(selector_baseline_path),
+                "phase3_metadata_policy": arm_config.get("phase3_metadata_policy"),
+                "phase3_discovery_baseline_count": arm_config.get("phase3_discovery_baseline_count"),
+                "phase3_selector_vector_baseline_count": arm_config.get("phase3_selector_vector_baseline_count"),
+                "phase3_selector_vector_baseline_name": arm_config.get("phase3_selector_vector_baseline_name"),
+                "strict_vector_cluster_cap": arm_config.get("strict_vector_cluster_cap"),
+                "target_median_turnover": arm_config.get("target_median_turnover"),
                 "fresh_seed_required_for_formal_ablation": True,
                 "raw_pass_is_diagnostic_only": True,
                 "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
@@ -2414,6 +2488,12 @@ def run_phase3_repair(
             "phase3e_generation_profile": arm_config.get("generation_profile"),
             "phase3e_selector_profile": selector_profile,
             "phase3e_cumulative_baseline_path": str(selector_baseline_path),
+            "phase3_metadata_policy": arm_config.get("phase3_metadata_policy"),
+            "phase3_discovery_baseline_count": arm_config.get("phase3_discovery_baseline_count"),
+            "phase3_selector_vector_baseline_count": arm_config.get("phase3_selector_vector_baseline_count"),
+            "phase3_selector_vector_baseline_name": arm_config.get("phase3_selector_vector_baseline_name"),
+            "strict_vector_cluster_cap": arm_config.get("strict_vector_cluster_cap"),
+            "target_median_turnover": arm_config.get("target_median_turnover"),
             "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
             "fresh_seed_required_for_formal_ablation": True,
             "arms": sorted(PHASE3_ABLATION_ARMS),

@@ -94,6 +94,16 @@ Smoke before official:
 H0/H1/H2/H3 x seed33 x 16 audited
 ```
 
+Selector-only dry run before smoke:
+
+```text
+H0/H1/H2/H3 x seed33 x 64 queued
+```
+
+Important implementation note:
+
+The existing `--selection-only` runner still performs candidate/stage1 generation before selector audit. It is therefore not a cheap pure-selector path. Prefer a shared candidate-pool/cache path before repeating H0-H3 locally.
+
 ## Pass Criteria
 
 Minimum pass for any H1/H2/H3 arm:

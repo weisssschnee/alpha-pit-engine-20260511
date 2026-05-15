@@ -7,6 +7,7 @@ from typing import Any
 PHASE3G_VECTOR_SELECTOR_VERSION = "phase3g-signal-vector-selector-v1-2026-05-14"
 PHASE3G_SIGNAL_VECTOR_SELECTOR_PROFILES = {
     "signal_vector_diversified_proxy",
+    "signal_vector_turnover_calibrated_proxy",
     "strong_signal_vector_proxy",
 }
 
@@ -40,6 +41,7 @@ def score_signal_vector_selector(
     base_e3_score: float,
 ) -> tuple[float, bool, str, dict[str, Any]]:
     strengthened = selector_profile == "strong_signal_vector_proxy"
+    turnover_calibrated = selector_profile == "signal_vector_turnover_calibrated_proxy"
     known_cluster = str(features.get("known_signal_cluster_id") or "")
     provisional_cluster = str(features.get("provisional_signal_cluster_id") or "")
     source_lane = str(features.get("source_lane") or "")
@@ -95,6 +97,19 @@ def score_signal_vector_selector(
             - 0.20 * complexity_penalty
             - 0.45 * cluster_special_penalty
         )
+    elif turnover_calibrated:
+        score = (
+            float(base_e3_score)
+            + 0.45 * novelty
+            - 0.95 * selected_corr
+            - 0.60 * known_penalty
+            - 0.50 * provisional_penalty
+            - 0.40 * source_lane_penalty
+            - 0.45 * turnover_penalty
+            - 1.10 * turnover_structure_penalty
+            - 0.20 * complexity_penalty
+            - 0.30 * cluster_special_penalty
+        )
     else:
         score = (
             float(base_e3_score)
@@ -124,7 +139,7 @@ def score_signal_vector_selector(
         "turnover_structure_penalty": round(float(turnover_structure_penalty), 6),
         "complexity_penalty": round(float(complexity_penalty), 6),
         "cap_reject_reason": "|".join(cap_reasons),
-        "selector_mode": "signal_vector_diversified_proxy",
+        "selector_mode": selector_profile,
         "book_marginal_mode": "signal_vector_proxy",
     }
     hard_pass = not cap_reasons and not bool(features.get("operator_pathology_flag"))
