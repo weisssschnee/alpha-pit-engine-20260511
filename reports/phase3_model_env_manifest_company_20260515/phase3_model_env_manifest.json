@@ -1,0 +1,147 @@
+{
+  "created_at": "2026-05-15T15:48:36+08:00",
+  "experiment_id": "20260515_phase3_model_env_manifest",
+  "objective": "Record replay-ranker model artifacts and runtime library versions before Phase3H.",
+  "model_dir": "D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "D:\\HermesWorker\\workspace\\.venv\\Scripts\\python.exe",
+    "platform": "Windows-10-10.0.22631-SP0",
+    "sklearn": "1.8.0",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1",
+    "joblib": "1.5.3"
+  },
+  "model_count": 3,
+  "models": [
+    {
+      "path": "D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\\non_gap_replay_pass_ranker.joblib",
+      "name": "non_gap_replay_pass_ranker.joblib",
+      "exists": true,
+      "size": 228321,
+      "mtime": "2026-05-11T11:08:22+08:00",
+      "sha256": "5f64c3b83cb6ac965174ccfb591b7ec93b8e5f23a7a2123ccc08a434c7b20766",
+      "load_status": "loaded",
+      "warnings": [
+        {
+          "category": "InconsistentVersionWarning",
+          "message": "Trying to unpickle estimator _BinMapper from version 1.6.1 when using version 1.8.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations"
+        },
+        {
+          "category": "InconsistentVersionWarning",
+          "message": "Trying to unpickle estimator HistGradientBoostingClassifier from version 1.6.1 when using version 1.8.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations"
+        }
+      ],
+      "payload_keys": [
+        "feature_columns",
+        "metrics",
+        "model",
+        "target",
+        "version"
+      ],
+      "artifact_version": "phase2-stock-pit-replay-ranker-v1-2026-05-11",
+      "target": "non_gap_replay_pass",
+      "feature_count": 95,
+      "model_class": "sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier",
+      "model_params": {
+        "categorical_features": "from_dtype",
+        "class_weight": null,
+        "early_stopping": "auto",
+        "interaction_cst": null,
+        "l2_regularization": 0.1,
+        "learning_rate": 0.04,
+        "loss": "log_loss",
+        "max_bins": 255,
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_iter": 300,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      }
+    },
+    {
+      "path": "D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\\pure_rl_control_policy.joblib",
+      "name": "pure_rl_control_policy.joblib",
+      "exists": true,
+      "size": 2992,
+      "mtime": "2026-05-11T11:08:22+08:00",
+      "sha256": "5bf489c14b3201d6190ac46f7bfd39e33f4714cd6e66d992fb67ccec60b6196f",
+      "load_status": "loaded",
+      "warnings": [],
+      "payload_keys": [
+        "bias",
+        "feature_columns",
+        "version",
+        "weights"
+      ],
+      "artifact_version": "phase2-stock-pit-pure-rl-control-v1-2026-05-11",
+      "target": null,
+      "feature_count": 95
+    },
+    {
+      "path": "D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\\replay_pass_ranker.joblib",
+      "name": "replay_pass_ranker.joblib",
+      "exists": true,
+      "size": 251640,
+      "mtime": "2026-05-11T11:08:22+08:00",
+      "sha256": "0637cadd61ad60668aa98f3dfa18b4b58c9fb4011787d967a399c57e33b2b993",
+      "load_status": "loaded",
+      "warnings": [
+        {
+          "category": "InconsistentVersionWarning",
+          "message": "Trying to unpickle estimator _BinMapper from version 1.6.1 when using version 1.8.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations"
+        },
+        {
+          "category": "InconsistentVersionWarning",
+          "message": "Trying to unpickle estimator HistGradientBoostingClassifier from version 1.6.1 when using version 1.8.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations"
+        }
+      ],
+      "payload_keys": [
+        "feature_columns",
+        "metrics",
+        "model",
+        "target",
+        "version"
+      ],
+      "artifact_version": "phase2-stock-pit-replay-ranker-v1-2026-05-11",
+      "target": "replay_pass",
+      "feature_count": 95,
+      "model_class": "sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier",
+      "model_params": {
+        "categorical_features": "from_dtype",
+        "class_weight": null,
+        "early_stopping": "auto",
+        "interaction_cst": null,
+        "l2_regularization": 0.1,
+        "learning_rate": 0.04,
+        "loss": "log_loss",
+        "max_bins": 255,
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_iter": 300,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      }
+    }
+  ],
+  "warning_count": 4,
+  "decision": "HOLD_REPRODUCIBILITY",
+  "next_action": "If warning_count > 0, re-save or retrain replay rankers under the runtime sklearn version before using them for a promotion-grade Phase3H run."
+}

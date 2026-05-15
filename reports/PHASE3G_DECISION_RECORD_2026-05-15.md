@@ -74,7 +74,8 @@ This is not a true book-marginal selector. It uses a signal-vector cluster proxy
 1. Resolve `134` declared vs `122` vector-matchable/reclustered baseline accounting.
 2. Treat nullable launcher exit codes as warnings when artifact completion passes.
 3. Record sklearn/model environment manifests before Phase3H.
-4. Use G2 as the Phase3H control only after metadata QA is explicit.
+4. Do not run H2 true book-residual selector until cheap return vectors exist for both candidates and registry representatives.
+5. Use G2 as the Phase3H control only after metadata QA is explicit.
 
 ## Files
 

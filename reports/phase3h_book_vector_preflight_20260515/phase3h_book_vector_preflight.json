@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-05-15T15:51:00+08:00",
+  "decision": "HOLD_TRUE_BOOK_SELECTOR",
+  "clustered_rows_path": "reports\\phase3g_s29_s32_company_fixed_mixed_aggregate_20260515\\phase3g_s29_s32_company_fixed_mixed_global_clustered_rows.json",
+  "phase3_candidate_rows": 1024,
+  "registry_rows": 129,
+  "candidate_return_vector_coverage": {
+    "total_rows": 1024,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "candidate_return_vector_id": 0,
+      "cheap_pnl_vector_id": 0,
+      "cheap_return_vector_id": 0,
+      "residual_return_vector_id": 0,
+      "return_vector_id": 0
+    }
+  },
+  "registry_return_vector_coverage": {
+    "total_rows": 129,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "candidate_return_vector_id": 0,
+      "cheap_pnl_vector_id": 0,
+      "cheap_return_vector_id": 0,
+      "residual_return_vector_id": 0,
+      "return_vector_id": 0
+    }
+  },
+  "candidate_signal_vector_coverage": {
+    "total_rows": 1024,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "known_signal_cluster_id": 0,
+      "max_corr_to_134_signal_vector": 0,
+      "nearest_134_signal_cluster_id": 0,
+      "signal_vector_id": 0
+    }
+  },
+  "registry_signal_vector_coverage": {
+    "total_rows": 129,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "known_signal_cluster_id": 0,
+      "max_corr_to_134_signal_vector": 0,
+      "nearest_134_signal_cluster_id": 0,
+      "signal_vector_id": 0
+    }
+  },
+  "candidate_daily_ic_vector_coverage": {
+    "total_rows": 1024,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "daily_ic_vector_id": 0,
+      "ic_vector_id": 0,
+      "rank_ic_vector_id": 0
+    }
+  },
+  "registry_daily_ic_vector_coverage": {
+    "total_rows": 129,
+    "covered_rows": 0,
+    "coverage": 0.0,
+    "key_counts": {
+      "daily_ic_vector_id": 0,
+      "ic_vector_id": 0,
+      "rank_ic_vector_id": 0
+    }
+  },
+  "registry_qa_decision": "HOLD_METADATA_ONLY",
+  "registry_declared_count": 134,
+  "registry_vector_matchable_unique_count": 122,
+  "model_manifest_decision": "HOLD_REPRODUCIBILITY",
+  "model_warning_count": 4,
+  "true_book_residual_ready": false,
+  "signal_vector_proxy_ready": true,
+  "reproducibility_ready": false,
+  "blockers": [
+    "candidate_cheap_return_vector_missing",
+    "registry_return_vector_missing",
+    "registry_metadata_gate_not_cleared",
+    "ranker_model_env_warning"
+  ],
+  "next_action": "Do not run H2 true book residual. Use G2 as signal-vector proxy control, or first add cheap return vector artifacts for candidates and registry representatives."
+}
