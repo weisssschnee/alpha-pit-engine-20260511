@@ -61,6 +61,7 @@ class FormulaCandidate:
     has_signed_nonlinear: bool = False
     paired_ablation_group_id: str | None = None
     role_expression: str | None = None
+    role_slots: dict[str, str] = field(default_factory=dict)
     parent_candidate_id: str | None = None
     proposal_kind: str = "motif_slot_sample"
     metadata: dict[str, Any] = field(default_factory=dict)
@@ -89,6 +90,7 @@ class FormulaCandidate:
             "has_signed_nonlinear": bool(self.has_signed_nonlinear),
             "paired_ablation_group_id": self.paired_ablation_group_id,
             "role_expression": self.role_expression,
+            "role_slots": dict(self.role_slots),
             "parent_candidate_id": self.parent_candidate_id,
             "proposal_kind": self.proposal_kind,
             "primitive_family": f"formula_gen_v2_{self.motif_family}",
@@ -97,4 +99,3 @@ class FormulaCandidate:
             "retained": True,
             **self.metadata,
         }
-

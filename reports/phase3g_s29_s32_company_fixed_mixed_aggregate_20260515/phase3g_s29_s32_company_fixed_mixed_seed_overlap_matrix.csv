@@ -1,0 +1,17 @@
+deployable_jaccard,deployable_left,deployable_overlap,deployable_right,deployable_union,left_seed,non_gap_cluster_overlap,non_gap_cluster_union,right_seed
+1.0,54,54,54,54,Phase3G_G0_E0_stable::g0,89,89,Phase3G_G0_E0_stable::g0
+0.22093,54,19,51,86,Phase3G_G0_E0_stable::g0,26,129,Phase3G_G1_E3_current_proxy::g1
+0.247423,54,24,67,97,Phase3G_G0_E0_stable::g0,43,190,Phase3G_G2_E3_signal_vector_diversified::g2
+0.333333,54,27,54,81,Phase3G_G0_E0_stable::g0,43,182,Phase3G_G3_E3_strong_signal_vector_proxy::g3
+0.22093,51,19,54,86,Phase3G_G1_E3_current_proxy::g1,26,129,Phase3G_G0_E0_stable::g0
+1.0,51,51,51,51,Phase3G_G1_E3_current_proxy::g1,66,66,Phase3G_G1_E3_current_proxy::g1
+0.216495,51,21,67,97,Phase3G_G1_E3_current_proxy::g1,36,174,Phase3G_G2_E3_signal_vector_diversified::g2
+0.235294,51,20,54,85,Phase3G_G1_E3_current_proxy::g1,28,174,Phase3G_G3_E3_strong_signal_vector_proxy::g3
+0.247423,67,24,54,97,Phase3G_G2_E3_signal_vector_diversified::g2,43,190,Phase3G_G0_E0_stable::g0
+0.216495,67,21,51,97,Phase3G_G2_E3_signal_vector_diversified::g2,36,174,Phase3G_G1_E3_current_proxy::g1
+1.0,67,67,67,67,Phase3G_G2_E3_signal_vector_diversified::g2,144,144,Phase3G_G2_E3_signal_vector_diversified::g2
+0.234694,67,23,54,98,Phase3G_G2_E3_signal_vector_diversified::g2,51,229,Phase3G_G3_E3_strong_signal_vector_proxy::g3
+0.333333,54,27,54,81,Phase3G_G3_E3_strong_signal_vector_proxy::g3,43,182,Phase3G_G0_E0_stable::g0
+0.235294,54,20,51,85,Phase3G_G3_E3_strong_signal_vector_proxy::g3,28,174,Phase3G_G1_E3_current_proxy::g1
+0.234694,54,23,67,98,Phase3G_G3_E3_strong_signal_vector_proxy::g3,51,229,Phase3G_G2_E3_signal_vector_diversified::g2
+1.0,54,54,54,54,Phase3G_G3_E3_strong_signal_vector_proxy::g3,136,136,Phase3G_G3_E3_strong_signal_vector_proxy::g3

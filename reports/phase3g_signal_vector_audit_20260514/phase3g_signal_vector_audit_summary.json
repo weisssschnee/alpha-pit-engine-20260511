@@ -1,0 +1,149 @@
+{
+  "experiment_id": "20260514_phase3g_signal_vector_audit",
+  "objective": "Test whether pre-replay signal/return vectors predict final replay signal clusters better than symbolic proxy.",
+  "decision": "PASS_VECTOR_PROXY_GATE",
+  "dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "phase3e_clustered_rows": "reports\\phase3e_official_s21_s24_company_20260514\\phase3E_official_s21_s24_global_clustered_rows.json",
+  "phase3f_clustered_rows": "reports\\phase3f_smoke_aggregate_company_20260514\\phase3F_smoke_global_clustered_rows.json",
+  "baseline_json": "src\\our_system_phase2\\runtime\\baselines\\phase3E_cumulative_deployable_clusters_20260514.json",
+  "candidate_row_count": 1444,
+  "registry_row_count": 129,
+  "deduped_vector_row_count": 711,
+  "expanded_vector_row_count": 1573,
+  "vector_error_count": 0,
+  "evaluation_start": "2026-04-01",
+  "evaluation_end": "2026-05-08",
+  "signal_sample_size": 5000,
+  "corr_threshold": 0.8,
+  "pair_metrics": [
+    {
+      "score_name": "sampled_signal_vector_corr",
+      "pair_count": 738651,
+      "positive_same_cluster_pairs": 128723,
+      "auc": 0.676645,
+      "threshold": 0.8,
+      "precision_at_threshold": 0.853125,
+      "recall_at_threshold": 0.42015,
+      "false_positive_rate_at_threshold": 0.015266,
+      "above_threshold_pair_count": 63394
+    },
+    {
+      "score_name": "daily_rank_ic_vector_corr",
+      "pair_count": 738651,
+      "positive_same_cluster_pairs": 128723,
+      "auc": 0.671123,
+      "threshold": 0.8,
+      "precision_at_threshold": 0.435748,
+      "recall_at_threshold": 0.459863,
+      "false_positive_rate_at_threshold": 0.125674,
+      "above_threshold_pair_count": 135847
+    },
+    {
+      "score_name": "daily_long_short_return_vector_corr",
+      "pair_count": 738651,
+      "positive_same_cluster_pairs": 128723,
+      "auc": 0.647186,
+      "threshold": 0.8,
+      "precision_at_threshold": 0.505815,
+      "recall_at_threshold": 0.359493,
+      "false_positive_rate_at_threshold": 0.074125,
+      "above_threshold_pair_count": 91486
+    },
+    {
+      "score_name": "symbolic_ast_field_operator_proxy",
+      "pair_count": 738651,
+      "positive_same_cluster_pairs": 128723,
+      "auc": 0.553337,
+      "threshold": 0.8,
+      "precision_at_threshold": 0.597256,
+      "recall_at_threshold": 0.055126,
+      "false_positive_rate_at_threshold": 0.007845,
+      "above_threshold_pair_count": 11881
+    }
+  ],
+  "cluster_detection": {
+    "sampled_signal_vector_corr": [
+      {
+        "cluster_id": "cluster_001",
+        "scope_filter": "phase3f",
+        "member_count": 1,
+        "threshold": 0.8,
+        "same_cluster_pair_recall": null,
+        "cross_cluster_false_positive_rate": 0.0,
+        "same_pairs": 0,
+        "cross_pairs": 254
+      },
+      {
+        "cluster_id": "cluster_003",
+        "scope_filter": "phase3f",
+        "member_count": 47,
+        "threshold": 0.8,
+        "same_cluster_pair_recall": 0.93062,
+        "cross_cluster_false_positive_rate": 0.016469,
+        "same_pairs": 1081,
+        "cross_pairs": 9776
+      }
+    ],
+    "daily_long_short_return_vector_corr": [
+      {
+        "cluster_id": "cluster_001",
+        "scope_filter": "phase3f",
+        "member_count": 1,
+        "threshold": 0.8,
+        "same_cluster_pair_recall": null,
+        "cross_cluster_false_positive_rate": 0.129921,
+        "same_pairs": 0,
+        "cross_pairs": 254
+      },
+      {
+        "cluster_id": "cluster_003",
+        "scope_filter": "phase3f",
+        "member_count": 47,
+        "threshold": 0.8,
+        "same_cluster_pair_recall": 0.786309,
+        "cross_cluster_false_positive_rate": 0.130524,
+        "same_pairs": 1081,
+        "cross_pairs": 9776
+      }
+    ]
+  },
+  "vector_cluster_reports": {
+    "phase3e": {
+      "scope": "phase3e",
+      "threshold": 0.8,
+      "vector_cluster_count": 229,
+      "mean_cluster_purity": 0.949095,
+      "weighted_cluster_purity": 0.893187
+    },
+    "phase3f": {
+      "scope": "phase3f",
+      "threshold": 0.8,
+      "vector_cluster_count": 143,
+      "mean_cluster_purity": 0.985586,
+      "weighted_cluster_purity": 0.972549
+    }
+  },
+  "findings": [
+    "Phase3G is a no-run audit: it does not generate new formulas or run replay.",
+    "Best vector AUC=0.676645; best precision@0.8=0.853125.",
+    "Symbolic proxy AUC=0.553337; vector proxy should replace symbolic proxy only if materially stronger.",
+    "Current post-replay cluster labels are signal-correlation clusters, so pre-replay sampled signal vectors are the closest available observable proxy.",
+    "E3V2 vector-diversified selector is eligible for selector-only dry run."
+  ],
+  "outputs": {
+    "summary_json": "reports\\phase3g_signal_vector_audit_20260514\\phase3g_signal_vector_audit_summary.json",
+    "summary_md": "reports\\phase3g_signal_vector_audit_20260514\\PHASE3G_SIGNAL_VECTOR_AUDIT_2026-05-14.md",
+    "vectors_npz": "runtime\\phase3g_signal_vectors\\phase3g_signal_vectors_20260514.npz",
+    "metadata_parquet": "runtime\\phase3g_signal_vectors\\vector_metadata.parquet",
+    "unique_metadata_parquet": "runtime\\phase3g_signal_vectors\\unique_vector_metadata.parquet",
+    "pair_metrics_csv": "reports\\phase3g_signal_vector_audit_20260514\\phase3g_pair_metrics.csv",
+    "vector_cluster_purity_csv": "reports\\phase3g_signal_vector_audit_20260514\\phase3g_vector_cluster_purity.csv",
+    "queue_vector_corr_csv": "reports\\phase3g_signal_vector_audit_20260514\\phase3g_queue_vector_corr.csv",
+    "errors_csv": "reports\\phase3g_signal_vector_audit_20260514\\phase3g_vector_errors.csv"
+  },
+  "reproducibility": {
+    "mode": "no_run_historical_audit",
+    "new_search_started": false,
+    "sample_index_policy": "deterministic_sha1_date_code_lowest_hashes"
+  }
+}

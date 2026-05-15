@@ -31,6 +31,8 @@ def main() -> None:
     parser.add_argument("--seed", type=str, default="phase3A_repair")
     parser.add_argument("--ablation-arm", choices=sorted(PHASE3_ABLATION_ARMS), default="Phase3A_full")
     parser.add_argument("--no-fast-context", action="store_true")
+    parser.add_argument("--selection-only", action="store_true", help="Stop after writing frozen strict selection inputs for shared cache/replay.")
+    parser.add_argument("--quiet", action="store_true", help="Do not print the full report JSON to stdout.")
     args = parser.parse_args()
 
     report = run_phase3_repair(
@@ -55,8 +57,18 @@ def main() -> None:
         seed=str(args.seed),
         use_fast_context=not bool(args.no_fast_context),
         ablation_arm=str(args.ablation_arm),
+        selection_only=bool(args.selection_only),
     )
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    if not bool(args.quiet):
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    else:
+        summary = {
+            "status": report.get("status"),
+            "ablation_arm": report.get("ablation_arm"),
+            "output_root": report.get("output_root"),
+            "main_kpi": report.get("main_kpi"),
+        }
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

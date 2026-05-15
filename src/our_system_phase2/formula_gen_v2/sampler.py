@@ -258,6 +258,7 @@ class FormulaGenV2Sampler:
                     complexity_tier=tier,
                     paired_ablation_group_id=group_id,
                     role_expression="*".join(motif.get("roles") or []),
+                    role_slots=dict(slots),
                     metadata={"constraint_attempts": attempt + 1},
                     **flags,
                 )
@@ -288,6 +289,7 @@ def seed_template_candidates(pack: dict[str, Any] | None = None) -> list[Formula
                 has_signed_nonlinear="Mul(Sign(ZScore(" in raw,
                 paired_ablation_group_id=stable_hash(str(item["id"]), 12),
                 role_expression=str(item["id"]),
+                role_slots=dict(item.get("role_slots") or {}),
                 proposal_kind="seed_motif_template",
                 metadata={"seed_template_id": item["id"], "raw_seed_expression": raw},
             )
@@ -308,8 +310,19 @@ def paired_ablation_candidates(full: FormulaCandidate, slots: dict[str, str]) ->
                 roles=role_expr.split("*"),
                 paired_ablation_group_id=group,
                 role_expression=role_expr,
+                role_slots={role: slots[role] for role in role_expr.split("*") if role in slots},
                 proposal_kind="paired_low_order_ablation",
                 complexity_tier=max(1, len(role_expr.split("*"))),
+                metadata={
+                    "full_formula": full.expression,
+                    "low_order_role": role_expr,
+                    "paired_ablation_parent_id": full.candidate_id,
+                    "paired_ablation_pass": None,
+                    "low_order_best": None,
+                    "low_order_best_score": None,
+                    "full_score": None,
+                    "marginal_complexity_value": None,
+                },
             )
         )
     return output
@@ -341,9 +354,72 @@ def repair_expansion_candidates(parent_expression: str, *, parent_candidate_id: 
                 parent_candidate_id=parent_candidate_id,
                 proposal_kind=kind,
                 paired_ablation_group_id=stable_hash((parent_candidate_id or "") + base, 12),
+                role_slots={"B": base},
+                metadata={
+                    "repair_action": kind,
+                    "definition_required": True,
+                    "generator": "formula_gen_v2_repair_expansion",
+                    "generator_name": "formula_gen_v2_repair_expansion",
+                },
             )
         )
     return candidates
+
+
+def build_formula_gen_v2_repair_expansion_ledger(
+    *,
+    path: Path | str,
+    source_rows: list[dict[str, Any]],
+    candidate_budget: int,
+    seed: str,
+) -> dict[str, Any]:
+    candidates: list[FormulaCandidate] = []
+    for row in source_rows:
+        expression = str(row.get("expression") or "")
+        if not expression:
+            continue
+        parent_id = str(row.get("candidate_id") or stable_hash(expression, 12))
+        for candidate in repair_expansion_candidates(expression, parent_candidate_id=parent_id):
+            candidate.metadata.update(
+                {
+                    "parent_cluster": row.get("signal_cluster_id") or row.get("pre_audit_return_corr_cluster"),
+                    "phase3_source_lane": row.get("phase3_source_lane") or row.get("proof_variant"),
+                    "escaped_parent_cluster": None,
+                    "new_global_cluster_vs_phase3B_union": None,
+                    "formula_gen_v2_repair_expansion": True,
+                    "true_limit_bakeoff_variant": "formula_gen_v2_repair_expansion",
+                    "proof_variant": "formula_gen_v2_repair_expansion",
+                    "primitive_family": f"formula_gen_v2_repair_{candidate.proposal_kind}",
+                }
+            )
+            candidates.append(candidate)
+    records = records_from_candidates(candidates)[: max(0, int(candidate_budget))]
+    return {
+        "run_id": f"phase3c-formula-gen-v2-repair-expansion-{stable_hash(seed, 8)}",
+        "created_at": utc_now_iso(),
+        "search_version": "formula-gen-v2-repair-expansion-2026-05-13",
+        "scope": "formula_gen_v2_repair_expansion_add_confirmation_gate_temporal_nonlinear_second_diff",
+        "proof_variant": "formula_gen_v2_repair_expansion",
+        "dataset_path": str(path),
+        "dataset_role": dataset_role_for_path(path),
+        "record_count": len(records),
+        "selection_contract": {
+            "enabled_only_for_phase3c_mixed_arms": True,
+            "new_global_cluster_vs_phase3B_union_required_for_incremental_credit": True,
+        },
+        "search_report": {
+            "source_parent_count": len(source_rows),
+            "candidate_budget": int(candidate_budget),
+            "repair_actions": [
+                "add_confirmation",
+                "add_state_gate",
+                "temporalize",
+                "nonlinearize",
+                "add_second_diff_confirmation",
+            ],
+        },
+        "records": records,
+    }
 
 
 def motif_slot_credit(row: dict[str, Any], *, cluster_seen_count: int = 0) -> float:
@@ -425,14 +501,9 @@ def build_formula_gen_v2_ledger(
     candidates.extend(samples)
     if include_paired_ablations:
         for sample in samples[: max(1, min(8, len(samples)))]:
-            # Paired ablations are generated from simple role-compatible slots to
-            # enforce the "high-order must beat low-order" contract downstream.
-            slots = {
-                "B": "ZScore(Mom($close,5))",
-                "C": "Sign(Delta($amount,1))",
-                "S": "ZScore(Mean(Abs(Delta($close,1)),20))",
-            }
-            candidates.extend(paired_ablation_candidates(sample, slots))
+            slots = dict(sample.role_slots or sample.metadata.get("role_slots") or {})
+            if len(slots) >= 2:
+                candidates.extend(paired_ablation_candidates(sample, slots))
     records = records_from_candidates(candidates)[: max(0, int(candidate_budget))]
     return {
         "run_id": f"phase2-stock-pit-formula-gen-v2-{stable_hash(seed, 8)}",

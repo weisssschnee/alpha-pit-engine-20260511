@@ -1,0 +1,5 @@
+score_name,pair_count,positive_same_cluster_pairs,auc,threshold,precision_at_threshold,recall_at_threshold,false_positive_rate_at_threshold,above_threshold_pair_count
+sampled_signal_vector_corr,738651,128723,0.676645,0.8,0.853125,0.42015,0.015266,63394
+daily_rank_ic_vector_corr,738651,128723,0.671123,0.8,0.435748,0.459863,0.125674,135847
+daily_long_short_return_vector_corr,738651,128723,0.647186,0.8,0.505815,0.359493,0.074125,91486
+symbolic_ast_field_operator_proxy,738651,128723,0.553337,0.8,0.597256,0.055126,0.007845,11881

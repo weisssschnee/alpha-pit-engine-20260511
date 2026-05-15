@@ -6,12 +6,21 @@ import math
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
 import pandas as pd
 
 from our_system_phase2.domain.models import utc_now_iso
+from our_system_phase2.formula_gen_v2.freeform_sampler import build_agnostic_freeform_ledger
+from our_system_phase2.formula_gen_v2.sampler import build_formula_gen_v2_ledger, build_formula_gen_v2_repair_expansion_ledger
+from our_system_phase2.services.phase3e_selectors import (
+    Phase3ERegistryContext,
+    select_phase3e_queue,
+    write_selector_artifacts,
+)
+from our_system_phase2.services.phase3g_signal_vector_store import Phase3GSignalVectorStore
 from our_system_phase2.services.artifact_schema import write_json_artifact
 from our_system_phase2.services.real_market_data import dataset_role_for_path
 from our_system_phase2.services.real_market_validation import SIGNAL_CLOCK_AFTER_OPEN, TDXGP_LIMIT_STATUS_SOURCE
@@ -49,10 +58,23 @@ from our_system_phase2.services.variation import extract_structural_skeleton
 
 PHASE3_REPAIR_VERSION = "phase3-repair-v2-2026-05-12"
 PHASE3_DEFAULT_FAILURE_DETAIL = Path("reports/PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv")
+PHASE3B_UNION_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3B_union_deployable_clusters_20260512.json"
+PHASE3D_CUMULATIVE_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3D_cumulative_deployable_clusters_20260514.json"
+PHASE3E_CUMULATIVE_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3E_cumulative_deployable_clusters_20260514.json"
 
 
 def _stable_hash(value: str, length: int = 16) -> str:
     return hashlib.sha1(value.encode("utf-8")).hexdigest()[:length]
+
+
+def _write_progress(root: Path, stage: str, **extra: Any) -> None:
+    payload = {"time": utc_now_iso(), "stage": stage}
+    payload.update(extra)
+    try:
+        with (root / "phase3_progress.jsonl").open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
+    except Exception:
+        return
 
 
 def _expression_windows(expression: str) -> list[int]:
@@ -312,6 +334,84 @@ def _cluster_quota_select(
     return selected
 
 
+def _cluster_credit_soft_select(
+    rows: list[dict[str, Any]],
+    *,
+    budget: int,
+    policy: str,
+    role_prefix: str,
+    bucket: str,
+    seed: str,
+    quota_events: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    return_counts: Counter[str] = Counter()
+    ast_counts: Counter[str] = Counter()
+    pool = [dict(row) for row in rows]
+    budget = max(0, int(budget))
+
+    while len(selected) < budget:
+        best_row: dict[str, Any] | None = None
+        best_key: tuple[float, float] | None = None
+        for row in pool:
+            key = _row_key(row)
+            if not key or key in seen:
+                continue
+            expression = str(row.get("expression") or "")
+            return_cluster = str(row.get("pre_audit_return_corr_cluster") or "unknown")
+            ast_cluster = _ast_cluster(expression)
+            duplicate_load = max(return_counts[return_cluster], ast_counts[ast_cluster])
+            weight = 1.0 / math.sqrt(1.0 + duplicate_load)
+            score = _evaluation_reward(row) * weight
+            current_key = (score, _stable_noise(seed, row.get("candidate_id"), expression))
+            if best_key is None or current_key > best_key:
+                best_key = current_key
+                best_row = row
+        if best_row is None:
+            break
+        key = _row_key(best_row)
+        if not key:
+            break
+        expression = str(best_row.get("expression") or "")
+        return_cluster = str(best_row.get("pre_audit_return_corr_cluster") or "unknown")
+        ast_cluster = _ast_cluster(expression)
+        duplicate_load = max(return_counts[return_cluster], ast_counts[ast_cluster])
+        weight = 1.0 / math.sqrt(1.0 + duplicate_load)
+        item = _copy_for_selection(
+            best_row,
+            policy=policy,
+            role=f"{role_prefix}_cluster_credit_cap",
+            pool_type="common_pool",
+            bucket=bucket,
+        )
+        item["phase3_pre_audit_return_corr_cluster"] = return_cluster
+        item["phase3_ast_cluster"] = ast_cluster
+        item["cluster_credit_selection_weight"] = round(weight, 6)
+        item["cluster_credit_duplicate_load"] = int(duplicate_load)
+        event = _quota_event(
+            best_row,
+            event="selected_soft_credit",
+            quota_type="cluster_credit_cap",
+            quota_stage="direct_replay_soft_selection",
+            quota_basis="pre_audit_return_corr_cluster|phase3_ast_cluster",
+            rejected_by_quota=False,
+            provisional_child_cluster=return_cluster,
+            phase3_ast_cluster=ast_cluster,
+        )
+        _attach_quota_metadata(item, event)
+        item["quota_type"] = "cluster_credit_cap"
+        item["quota_stage"] = "direct_replay_soft_selection"
+        item["quota_reject_reason"] = None
+        if quota_events is not None:
+            quota_events.append(event)
+        selected.append(item)
+        seen.add(key)
+        return_counts[return_cluster] += 1
+        ast_counts[ast_cluster] += 1
+    return selected
+
+
 def _top_score_select(
     rows: list[dict[str, Any]],
     *,
@@ -347,6 +447,195 @@ def _top_score_select(
         selected.append(item)
         seen.add(key)
     return selected
+
+
+def _jaccard(left: set[str], right: set[str]) -> float:
+    if not left and not right:
+        return 0.0
+    return len(left & right) / max(1, len(left | right))
+
+
+@lru_cache(maxsize=1)
+def _phase3b_union_proxy_rows() -> tuple[dict[str, Any], ...]:
+    baseline = _load_phase3b_union_baseline()
+    output: list[dict[str, Any]] = []
+    for row in baseline.get("deployable_representatives", []) or []:
+        if not isinstance(row, dict):
+            continue
+        expression = str(row.get("representative_expression") or "")
+        if not expression:
+            continue
+        output.append(
+            {
+                "cluster_id": row.get("cluster_id"),
+                "expression": expression,
+                "canonical": rank_validation_canonical_expression(expression),
+                "skeleton": extract_structural_skeleton(expression),
+                "fields": set(_fields(expression)),
+                "operators": set(_operators(expression)),
+            }
+        )
+    return tuple(output)
+
+
+def _phase3b_union_similarity_proxy(expression: str) -> dict[str, Any]:
+    canonical = rank_validation_canonical_expression(expression)
+    skeleton = extract_structural_skeleton(expression)
+    fields = set(_fields(expression))
+    operators = set(_operators(expression))
+    best: dict[str, Any] = {
+        "max_phase3b_union_proxy": 0.0,
+        "max_ast_similarity_to_phase3B_union": 0.0,
+        "field_family_overlap_to_phase3B_union": 0.0,
+        "operator_family_overlap_to_phase3B_union": 0.0,
+        "nearest_phase3B_union_cluster": None,
+    }
+    for baseline in _phase3b_union_proxy_rows():
+        exact = 1.0 if canonical == baseline["canonical"] else 0.0
+        ast = 1.0 if skeleton == baseline["skeleton"] else 0.0
+        field_overlap = _jaccard({_field_group(field) for field in fields}, {_field_group(field) for field in baseline["fields"]})
+        operator_overlap = _jaccard(set(operators), set(baseline["operators"]))
+        proxy = max(exact, 0.55 * ast + 0.20 * field_overlap + 0.25 * operator_overlap)
+        if proxy > float(best["max_phase3b_union_proxy"]):
+            best = {
+                "max_phase3b_union_proxy": round(float(proxy), 6),
+                "max_ast_similarity_to_phase3B_union": round(float(ast), 6),
+                "field_family_overlap_to_phase3B_union": round(float(field_overlap), 6),
+                "operator_family_overlap_to_phase3B_union": round(float(operator_overlap), 6),
+                "nearest_phase3B_union_cluster": baseline["cluster_id"],
+            }
+    return best
+
+
+def _novelty_steered_select(
+    rows: list[dict[str, Any]],
+    *,
+    budget: int,
+    policy: str,
+    role_prefix: str,
+    bucket: str,
+    seed: str,
+) -> list[dict[str, Any]]:
+    budget = max(0, int(budget))
+    if budget <= 0:
+        return []
+    enriched: list[dict[str, Any]] = []
+    for row in rows:
+        expression = str(row.get("expression") or "")
+        if not expression:
+            continue
+        item = dict(row)
+        proxy = _phase3b_union_similarity_proxy(expression)
+        item.update(proxy)
+        novelty = 1.0 - float(proxy["max_phase3b_union_proxy"])
+        base_reward = _evaluation_reward(item)
+        item["phase3B_union_novelty_score"] = round(float(novelty), 6)
+        item["phase3c_novelty_selection_score"] = round(
+            float(base_reward) + 0.050 * novelty - 0.030 * max(0.0, float(proxy["max_phase3b_union_proxy"]) - 0.90),
+            8,
+        )
+        enriched.append(item)
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    def add(row: dict[str, Any], role_suffix: str) -> bool:
+        if len(selected) >= budget:
+            return False
+        key = _row_key(row)
+        if not key or key in seen:
+            return False
+        expression = str(row.get("expression") or "")
+        item = _copy_for_selection(
+            row,
+            policy=policy,
+            role=f"{role_prefix}_{role_suffix}",
+            pool_type="common_pool",
+            bucket=bucket,
+        )
+        for field in (
+            "max_phase3b_union_proxy",
+            "max_ast_similarity_to_phase3B_union",
+            "field_family_overlap_to_phase3B_union",
+            "operator_family_overlap_to_phase3B_union",
+            "nearest_phase3B_union_cluster",
+            "phase3B_union_novelty_score",
+            "phase3c_novelty_selection_score",
+        ):
+            item[field] = row.get(field)
+        item["phase3c_novelty_steering_enabled"] = True
+        item["phase3_pre_audit_return_corr_cluster"] = "not_preclustered_novelty_steered"
+        item["phase3_ast_cluster"] = _ast_cluster(expression)
+        item["quota_applied"] = False
+        item["quota_type"] = "none"
+        item["quota_stage"] = "not_applicable"
+        item["quota_basis"] = "phase3B_union_pre_replay_novelty_proxy"
+        item["rejected_by_quota"] = False
+        item["quota_reject_reason"] = None
+        selected.append(item)
+        seen.add(key)
+        return True
+
+    high_novelty_n = max(1 if budget > 0 else 0, int(round(budget * 0.50)))
+    high_score_n = max(0, int(round(budget * 0.25)))
+    uncertain_n = max(0, int(round(budget * 0.15)))
+    random_n = max(0, budget - high_novelty_n - high_score_n - uncertain_n)
+    buckets = [
+        (
+            "high_novelty",
+            sorted(
+                enriched,
+                key=lambda row: (
+                    float(row.get("phase3B_union_novelty_score") or 0.0),
+                    float(row.get("phase3c_novelty_selection_score") or 0.0),
+                    _stable_noise(seed, row.get("candidate_id"), row.get("expression")),
+                ),
+                reverse=True,
+            ),
+            high_novelty_n,
+        ),
+        (
+            "high_score",
+            sorted(
+                enriched,
+                key=lambda row: (
+                    float(row.get("phase3c_novelty_selection_score") or 0.0),
+                    _evaluation_reward(row),
+                    _stable_noise(seed, row.get("candidate_id"), row.get("expression")),
+                ),
+                reverse=True,
+            ),
+            high_score_n,
+        ),
+        (
+            "medium_uncertain",
+            sorted(
+                enriched,
+                key=lambda row: (
+                    -abs(float(row.get("phase3B_union_novelty_score") or 0.0) - 0.50),
+                    float(row.get("phase3c_novelty_selection_score") or 0.0),
+                    _stable_noise(seed, row.get("candidate_id"), row.get("expression")),
+                ),
+                reverse=True,
+            ),
+            uncertain_n,
+        ),
+        (
+            "stable_random",
+            sorted(enriched, key=lambda row: _stable_noise(seed, "novelty_random", row.get("candidate_id"), row.get("expression"))),
+            random_n,
+        ),
+    ]
+    for role_suffix, pool, count in buckets:
+        for row in pool:
+            if sum(1 for selected_row in selected if str(selected_row.get("strict_selection_role") or "").endswith(role_suffix)) >= count:
+                break
+            add(row, role_suffix)
+    if len(selected) < budget:
+        for row in sorted(enriched, key=lambda item: float(item.get("phase3c_novelty_selection_score") or 0.0), reverse=True):
+            add(row, "backfill")
+            if len(selected) >= budget:
+                break
+    return selected[:budget]
 
 
 def _repair_aware_soft_quota_select(
@@ -780,6 +1069,123 @@ def _phase3b_budgets(total: int, *, residual: bool = True, diagnostic: bool = Tr
     }
 
 
+def _scale_budget_dict(base: dict[str, int], target_total: int) -> dict[str, int]:
+    target_total = max(0, int(target_total))
+    if target_total <= 0:
+        return {key: 0 for key in base}
+    current_total = sum(max(0, int(value)) for value in base.values())
+    if current_total <= 0:
+        return {key: 0 for key in base}
+    scaled = {key: int(math.floor(max(0, int(value)) * target_total / current_total)) for key, value in base.items()}
+    remaining = target_total - sum(scaled.values())
+    order = sorted(base, key=lambda key: (max(0, int(base[key])), key), reverse=True)
+    for key in order:
+        if remaining <= 0:
+            break
+        scaled[key] += 1
+        remaining -= 1
+    return scaled
+
+
+def _phase3c_budgets(total: int, *, base: str, expansion: str) -> dict[str, int]:
+    total = max(1, int(total))
+    if expansion == "none":
+        expansion_budgets = {
+            "formula_gen_v2_defined": 0,
+            "agnostic_freeform_ast": 0,
+            "formula_gen_v2_repair_expansion": 0,
+        }
+        incumbent_total = total
+    elif expansion == "defined":
+        expansion_budgets = {
+            "formula_gen_v2_defined": int(round(total * 0.15)),
+            "agnostic_freeform_ast": 0,
+            "formula_gen_v2_repair_expansion": 0,
+        }
+        incumbent_total = total - sum(expansion_budgets.values())
+    elif expansion == "open":
+        expansion_budgets = {
+            "formula_gen_v2_defined": 0,
+            "agnostic_freeform_ast": int(round(total * 0.15)),
+            "formula_gen_v2_repair_expansion": 0,
+        }
+        incumbent_total = total - sum(expansion_budgets.values())
+    elif expansion == "mixed":
+        expansion_budgets = {
+            "formula_gen_v2_defined": int(round(total * 0.08)),
+            "agnostic_freeform_ast": int(round(total * 0.10)),
+            "formula_gen_v2_repair_expansion": int(round(total * 0.07)),
+        }
+        incumbent_total = total - sum(expansion_budgets.values())
+    else:
+        raise ValueError(f"unknown Phase3C expansion: {expansion}")
+
+    if base == "stable":
+        incumbent = _scale_budget_dict(_quota_budgets(max(1, incumbent_total)), incumbent_total)
+    elif base == "productive":
+        incumbent = _scale_budget_dict(_phase3b_budgets(max(1, incumbent_total)), incumbent_total)
+    else:
+        raise ValueError(f"unknown Phase3C base: {base}")
+
+    for key in ["r0_cem_led", "ast_failure_aware_repair", "replay_aware_residual", "novelty_diagnostic"]:
+        incumbent.setdefault(key, 0)
+    incumbent.update(expansion_budgets)
+    diff = total - sum(incumbent.values())
+    incumbent["r0_cem_led"] += diff
+    return incumbent
+
+
+def _no_diagnostic_stable_budgets(total: int) -> dict[str, int]:
+    total = max(1, int(total))
+    r0 = int(round(total * 0.60))
+    repair = int(round(total * 0.20))
+    residual = int(round(total * 0.10))
+    # Phase3D removes novelty_diagnostic from official budget; send the remainder to R0/CEM.
+    r0 += total - r0 - repair - residual
+    return {
+        "r0_cem_led": max(0, int(r0)),
+        "ast_failure_aware_repair": max(0, int(repair)),
+        "replay_aware_residual": max(0, int(residual)),
+        "novelty_diagnostic": 0,
+    }
+
+
+def _phase3d_budgets(total: int, *, base: str, mode: str) -> dict[str, int]:
+    total = max(1, int(total))
+    if mode == "sm_current":
+        return _phase3c_budgets(total, base="stable", expansion="mixed")
+    if mode == "open_repair":
+        expansion_budgets = {
+            "formula_gen_v2_defined": int(round(total * 0.02)),
+            "agnostic_freeform_ast": int(round(total * 0.20)),
+            "formula_gen_v2_repair_expansion": int(round(total * 0.13)),
+        }
+        incumbent_total = total - sum(expansion_budgets.values())
+    elif mode == "no_defined_direct":
+        expansion_budgets = {
+            "formula_gen_v2_defined": 0,
+            "agnostic_freeform_ast": int(round(total * 0.18)),
+            "formula_gen_v2_repair_expansion": int(round(total * 0.12)),
+        }
+        incumbent_total = total - sum(expansion_budgets.values())
+    else:
+        raise ValueError(f"unknown Phase3D mode: {mode}")
+
+    if base == "stable":
+        incumbent = _scale_budget_dict(_no_diagnostic_stable_budgets(max(1, incumbent_total)), incumbent_total)
+    elif base == "productive":
+        incumbent = _scale_budget_dict(_phase3b_budgets(max(1, incumbent_total), diagnostic=False), incumbent_total)
+    else:
+        raise ValueError(f"unknown Phase3D base: {base}")
+
+    for key in ["r0_cem_led", "ast_failure_aware_repair", "replay_aware_residual", "novelty_diagnostic"]:
+        incumbent.setdefault(key, 0)
+    incumbent.update(expansion_budgets)
+    diff = total - sum(incumbent.values())
+    incumbent["r0_cem_led"] += diff
+    return incumbent
+
+
 PHASE3_ABLATION_ARMS = {
     "original_R0": {
         "description": "R0/CEM-led baseline, no cluster quota, no AST repair, no residual, no diagnostic",
@@ -837,6 +1243,241 @@ PHASE3_ABLATION_ARMS = {
         "repair_parent_max_share": 0.35,
         "repair_child_cluster_cap": 3,
     },
+    "Phase3C_S0_stable_control": {
+        "description": "Phase3C S0: B1 stable incumbent control",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3c_base": "stable",
+        "phase3c_expansion": "none",
+    },
+    "Phase3C_P0_productive_control": {
+        "description": "Phase3C P0: B2 productive incumbent with cluster-credit cap",
+        "cluster_quota": True,
+        "direct_r0_quota": False,
+        "direct_cluster_credit_cap": True,
+        "repair_quota_mode": "none",
+        "direct_rejected_to_repair_source": False,
+        "phase3c_base": "productive",
+        "phase3c_expansion": "none",
+    },
+    "Phase3C_SD_defined_motifs": {
+        "description": "Phase3C SD: stable base plus FormulaGenV2 defined motifs",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3c_base": "stable",
+        "phase3c_expansion": "defined",
+    },
+    "Phase3C_SO_open_ended": {
+        "description": "Phase3C SO: stable base plus agnostic freeform AST",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3c_base": "stable",
+        "phase3c_expansion": "open",
+    },
+    "Phase3C_SM_mixed": {
+        "description": "Phase3C SM: stable base plus defined, open-ended, and repair expansion",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3c_base": "stable",
+        "phase3c_expansion": "mixed",
+    },
+    "Phase3C_PD_defined_motifs": {
+        "description": "Phase3C PD: productive base plus FormulaGenV2 defined motifs",
+        "cluster_quota": True,
+        "direct_r0_quota": False,
+        "direct_cluster_credit_cap": True,
+        "repair_quota_mode": "none",
+        "phase3c_base": "productive",
+        "phase3c_expansion": "defined",
+    },
+    "Phase3C_PO_open_ended": {
+        "description": "Phase3C PO: productive base plus agnostic freeform AST",
+        "cluster_quota": True,
+        "direct_r0_quota": False,
+        "direct_cluster_credit_cap": True,
+        "repair_quota_mode": "none",
+        "phase3c_base": "productive",
+        "phase3c_expansion": "open",
+    },
+    "Phase3C_PM_mixed": {
+        "description": "Phase3C PM: productive base plus defined, open-ended, and repair expansion",
+        "cluster_quota": True,
+        "direct_r0_quota": False,
+        "direct_cluster_credit_cap": True,
+        "repair_quota_mode": "none",
+        "phase3c_base": "productive",
+        "phase3c_expansion": "mixed",
+    },
+    "Phase3D_D0_SM_current_control": {
+        "description": "Phase3D D0: SM current control, exact Phase3C SM mixed budget",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "sm_current",
+    },
+    "Phase3D_D1_SM_open_repair": {
+        "description": "Phase3D D1: stable SM base reallocates defined-direct budget to open-ended and repair expansion",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "open_repair",
+    },
+    "Phase3D_D2_PM_open_repair": {
+        "description": "Phase3D D2: productive PM base with cluster-credit cap and open/repair reallocation",
+        "cluster_quota": True,
+        "direct_r0_quota": False,
+        "direct_cluster_credit_cap": True,
+        "repair_quota_mode": "none",
+        "direct_rejected_to_repair_source": False,
+        "phase3d_base": "productive",
+        "phase3d_mode": "open_repair",
+    },
+    "Phase3D_D3_SM_no_defined_direct": {
+        "description": "Phase3D D3: stable SM base removes defined direct and keeps defined motifs only through repair expansion",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+    },
+    "Phase3E_E0_D3_primary": {
+        "description": "Phase3E E0: D3 primary control with standard D3 selector",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "standard_D3",
+        "generation_profile": "D3_SM_no_defined_direct",
+    },
+    "Phase3E_E1_D3_plus_D2_sidecar": {
+        "description": "Phase3E E1: D3 primary with 20 percent D2 productive sidecar and cluster-capped sidecar credit",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "mixed_profile_cluster_capped",
+        "generation_profile": "D3_plus_D2_sidecar",
+        "d2_sidecar_share": 0.20,
+    },
+    "Phase3E_E2_D3_deployability_hardened": {
+        "description": "Phase3E E2: D3 generation with deployability-hardened selector",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "deployability_hardened",
+        "generation_profile": "D3_SM_no_defined_direct",
+    },
+    "Phase3E_E3_D3_book_marginal": {
+        "description": "Phase3E E3: D3 generation with book-marginal proxy selector against 103-cluster registry",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "book_marginal_proxy",
+        "generation_profile": "D3_SM_no_defined_direct",
+    },
+    "Phase3F_F0_E0_stable": {
+        "description": "Phase3F F0: E0/D3 stable control against 134-cluster baseline",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "standard_D3",
+        "generation_profile": "E0_D3_primary",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+    },
+    "Phase3F_F1_E3_current_proxy": {
+        "description": "Phase3F F1: current E3 book-marginal proxy control against 134-cluster baseline",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "book_marginal_proxy",
+        "generation_profile": "E3_current_proxy",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+    },
+    "Phase3F_F2_E3_proxy_diversified": {
+        "description": "Phase3F F2: E3 proxy with queue-level anti-concentration caps and penalties",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "book_marginal_proxy_diversified",
+        "generation_profile": "E3_proxy_diversified",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+    },
+    "Phase3F_F3_E3_proxy_strengthened": {
+        "description": "Phase3F F3: strengthened proxy book-marginal selector with stronger registry and selected-queue diversity pressure",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "book_marginal_proxy_strengthened",
+        "generation_profile": "E3_proxy_strengthened",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "book_marginal_mode": "proxy",
+    },
+    "Phase3G_G0_E0_stable": {
+        "description": "Phase3G G0: E0/D3 stable control against 134-cluster baseline",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "standard_D3",
+        "generation_profile": "E0_D3_primary",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+    },
+    "Phase3G_G1_E3_current_proxy": {
+        "description": "Phase3G G1: current E3 symbolic proxy control against 134-cluster baseline",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "book_marginal_proxy",
+        "generation_profile": "E3_current_proxy",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+    },
+    "Phase3G_G2_E3_signal_vector_diversified": {
+        "description": "Phase3G G2: E3 with sampled signal-vector diversified proxy selector",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_diversified_proxy",
+        "generation_profile": "E3_signal_vector_diversified",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3G_G3_E3_strong_signal_vector_proxy": {
+        "description": "Phase3G G3: E3 with stronger sampled signal-vector proxy diversity pressure",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "strong_signal_vector_proxy",
+        "generation_profile": "E3_strong_signal_vector_proxy",
+        "phase3_selector_baseline": "phase3E_cumulative_134",
+        "book_marginal_mode": "signal_vector_proxy",
+    },
 }
 
 
@@ -870,7 +1511,61 @@ def _ablation_budgets(total: int, arm: str) -> dict[str, int]:
         }
     if arm in {"Phase3B_B2_direct_R0_quota_only", "Phase3B_B3_repair_aware_soft_quota"}:
         return _phase3b_budgets(total)
+    config = PHASE3_ABLATION_ARMS.get(arm, {})
+    if str(config.get("phase3c_base") or ""):
+        return _phase3c_budgets(
+            total,
+            base=str(config.get("phase3c_base")),
+            expansion=str(config.get("phase3c_expansion") or "none"),
+        )
+    if str(config.get("phase3d_base") or ""):
+        return _phase3d_budgets(
+            total,
+            base=str(config.get("phase3d_base")),
+            mode=str(config.get("phase3d_mode") or "open_repair"),
+        )
     raise ValueError(f"unknown Phase3 ablation arm: {arm}")
+
+
+def _selector_baseline_path(ablation_arm: str, arm_config: dict[str, Any]) -> Path:
+    baseline = str(arm_config.get("phase3_selector_baseline") or "")
+    if baseline == "phase3E_cumulative_134" or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_"):
+        return PHASE3E_CUMULATIVE_BASELINE_PATH
+    return PHASE3D_CUMULATIVE_BASELINE_PATH
+
+
+def _phase3e_candidate_pool(
+    *,
+    ablation_arm: str,
+    r0_pool: list[dict[str, Any]],
+    repair_pool: list[dict[str, Any]],
+    formula_rows: list[dict[str, Any]],
+    agnostic_rows: list[dict[str, Any]],
+    repair_expansion_rows: list[dict[str, Any]],
+    residual_rows: list[dict[str, Any]],
+    diagnostic_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+
+    def add(rows: list[dict[str, Any]], bucket: str) -> None:
+        for row in rows:
+            if not row.get("expression"):
+                continue
+            item = dict(row)
+            item["ablation_arm"] = ablation_arm
+            item["phase3_budget_bucket"] = bucket
+            item["source_profile"] = item.get("source_profile") or "phase3e_candidate_pool"
+            item["proof_variant"] = item.get("proof_variant") or bucket
+            output.append(item)
+
+    add(r0_pool, "r0_cem_led")
+    add(repair_pool, "ast_failure_aware_repair")
+    add(formula_rows, "formula_gen_v2_defined")
+    add(agnostic_rows, "agnostic_freeform_ast")
+    add(repair_expansion_rows, "formula_gen_v2_repair_expansion")
+    add(residual_rows, "replay_aware_residual")
+    add(diagnostic_rows, "novelty_diagnostic")
+    return output
 
 
 def _phase3_main_kpis(rows: list[dict[str, Any]], *, turnover_max: float) -> dict[str, Any]:
@@ -1025,6 +1720,115 @@ def _cem_anti_collapse_table(rows: list[dict[str, Any]], *, turnover_max: float)
     }
 
 
+def _load_phase3b_union_baseline(path: Path = PHASE3B_UNION_BASELINE_PATH) -> dict[str, Any]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except Exception as exc:
+        return {"baseline_path": str(path), "load_error": type(exc).__name__, "global_deployable_cluster_count": None}
+    data["baseline_path"] = str(path)
+    return data
+
+
+def _semantic_bucket(row: dict[str, Any]) -> str:
+    bucket = str(row.get("phase3_budget_bucket") or row.get("proof_variant") or "")
+    if bucket in {"formula_gen_v2_defined"}:
+        return "defined_motif"
+    if bucket in {"formula_gen_v2_repair_expansion"}:
+        return "defined_repair"
+    if bucket in {"agnostic_freeform_ast"}:
+        return "unknown_agnostic_freeform"
+    return "incumbent"
+
+
+def _bucket_table(rows: list[dict[str, Any]], *, turnover_max: float, key_func) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        grouped[str(key_func(row))].append(row)
+    output: list[dict[str, Any]] = []
+    for bucket, group in sorted(grouped.items()):
+        non_gap = [row for row in group if _non_gap_replay_pass(row)]
+        deployable = [row for row in group if _deployable_pass(row, turnover_max=turnover_max)]
+        cluster_counts = Counter(str(row.get("signal_cluster_id")) for row in non_gap if row.get("signal_cluster_id"))
+        pathology = [
+            row
+            for row in group
+            if "operator_pathology" in str(row.get("source_failure_reasons") or row.get("all_reasons") or "")
+            or bool(row.get("operator_pathology"))
+        ]
+        output.append(
+            {
+                "bucket": bucket,
+                "audited": len(group),
+                "raw_non_gap": len(non_gap),
+                "deployable_clusters": len({row.get("signal_cluster_id") for row in deployable if row.get("signal_cluster_id")}),
+                "top_cluster_share": round(cluster_counts.most_common(1)[0][1] / max(1, len(non_gap)), 6) if cluster_counts else 0.0,
+                "pathology_rate": round(len(pathology) / max(1, len(group)), 6),
+            }
+        )
+    return output
+
+
+def _definition_pressure_audit(rows: list[dict[str, Any]], *, turnover_max: float) -> dict[str, Any]:
+    table = _bucket_table(rows, turnover_max=turnover_max, key_func=_semantic_bucket)
+    return {
+        "semantic_mismatch_reject_count": 0,
+        "unknown_mechanism_default_downweight": False,
+        "new_vs_phase3B_union_pending_global_aggregate": True,
+        "table": table,
+    }
+
+
+def _motif_lift_audit(rows: list[dict[str, Any]], *, turnover_max: float) -> list[dict[str, Any]]:
+    return _bucket_table(rows, turnover_max=turnover_max, key_func=lambda row: row.get("motif_family") or row.get("primitive_family") or "unknown")
+
+
+def _open_space_audit(rows: list[dict[str, Any]], *, turnover_max: float) -> dict[str, Any]:
+    open_rows = [row for row in rows if _semantic_bucket(row) == "unknown_agnostic_freeform"]
+    non_gap = [row for row in open_rows if _non_gap_replay_pass(row)]
+    deployable = [row for row in open_rows if _deployable_pass(row, turnover_max=turnover_max)]
+    complexity_fail = [row for row in open_rows if _complexity(str(row.get("expression") or "")) > 16]
+    turnover_fail = [row for row in open_rows if _safe_float(row.get("strict_mean_one_way_turnover"), 0.0) > turnover_max]
+    return {
+        "generated": None,
+        "valid": None,
+        "audited": len(open_rows),
+        "raw_non_gap": len(non_gap),
+        "deployable_clusters": len({row.get("signal_cluster_id") for row in deployable if row.get("signal_cluster_id")}),
+        "new_deployable_clusters_vs_phase3B_union_pending_global_aggregate": True,
+        "operator_pathology_rate": 0.0,
+        "turnover_failure_rate": round(len(turnover_fail) / max(1, len(open_rows)), 6),
+        "complexity_failure_rate": round(len(complexity_fail) / max(1, len(open_rows)), 6),
+    }
+
+
+def _paired_ablation_audit(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        group_id = row.get("paired_ablation_group_id")
+        if group_id:
+            grouped[str(group_id)].append(row)
+    output = []
+    for group_id, group in sorted(grouped.items()):
+        full = [row for row in group if row.get("proposal_kind") != "paired_low_order_ablation"]
+        lows = [row for row in group if row.get("proposal_kind") == "paired_low_order_ablation"]
+        output.append(
+            {
+                "paired_ablation_group_id": group_id,
+                "full_count": len(full),
+                "low_order_count": len(lows),
+                "has_real_role_slots": any(bool(row.get("role_slots")) for row in group),
+                "full_formula": full[0].get("expression") if full else None,
+                "low_order_best": None,
+                "full_score": None,
+                "low_order_best_score": None,
+                "marginal_complexity_value": None,
+                "paired_ablation_pass": None,
+                "score_pending": True,
+            }
+        )
+    return output
+
+
 def run_phase3_repair(
     *,
     output_root: Path | str,
@@ -1048,9 +1852,11 @@ def run_phase3_repair(
     seed: str = "phase3A_repair",
     use_fast_context: bool = True,
     ablation_arm: str = "Phase3A_full",
+    selection_only: bool = False,
 ) -> dict[str, Any]:
     root = Path(output_root)
     root.mkdir(parents=True, exist_ok=True)
+    _write_progress(root, "start", seed=seed, ablation_arm=ablation_arm, candidate_budget=int(candidate_budget), strict_audit_budget=int(strict_audit_budget))
     dataset = Path(dataset_path)
     failure_detail = Path(failure_detail_path)
     if ablation_arm not in PHASE3_ABLATION_ARMS:
@@ -1058,6 +1864,7 @@ def run_phase3_repair(
     arm_config = dict(PHASE3_ABLATION_ARMS[ablation_arm])
     use_cluster_quota = bool(arm_config["cluster_quota"])
     direct_r0_quota = bool(arm_config.get("direct_r0_quota", use_cluster_quota))
+    direct_cluster_credit_cap = bool(arm_config.get("direct_cluster_credit_cap", False))
     repair_quota_mode = str(arm_config.get("repair_quota_mode", "phase3A_hard" if use_cluster_quota else "none"))
     direct_return_cap = int(arm_config.get("direct_return_cluster_cap", max_audited_per_return_corr_cluster_per_seed))
     direct_ast_cap = int(arm_config.get("direct_ast_cluster_cap", max_audited_per_ast_cluster_per_seed))
@@ -1067,6 +1874,7 @@ def run_phase3_repair(
     quota_events: list[dict[str, Any]] = []
     direct_rejected_repair_sources: list[dict[str, Any]] = []
     budgets = _ablation_budgets(strict_audit_budget, ablation_arm)
+    _write_progress(root, "budgets_resolved", budgets=budgets)
 
     variants = _build_variant_ledgers(
         root=root,
@@ -1084,6 +1892,33 @@ def run_phase3_repair(
         seed=seed,
         include_qd=False,
     )
+    _write_progress(root, "base_variant_ledgers_built", variant_count=len(variants))
+    if budgets.get("formula_gen_v2_defined", 0) > 0:
+        variants.append(
+            (
+                "formula_gen_v2_defined",
+                build_formula_gen_v2_ledger(
+                    path=dataset,
+                    candidate_budget=max(candidate_budget, int(budgets["formula_gen_v2_defined"]) * 6),
+                    seed=f"{seed}::formula_gen_v2_defined",
+                    include_seed_templates=True,
+                    include_paired_ablations=True,
+                ),
+            )
+        )
+        _write_progress(root, "formula_gen_v2_defined_ledger_built", variant_count=len(variants))
+    if budgets.get("agnostic_freeform_ast", 0) > 0:
+        variants.append(
+            (
+                "agnostic_freeform_ast",
+                build_agnostic_freeform_ledger(
+                    path=dataset,
+                    candidate_budget=max(candidate_budget, int(budgets["agnostic_freeform_ast"]) * 6),
+                    seed=f"{seed}::agnostic_freeform_ast",
+                ),
+            )
+        )
+        _write_progress(root, "agnostic_freeform_ledger_built", variant_count=len(variants))
     if budgets["ast_failure_aware_repair"] > 0:
         repair_ledger = build_ast_failure_aware_repair_ledger(
             path=dataset,
@@ -1093,6 +1928,7 @@ def run_phase3_repair(
             seed=f"{seed}::ast_failure_aware_repair",
         )
         variants.append(("ast_failure_aware_repair", repair_ledger))
+        _write_progress(root, "ast_repair_ledger_built", variant_count=len(variants))
     variant_reports = _validate_variant_ledgers(
         root=root,
         dataset=dataset,
@@ -1104,6 +1940,7 @@ def run_phase3_repair(
         use_fast_context=use_fast_context,
     )
     write_json_artifact(root / "stage1_variant_reports.json", {"variants": variant_reports})
+    _write_progress(root, "stage1_variant_reports_written", variant_count=len(variant_reports))
 
     fast_by_variant = {str(report["variant"]): _fast_rows_from_variant_report(report) for report in variant_reports}
     all_fast_rows = [row for rows in fast_by_variant.values() for row in rows]
@@ -1115,7 +1952,24 @@ def run_phase3_repair(
         for lane in ("cem_adaptive_grammar", "ast_evolutionary_mutation", "simple_template")
         for row in fast_by_variant.get(lane, [])
     ]
-    if direct_r0_quota:
+    if direct_cluster_credit_cap:
+        r0_clustered = _cluster_candidate_pool(
+            r0_pool,
+            dataset_path=dataset,
+            low_corr_threshold=low_corr_threshold,
+            recent_quarter_window_count=recent_quarter_window_count,
+            recent_warmup_days=recent_warmup_days,
+        )
+        r0_selected = _cluster_credit_soft_select(
+            r0_clustered,
+            budget=budgets["r0_cem_led"],
+            policy="phase3_r0_cluster_credit_cap",
+            role_prefix="phase3_r0_cluster_credit_cap",
+            bucket="r0_cem_led",
+            seed=seed,
+            quota_events=quota_events,
+        )
+    elif direct_r0_quota:
         r0_clustered = _cluster_candidate_pool(
             r0_pool,
             dataset_path=dataset,
@@ -1148,6 +2002,7 @@ def run_phase3_repair(
             bucket="r0_cem_led",
             seed=seed,
         )
+    _write_progress(root, "r0_selected", selected_count=len(r0_selected), direct_cluster_credit_cap=direct_cluster_credit_cap, direct_r0_quota=direct_r0_quota)
     r0_keys = {_row_key(row) for row in r0_selected if _row_key(row)}
 
     if direct_rejected_repair_sources and budgets["ast_failure_aware_repair"] > 0:
@@ -1232,23 +2087,91 @@ def run_phase3_repair(
         repair_selected = []
     for row in repair_selected:
         row["repair_policy"] = row.get("repair_policy") or row.get("proposal_kind")
+    _write_progress(root, "repair_selected", selected_count=len(repair_selected), repair_quota_mode=repair_quota_mode)
+
+    formula_selected = (
+        _novelty_steered_select(
+            fast_by_variant.get("formula_gen_v2_defined", []),
+            budget=int(budgets.get("formula_gen_v2_defined", 0)),
+            policy="formula_gen_v2_defined_phase3B_union_novelty",
+            role_prefix="phase3c_formula_gen_v2_defined",
+            bucket="formula_gen_v2_defined",
+            seed=f"{seed}::formula_gen_v2_defined_select",
+        )
+        if budgets.get("formula_gen_v2_defined", 0) > 0
+        else []
+    )
+    _write_progress(root, "formula_selected", selected_count=len(formula_selected))
+    agnostic_selected = (
+        _novelty_steered_select(
+            fast_by_variant.get("agnostic_freeform_ast", []),
+            budget=int(budgets.get("agnostic_freeform_ast", 0)),
+            policy="agnostic_freeform_ast_phase3B_union_novelty",
+            role_prefix="phase3c_agnostic_freeform_ast",
+            bucket="agnostic_freeform_ast",
+            seed=f"{seed}::agnostic_freeform_ast_select",
+        )
+        if budgets.get("agnostic_freeform_ast", 0) > 0
+        else []
+    )
+    _write_progress(root, "agnostic_selected", selected_count=len(agnostic_selected))
+    repair_expansion_selected: list[dict[str, Any]] = []
+    repair_expansion_rows: list[dict[str, Any]] = []
+    if budgets.get("formula_gen_v2_repair_expansion", 0) > 0:
+        repair_expansion_ledger = build_formula_gen_v2_repair_expansion_ledger(
+            path=dataset,
+            source_rows=(r0_selected + repair_selected)[: max(4, int(budgets["formula_gen_v2_repair_expansion"]) * 4)],
+            candidate_budget=max(candidate_budget, int(budgets["formula_gen_v2_repair_expansion"]) * 6),
+            seed=f"{seed}::formula_gen_v2_repair_expansion",
+        )
+        expansion_reports = _validate_variant_ledgers(
+            root=root,
+            dataset=dataset,
+            variants=[("formula_gen_v2_repair_expansion", repair_expansion_ledger)],
+            candidate_budget=max(candidate_budget, int(budgets["formula_gen_v2_repair_expansion"]) * 6),
+            top_bottom_quantile=top_bottom_quantile,
+            recent_quarter_window_count=recent_quarter_window_count,
+            recent_warmup_days=recent_warmup_days,
+            use_fast_context=use_fast_context,
+        )
+        variant_reports.extend(expansion_reports)
+        repair_expansion_rows = [row for report in expansion_reports for row in _fast_rows_from_variant_report(report)]
+        for row in repair_expansion_rows:
+            row["phase3_source_lane"] = "formula_gen_v2_repair_expansion"
+            row["proof_variant"] = "formula_gen_v2_repair_expansion"
+        fast_by_variant["formula_gen_v2_repair_expansion"] = repair_expansion_rows
+        repair_expansion_selected = _novelty_steered_select(
+            repair_expansion_rows,
+            budget=int(budgets.get("formula_gen_v2_repair_expansion", 0)),
+            policy="formula_gen_v2_repair_expansion_phase3B_union_novelty",
+            role_prefix="phase3c_formula_gen_v2_repair_expansion",
+            bucket="formula_gen_v2_repair_expansion",
+            seed=f"{seed}::formula_gen_v2_repair_expansion_select",
+        )
+        _write_progress(root, "repair_expansion_selected", selected_count=len(repair_expansion_selected))
 
     all_fast_rows = [row for rows in fast_by_variant.values() for row in rows]
     for row in all_fast_rows:
         row["phase3_source_lane"] = row.get("proof_variant")
     write_json_artifact(root / "stage1_variant_reports.json", {"variants": variant_reports})
+    _write_progress(root, "pre_residual_selection", all_fast_row_count=len(all_fast_rows), residual_budget=int(budgets["replay_aware_residual"]))
 
     if budgets["replay_aware_residual"] > 0:
         residual_selected, residual_scored = _select_replay_aware_residual(
             all_fast_rows,
             model_dir=Path(replay_ranker_model_dir),
             budget=budgets["replay_aware_residual"],
-            r0_selected_keys=r0_keys | {_row_key(row) for row in repair_selected if _row_key(row)},
+            r0_selected_keys=r0_keys
+            | {_row_key(row) for row in repair_selected if _row_key(row)}
+            | {_row_key(row) for row in formula_selected if _row_key(row)}
+            | {_row_key(row) for row in agnostic_selected if _row_key(row)}
+            | {_row_key(row) for row in repair_expansion_selected if _row_key(row)},
             seed=seed,
         )
     else:
         residual_selected = []
         residual_scored = pd.DataFrame()
+    _write_progress(root, "residual_selected", selected_count=len(residual_selected), scored_count=int(len(residual_scored)))
     diagnostic_selected = (
         _select_quarantine_diagnostic(
             all_fast_rows,
@@ -1258,7 +2181,52 @@ def run_phase3_repair(
         if budgets["novelty_diagnostic"] > 0
         else []
     )
-    strict_inputs = r0_selected + repair_selected + residual_selected + diagnostic_selected
+    _write_progress(root, "diagnostic_selected", selected_count=len(diagnostic_selected))
+    strict_inputs = (
+        r0_selected
+        + repair_selected
+        + formula_selected
+        + agnostic_selected
+        + repair_expansion_selected
+        + residual_selected
+        + diagnostic_selected
+    )
+    selector_profile = str(arm_config.get("selector_profile") or "standard_D3")
+    selector_baseline_path = _selector_baseline_path(ablation_arm, arm_config)
+    selector_audit_rows: list[dict[str, Any]] = []
+    selector_preflight: dict[str, Any] = {}
+    if ablation_arm.startswith("Phase3E_") or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or selector_profile != "standard_D3":
+        phase3e_pool = _phase3e_candidate_pool(
+            ablation_arm=ablation_arm,
+            r0_pool=r0_pool,
+            repair_pool=repair_pool,
+            formula_rows=fast_by_variant.get("formula_gen_v2_defined", []),
+            agnostic_rows=fast_by_variant.get("agnostic_freeform_ast", []),
+            repair_expansion_rows=repair_expansion_rows,
+            residual_rows=residual_selected,
+            diagnostic_rows=diagnostic_selected,
+        )
+        phase3e_context = Phase3ERegistryContext.from_path(selector_baseline_path)
+        phase3g_signal_store = Phase3GSignalVectorStore(dataset_path=dataset_path) if ablation_arm.startswith("Phase3G_") else None
+        strict_inputs, selector_audit_rows, selector_preflight = select_phase3e_queue(
+            phase3e_pool,
+            budgets=budgets,
+            selector_profile=selector_profile,
+            context=phase3e_context,
+            seed=seed,
+            default_selected=strict_inputs,
+            total_budget=max(1, int(strict_audit_budget)),
+            signal_vector_store=phase3g_signal_store,
+        )
+        write_selector_artifacts(root, audit_rows=selector_audit_rows, preflight=selector_preflight, selector_profile=selector_profile)
+        _write_progress(
+            root,
+            "phase3e_selector_applied",
+            selector_profile=selector_profile,
+            selected_count=len(strict_inputs),
+            audit_row_count=len(selector_audit_rows),
+            book_marginal_mode=selector_preflight.get("book_marginal_mode"),
+        )
     if len(strict_inputs) != max(1, int(strict_audit_budget)):
         raise RuntimeError(
             f"ablation arm {ablation_arm} selected {len(strict_inputs)} rows for strict audit; expected {strict_audit_budget}"
@@ -1273,9 +2241,17 @@ def run_phase3_repair(
                 "description": arm_config["description"],
                 "cluster_quota_enabled": use_cluster_quota,
                 "direct_r0_quota_enabled": direct_r0_quota,
+                "direct_cluster_credit_cap_enabled": direct_cluster_credit_cap,
                 "repair_quota_mode": repair_quota_mode,
+                "phase3c_base": arm_config.get("phase3c_base"),
+                "phase3c_expansion": arm_config.get("phase3c_expansion"),
+                "phase3e_generation_profile": arm_config.get("generation_profile"),
+                "phase3e_selector_profile": selector_profile,
+                "phase3e_cumulative_baseline_path": str(selector_baseline_path),
                 "fresh_seed_required_for_formal_ablation": True,
                 "raw_pass_is_diagnostic_only": True,
+                "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
+                "phase3B_union_baseline_path": str(PHASE3B_UNION_BASELINE_PATH),
             },
             "cluster_quota": {
                 "direct_return_cluster_cap": int(direct_return_cap),
@@ -1288,11 +2264,105 @@ def run_phase3_repair(
             "residual_scored_count": int(len(residual_scored)),
             "quota_event_count": int(len(quota_events)),
             "direct_quota_repair_source_count": int(len(direct_rejected_repair_sources)),
+            "phase3e_selector_audit_count": int(len(selector_audit_rows)),
+                "phase3e_selector_preflight": selector_preflight,
         },
     )
     write_json_artifact(root / "phase3_quota_events.json", {"quota_events": quota_events})
     if not residual_scored.empty:
         residual_scored.to_parquet(root / "phase3_replay_aware_residual_scored.parquet", index=False)
+    _write_progress(root, "strict_selection_written", strict_input_count=len(strict_inputs))
+
+    if selection_only:
+        phase3b_union_baseline = _load_phase3b_union_baseline()
+        report = {
+            "phase3_version": PHASE3_REPAIR_VERSION,
+            "created_at": utc_now_iso(),
+            "experiment_id": f"phase3_selection_only_{seed}",
+            "ablation_arm": ablation_arm,
+            "status": "selection_only",
+            "objective": "freeze_phase3_strict_selection_before_shared_cache_replay",
+            "dataset_path": str(dataset),
+            "dataset_role": dataset_role_for_path(dataset),
+            "output_root": str(root),
+            "ablation_design": {
+                "description": arm_config["description"],
+                "cluster_quota_enabled": use_cluster_quota,
+                "direct_r0_quota_enabled": direct_r0_quota,
+                "direct_cluster_credit_cap_enabled": direct_cluster_credit_cap,
+                "repair_quota_mode": repair_quota_mode,
+                "phase3c_base": arm_config.get("phase3c_base"),
+                "phase3c_expansion": arm_config.get("phase3c_expansion"),
+                "phase3e_generation_profile": arm_config.get("generation_profile"),
+                "phase3e_selector_profile": selector_profile,
+                "phase3e_cumulative_baseline_path": str(selector_baseline_path),
+                "fresh_seed_required_for_formal_ablation": True,
+                "raw_pass_is_diagnostic_only": True,
+                "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
+                "selection_only_for_cache_sprint": True,
+                "phase3B_union_baseline_path": str(PHASE3B_UNION_BASELINE_PATH),
+            },
+            "parameters": {
+                "candidate_budget": int(candidate_budget),
+                "strict_audit_budget": int(strict_audit_budget),
+                "budgets": budgets,
+                "target_window_count": int(target_window_count),
+                "max_window": int(max_window),
+                "beam_width": int(beam_width),
+                "max_beam_records": int(max_beam_records),
+                "recent_quarter_window_count": int(recent_quarter_window_count),
+                "recent_warmup_days": int(recent_warmup_days),
+                "turnover_survival_max_one_way": float(turnover_survival_max_one_way),
+                "seed": str(seed),
+                "direct_return_cluster_cap": int(direct_return_cap),
+                "direct_ast_cluster_cap": int(direct_ast_cap),
+                "repair_child_cluster_cap": int(repair_child_cap),
+                "repair_parent_max_share": float(repair_parent_max_share),
+                "direct_quota_repair_source_count": int(len(direct_rejected_repair_sources)),
+                "phase3B_union_baseline_path": str(PHASE3B_UNION_BASELINE_PATH),
+                "phase3D_cumulative_baseline_path": str(PHASE3D_CUMULATIVE_BASELINE_PATH),
+                "phase3E_cumulative_baseline_path": str(PHASE3E_CUMULATIVE_BASELINE_PATH),
+                "selector_baseline_path": str(selector_baseline_path),
+                "phase3e_selector_profile": selector_profile,
+                "phase3e_selector_audit_count": int(len(selector_audit_rows)),
+            },
+            "fixed_contract": {
+                "evaluator": "TDXGP true-limit preferred",
+                "limit_status_preferred_source": TDXGP_LIMIT_STATUS_SOURCE,
+                "signal_clock": SIGNAL_CLOCK_AFTER_OPEN,
+                "execution_lag_days": 1,
+                "feature_lag_days": 0,
+                "cost_bps": float(strict_cost_bps),
+                "top_bottom_quantile": float(top_bottom_quantile),
+                "raw_pass_is_diagnostic_only": True,
+                "phase3B_union_baseline_name": phase3b_union_baseline.get("baseline_name"),
+                "phase3B_union_deployable_cluster_count": phase3b_union_baseline.get("global_deployable_cluster_count"),
+                "phase3c_new_cluster_metric": "new_deployable_clusters_vs_phase3B_union",
+            },
+            "selection": {
+                "strict_input_count": int(len(strict_inputs)),
+                "quota_event_count": int(len(quota_events)),
+                "residual_scored_count": int(len(residual_scored)),
+                "direct_quota_repair_source_count": int(len(direct_rejected_repair_sources)),
+            },
+            "reproducibility": {
+                "commands": "python -m our_system_phase2.runtime.stock_pit_phase3_repair --selection-only ...",
+                "outputs": [
+                    "phase3_selection_only_report.json",
+                    "phase3_strict_selection_inputs.json",
+                    "phase3_quota_events.json",
+                    "phase3e_selector_audit.csv",
+                    "phase3e_selector_feature_preflight.json",
+                    "PHASE3E_SELECTOR_FEATURE_PREFLIGHT.md",
+                    "stage1_variant_reports.json",
+                    "variants/*/candidate_ledger.json",
+                    "variants/*/stage1_validation_report.json",
+                ],
+            },
+        }
+        write_json_artifact(root / "phase3_selection_only_report.json", report)
+        _write_progress(root, "selection_only_report_written", status="selection_only")
+        return report
 
     strict_rows = _strict_audit_selected_fast_rows(
         strict_inputs,
@@ -1303,6 +2373,7 @@ def run_phase3_repair(
         recent_quarter_window_count=recent_quarter_window_count,
         recent_warmup_days=recent_warmup_days,
     )
+    _write_progress(root, "strict_audit_done", strict_row_count=len(strict_rows))
     strict_rows, replay_report = _attach_portfolio_replay(
         strict_rows,
         dataset_path=dataset,
@@ -1311,6 +2382,7 @@ def run_phase3_repair(
         recent_quarter_window_count=recent_quarter_window_count,
         recent_warmup_days=recent_warmup_days,
     )
+    _write_progress(root, "portfolio_replay_done", strict_row_count=len(strict_rows))
     strict_rows, cluster_report = _attach_signal_clusters(
         strict_rows,
         dataset_path=dataset,
@@ -1318,11 +2390,14 @@ def run_phase3_repair(
         recent_quarter_window_count=recent_quarter_window_count,
         recent_warmup_days=recent_warmup_days,
     )
+    _write_progress(root, "signal_cluster_done", strict_row_count=len(strict_rows))
     strict_rows = _attach_shadow_metrics(strict_rows)
     write_json_artifact(root / "phase3_strict_rows.json", {"strict_rows": strict_rows})
+    _write_progress(root, "strict_rows_written", strict_row_count=len(strict_rows))
 
     kpi = _phase3_main_kpis(strict_rows, turnover_max=turnover_survival_max_one_way)
     policy_table = _policy_table(strict_rows, turnover_max=turnover_survival_max_one_way)
+    phase3b_union_baseline = _load_phase3b_union_baseline()
     report = {
         "phase3_version": PHASE3_REPAIR_VERSION,
         "created_at": utc_now_iso(),
@@ -1332,7 +2407,14 @@ def run_phase3_repair(
             "description": arm_config["description"],
             "cluster_quota_enabled": use_cluster_quota,
             "direct_r0_quota_enabled": direct_r0_quota,
+            "direct_cluster_credit_cap_enabled": direct_cluster_credit_cap,
             "repair_quota_mode": repair_quota_mode,
+            "phase3c_base": arm_config.get("phase3c_base"),
+            "phase3c_expansion": arm_config.get("phase3c_expansion"),
+            "phase3e_generation_profile": arm_config.get("generation_profile"),
+            "phase3e_selector_profile": selector_profile,
+            "phase3e_cumulative_baseline_path": str(selector_baseline_path),
+            "phase3c_expansion_novelty_steering": "phase3B_union_pre_replay_proxy_soft_only",
             "fresh_seed_required_for_formal_ablation": True,
             "arms": sorted(PHASE3_ABLATION_ARMS),
         },
@@ -1350,6 +2432,9 @@ def run_phase3_repair(
             "cost_bps": float(strict_cost_bps),
             "top_bottom_quantile": float(top_bottom_quantile),
             "raw_pass_is_diagnostic_only": True,
+            "phase3B_union_baseline_name": phase3b_union_baseline.get("baseline_name"),
+            "phase3B_union_deployable_cluster_count": phase3b_union_baseline.get("global_deployable_cluster_count"),
+            "phase3c_new_cluster_metric": "new_deployable_clusters_vs_phase3B_union",
         },
         "parameters": {
             "candidate_budget": int(candidate_budget),
@@ -1368,9 +2453,25 @@ def run_phase3_repair(
             "repair_child_cluster_cap": int(repair_child_cap),
             "repair_parent_max_share": float(repair_parent_max_share),
             "direct_quota_repair_source_count": int(len(direct_rejected_repair_sources)),
+            "phase3B_union_baseline_path": str(PHASE3B_UNION_BASELINE_PATH),
+            "phase3D_cumulative_baseline_path": str(PHASE3D_CUMULATIVE_BASELINE_PATH),
+            "phase3E_cumulative_baseline_path": str(PHASE3E_CUMULATIVE_BASELINE_PATH),
+            "selector_baseline_path": str(selector_baseline_path),
+            "phase3e_selector_profile": selector_profile,
+            "phase3e_selector_audit_count": int(len(selector_audit_rows)),
         },
         "main_kpi": kpi,
         "selection_policy_table": policy_table,
+        "phase3B_union_baseline": {
+            "baseline_name": phase3b_union_baseline.get("baseline_name"),
+            "source_commit": phase3b_union_baseline.get("source_commit"),
+            "global_deployable_cluster_count": phase3b_union_baseline.get("global_deployable_cluster_count"),
+            "comparison_contract": phase3b_union_baseline.get("comparison_contract"),
+        },
+        "definition_pressure_audit": _definition_pressure_audit(strict_rows, turnover_max=turnover_survival_max_one_way),
+        "motif_lift_audit": _motif_lift_audit(strict_rows, turnover_max=turnover_survival_max_one_way),
+        "open_space_audit": _open_space_audit(strict_rows, turnover_max=turnover_survival_max_one_way),
+        "paired_ablation_audit": _paired_ablation_audit(strict_rows),
         "quota_event_summary": _quota_event_table(quota_events),
         "quota_event_count": int(len(quota_events)),
         "repair_policy_outcome": _repair_policy_table(strict_rows),
@@ -1396,6 +2497,9 @@ def run_phase3_repair(
                 "phase3_strict_selection_inputs.json",
                 "phase3_strict_rows.json",
                 "phase3_quota_events.json",
+                "phase3e_selector_audit.csv",
+                "phase3e_selector_feature_preflight.json",
+                "PHASE3E_SELECTOR_FEATURE_PREFLIGHT.md",
                 "phase3_replay_aware_residual_scored.parquet",
                 "variants/*/candidate_ledger.json",
                 "variants/*/stage1_validation_report.json",
@@ -1403,4 +2507,5 @@ def run_phase3_repair(
         },
     }
     write_json_artifact(root / "phase3_repair_report.json", report)
+    _write_progress(root, "report_written", status="completed")
     return report

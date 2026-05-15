@@ -1,0 +1,17 @@
+ablation_arm,audited,candidate_pool,generated,non_gap_replay_pass,replay_attempted,replay_pass,residual_scored_count,run_id,seed,selected_for_audit,valid
+Phase3G_G0_E0_stable,256,585,816,247,256,255,620,Phase3G_G0_E0_stable::g0,g0,64,816
+Phase3G_G1_E3_current_proxy,256,579,816,256,256,256,620,Phase3G_G1_E3_current_proxy::g1,g1,64,816
+Phase3G_G2_E3_signal_vector_diversified,256,578,816,242,256,242,620,Phase3G_G2_E3_signal_vector_diversified::g2,g2,64,816
+Phase3G_G3_E3_strong_signal_vector_proxy,256,584,816,233,256,233,620,Phase3G_G3_E3_strong_signal_vector_proxy::g3,g3,64,816
+Phase3G_G0_E0_stable,256,578,816,247,256,255,620,Phase3G_G0_E0_stable::g0,g0,64,816
+Phase3G_G1_E3_current_proxy,256,580,816,256,256,256,620,Phase3G_G1_E3_current_proxy::g1,g1,64,816
+Phase3G_G2_E3_signal_vector_diversified,256,581,816,242,256,242,620,Phase3G_G2_E3_signal_vector_diversified::g2,g2,64,816
+Phase3G_G3_E3_strong_signal_vector_proxy,256,587,816,233,256,233,620,Phase3G_G3_E3_strong_signal_vector_proxy::g3,g3,64,816
+Phase3G_G0_E0_stable,256,583,816,247,256,255,620,Phase3G_G0_E0_stable::g0,g0,64,816
+Phase3G_G1_E3_current_proxy,256,580,816,256,256,256,620,Phase3G_G1_E3_current_proxy::g1,g1,64,816
+Phase3G_G2_E3_signal_vector_diversified,256,575,816,242,256,242,620,Phase3G_G2_E3_signal_vector_diversified::g2,g2,64,816
+Phase3G_G3_E3_strong_signal_vector_proxy,256,583,816,233,256,233,620,Phase3G_G3_E3_strong_signal_vector_proxy::g3,g3,64,816
+Phase3G_G0_E0_stable,256,580,816,247,256,255,620,Phase3G_G0_E0_stable::g0,g0,64,816
+Phase3G_G1_E3_current_proxy,256,587,816,256,256,256,620,Phase3G_G1_E3_current_proxy::g1,g1,64,816
+Phase3G_G2_E3_signal_vector_diversified,256,588,816,242,256,242,620,Phase3G_G2_E3_signal_vector_diversified::g2,g2,64,816
+Phase3G_G3_E3_strong_signal_vector_proxy,256,585,816,233,256,233,620,Phase3G_G3_E3_strong_signal_vector_proxy::g3,g3,64,816

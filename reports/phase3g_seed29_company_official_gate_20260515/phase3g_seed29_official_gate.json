@@ -1,0 +1,211 @@
+{
+  "created_at": "2026-05-15T08:11:13+08:00",
+  "experiment_id": "20260515_phase3g_seed29_official_gate",
+  "objective": "decide whether Phase3G seed29 justifies seeds30-32 launch",
+  "status": "PASS",
+  "reason": "at least one of G2/G3 satisfies seed29 official gate",
+  "run_root": "reports\\phase3g_seed29_company_s29_20260515\\s29",
+  "aggregate_root": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate",
+  "clustered_rows_path": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate\\phase3g_seed29_company_global_clustered_rows.json",
+  "queue_watch_json": "reports\\phase3g_seed29_company_queue_watch_20260515\\phase3g_seed29_queue_watch.json",
+  "queue_overlaps": {
+    "G1_vs_G2": {
+      "left_count": 64,
+      "right_count": 64,
+      "intersection_count": 5,
+      "overlap_ratio_min_denom": 0.078125
+    },
+    "G1_vs_G3": {
+      "left_count": 64,
+      "right_count": 64,
+      "intersection_count": 6,
+      "overlap_ratio_min_denom": 0.09375
+    },
+    "G2_vs_G3": {
+      "left_count": 64,
+      "right_count": 64,
+      "intersection_count": 11,
+      "overlap_ratio_min_denom": 0.171875
+    }
+  },
+  "arms": [
+    {
+      "arm": "Phase3G_G0_E0_stable",
+      "arm_root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g0",
+      "report_exists": true,
+      "audited": 64,
+      "deployable_clusters": 19,
+      "raw_non_gap_pass": 61,
+      "top_cluster_share": 0.180328,
+      "top_cluster_id": "cluster_001",
+      "selector_profile": "standard_D3",
+      "book_marginal_mode": null,
+      "strict_rows_exists": true,
+      "strict_row_count": 64,
+      "raw_pass_row_count": 61,
+      "cluster_001_share": 0.18032786885245902,
+      "cluster_003_share": 0.01639344262295082,
+      "strict_rows_top_cluster_id": "cluster_001",
+      "strict_rows_top_cluster_share": 0.18032786885245902,
+      "median_turnover": 0.134632,
+      "cluster_counts": {
+        "cluster_001": 11,
+        "cluster_004": 3,
+        "cluster_009": 3,
+        "cluster_016": 3,
+        "cluster_020": 3,
+        "cluster_019": 3,
+        "cluster_011": 3,
+        "cluster_022": 2,
+        "cluster_023": 2,
+        "cluster_024": 2,
+        "cluster_026": 2,
+        "cluster_012": 2
+      },
+      "aggregate_per_arm_metrics_path": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate\\phase3g_seed29_company_per_arm_metrics.csv",
+      "new_vs_134": 21
+    },
+    {
+      "arm": "Phase3G_G1_E3_current_proxy",
+      "arm_root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g1",
+      "report_exists": true,
+      "audited": 64,
+      "deployable_clusters": 20,
+      "raw_non_gap_pass": 64,
+      "top_cluster_share": 0.34375,
+      "top_cluster_id": "cluster_001",
+      "selector_profile": "book_marginal_proxy",
+      "book_marginal_mode": null,
+      "strict_rows_exists": true,
+      "strict_row_count": 64,
+      "raw_pass_row_count": 64,
+      "cluster_001_share": 0.34375,
+      "cluster_003_share": 0.0625,
+      "strict_rows_top_cluster_id": "cluster_001",
+      "strict_rows_top_cluster_share": 0.34375,
+      "median_turnover": 0.133268,
+      "cluster_counts": {
+        "cluster_001": 22,
+        "cluster_016": 6,
+        "cluster_020": 5,
+        "cluster_003": 4,
+        "cluster_018": 4,
+        "cluster_009": 3,
+        "cluster_008": 2,
+        "cluster_012": 2,
+        "cluster_017": 2,
+        "cluster_002": 1,
+        "cluster_007": 1,
+        "cluster_004": 1
+      },
+      "aggregate_per_arm_metrics_path": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate\\phase3g_seed29_company_per_arm_metrics.csv",
+      "new_vs_134": 15
+    },
+    {
+      "arm": "Phase3G_G2_E3_signal_vector_diversified",
+      "arm_root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g2",
+      "report_exists": true,
+      "audited": 64,
+      "deployable_clusters": 22,
+      "raw_non_gap_pass": 64,
+      "top_cluster_share": 0.15625,
+      "top_cluster_id": "cluster_001",
+      "selector_profile": "signal_vector_diversified_proxy",
+      "book_marginal_mode": null,
+      "strict_rows_exists": true,
+      "strict_row_count": 64,
+      "raw_pass_row_count": 64,
+      "cluster_001_share": 0.15625,
+      "cluster_003_share": 0.03125,
+      "strict_rows_top_cluster_id": "cluster_001",
+      "strict_rows_top_cluster_share": 0.15625,
+      "median_turnover": 0.14452,
+      "cluster_counts": {
+        "cluster_001": 10,
+        "cluster_004": 6,
+        "cluster_008": 6,
+        "cluster_016": 4,
+        "cluster_020": 4,
+        "cluster_002": 3,
+        "cluster_022": 3,
+        "cluster_011": 2,
+        "cluster_012": 2,
+        "cluster_015": 2,
+        "cluster_007": 2,
+        "cluster_003": 2
+      },
+      "aggregate_per_arm_metrics_path": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate\\phase3g_seed29_company_per_arm_metrics.csv",
+      "new_vs_134": 16
+    },
+    {
+      "arm": "Phase3G_G3_E3_strong_signal_vector_proxy",
+      "arm_root": "reports\\phase3g_seed29_company_s29_20260515\\s29\\g3",
+      "report_exists": true,
+      "audited": 64,
+      "deployable_clusters": 24,
+      "raw_non_gap_pass": 64,
+      "top_cluster_share": 0.125,
+      "top_cluster_id": "cluster_006",
+      "selector_profile": "strong_signal_vector_proxy",
+      "book_marginal_mode": null,
+      "strict_rows_exists": true,
+      "strict_row_count": 64,
+      "raw_pass_row_count": 64,
+      "cluster_001_share": 0.109375,
+      "cluster_003_share": 0.015625,
+      "strict_rows_top_cluster_id": "cluster_002",
+      "strict_rows_top_cluster_share": 0.125,
+      "median_turnover": 0.177579,
+      "cluster_counts": {
+        "cluster_002": 8,
+        "cluster_001": 7,
+        "cluster_019": 7,
+        "cluster_013": 6,
+        "cluster_016": 3,
+        "cluster_029": 3,
+        "cluster_009": 2,
+        "cluster_004": 2,
+        "cluster_005": 1,
+        "cluster_010": 1,
+        "cluster_007": 1,
+        "cluster_008": 1
+      },
+      "aggregate_per_arm_metrics_path": "reports\\phase3g_seed29_company_aggregate_20260515\\s29_aggregate\\phase3g_seed29_company_per_arm_metrics.csv",
+      "new_vs_134": 21
+    }
+  ],
+  "target_arm_decisions": {
+    "Phase3G_G2_E3_signal_vector_diversified": {
+      "passes_seed29_gate": true,
+      "pass_blockers": [],
+      "triggers_fail_condition": false,
+      "fail_reasons": []
+    },
+    "Phase3G_G3_E3_strong_signal_vector_proxy": {
+      "passes_seed29_gate": true,
+      "pass_blockers": [],
+      "triggers_fail_condition": false,
+      "fail_reasons": []
+    }
+  },
+  "gate_rules": {
+    "pass": {
+      "top_cluster_share_lte": 0.45,
+      "cluster_001_share_lte": 0.25,
+      "cluster_003_share_lte": 0.25,
+      "median_turnover_lte": 0.2,
+      "deployable_gte_max_G0_G1_minus": 2,
+      "new_vs_134_gte": 1
+    },
+    "fail": {
+      "top_cluster_share_gt": 0.5,
+      "median_turnover_gt": 0.25,
+      "deployable_below_G0_by_more_than": 3
+    }
+  },
+  "decision": "PASS",
+  "safety": {
+    "does_not_launch_seeds30_32": true,
+    "requires_explicit_launcher_after_pass": true
+  }
+}

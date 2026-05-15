@@ -1,0 +1,34 @@
+﻿[
+    {
+        "seed":  29,
+        "short":  "g0",
+        "arm":  "Phase3G_G0_E0_stable",
+        "output_root":  "D:\\p3g\\s29\\g0",
+        "experimental":  false,
+        "command":  "$ErrorActionPreference = \"Stop\" Set-Location -LiteralPath \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\" New-Item -ItemType Directory -Force -Path \"D:\\p3g\\s29\\g0\" | Out-Null $env:PYTHONPATH = \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\src\" \u0026 \"D:\\HermesWorker\\workspace\\.venv\\Scripts\\python.exe\" -m our_system_phase2.runtime.stock_pit_phase3_repair --dataset-path \"D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet\" --output-root \"D:\\p3g\\s29\\g0\" --failure-detail-path \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv\" --replay-ranker-model-dir \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\" --candidate-budget 64 --strict-audit-budget 64 --target-window-count 4 --max-window 21 --beam-width 8 --max-beam-records 256 --top-bottom-quantile 0.02 --recent-quarter-window-count 1 --recent-warmup-days 60 --strict-cost-bps 10 --low-corr-threshold 0.80 --turnover-survival-max-one-way 0.75 --max-audited-per-return-corr-cluster-per-seed 3 --max-audited-per-ast-cluster-per-seed 3 --seed \"phase3g_official_seed29_Phase3G_G0_E0_stable\" --ablation-arm \"Phase3G_G0_E0_stable\" --quiet"
+    },
+    {
+        "seed":  29,
+        "short":  "g1",
+        "arm":  "Phase3G_G1_E3_current_proxy",
+        "output_root":  "D:\\p3g\\s29\\g1",
+        "experimental":  false,
+        "command":  "$ErrorActionPreference = \"Stop\" Set-Location -LiteralPath \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\" New-Item -ItemType Directory -Force -Path \"D:\\p3g\\s29\\g1\" | Out-Null $env:PYTHONPATH = \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\src\" \u0026 \"D:\\HermesWorker\\workspace\\.venv\\Scripts\\python.exe\" -m our_system_phase2.runtime.stock_pit_phase3_repair --dataset-path \"D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet\" --output-root \"D:\\p3g\\s29\\g1\" --failure-detail-path \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv\" --replay-ranker-model-dir \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\" --candidate-budget 64 --strict-audit-budget 64 --target-window-count 4 --max-window 21 --beam-width 8 --max-beam-records 256 --top-bottom-quantile 0.02 --recent-quarter-window-count 1 --recent-warmup-days 60 --strict-cost-bps 10 --low-corr-threshold 0.80 --turnover-survival-max-one-way 0.75 --max-audited-per-return-corr-cluster-per-seed 3 --max-audited-per-ast-cluster-per-seed 3 --seed \"phase3g_official_seed29_Phase3G_G1_E3_current_proxy\" --ablation-arm \"Phase3G_G1_E3_current_proxy\" --quiet"
+    },
+    {
+        "seed":  29,
+        "short":  "g2",
+        "arm":  "Phase3G_G2_E3_signal_vector_diversified",
+        "output_root":  "D:\\p3g\\s29\\g2",
+        "experimental":  false,
+        "command":  "$ErrorActionPreference = \"Stop\" Set-Location -LiteralPath \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\" New-Item -ItemType Directory -Force -Path \"D:\\p3g\\s29\\g2\" | Out-Null $env:PYTHONPATH = \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\src\" \u0026 \"D:\\HermesWorker\\workspace\\.venv\\Scripts\\python.exe\" -m our_system_phase2.runtime.stock_pit_phase3_repair --dataset-path \"D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet\" --output-root \"D:\\p3g\\s29\\g2\" --failure-detail-path \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv\" --replay-ranker-model-dir \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\" --candidate-budget 64 --strict-audit-budget 64 --target-window-count 4 --max-window 21 --beam-width 8 --max-beam-records 256 --top-bottom-quantile 0.02 --recent-quarter-window-count 1 --recent-warmup-days 60 --strict-cost-bps 10 --low-corr-threshold 0.80 --turnover-survival-max-one-way 0.75 --max-audited-per-return-corr-cluster-per-seed 3 --max-audited-per-ast-cluster-per-seed 3 --seed \"phase3g_official_seed29_Phase3G_G2_E3_signal_vector_diversified\" --ablation-arm \"Phase3G_G2_E3_signal_vector_diversified\" --quiet"
+    },
+    {
+        "seed":  29,
+        "short":  "g3",
+        "arm":  "Phase3G_G3_E3_strong_signal_vector_proxy",
+        "output_root":  "D:\\p3g\\s29\\g3",
+        "experimental":  false,
+        "command":  "$ErrorActionPreference = \"Stop\" Set-Location -LiteralPath \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\" New-Item -ItemType Directory -Force -Path \"D:\\p3g\\s29\\g3\" | Out-Null $env:PYTHONPATH = \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\src\" \u0026 \"D:\\HermesWorker\\workspace\\.venv\\Scripts\\python.exe\" -m our_system_phase2.runtime.stock_pit_phase3_repair --dataset-path \"D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet\" --output-root \"D:\\p3g\\s29\\g3\" --failure-detail-path \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\PHASE3_REPAIR_AUDIT_2026-05-11_failure_detail.csv\" --replay-ranker-model-dir \"D:\\HermesWorker\\workspace\\our_system_phase1_repo\\data\\models\" --candidate-budget 64 --strict-audit-budget 64 --target-window-count 4 --max-window 21 --beam-width 8 --max-beam-records 256 --top-bottom-quantile 0.02 --recent-quarter-window-count 1 --recent-warmup-days 60 --strict-cost-bps 10 --low-corr-threshold 0.80 --turnover-survival-max-one-way 0.75 --max-audited-per-return-corr-cluster-per-seed 3 --max-audited-per-ast-cluster-per-seed 3 --seed \"phase3g_official_seed29_Phase3G_G3_E3_strong_signal_vector_proxy\" --ablation-arm \"Phase3G_G3_E3_strong_signal_vector_proxy\" --quiet"
+    }
+]

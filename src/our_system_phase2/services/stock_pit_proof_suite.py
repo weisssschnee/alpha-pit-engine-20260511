@@ -1250,10 +1250,34 @@ def _portfolio_replay_for_expression(
             "portfolio_replay_error": type(exc).__name__,
             "portfolio_replay_pass": False,
         }
+    if not isinstance(daily, pd.DataFrame) or daily.empty:
+        return {
+            "portfolio_replay_day_count": 0,
+            "portfolio_replay_cost_bps": float(cost_bps),
+            "portfolio_replay_error": "empty_daily_portfolio",
+            "portfolio_replay_pass": False,
+        }
     cost_rate = float(cost_bps) / 10_000.0
-    turnover = pd.to_numeric(daily.get("average_one_way_turnover"), errors="coerce").fillna(0.0)
-    long_net = pd.to_numeric(daily.get("long_ret"), errors="coerce") - (turnover * cost_rate)
-    spread_net = pd.to_numeric(daily.get("raw_ls"), errors="coerce") - (turnover * cost_rate)
+    index = daily.index
+    long_ret = pd.to_numeric(
+        daily["long_ret"] if "long_ret" in daily else pd.Series(math.nan, index=index),
+        errors="coerce",
+    )
+    spread = pd.to_numeric(
+        daily["raw_ls"] if "raw_ls" in daily else pd.Series(math.nan, index=index),
+        errors="coerce",
+    )
+    turnover_raw = (
+        daily["average_one_way_turnover"]
+        if "average_one_way_turnover" in daily
+        else pd.Series(0.0, index=index)
+    )
+    turnover = pd.to_numeric(turnover_raw, errors="coerce")
+    if not hasattr(turnover, "fillna"):
+        turnover = pd.Series(float(turnover) if pd.notna(turnover) else 0.0, index=index)
+    turnover = turnover.fillna(0.0)
+    long_net = long_ret - (turnover * cost_rate)
+    spread_net = spread - (turnover * cost_rate)
     long_sortino = _sortino_values(long_net.dropna().tolist())
     spread_sortino = _sortino_values(spread_net.dropna().tolist())
     long_mean = _mean(long_net.dropna().tolist())
@@ -1334,12 +1358,31 @@ def _signal_series_for_expression(
     cache: dict[str, pd.Series],
 ) -> pd.Series:
     signal_frame, signal_clock_report = _signal_evaluation_frame(frame, signal_clock=SIGNAL_CLOCK_AFTER_OPEN)
+    return _signal_series_for_prepared_expression(
+        expression,
+        signal_frame=signal_frame,
+        field_lags=signal_clock_report["field_lags"],
+        evaluation_start_date=evaluation_start_date,
+        evaluation_end_date=evaluation_end_date,
+        cache=cache,
+    )
+
+
+def _signal_series_for_prepared_expression(
+    expression: str,
+    *,
+    signal_frame: pd.DataFrame,
+    field_lags: dict[str, int],
+    evaluation_start_date: pd.Timestamp,
+    evaluation_end_date: pd.Timestamp,
+    cache: dict[str, pd.Series],
+) -> pd.Series:
     if expression not in cache:
         signal = evaluate_panel_expression(
             signal_frame,
             expression,
             cache={},
-            field_lags=signal_clock_report["field_lags"],
+            field_lags=field_lags,
         )
         ranked = signal.groupby(signal_frame["date"]).rank(pct=True)
         mask = (signal_frame["date"] >= evaluation_start_date) & (signal_frame["date"] <= evaluation_end_date)
@@ -1365,6 +1408,8 @@ def _attach_signal_clusters(
         quarter_window_count=recent_quarter_window_count,
         warmup_days=recent_warmup_days,
     )
+    signal_frame, signal_clock_report = _signal_evaluation_frame(frame, signal_clock=SIGNAL_CLOCK_AFTER_OPEN)
+    field_lags = signal_clock_report["field_lags"]
     series_cache: dict[str, pd.Series] = {}
     cluster_representatives: list[tuple[str, str, pd.Series]] = []
     assignments: dict[str, dict[str, Any]] = {}
@@ -1373,9 +1418,10 @@ def _attach_signal_clusters(
         expression = str(row.get("expression") or "")
         row_key = f"{row.get('proof_variant')}::{row.get('strict_selection_role')}::{row.get('candidate_id')}::{expression}"
         try:
-            series = _signal_series_for_expression(
+            series = _signal_series_for_prepared_expression(
                 expression,
-                frame=frame,
+                signal_frame=signal_frame,
+                field_lags=field_lags,
                 evaluation_start_date=evaluation_start,
                 evaluation_end_date=evaluation_end,
                 cache=series_cache,

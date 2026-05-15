@@ -1,0 +1,11 @@
+scope_arm,candidate_count,pair_count,mean_abs_corr,median_abs_corr,max_abs_corr
+phase3e::Phase3E_E0_D3_primary,256,32640,0.159761,0.067024,1.0
+phase3e::Phase3E_E1_D3_plus_D2_sidecar,256,32640,0.285072,0.188892,1.0
+phase3e::Phase3E_E2_D3_deployability_hardened,256,32640,0.280639,0.174521,1.0
+phase3e::Phase3E_E3_D3_book_marginal,256,32640,0.317217,0.202039,1.0
+phase3e::unknown_arm,165,13530,0.171936,0.09399,1.0
+phase3f::Phase3F_F0_E0_stable,16,120,0.202592,0.081366,0.999788
+phase3f::Phase3F_F1_E3_current_proxy,16,120,0.684245,0.88704,1.0
+phase3f::Phase3F_F2_E3_proxy_diversified,16,120,0.264228,0.173608,1.0
+phase3f::Phase3F_F3_E3_proxy_strengthened,16,120,0.301161,0.134312,1.0
+phase3f::unknown_arm,191,18145,0.176999,0.103559,1.0

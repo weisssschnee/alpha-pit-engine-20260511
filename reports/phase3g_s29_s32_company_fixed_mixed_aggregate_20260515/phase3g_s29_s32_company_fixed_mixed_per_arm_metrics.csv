@@ -1,0 +1,5 @@
+ablation_arm,audited,deployable_clusters,deployable_clusters_per_audited,median_complexity,median_turnover,raw_non_gap_pass,raw_non_gap_pass_per_audited,top_cluster_id,top_cluster_share,unique_return_corr_clusters,unique_return_corr_clusters_per_audited
+Phase3G_G0_E0_stable,256,54,0.210938,11.0,0.178381,247,0.964844,cluster_001,0.182186,89,0.347656
+Phase3G_G1_E3_current_proxy,256,51,0.199219,12.0,0.126914,256,1.0,cluster_001,0.363281,66,0.257812
+Phase3G_G2_E3_signal_vector_diversified,256,67,0.261719,16.0,0.21137,242,0.945312,cluster_001,0.049587,144,0.5625
+Phase3G_G3_E3_strong_signal_vector_proxy,256,54,0.210938,16.0,0.222916,233,0.910156,cluster_009,0.038627,136,0.53125

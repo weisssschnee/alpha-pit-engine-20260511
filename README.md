@@ -39,12 +39,20 @@ The latest exported research stack also includes:
 
 The current Phase3A aggregate result is `PASS_CONFIRM_PHASE3A` for search-structure confirmation, not a commercial alpha proof. Phase3B is designed to test whether direct R0 quota and child-side repair-aware soft quota can preserve AST repair yield while reducing cluster concentration.
 
+The latest exported Phase3G result confirms the signal-vector diversified selector as the current best search-mechanics candidate:
+
+- `G2_E3_signal_vector_diversified`: 67 deployable clusters / 256 audited, top cluster share 4.9587%.
+- Global fixed aggregate: 144 deployable clusters / 1024 audited, global top cluster share 16.2577%.
+- Status: search-mechanics confirmation, not commercial alpha deployment proof.
+
 Key current reports:
 
 - `reports/PHASE3_REPAIR_AUDIT_2026-05-11.md`
 - `reports/PHASE3_ABLATION_GLOBAL_AGGREGATE_2026-05-12.md`
 - `reports/PHASE3B_REPAIR_QUOTA_FLOW_2026-05-12.md`
 - `reports/FORMULA_GEN_V2_DESIGN_2026-05-12.md`
+- `reports/PHASE3G_DECISION_RECORD_2026-05-15.md`
+- `reports/phase3g_s29_s32_company_fixed_mixed_aggregate_20260515/PHASE3G_S29_S32_COMPANY_FIXED_MIXED_GLOBAL_AGGREGATE_2026-05-15.md`
 
 ## Quick Checks
 
