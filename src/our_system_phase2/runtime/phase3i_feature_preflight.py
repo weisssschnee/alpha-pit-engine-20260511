@@ -96,6 +96,11 @@ def run_preflight(*, pool_path: Path, output_root: Path, baseline_path: Path) ->
             }
         )
 
+    signal_vector_ready = _coverage(features, "signal_vector_ready")
+    # selected_queue_signal_corr is a post-selection dynamic metric. At
+    # preflight time the correct gate is whether candidate signal vectors can
+    # be computed, not whether a selected queue already exists.
+    selected_queue_signal_corr_ready = signal_vector_ready
     coverage = {
         "cluster_turnover": _coverage(features, "turnover_proxy"),
         "p90_turnover": _coverage(features, "turnover_proxy"),
@@ -104,8 +109,8 @@ def run_preflight(*, pool_path: Path, output_root: Path, baseline_path: Path) ->
         "liquidity_proxy": _coverage(features, "liquidity_proxy"),
         "capacity_proxy": _coverage(features, "capacity_proxy"),
         "corr_to_149_registry_proxy": _coverage(features, "max_corr_to_103_registry"),
-        "selected_queue_signal_corr": 1.0 if signal_store.coverage_ready() else 0.0,
-        "signal_vector_ready": _coverage(features, "signal_vector_ready"),
+        "selected_queue_signal_corr": selected_queue_signal_corr_ready,
+        "signal_vector_ready": signal_vector_ready,
         "operator_pathology_flag": _coverage(features, "operator_pathology_flag"),
         "complexity_score": _coverage(features, "complexity_score"),
     }
@@ -141,6 +146,9 @@ def run_preflight(*, pool_path: Path, output_root: Path, baseline_path: Path) ->
         },
         "source_lane_counts": dict(Counter(str(item.get("source_lane") or "unknown") for item in features)),
         "source_lane_turnover": source_lane_turnover,
+        "notes": {
+            "selected_queue_signal_corr": "preflight checks signal-vector readiness; actual selected-queue correlation is measured in selector-only dry run"
+        },
     }
     output_root.mkdir(parents=True, exist_ok=True)
     _write_json(output_root / "phase3i_feature_preflight.json", report)
