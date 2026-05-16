@@ -1,0 +1,119 @@
+{
+  "created_at": "2026-05-16T14:15:37+08:00",
+  "decision": "PASS_PHASE3I_SELECTOR_ONLY_DRYRUN",
+  "run_root": "D:\\p3i_selector_only_20260516\\s41_v2_taildiv\\selector",
+  "feature_preflight_path": "D:\\p3i_selector_only_20260516\\s41\\feature_preflight\\phase3i_feature_preflight.json",
+  "i2_status": "promotion_eligible",
+  "evaluated_labels": [
+    "I0",
+    "I1V2",
+    "I3V2"
+  ],
+  "arms": [
+    {
+      "label": "I0",
+      "short": "i0",
+      "arm": "Phase3I_I0_G2_primary",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_diversified_proxy",
+      "generation_profile": "G2_phase3i_primary",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.069322,
+      "p90_turnover_proxy": 0.12558,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.410715,
+      "median_selected_queue_signal_corr": 0.469966,
+      "median_liquidity_proxy": 2166644197.84933,
+      "median_capacity_proxy": 55843522633.89121,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 0
+    },
+    {
+      "label": "I1V2",
+      "short": "i1v2",
+      "arm": "Phase3I_I1_v2_turnover_tail_guard",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_turnover_tail_guard_v2",
+      "generation_profile": "G2_turnover_tail_guard_v2",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.064076,
+      "p90_turnover_proxy": 0.097957,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.477587,
+      "median_selected_queue_signal_corr": 0.474355,
+      "median_liquidity_proxy": 1739321367.834423,
+      "median_capacity_proxy": 62315766030.842804,
+      "agnostic_selected_count": 22,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 22,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 34
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 36
+    },
+    {
+      "label": "I3V2",
+      "short": "i3v2",
+      "arm": "Phase3I_I3_v2_queue_diversity",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_queue_diversity_v2",
+      "generation_profile": "G2_queue_diversity_v2",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.074576,
+      "p90_turnover_proxy": 0.129724,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.359162,
+      "median_selected_queue_signal_corr": 0.326847,
+      "median_liquidity_proxy": 1655755660.289804,
+      "median_capacity_proxy": 34881583998.79935,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 44
+    }
+  ],
+  "queue_overlaps": {
+    "I0_vs_I1V2": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 45,
+      "overlap_ratio_min_denom": 0.703125
+    },
+    "I0_vs_I3V2": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 55,
+      "overlap_ratio_min_denom": 0.859375
+    }
+  },
+  "fail_reasons": []
+}

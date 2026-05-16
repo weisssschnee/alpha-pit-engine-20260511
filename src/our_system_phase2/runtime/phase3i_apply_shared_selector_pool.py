@@ -17,6 +17,8 @@ PHASE3I_ARMS = {
     "i1": "Phase3I_I1_G2_cost_turnover_constrained",
     "i2": "Phase3I_I2_G2_capacity_liquidity",
     "i3": "Phase3I_I3_G2_book_proxy_hardened",
+    "i1v2": "Phase3I_I1_v2_turnover_tail_guard",
+    "i3v2": "Phase3I_I3_v2_queue_diversity",
 }
 
 

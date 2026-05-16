@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-05-16T13:51:04+08:00",
+  "decision": "PASS_TURNOVER_PROXY_CALIBRATION",
+  "selector_root": "reports\\phase3h_official_manifests_20260516\\selector",
+  "clustered_rows": [
+    "reports\\phase3h_global_recluster_20260516\\phase3H_global_clustered_rows.json"
+  ],
+  "selected_rows": 1018,
+  "matched_rows": 723,
+  "match_rate": 0.710216,
+  "spearman_pre_proxy_vs_final_strict_turnover": 0.136462,
+  "spearman_pre_proxy_vs_final_replay_turnover": 0.138702,
+  "bucket_monotone_signal": true,
+  "bucket_summary": [
+    {
+      "proxy_bucket": "Q1_low",
+      "count": 181,
+      "proxy_min": 0.004505,
+      "proxy_max": 0.049339,
+      "final_strict_median": 0.27973,
+      "final_strict_p90": 0.867884,
+      "final_replay_median": 0.298055,
+      "final_replay_p90": 0.868818
+    },
+    {
+      "proxy_bucket": "Q2",
+      "count": 182,
+      "proxy_min": 0.049598,
+      "proxy_max": 0.061242,
+      "final_strict_median": 0.338438,
+      "final_strict_p90": 0.733743,
+      "final_replay_median": 0.352309,
+      "final_replay_p90": 0.738049
+    },
+    {
+      "proxy_bucket": "Q3",
+      "count": 180,
+      "proxy_min": 0.061374,
+      "proxy_max": 0.081527,
+      "final_strict_median": 0.376419,
+      "final_strict_p90": 0.720762,
+      "final_replay_median": 0.387534,
+      "final_replay_p90": 0.726955
+    },
+    {
+      "proxy_bucket": "Q4_high",
+      "count": 180,
+      "proxy_min": 0.081613,
+      "proxy_max": 0.210037,
+      "final_strict_median": 0.392453,
+      "final_strict_p90": 0.777176,
+      "final_replay_median": 0.403475,
+      "final_replay_p90": 0.779379
+    }
+  ],
+  "gate": {
+    "spearman_threshold": 0.25,
+    "pass_if_spearman_gt_threshold_or_high_bucket_final_turnover_gt_low_bucket": true
+  }
+}

@@ -661,6 +661,9 @@ def _attach_selector_feature_metadata(item: dict[str, Any], features: dict[str, 
     item["phase3e_selector_profile"] = selector_profile
     item["phase3e_selection_score"] = round(float(selection_score), 8)
     for key in (
+        "base_quality",
+        "turnover_proxy",
+        "cost_adjusted_proxy",
         "max_corr_to_103_registry",
         "mean_corr_to_103_registry",
         "nearest_103_cluster",
@@ -682,6 +685,12 @@ def _attach_selector_feature_metadata(item: dict[str, Any], features: dict[str, 
         "turnover_structure_risk",
         "turnover_penalty",
         "turnover_structure_penalty",
+        "selector_pool_turnover_p80",
+        "selector_pool_turnover_p90",
+        "selector_pool_turnover_p95",
+        "high_turnover_p80_count_before_pick",
+        "high_turnover_p90_count_before_pick",
+        "turnover_tail_penalty",
         "liquidity_proxy",
         "capacity_proxy",
         "liquidity_penalty",
@@ -734,7 +743,10 @@ def _score_for_selector_profile(
     thresholds: RegistryThresholds,
     *,
     selected_rows: list[dict[str, Any]],
+    selector_pool_stats: dict[str, Any] | None = None,
 ) -> tuple[float, bool, str, str, dict[str, Any]]:
+    if selector_pool_stats:
+        features = {**features, **selector_pool_stats}
     if is_signal_vector_selector(selector_profile):
         base_e3_score = _score_book_proxy(features, thresholds)
         score, hard_pass, reject_reason, details = score_signal_vector_selector(
@@ -787,6 +799,29 @@ def _dedupe_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def _bucket(row: dict[str, Any]) -> str:
     return str(row.get("phase3_budget_bucket") or row.get("proof_variant") or "unknown")
+
+
+def _raw_turnover_proxy(row: dict[str, Any]) -> float | None:
+    value, _source = _first_number(
+        row,
+        [
+            "mean_window_one_way_turnover",
+            "cheap_backtest_turnover",
+            "mean_one_way_turnover",
+            "mean_window_long_selected_turnover_rate",
+        ],
+    )
+    return value
+
+
+def _selector_pool_stats(pool: list[dict[str, Any]], total_budget: int) -> dict[str, Any]:
+    turnovers = [value for value in (_raw_turnover_proxy(row) for row in pool) if value is not None and math.isfinite(value)]
+    return {
+        "selector_total_budget": int(total_budget),
+        "selector_pool_turnover_p80": _percentile(turnovers, 0.80),
+        "selector_pool_turnover_p90": _percentile(turnovers, 0.90),
+        "selector_pool_turnover_p95": _percentile(turnovers, 0.95),
+    }
 
 
 def select_phase3e_queue(
@@ -903,6 +938,7 @@ def _select_scored(
     remaining = list(pool)
     bucket_remaining = {key: max(0, int(value)) for key, value in budgets.items()}
     total_budget = sum(bucket_remaining.values())
+    selector_pool_stats = _selector_pool_stats(pool, total_budget)
     rank = 0
     while remaining and len(selected) < total_budget and any(value > 0 for value in bucket_remaining.values()):
         scored = []
@@ -916,6 +952,7 @@ def _select_scored(
                 features,
                 context.thresholds,
                 selected_rows=selected,
+                selector_pool_stats=selector_pool_stats,
             )
             features.update(details)
             audit_item = _audit_item(
@@ -978,6 +1015,7 @@ def _select_scored(
                     features,
                     context.thresholds,
                     selected_rows=selected,
+                    selector_pool_stats=selector_pool_stats,
                 )
                 features.update(details)
                 audit_by_key[_row_key(row)] = _audit_item(
@@ -1155,6 +1193,12 @@ def _audit_item(
         "selector_mode": features.get("selector_mode", ""),
         "turnover_penalty": features.get("turnover_penalty", ""),
         "turnover_structure_penalty": features.get("turnover_structure_penalty", ""),
+        "selector_pool_turnover_p80": features.get("selector_pool_turnover_p80", ""),
+        "selector_pool_turnover_p90": features.get("selector_pool_turnover_p90", ""),
+        "selector_pool_turnover_p95": features.get("selector_pool_turnover_p95", ""),
+        "high_turnover_p80_count_before_pick": features.get("high_turnover_p80_count_before_pick", ""),
+        "high_turnover_p90_count_before_pick": features.get("high_turnover_p90_count_before_pick", ""),
+        "turnover_tail_penalty": features.get("turnover_tail_penalty", ""),
         "liquidity_penalty": features.get("liquidity_penalty", ""),
         "capacity_penalty": features.get("capacity_penalty", ""),
         "registry_symbolic_corr_penalty": features.get("registry_symbolic_corr_penalty", ""),

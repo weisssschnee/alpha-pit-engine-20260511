@@ -21,6 +21,8 @@ ARMS = {
     "I1": ("i1", "Phase3I_I1_G2_cost_turnover_constrained"),
     "I2": ("i2", "Phase3I_I2_G2_capacity_liquidity"),
     "I3": ("i3", "Phase3I_I3_G2_book_proxy_hardened"),
+    "I1V2": ("i1v2", "Phase3I_I1_v2_turnover_tail_guard"),
+    "I3V2": ("i3v2", "Phase3I_I3_v2_queue_diversity"),
 }
 
 
@@ -167,14 +169,16 @@ def _overlap(left: set[str], right: set[str]) -> dict[str, Any]:
     }
 
 
-def audit_dryrun(run_root: Path, feature_preflight: Path | None = None) -> dict[str, Any]:
-    arms = [_summarize_arm(run_root, label, short, name) for label, (short, name) in ARMS.items()]
+def audit_dryrun(run_root: Path, feature_preflight: Path | None = None, labels: list[str] | None = None) -> dict[str, Any]:
+    labels = labels or ["I0", "I1", "I2", "I3"]
+    arms = [_summarize_arm(run_root, label, *ARMS[label]) for label in labels]
     by_label = {row["label"]: row for row in arms}
-    overlaps = {
-        "I0_vs_I1": _overlap(by_label["I0"]["selected_keys"], by_label["I1"]["selected_keys"]),
-        "I0_vs_I3": _overlap(by_label["I0"]["selected_keys"], by_label["I3"]["selected_keys"]),
-        "I0_vs_I2": _overlap(by_label["I0"]["selected_keys"], by_label["I2"]["selected_keys"]),
-    }
+    overlaps = {}
+    if "I0" in by_label:
+        for label, row in by_label.items():
+            if label == "I0":
+                continue
+            overlaps[f"I0_vs_{label}"] = _overlap(by_label["I0"]["selected_keys"], row["selected_keys"])
     feature_report = _read_json(feature_preflight) if feature_preflight and feature_preflight.exists() else {}
     i2_status = ((feature_report.get("requirements") or {}).get("I2") or {}).get("status") or "unknown"
 
@@ -183,14 +187,21 @@ def audit_dryrun(run_root: Path, feature_preflight: Path | None = None) -> dict[
         fail_reasons.append("missing_report_or_selector_audit")
     if any(row["selected_count"] != 64 for row in arms):
         fail_reasons.append("selected_count_not_64")
-    if overlaps["I0_vs_I1"]["overlap_ratio_min_denom"] > 0.95:
-        fail_reasons.append("I1_queue_overlap_gt_95pct_with_I0")
-    if by_label["I1"]["p90_turnover_proxy"] is not None and by_label["I0"]["p90_turnover_proxy"] is not None:
-        if by_label["I1"]["p90_turnover_proxy"] >= by_label["I0"]["p90_turnover_proxy"]:
-            fail_reasons.append("I1_p90_turnover_not_below_I0")
-    if by_label["I3"]["mean_selected_queue_signal_corr"] is not None and by_label["I0"]["mean_selected_queue_signal_corr"] is not None:
-        if by_label["I3"]["mean_selected_queue_signal_corr"] >= by_label["I0"]["mean_selected_queue_signal_corr"]:
-            fail_reasons.append("I3_selected_queue_signal_corr_not_below_I0")
+    turnover_label = "I1V2" if "I1V2" in by_label else "I1"
+    diversity_label = "I3V2" if "I3V2" in by_label else "I3"
+    if f"I0_vs_{turnover_label}" in overlaps and overlaps[f"I0_vs_{turnover_label}"]["overlap_ratio_min_denom"] > 0.95:
+        fail_reasons.append(f"{turnover_label}_queue_overlap_gt_95pct_with_I0")
+    if turnover_label in by_label and "I0" in by_label:
+        if by_label[turnover_label]["p90_turnover_proxy"] is not None and by_label["I0"]["p90_turnover_proxy"] is not None:
+            if by_label[turnover_label]["p90_turnover_proxy"] >= by_label["I0"]["p90_turnover_proxy"]:
+                fail_reasons.append(f"{turnover_label}_p90_turnover_not_below_I0")
+        if by_label[turnover_label]["median_turnover_proxy"] is not None and by_label["I0"]["median_turnover_proxy"] is not None:
+            if by_label[turnover_label]["median_turnover_proxy"] > by_label["I0"]["median_turnover_proxy"]:
+                fail_reasons.append(f"{turnover_label}_median_turnover_above_I0")
+    if diversity_label in by_label and "I0" in by_label:
+        if by_label[diversity_label]["mean_selected_queue_signal_corr"] is not None and by_label["I0"]["mean_selected_queue_signal_corr"] is not None:
+            if by_label[diversity_label]["mean_selected_queue_signal_corr"] >= by_label["I0"]["mean_selected_queue_signal_corr"]:
+                fail_reasons.append(f"{diversity_label}_selected_queue_signal_corr_not_below_I0")
     if any(row["leakage_flag_count"] for row in arms):
         fail_reasons.append("selector_audit_reports_forbidden_replay_label_usage")
     if i2_status == "diagnostic_only":
@@ -204,6 +215,7 @@ def audit_dryrun(run_root: Path, feature_preflight: Path | None = None) -> dict[
         "run_root": str(run_root),
         "feature_preflight_path": str(feature_preflight) if feature_preflight else "",
         "i2_status": i2_status,
+        "evaluated_labels": labels,
         "arms": [{key: value for key, value in row.items() if key != "selected_keys"} for row in arms],
         "queue_overlaps": overlaps,
         "fail_reasons": fail_reasons,
@@ -252,8 +264,9 @@ def main() -> int:
     parser.add_argument("--run-root", type=Path, default=DEFAULT_RUN_ROOT)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--feature-preflight", type=Path, default=None)
+    parser.add_argument("--labels", nargs="*", default=["I0", "I1", "I2", "I3"], choices=sorted(ARMS))
     args = parser.parse_args()
-    report = audit_dryrun(args.run_root, feature_preflight=args.feature_preflight)
+    report = audit_dryrun(args.run_root, feature_preflight=args.feature_preflight, labels=args.labels)
     _write_json(args.output_root / "phase3i_selector_only_dryrun_audit.json", report)
     _write_csv(args.output_root / "phase3i_selector_only_dryrun_arms.csv", report["arms"])
     _write_markdown(args.output_root / "PHASE3I_SELECTOR_ONLY_DRYRUN_AUDIT_2026-05-16.md", report)
