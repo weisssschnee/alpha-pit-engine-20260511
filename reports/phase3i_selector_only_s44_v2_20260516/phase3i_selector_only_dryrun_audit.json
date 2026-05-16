@@ -1,0 +1,82 @@
+{
+  "created_at": "2026-05-16T16:28:38+08:00",
+  "decision": "PASS_PHASE3I_SELECTOR_ONLY_DRYRUN",
+  "run_root": "D:\\p3i_selector_only_20260516\\s44_v2_tailguard\\selector",
+  "feature_preflight_path": "D:\\p3i_selector_only_20260516\\s44_v2_tailguard\\feature_preflight\\phase3i_feature_preflight.json",
+  "i2_status": "promotion_eligible",
+  "evaluated_labels": [
+    "I0",
+    "I1V2"
+  ],
+  "arms": [
+    {
+      "label": "I0",
+      "short": "i0",
+      "arm": "Phase3I_I0_G2_primary",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_diversified_proxy",
+      "generation_profile": "G2_phase3i_primary",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.0681,
+      "p90_turnover_proxy": 0.120607,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.416291,
+      "median_selected_queue_signal_corr": 0.429741,
+      "median_liquidity_proxy": 2185264637.670897,
+      "median_capacity_proxy": 59039243100.44362,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 0
+    },
+    {
+      "label": "I1V2",
+      "short": "i1v2",
+      "arm": "Phase3I_I1_v2_turnover_tail_guard",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_turnover_tail_guard_v2",
+      "generation_profile": "G2_turnover_tail_guard_v2",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.053544,
+      "p90_turnover_proxy": 0.091129,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.494763,
+      "median_selected_queue_signal_corr": 0.540722,
+      "median_liquidity_proxy": 2635455773.272198,
+      "median_capacity_proxy": 93061752986.522,
+      "agnostic_selected_count": 23,
+      "repair_expansion_selected_count": 9,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 23,
+        "formula_gen_v2_repair_expansion": 9,
+        "r0_cem_led": 32
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 15
+    }
+  ],
+  "queue_overlaps": {
+    "I0_vs_I1V2": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 48,
+      "overlap_ratio_min_denom": 0.75
+    }
+  },
+  "fail_reasons": []
+}

@@ -1,0 +1,10 @@
+﻿{
+    "created_at":  "2026-05-16T16:28:05.2463200+08:00",
+    "phase":  "Phase3I",
+    "mode":  "selector_only_no_replay_v2_tailguard",
+    "seed":  45,
+    "root":  "D:\\p3i_selector_only_20260516\\s45_v2_tailguard",
+    "pool":  "D:\\p3i_selector_only_20260516\\s45_v2_tailguard\\shared_candidate_pool.json",
+    "feature_preflight":  "D:\\p3i_selector_only_20260516\\s45_v2_tailguard\\feature_preflight\\phase3i_feature_preflight.json",
+    "selector_audit":  "D:\\p3i_selector_only_20260516\\s45_v2_tailguard\\selector_audit\\phase3i_selector_only_dryrun_audit.json"
+}

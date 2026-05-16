@@ -1,0 +1,82 @@
+{
+  "created_at": "2026-05-16T16:27:28+08:00",
+  "decision": "PASS_PHASE3I_SELECTOR_ONLY_DRYRUN",
+  "run_root": "D:\\p3i_selector_only_20260516\\s43_v2_tailguard\\selector",
+  "feature_preflight_path": "D:\\p3i_selector_only_20260516\\s43_v2_tailguard\\feature_preflight\\phase3i_feature_preflight.json",
+  "i2_status": "promotion_eligible",
+  "evaluated_labels": [
+    "I0",
+    "I1V2"
+  ],
+  "arms": [
+    {
+      "label": "I0",
+      "short": "i0",
+      "arm": "Phase3I_I0_G2_primary",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_diversified_proxy",
+      "generation_profile": "G2_phase3i_primary",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.056867,
+      "p90_turnover_proxy": 0.102982,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.422184,
+      "median_selected_queue_signal_corr": 0.41918,
+      "median_liquidity_proxy": 1777839710.243464,
+      "median_capacity_proxy": 50712848244.672226,
+      "agnostic_selected_count": 24,
+      "repair_expansion_selected_count": 9,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 24,
+        "formula_gen_v2_repair_expansion": 9,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 24
+    },
+    {
+      "label": "I1V2",
+      "short": "i1v2",
+      "arm": "Phase3I_I1_v2_turnover_tail_guard",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_turnover_tail_guard_v2",
+      "generation_profile": "G2_turnover_tail_guard_v2",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.052381,
+      "p90_turnover_proxy": 0.090568,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.508318,
+      "median_selected_queue_signal_corr": 0.528315,
+      "median_liquidity_proxy": 1618128666.484868,
+      "median_capacity_proxy": 56157533202.04907,
+      "agnostic_selected_count": 22,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 22,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 34
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 40
+    }
+  ],
+  "queue_overlaps": {
+    "I0_vs_I1V2": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 47,
+      "overlap_ratio_min_denom": 0.734375
+    }
+  },
+  "fail_reasons": []
+}
