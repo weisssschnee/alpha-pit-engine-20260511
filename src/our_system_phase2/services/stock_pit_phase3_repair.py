@@ -62,6 +62,7 @@ PHASE3_DEFAULT_FAILURE_DETAIL = Path("reports/PHASE3_REPAIR_AUDIT_2026-05-11_fai
 PHASE3B_UNION_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3B_union_deployable_clusters_20260512.json"
 PHASE3D_CUMULATIVE_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3D_cumulative_deployable_clusters_20260514.json"
 PHASE3E_CUMULATIVE_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3E_cumulative_deployable_clusters_20260514.json"
+PHASE3H_CUMULATIVE_BASELINE_PATH = Path(__file__).resolve().parents[1] / "runtime" / "baselines" / "phase3H_cumulative_deployable_clusters_20260515.json"
 
 
 def _stable_hash(value: str, length: int = 16) -> str:
@@ -1541,6 +1542,67 @@ PHASE3_ABLATION_ARMS = {
         "strict_vector_cluster_cap": True,
         "book_marginal_mode": "signal_vector_proxy",
     },
+    "Phase3I_I0_G2_primary": {
+        "description": "Phase3I I0: G2 signal-vector discovery primary fresh-seed control",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_diversified_proxy",
+        "generation_profile": "G2_phase3i_primary",
+        "phase3_selector_baseline": "phase3H_cumulative_149",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 149,
+        "phase3_selector_vector_baseline_count": 137,
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3I_I1_G2_cost_turnover_constrained": {
+        "description": "Phase3I I1: G2 with stronger cluster-level cost and turnover hardening",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_cost_turnover_constrained_proxy",
+        "generation_profile": "G2_cost_turnover_constrained",
+        "phase3_selector_baseline": "phase3H_cumulative_149",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 149,
+        "phase3_selector_vector_baseline_count": 137,
+        "target_median_turnover": "below_I0",
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3I_I2_G2_capacity_liquidity": {
+        "description": "Phase3I I2: G2 with capacity/liquidity-aware hardening, diagnostic-only if proxies are insufficient",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_capacity_liquidity_proxy",
+        "generation_profile": "G2_capacity_liquidity",
+        "phase3_selector_baseline": "phase3H_cumulative_149",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 149,
+        "phase3_selector_vector_baseline_count": 137,
+        "book_marginal_mode": "signal_vector_proxy",
+    },
+    "Phase3I_I3_G2_book_proxy_hardened": {
+        "description": "Phase3I I3: G2 with stronger registry/queue signal-corr book-proxy hardening, not true return residual",
+        "cluster_quota": True,
+        "direct_r0_quota": True,
+        "repair_quota_mode": "phase3A_hard",
+        "phase3d_base": "stable",
+        "phase3d_mode": "no_defined_direct",
+        "selector_profile": "signal_vector_book_proxy_hardened",
+        "generation_profile": "G2_book_proxy_hardened",
+        "phase3_selector_baseline": "phase3H_cumulative_149",
+        "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+        "phase3_discovery_baseline_count": 149,
+        "phase3_selector_vector_baseline_count": 137,
+        "book_marginal_mode": "signal_vector_proxy",
+    },
 }
 
 
@@ -1592,6 +1654,8 @@ def _ablation_budgets(total: int, arm: str) -> dict[str, int]:
 
 def _selector_baseline_path(ablation_arm: str, arm_config: dict[str, Any]) -> Path:
     baseline = str(arm_config.get("phase3_selector_baseline") or "")
+    if baseline == "phase3H_cumulative_149" or ablation_arm.startswith("Phase3I_"):
+        return PHASE3H_CUMULATIVE_BASELINE_PATH
     if baseline == "phase3E_cumulative_134" or ablation_arm.startswith("Phase3F_") or ablation_arm.startswith("Phase3G_") or ablation_arm.startswith("Phase3H_"):
         return PHASE3E_CUMULATIVE_BASELINE_PATH
     return PHASE3D_CUMULATIVE_BASELINE_PATH

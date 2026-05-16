@@ -8,6 +8,9 @@ PHASE3G_VECTOR_SELECTOR_VERSION = "phase3g-signal-vector-selector-v1-2026-05-14"
 PHASE3G_SIGNAL_VECTOR_SELECTOR_PROFILES = {
     "signal_vector_diversified_proxy",
     "signal_vector_turnover_calibrated_proxy",
+    "signal_vector_cost_turnover_constrained_proxy",
+    "signal_vector_capacity_liquidity_proxy",
+    "signal_vector_book_proxy_hardened",
     "strong_signal_vector_proxy",
 }
 
@@ -42,6 +45,9 @@ def score_signal_vector_selector(
 ) -> tuple[float, bool, str, dict[str, Any]]:
     strengthened = selector_profile == "strong_signal_vector_proxy"
     turnover_calibrated = selector_profile == "signal_vector_turnover_calibrated_proxy"
+    cost_turnover_constrained = selector_profile == "signal_vector_cost_turnover_constrained_proxy"
+    capacity_liquidity = selector_profile == "signal_vector_capacity_liquidity_proxy"
+    book_proxy_hardened = selector_profile == "signal_vector_book_proxy_hardened"
     known_cluster = str(features.get("known_signal_cluster_id") or "")
     provisional_cluster = str(features.get("provisional_signal_cluster_id") or "")
     source_lane = str(features.get("source_lane") or "")
@@ -83,6 +89,11 @@ def score_signal_vector_selector(
     turnover_penalty = threshold_penalty(features.get("turnover_proxy"), getattr(thresholds, "turnover_p90", None))
     turnover_structure_penalty = float(features.get("turnover_structure_risk") or 0.0)
     complexity_penalty = threshold_penalty(float(features.get("complexity_score") or 0.0), getattr(thresholds, "complexity_p90", None))
+    liquidity_proxy = float(features.get("liquidity_proxy") or 0.0)
+    capacity_proxy = float(features.get("capacity_proxy") or 0.0)
+    liquidity_penalty = 1.0 / max(1.0, math.log1p(max(0.0, liquidity_proxy)))
+    capacity_penalty = 1.0 / max(1.0, math.log1p(max(0.0, capacity_proxy)))
+    registry_symbolic_corr = float(features.get("max_corr_to_103_registry") or 0.0)
 
     if strengthened:
         score = (
@@ -109,6 +120,48 @@ def score_signal_vector_selector(
             - 1.10 * turnover_structure_penalty
             - 0.20 * complexity_penalty
             - 0.30 * cluster_special_penalty
+        )
+    elif cost_turnover_constrained:
+        score = (
+            float(base_e3_score)
+            + 0.40 * novelty
+            - 0.95 * selected_corr
+            - 0.60 * known_penalty
+            - 0.50 * provisional_penalty
+            - 0.40 * source_lane_penalty
+            - 0.75 * turnover_penalty
+            - 1.45 * turnover_structure_penalty
+            - 0.20 * complexity_penalty
+            - 0.30 * cluster_special_penalty
+        )
+    elif capacity_liquidity:
+        score = (
+            float(base_e3_score)
+            + 0.42 * novelty
+            - 0.95 * selected_corr
+            - 0.58 * known_penalty
+            - 0.48 * provisional_penalty
+            - 0.40 * source_lane_penalty
+            - 0.35 * turnover_penalty
+            - 0.70 * turnover_structure_penalty
+            - 0.25 * liquidity_penalty
+            - 0.25 * capacity_penalty
+            - 0.18 * complexity_penalty
+            - 0.30 * cluster_special_penalty
+        )
+    elif book_proxy_hardened:
+        score = (
+            float(base_e3_score)
+            + 0.35 * novelty
+            - 1.10 * selected_corr
+            - 0.55 * registry_symbolic_corr
+            - 0.65 * known_penalty
+            - 0.55 * provisional_penalty
+            - 0.45 * source_lane_penalty
+            - 0.45 * turnover_penalty
+            - 0.85 * turnover_structure_penalty
+            - 0.20 * complexity_penalty
+            - 0.32 * cluster_special_penalty
         )
     else:
         score = (
@@ -137,6 +190,11 @@ def score_signal_vector_selector(
         "cluster_003_signal_penalty": round(float(cluster_special_penalty if known_cluster == "cluster_003" else 0.0), 6),
         "turnover_penalty": round(float(turnover_penalty), 6),
         "turnover_structure_penalty": round(float(turnover_structure_penalty), 6),
+        "liquidity_proxy": round(float(liquidity_proxy), 6),
+        "capacity_proxy": round(float(capacity_proxy), 6),
+        "liquidity_penalty": round(float(liquidity_penalty), 6),
+        "capacity_penalty": round(float(capacity_penalty), 6),
+        "registry_symbolic_corr_penalty": round(float(registry_symbolic_corr), 6),
         "complexity_penalty": round(float(complexity_penalty), 6),
         "cap_reject_reason": "|".join(cap_reasons),
         "selector_mode": selector_profile,

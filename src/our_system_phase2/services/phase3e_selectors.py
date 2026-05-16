@@ -364,6 +364,24 @@ def feature_row(
             "mean_window_rank_ic",
         ],
     )
+    liquidity_proxy, liquidity_source = _first_number(
+        row,
+        [
+            "mean_window_long_selected_amount",
+            "cheap_backtest_liquidity",
+            "liquidity_proxy",
+        ],
+    )
+    capacity_proxy, capacity_source = _first_number(
+        row,
+        [
+            "mean_window_long_selected_final_float_market_cap",
+            "mean_window_long_selected_final_total_market_cap",
+            "mean_window_long_selected_final_float_market_cap_billion",
+            "mean_window_long_selected_final_total_market_cap_billion",
+            "capacity_proxy",
+        ],
+    )
     factor_exposure, factor_source = _first_number(row, ["factor_exposure_proxy", "factor_exposure", "beta_exposure"])
     sector_concentration, sector_source = _first_number(row, ["sector_concentration_proxy", "sector_exposure"])
     complexity = complexity_score(expression)
@@ -381,6 +399,10 @@ def feature_row(
         missing.append("turnover_proxy")
     if cost_adjusted is None:
         missing.append("cost_adjusted_proxy")
+    if liquidity_proxy is None:
+        missing.append("liquidity_proxy")
+    if capacity_proxy is None:
+        missing.append("capacity_proxy")
     if factor_exposure is None:
         missing.append("factor_exposure_proxy")
     if sector_concentration is None:
@@ -440,6 +462,10 @@ def feature_row(
         "turnover_proxy_source": turnover_source,
         "cost_adjusted_proxy": cost_adjusted,
         "cost_adjusted_proxy_source": cost_source,
+        "liquidity_proxy": liquidity_proxy,
+        "liquidity_proxy_source": liquidity_source,
+        "capacity_proxy": capacity_proxy,
+        "capacity_proxy_source": capacity_source,
         "factor_exposure_proxy": factor_exposure,
         "factor_exposure_proxy_source": factor_source,
         "sector_concentration_proxy": sector_concentration,
@@ -656,6 +682,11 @@ def _attach_selector_feature_metadata(item: dict[str, Any], features: dict[str, 
         "turnover_structure_risk",
         "turnover_penalty",
         "turnover_structure_penalty",
+        "liquidity_proxy",
+        "capacity_proxy",
+        "liquidity_penalty",
+        "capacity_penalty",
+        "registry_symbolic_corr_penalty",
         "complexity_penalty",
         "cap_reject_reason",
         "signal_vector_id",
@@ -1064,6 +1095,10 @@ def _audit_item(
         "turnover_proxy": features["turnover_proxy"],
         "turnover_structure_risk": features.get("turnover_structure_risk", ""),
         "cost_adjusted_proxy": features["cost_adjusted_proxy"],
+        "liquidity_proxy": features.get("liquidity_proxy"),
+        "liquidity_proxy_source": features.get("liquidity_proxy_source"),
+        "capacity_proxy": features.get("capacity_proxy"),
+        "capacity_proxy_source": features.get("capacity_proxy_source"),
         "factor_exposure_proxy": features["factor_exposure_proxy"],
         "sector_concentration_proxy": features["sector_concentration_proxy"],
         "complexity_score": features["complexity_score"],
@@ -1120,6 +1155,9 @@ def _audit_item(
         "selector_mode": features.get("selector_mode", ""),
         "turnover_penalty": features.get("turnover_penalty", ""),
         "turnover_structure_penalty": features.get("turnover_structure_penalty", ""),
+        "liquidity_penalty": features.get("liquidity_penalty", ""),
+        "capacity_penalty": features.get("capacity_penalty", ""),
+        "registry_symbolic_corr_penalty": features.get("registry_symbolic_corr_penalty", ""),
         "complexity_penalty": features.get("complexity_penalty", ""),
         "hard_gate_pass": hard_pass,
         "hard_reject_reason": reject_reason,
@@ -1181,6 +1219,8 @@ def feature_preflight(
             "turnover_proxy": coverage("turnover_proxy"),
             "turnover_structure_risk": coverage("turnover_structure_risk"),
             "cost_adjusted_proxy": coverage("cost_adjusted_proxy"),
+            "liquidity_proxy": coverage("liquidity_proxy"),
+            "capacity_proxy": coverage("capacity_proxy"),
             "factor_exposure_proxy": coverage("factor_exposure_proxy"),
             "sector_concentration_proxy": coverage("sector_concentration_proxy"),
             "candidate_return_vector": 0.0,
