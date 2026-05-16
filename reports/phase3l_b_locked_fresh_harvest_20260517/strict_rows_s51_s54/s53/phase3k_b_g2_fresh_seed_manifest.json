@@ -1,0 +1,47 @@
+{
+  "created_at": "2026-05-16T19:18:20+00:00",
+  "phase": "Phase3K-B",
+  "version": "phase3k-b-g2-fresh-v1-2026-05-16",
+  "objective": "fresh G2 discovery output for locked J2/J4_relaxed filter generalization",
+  "seed": 53,
+  "root": "D:\\p3l_b_parallel2_20260517\\s53",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "selector": "G2_signal_vector_diversified",
+  "ablation_arm": "Phase3I_I0_G2_primary",
+  "candidate_budget": 64,
+  "strict_audit_budget": 64,
+  "replay_audit_count": 64,
+  "discovery_baseline": 149,
+  "shared_pool_hash": "2c1cca74b152ee7a5cd5a568d310fba10fa5b9f166b6a519fec29f9c6ce64f47",
+  "frozen_queue_hash": "2355f386592223a2dafe4837a19874a6815f758202914dbe6e8e4db5acd2de0b",
+  "strict_rows_hash": "b3187ea73c87636786c6588683160db3f6f0b6dbdc182251af90ab470950c2f6",
+  "pool_summary": {
+    "candidate_pool_count": 324,
+    "default_selected_count": 55,
+    "source_ablation_arm": "Phase3I_I0_G2_primary"
+  },
+  "paths": {
+    "seed_root": "D:\\p3l_b_parallel2_20260517\\s53",
+    "source_root": "D:\\p3l_b_parallel2_20260517\\s53\\shared_pool_source\\i0_source",
+    "pool": "D:\\p3l_b_parallel2_20260517\\s53\\shared_candidate_pool.json",
+    "selector_root": "D:\\p3l_b_parallel2_20260517\\s53\\selector",
+    "replay_root": "D:\\p3l_b_parallel2_20260517\\s53\\official_replay",
+    "logs": "D:\\p3l_b_parallel2_20260517\\s53\\logs",
+    "manifest": "D:\\p3l_b_parallel2_20260517\\s53\\phase3k_b_g2_fresh_seed_manifest.json"
+  },
+  "steps": [
+    {
+      "step": "generate_shared_pool",
+      "status": "completed"
+    },
+    {
+      "step": "apply_g2_selector",
+      "status": "completed"
+    },
+    {
+      "step": "official_g2_replay",
+      "status": "completed"
+    }
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

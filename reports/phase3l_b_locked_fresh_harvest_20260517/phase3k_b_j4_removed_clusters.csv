@@ -1,0 +1,2 @@
+﻿bad_quality_flag,capacity_percentile,capacity_proxy,cluster_id,cost_adjusted_score,cost_percentile,limit_hit_rate,raw_share,remove_reason,representative_expression,source_lane,suspension_rate,turnover
+True,0.028571,852884.015405,s51_cluster_035,0.35946,0.114286,0.005131,0.022222,low_amount_and_low_capacity,"Neg(CSRank(CSResidual(CSRank(Mean($final_float_market_cap,34)),CSRank(Mean($close,1)))))",r0_cem_led,0.0,0.02848

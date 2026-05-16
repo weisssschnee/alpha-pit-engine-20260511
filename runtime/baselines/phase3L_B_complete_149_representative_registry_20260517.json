@@ -1,0 +1,4345 @@
+{
+  "baseline_name": "phase3K_complete_149_representative_registry_20260517",
+  "created_at": "2026-05-17T03:30:39+08:00",
+  "declared_cluster_count": 149,
+  "representative_rows": 149,
+  "source_inputs": {
+    "phase3d_baseline": "src\\our_system_phase2\\runtime\\baselines\\phase3D_cumulative_deployable_clusters_20260514.json",
+    "phase3e_aggregate": "reports\\phase3e_official_s21_s24_company_20260514\\phase3E_official_s21_s24_global_aggregate.json",
+    "phase3e_clustered_rows": "reports\\phase3e_official_s21_s24_company_20260514\\phase3E_official_s21_s24_global_clustered_rows.json",
+    "phase3h_baseline": "src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json"
+  },
+  "source_counts": {
+    "phase3D_previous": 103,
+    "phase3E_new": 31,
+    "phase3H_new": 15
+  },
+  "quality": {
+    "missing_representative_expression_count": 0,
+    "duplicate_canonical_expression_count": 0,
+    "is_complete_149_representative_registry": true
+  },
+  "notes": [
+    "This registry repairs the earlier 149 declared / 144 representative gap by using Phase3D's 103 representative rows directly, then appending Phase3E's 31 new representatives and Phase3H's 15 new representatives.",
+    "No representative rows are fabricated. Missing expressions would make the registry fail the completeness gate."
+  ],
+  "deployable_representatives": [
+    {
+      "registry_entry_id": "registry_001",
+      "legacy_cluster_id": "cluster_002",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Mean($amount,8),Mean($amount,5)))",
+      "canonical_expression": "CSRank(Sub(Mean($amount,8),Mean($amount,5)))",
+      "candidate_id": "phase3repair-direct_quota_rejected-operator_sanitize-847125cd4743",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$amount"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_002",
+      "legacy_cluster_id": "cluster_004",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,2)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,2)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-a9507bc750f6",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_003",
+      "legacy_cluster_id": "cluster_005",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs($close),34)),ZScore(Mean(Abs($amount),34))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs($close),34)),ZScore(Mean(Abs($amount),34))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-363114a10d39",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_004",
+      "legacy_cluster_id": "cluster_007",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Mean($high,6),Mean($high,3)))",
+      "canonical_expression": "CSRank(Sub(Mean($high,6),Mean($high,3)))",
+      "candidate_id": "phase3repair-direct_quota_rejected-operator_sanitize-056006c83140",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$high"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_005",
+      "legacy_cluster_id": "cluster_008",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Mean(Abs($close),21)),CSRank(Mean(Abs($final_float_market_cap),8))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Mean(Abs($close),21)),CSRank(Mean(Abs($final_float_market_cap),8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-9f9a7656ebc5",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_006",
+      "legacy_cluster_id": "cluster_010",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Mean($close,8),Mean($close,5)))",
+      "canonical_expression": "CSRank(Sub(Mean($close,8),Mean($close,5)))",
+      "candidate_id": "phase3repair-direct_quota_rejected-operator_sanitize-04c5cf6d3f47",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_007",
+      "legacy_cluster_id": "cluster_011",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Mean($amount,6),Mean($amount,3)))",
+      "canonical_expression": "CSRank(Sub(Mean($amount,6),Mean($amount,3)))",
+      "candidate_id": "phase3repair-direct_quota_rejected-operator_sanitize-09b8ad3f0510",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$amount"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_008",
+      "legacy_cluster_id": "cluster_012",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($close,8)),ZScore(Std($final_float_market_cap,34))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($close,8)),ZScore(Std($final_float_market_cap,34))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-42de4a8e84ec",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_009",
+      "legacy_cluster_id": "cluster_013",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($close,2)),ZScore(Std($final_float_market_cap,2))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($close,2)),ZScore(Std($final_float_market_cap,2))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-e26646ccab93",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_010",
+      "legacy_cluster_id": "cluster_014",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($final_float_market_cap,21)),ZScore(Mean($close,21))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($final_float_market_cap,21)),ZScore(Mean($close,21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-1167107a9b52",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_011",
+      "legacy_cluster_id": "cluster_016",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($amount,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($amount,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-36177a8ef475",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_012",
+      "legacy_cluster_id": "cluster_017",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,5)),ZScore(Std($close,5))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,5)),ZScore(Std($close,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-557a79f66f15",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_013",
+      "legacy_cluster_id": "cluster_018",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,2)),ZScore(Std($close,34))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,2)),ZScore(Std($close,34))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-148b02b5da4b",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_014",
+      "legacy_cluster_id": "cluster_019",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($volume,8)),CSRank(Delta($close,8)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Delta($volume,8)),CSRank(Delta($close,8)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-99867d1154a3",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_015",
+      "legacy_cluster_id": "cluster_020",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Delta($close,8)),CSRank(Delta($amount,8))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Delta($close,8)),CSRank(Delta($amount,8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-c3ee64b8f00b",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_016",
+      "legacy_cluster_id": "cluster_021",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,8))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-dbe4aed04209",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_017",
+      "legacy_cluster_id": "cluster_022",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Delta($close,34))",
+      "canonical_expression": "CSRank(Delta($close,34))",
+      "candidate_id": "phase3repair-failure_detail-duplicate_escape-e8fd32a0b1dd",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_018",
+      "legacy_cluster_id": "cluster_023",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($close,21)),ZScore(Std($amount,5))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($close,21)),ZScore(Std($amount,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-a44aed9aa7e7",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_019",
+      "legacy_cluster_id": "cluster_024",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($close,34)),ZScore(Mean($close,8))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($close,34)),ZScore(Mean($close,8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-253033308ac3",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_020",
+      "legacy_cluster_id": "cluster_025",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($final_float_market_cap,2)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($final_float_market_cap,2)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-a80b77d5fc5f",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_021",
+      "legacy_cluster_id": "cluster_026",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($close,34)),ZScore(Delta($close,34))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($close,34)),ZScore(Delta($close,34))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-ae4bfdae0522",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_022",
+      "legacy_cluster_id": "cluster_027",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($open,8)),ZScore(Delta($vwap,11))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($open,8)),ZScore(Delta($vwap,11))))",
+      "candidate_id": "phase3repair-failure_detail-duplicate_escape-6a69c0324828",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$open",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_023",
+      "legacy_cluster_id": "cluster_028",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,5)),ZScore(Delta($final_float_market_cap,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,5)),ZScore(Delta($final_float_market_cap,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-1f40eb616bbd",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_024",
+      "legacy_cluster_id": "cluster_030",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,21)),CSRank(Std($final_float_market_cap,5)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,21)),CSRank(Std($final_float_market_cap,5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-8ffd4948c769",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$final_float_market_cap",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Neg",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_025",
+      "legacy_cluster_id": "cluster_031",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($close,5)),ZScore(Delta($close,8))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($close,5)),ZScore(Delta($close,8))))",
+      "candidate_id": "phase3repair-failure_detail-duplicate_escape-59cc6315adb3",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_026",
+      "legacy_cluster_id": "cluster_032",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($final_float_market_cap,34)),ZScore(Delta($close,21))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($final_float_market_cap,34)),ZScore(Delta($close,21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-e776378a5a65",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_027",
+      "legacy_cluster_id": "cluster_033",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($close,34)),ZScore(Delta($close,17))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($close,34)),ZScore(Delta($close,17))))",
+      "candidate_id": "phase3repair-direct_quota_rejected-duplicate_escape-9a04fa99a7ca",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_028",
+      "legacy_cluster_id": "cluster_034",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank($amount),CSRank($volume)))",
+      "canonical_expression": "CSRank(CSResidual(CSRank($amount),CSRank($volume)))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-ac280b97bfd0",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$amount",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_029",
+      "legacy_cluster_id": "cluster_035",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mean(Abs($final_float_market_cap),21)),CSRank(Mean(Abs($close),34)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Mean(Abs($final_float_market_cap),21)),CSRank(Mean(Abs($close),34)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-80b0c644a304",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_030",
+      "legacy_cluster_id": "cluster_036",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,5)),ZScore(Delta($close,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,5)),ZScore(Delta($close,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-08eefe9806ba",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_031",
+      "legacy_cluster_id": "cluster_037",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Neg(CSRank(Mean(Abs($ret),13)))),CSRank(Neg(CSRank(Mean(Abs($ret),21))))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Neg(CSRank(Mean(Abs($ret),13)))),CSRank(Neg(CSRank(Mean(Abs($ret),21))))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-9cc9fb9d45f6",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$ret"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_032",
+      "legacy_cluster_id": "cluster_038",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Std($volume,34)))",
+      "canonical_expression": "Neg(CSRank(Std($volume,34)))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-8bf0a8b08355",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Neg",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_033",
+      "legacy_cluster_id": "cluster_039",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Neg(CSRank(Mean(Abs($ret),2)))),ZScore(CSRank(Mean(Abs($ret),8)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Neg(CSRank(Mean(Abs($ret),2)))),ZScore(CSRank(Mean(Abs($ret),8)))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-fc0abf958798",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$ret"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_034",
+      "legacy_cluster_id": "cluster_040",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs($volume),8)),ZScore(Mean(Abs($close),8))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs($volume),8)),ZScore(Mean(Abs($close),8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-c4e03ce60567",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$volume"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_035",
+      "legacy_cluster_id": "cluster_044",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(CSRank(Mom($close,21))),CSRank(Neg(CSRank(Mom($close,13))))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(CSRank(Mom($close,21))),CSRank(Neg(CSRank(Mom($close,13))))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-36a13a40253b",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Mom",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_036",
+      "legacy_cluster_id": "cluster_045",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Mean(Abs($volume),8)),ZScore(Mean(Abs($amount),5)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Mean(Abs($volume),8)),ZScore(Mean(Abs($amount),5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-0180242ca2b8",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$volume"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_037",
+      "legacy_cluster_id": "cluster_046",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,5))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-0cb55f26314f",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed12",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_038",
+      "legacy_cluster_id": "cluster_049",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Mean($close,17),Mean($close,34)))",
+      "canonical_expression": "CSRank(Sub(Mean($close,17),Mean($close,34)))",
+      "candidate_id": "phase3repair-failure_detail-operator_sanitize-1a6d0fab97f5",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_039",
+      "legacy_cluster_id": "cluster_052",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(CSRank(Mom($close,13))),CSRank(Neg(CSRank(Mom($close,3))))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(CSRank(Mom($close,13))),CSRank(Neg(CSRank(Mom($close,3))))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-951d371f3fce",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed10",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Mom",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_040",
+      "legacy_cluster_id": "cluster_054",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Std($volume,34)),ZScore(Std($final_float_market_cap,8)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Std($volume,34)),ZScore(Std($final_float_market_cap,8)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-f27f68dd4c12",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$final_float_market_cap",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Neg",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_041",
+      "legacy_cluster_id": "cluster_059",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Std($volume,2)),ZScore(Std($amount,34)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Std($volume,2)),ZScore(Std($amount,34)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-e7143aa623d9",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed11",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Neg",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_042",
+      "legacy_cluster_id": "cluster_060",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Mean($final_float_market_cap,8)),ZScore(Mean($final_float_market_cap,34)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Mean($final_float_market_cap,8)),ZScore(Mean($final_float_market_cap,34)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-2fe9747afab0",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "seed9",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_043",
+      "legacy_cluster_id": "phase3c_cluster_001",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore($open),Corr($close,Mom($final_float_market_cap,13),5)))",
+      "canonical_expression": "CSRank(Mul(ZScore($open),Corr($close,Mom($final_float_market_cap,13),5)))",
+      "candidate_id": "agnostic-freeform-b941522c10ee",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_044",
+      "legacy_cluster_id": "phase3c_cluster_004",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($amount,1)),8)),Mul(ZScore($open),CSRank($high))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($amount,1)),8)),Mul(ZScore($open),CSRank($high))))",
+      "candidate_id": "agnostic-freeform-48c8ab0de23a",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_045",
+      "legacy_cluster_id": "phase3c_cluster_007",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($final_float_market_cap,1)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($final_float_market_cap,1)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-6c729348bc",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_046",
+      "legacy_cluster_id": "phase3c_cluster_010",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore(Mean($amount,20)),ZScore(Mean($amount,2))))",
+      "canonical_expression": "CSRank(Sub(ZScore(Mean($amount,20)),ZScore(Mean($amount,2))))",
+      "candidate_id": "fgv2-ablation-S-5531bb1349",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_defined",
+      "field_list": [
+        "$amount"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_047",
+      "legacy_cluster_id": "phase3c_cluster_011",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($amount,13)),Mul(CSRank(Std($open,3)),ZScore(Mean(Abs(Delta($vwap,1)),8)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($amount,13)),Mul(CSRank(Std($open,3)),ZScore(Mean(Abs(Delta($vwap,1)),8)))))",
+      "candidate_id": "agnostic-freeform-3ce087915437",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$open",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_048",
+      "legacy_cluster_id": "phase3c_cluster_013",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Add(CSRank(Delta($final_float_market_cap,34)),CSRank($high)))",
+      "canonical_expression": "CSRank(Add(CSRank(Delta($final_float_market_cap,34)),CSRank($high)))",
+      "candidate_id": "agnostic-freeform-2d03e786509e",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$high"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_049",
+      "legacy_cluster_id": "phase3c_cluster_014",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore($vwap),ZScore($turnover_rate)))",
+      "canonical_expression": "CSRank(Sub(ZScore($vwap),ZScore($turnover_rate)))",
+      "candidate_id": "agnostic-freeform-114cb2a7ea61",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$turnover_rate",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_050",
+      "legacy_cluster_id": "phase3c_cluster_015",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore($final_float_market_cap),ZScore($close))),Mul(Mean(Mul(Sign(Delta($close,1)),Sign(Delta($amount,1))),5),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mul(ZScore($final_float_market_cap),ZScore($close))),Mul(Mean(Mul(Sign(Delta($close,1)),Sign(Delta($amount,1))),5),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "candidate_id": "fgv2-repair-add_confirmation_state-9339936017",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$amount",
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_051",
+      "legacy_cluster_id": "phase3c_cluster_018",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Std($vwap,21)),ZScore(Mean($close,21))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Std($vwap,21)),ZScore(Mean($close,21))))",
+      "candidate_id": "agnostic-freeform-23021cadc909",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_052",
+      "legacy_cluster_id": "phase3c_cluster_023",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,5)),ZScore(Mean($amount,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,5)),ZScore(Mean($amount,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-c0032679ed",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_053",
+      "legacy_cluster_id": "phase3c_cluster_024",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,1)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,1)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-31bdfaa36118",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_S0_stable_control",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_054",
+      "legacy_cluster_id": "phase3c_cluster_025",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore(Mean($close,21)),CSRank(Std($low,2))))",
+      "canonical_expression": "CSRank(Sub(ZScore(Mean($close,21)),CSRank(Std($low,2))))",
+      "candidate_id": "agnostic-freeform-f3b5e61d82f0",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$low"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Std",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_055",
+      "legacy_cluster_id": "phase3c_cluster_026",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($amount,5)),CSRank(Delta($close,5)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Delta($amount,5)),CSRank(Delta($close,5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-3293d34baffe",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_P0_productive_control",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_056",
+      "legacy_cluster_id": "phase3c_cluster_028",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($turnover_rate,8)),Mul(ZScore(Mean($low,34)),ZScore(Delta($high,21)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($turnover_rate,8)),Mul(ZScore(Mean($low,34)),ZScore(Delta($high,21)))))",
+      "candidate_id": "agnostic-freeform-d61baa56e266",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$low",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_057",
+      "legacy_cluster_id": "phase3c_cluster_030",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore(Std($final_total_market_cap,13)),ZScore(Mean(Abs(Delta($final_total_market_cap,1)),2))))",
+      "canonical_expression": "CSRank(Sub(ZScore(Std($final_total_market_cap,13)),ZScore(Mean(Abs(Delta($final_total_market_cap,1)),2))))",
+      "candidate_id": "agnostic-freeform-16ee6691243c",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Std",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_058",
+      "legacy_cluster_id": "phase3c_cluster_031",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,21)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,21)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-509d9a3e22",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_059",
+      "legacy_cluster_id": "phase3c_cluster_034",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Add(CSRank(Mom($vwap,8)),ZScore($high)))",
+      "canonical_expression": "CSRank(Add(CSRank(Mom($vwap,8)),ZScore($high)))",
+      "candidate_id": "agnostic-freeform-ffa89cf2efea",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Mom",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_060",
+      "legacy_cluster_id": "phase3c_cluster_035",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Std($high,34)),Mul(CSRank(Delta($close,21)),CSRank(Mean(Abs(Delta($vwap,1)),8)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($high,34)),Mul(CSRank(Delta($close,21)),CSRank(Mean(Abs(Delta($vwap,1)),8)))))",
+      "candidate_id": "agnostic-freeform-3bb7cb758ab5",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_061",
+      "legacy_cluster_id": "phase3c_cluster_036",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(ZScore(Std($close,5)),ZScore(Delta($vwap,2))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Std($close,5)),ZScore(Delta($vwap,2))))",
+      "candidate_id": "agnostic-freeform-8cd241bc3ac9",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$close",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_062",
+      "legacy_cluster_id": "phase3c_cluster_041",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank($close),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank($close),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-468a6c5cf1",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_063",
+      "legacy_cluster_id": "phase3c_cluster_044",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore($open),Mul(Sign(Mean($volume,8)),Sign(Delta($vwap,5)))))",
+      "canonical_expression": "CSRank(Mul(ZScore($open),Mul(Sign(Mean($volume,8)),Sign(Delta($vwap,5)))))",
+      "candidate_id": "agnostic-freeform-00dade142126",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$open",
+        "$volume",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_064",
+      "legacy_cluster_id": "phase3c_cluster_046",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(ZScore(Mul(ZScore(Mean(Abs(Delta($turnover_rate,1)),10)),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "canonical_expression": "CSRank(ZScore(Mul(ZScore(Mean(Abs(Delta($turnover_rate,1)),10)),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "candidate_id": "fgv2-signal_state-358397896597",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_defined",
+      "field_list": [
+        "$close",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_065",
+      "legacy_cluster_id": "phase3c_cluster_050",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($final_float_market_cap,21)),ZScore(Delta($close,21))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($final_float_market_cap,21)),ZScore(Delta($close,21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-403c9200612d",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PD_defined_motifs",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_066",
+      "legacy_cluster_id": "phase3c_cluster_051",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore($final_float_market_cap),Mul(CSRank($turnover_rate),CSRank($vwap))))",
+      "canonical_expression": "CSRank(Mul(ZScore($final_float_market_cap),Mul(CSRank($turnover_rate),CSRank($vwap))))",
+      "candidate_id": "agnostic-freeform-30bca815e518",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$final_float_market_cap",
+        "$turnover_rate",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_067",
+      "legacy_cluster_id": "phase3c_cluster_053",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank($final_float_market_cap),Mul(CSRank(Mean($final_total_market_cap,5)),ZScore(Std($vwap,2)))))",
+      "canonical_expression": "CSRank(Mul(CSRank($final_float_market_cap),Mul(CSRank(Mean($final_total_market_cap,5)),ZScore(Std($vwap,2)))))",
+      "candidate_id": "agnostic-freeform-cdc9fe6628e3",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$final_total_market_cap",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_068",
+      "legacy_cluster_id": "phase3c_cluster_054",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,21)),ZScore(Delta($close,5)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,21)),ZScore(Delta($close,5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-dcaf318c9ffa",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PD_defined_motifs",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_069",
+      "legacy_cluster_id": "phase3c_cluster_060",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(ZScore(Mul(ZScore(Mean(Delta($vwap,1),20)),Mean(Mul(Sign(Delta($close,1)),Sign(Delta($volume,1))),20))))",
+      "canonical_expression": "CSRank(ZScore(Mul(ZScore(Mean(Delta($vwap,1),20)),Mean(Mul(Sign(Delta($close,1)),Sign(Delta($volume,1))),20))))",
+      "candidate_id": "fgv2-signal_confirm-1f5a2b95febe",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PD_defined_motifs",
+      "source_generator": "",
+      "source_lane": "formula_gen_v2_defined",
+      "field_list": [
+        "$close",
+        "$volume",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_070",
+      "legacy_cluster_id": "phase3c_cluster_063",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mean(Abs(Delta($turnover_rate,1)),5)),Mul(ZScore(Mean($low,21)),ZScore($close))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mean(Abs(Delta($turnover_rate,1)),5)),Mul(ZScore(Mean($low,21)),ZScore($close))))",
+      "candidate_id": "agnostic-freeform-93a811bfe53c",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$low",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_071",
+      "legacy_cluster_id": "phase3c_cluster_067",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($final_float_market_cap,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($final_float_market_cap,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-bbfcaca9c0ca",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SD_defined_motifs",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_072",
+      "legacy_cluster_id": "phase3c_cluster_069",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Div(Sub($open,Mean($vwap,21)),Mean(Abs($ret),2)))",
+      "canonical_expression": "CSRank(Div(Sub($open,Mean($vwap,21)),Mean(Abs($ret),2)))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-48c6145d2a67",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_S0_stable_control",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$open",
+        "$ret",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Div",
+        "Mean",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_073",
+      "legacy_cluster_id": "phase3c_cluster_072",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($close,5)),ZScore(Mean(Abs(Delta($turnover_rate,1)),2))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($close,5)),ZScore(Mean(Abs(Delta($turnover_rate,1)),2))))",
+      "candidate_id": "agnostic-freeform-ff42148e081c",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SO_open_ended",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_074",
+      "legacy_cluster_id": "phase3c_cluster_074",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(Sign(Delta($close,13)),Mul(Sign(Mean($vwap,13)),ZScore(Mean($high,21)))))",
+      "canonical_expression": "CSRank(Mul(Sign(Delta($close,13)),Mul(Sign(Mean($vwap,13)),ZScore(Mean($high,21)))))",
+      "candidate_id": "agnostic-freeform-7259caa46e95",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_075",
+      "legacy_cluster_id": "phase3c_cluster_079",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(Sign(Mom($amount,5)),ZScore(Delta($turnover_rate,13))))",
+      "canonical_expression": "CSRank(Sub(Sign(Mom($amount,5)),ZScore(Delta($turnover_rate,13))))",
+      "candidate_id": "agnostic-freeform-aaf090faa76a",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mom",
+        "Sign",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_076",
+      "legacy_cluster_id": "phase3c_cluster_081",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Delta($amount,21)),CSRank(Delta($final_float_market_cap,5))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Delta($amount,21)),CSRank(Delta($final_float_market_cap,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-f441729186b0",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_077",
+      "legacy_cluster_id": "phase3c_cluster_083",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,5)),CSRank(Std($volume,21))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,5)),CSRank(Std($volume,21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-54dd3bc3ad51",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_S0_stable_control",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$final_float_market_cap",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_078",
+      "legacy_cluster_id": "phase3c_cluster_087",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Delta($final_float_market_cap,5)),CSRank(Delta($amount,5))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Delta($final_float_market_cap,5)),CSRank(Delta($amount,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-3f0460244fb6",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PO_open_ended",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_079",
+      "legacy_cluster_id": "phase3c_cluster_089",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mean(Abs($volume),5)),CSRank(Mean(Abs($volume),21)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Mean(Abs($volume),5)),CSRank(Mean(Abs($volume),21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-df822c33075b",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SD_defined_motifs",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$volume"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_080",
+      "legacy_cluster_id": "phase3c_cluster_091",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(CSRank(Delta($final_float_market_cap,21)),CSRank(Delta($close,1))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Delta($final_float_market_cap,21)),CSRank(Delta($close,1))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-207a79bd26c1",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_SM_mixed",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_081",
+      "legacy_cluster_id": "phase3c_cluster_093",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($volume,5)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($volume,5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-e1f023b2bbe4",
+      "first_seen_phase": "",
+      "source_arm": "",
+      "source_seed": "Phase3C_PM_mixed",
+      "source_generator": "",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$amount",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Neg",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": null,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_082",
+      "legacy_cluster_id": "phase3d_cluster_003",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Neg(CSRank($close))),ZScore(Neg(CSRank(Mean(Abs($ret),8))))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Neg(CSRank($close))),ZScore(Neg(CSRank(Mean(Abs($ret),8))))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-cc3203844d33",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "r0_cem_led",
+      "source_lane": "",
+      "field_list": [
+        "$close",
+        "$ret"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.239563,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_083",
+      "legacy_cluster_id": "phase3d_cluster_004",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mean(Abs(Delta($low,1)),34)),Mul(CSRank(Mean(Abs(Delta($final_float_market_cap,1)),13)),Sign($final_total_market_cap))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mean(Abs(Delta($low,1)),34)),Mul(CSRank(Mean(Abs(Delta($final_float_market_cap,1)),13)),Sign($final_total_market_cap))))",
+      "candidate_id": "agnostic-freeform-9b9108d72ef1",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$final_float_market_cap",
+        "$final_total_market_cap",
+        "$low"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.173608,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_084",
+      "legacy_cluster_id": "phase3d_cluster_005",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(Sign(ZScore(Mean($low,34))),Mul(ZScore(Mean($low,34)),ZScore(Mean($low,34)))))",
+      "canonical_expression": "CSRank(Mul(Sign(ZScore(Mean($low,34))),Mul(ZScore(Mean($low,34)),ZScore(Mean($low,34)))))",
+      "candidate_id": "agnostic-freeform-0f093cdd2298",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D1_SM_open_repair",
+      "source_seed": "Phase3D_D1_SM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$low"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.254644,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_085",
+      "legacy_cluster_id": "phase3d_cluster_008",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($vwap,34)),ZScore(Mean($vwap,13))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($vwap,34)),ZScore(Mean($vwap,13))))",
+      "candidate_id": "agnostic-freeform-b641fde5349b",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D0_SM_current_control",
+      "source_seed": "Phase3D_D0_SM_current_control",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.307652,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_086",
+      "legacy_cluster_id": "phase3d_cluster_009",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(CSRank(Mean(Abs(Delta($vwap,1)),8)),Sign(Delta($low,13))))",
+      "canonical_expression": "CSRank(Sub(CSRank(Mean(Abs(Delta($vwap,1)),8)),Sign(Delta($low,13))))",
+      "candidate_id": "agnostic-freeform-58915c2d9b95",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D0_SM_current_control",
+      "source_seed": "Phase3D_D0_SM_current_control",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Sign",
+        "Sub"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.294015,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_087",
+      "legacy_cluster_id": "phase3d_cluster_013",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore($low),CSRank(Mom($low,5))))",
+      "canonical_expression": "CSRank(Sub(ZScore($low),CSRank(Mom($low,5))))",
+      "candidate_id": "agnostic-freeform-884772ec77bf",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$low"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mom",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.211966,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_088",
+      "legacy_cluster_id": "phase3d_cluster_014",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($close,21))))),Corr(Delta($amount,1),Delay(Delta($amount,1),1),10)))",
+      "canonical_expression": "CSRank(Mul(Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($close,21))))),Corr(Delta($amount,1),Delay(Delta($amount,1),1),10)))",
+      "candidate_id": "fgv2-repair-temporalize-9d260902e5",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.61979,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_089",
+      "legacy_cluster_id": "phase3d_cluster_015",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(ZScore(Std($high,8)),CSRank($amount)))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Std($high,8)),CSRank($amount)))",
+      "candidate_id": "agnostic-freeform-dbf0e6db88ce",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D0_SM_current_control",
+      "source_seed": "Phase3D_D0_SM_current_control",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$amount",
+        "$high"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.122388,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_090",
+      "legacy_cluster_id": "phase3d_cluster_016",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),8)),CSRank(Mean(Abs(Delta($high,1)),2))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),8)),CSRank(Mean(Abs(Delta($high,1)),2))))",
+      "candidate_id": "agnostic-freeform-46d76839db90",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.128054,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_091",
+      "legacy_cluster_id": "phase3d_cluster_019",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Sub(ZScore($vwap),CSRank(Delta($low,13))))",
+      "canonical_expression": "CSRank(Sub(ZScore($vwap),CSRank(Delta($low,13))))",
+      "candidate_id": "agnostic-freeform-74d5549ff381",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D2_PM_open_repair",
+      "source_seed": "Phase3D_D2_PM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.112239,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_092",
+      "legacy_cluster_id": "phase3d_cluster_020",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore($vwap),Corr(Mean(Abs(Delta($vwap,1)),3),Delay(Mom($final_float_market_cap,34),1),21)))",
+      "canonical_expression": "CSRank(Mul(ZScore($vwap),Corr(Mean(Abs(Delta($vwap,1)),3),Delay(Mom($final_float_market_cap,34),1),21)))",
+      "candidate_id": "agnostic-freeform-9bdfcc8746f5",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D2_PM_open_repair",
+      "source_seed": "Phase3D_D2_PM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$final_float_market_cap",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Delta",
+        "Mean",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.933934,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_093",
+      "legacy_cluster_id": "phase3d_cluster_026",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(Sign(ZScore(Std($close,21))),Mul(ZScore(Std($close,21)),ZScore(Std($close,21)))))",
+      "canonical_expression": "CSRank(Mul(Sign(ZScore(Std($close,21))),Mul(ZScore(Std($close,21)),ZScore(Std($close,21)))))",
+      "candidate_id": "agnostic-freeform-bd75f7124672",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D1_SM_open_repair",
+      "source_seed": "Phase3D_D1_SM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Sign",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.077956,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_094",
+      "legacy_cluster_id": "phase3d_cluster_029",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($high,2)),Corr(Mean($vwap,3),Delta($amount,13),13)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($high,2)),Corr(Mean($vwap,3),Delta($amount,13),13)))",
+      "candidate_id": "agnostic-freeform-6abc920e9dee",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$amount",
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.290859,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_095",
+      "legacy_cluster_id": "phase3d_cluster_030",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($close,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($close,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-3fb747673b2a",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "r0_cem_led",
+      "source_lane": "",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.976969,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_096",
+      "legacy_cluster_id": "phase3d_cluster_036",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Add(ZScore(Std($vwap,34)),Sign(Mom($low,2))))",
+      "canonical_expression": "CSRank(Add(ZScore(Std($vwap,34)),Sign(Mom($low,2))))",
+      "candidate_id": "agnostic-freeform-4a6b536078b7",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "replay_aware_residual",
+      "source_lane": "",
+      "field_list": [
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Mom",
+        "Sign",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.110692,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_097",
+      "legacy_cluster_id": "phase3d_cluster_037",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Neg(CSRank(Mean(Abs($ret),3)))),ZScore(Neg(CSRank($close)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Neg(CSRank(Mean(Abs($ret),3)))),ZScore(Neg(CSRank($close)))))",
+      "candidate_id": "stockpit-ast_evolutionary_mutation-9f67fb9ef676",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D0_SM_current_control",
+      "source_seed": "Phase3D_D0_SM_current_control",
+      "source_generator": "r0_cem_led",
+      "source_lane": "",
+      "field_list": [
+        "$close",
+        "$ret"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.661996,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_098",
+      "legacy_cluster_id": "phase3d_cluster_039",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Mom($close,60)),Mul(Mean(Mul(Sign(Delta($vwap,1)),Sign(Delta($turnover_rate,1))),20),ZScore(Mean(Abs(Delta($close,1)),60)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mom($close,60)),Mul(Mean(Mul(Sign(Delta($vwap,1)),Sign(Delta($turnover_rate,1))),20),ZScore(Mean(Abs(Delta($close,1)),60)))))",
+      "candidate_id": "fgv2-signal_confirm_state-24bfb77a8efc",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D0_SM_current_control",
+      "source_seed": "Phase3D_D0_SM_current_control",
+      "source_generator": "formula_gen_v2_defined",
+      "source_lane": "",
+      "field_list": [
+        "$close",
+        "$turnover_rate",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mom",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.615945,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_099",
+      "legacy_cluster_id": "phase3d_cluster_043",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),Sign(Delta($amount,1))))",
+      "canonical_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),Sign(Delta($amount,1))))",
+      "candidate_id": "fgv2-repair-add_confirmation-235975547a",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D3_SM_no_defined_direct",
+      "source_seed": "Phase3D_D3_SM_no_defined_direct",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "",
+      "field_list": [
+        "$amount",
+        "$close",
+        "$final_total_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Log",
+        "Mul",
+        "Sign"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.013588,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_100",
+      "legacy_cluster_id": "phase3d_cluster_045",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($open,8)),Mul(ZScore(Mean($final_total_market_cap,21)),CSRank($high))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($open,8)),Mul(ZScore(Mean($final_total_market_cap,21)),CSRank($high))))",
+      "candidate_id": "agnostic-freeform-edd9470c49cd",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D2_PM_open_repair",
+      "source_seed": "Phase3D_D2_PM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$final_total_market_cap",
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.929302,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_101",
+      "legacy_cluster_id": "phase3d_cluster_047",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mean($low,5)),Corr(Mean(Abs(Delta($vwap,1)),8),Delay(Std($high,8),1),8)))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mean($low,5)),Corr(Mean(Abs(Delta($vwap,1)),8),Delay(Std($high,8),1),8)))",
+      "candidate_id": "agnostic-freeform-1c846e0cc402",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D1_SM_open_repair",
+      "source_seed": "Phase3D_D1_SM_open_repair",
+      "source_generator": "replay_aware_residual",
+      "source_lane": "",
+      "field_list": [
+        "$high",
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 1.08918,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_102",
+      "legacy_cluster_id": "phase3d_cluster_052",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(CSRank(Mom($turnover_rate,3)),Mul(ZScore(Delta($vwap,34)),ZScore(Mean(Abs(Delta($close,1)),5)))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mom($turnover_rate,3)),Mul(ZScore(Delta($vwap,34)),ZScore(Mean(Abs(Delta($close,1)),5)))))",
+      "candidate_id": "agnostic-freeform-73911f0bee3e",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D2_PM_open_repair",
+      "source_seed": "Phase3D_D2_PM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$close",
+        "$turnover_rate",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.558317,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_103",
+      "legacy_cluster_id": "phase3d_cluster_079",
+      "source_global_signal_cluster_id": "",
+      "registry_source": "phase3D_cumulative_previous_103",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($high,21)),Mul(CSRank(Mean($close,34)),CSRank(Mean($vwap,8)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($high,21)),Mul(CSRank(Mean($close,34)),CSRank(Mean($vwap,8)))))",
+      "candidate_id": "agnostic-freeform-0cb0d1322816",
+      "first_seen_phase": "Phase3D",
+      "source_arm": "Phase3D_D2_PM_open_repair",
+      "source_seed": "Phase3D_D2_PM_open_repair",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "",
+      "field_list": [
+        "$close",
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": null,
+      "portfolio_replay_avg_one_way_turnover": null,
+      "portfolio_replay_long_only_sortino": 0.920576,
+      "strict_cost_adjusted_sortino": null
+    },
+    {
+      "registry_entry_id": "registry_104",
+      "legacy_cluster_id": "cluster_004",
+      "source_global_signal_cluster_id": "cluster_004",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Std($open,3)),ZScore(Mean(Abs(Delta($amount,1)),34))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($open,3)),ZScore(Mean(Abs(Delta($amount,1)),34))))",
+      "candidate_id": "agnostic-freeform-25f851077a93",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.307609,
+      "portfolio_replay_avg_one_way_turnover": 0.327128,
+      "portfolio_replay_long_only_sortino": 0.620469,
+      "strict_cost_adjusted_sortino": 1.811518
+    },
+    {
+      "registry_entry_id": "registry_105",
+      "legacy_cluster_id": "cluster_011",
+      "source_global_signal_cluster_id": "cluster_011",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank(Mean($amount,2)),Mul(CSRank(Delta($open,3)),ZScore(Std($high,34)))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mean($amount,2)),Mul(CSRank(Delta($open,3)),ZScore(Std($high,34)))))",
+      "candidate_id": "agnostic-freeform-ae75d4bc8223",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.398185,
+      "portfolio_replay_avg_one_way_turnover": 0.41797,
+      "portfolio_replay_long_only_sortino": 0.694815,
+      "strict_cost_adjusted_sortino": 3.930884
+    },
+    {
+      "registry_entry_id": "registry_106",
+      "legacy_cluster_id": "cluster_013",
+      "source_global_signal_cluster_id": "cluster_013",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank($volume),Mul(ZScore($final_total_market_cap),CSRank($turnover_rate))))",
+      "canonical_expression": "CSRank(Mul(CSRank($volume),Mul(ZScore($final_total_market_cap),CSRank($turnover_rate))))",
+      "candidate_id": "agnostic-freeform-bd66e1ad942d",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap",
+        "$turnover_rate",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.250675,
+      "portfolio_replay_avg_one_way_turnover": 0.261693,
+      "portfolio_replay_long_only_sortino": 0.782849,
+      "strict_cost_adjusted_sortino": 1.452882
+    },
+    {
+      "registry_entry_id": "registry_107",
+      "legacy_cluster_id": "cluster_016",
+      "source_global_signal_cluster_id": "cluster_016",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),21)),Mul(CSRank(Mean(Abs(Delta($high,1)),2)),Sign(Mean($open,21)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),21)),Mul(CSRank(Mean(Abs(Delta($high,1)),2)),Sign(Mean($open,21)))))",
+      "candidate_id": "agnostic-freeform-d19ab9871668",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.321874,
+      "portfolio_replay_avg_one_way_turnover": 0.332501,
+      "portfolio_replay_long_only_sortino": 1.292534,
+      "strict_cost_adjusted_sortino": 6.06268
+    },
+    {
+      "registry_entry_id": "registry_108",
+      "legacy_cluster_id": "cluster_018",
+      "source_global_signal_cluster_id": "cluster_018",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(Sign($turnover_rate),Mul(CSRank(Delta($close,34)),ZScore($low))))",
+      "canonical_expression": "CSRank(Mul(Sign($turnover_rate),Mul(CSRank(Delta($close,34)),ZScore($low))))",
+      "candidate_id": "agnostic-freeform-2a3d2b3f0333",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E0_D3_primary",
+      "source_seed": "Phase3E_E0_D3_primary",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$low",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.149274,
+      "portfolio_replay_avg_one_way_turnover": 0.164292,
+      "portfolio_replay_long_only_sortino": 1.555203,
+      "strict_cost_adjusted_sortino": 2.751926
+    },
+    {
+      "registry_entry_id": "registry_109",
+      "legacy_cluster_id": "cluster_020",
+      "source_global_signal_cluster_id": "cluster_020",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Sub(ZScore(Mean($open,34)),ZScore(Delta($vwap,8))))",
+      "canonical_expression": "CSRank(Sub(ZScore(Mean($open,34)),ZScore(Delta($vwap,8))))",
+      "candidate_id": "agnostic-freeform-af217408a657",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$open",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.240741,
+      "portfolio_replay_avg_one_way_turnover": 0.252387,
+      "portfolio_replay_long_only_sortino": 1.117207,
+      "strict_cost_adjusted_sortino": 0.267179
+    },
+    {
+      "registry_entry_id": "registry_110",
+      "legacy_cluster_id": "cluster_023",
+      "source_global_signal_cluster_id": "cluster_023",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($low,1)),3)),CSRank(Std($final_float_market_cap,2))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($low,1)),3)),CSRank(Std($final_float_market_cap,2))))",
+      "candidate_id": "agnostic-freeform-7d3e40644ec1",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$low"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Mean",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.388265,
+      "portfolio_replay_avg_one_way_turnover": 0.407238,
+      "portfolio_replay_long_only_sortino": 0.981995,
+      "strict_cost_adjusted_sortino": 3.441123
+    },
+    {
+      "registry_entry_id": "registry_111",
+      "legacy_cluster_id": "cluster_030",
+      "source_global_signal_cluster_id": "cluster_030",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank(Std($final_float_market_cap,21)),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Std($final_float_market_cap,21)),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-4e1937f9f9",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.048649,
+      "portfolio_replay_avg_one_way_turnover": 0.065051,
+      "portfolio_replay_long_only_sortino": 1.586465,
+      "strict_cost_adjusted_sortino": 2.704049
+    },
+    {
+      "registry_entry_id": "registry_112",
+      "legacy_cluster_id": "cluster_031",
+      "source_global_signal_cluster_id": "cluster_031",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($final_float_market_cap,1)),5)),Mul(ZScore(Mean($final_total_market_cap,34)),ZScore($high))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($final_float_market_cap,1)),5)),Mul(ZScore(Mean($final_total_market_cap,34)),ZScore($high))))",
+      "candidate_id": "agnostic-freeform-ca14e40fcc83",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$final_total_market_cap",
+        "$high"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.069145,
+      "portfolio_replay_avg_one_way_turnover": 0.08291,
+      "portfolio_replay_long_only_sortino": 1.20873,
+      "strict_cost_adjusted_sortino": 6.029984
+    },
+    {
+      "registry_entry_id": "registry_113",
+      "legacy_cluster_id": "cluster_034",
+      "source_global_signal_cluster_id": "cluster_034",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($low,2)),Corr(Std($open,21),Delay(Mean($high,21),1),5)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($low,2)),Corr(Std($open,21),Delay(Mean($high,21),1),5)))",
+      "candidate_id": "agnostic-freeform-65dea0aca41f",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$low",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Mean",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.205783,
+      "portfolio_replay_avg_one_way_turnover": 0.213482,
+      "portfolio_replay_long_only_sortino": 1.630332,
+      "strict_cost_adjusted_sortino": 0.737074
+    },
+    {
+      "registry_entry_id": "registry_114",
+      "legacy_cluster_id": "cluster_038",
+      "source_global_signal_cluster_id": "cluster_038",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(CSResidual(ZScore($vwap),CSRank(Delta($low,5))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore($vwap),CSRank(Delta($low,5))))",
+      "candidate_id": "agnostic-freeform-d8bd7f2e111e",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.303845,
+      "portfolio_replay_avg_one_way_turnover": 0.330058,
+      "portfolio_replay_long_only_sortino": 1.097827,
+      "strict_cost_adjusted_sortino": 3.097287
+    },
+    {
+      "registry_entry_id": "registry_115",
+      "legacy_cluster_id": "cluster_039",
+      "source_global_signal_cluster_id": "cluster_039",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Add(ZScore(Mean($high,5)),Sign(Mom($close,2))))",
+      "canonical_expression": "CSRank(Add(ZScore(Mean($high,5)),Sign(Mom($close,2))))",
+      "candidate_id": "agnostic-freeform-9e503df15f34",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$high"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Mean",
+        "Mom",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.37319,
+      "portfolio_replay_avg_one_way_turnover": 0.40776,
+      "portfolio_replay_long_only_sortino": 1.179501,
+      "strict_cost_adjusted_sortino": 3.153645
+    },
+    {
+      "registry_entry_id": "registry_116",
+      "legacy_cluster_id": "cluster_040",
+      "source_global_signal_cluster_id": "cluster_040",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank(Delta($high,3)),Mul(ZScore(Mom($final_float_market_cap,13)),ZScore($vwap))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Delta($high,3)),Mul(ZScore(Mom($final_float_market_cap,13)),ZScore($vwap))))",
+      "candidate_id": "agnostic-freeform-3e10fa20a8b6",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.371973,
+      "portfolio_replay_avg_one_way_turnover": 0.391445,
+      "portfolio_replay_long_only_sortino": 0.634218,
+      "strict_cost_adjusted_sortino": 0.838142
+    },
+    {
+      "registry_entry_id": "registry_117",
+      "legacy_cluster_id": "cluster_043",
+      "source_global_signal_cluster_id": "cluster_043",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(CSResidual(CSRank(Std($final_total_market_cap,21)),ZScore(Std($volume,2))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Std($final_total_market_cap,21)),ZScore(Std($volume,2))))",
+      "candidate_id": "agnostic-freeform-dae05e7aac88",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E2_D3_deployability_hardened",
+      "source_seed": "Phase3E_E2_D3_deployability_hardened",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.261265,
+      "portfolio_replay_avg_one_way_turnover": 0.280225,
+      "portfolio_replay_long_only_sortino": 1.139542,
+      "strict_cost_adjusted_sortino": 1.646543
+    },
+    {
+      "registry_entry_id": "registry_118",
+      "legacy_cluster_id": "cluster_044",
+      "source_global_signal_cluster_id": "cluster_044",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Std($close,2)),CSRank(Std($amount,21))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($close,2)),CSRank(Std($amount,21))))",
+      "candidate_id": "agnostic-freeform-3d8494bee390",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E0_D3_primary",
+      "source_seed": "Phase3E_E0_D3_primary",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.607681,
+      "portfolio_replay_avg_one_way_turnover": 0.624255,
+      "portfolio_replay_long_only_sortino": 0.727778,
+      "strict_cost_adjusted_sortino": 1.527928
+    },
+    {
+      "registry_entry_id": "registry_119",
+      "legacy_cluster_id": "cluster_048",
+      "source_global_signal_cluster_id": "cluster_048",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank(Std($open,34)),Corr($high,Mean($final_float_market_cap,8),21)))",
+      "canonical_expression": "CSRank(Mul(CSRank(Std($open,34)),Corr($high,Mean($final_float_market_cap,8),21)))",
+      "candidate_id": "agnostic-freeform-907e27620b0f",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E2_D3_deployability_hardened",
+      "source_seed": "Phase3E_E2_D3_deployability_hardened",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Mean",
+        "Mul",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": 0.231187,
+      "portfolio_replay_avg_one_way_turnover": 0.242308,
+      "portfolio_replay_long_only_sortino": 0.761894,
+      "strict_cost_adjusted_sortino": 2.765135
+    },
+    {
+      "registry_entry_id": "registry_120",
+      "legacy_cluster_id": "cluster_050",
+      "source_global_signal_cluster_id": "cluster_050",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(CSRank(Mean(Abs($close),21)),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mean(Abs($close),21)),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-fabcc2b993",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E0_D3_primary",
+      "source_seed": "Phase3E_E0_D3_primary",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.079715,
+      "portfolio_replay_avg_one_way_turnover": 0.097419,
+      "portfolio_replay_long_only_sortino": 1.451521,
+      "strict_cost_adjusted_sortino": 3.257574
+    },
+    {
+      "registry_entry_id": "registry_121",
+      "legacy_cluster_id": "cluster_051",
+      "source_global_signal_cluster_id": "cluster_051",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Std($low,5)),Mul(CSRank(Std($low,3)),Sign(Std($high,2)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($low,5)),Mul(CSRank(Std($low,3)),Sign(Std($high,2)))))",
+      "candidate_id": "agnostic-freeform-fc9a5323fa49",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$low"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Sign",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.566277,
+      "portfolio_replay_avg_one_way_turnover": 0.574567,
+      "portfolio_replay_long_only_sortino": 0.564323,
+      "strict_cost_adjusted_sortino": 1.3516
+    },
+    {
+      "registry_entry_id": "registry_122",
+      "legacy_cluster_id": "cluster_053",
+      "source_global_signal_cluster_id": "cluster_053",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore($turnover_rate),Mul(Sign(Std($final_float_market_cap,8)),ZScore(Mean($open,5)))))",
+      "canonical_expression": "CSRank(Mul(ZScore($turnover_rate),Mul(Sign(Std($final_float_market_cap,8)),ZScore(Mean($open,5)))))",
+      "candidate_id": "agnostic-freeform-3e2a5f436bcc",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$open",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Sign",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.263746,
+      "portfolio_replay_avg_one_way_turnover": 0.273813,
+      "portfolio_replay_long_only_sortino": 0.803682,
+      "strict_cost_adjusted_sortino": 3.844136
+    },
+    {
+      "registry_entry_id": "registry_123",
+      "legacy_cluster_id": "cluster_054",
+      "source_global_signal_cluster_id": "cluster_054",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Std($close,21)),ZScore(Std($close,5))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Std($close,21)),ZScore(Std($close,5))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-9f3d1b47cd40",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.303706,
+      "portfolio_replay_avg_one_way_turnover": 0.318159,
+      "portfolio_replay_long_only_sortino": 0.87558,
+      "strict_cost_adjusted_sortino": 2.105278
+    },
+    {
+      "registry_entry_id": "registry_124",
+      "legacy_cluster_id": "cluster_055",
+      "source_global_signal_cluster_id": "cluster_055",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Add(CSRank($close),CSRank(Delta($close,13))))",
+      "canonical_expression": "CSRank(Add(CSRank($close),CSRank(Delta($close,13))))",
+      "candidate_id": "agnostic-freeform-16120276d90f",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta"
+      ],
+      "strict_mean_one_way_turnover": 0.252748,
+      "portfolio_replay_avg_one_way_turnover": 0.264075,
+      "portfolio_replay_long_only_sortino": 0.995738,
+      "strict_cost_adjusted_sortino": 1.425101
+    },
+    {
+      "registry_entry_id": "registry_125",
+      "legacy_cluster_id": "cluster_057",
+      "source_global_signal_cluster_id": "cluster_057",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "Neg(CSRank(Std($volume,5)))",
+      "canonical_expression": "Neg(CSRank(Std($volume,5)))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-55de61ecde63",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Neg",
+        "Std"
+      ],
+      "strict_mean_one_way_turnover": 0.27596,
+      "portfolio_replay_avg_one_way_turnover": 0.290619,
+      "portfolio_replay_long_only_sortino": 0.722324,
+      "strict_cost_adjusted_sortino": 0.916967
+    },
+    {
+      "registry_entry_id": "registry_126",
+      "legacy_cluster_id": "cluster_060",
+      "source_global_signal_cluster_id": "cluster_060",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($open,8)),Mul(ZScore(Mean(Abs(Delta($high,1)),3)),ZScore(Mean($vwap,3)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($open,8)),Mul(ZScore(Mean(Abs(Delta($high,1)),3)),ZScore(Mean($vwap,3)))))",
+      "candidate_id": "agnostic-freeform-a1758f15f7ea",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$open",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.279668,
+      "portfolio_replay_avg_one_way_turnover": 0.290044,
+      "portfolio_replay_long_only_sortino": 0.810644,
+      "strict_cost_adjusted_sortino": -0.021124
+    },
+    {
+      "registry_entry_id": "registry_127",
+      "legacy_cluster_id": "cluster_062",
+      "source_global_signal_cluster_id": "cluster_062",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(Sign(Mean($final_float_market_cap,34)),Mul(CSRank($vwap),CSRank($final_total_market_cap))))",
+      "canonical_expression": "CSRank(Mul(Sign(Mean($final_float_market_cap,34)),Mul(CSRank($vwap),CSRank($final_total_market_cap))))",
+      "candidate_id": "agnostic-freeform-bf153db404b9",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$final_total_market_cap",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mean",
+        "Mul",
+        "Sign"
+      ],
+      "strict_mean_one_way_turnover": 0.04463,
+      "portfolio_replay_avg_one_way_turnover": 0.057837,
+      "portfolio_replay_long_only_sortino": 1.44015,
+      "strict_cost_adjusted_sortino": 1.21323
+    },
+    {
+      "registry_entry_id": "registry_128",
+      "legacy_cluster_id": "cluster_064",
+      "source_global_signal_cluster_id": "cluster_064",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,21)))))",
+      "canonical_expression": "Neg(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,21)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-378242fdbe92",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E0_D3_primary",
+      "source_seed": "Phase3E_E0_D3_primary",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul",
+        "Neg",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.375194,
+      "portfolio_replay_avg_one_way_turnover": 0.384838,
+      "portfolio_replay_long_only_sortino": 1.171956,
+      "strict_cost_adjusted_sortino": -0.046512
+    },
+    {
+      "registry_entry_id": "registry_129",
+      "legacy_cluster_id": "cluster_065",
+      "source_global_signal_cluster_id": "cluster_065",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Sub(CSRank(Mean(Abs(Delta($final_total_market_cap,1)),8)),ZScore($volume)))",
+      "canonical_expression": "CSRank(Sub(CSRank(Mean(Abs(Delta($final_total_market_cap,1)),8)),ZScore($volume)))",
+      "candidate_id": "agnostic-freeform-f78bdb206872",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap",
+        "$volume"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.230996,
+      "portfolio_replay_avg_one_way_turnover": 0.242022,
+      "portfolio_replay_long_only_sortino": 0.63798,
+      "strict_cost_adjusted_sortino": 1.200425
+    },
+    {
+      "registry_entry_id": "registry_130",
+      "legacy_cluster_id": "cluster_066",
+      "source_global_signal_cluster_id": "cluster_066",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),8)),Corr(Mom($close,8),Mom($close,21),13)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),8)),Corr(Mom($close,8),Mom($close,21),13)))",
+      "candidate_id": "agnostic-freeform-095cbcaba18c",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E2_D3_deployability_hardened",
+      "source_seed": "Phase3E_E2_D3_deployability_hardened",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Corr",
+        "Delta",
+        "Mean",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.221523,
+      "portfolio_replay_avg_one_way_turnover": 0.238353,
+      "portfolio_replay_long_only_sortino": 0.91144,
+      "strict_cost_adjusted_sortino": 1.652601
+    },
+    {
+      "registry_entry_id": "registry_131",
+      "legacy_cluster_id": "cluster_067",
+      "source_global_signal_cluster_id": "cluster_067",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(Sign(Mom($high,34)),Mul(Sign(Delta($open,13)),CSRank(Mean(Abs(Delta($final_total_market_cap,1)),34)))))",
+      "canonical_expression": "CSRank(Mul(Sign(Mom($high,34)),Mul(Sign(Delta($open,13)),CSRank(Mean(Abs(Delta($final_total_market_cap,1)),34)))))",
+      "candidate_id": "agnostic-freeform-035ba54fd1dc",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap",
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mom",
+        "Mul",
+        "Sign"
+      ],
+      "strict_mean_one_way_turnover": 0.22976,
+      "portfolio_replay_avg_one_way_turnover": 0.24499,
+      "portfolio_replay_long_only_sortino": 0.640715,
+      "strict_cost_adjusted_sortino": 0.27683
+    },
+    {
+      "registry_entry_id": "registry_132",
+      "legacy_cluster_id": "cluster_074",
+      "source_global_signal_cluster_id": "cluster_074",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Add(Sign(Mom($turnover_rate,5)),CSRank(Mean($open,5))))",
+      "canonical_expression": "CSRank(Add(Sign(Mom($turnover_rate,5)),CSRank(Mean($open,5))))",
+      "candidate_id": "agnostic-freeform-cf3b72fdf6f9",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E2_D3_deployability_hardened",
+      "source_seed": "Phase3E_E2_D3_deployability_hardened",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$open",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Mean",
+        "Mom",
+        "Sign"
+      ],
+      "strict_mean_one_way_turnover": 0.424818,
+      "portfolio_replay_avg_one_way_turnover": 0.45044,
+      "portfolio_replay_long_only_sortino": 0.764852,
+      "strict_cost_adjusted_sortino": 1.277395
+    },
+    {
+      "registry_entry_id": "registry_133",
+      "legacy_cluster_id": "cluster_078",
+      "source_global_signal_cluster_id": "cluster_078",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "CSRank(Mul(ZScore(Delta($low,34)),Corr(Std($final_float_market_cap,2),Delta($volume,5),8)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Delta($low,34)),Corr(Std($final_float_market_cap,2),Delta($volume,5),8)))",
+      "candidate_id": "agnostic-freeform-77e1f014fb70",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E3_D3_book_marginal",
+      "source_seed": "Phase3E_E3_D3_book_marginal",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_float_market_cap",
+        "$low",
+        "$volume"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Delta",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.26712,
+      "portfolio_replay_avg_one_way_turnover": 0.28406,
+      "portfolio_replay_long_only_sortino": 0.78159,
+      "strict_cost_adjusted_sortino": 1.174954
+    },
+    {
+      "registry_entry_id": "registry_134",
+      "legacy_cluster_id": "cluster_089",
+      "source_global_signal_cluster_id": "cluster_089",
+      "registry_source": "phase3E_new_vs_phase3D_31",
+      "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($final_float_market_cap,5)))))",
+      "canonical_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($final_float_market_cap,5)))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-f7a1573f8aff",
+      "first_seen_phase": "Phase3E",
+      "source_arm": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_seed": "Phase3E_E1_D3_plus_D2_sidecar",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Neg"
+      ],
+      "strict_mean_one_way_turnover": 0.51118,
+      "portfolio_replay_avg_one_way_turnover": 0.503623,
+      "portfolio_replay_long_only_sortino": 0.514999,
+      "strict_cost_adjusted_sortino": 0.410598
+    },
+    {
+      "registry_entry_id": "registry_135",
+      "legacy_cluster_id": "cluster_135",
+      "source_global_signal_cluster_id": "cluster_004",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Sub(CSRank(Mom($vwap,34)),ZScore(Std($volume,3))))",
+      "canonical_expression": "CSRank(Sub(CSRank(Mom($vwap,34)),ZScore(Std($volume,3))))",
+      "candidate_id": "agnostic-freeform-806d5235bba6",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$volume",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mom",
+        "Std",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.342091,
+      "portfolio_replay_avg_one_way_turnover": 0.346881,
+      "portfolio_replay_long_only_sortino": 1.469839,
+      "strict_cost_adjusted_sortino": 4.320252
+    },
+    {
+      "registry_entry_id": "registry_136",
+      "legacy_cluster_id": "cluster_136",
+      "source_global_signal_cluster_id": "cluster_015",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-8c5791d8cd",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_list": [
+        "$close"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.356734,
+      "portfolio_replay_avg_one_way_turnover": 0.36877,
+      "portfolio_replay_long_only_sortino": 1.432854,
+      "strict_cost_adjusted_sortino": 4.582608
+    },
+    {
+      "registry_entry_id": "registry_137",
+      "legacy_cluster_id": "cluster_137",
+      "source_global_signal_cluster_id": "cluster_018",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Add(ZScore(Mean($vwap,34)),CSRank(Delta($volume,8))))",
+      "canonical_expression": "CSRank(Add(ZScore(Mean($vwap,34)),CSRank(Delta($volume,8))))",
+      "candidate_id": "agnostic-freeform-3012000864f6",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s35_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$volume",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.232384,
+      "portfolio_replay_avg_one_way_turnover": 0.257585,
+      "portfolio_replay_long_only_sortino": 1.108181,
+      "strict_cost_adjusted_sortino": 3.647021
+    },
+    {
+      "registry_entry_id": "registry_138",
+      "legacy_cluster_id": "cluster_138",
+      "source_global_signal_cluster_id": "cluster_019",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(CSResidual(Sign(Delta($low,21)),ZScore(Delta($low,2))))",
+      "canonical_expression": "CSRank(CSResidual(Sign(Delta($low,21)),ZScore(Delta($low,2))))",
+      "candidate_id": "agnostic-freeform-1ee07626df7e",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$low"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.625144,
+      "portfolio_replay_avg_one_way_turnover": 0.636582,
+      "portfolio_replay_long_only_sortino": 0.593372,
+      "strict_cost_adjusted_sortino": 0.296186
+    },
+    {
+      "registry_entry_id": "registry_139",
+      "legacy_cluster_id": "cluster_139",
+      "source_global_signal_cluster_id": "cluster_020",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),13)),Corr(Delta($amount,21),Delay($close,1),5)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),13)),Corr(Delta($amount,21),Delay($close,1),5)))",
+      "candidate_id": "agnostic-freeform-e4ab618059c8",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$amount",
+        "$close",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.391989,
+      "portfolio_replay_avg_one_way_turnover": 0.401062,
+      "portfolio_replay_long_only_sortino": 1.089695,
+      "strict_cost_adjusted_sortino": -0.044681
+    },
+    {
+      "registry_entry_id": "registry_140",
+      "legacy_cluster_id": "cluster_140",
+      "source_global_signal_cluster_id": "cluster_021",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(CSRank(Std($final_total_market_cap,13)),Mul(CSRank($final_total_market_cap),ZScore(Std($final_total_market_cap,21)))))",
+      "canonical_expression": "CSRank(Mul(CSRank(Std($final_total_market_cap,13)),Mul(CSRank($final_total_market_cap),ZScore(Std($final_total_market_cap,21)))))",
+      "candidate_id": "agnostic-freeform-7ec86bf35fbd",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$final_total_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.127749,
+      "portfolio_replay_avg_one_way_turnover": 0.135676,
+      "portfolio_replay_long_only_sortino": 0.512765,
+      "strict_cost_adjusted_sortino": 2.554441
+    },
+    {
+      "registry_entry_id": "registry_141",
+      "legacy_cluster_id": "cluster_141",
+      "source_global_signal_cluster_id": "cluster_025",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Add(ZScore(Mean($close,34)),CSRank(Delta($final_total_market_cap,21))))",
+      "canonical_expression": "CSRank(Add(ZScore(Mean($close,34)),CSRank(Delta($final_total_market_cap,21))))",
+      "candidate_id": "agnostic-freeform-96b7cdc28100",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s34_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$close",
+        "$final_total_market_cap"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.111955,
+      "portfolio_replay_avg_one_way_turnover": 0.128565,
+      "portfolio_replay_long_only_sortino": 1.32251,
+      "strict_cost_adjusted_sortino": 2.948465
+    },
+    {
+      "registry_entry_id": "registry_142",
+      "legacy_cluster_id": "cluster_142",
+      "source_global_signal_cluster_id": "cluster_026",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($high,1)),13)),Mul(ZScore($vwap),CSRank(Mean($vwap,8)))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($high,1)),13)),Mul(ZScore($vwap),CSRank(Mean($vwap,8)))))",
+      "candidate_id": "agnostic-freeform-a89759d3657a",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$vwap"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.10336,
+      "portfolio_replay_avg_one_way_turnover": 0.115093,
+      "portfolio_replay_long_only_sortino": 1.291597,
+      "strict_cost_adjusted_sortino": 2.660013
+    },
+    {
+      "registry_entry_id": "registry_143",
+      "legacy_cluster_id": "cluster_143",
+      "source_global_signal_cluster_id": "cluster_028",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(CSResidual(ZScore(Delta($low,34)),ZScore(Mean($turnover_rate,3))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Delta($low,34)),ZScore(Mean($turnover_rate,3))))",
+      "candidate_id": "agnostic-freeform-16b6c661391f",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s36_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$low",
+        "$turnover_rate"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.154218,
+      "portfolio_replay_avg_one_way_turnover": 0.171286,
+      "portfolio_replay_long_only_sortino": 1.070938,
+      "strict_cost_adjusted_sortino": 1.562755
+    },
+    {
+      "registry_entry_id": "registry_144",
+      "legacy_cluster_id": "cluster_144",
+      "source_global_signal_cluster_id": "cluster_034",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(CSRank($open),CSRank(Delta($high,2))))",
+      "canonical_expression": "CSRank(Mul(CSRank($open),CSRank(Delta($high,2))))",
+      "candidate_id": "agnostic-freeform-e372c7319500",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s36_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$high",
+        "$open"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul"
+      ],
+      "strict_mean_one_way_turnover": 0.376419,
+      "portfolio_replay_avg_one_way_turnover": 0.388325,
+      "portfolio_replay_long_only_sortino": 0.801616,
+      "strict_cost_adjusted_sortino": 1.803278
+    },
+    {
+      "registry_entry_id": "registry_145",
+      "legacy_cluster_id": "cluster_145",
+      "source_global_signal_cluster_id": "cluster_038",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($vwap,13)),Corr(Mom($high,21),$volume,5)))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($vwap,13)),Corr(Mom($high,21),$volume,5)))",
+      "candidate_id": "agnostic-freeform-c22dd26ab358",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s35_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "replay_aware_residual",
+      "field_list": [
+        "$high",
+        "$volume",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Mean",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.412346,
+      "portfolio_replay_avg_one_way_turnover": 0.425803,
+      "portfolio_replay_long_only_sortino": 0.960076,
+      "strict_cost_adjusted_sortino": 0.605013
+    },
+    {
+      "registry_entry_id": "registry_146",
+      "legacy_cluster_id": "cluster_146",
+      "source_global_signal_cluster_id": "cluster_039",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($final_total_market_cap,34)),ZScore(Delta($final_total_market_cap,17))))",
+      "canonical_expression": "CSRank(Mul(ZScore(Mean($final_total_market_cap,34)),ZScore(Delta($final_total_market_cap,17))))",
+      "candidate_id": "phase3repair-failure_detail-duplicate_escape-066245d90aa4",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "ast_failure_aware_repair",
+      "source_lane": "ast_failure_aware_repair",
+      "field_list": [
+        "$final_total_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.162536,
+      "portfolio_replay_avg_one_way_turnover": 0.1715,
+      "portfolio_replay_long_only_sortino": 0.528352,
+      "strict_cost_adjusted_sortino": 0.604855
+    },
+    {
+      "registry_entry_id": "registry_147",
+      "legacy_cluster_id": "cluster_147",
+      "source_global_signal_cluster_id": "cluster_045",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(CSResidual(CSRank(Mean(Abs($volume),5)),CSRank(Mean(Abs($close),21))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Mean(Abs($volume),5)),CSRank(Mean(Abs($close),21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-ba2754d1bf17",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$volume"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean"
+      ],
+      "strict_mean_one_way_turnover": 0.081663,
+      "portfolio_replay_avg_one_way_turnover": 0.115425,
+      "portfolio_replay_long_only_sortino": 0.639592,
+      "strict_cost_adjusted_sortino": 1.191657
+    },
+    {
+      "registry_entry_id": "registry_148",
+      "legacy_cluster_id": "cluster_148",
+      "source_global_signal_cluster_id": "cluster_046",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(CSResidual(CSRank(Mom($close,8)),CSRank(Mom($final_float_market_cap,8))))",
+      "canonical_expression": "CSRank(CSResidual(CSRank(Mom($close,8)),CSRank(Mom($final_float_market_cap,8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-5d96a5aa6e5c",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_list": [
+        "$close",
+        "$final_float_market_cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Mom"
+      ],
+      "strict_mean_one_way_turnover": 0.61568,
+      "portfolio_replay_avg_one_way_turnover": 0.576383,
+      "portfolio_replay_long_only_sortino": 0.725861,
+      "strict_cost_adjusted_sortino": 0.867769
+    },
+    {
+      "registry_entry_id": "registry_149",
+      "legacy_cluster_id": "cluster_149",
+      "source_global_signal_cluster_id": "cluster_049",
+      "registry_source": "phase3H_new_vs_phase3E_15",
+      "representative_expression": "CSRank(CSResidual(ZScore(Delta($vwap,13)),CSRank(Delta($low,3))))",
+      "canonical_expression": "CSRank(CSResidual(ZScore(Delta($vwap,13)),CSRank(Delta($low,3))))",
+      "candidate_id": "agnostic-freeform-1dcf28148787",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_list": [
+        "$low",
+        "$vwap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.255658,
+      "portfolio_replay_avg_one_way_turnover": 0.266491,
+      "portfolio_replay_long_only_sortino": 0.621509,
+      "strict_cost_adjusted_sortino": -0.016159
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+book,novelty_status,field_families,operator_families,cluster_count
+J0_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul"", ""Sign"", ""Std"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""CSResidual"", ""Mean"", ""Mom"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Delta"", ""Mul"", ""Neg"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mul"", ""Sign"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",2
+J0_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J0_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta""]",1
+J0_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Mean""]",1
+J0_fresh,known_vs_149_proxy,"[""price""]","[""CSRank""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Std"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delta"", ""Mul"", ""Std"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Sub"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Delta"", ""Mean"", ""Sub"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul""]",1
+J0_fresh,new_vs_149_proxy,"[""flow""]","[""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",3
+J0_fresh,new_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""Add"", ""CSRank"", ""Delta"", ""Mean"", ""Mom"", ""Sign""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",2
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Std"", ""ZScore""]",2
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Add"", ""CSRank"", ""Delta"", ""Sign""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""CSResidual"", ""Mean"", ""Neg""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""CSResidual"", ""Neg"", ""Std""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delay"", ""Mom"", ""Mul"", ""Std"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Delta"", ""Mul"", ""Sign"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",2
+J0_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""CSResidual"", ""Delta"", ""Mean"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",2
+J0_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Corr"", ""Mean"", ""Mom"", ""Mul""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Corr"", ""Mean"", ""Mul"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""Mul"", ""Neg"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""Mul"", ""Sign""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Mul"", ""Sign"", ""ZScore""]",1
+J0_fresh,new_vs_149_proxy,"[""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul"", ""Sign"", ""Std"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mul"", ""Sign"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",2
+J2_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J2_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta""]",1
+J2_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Mean""]",1
+J2_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delta"", ""Mul"", ""Std"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul""]",1
+J2_fresh,new_vs_149_proxy,"[""flow""]","[""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""Add"", ""CSRank"", ""Delta"", ""Mean"", ""Mom"", ""Sign""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",2
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Std"", ""ZScore""]",2
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Add"", ""CSRank"", ""Delta"", ""Sign""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""CSResidual"", ""Mean"", ""Neg""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delay"", ""Mom"", ""Mul"", ""Std"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J2_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",2
+J2_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""CSResidual"", ""Delta"", ""Mean"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",2
+J2_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Corr"", ""Mean"", ""Mom"", ""Mul""]",1
+J2_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J2_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J2_fresh,new_vs_149_proxy,"[""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul"", ""Sign"", ""Std"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mul"", ""Sign"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",2
+J4_relaxed_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta""]",1
+J4_relaxed_fresh,known_vs_149_proxy,"[""price""]","[""CSRank"", ""Mean""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""flow"", ""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delta"", ""Mul"", ""Std"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""flow"", ""price""]","[""CSRank"", ""Mean"", ""Mul""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""flow""]","[""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""other"", ""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""Add"", ""CSRank"", ""Delta"", ""Mean"", ""Mom"", ""Sign""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Sign"", ""ZScore""]",2
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Std"", ""ZScore""]",2
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""Add"", ""CSRank"", ""Delta"", ""Sign""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Corr"", ""Delay"", ""Mom"", ""Mul"", ""Std"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price"", ""size_capital""]","[""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",2
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""CSResidual"", ""Delta"", ""Mean"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Delta"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",2
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Corr"", ""Mean"", ""Mom"", ""Mul""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""Mean"", ""Mul""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""price""]","[""CSRank"", ""Delta"", ""ZScore""]",1
+J4_relaxed_fresh,new_vs_149_proxy,"[""size_capital""]","[""Abs"", ""CSRank"", ""Mean"", ""Mul"", ""Neg"", ""ZScore""]",1
