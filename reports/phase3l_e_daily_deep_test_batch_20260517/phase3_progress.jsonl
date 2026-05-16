@@ -1,0 +1,10 @@
+{"dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet", "queue_path": "reports\\phase3l_deep_evidence_gap_audit_20260517\\phase3l_deep_test_queue.jsonl", "stage": "start", "time": "2026-05-16T17:16:32+00:00"}
+{"selected_count": 64, "stage": "selected_tests_prepared", "time": "2026-05-16T17:16:32+00:00", "unsupported_count": 12}
+{"stage": "strict_audit_done", "strict_row_count": 64, "time": "2026-05-16T17:20:27+00:00"}
+{"stage": "portfolio_replay_done", "strict_row_count": 64, "time": "2026-05-16T17:26:26+00:00"}
+{"stage": "strict_rows_written", "strict_row_count": 64, "time": "2026-05-16T17:30:02+00:00"}
+{"stage": "report_written", "status": "completed", "time": "2026-05-16T17:30:02+00:00"}
+{"dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet", "queue_path": "reports\\phase3l_deep_evidence_gap_audit_20260517\\phase3l_deep_test_queue.jsonl", "stage": "start", "time": "2026-05-16T17:33:17+00:00"}
+{"selected_count": 64, "stage": "selected_tests_prepared", "time": "2026-05-16T17:33:17+00:00", "unsupported_count": 12}
+{"source": "reports\\phase3l_e_daily_deep_test_batch_20260517\\phase3l_e_strict_rows.json", "stage": "strict_rows_reused", "strict_row_count": 64, "time": "2026-05-16T17:33:17+00:00"}
+{"stage": "report_written", "status": "completed", "time": "2026-05-16T17:33:17+00:00"}
