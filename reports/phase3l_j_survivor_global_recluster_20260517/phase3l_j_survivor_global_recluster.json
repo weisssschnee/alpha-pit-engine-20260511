@@ -1,0 +1,685 @@
+{
+  "summary": {
+    "created_at": "2026-05-17T05:03:13+08:00",
+    "experiment_id": "20260517_phase3l_j_survivor_global_recluster",
+    "decision": "PASS_PHASE3L_J_GLOBAL_SURVIVOR_BOOK_EX_REGIME",
+    "mode": "fixed_survivor_union_replay_no_search",
+    "input_manifest": {
+      "survivor_union": {
+        "path": "reports\\phase3l_i_survivor_union_audit_20260517\\phase3l_survivor_union_book.csv",
+        "sha256": "d75b6f107f0c8bdaca3fcbd6d476ec72c7c4f96678b6e3cbf4fac78a0ff33263",
+        "size_bytes": 3748,
+        "modified_time": "2026-05-17T03:42:39+08:00"
+      }
+    },
+    "dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+    "dataset_role": "stock_pit_panel",
+    "parameters": {
+      "top_bottom_quantile": 0.02,
+      "cost_bps": 10.0,
+      "low_corr_threshold": 0.8,
+      "recent_quarter_window_count": 2,
+      "recent_warmup_days": 60,
+      "turnover_survival_max_one_way": 0.75,
+      "survivor_gate": 8
+    },
+    "survivor_input_count": 10,
+    "selected_test_count": 20,
+    "strict_row_count": 20,
+    "global_daily_pass_count": 10,
+    "all_survivor_metrics": {
+      "row_count": 10,
+      "global_signal_cluster_count": 9,
+      "source_distribution": {
+        "agnostic_freeform_ast": 6,
+        "formula_gen_v2_repair_expansion": 3,
+        "r0_cem_led": 1
+      },
+      "median_turnover": 0.073418
+    },
+    "global_daily_pass_metrics": {
+      "row_count": 10,
+      "global_signal_cluster_count": 9,
+      "source_distribution": {
+        "agnostic_freeform_ast": 6,
+        "formula_gen_v2_repair_expansion": 3,
+        "r0_cem_led": 1
+      },
+      "median_turnover": 0.073418
+    },
+    "remaining_blockers": [
+      "true_regime_bucket_replay_not_run",
+      "minute_execution_capacity_not_run",
+      "production_capacity_not_confirmed"
+    ],
+    "bias_scope": {
+      "discovery_status": "replay_validation_of_fixed_survivor_union",
+      "not_confirmed": [
+        "production_ready_alpha",
+        "true_book_marginal",
+        "live_execution"
+      ]
+    }
+  },
+  "replay_report": {
+    "portfolio_replay_count": 20,
+    "unique_expression_replay_count": 20,
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-05-08",
+    "cost_bps": 10.0
+  },
+  "signal_cluster_report": {
+    "cluster_count": 9,
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "signal_cluster_entropy": 2.163956,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.2,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 0.25,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "Neg(CSRank(Mean($low,34)))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank($open),CSRank(Mean($amount,8)))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high))))",
+        "right_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34)))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21)))))",
+        "right_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21)))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34)))))",
+        "right_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21)))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.909031,
+        "abs_signal_corr": 0.909031
+      },
+      {
+        "left_expression": "Neg(CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.909031,
+        "abs_signal_corr": 0.909031
+      },
+      {
+        "left_expression": "Neg(CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": -0.808094,
+        "abs_signal_corr": 0.808094
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.797375,
+        "abs_signal_corr": 0.797375
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": -0.797375,
+        "abs_signal_corr": 0.797375
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.790101,
+        "abs_signal_corr": 0.790101
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": -0.790101,
+        "abs_signal_corr": 0.790101
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.739682,
+        "abs_signal_corr": 0.739682
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank($open),CSRank(Mean($amount,8)))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.739682,
+        "abs_signal_corr": 0.739682
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.710259,
+        "abs_signal_corr": 0.710259
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34)))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": -0.710259,
+        "abs_signal_corr": 0.710259
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21)))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": -0.710259,
+        "abs_signal_corr": 0.710259
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.707738,
+        "abs_signal_corr": 0.707738
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.707738,
+        "abs_signal_corr": 0.707738
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.706112,
+        "abs_signal_corr": 0.706112
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": -0.706112,
+        "abs_signal_corr": 0.706112
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": -0.706112,
+        "abs_signal_corr": 0.706112
+      },
+      {
+        "left_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.639125,
+        "abs_signal_corr": 0.639125
+      },
+      {
+        "left_expression": "Neg(CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34)))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": -0.639125,
+        "abs_signal_corr": 0.639125
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 0.607101,
+        "abs_signal_corr": 0.607101
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": -0.607101,
+        "abs_signal_corr": 0.607101
+      },
+      {
+        "left_expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.596226,
+        "abs_signal_corr": 0.596226
+      },
+      {
+        "left_expression": "Neg(CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34)))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.596226,
+        "abs_signal_corr": 0.596226
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.577565,
+        "abs_signal_corr": 0.577565
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": -0.577565,
+        "abs_signal_corr": 0.577565
+      },
+      {
+        "left_expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.498914,
+        "abs_signal_corr": 0.498914
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.498914,
+        "abs_signal_corr": 0.498914
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.478547,
+        "abs_signal_corr": 0.478547
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34)))))",
+        "right_expression": "CSRank(Mean($low,34))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.478547,
+        "abs_signal_corr": 0.478547
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.472997,
+        "abs_signal_corr": 0.472997
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+        "right_expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": -0.472997,
+        "abs_signal_corr": 0.472997
+      }
+    ],
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-05-08"
+  },
+  "cluster_results": [
+    {
+      "survivor_uid": "phase3lJ-survivor-000",
+      "harvest_label": "initial",
+      "entry_type": "low_order_rescue",
+      "source_cluster_id": "s47_cluster_005",
+      "source_signal_cluster_id": "cluster_002",
+      "global_signal_cluster_id": "cluster_001",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21)))",
+      "score": 1.671616,
+      "turnover": 0.073418,
+      "strict_cost_adjusted_sortino": 3.82282,
+      "portfolio_replay_long_only_sortino": 1.671616,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.00118,
+      "sign_flip_score": 0.34743,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-001",
+      "harvest_label": "initial",
+      "entry_type": "low_order_rescue",
+      "source_cluster_id": "s47_cluster_005",
+      "source_signal_cluster_id": "cluster_010",
+      "global_signal_cluster_id": "cluster_005",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+      "score": 1.617685,
+      "turnover": 0.199872,
+      "strict_cost_adjusted_sortino": 4.458059,
+      "portfolio_replay_long_only_sortino": 1.617685,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000895,
+      "sign_flip_score": -1.310805,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-002",
+      "harvest_label": "initial",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "s50_cluster_005",
+      "source_signal_cluster_id": "cluster_011",
+      "global_signal_cluster_id": "cluster_008",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "score": 1.590935,
+      "turnover": 0.065529,
+      "strict_cost_adjusted_sortino": 3.945348,
+      "portfolio_replay_long_only_sortino": 1.590935,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000787,
+      "sign_flip_score": -0.594382,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-003",
+      "harvest_label": "initial",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "s48_cluster_008",
+      "source_signal_cluster_id": "cluster_007",
+      "global_signal_cluster_id": "cluster_006",
+      "source_lane": "r0_cem_led",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))",
+      "score": 1.564433,
+      "turnover": 0.051814,
+      "strict_cost_adjusted_sortino": 2.484331,
+      "portfolio_replay_long_only_sortino": 1.564433,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000427,
+      "sign_flip_score": -0.217751,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-004",
+      "harvest_label": "fresh",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "cluster_031",
+      "source_signal_cluster_id": "cluster_007",
+      "global_signal_cluster_id": "cluster_009",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "score": 1.541851,
+      "turnover": 0.103397,
+      "strict_cost_adjusted_sortino": 3.286319,
+      "portfolio_replay_long_only_sortino": 1.541851,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000596,
+      "sign_flip_score": 0.345956,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-005",
+      "harvest_label": "fresh",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "s52_cluster_013",
+      "source_signal_cluster_id": "cluster_008",
+      "global_signal_cluster_id": "cluster_003",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))",
+      "score": 1.507126,
+      "turnover": 0.069113,
+      "strict_cost_adjusted_sortino": 4.11471,
+      "portfolio_replay_long_only_sortino": 1.507126,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000129,
+      "sign_flip_score": -0.388823,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-006",
+      "harvest_label": "initial",
+      "entry_type": "low_order_rescue",
+      "source_cluster_id": "cluster_017",
+      "source_signal_cluster_id": "cluster_006",
+      "global_signal_cluster_id": "cluster_002",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+      "score": 1.462002,
+      "turnover": 0.076805,
+      "strict_cost_adjusted_sortino": 3.146535,
+      "portfolio_replay_long_only_sortino": 1.462002,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.001103,
+      "sign_flip_score": -0.683354,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-007",
+      "harvest_label": "fresh",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "s53_cluster_002",
+      "source_signal_cluster_id": "cluster_011",
+      "global_signal_cluster_id": "cluster_007",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+      "score": 1.420147,
+      "turnover": 0.143169,
+      "strict_cost_adjusted_sortino": 3.486701,
+      "portfolio_replay_long_only_sortino": 1.420147,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000666,
+      "sign_flip_score": -0.021863,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-008",
+      "harvest_label": "fresh",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "s53_cluster_001",
+      "source_signal_cluster_id": "cluster_002",
+      "global_signal_cluster_id": "cluster_001",
+      "source_lane": "agnostic_freeform_ast",
+      "expression": "CSRank(Mean($low,34))",
+      "score": 1.254644,
+      "turnover": 0.03179,
+      "strict_cost_adjusted_sortino": 4.455702,
+      "portfolio_replay_long_only_sortino": 1.254644,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.001155,
+      "sign_flip_score": -0.675923,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    },
+    {
+      "survivor_uid": "phase3lJ-survivor-009",
+      "harvest_label": "initial",
+      "entry_type": "full_formula_survivor",
+      "source_cluster_id": "cluster_014",
+      "source_signal_cluster_id": "cluster_009",
+      "global_signal_cluster_id": "cluster_004",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+      "score": 1.229064,
+      "turnover": 0.027425,
+      "strict_cost_adjusted_sortino": 2.81205,
+      "portfolio_replay_long_only_sortino": 1.229064,
+      "main_non_gap_pass": true,
+      "main_deployable_pass": true,
+      "subperiod_positive_cost_window_ratio": 0.5,
+      "subperiod_min_window_cost_adjusted_return": -0.000186,
+      "sign_flip_score": -0.080396,
+      "sign_flip_non_gap_or_deployable_passed": false,
+      "decision": "GLOBAL_DAILY_PASS_EX_REGIME",
+      "blocker_flags": "",
+      "remaining_blocker": "true_regime_bucket_replay_not_run|minute_execution_capacity_not_run"
+    }
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

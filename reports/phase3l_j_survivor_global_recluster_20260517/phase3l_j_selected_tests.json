@@ -1,0 +1,225 @@
+{
+  "selected": [
+    {
+      "candidate_id": "phase3lJ-survivor-000-main_survivor_replay",
+      "expression": "CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21)))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-000-sign_flip_placebo",
+      "expression": "Neg(CSRank(ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-001-main_survivor_replay",
+      "expression": "CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-001-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(CSRank(Std($open,8)),ZScore(Mean(Abs(Delta($vwap,1)),21)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-002-main_survivor_replay",
+      "expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-002-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-003-main_survivor_replay",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-003-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(ZScore(Mean(Abs($close),8)),ZScore(Mean(Abs($amount),21)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-004-main_survivor_replay",
+      "expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-004-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-005-main_survivor_replay",
+      "expression": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-005-sign_flip_placebo",
+      "expression": "Neg(CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-006-main_survivor_replay",
+      "expression": "CSRank(Mul(CSRank($open),CSRank(Mean($amount,8))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-006-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(CSRank($open),CSRank(Mean($amount,8)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-007-main_survivor_replay",
+      "expression": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-007-sign_flip_placebo",
+      "expression": "Neg(CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-008-main_survivor_replay",
+      "expression": "CSRank(Mean($low,34))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-008-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mean($low,34)))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-009-main_survivor_replay",
+      "expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+      "proof_variant": "main_survivor_replay",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "main_survivor_replay",
+      "proposal_kind": "main_survivor_replay",
+      "mean_window_rank_ic": null
+    },
+    {
+      "candidate_id": "phase3lJ-survivor-009-sign_flip_placebo",
+      "expression": "Neg(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34)))))",
+      "proof_variant": "sign_flip_placebo",
+      "strict_selection_role": "phase3l_survivor_global_recluster",
+      "selection_policy": "phase3l_survivor_union_fixed_queue",
+      "selection_pool_type": "fixed_phase3l_survivor_union",
+      "primitive_family": "sign_flip_placebo",
+      "proposal_kind": "sign_flip_placebo",
+      "mean_window_rank_ic": null
+    }
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
