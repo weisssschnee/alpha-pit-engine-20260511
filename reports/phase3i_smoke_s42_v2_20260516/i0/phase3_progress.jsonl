@@ -1,0 +1,6 @@
+{"selected_count": 16, "source_root": "D:\\p3i_selector_only_20260516\\s42_v2_taildiv\\selector\\i0", "stage": "start_smoke_from_selection", "time": "2026-05-16T07:12:06+00:00"}
+{"stage": "strict_audit_done", "strict_row_count": 16, "time": "2026-05-16T07:12:53+00:00"}
+{"stage": "portfolio_replay_done", "strict_row_count": 16, "time": "2026-05-16T07:13:55+00:00"}
+{"stage": "signal_cluster_done", "strict_row_count": 16, "time": "2026-05-16T07:14:23+00:00"}
+{"stage": "strict_rows_written", "strict_row_count": 16, "time": "2026-05-16T07:14:23+00:00"}
+{"stage": "report_written", "status": "completed", "time": "2026-05-16T07:14:23+00:00"}
