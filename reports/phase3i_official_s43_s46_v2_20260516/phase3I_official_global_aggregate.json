@@ -1,0 +1,2142 @@
+{
+  "created_at": "2026-05-16T10:09:35+00:00",
+  "status": "completed",
+  "root": "reports\\phase3i_official_s43_s46_v2_20260516",
+  "dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "seeds": [
+    43,
+    44,
+    45,
+    46
+  ],
+  "arms": [
+    "i0",
+    "i1v2"
+  ],
+  "row_count": 512,
+  "missing_inputs": [],
+  "cluster_label_scope": "global_signal_vector_proxy_reclustered_across_all_phase3i_official_seed43_46_rows",
+  "cluster_mode": "signal_vector_proxy",
+  "cluster_report": {
+    "cluster_count": 198,
+    "cluster_mode": "signal_vector_proxy",
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 27,
+        "cluster_budget_share": 0.052734,
+        "cluster_replay_contribution_count": 27,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank($close)"
+      },
+      {
+        "signal_cluster_id": "cluster_035",
+        "candidate_count": 18,
+        "cluster_budget_share": 0.035156,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 0.166667,
+        "representative_expression": "CSRank(Std($final_float_market_cap,13))"
+      },
+      {
+        "signal_cluster_id": "cluster_011",
+        "candidate_count": 11,
+        "cluster_budget_share": 0.021484,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.181818,
+        "representative_expression": "Neg(CSRank(Delta($final_float_market_cap,5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_028",
+        "candidate_count": 11,
+        "cluster_budget_share": 0.021484,
+        "cluster_replay_contribution_count": 9,
+        "cluster_replay_pass_rate": 0.818182,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Mean($close,2)),ZScore(Mean($close,8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_014",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.017578,
+        "cluster_replay_contribution_count": 7,
+        "cluster_replay_pass_rate": 0.777778,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($close))))),Mul(ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($close)))),ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($close)))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_050",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.017578,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.222222,
+        "representative_expression": "CSRank(Mom($close,34))"
+      },
+      {
+        "signal_cluster_id": "cluster_051",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.017578,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Delta($final_float_market_cap,8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_065",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.017578,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.222222,
+        "representative_expression": "Neg(CSRank(Mom($close,13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_112",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.017578,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Neg(CSRank(Mom($close,3)))),CSRank(Log($final_float_market_cap))))"
+      },
+      {
+        "signal_cluster_id": "cluster_018",
+        "candidate_count": 8,
+        "cluster_budget_share": 0.015625,
+        "cluster_replay_contribution_count": 8,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Neg(Neg(CSRank($close))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_037",
+        "candidate_count": 8,
+        "cluster_budget_share": 0.015625,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mom($close,21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_062",
+        "candidate_count": 8,
+        "cluster_budget_share": 0.015625,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mean(Abs($ret),34))"
+      },
+      {
+        "signal_cluster_id": "cluster_118",
+        "candidate_count": 8,
+        "cluster_budget_share": 0.015625,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore(CSRank(Mean(Abs($ret),8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_148",
+        "candidate_count": 8,
+        "cluster_budget_share": 0.015625,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sign($final_total_market_cap))"
+      },
+      {
+        "signal_cluster_id": "cluster_024",
+        "candidate_count": 7,
+        "cluster_budget_share": 0.013672,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.285714,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($close,1)),ZScore(Mean($volume,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_091",
+        "candidate_count": 7,
+        "cluster_budget_share": 0.013672,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mom($volume,8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_102",
+        "candidate_count": 7,
+        "cluster_budget_share": 0.013672,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mean(Abs($ret),2)))"
+      },
+      {
+        "signal_cluster_id": "cluster_113",
+        "candidate_count": 7,
+        "cluster_budget_share": 0.013672,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(CSRank(Log($final_float_market_cap))),CSRank(Log($final_total_market_cap))))"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.011719,
+        "cluster_replay_contribution_count": 6,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore($close),ZScore($amount))))),Mul(ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))),ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_046",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.011719,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Delta($final_float_market_cap,2)))"
+      },
+      {
+        "signal_cluster_id": "cluster_064",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.011719,
+        "cluster_replay_contribution_count": 4,
+        "cluster_replay_pass_rate": 0.666667,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Mean($volume,1)),ZScore(Mean($amount,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_083",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.011719,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank($volume))"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 5,
+        "cluster_budget_share": 0.009766,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 0.6,
+        "representative_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_080",
+        "candidate_count": 5,
+        "cluster_budget_share": 0.009766,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($amount)"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 4,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_017",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 4,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign($vwap),Mul(CSRank($open),CSRank(Mean($amount,8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_023",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 4,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Neg(Neg(CSRank($close))),Sign(Delta($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_056",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Std($volume,2)))"
+      },
+      {
+        "signal_cluster_id": "cluster_063",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(Mean($volume,21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_070",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($close,5)),ZScore(Std($volume,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_072",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 4,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(Delta($high,21))),Mul(ZScore(Delta($high,21)),ZScore(Delta($high,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_082",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Mean(Abs($final_float_market_cap),2)),CSRank(Mean(Abs($amount),2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_087",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mean(Abs($amount),8)),CSRank(Mean(Abs($amount),21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_094",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.007812,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($final_float_market_cap,5)),ZScore(Mean($final_float_market_cap,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21)))))),Mul(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))),ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_012",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore($close),ZScore($amount))),Sign(Delta($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_019",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))"
+      },
+      {
+        "signal_cluster_id": "cluster_032",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Std($amount,2)),ZScore(Std($close,5)))))),Mul(ZScore(CSRank(Mul(ZScore(Std($amount,2)),ZScore(Std($close,5))))),ZScore(CSRank(Mul(ZScore(Std($amount,2)),ZScore(Std($close,5))))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_033",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_039",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($amount,21)),CSRank(Delta($amount,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_040",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Mean($amount,8)),ZScore(Mean($amount,34)))))),Mul(ZScore(CSRank(Mul(ZScore(Mean($amount,8)),ZScore(Mean($amount,34))))),ZScore(CSRank(Mul(ZScore(Mean($amount,8)),ZScore(Mean($amount,34))))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_061",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Delta($volume,3)),Mul(CSRank(Mean(Abs(Delta($vwap,1)),34)),Sign(Std($close,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_075",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($final_total_market_cap,3)),Mul(ZScore(Delta($high,34)),ZScore(Mean(Abs(Delta($volume,1)),34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_109",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.005859,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Delta($volume,34))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($low),Corr(Delta($low,2),Mean(Abs(Delta($close,1)),5),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_010",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Sub(CSRank($open),ZScore(Delta($close,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_016",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Sub(ZScore($high),ZScore($final_float_market_cap)))"
+      },
+      {
+        "signal_cluster_id": "cluster_020",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34)))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_022",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($high,34)),Mul(CSRank(Delta($close,5)),CSRank(Mean(Abs(Delta($turnover_rate,1)),34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_025",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($amount,34)),Corr(Mom($final_total_market_cap,21),Mean(Abs(Delta($final_float_market_cap,1)),21),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_026",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(Delta($open,2))),Mul(ZScore(Delta($open,2)),ZScore(Delta($open,2)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_027",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Mean($vwap,3)),CSRank(Std($high,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_031",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_034",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign($final_float_market_cap),Corr(Mom($high,21),Delta($low,21),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_036",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($close,34)),ZScore(Delta($amount,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_038",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($final_total_market_cap,34)),Mul(CSRank(Std($final_total_market_cap,3)),Sign(Mom($final_float_market_cap,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_043",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,5)),ZScore(Delta($close,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_044",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(CSRank(Std($low,5)),ZScore(Std($amount,3))))"
+      },
+      {
+        "signal_cluster_id": "cluster_045",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,1)),CSRank(Delta($volume,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_047",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Add(CSRank(Std($open,34)),ZScore(Delta($low,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_049",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),34)),Corr(Delta($high,13),Mean($low,13),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_052",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($final_float_market_cap,8)),CSRank(Std($final_float_market_cap,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_053",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($close,8))))))),Mul(ZScore(Neg(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($close,8)))))),ZScore(Neg(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($close,8)))))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_054",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mom($open,3)),ZScore(Std($close,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_055",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($open,8)),Mul(CSRank(Delta($low,5)),Sign(Mean($final_total_market_cap,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_057",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Mom($high,8)),ZScore($final_total_market_cap)))"
+      },
+      {
+        "signal_cluster_id": "cluster_058",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Std($final_float_market_cap,34)),ZScore(Delta($vwap,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_059",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Delta($amount,2)),CSRank(Delta($final_float_market_cap,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_060",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($amount,3)),Mul(Sign(Mean($low,2)),CSRank($final_total_market_cap))))"
+      },
+      {
+        "signal_cluster_id": "cluster_067",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($vwap),Corr(Mom($turnover_rate,34),Std($volume,13),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_068",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(Sign(Delta($low,21)),CSRank(Delta($volume,13))))"
+      },
+      {
+        "signal_cluster_id": "cluster_071",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mean(Abs($ret),1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_074",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($final_float_market_cap,13)),Sign(Delta($open,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_077",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($low,2)),Mul(CSRank(Delta($high,13)),ZScore(Delta($open,8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_078",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Delta($open,5)),CSRank(Delta($open,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_079",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mean($volume,2)),CSRank(Mean($volume,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_081",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Delta($volume,34)),CSRank(Delta($amount,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_084",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($amount,8)),Corr(Delta($turnover_rate,3),Std($volume,5),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_085",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($high,8)),Corr(Std($low,8),Mean(Abs(Delta($close,1)),21),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_086",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,21)),ZScore(Delta($close,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_088",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Delta($vwap,8)),ZScore(Delta($low,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_089",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($amount,5)),Corr(Mom($turnover_rate,5),Delay(Std($vwap,34),1),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_090",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($amount,5)),ZScore(Delta($final_float_market_cap,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_093",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Mean($vwap,3)),Mul(ZScore($final_total_market_cap),CSRank($close))))"
+      },
+      {
+        "signal_cluster_id": "cluster_095",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Add(ZScore(Mean($final_total_market_cap,13)),CSRank(Mean($turnover_rate,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_096",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank($final_total_market_cap),Corr(Mean(Abs(Delta($low,1)),21),Delay(Mean($final_float_market_cap,13),1),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_098",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($vwap,2)),Corr(Mean(Abs(Delta($turnover_rate,1)),21),Std($low,8),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_099",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean(Abs($volume),5)),ZScore(Mean(Abs($final_float_market_cap),8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_100",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(Sign(Std($close,2)),ZScore(Delta($close,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_101",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Mom($volume,8)),ZScore(Mom($final_float_market_cap,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_103",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank($amount),CSRank($final_float_market_cap))))"
+      },
+      {
+        "signal_cluster_id": "cluster_104",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(Sign(Delta($close,21)),Sign(Mom($vwap,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_105",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(Sign($open),Sign(Mom($turnover_rate,13))))"
+      },
+      {
+        "signal_cluster_id": "cluster_107",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(Sign(Mom($final_total_market_cap,34)),Sign(Mom($low,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_108",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Mean($final_float_market_cap,13)),Corr(Std($volume,2),Delay(Mean($vwap,13),1),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_110",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(CSRank(Std($amount,3)),Sign(Std($turnover_rate,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_116",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($low,21)),Mul(ZScore(Delta($volume,3)),CSRank(Delta($final_float_market_cap,13)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_117",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mom($amount,5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_122",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,8)),ZScore(Delta($volume,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_125",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mean($final_float_market_cap,1)),CSRank(Mean($amount,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_127",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Mom($amount,34)),ZScore(Mom($volume,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_128",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Delta($final_total_market_cap,5)),Corr(Mean(Abs(Delta($turnover_rate,1)),34),Delta($low,8),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_131",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Std($open,3)),Corr(Mom($turnover_rate,13),Std($low,8),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_132",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Mom($final_float_market_cap,5)),ZScore(Mom($volume,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_134",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($open,3)),Corr(Std($final_float_market_cap,8),Std($close,34),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_135",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Delta($volume,2)),Sign(Delta($volume,3))))"
+      },
+      {
+        "signal_cluster_id": "cluster_137",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($close,5)),CSRank(Std($close,2)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_141",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Delta($open,2)),Corr(Delta($amount,34),$low,13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_142",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign($low),Corr(Delta($open,21),Mean($low,8),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_143",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mom($low,13)),Corr(Mean($volume,5),Delta($volume,2),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_147",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Mom($amount,5)),Corr(Std($vwap,5),Delay($low,1),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_187",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(CSRank(Mean(Abs($ret),21))),ZScore(CSRank(Mean(Abs($ret),8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_195",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($volume,3)),Corr(Mom($open,13),Delay(Mom($turnover_rate,34),1),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_196",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($volume,2)),Corr(Std($volume,13),Mom($final_float_market_cap,8),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_198",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.003906,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sign(Std($final_float_market_cap,8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(Delta($amount,1)),CSRank(Delta($amount,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))"
+      },
+      {
+        "signal_cluster_id": "cluster_013",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($turnover_rate,8)),Mul(ZScore(Mean($open,2)),CSRank(Std($close,13)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_015",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($open),Corr(Mean($vwap,5),Delay(Mean(Abs(Delta($amount,1)),5),1),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_021",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($turnover_rate,3)),Mul(ZScore(Mean(Abs(Delta($close,1)),8)),Sign(Mean($vwap,13)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_029",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($final_float_market_cap,1)),34)),Corr($final_float_market_cap,Delta($high,34),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_030",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2))))),Corr(Delta($amount,1),Delay(Delta($amount,1),1),10)))"
+      },
+      {
+        "signal_cluster_id": "cluster_041",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mean($turnover_rate,13)),Mul(CSRank(Mean($close,2)),Sign(Mom($final_float_market_cap,2)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_042",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,2)))),Sign(Delta($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_048",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($amount,2)),ZScore(Delta($close,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_066",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Neg(CSRank(Delta($final_float_market_cap,21))),Corr(Delta($amount,1),Delay(Delta($amount,1),1),10)))"
+      },
+      {
+        "signal_cluster_id": "cluster_069",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(CSRank(Mean(Abs(Delta($high,1)),5)),CSRank(Std($vwap,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_073",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($low,3)),Corr(Std($volume,2),Delay(Mean(Abs(Delta($vwap,1)),2),1),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_076",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Delta($close,2)),ZScore(Delta($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_092",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mean(Abs(Delta($close,1)),2)),Corr(Mom($high,13),Mean($close,13),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_097",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($volume,2)),ZScore(Std($close,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_106",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Delta($turnover_rate,34)),CSRank(Std($vwap,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_111",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Delta($close,34)),Mul(CSRank(Mom($high,3)),CSRank(Delta($close,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_114",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(Delta($final_float_market_cap,13))),Mul(ZScore(Delta($final_float_market_cap,13)),ZScore(Delta($final_float_market_cap,13)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_115",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Delta($final_float_market_cap,34)),ZScore(Delta($close,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_119",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($turnover_rate,3)),Corr(Mom($open,8),Delay(Mean($close,34),1),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_120",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(ZScore(Delta($high,5)),ZScore(Mean($high,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_121",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Add(CSRank(Delta($turnover_rate,21)),ZScore($final_float_market_cap)))"
+      },
+      {
+        "signal_cluster_id": "cluster_123",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Mom($close,21)),CSRank(Mom($volume,34)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_124",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mom($close,34)),ZScore(Mom($close,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_126",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Mean($final_float_market_cap,3)),ZScore(Std($vwap,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_129",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mom($final_float_market_cap,34)),Corr(Delta($volume,21),Std($low,34),21)))"
+      },
+      {
+        "signal_cluster_id": "cluster_130",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($amount),Sign(Mom($close,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_133",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Delta($amount,3)),Sign(Mean($low,3))))"
+      },
+      {
+        "signal_cluster_id": "cluster_136",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($final_float_market_cap,5)),ZScore(Std($amount,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_138",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(ZScore(Delta($amount,13)),ZScore(Mom($vwap,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_139",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Std($vwap,5)),Corr($open,Std($final_float_market_cap,5),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_140",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,5)),CSRank(Std($amount,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_144",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mean($volume,8)),ZScore(Mean($volume,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_145",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Std($final_total_market_cap,5)),Corr(Mean(Abs(Delta($low,1)),13),Delay(Std($amount,8),1),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_146",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sign(Delta($open,3)))"
+      },
+      {
+        "signal_cluster_id": "cluster_149",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Std($volume,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_150",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Std($volume,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_151",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Add(CSRank(Mom($turnover_rate,13)),CSRank(Mean($final_total_market_cap,5))))"
+      },
+      {
+        "signal_cluster_id": "cluster_152",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(ZScore(Std($turnover_rate,21))),Mul(ZScore(Std($turnover_rate,21)),ZScore(Std($turnover_rate,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_153",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank($close),Sign($high)))"
+      },
+      {
+        "signal_cluster_id": "cluster_154",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank($close),Sign($high)))"
+      },
+      {
+        "signal_cluster_id": "cluster_155",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Mom($amount,5)),Sign($open)))"
+      },
+      {
+        "signal_cluster_id": "cluster_156",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Mom($amount,5)),Sign($open)))"
+      },
+      {
+        "signal_cluster_id": "cluster_157",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Std($close,34)),Sign($close)))"
+      },
+      {
+        "signal_cluster_id": "cluster_158",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Std($close,34)),Sign($close)))"
+      },
+      {
+        "signal_cluster_id": "cluster_159",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($close,2)),ZScore(Std($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_160",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Std($close,2)),ZScore(Std($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_161",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($volume,1)),CSRank(Std($close,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_162",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($volume,1)),CSRank(Std($close,2))))"
+      },
+      {
+        "signal_cluster_id": "cluster_163",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($close,1)),CSRank(Std($volume,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_164",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($close,1)),CSRank(Std($volume,34))))"
+      },
+      {
+        "signal_cluster_id": "cluster_165",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($close,21)),CSRank(Std($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_166",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($close,21)),CSRank(Std($amount,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_167",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($close,1)),ZScore(Std($close,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_168",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($close,1)),ZScore(Std($close,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_169",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($close,1)),ZScore(Std($close,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_170",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($close,1)),ZScore(Std($close,21)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_171",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($turnover_rate,3)),Sign($final_float_market_cap)))"
+      },
+      {
+        "signal_cluster_id": "cluster_172",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($turnover_rate,3)),Sign($final_float_market_cap)))"
+      },
+      {
+        "signal_cluster_id": "cluster_173",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,1)),CSRank(Std($volume,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_174",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,1)),CSRank(Std($volume,1))))"
+      },
+      {
+        "signal_cluster_id": "cluster_175",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Std($final_float_market_cap,1)),CSRank(Std($volume,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_176",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($final_float_market_cap,1)),ZScore(Std($close,8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_177",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Std($final_float_market_cap,1)),ZScore(Std($close,8)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_178",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Mom($open,13)),Mul(Sign(Mom($vwap,13)),Sign(Mom($open,3)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_179",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Std($final_float_market_cap,13)),Sign(Mean($turnover_rate,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_180",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(ZScore(Std($final_float_market_cap,13)),Sign(Mean($turnover_rate,8))))"
+      },
+      {
+        "signal_cluster_id": "cluster_181",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($close,1)),CSRank(Std($final_float_market_cap,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_182",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($close,1)),CSRank(Std($final_float_market_cap,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_183",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,1)),CSRank(Std($final_float_market_cap,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_184",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,1)),CSRank(Std($final_float_market_cap,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_185",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Std($final_float_market_cap,1)),CSRank(Std($amount,1)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_186",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank($turnover_rate),Corr($final_float_market_cap,Std($final_total_market_cap,13),13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_188",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank(Mom($high,3)),Corr($final_float_market_cap,Delay(Std($close,8),1),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_189",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(CSRank($amount),Corr(Mean($volume,21),Delta($turnover_rate,5),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_190",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Add(CSRank(Delta($final_total_market_cap,3)),CSRank($volume)))"
+      },
+      {
+        "signal_cluster_id": "cluster_191",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sign(Delta($open,13)))"
+      },
+      {
+        "signal_cluster_id": "cluster_192",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sign(Delta($vwap,8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_193",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore(Neg(CSRank(Mean(Abs($ret),5)))),ZScore(Neg(CSRank(Mom($close,21))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_194",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Mean($final_float_market_cap,21)),Sign(Delta($vwap,21))))"
+      },
+      {
+        "signal_cluster_id": "cluster_197",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.001953,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(Sign(Delta($amount,3)),Mul(CSRank(Delta($volume,21)),Sign(Std($volume,5)))))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "CSRank(CSResidual(CSRank($vwap),Sign(Delta($vwap,5))))",
+        "right_expression": "CSRank(CSResidual(CSRank($vwap),Sign(Delta($vwap,5))))",
+        "right_cluster_id": "cluster_002",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))",
+        "right_cluster_id": "cluster_003",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))",
+        "right_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))",
+        "right_cluster_id": "cluster_005",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))",
+        "right_cluster_id": "cluster_006",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21)))))),Mul(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))),ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))))))",
+        "right_expression": "CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))",
+        "right_cluster_id": "cluster_001",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21)))))),Mul(ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))),ZScore(CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))))))",
+        "right_expression": "CSRank(Mul(ZScore(Std($amount,21)),ZScore(Std($final_float_market_cap,21))))",
+        "right_cluster_id": "cluster_001",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_008",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21))))))),Mul(ZScore(Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))),ZScore(Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,5)),CSRank(Std($amount,21)))))",
+        "right_cluster_id": "cluster_003",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore($close),ZScore($amount))))),Mul(ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))),ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))))))",
+        "right_expression": "CSRank(Mul(ZScore($close),ZScore($amount)))",
+        "right_cluster_id": "cluster_004",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore($close),ZScore($amount))))),Mul(ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))),ZScore(CSRank(Mul(ZScore($close),ZScore($amount)))))))",
+        "right_expression": "CSRank(Mul(ZScore($close),ZScore($amount)))",
+        "right_cluster_id": "cluster_004",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($low),Corr(Delta($low,2),Mean(Abs(Delta($close,1)),5),8)))",
+        "right_expression": "CSRank(Mul(ZScore($low),Corr(Delta($low,2),Mean(Abs(Delta($close,1)),5),8)))",
+        "right_cluster_id": "cluster_009",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Sub(CSRank($open),ZScore(Delta($close,21))))",
+        "right_expression": "CSRank(Sub(CSRank($open),ZScore(Delta($close,21))))",
+        "right_cluster_id": "cluster_010",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5)))))),Mul(ZScore(CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))),ZScore(CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))))))",
+        "right_expression": "CSRank(Mul(ZScore(Std($final_float_market_cap,21)),ZScore(Std($close,5))))",
+        "right_cluster_id": "cluster_005",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2))))))),Mul(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2)))))),ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2)))))))))",
+        "right_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2))))))),Mul(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2)))))),ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,5)),CSRank(Delta($volume,2)))))))))",
+        "right_cluster_id": "cluster_011",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_cluster_id": "cluster_014",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34))))))),Mul(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))),ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))",
+        "right_cluster_id": "cluster_006",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34))))))),Mul(ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))),ZScore(Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Delta($close,21)),CSRank(Delta($final_float_market_cap,34)))))",
+        "right_cluster_id": "cluster_006",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Sub(ZScore($high),ZScore($final_float_market_cap)))",
+        "right_expression": "CSRank(Sub(ZScore($high),ZScore($final_float_market_cap)))",
+        "right_cluster_id": "cluster_016",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign($vwap),Mul(CSRank($open),CSRank(Mean($amount,8)))))",
+        "right_expression": "CSRank(Mul(Sign($vwap),Mul(CSRank($open),CSRank(Mean($amount,8)))))",
+        "right_cluster_id": "cluster_017",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(CSResidual(CSRank($close),CSRank($volume))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(CSResidual(CSRank($close),CSRank($volume))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_018",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))",
+        "right_expression": "CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))",
+        "right_cluster_id": "cluster_019",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_020",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Mean($high,34)),Mul(CSRank(Delta($close,5)),CSRank(Mean(Abs(Delta($turnover_rate,1)),34)))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($high,34)),Mul(CSRank(Delta($close,5)),CSRank(Mean(Abs(Delta($turnover_rate,1)),34)))))",
+        "right_cluster_id": "cluster_022",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank($close),Sign(Delta($amount,1))))",
+        "right_expression": "CSRank(Mul(CSRank($close),Sign(Delta($amount,1))))",
+        "right_cluster_id": "cluster_023",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34)))))),Mul(ZScore(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))),ZScore(CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean($close,8)),ZScore(Mean($final_float_market_cap,34))))",
+        "right_cluster_id": "cluster_014",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank($volume),Mul(ZScore($vwap),ZScore($volume))))",
+        "right_expression": "CSRank(Mul(CSRank($volume),Mul(ZScore($vwap),ZScore($volume))))",
+        "right_cluster_id": "cluster_024",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Neg(Neg(CSRank($close))),Sign(Delta($amount,1))))",
+        "right_expression": "CSRank(Mul(CSRank($close),Sign(Delta($amount,1))))",
+        "right_cluster_id": "cluster_023",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Neg(Neg(CSRank($close))),Sign(Delta($amount,1))))",
+        "right_expression": "CSRank(Mul(CSRank($close),Sign(Delta($amount,1))))",
+        "right_cluster_id": "cluster_023",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Std($amount,34)),Corr(Mom($final_total_market_cap,21),Mean(Abs(Delta($final_float_market_cap,1)),21),8)))",
+        "right_expression": "CSRank(Mul(ZScore(Std($amount,34)),Corr(Mom($final_total_market_cap,21),Mean(Abs(Delta($final_float_market_cap,1)),21),8)))",
+        "right_cluster_id": "cluster_025",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(Delta($open,2))),Mul(ZScore(Delta($open,2)),ZScore(Delta($open,2)))))",
+        "right_expression": "CSRank(Mul(Sign(ZScore(Delta($open,2))),Mul(ZScore(Delta($open,2)),ZScore(Delta($open,2)))))",
+        "right_cluster_id": "cluster_026",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(CSResidual(ZScore(Mean($vwap,3)),CSRank(Std($high,21))))",
+        "right_expression": "CSRank(CSResidual(ZScore(Mean($vwap,3)),CSRank(Std($high,21))))",
+        "right_cluster_id": "cluster_027",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Mean(Abs($close),5)),ZScore(Mean(Abs($close),21))))",
+        "right_expression": "CSRank(Mul(ZScore(Mean(Abs($close),5)),ZScore(Mean(Abs($close),21))))",
+        "right_cluster_id": "cluster_028",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign(ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount))))),Mul(ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))),ZScore(CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))))))",
+        "right_expression": "CSRank(Mul(ZScore($final_float_market_cap),ZScore($amount)))",
+        "right_cluster_id": "cluster_019",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_expression": "CSRank(Mul(CSRank(CSResidual(CSRank(CSRank($close)),CSRank(Log($final_total_market_cap)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+        "right_cluster_id": "cluster_031",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34))))",
+        "right_expression": "CSRank(Mul(ZScore(Delta($close,21)),ZScore(Delta($amount,34))))",
+        "right_cluster_id": "cluster_033",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(Sign($final_float_market_cap),Corr(Mom($high,21),Delta($low,21),21)))",
+        "right_expression": "CSRank(Mul(Sign($final_float_market_cap),Corr(Mom($high,21),Delta($low,21),21)))",
+        "right_cluster_id": "cluster_034",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Std($final_float_market_cap,21))",
+        "right_expression": "CSRank(Std($final_float_market_cap,21))",
+        "right_cluster_id": "cluster_035",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Delta($close,34)),ZScore(Delta($amount,5)))))",
+        "right_expression": "Neg(CSRank(Mul(ZScore(Delta($close,34)),ZScore(Delta($amount,5)))))",
+        "right_cluster_id": "cluster_036",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delta($final_float_market_cap,21)))",
+        "right_expression": "Neg(CSRank(Delta($final_float_market_cap,21)))",
+        "right_cluster_id": "cluster_037",
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore(Std($final_total_market_cap,34)),Mul(CSRank(Std($final_total_market_cap,3)),Sign(Mom($final_float_market_cap,21)))))",
+        "right_expression": "CSRank(Mul(ZScore(Std($final_total_market_cap,34)),Mul(CSRank(Std($final_total_market_cap,3)),Sign(Mom($final_float_market_cap,21)))))",
+        "right_cluster_id": "cluster_038",
+        "abs_signal_corr": 1.0
+      }
+    ]
+  },
+  "arm_metrics": {
+    "i0": {
+      "audited": 256,
+      "raw_non_gap_pass": 75,
+      "raw_non_gap_pass_rate": 0.292969,
+      "unique_signal_clusters": 47,
+      "deployable_rows": 57,
+      "deployable_unique_clusters": 34,
+      "deployable_cluster_per_256": 34.0,
+      "raw_to_deployable_cluster_ratio": 2.205882,
+      "top_cluster_raw_pass_share": 0.16,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.210526,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.300686,
+      "p90_strict_turnover": 0.67796,
+      "median_replay_turnover": 0.312992,
+      "p90_replay_turnover": 0.6821,
+      "median_deployable_strict_turnover": 0.159149,
+      "p90_deployable_strict_turnover": 0.370855,
+      "median_deployable_replay_turnover": 0.170802,
+      "p90_deployable_replay_turnover": 0.376845,
+      "cluster_001_share": 0.013333,
+      "cluster_003_share": 0.013333,
+      "arm": "i0",
+      "arm_label": "I0_G2_discovery_primary_control"
+    },
+    "i1v2": {
+      "audited": 256,
+      "raw_non_gap_pass": 73,
+      "raw_non_gap_pass_rate": 0.285156,
+      "unique_signal_clusters": 37,
+      "deployable_rows": 65,
+      "deployable_unique_clusters": 29,
+      "deployable_cluster_per_256": 29.0,
+      "raw_to_deployable_cluster_ratio": 2.517241,
+      "top_cluster_raw_pass_share": 0.205479,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.230769,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.250169,
+      "p90_strict_turnover": 0.592804,
+      "median_replay_turnover": 0.254162,
+      "p90_replay_turnover": 0.592018,
+      "median_deployable_strict_turnover": 0.125746,
+      "p90_deployable_strict_turnover": 0.349081,
+      "median_deployable_replay_turnover": 0.133647,
+      "p90_deployable_replay_turnover": 0.355406,
+      "cluster_001_share": 0.027397,
+      "cluster_003_share": 0.027397,
+      "arm": "i1v2",
+      "arm_label": "I1_v2_G2_turnover_tail_guard"
+    }
+  },
+  "seed_metrics": [
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 18,
+      "raw_non_gap_pass_rate": 0.28125,
+      "unique_signal_clusters": 15,
+      "deployable_rows": 14,
+      "deployable_unique_clusters": 11,
+      "deployable_cluster_per_256": 44.0,
+      "raw_to_deployable_cluster_ratio": 1.636364,
+      "top_cluster_raw_pass_share": 0.222222,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.285714,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.330831,
+      "p90_strict_turnover": 0.755536,
+      "median_replay_turnover": 0.337664,
+      "p90_replay_turnover": 0.759868,
+      "median_deployable_strict_turnover": 0.138247,
+      "p90_deployable_strict_turnover": 0.354402,
+      "median_deployable_replay_turnover": 0.152514,
+      "p90_deployable_replay_turnover": 0.364829,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 43,
+      "arm": "i0",
+      "arm_label": "I0_G2_discovery_primary_control"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 16,
+      "raw_non_gap_pass_rate": 0.25,
+      "unique_signal_clusters": 11,
+      "deployable_rows": 15,
+      "deployable_unique_clusters": 10,
+      "deployable_cluster_per_256": 40.0,
+      "raw_to_deployable_cluster_ratio": 1.6,
+      "top_cluster_raw_pass_share": 0.25,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.266667,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.282652,
+      "p90_strict_turnover": 0.646959,
+      "median_replay_turnover": 0.290048,
+      "p90_replay_turnover": 0.653895,
+      "median_deployable_strict_turnover": 0.081835,
+      "p90_deployable_strict_turnover": 0.295196,
+      "median_deployable_replay_turnover": 0.098279,
+      "p90_deployable_replay_turnover": 0.309095,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 43,
+      "arm": "i1v2",
+      "arm_label": "I1_v2_G2_turnover_tail_guard"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 19,
+      "raw_non_gap_pass_rate": 0.296875,
+      "unique_signal_clusters": 18,
+      "deployable_rows": 15,
+      "deployable_unique_clusters": 14,
+      "deployable_cluster_per_256": 56.0,
+      "raw_to_deployable_cluster_ratio": 1.357143,
+      "top_cluster_raw_pass_share": 0.105263,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.133333,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.29713,
+      "p90_strict_turnover": 0.677871,
+      "median_replay_turnover": 0.302583,
+      "p90_replay_turnover": 0.682216,
+      "median_deployable_strict_turnover": 0.127052,
+      "p90_deployable_strict_turnover": 0.298046,
+      "median_deployable_replay_turnover": 0.148589,
+      "p90_deployable_replay_turnover": 0.309689,
+      "cluster_001_share": 0.052632,
+      "cluster_003_share": 0.052632,
+      "seed": 44,
+      "arm": "i0",
+      "arm_label": "I0_G2_discovery_primary_control"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 20,
+      "raw_non_gap_pass_rate": 0.3125,
+      "unique_signal_clusters": 14,
+      "deployable_rows": 18,
+      "deployable_unique_clusters": 12,
+      "deployable_cluster_per_256": 48.0,
+      "raw_to_deployable_cluster_ratio": 1.666667,
+      "top_cluster_raw_pass_share": 0.15,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.166667,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.230996,
+      "p90_strict_turnover": 0.575851,
+      "median_replay_turnover": 0.236194,
+      "p90_replay_turnover": 0.581254,
+      "median_deployable_strict_turnover": 0.126958,
+      "p90_deployable_strict_turnover": 0.294085,
+      "median_deployable_replay_turnover": 0.144958,
+      "p90_deployable_replay_turnover": 0.302583,
+      "cluster_001_share": 0.1,
+      "cluster_003_share": 0.1,
+      "seed": 44,
+      "arm": "i1v2",
+      "arm_label": "I1_v2_G2_turnover_tail_guard"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 19,
+      "raw_non_gap_pass_rate": 0.296875,
+      "unique_signal_clusters": 17,
+      "deployable_rows": 14,
+      "deployable_unique_clusters": 12,
+      "deployable_cluster_per_256": 48.0,
+      "raw_to_deployable_cluster_ratio": 1.583333,
+      "top_cluster_raw_pass_share": 0.157895,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.214286,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.267791,
+      "p90_strict_turnover": 0.61263,
+      "median_replay_turnover": 0.270645,
+      "p90_replay_turnover": 0.606071,
+      "median_deployable_strict_turnover": 0.167788,
+      "p90_deployable_strict_turnover": 0.30292,
+      "median_deployable_replay_turnover": 0.176522,
+      "p90_deployable_replay_turnover": 0.31522,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 45,
+      "arm": "i0",
+      "arm_label": "I0_G2_discovery_primary_control"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 16,
+      "raw_non_gap_pass_rate": 0.25,
+      "unique_signal_clusters": 12,
+      "deployable_rows": 14,
+      "deployable_unique_clusters": 10,
+      "deployable_cluster_per_256": 40.0,
+      "raw_to_deployable_cluster_ratio": 1.6,
+      "top_cluster_raw_pass_share": 0.25,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.285714,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.246083,
+      "p90_strict_turnover": 0.551517,
+      "median_replay_turnover": 0.253985,
+      "p90_replay_turnover": 0.551969,
+      "median_deployable_strict_turnover": 0.078604,
+      "p90_deployable_strict_turnover": 0.30292,
+      "median_deployable_replay_turnover": 0.093363,
+      "p90_deployable_replay_turnover": 0.31522,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 45,
+      "arm": "i1v2",
+      "arm_label": "I1_v2_G2_turnover_tail_guard"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 19,
+      "raw_non_gap_pass_rate": 0.296875,
+      "unique_signal_clusters": 15,
+      "deployable_rows": 14,
+      "deployable_unique_clusters": 10,
+      "deployable_cluster_per_256": 40.0,
+      "raw_to_deployable_cluster_ratio": 1.9,
+      "top_cluster_raw_pass_share": 0.157895,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.214286,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.315866,
+      "p90_strict_turnover": 0.684182,
+      "median_replay_turnover": 0.328344,
+      "p90_replay_turnover": 0.687782,
+      "median_deployable_strict_turnover": 0.174738,
+      "p90_deployable_strict_turnover": 0.376605,
+      "median_deployable_replay_turnover": 0.190142,
+      "p90_deployable_replay_turnover": 0.382497,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 46,
+      "arm": "i0",
+      "arm_label": "I0_G2_discovery_primary_control"
+    },
+    {
+      "audited": 64,
+      "raw_non_gap_pass": 21,
+      "raw_non_gap_pass_rate": 0.328125,
+      "unique_signal_clusters": 13,
+      "deployable_rows": 18,
+      "deployable_unique_clusters": 10,
+      "deployable_cluster_per_256": 40.0,
+      "raw_to_deployable_cluster_ratio": 2.1,
+      "top_cluster_raw_pass_share": 0.190476,
+      "top_cluster_id": "cluster_002",
+      "top_deployable_cluster_share": 0.222222,
+      "top_deployable_cluster_id": "cluster_002",
+      "median_strict_turnover": 0.250169,
+      "p90_strict_turnover": 0.574604,
+      "median_replay_turnover": 0.258714,
+      "p90_replay_turnover": 0.58674,
+      "median_deployable_strict_turnover": 0.117292,
+      "p90_deployable_strict_turnover": 0.372728,
+      "median_deployable_replay_turnover": 0.130461,
+      "p90_deployable_replay_turnover": 0.377312,
+      "cluster_001_share": 0.0,
+      "cluster_003_share": 0.0,
+      "seed": 46,
+      "arm": "i1v2",
+      "arm_label": "I1_v2_G2_turnover_tail_guard"
+    }
+  ],
+  "decision": {
+    "deployable_unique_cluster_delta_i1v2_minus_i0": -5,
+    "median_strict_turnover_delta_i1v2_minus_i0": -0.050517,
+    "p90_strict_turnover_delta_i1v2_minus_i0": -0.085156,
+    "median_replay_turnover_delta_i1v2_minus_i0": -0.05883,
+    "p90_replay_turnover_delta_i1v2_minus_i0": -0.090082,
+    "deployable_gate": false,
+    "top_cluster_gate": false,
+    "strict_turnover_gate": true,
+    "replay_turnover_gate": true,
+    "decision": "KEEP_I0_G2_DISCOVERY_PRIMARY",
+    "notes": [
+      "Clusters are globally reclustered across all seeds and arms before metrics are computed.",
+      "new_vs_149 is not asserted here because the full 149 representative registry is not present in this artifact set."
+    ]
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

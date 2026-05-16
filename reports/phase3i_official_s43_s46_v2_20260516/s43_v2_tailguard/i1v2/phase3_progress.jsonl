@@ -1,0 +1,6 @@
+{"selected_count": 64, "source_root": "D:\\p3i_selector_only_20260516\\s43_v2_tailguard\\selector\\i1v2", "stage": "start_smoke_from_selection", "time": "2026-05-16T08:46:36+00:00"}
+{"stage": "strict_audit_done", "strict_row_count": 64, "time": "2026-05-16T08:49:55+00:00"}
+{"stage": "portfolio_replay_done", "strict_row_count": 64, "time": "2026-05-16T08:54:23+00:00"}
+{"stage": "signal_cluster_done", "strict_row_count": 64, "time": "2026-05-16T08:57:24+00:00"}
+{"stage": "strict_rows_written", "strict_row_count": 64, "time": "2026-05-16T08:57:24+00:00"}
+{"stage": "report_written", "status": "completed", "time": "2026-05-16T08:57:24+00:00"}

@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-05-16T08:57:24+00:00",
+  "selection_root": "D:\\p3i_selector_only_20260516\\s43_v2_tailguard\\selector",
+  "arms": [
+    {
+      "short": "i0",
+      "arm": "Phase3I_I0_G2_primary",
+      "audit_count": 64,
+      "deployable_clusters": 11,
+      "top_cluster_share": 0.222222,
+      "median_turnover_proxy": 0.0568665,
+      "output_root": "D:\\p3i_official_20260516\\s43_v2_tailguard\\i0"
+    },
+    {
+      "short": "i1v2",
+      "arm": "Phase3I_I1_v2_turnover_tail_guard",
+      "audit_count": 64,
+      "deployable_clusters": 10,
+      "top_cluster_share": 0.25,
+      "median_turnover_proxy": 0.0523815,
+      "output_root": "D:\\p3i_official_20260516\\s43_v2_tailguard\\i1v2"
+    }
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
