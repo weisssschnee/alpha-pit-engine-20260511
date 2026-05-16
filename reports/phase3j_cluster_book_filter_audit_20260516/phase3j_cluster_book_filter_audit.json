@@ -1,0 +1,116 @@
+{
+  "created_at": "2026-05-16T10:24:11+00:00",
+  "status": "completed",
+  "decision": "PASS_CLUSTER_LEVEL_FILTER_DIRECTION",
+  "input": "reports\\phase3i_official_s43_s46_v2_20260516\\phase3I_official_global_clustered_rows.json",
+  "arm": "i0",
+  "objective": "Audit whether deployment hardening should move from candidate pre-filtering to cluster-level book filtering.",
+  "book_definitions": {
+    "J0": "All I0/G2 deployable clusters from Phase3I official global aggregate.",
+    "J1": "Low-turnover book: keep clusters with p90 replay turnover <= J0 70th percentile.",
+    "J2": "Balanced book: J1 plus source-lane and raw-cluster concentration controls.",
+    "J3": "Diagnostic cost-proxy fallback; not true capacity/liquidity because those proxies are unavailable."
+  },
+  "feature_coverage": {
+    "cluster_turnover": {
+      "coverage": 0.9375,
+      "used_field": "strict_mean_one_way_turnover"
+    },
+    "cost_proxy": {
+      "coverage": 0.921875,
+      "used_field": "strict_cost_adjusted_sortino"
+    },
+    "liquidity_proxy": {
+      "coverage": 0.0,
+      "used_field": null
+    },
+    "capacity_proxy": {
+      "coverage": 0.0,
+      "used_field": null
+    },
+    "corr_to_149_registry_proxy": {
+      "coverage": 0.0,
+      "used_field": null
+    }
+  },
+  "cluster_count": 34,
+  "book_metrics": {
+    "J0": {
+      "book": "J0",
+      "book_cluster_count": 34,
+      "retention_vs_j0": 1.0,
+      "median_cluster_median_replay_turnover": 0.203328,
+      "p90_cluster_p90_replay_turnover": 0.382188,
+      "max_cluster_raw_pass_share": 0.210526,
+      "max_cluster_deployable_share": 0.210526,
+      "source_lane_top_share": 0.441176,
+      "source_lane_top": "agnostic_freeform_ast",
+      "source_lane_counts": {
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 11,
+        "agnostic_freeform_ast": 15
+      },
+      "median_cost_proxy": 2.130552
+    },
+    "J1": {
+      "book": "J1",
+      "book_cluster_count": 24,
+      "retention_vs_j0": 0.705882,
+      "median_cluster_median_replay_turnover": 0.174296,
+      "p90_cluster_p90_replay_turnover": 0.274037,
+      "max_cluster_raw_pass_share": 0.27907,
+      "max_cluster_deployable_share": 0.27907,
+      "source_lane_top_share": 0.5,
+      "source_lane_top": "agnostic_freeform_ast",
+      "source_lane_counts": {
+        "formula_gen_v2_repair_expansion": 6,
+        "r0_cem_led": 6,
+        "agnostic_freeform_ast": 12
+      },
+      "median_cost_proxy": 1.767554
+    },
+    "J2": {
+      "book": "J2",
+      "book_cluster_count": 23,
+      "retention_vs_j0": 0.676471,
+      "median_cluster_median_replay_turnover": 0.17779,
+      "p90_cluster_p90_replay_turnover": 0.276502,
+      "max_cluster_raw_pass_share": 0.129032,
+      "max_cluster_deployable_share": 0.129032,
+      "source_lane_top_share": 0.521739,
+      "source_lane_top": "agnostic_freeform_ast",
+      "source_lane_counts": {
+        "formula_gen_v2_repair_expansion": 6,
+        "r0_cem_led": 5,
+        "agnostic_freeform_ast": 12
+      },
+      "median_cost_proxy": 1.2677
+    },
+    "J3": {
+      "book": "J3",
+      "book_cluster_count": 16,
+      "retention_vs_j0": 0.470588,
+      "median_cluster_median_replay_turnover": 0.126317,
+      "p90_cluster_p90_replay_turnover": 0.254302,
+      "max_cluster_raw_pass_share": 0.181818,
+      "max_cluster_deployable_share": 0.181818,
+      "source_lane_top_share": 0.4375,
+      "source_lane_top": "agnostic_freeform_ast",
+      "source_lane_counts": {
+        "formula_gen_v2_repair_expansion": 6,
+        "r0_cem_led": 3,
+        "agnostic_freeform_ast": 7
+      },
+      "median_cost_proxy": 2.750344
+    }
+  },
+  "bias_audit": {
+    "lookahead": "no new features or labels computed; no-run posthoc audit over completed strict rows",
+    "costs": "10bps replay cost present in source rows",
+    "turnover": "strict and replay turnover present",
+    "capacity_liquidity": "missing; J3 blocked from promotion-grade use",
+    "discovery_vs_deployment": "supports cluster-level deployment filtering after G2 discovery, not candidate-level search promotion",
+    "decision": "HOLD_RESEARCH_FOR_PRODUCTION_BOOK"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
