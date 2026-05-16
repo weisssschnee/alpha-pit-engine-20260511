@@ -1,0 +1,111 @@
+{
+  "date": "2026-05-16",
+  "decision": "PROMOTE_G2_TO_DIVERSIFIED_DISCOVERY_PRIMARY",
+  "scope": {
+    "promoted": {
+      "arm": "H1_G2_signal_vector_control",
+      "status": "diversified_discovery_primary",
+      "not_status": [
+        "production_primary",
+        "true_book_marginal",
+        "commercial_alpha_proof"
+      ]
+    },
+    "rejected": {
+      "arm": "H2_G2_turnover_calibrated",
+      "reason": "High overlap with H1, lower deployable count, worse concentration, insufficient turnover improvement."
+    },
+    "retained_control": "H0_G0_stable"
+  },
+  "execution": {
+    "run_root": "D:\\p3h_official_20260516",
+    "official_aggregate_root": "D:\\p3h_official_20260516\\aggregate",
+    "global_recluster_root": "D:\\p3h_official_20260516\\global_recluster",
+    "dataset": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+    "seeds": [33, 34, 35, 36],
+    "replay_arms": ["h0", "h1", "h2"],
+    "selector_only_parity_arm": "h3",
+    "execution_path": "shared_candidate_pool -> frozen selection -> strict/replay/cluster",
+    "discovery_baseline": 134,
+    "selector_vector_baseline": 122,
+    "ranker_policy": "diagnostic_only",
+    "proof_suite_version": "scalar-turnover-fixed-2026-05-16"
+  },
+  "arm_level_official": {
+    "h0": {
+      "audited": 256,
+      "deployable_clusters": 43,
+      "raw_non_gap": 114,
+      "raw_deployable_ratio": 2.6511627906976742,
+      "top_cluster_share_max": 0.52,
+      "median_replay_turnover": 0.351537
+    },
+    "h1": {
+      "audited": 256,
+      "deployable_clusters": 45,
+      "raw_non_gap": 70,
+      "raw_deployable_ratio": 1.5555555555555556,
+      "top_cluster_share_max": 0.125,
+      "median_replay_turnover": 0.380784
+    },
+    "h2": {
+      "audited": 256,
+      "deployable_clusters": 43,
+      "raw_non_gap": 73,
+      "raw_deployable_ratio": 1.697674418604651,
+      "top_cluster_share_max": 0.210526,
+      "median_replay_turnover": 0.365893
+    }
+  },
+  "global_recluster": {
+    "audited": 768,
+    "global_unique_signal_clusters": 55,
+    "global_deployable_clusters": 37,
+    "new_deployable_clusters_vs_cumulative_134": 15,
+    "raw_non_gap_pass": 257,
+    "global_top_cluster_id": "cluster_006",
+    "global_top_cluster_share": 0.252918,
+    "cluster_label_scope": "global_reclustered_across_replay_relevant_completed_phase3_rows_plus_phase2_r0_baseline",
+    "seed_local_labels_ignored": true,
+    "per_arm": {
+      "h0": {
+        "audited": 256,
+        "deployable_clusters": 29,
+        "raw_non_gap": 114,
+        "unique_signal_clusters": 39,
+        "top_cluster_share": 0.421053,
+        "median_turnover": 0.081663
+      },
+      "h1": {
+        "audited": 256,
+        "deployable_clusters": 34,
+        "raw_non_gap": 70,
+        "unique_signal_clusters": 50,
+        "top_cluster_share": 0.085714,
+        "median_turnover": 0.137688
+      },
+      "h2": {
+        "audited": 256,
+        "deployable_clusters": 33,
+        "raw_non_gap": 73,
+        "unique_signal_clusters": 48,
+        "top_cluster_share": 0.150685,
+        "median_turnover": 0.140328
+      }
+    }
+  },
+  "bias_audit": {
+    "decision": "HOLD_RESEARCH",
+    "reason": "Search-method evidence only; live, capacity, final cost/slippage, survivorship/corporate-action promotion checks remain unresolved.",
+    "clock": "after_open + true_limit + T+1 inherited from strict runs"
+  },
+  "next_phase": {
+    "recommended": "G2 turnover/cost/book-level hardening",
+    "do_not_do": [
+      "broad_formula_search_immediately",
+      "promote_H2_production_candidate",
+      "claim_true_book_marginal",
+      "run_true_book_residual_without_return_vector_coverage"
+    ]
+  }
+}
