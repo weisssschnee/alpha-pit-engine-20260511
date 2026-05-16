@@ -1,0 +1,153 @@
+{
+  "created_at": "2026-05-16T13:35:50+08:00",
+  "decision": "HOLD_PHASE3I_SELECTOR_ONLY_DRYRUN",
+  "run_root": "D:\\p3i_selector_only_20260516\\s41\\selector",
+  "feature_preflight_path": "D:\\p3i_selector_only_20260516\\s41\\feature_preflight\\phase3i_feature_preflight.json",
+  "i2_status": "promotion_eligible",
+  "arms": [
+    {
+      "label": "I0",
+      "short": "i0",
+      "arm": "Phase3I_I0_G2_primary",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_diversified_proxy",
+      "generation_profile": "G2_phase3i_primary",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.066093,
+      "p90_turnover_proxy": 0.117566,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.440209,
+      "median_selected_queue_signal_corr": 0.469966,
+      "median_liquidity_proxy": 1913217745.897954,
+      "median_capacity_proxy": 51015548379.971985,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 0
+    },
+    {
+      "label": "I1",
+      "short": "i1",
+      "arm": "Phase3I_I1_G2_cost_turnover_constrained",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_cost_turnover_constrained_proxy",
+      "generation_profile": "G2_cost_turnover_constrained",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.068233,
+      "p90_turnover_proxy": 0.127073,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.487729,
+      "median_selected_queue_signal_corr": 0.501229,
+      "median_liquidity_proxy": 1655755660.289804,
+      "median_capacity_proxy": 30799375798.52569,
+      "agnostic_selected_count": 22,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 22,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 34
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 18
+    },
+    {
+      "label": "I2",
+      "short": "i2",
+      "arm": "Phase3I_I2_G2_capacity_liquidity",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_capacity_liquidity_proxy",
+      "generation_profile": "G2_capacity_liquidity",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.066728,
+      "p90_turnover_proxy": 0.120072,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.477701,
+      "median_selected_queue_signal_corr": 0.480854,
+      "median_liquidity_proxy": 2186034128.797088,
+      "median_capacity_proxy": 55583275995.87944,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 0
+    },
+    {
+      "label": "I3",
+      "short": "i3",
+      "arm": "Phase3I_I3_G2_book_proxy_hardened",
+      "report_exists": true,
+      "audit_exists": true,
+      "selection_inputs_exists": true,
+      "selector_profile": "signal_vector_book_proxy_hardened",
+      "generation_profile": "G2_book_proxy_hardened",
+      "discovery_baseline_count": 149,
+      "selector_vector_baseline_count": 137,
+      "selected_count": 64,
+      "selector_audit_selected_count": 64,
+      "median_turnover_proxy": 0.06725,
+      "p90_turnover_proxy": 0.12558,
+      "median_turnover_structure_risk": 0.0,
+      "mean_selected_queue_signal_corr": 0.457424,
+      "median_selected_queue_signal_corr": 0.473455,
+      "median_liquidity_proxy": 1723591733.287664,
+      "median_capacity_proxy": 41705483098.647995,
+      "agnostic_selected_count": 25,
+      "repair_expansion_selected_count": 8,
+      "source_lane_counts": {
+        "agnostic_freeform_ast": 25,
+        "formula_gen_v2_repair_expansion": 8,
+        "r0_cem_led": 31
+      },
+      "leakage_flag_count": 0,
+      "cap_hit_count": 18
+    }
+  ],
+  "queue_overlaps": {
+    "I0_vs_I1": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 52,
+      "overlap_ratio_min_denom": 0.8125
+    },
+    "I0_vs_I3": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 55,
+      "overlap_ratio_min_denom": 0.859375
+    },
+    "I0_vs_I2": {
+      "left_count": 64,
+      "right_count": 64,
+      "overlap_count": 59,
+      "overlap_ratio_min_denom": 0.921875
+    }
+  },
+  "fail_reasons": [
+    "I1_p90_turnover_not_below_I0",
+    "I3_selected_queue_signal_corr_not_below_I0"
+  ]
+}

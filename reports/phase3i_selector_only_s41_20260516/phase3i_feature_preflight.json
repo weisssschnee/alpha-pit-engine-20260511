@@ -1,0 +1,77 @@
+{
+  "created_at": "2026-05-16T13:35:49+08:00",
+  "decision": "PASS_PHASE3I_FEATURE_PREFLIGHT",
+  "pool_path": "D:\\p3i_selector_only_20260516\\s41\\shared_candidate_pool.json",
+  "baseline_path": "C:\\Users\\EDY\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+  "candidate_count": 324,
+  "coverage": {
+    "cluster_turnover": 0.950617,
+    "p90_turnover": 0.950617,
+    "source_lane_turnover": 1.0,
+    "cost_proxy": 1.0,
+    "liquidity_proxy": 0.950617,
+    "capacity_proxy": 0.950617,
+    "corr_to_149_registry_proxy": 1.0,
+    "selected_queue_signal_corr": 1.0,
+    "signal_vector_ready": 1.0,
+    "operator_pathology_flag": 1.0,
+    "complexity_score": 1.0
+  },
+  "requirements": {
+    "I1": {
+      "minimum_pass": true,
+      "requires": [
+        "cluster_turnover",
+        "p90_turnover",
+        "source_lane_turnover",
+        "selected_queue_signal_corr"
+      ]
+    },
+    "I2": {
+      "minimum_pass": true,
+      "status": "promotion_eligible",
+      "requires": [
+        "liquidity_proxy_or_capacity_proxy"
+      ]
+    },
+    "I3": {
+      "minimum_pass": true,
+      "requires": [
+        "corr_to_149_registry_proxy",
+        "selected_queue_signal_corr",
+        "turnover_or_cost_proxy"
+      ]
+    }
+  },
+  "source_lane_counts": {
+    "r0_cem_led": 192,
+    "agnostic_freeform_ast": 64,
+    "formula_gen_v2_repair_expansion": 64,
+    "replay_aware_residual": 4
+  },
+  "source_lane_turnover": [
+    {
+      "source_lane": "agnostic_freeform_ast",
+      "rows_with_turnover": 58,
+      "p90_turnover_proxy": 0.18388
+    },
+    {
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "rows_with_turnover": 64,
+      "p90_turnover_proxy": 0.087626
+    },
+    {
+      "source_lane": "r0_cem_led",
+      "rows_with_turnover": 184,
+      "p90_turnover_proxy": 0.13723
+    },
+    {
+      "source_lane": "replay_aware_residual",
+      "rows_with_turnover": 2,
+      "p90_turnover_proxy": 0.040144
+    }
+  ],
+  "notes": {
+    "selected_queue_signal_corr": "preflight checks signal-vector readiness; actual selected-queue correlation is measured in selector-only dry run"
+  }
+}
