@@ -1,0 +1,5 @@
+ablation_arm,audited,deployable_clusters,deployable_clusters_per_audited,median_complexity,median_turnover,raw_non_gap_pass,raw_non_gap_pass_per_audited,top_cluster_id,top_cluster_share,unique_return_corr_clusters,unique_return_corr_clusters_per_audited
+Phase3E_E0_D3_primary,256,25,0.097656,15.0,0.093033,119,0.464844,cluster_001,0.361345,33,0.128906
+Phase3E_E1_D3_plus_D2_sidecar,256,26,0.101562,15.0,0.061582,166,0.648438,cluster_001,0.493976,38,0.148438
+Phase3E_E2_D3_deployability_hardened,256,25,0.097656,12.0,0.081835,170,0.664062,cluster_001,0.476471,36,0.140625
+Phase3E_E3_D3_book_marginal,256,30,0.117188,13.0,0.037872,160,0.625,cluster_001,0.55,43,0.167969

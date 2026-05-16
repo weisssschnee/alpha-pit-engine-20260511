@@ -1,0 +1,3 @@
+﻿bad_quality_flag,capacity_percentile,capacity_proxy,cluster_id,cost_adjusted_score,cost_percentile,limit_hit_rate,raw_share,remove_reason,representative_expression,source_lane,suspension_rate,turnover
+True,0.030303,1449800.01,s47_cluster_019,0.581477,0.212121,0.001824,0.02439,low_amount_and_low_capacity,"Neg(CSRank(Std($volume,8)))",r0_cem_led,0.0,0.183666
+True,0.060606,3715423.213184,s50_cluster_028,0.75369,0.242424,0.01538,0.02439,low_amount_and_low_capacity,"Neg(CSRank(CSResidual(CSRank(Mean(Abs($amount),5)),CSRank(Mean(Abs($amount),21)))))",r0_cem_led,0.0,0.258833

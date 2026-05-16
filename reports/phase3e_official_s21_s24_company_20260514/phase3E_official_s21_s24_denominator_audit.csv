@@ -1,0 +1,17 @@
+ablation_arm,audited,candidate_pool,generated,non_gap_replay_pass,replay_attempted,replay_pass,residual_scored_count,run_id,seed,selected_for_audit,valid
+Phase3E_E0_D3_primary,256,572,788,119,256,119,592,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,Phase3E_E0_D3_primary,64,788
+Phase3E_E1_D3_plus_D2_sidecar,256,575,788,166,256,166,592,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,Phase3E_E1_D3_plus_D2_sidecar,64,788
+Phase3E_E2_D3_deployability_hardened,256,577,788,170,256,170,592,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,Phase3E_E2_D3_deployability_hardened,64,788
+Phase3E_E3_D3_book_marginal,256,578,788,160,256,160,592,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,Phase3E_E3_D3_book_marginal,64,788
+Phase3E_E0_D3_primary,256,570,788,119,256,119,592,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,Phase3E_E0_D3_primary,64,788
+Phase3E_E1_D3_plus_D2_sidecar,256,583,788,166,256,166,592,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,Phase3E_E1_D3_plus_D2_sidecar,64,788
+Phase3E_E2_D3_deployability_hardened,256,574,788,170,256,170,592,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,Phase3E_E2_D3_deployability_hardened,64,788
+Phase3E_E3_D3_book_marginal,256,577,788,160,256,160,592,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,Phase3E_E3_D3_book_marginal,64,788
+Phase3E_E0_D3_primary,256,570,788,119,256,119,592,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,Phase3E_E0_D3_primary,64,788
+Phase3E_E1_D3_plus_D2_sidecar,256,569,788,166,256,166,592,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,Phase3E_E1_D3_plus_D2_sidecar,64,788
+Phase3E_E2_D3_deployability_hardened,256,572,788,170,256,170,592,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,Phase3E_E2_D3_deployability_hardened,64,788
+Phase3E_E3_D3_book_marginal,256,577,788,160,256,160,592,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,Phase3E_E3_D3_book_marginal,64,788
+Phase3E_E0_D3_primary,256,578,788,119,256,119,592,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,Phase3E_E0_D3_primary,64,788
+Phase3E_E1_D3_plus_D2_sidecar,256,577,788,166,256,166,592,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,Phase3E_E1_D3_plus_D2_sidecar,64,788
+Phase3E_E2_D3_deployability_hardened,256,575,788,170,256,170,592,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,Phase3E_E2_D3_deployability_hardened,64,788
+Phase3E_E3_D3_book_marginal,256,579,788,160,256,160,592,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,Phase3E_E3_D3_book_marginal,64,788

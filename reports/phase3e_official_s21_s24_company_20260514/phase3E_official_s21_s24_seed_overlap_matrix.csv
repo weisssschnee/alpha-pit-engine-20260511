@@ -1,0 +1,17 @@
+deployable_jaccard,deployable_left,deployable_overlap,deployable_right,deployable_union,left_seed,non_gap_cluster_overlap,non_gap_cluster_union,right_seed
+1.0,25,25,25,25,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,33,33,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary
+0.275,25,11,26,40,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,16,55,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar
+0.282051,25,11,25,39,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,14,55,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened
+0.341463,25,14,30,41,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary,17,59,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal
+0.275,26,11,25,40,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,16,55,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary
+1.0,26,26,26,26,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,38,38,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar
+0.243902,26,10,25,41,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,14,60,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened
+0.217391,26,10,30,46,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar,16,65,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal
+0.282051,25,11,25,39,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,14,55,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary
+0.243902,25,10,26,41,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,14,60,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar
+1.0,25,25,25,25,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,36,36,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened
+0.222222,25,10,30,45,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened,13,66,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal
+0.341463,30,14,25,41,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,17,59,Phase3E_E0_D3_primary::Phase3E_E0_D3_primary
+0.217391,30,10,26,46,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,16,65,Phase3E_E1_D3_plus_D2_sidecar::Phase3E_E1_D3_plus_D2_sidecar
+0.222222,30,10,25,45,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,13,66,Phase3E_E2_D3_deployability_hardened::Phase3E_E2_D3_deployability_hardened
+1.0,30,30,30,30,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal,43,43,Phase3E_E3_D3_book_marginal::Phase3E_E3_D3_book_marginal

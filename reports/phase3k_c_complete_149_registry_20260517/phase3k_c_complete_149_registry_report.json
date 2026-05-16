@@ -1,0 +1,791 @@
+{
+  "registry_quality": {
+    "missing_representative_expression_count": 0,
+    "duplicate_canonical_expression_count": 0,
+    "is_complete_149_representative_registry": true
+  },
+  "summary": {
+    "signal_collision_threshold": 0.8,
+    "book_summary": {
+      "J0_fresh": {
+        "cluster_count": 48,
+        "new_vs_149_proxy_count": 34,
+        "known_vs_149_proxy_count": 14,
+        "new_vs_149_proxy_share": 0.708333
+      },
+      "J2_fresh": {
+        "cluster_count": 33,
+        "new_vs_149_proxy_count": 24,
+        "known_vs_149_proxy_count": 9,
+        "new_vs_149_proxy_share": 0.727273
+      },
+      "J4_relaxed_fresh": {
+        "cluster_count": 31,
+        "new_vs_149_proxy_count": 22,
+        "known_vs_149_proxy_count": 9,
+        "new_vs_149_proxy_share": 0.709677
+      }
+    },
+    "removed_new_vs_149_proxy_count": 2,
+    "removed_known_vs_149_proxy_count": 0,
+    "classification_mode": "proxy_exact_expression_or_signal_collision_threshold"
+  },
+  "family_rows": [
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\", \"Neg\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Sub\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\", \"Delta\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Sub\"]",
+      "cluster_count": 2
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Corr\", \"Delay\", \"Delta\", \"Mul\", \"Neg\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mom\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Mean\", \"Neg\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\", \"Delta\", \"Mul\", \"Sign\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 2
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Neg\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Corr\", \"Delta\", \"Mean\", \"Mul\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Corr\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mom\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Add\", \"CSRank\", \"Delta\", \"Mean\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"Neg\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mom\", \"Mul\", \"Sign\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J0_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mom\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Mean\", \"Neg\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 2
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Neg\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Add\", \"CSRank\", \"Delta\", \"Mean\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J2_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"flow\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "known_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"CSResidual\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mom\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\", \"price\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"flow\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 2
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"CSResidual\", \"Delta\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\", \"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Mul\", \"Sign\", \"Std\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Delta\", \"Mean\", \"Mul\", \"Neg\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Abs\", \"CSRank\", \"Mean\", \"Mul\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"Add\", \"CSRank\", \"Delta\", \"Mean\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Delta\", \"ZScore\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"price\"]",
+      "operator_families": "[\"CSRank\", \"Mean\"]",
+      "cluster_count": 1
+    },
+    {
+      "book": "J4_relaxed_fresh",
+      "novelty_status": "new_vs_149_proxy",
+      "field_families": "[\"size_capital\"]",
+      "operator_families": "[\"CSRank\", \"Std\"]",
+      "cluster_count": 1
+    }
+  ]
+}
