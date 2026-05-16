@@ -1,0 +1,26 @@
+{
+  "h0_clusters": 29,
+  "g2_clusters": 34,
+  "h0_only": 3,
+  "g2_only": 8,
+  "overlap": 26,
+  "jaccard": 0.702703,
+  "g2_only_new_vs_134": 5,
+  "g2_only_median_turnover": 0.244021,
+  "g2_only_p90_turnover": 0.625144,
+  "g2_only_cluster_ids": [
+    "cluster_016",
+    "cluster_018",
+    "cluster_019",
+    "cluster_020",
+    "cluster_021",
+    "cluster_022",
+    "cluster_040",
+    "cluster_049"
+  ],
+  "h0_only_cluster_ids": [
+    "cluster_008",
+    "cluster_011",
+    "cluster_036"
+  ]
+}

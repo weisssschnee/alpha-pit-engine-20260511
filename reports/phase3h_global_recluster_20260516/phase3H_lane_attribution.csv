@@ -1,0 +1,6 @@
+audited,cluster_ids,deployable_clusters,lane,raw_non_gap_pass,unique_return_corr_clusters
+176,"['cluster_004', 'cluster_006', 'cluster_010', 'cluster_012', 'cluster_016', 'cluster_018', 'cluster_019', 'cluster_020', 'cluster_021', 'cluster_022', 'cluster_025', 'cluster_026', 'cluster_028', 'cluster_029', 'cluster_034', 'cluster_038', 'cluster_040', 'cluster_049', 'cluster_051']",19,agnostic_freeform_ast,67,25
+108,"['cluster_001', 'cluster_006', 'cluster_007', 'cluster_011', 'cluster_013', 'cluster_036', 'cluster_039', 'cluster_044', 'cluster_045']",9,ast_failure_aware_repair,57,11
+96,"['cluster_002', 'cluster_005', 'cluster_006', 'cluster_008', 'cluster_014', 'cluster_015', 'cluster_023', 'cluster_024', 'cluster_041']",9,formula_gen_v2_repair_expansion,56,15
+372,"['cluster_002', 'cluster_005', 'cluster_006', 'cluster_023', 'cluster_031', 'cluster_041', 'cluster_044', 'cluster_045', 'cluster_046', 'cluster_051']",10,r0_cem_led,69,16
+16,"['cluster_006', 'cluster_014', 'cluster_028', 'cluster_038']",4,replay_aware_residual,8,5

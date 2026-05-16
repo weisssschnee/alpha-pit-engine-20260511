@@ -4,11 +4,11 @@ Date: 2026-05-16
 
 ## Decision
 
-Decision: `PROMOTE_G2_TO_DIVERSIFIED_DISCOVERY_PRIMARY`
+Decision: `PASS_CONFIRM_PHASE3H_G2_DISCOVERY_PRIMARY`
 
 Scope:
 
-- Promote `H1_G2_signal_vector_control` as the primary selector for diversified discovery.
+- Promote `H1_G2_signal_vector_selector` as the primary selector for diversified discovery.
 - Do not promote it as a true book-marginal selector.
 - Do not promote it as a production/live alpha system.
 - Reject `H2_G2_turnover_calibrated` as a separate production candidate.
@@ -53,6 +53,7 @@ Global union:
 - global unique signal clusters: `55`
 - global deployable clusters: `37`
 - new deployable clusters vs cumulative 134 baseline: `15`
+- discovery cumulative baseline after Phase3H: `149`
 - raw non-gap pass: `257`
 - global top cluster id: `cluster_006`
 - global top cluster share: `25.2918%`
@@ -80,6 +81,51 @@ This matches the Phase3G diagnosis:
 - top cluster share is worse: `15.0685%` vs `8.5714%`.
 - H1/H2 deployable Jaccard is `0.970588`.
 - turnover improvement is not enough to justify a separate production candidate.
+
+## Decision Fields
+
+Promoted:
+
+- primary_discovery_selector:
+  - arm: `H1_G2_signal_vector_selector`
+  - deployable_clusters: `34`
+  - raw_non_gap: `70`
+  - unique_clusters: `50`
+  - top_cluster_share: `0.086`
+
+Legacy control:
+
+- arm: `H0_stable`
+- deployable_clusters: `29`
+- top_cluster_share: `0.421`
+
+Not promoted:
+
+- `H2_turnover_calibrated`
+  - only small turnover improvement
+  - deployable not better than H1
+  - concentration worse than H1
+  - high overlap with H1
+
+Scope confirmed:
+
+- signal_vector_diversified_discovery
+- shared_pool_frozen_selection_execution
+- low_concentration_cluster_discovery
+
+Scope not confirmed:
+
+- true_book_marginal
+- return_residual_selector
+- production_ready_trading
+- capacity_validated_alpha_book
+
+Baseline policy:
+
+- discovery_baseline: `149`
+- selector_vector_baseline: estimated `137` after adding 15 Phase3H vector-matchable clusters; do not assume `149`.
+- representative_rows: `144`
+- missing_representatives_carried_forward: `5`
 
 ## Bias And Evidence Limits
 
@@ -127,9 +173,8 @@ Next phase:
 - Do not continue broad formula search immediately.
 - Do not revive H2 as production.
 - Do not claim true book marginal.
-- Start turnover/cost/book-level hardening around G2:
-  - improve return-vector coverage,
-  - build true book residual preflight,
-  - run cost/turnover/capacity selector audits,
-  - keep G2 as the discovery control.
-
+- Start Phase3I as G2 deployment hardening / book-readiness:
+  - run G2 cluster anatomy audit,
+  - run turnover/cost/capacity audit,
+  - run G2 vs H0 marginal audit,
+  - keep shared-pool frozen-selection execution as the official path.

@@ -1,0 +1,109 @@
+{
+  "summary": {
+    "created_at": "2026-05-16T12:12:38+08:00",
+    "decision": "PASS_NO_RUN_AUDIT_WITH_DEPLOYMENT_RISKS",
+    "g2_deployable_clusters": 34,
+    "g2_new_clusters_vs_134": 15,
+    "g2_median_cluster_turnover": 0.169768,
+    "g2_p90_cluster_turnover": 0.61568,
+    "g2_only_clusters_vs_h0": 8,
+    "g2_h0_overlap": 26,
+    "shared_pool_forbidden_hit_count": 0,
+    "selection_forbidden_hit_count": 0,
+    "interpretation": "G2 is validated as discovery/decongestion primary, but turnover/cost/capacity remain deployment-stage risks."
+  },
+  "marginal_audit": {
+    "h0_clusters": 29,
+    "g2_clusters": 34,
+    "h0_only": 3,
+    "g2_only": 8,
+    "overlap": 26,
+    "jaccard": 0.702703,
+    "g2_only_new_vs_134": 5,
+    "g2_only_median_turnover": 0.244021,
+    "g2_only_p90_turnover": 0.625144,
+    "g2_only_cluster_ids": [
+      "cluster_016",
+      "cluster_018",
+      "cluster_019",
+      "cluster_020",
+      "cluster_021",
+      "cluster_022",
+      "cluster_040",
+      "cluster_049"
+    ],
+    "h0_only_cluster_ids": [
+      "cluster_008",
+      "cluster_011",
+      "cluster_036"
+    ]
+  },
+  "shared_pool_execution_qa": {
+    "seed_summaries": [
+      {
+        "seed": 33,
+        "manifest_exists": true,
+        "selector_manifest_exists": true,
+        "shared_pool_exists": true,
+        "shared_pool_hash": "5725046d4fd08df9150f93f92078beec95b6da17ce1ed6cb330d7b7ee640cd3a",
+        "frozen_queue_hash_count": 4,
+        "selector_profile_count": 4,
+        "execution_path": "shared_pool_official_replay_only_resume",
+        "selector_arms": "h0,h1,h2,h3",
+        "replay_arms": "h0,h1,h2",
+        "step_statuses": "generate_shared_pool:completed_before_resume;apply_shared_selectors:completed_before_resume;selector_dryrun_audit:completed_hold_but_not_official_blocking;official_replay:completed_replay_only_resume",
+        "selector_manifest_arm_count": 4,
+        "selected_counts": "h0:64;h1:64;h2:64;h3:64"
+      },
+      {
+        "seed": 34,
+        "manifest_exists": true,
+        "selector_manifest_exists": true,
+        "shared_pool_exists": true,
+        "shared_pool_hash": "34cc7b8c893a9bb4656a2eb314c13446624bdc822863e2c7c06272ce3db8a3e1",
+        "frozen_queue_hash_count": 4,
+        "selector_profile_count": 4,
+        "execution_path": "shared_pool_official",
+        "selector_arms": "h0,h1,h2,h3",
+        "replay_arms": "h0,h1,h2",
+        "step_statuses": "generate_shared_pool:completed;apply_shared_selectors:completed;selector_dryrun_audit:completed;official_replay:completed",
+        "selector_manifest_arm_count": 4,
+        "selected_counts": "h0:64;h1:64;h2:64;h3:64"
+      },
+      {
+        "seed": 35,
+        "manifest_exists": true,
+        "selector_manifest_exists": true,
+        "shared_pool_exists": true,
+        "shared_pool_hash": "d5b8aa06ac1aadd31835a91a189751a3576b213b86c6cf80b1ecb31f246a88fc",
+        "frozen_queue_hash_count": 4,
+        "selector_profile_count": 4,
+        "execution_path": "shared_pool_official",
+        "selector_arms": "h0,h1,h2,h3",
+        "replay_arms": "h0,h1,h2",
+        "step_statuses": "generate_shared_pool:completed;apply_shared_selectors:completed;selector_dryrun_audit:completed;official_replay:completed",
+        "selector_manifest_arm_count": 4,
+        "selected_counts": "h0:64;h1:64;h2:64;h3:64"
+      },
+      {
+        "seed": 36,
+        "manifest_exists": true,
+        "selector_manifest_exists": true,
+        "shared_pool_exists": true,
+        "shared_pool_hash": "72eb079c0d60012961ced0fb7c3920e36476f3112249fb4eeea00c94e831993f",
+        "frozen_queue_hash_count": 4,
+        "selector_profile_count": 4,
+        "execution_path": "shared_pool_official",
+        "selector_arms": "h0,h1,h2,h3",
+        "replay_arms": "h0,h1,h2",
+        "step_statuses": "generate_shared_pool:completed;apply_shared_selectors:completed;selector_dryrun_audit:completed;official_replay:completed",
+        "selector_manifest_arm_count": 4,
+        "selected_counts": "h0:64;h1:64;h2:64;h3:64"
+      }
+    ],
+    "selection_forbidden_hits": [],
+    "shared_pool_forbidden_hits": [],
+    "selection_forbidden_hit_count": 0,
+    "shared_pool_forbidden_hit_count": 0
+  }
+}

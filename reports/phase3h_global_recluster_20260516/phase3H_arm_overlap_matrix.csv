@@ -1,0 +1,10 @@
+deployable_jaccard,deployable_left,deployable_overlap,deployable_right,deployable_union,left_arm,non_gap_cluster_overlap,non_gap_cluster_union,right_arm
+1.0,29,29,29,29,Phase3H_H0_G0_stable,39,39,Phase3H_H0_G0_stable
+0.702703,29,26,34,37,Phase3H_H0_G0_stable,34,55,Phase3H_H1_G2_signal_vector_control
+0.675676,29,25,33,37,Phase3H_H0_G0_stable,33,54,Phase3H_H2_G2_turnover_calibrated
+0.702703,34,26,29,37,Phase3H_H1_G2_signal_vector_control,34,55,Phase3H_H0_G0_stable
+1.0,34,34,34,34,Phase3H_H1_G2_signal_vector_control,50,50,Phase3H_H1_G2_signal_vector_control
+0.970588,34,33,33,34,Phase3H_H1_G2_signal_vector_control,48,50,Phase3H_H2_G2_turnover_calibrated
+0.675676,33,25,29,37,Phase3H_H2_G2_turnover_calibrated,33,54,Phase3H_H0_G0_stable
+0.970588,33,33,34,34,Phase3H_H2_G2_turnover_calibrated,48,50,Phase3H_H1_G2_signal_vector_control
+1.0,33,33,33,33,Phase3H_H2_G2_turnover_calibrated,48,48,Phase3H_H2_G2_turnover_calibrated

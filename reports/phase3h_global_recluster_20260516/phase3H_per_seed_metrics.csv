@@ -1,0 +1,13 @@
+ablation_arm,audited,deployable_clusters,raw_non_gap_pass,run_id,seed,top_cluster_id,top_cluster_share,unique_return_corr_clusters
+Phase3H_H0_G0_stable,64,15,30,Phase3H_H0_G0_stable::s33_h0,s33_h0,cluster_006,0.366667,18
+Phase3H_H0_G0_stable,64,9,29,Phase3H_H0_G0_stable::s34_h0,s34_h0,cluster_006,0.448276,13
+Phase3H_H0_G0_stable,64,11,30,Phase3H_H0_G0_stable::s35_h0,s35_h0,cluster_006,0.366667,17
+Phase3H_H0_G0_stable,64,10,25,Phase3H_H0_G0_stable::s36_h0,s36_h0,cluster_006,0.52,13
+Phase3H_H1_G2_signal_vector_control,64,12,16,Phase3H_H1_G2_signal_vector_control::s33_h1,s33_h1,cluster_006,0.125,15
+Phase3H_H1_G2_signal_vector_control,64,12,18,Phase3H_H1_G2_signal_vector_control::s34_h1,s34_h1,cluster_006,0.055556,18
+Phase3H_H1_G2_signal_vector_control,64,9,16,Phase3H_H1_G2_signal_vector_control::s35_h1,s35_h1,cluster_009,0.125,15
+Phase3H_H1_G2_signal_vector_control,64,12,20,Phase3H_H1_G2_signal_vector_control::s36_h1,s36_h1,cluster_006,0.1,18
+Phase3H_H2_G2_turnover_calibrated,64,12,15,Phase3H_H2_G2_turnover_calibrated::s33_h2,s33_h2,cluster_006,0.133333,14
+Phase3H_H2_G2_turnover_calibrated,64,11,18,Phase3H_H2_G2_turnover_calibrated::s34_h2,s34_h2,cluster_006,0.111111,16
+Phase3H_H2_G2_turnover_calibrated,64,9,19,Phase3H_H2_G2_turnover_calibrated::s35_h2,s35_h2,cluster_006,0.210526,15
+Phase3H_H2_G2_turnover_calibrated,64,12,21,Phase3H_H2_G2_turnover_calibrated::s36_h2,s36_h2,cluster_006,0.142857,17

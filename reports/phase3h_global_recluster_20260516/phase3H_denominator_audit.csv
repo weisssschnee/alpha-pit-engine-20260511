@@ -1,0 +1,13 @@
+ablation_arm,audited,candidate_pool,generated,non_gap_replay_pass,replay_attempted,replay_pass,residual_scored_count,run_id,seed,selected_for_audit,valid
+Phase3H_H0_G0_stable,64,0,0,30,64,30,,Phase3H_H0_G0_stable::s33_h0,s33_h0,0,0
+Phase3H_H1_G2_signal_vector_control,64,0,0,16,64,16,,Phase3H_H1_G2_signal_vector_control::s33_h1,s33_h1,0,0
+Phase3H_H2_G2_turnover_calibrated,64,0,0,15,64,15,,Phase3H_H2_G2_turnover_calibrated::s33_h2,s33_h2,0,0
+Phase3H_H0_G0_stable,64,0,0,29,64,29,,Phase3H_H0_G0_stable::s34_h0,s34_h0,0,0
+Phase3H_H1_G2_signal_vector_control,64,0,0,18,64,18,,Phase3H_H1_G2_signal_vector_control::s34_h1,s34_h1,0,0
+Phase3H_H2_G2_turnover_calibrated,64,0,0,18,64,18,,Phase3H_H2_G2_turnover_calibrated::s34_h2,s34_h2,0,0
+Phase3H_H0_G0_stable,64,0,0,30,64,30,,Phase3H_H0_G0_stable::s35_h0,s35_h0,0,0
+Phase3H_H1_G2_signal_vector_control,64,0,0,16,64,16,,Phase3H_H1_G2_signal_vector_control::s35_h1,s35_h1,0,0
+Phase3H_H2_G2_turnover_calibrated,64,0,0,19,64,19,,Phase3H_H2_G2_turnover_calibrated::s35_h2,s35_h2,0,0
+Phase3H_H0_G0_stable,64,0,0,25,64,25,,Phase3H_H0_G0_stable::s36_h0,s36_h0,0,0
+Phase3H_H1_G2_signal_vector_control,64,0,0,20,64,20,,Phase3H_H1_G2_signal_vector_control::s36_h1,s36_h1,0,0
+Phase3H_H2_G2_turnover_calibrated,64,0,0,21,64,21,,Phase3H_H2_G2_turnover_calibrated::s36_h2,s36_h2,0,0

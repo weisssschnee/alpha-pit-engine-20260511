@@ -1,21 +1,43 @@
 {
   "date": "2026-05-16",
-  "decision": "PROMOTE_G2_TO_DIVERSIFIED_DISCOVERY_PRIMARY",
+  "decision": "PASS_CONFIRM_PHASE3H_G2_DISCOVERY_PRIMARY",
   "scope": {
     "promoted": {
-      "arm": "H1_G2_signal_vector_control",
-      "status": "diversified_discovery_primary",
-      "not_status": [
-        "production_primary",
-        "true_book_marginal",
-        "commercial_alpha_proof"
-      ]
+      "primary_discovery_selector": {
+        "arm": "H1_G2_signal_vector_selector",
+        "deployable_clusters": 34,
+        "raw_non_gap": 70,
+        "unique_clusters": 50,
+        "top_cluster_share": 0.086,
+        "status": "diversified_discovery_primary"
+      }
     },
-    "rejected": {
-      "arm": "H2_G2_turnover_calibrated",
-      "reason": "High overlap with H1, lower deployable count, worse concentration, insufficient turnover improvement."
+    "legacy_control": {
+      "arm": "H0_stable",
+      "deployable_clusters": 29,
+      "top_cluster_share": 0.421
     },
-    "retained_control": "H0_G0_stable"
+    "not_promoted": {
+      "H2_turnover_calibrated": {
+        "reason": [
+          "only small turnover improvement",
+          "deployable not better than H1",
+          "concentration worse than H1",
+          "high overlap with H1"
+        ]
+      }
+    },
+    "scope_confirmed": [
+      "signal_vector_diversified_discovery",
+      "shared_pool_frozen_selection_execution",
+      "low_concentration_cluster_discovery"
+    ],
+    "scope_not_confirmed": [
+      "true_book_marginal",
+      "return_residual_selector",
+      "production_ready_trading",
+      "capacity_validated_alpha_book"
+    ]
   },
   "execution": {
     "run_root": "D:\\p3h_official_20260516",
@@ -26,8 +48,12 @@
     "replay_arms": ["h0", "h1", "h2"],
     "selector_only_parity_arm": "h3",
     "execution_path": "shared_candidate_pool -> frozen selection -> strict/replay/cluster",
-    "discovery_baseline": 134,
-    "selector_vector_baseline": 122,
+    "discovery_baseline_before_phase3h": 134,
+    "discovery_baseline_after_phase3h": 149,
+    "selector_vector_baseline_before_phase3h": 122,
+    "selector_vector_baseline_after_phase3h_estimate": 137,
+    "representative_rows_after_phase3h": 144,
+    "missing_representatives_carried_forward": 5,
     "ranker_policy": "diagnostic_only",
     "proof_suite_version": "scalar-turnover-fixed-2026-05-16"
   },
@@ -100,7 +126,7 @@
     "clock": "after_open + true_limit + T+1 inherited from strict runs"
   },
   "next_phase": {
-    "recommended": "G2 turnover/cost/book-level hardening",
+    "recommended": "Phase3I G2 deployment hardening and book-readiness",
     "do_not_do": [
       "broad_formula_search_immediately",
       "promote_H2_production_candidate",

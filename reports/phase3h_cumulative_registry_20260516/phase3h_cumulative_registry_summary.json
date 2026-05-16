@@ -1,0 +1,460 @@
+{
+  "summary": {
+    "created_at": "2026-05-16T12:10:13+08:00",
+    "decision": "PASS_DISCOVERY_BASELINE_UPDATE_WITH_DUAL_BASELINE",
+    "discovery_baseline_declared_clusters": 149,
+    "representative_rows": 144,
+    "previous_selector_vector_baseline": 122,
+    "new_phase3H_vector_matchable_clusters": 15,
+    "selector_vector_baseline_estimate": 137,
+    "natural_merges_carried_forward": 7,
+    "missing_representatives_carried_forward": 5,
+    "source_new_cluster_ids": [
+      "cluster_004",
+      "cluster_015",
+      "cluster_018",
+      "cluster_019",
+      "cluster_020",
+      "cluster_021",
+      "cluster_025",
+      "cluster_026",
+      "cluster_028",
+      "cluster_034",
+      "cluster_038",
+      "cluster_039",
+      "cluster_045",
+      "cluster_046",
+      "cluster_049"
+    ],
+    "policy": "Use discovery_baseline=149 for cumulative discovery accounting. Use the prior selector-vector baseline plus the 15 Phase3H vector-matchable additions until the next official selector-vector canonicalization run."
+  },
+  "new_representatives": [
+    {
+      "cluster_id": "cluster_135",
+      "source_global_signal_cluster_id": "cluster_004",
+      "representative_expression": "CSRank(Sub(CSRank(Mom($vwap,34)),ZScore(Std($volume,3))))",
+      "candidate_id": "agnostic-freeform-806d5235bba6",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mom",
+        "Std",
+        "Sub",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.342091,
+      "portfolio_replay_avg_one_way_turnover": 0.346881,
+      "portfolio_replay_long_only_sortino": 1.469839,
+      "portfolio_replay_long_short_sortino": 2.229672,
+      "strict_cost_adjusted_sortino": 4.320252,
+      "complexity_score": 7.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_136",
+      "source_global_signal_cluster_id": "cluster_015",
+      "representative_expression": "CSRank(Mul(CSRank(Mul(ZScore(Delta($close,5)),ZScore(Delta($close,5)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+      "candidate_id": "fgv2-repair-add_state_gate-8c5791d8cd",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "formula_gen_v2_repair_expansion",
+      "source_lane": "formula_gen_v2_repair_expansion",
+      "field_families": [
+        "price"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.356734,
+      "portfolio_replay_avg_one_way_turnover": 0.36877,
+      "portfolio_replay_long_only_sortino": 1.432854,
+      "portfolio_replay_long_short_sortino": 2.213349,
+      "strict_cost_adjusted_sortino": 4.582608,
+      "complexity_score": 8.55,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_137",
+      "source_global_signal_cluster_id": "cluster_018",
+      "representative_expression": "CSRank(Add(ZScore(Mean($vwap,34)),CSRank(Delta($volume,8))))",
+      "candidate_id": "agnostic-freeform-3012000864f6",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s35_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.232384,
+      "portfolio_replay_avg_one_way_turnover": 0.257585,
+      "portfolio_replay_long_only_sortino": 1.108181,
+      "portfolio_replay_long_short_sortino": 0.73367,
+      "strict_cost_adjusted_sortino": 3.647021,
+      "complexity_score": 7.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_138",
+      "source_global_signal_cluster_id": "cluster_019",
+      "representative_expression": "CSRank(CSResidual(Sign(Delta($low,21)),ZScore(Delta($low,2))))",
+      "candidate_id": "agnostic-freeform-1ee07626df7e",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Sign",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.625144,
+      "portfolio_replay_avg_one_way_turnover": 0.636582,
+      "portfolio_replay_long_only_sortino": 0.593372,
+      "portfolio_replay_long_short_sortino": -0.371546,
+      "strict_cost_adjusted_sortino": 0.296186,
+      "complexity_score": 6.65,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_139",
+      "source_global_signal_cluster_id": "cluster_020",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),13)),Corr(Delta($amount,21),Delay($close,1),5)))",
+      "candidate_id": "agnostic-freeform-e4ab618059c8",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Corr",
+        "Delay",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.391989,
+      "portfolio_replay_avg_one_way_turnover": 0.401062,
+      "portfolio_replay_long_only_sortino": 1.089695,
+      "portfolio_replay_long_short_sortino": -0.472831,
+      "strict_cost_adjusted_sortino": -0.044681,
+      "complexity_score": 11.6,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_140",
+      "source_global_signal_cluster_id": "cluster_021",
+      "representative_expression": "CSRank(Mul(CSRank(Std($final_total_market_cap,13)),Mul(CSRank($final_total_market_cap),ZScore(Std($final_total_market_cap,21)))))",
+      "candidate_id": "agnostic-freeform-7ec86bf35fbd",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Mul",
+        "Std",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.127749,
+      "portfolio_replay_avg_one_way_turnover": 0.135676,
+      "portfolio_replay_long_only_sortino": 0.512765,
+      "portfolio_replay_long_short_sortino": 0.712643,
+      "strict_cost_adjusted_sortino": 2.554441,
+      "complexity_score": 5.95,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_141",
+      "source_global_signal_cluster_id": "cluster_025",
+      "representative_expression": "CSRank(Add(ZScore(Mean($close,34)),CSRank(Delta($final_total_market_cap,21))))",
+      "candidate_id": "agnostic-freeform-96b7cdc28100",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s34_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "cap",
+        "price"
+      ],
+      "operator_families": [
+        "Add",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.111955,
+      "portfolio_replay_avg_one_way_turnover": 0.128565,
+      "portfolio_replay_long_only_sortino": 1.32251,
+      "portfolio_replay_long_short_sortino": 1.889346,
+      "strict_cost_adjusted_sortino": 2.948465,
+      "complexity_score": 7.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_142",
+      "source_global_signal_cluster_id": "cluster_026",
+      "representative_expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($high,1)),13)),Mul(ZScore($vwap),CSRank(Mean($vwap,8)))))",
+      "candidate_id": "agnostic-freeform-a89759d3657a",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "price"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.10336,
+      "portfolio_replay_avg_one_way_turnover": 0.115093,
+      "portfolio_replay_long_only_sortino": 1.291597,
+      "portfolio_replay_long_short_sortino": 1.460998,
+      "strict_cost_adjusted_sortino": 2.660013,
+      "complexity_score": 9.0,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_143",
+      "source_global_signal_cluster_id": "cluster_028",
+      "representative_expression": "CSRank(CSResidual(ZScore(Delta($low,34)),ZScore(Mean($turnover_rate,3))))",
+      "candidate_id": "agnostic-freeform-16b6c661391f",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s36_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "replay_aware_residual",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "Mean",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.154218,
+      "portfolio_replay_avg_one_way_turnover": 0.171286,
+      "portfolio_replay_long_only_sortino": 1.070938,
+      "portfolio_replay_long_short_sortino": 0.436966,
+      "strict_cost_adjusted_sortino": 1.562755,
+      "complexity_score": 7.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_144",
+      "source_global_signal_cluster_id": "cluster_034",
+      "representative_expression": "CSRank(Mul(CSRank($open),CSRank(Delta($high,2))))",
+      "candidate_id": "agnostic-freeform-e372c7319500",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s36_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mul"
+      ],
+      "strict_mean_one_way_turnover": 0.376419,
+      "portfolio_replay_avg_one_way_turnover": 0.388325,
+      "portfolio_replay_long_only_sortino": 0.801616,
+      "portfolio_replay_long_short_sortino": 0.127384,
+      "strict_cost_adjusted_sortino": 1.803278,
+      "complexity_score": 5.25,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_145",
+      "source_global_signal_cluster_id": "cluster_038",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($vwap,13)),Corr(Mom($high,21),$volume,5)))",
+      "candidate_id": "agnostic-freeform-c22dd26ab358",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s35_h0",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "replay_aware_residual",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Corr",
+        "Mean",
+        "Mom",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.412346,
+      "portfolio_replay_avg_one_way_turnover": 0.425803,
+      "portfolio_replay_long_only_sortino": 0.960076,
+      "portfolio_replay_long_short_sortino": -0.290776,
+      "strict_cost_adjusted_sortino": 0.605013,
+      "complexity_score": 9.15,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_146",
+      "source_global_signal_cluster_id": "cluster_039",
+      "representative_expression": "CSRank(Mul(ZScore(Mean($final_total_market_cap,34)),ZScore(Delta($final_total_market_cap,17))))",
+      "candidate_id": "phase3repair-failure_detail-duplicate_escape-066245d90aa4",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "ast_failure_aware_repair",
+      "source_lane": "ast_failure_aware_repair",
+      "field_families": [
+        "cap"
+      ],
+      "operator_families": [
+        "CSRank",
+        "Delta",
+        "Mean",
+        "Mul",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.162536,
+      "portfolio_replay_avg_one_way_turnover": 0.1715,
+      "portfolio_replay_long_only_sortino": 0.528352,
+      "portfolio_replay_long_short_sortino": 0.687118,
+      "strict_cost_adjusted_sortino": 0.604855,
+      "complexity_score": 6.65,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_147",
+      "source_global_signal_cluster_id": "cluster_045",
+      "representative_expression": "CSRank(CSResidual(CSRank(Mean(Abs($volume),5)),CSRank(Mean(Abs($close),21))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-ba2754d1bf17",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s33_h0",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_families": [
+        "flow",
+        "price"
+      ],
+      "operator_families": [
+        "Abs",
+        "CSRank",
+        "CSResidual",
+        "Mean"
+      ],
+      "strict_mean_one_way_turnover": 0.081663,
+      "portfolio_replay_avg_one_way_turnover": 0.115425,
+      "portfolio_replay_long_only_sortino": 0.639592,
+      "portfolio_replay_long_short_sortino": -0.546221,
+      "strict_cost_adjusted_sortino": 1.191657,
+      "complexity_score": 6.7,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_148",
+      "source_global_signal_cluster_id": "cluster_046",
+      "representative_expression": "CSRank(CSResidual(CSRank(Mom($close,8)),CSRank(Mom($final_float_market_cap,8))))",
+      "candidate_id": "stockpit-cem_adaptive_grammar-5d96a5aa6e5c",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H0_G0_stable",
+      "source_seed": "s34_h0",
+      "source_generator": "cem_adaptive_grammar",
+      "source_lane": "r0_cem_led",
+      "field_families": [
+        "cap",
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Mom"
+      ],
+      "strict_mean_one_way_turnover": 0.61568,
+      "portfolio_replay_avg_one_way_turnover": 0.576383,
+      "portfolio_replay_long_only_sortino": 0.725861,
+      "portfolio_replay_long_short_sortino": 0.64901,
+      "strict_cost_adjusted_sortino": 0.867769,
+      "complexity_score": 5.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    },
+    {
+      "cluster_id": "cluster_149",
+      "source_global_signal_cluster_id": "cluster_049",
+      "representative_expression": "CSRank(CSResidual(ZScore(Delta($vwap,13)),CSRank(Delta($low,3))))",
+      "candidate_id": "agnostic-freeform-1dcf28148787",
+      "first_seen_phase": "Phase3H",
+      "source_arm": "Phase3H_H1_G2_signal_vector_control",
+      "source_seed": "s36_h1",
+      "source_generator": "agnostic_freeform_ast",
+      "source_lane": "agnostic_freeform_ast",
+      "field_families": [
+        "price"
+      ],
+      "operator_families": [
+        "CSRank",
+        "CSResidual",
+        "Delta",
+        "ZScore"
+      ],
+      "strict_mean_one_way_turnover": 0.255658,
+      "portfolio_replay_avg_one_way_turnover": 0.266491,
+      "portfolio_replay_long_only_sortino": 0.621509,
+      "portfolio_replay_long_short_sortino": -0.927141,
+      "strict_cost_adjusted_sortino": -0.016159,
+      "complexity_score": 6.4,
+      "global_cluster_source": "phase3H_global_recluster_20260516"
+    }
+  ]
+}
