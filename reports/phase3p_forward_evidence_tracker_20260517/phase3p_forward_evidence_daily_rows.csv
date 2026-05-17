@@ -1,0 +1,3 @@
+profile,profile_status,date_key,data_date,gate_active,active_or_cash,pnl_status,realized_shadow_return_proxy,no_gate_counterfactual_return_proxy,gate_off_missed_return_proxy,next_trade_date,position_count,signal_row_count,selected_universe_count,git_commit,book_version,gate_version,process_issue
+x0_official6_r3_liquidity_low,formal_candidate_shadow,20260508,2026-05-08,False,cash,pending_next_trade_date,,,,,0,0,5490,aacc60c,phase3p_x0_official6_r3_v1,phase3o_r3_liquidity_low_2025h2_q33_v1,
+x4_plus003_minus002_r3_liquidity_low,research_diagnostic_shadow,20260508,2026-05-08,False,cash,pending_next_trade_date,,,,,0,0,5490,aacc60c,phase3p_x4_plus003_minus002_r3_v1,phase3o_r3_liquidity_low_2025h2_q33_v1,
