@@ -1,19 +1,42 @@
 {
-  "active_or_cash": "blocked_cash",
+  "active_gate_on_smoke": {
+    "active_or_cash": "active",
+    "data_date": "2026-04-10",
+    "decision": "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED",
+    "gate_active": true,
+    "liquidity_ratio_lag1": 0.9064989407957519,
+    "position_count": 943,
+    "signal_row_count": 1408
+  },
   "book_version": "phase3p_x0_official6_r3_v1_cloud_shadow",
   "cloud_host": "admin@120.78.231.37",
   "cloud_root": "/home/admin/alpha_shadow/x0_official_shadow_v1",
   "cron_installed": true,
   "cron_line": "20 16 * * 1-5 /usr/bin/flock -n /tmp/phase3p_cloud_shadow_x0_cron.lock /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh >> /home/admin/alpha_shadow/x0_official_shadow_v1/logs/cron.log 2>&1",
-  "decision": "PASS_CLOUD_SHADOW_SCAFFOLD_DEPLOYED",
+  "decision": "PASS_CLOUD_SHADOW_PANEL_EVAL_DEPLOYED",
+  "execution_scope": "append_only_cloud_shadow_no_execution",
   "futu_quote_probe_ok": true,
+  "gate_off_smoke": {
+    "active_or_cash": "cash",
+    "data_date": "2026-05-08",
+    "decision": "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED",
+    "gate_active": false,
+    "liquidity_ratio_lag1": 1.1521364560156724,
+    "position_count": 0,
+    "signal_row_count": 0
+  },
+  "gate_threshold": 0.9378730200373636,
   "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
   "locked_object_ok": true,
   "object_id": "X0_official_6_R3_liquidity_low_v1",
-  "output_date": "2026-05-17",
-  "panel_decision": "BLOCKED_INPUT_PANEL_MISSING",
-  "position_count": 0,
-  "signal_row_count": 0,
+  "panel": {
+    "cloud_path": "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz",
+    "date_max": "2026-05-08",
+    "date_min": "2025-08-06",
+    "rows": 1090783,
+    "sha256": "265579e6081a17ffd179b47cd8e7a5e6988dfd9fec2ff601df166dc02781a2df",
+    "status": "present"
+  },
   "stable_object_hash": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896",
   "trade_context_used": false
 }

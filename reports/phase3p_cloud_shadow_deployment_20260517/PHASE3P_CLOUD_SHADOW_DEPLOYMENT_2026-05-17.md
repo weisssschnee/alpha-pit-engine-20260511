@@ -1,6 +1,6 @@
 # Phase3P Cloud Shadow Deployment
 
-- decision: `PASS_CLOUD_SHADOW_SCAFFOLD_DEPLOYED`
+- decision: `PASS_CLOUD_SHADOW_PANEL_EVAL_DEPLOYED`
 - cloud_host: `admin@120.78.231.37`
 - cloud_root: `/home/admin/alpha_shadow/x0_official_shadow_v1`
 - object_id: `X0_official_6_R3_liquidity_low_v1`
@@ -14,21 +14,51 @@
 /home/admin/alpha_shadow/x0_official_shadow_v1/bin/phase3p_cloud_shadow_runner.py
 /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh
 /home/admin/alpha_shadow/x0_official_shadow_v1/config/phase3o_x0_official_shadow_v1.json
+/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz
 /home/admin/alpha_shadow/x0_official_shadow_v1/README.md
 ```
 
-## Smoke Result
+## Synced Panel
+
+- cloud_path: `/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz`
+- rows: `1,090,783`
+- date_min: `2025-08-06`
+- date_max: `2026-05-08`
+- sha256: `265579e6081a17ffd179b47cd8e7a5e6988dfd9fec2ff601df166dc02781a2df`
+
+The cloud panel currently ends at `2026-05-08`. True daily forward operation requires a post-close panel sync/update before the scheduled cron run.
+
+## Smoke Results
+
+Shared checks:
 
 - locked_object_ok: `true`
 - stable_object_hash: `454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896`
 - futu_quote_probe_ok: `true`
-- output_date: `2026-05-17`
-- current_decision: `BLOCKED_INPUT_PANEL_MISSING`
-- active_or_cash: `blocked_cash`
-- position_count: `0`
-- signal_row_count: `0`
+- panel_status: `present`
+- trade_context_used: `false`
 
-The cloud machine has FutuOpenD running and quote connectivity works through the existing project venv. The cloud runner did not generate positions because the X0 alpha panel is not yet synced to the cloud.
+Gate-off smoke:
+
+- data_date: `2026-05-08`
+- decision: `PASS_CLOUD_SHADOW_SIGNALS_EXPORTED`
+- gate_active: `false`
+- liquidity_ratio_lag1: `1.1521364560`
+- threshold: `0.9378730200`
+- active_or_cash: `cash`
+- signal_row_count: `0`
+- position_count: `0`
+
+Gate-on smoke:
+
+- data_date: `2026-04-10`
+- decision: `PASS_CLOUD_SHADOW_SIGNALS_EXPORTED`
+- gate_active: `true`
+- liquidity_ratio_lag1: `0.9064989408`
+- threshold: `0.9378730200`
+- active_or_cash: `active`
+- signal_row_count: `1408`
+- position_count: `943`
 
 ## Cron
 
@@ -58,14 +88,14 @@ runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_shadow_pnl/YYYY
 - No account unlock.
 - No modification to `/home/admin/chengbo_ops/project_v7_cn`.
 - No modification to Hermes services.
-- Missing alpha panel is represented explicitly as `BLOCKED_INPUT_PANEL_MISSING`; positions stay empty.
+- No production-readiness claim.
 
 ## Next Required Step
 
-Sync or build the official X0 alpha panel on the cloud:
+Automate daily post-close panel sync/update into:
 
 ```text
-/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.parquet
+/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz
 ```
 
-Until that exists and is wired into the evaluator, the cloud shadow process is an operational heartbeat and lock verification, not a live signal generator.
+Until that sync is live, the cloud runner is a verified historical shadow generator plus scheduled heartbeat, not a current-date live shadow feed.

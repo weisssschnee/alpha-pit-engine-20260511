@@ -6,10 +6,10 @@ This runner is intentionally conservative:
 - no production service restart
 - no mutation of existing cloud project directories
 
-It validates the locked X0 object, probes FutuOpenD quote connectivity, and
-writes append-only daily shadow artifacts. Until a full alpha market panel is
-synced to the cloud, it records a blocked/cash state instead of fabricating
-signals or positions.
+It validates the locked X0 object, probes FutuOpenD quote connectivity, loads a
+synced daily alpha panel, and writes append-only daily shadow artifacts. If the
+panel is missing or evaluation fails, it records a blocked/cash state instead
+of fabricating signals or positions.
 """
 
 from __future__ import annotations
@@ -25,10 +25,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+import pandas as pd
+
 
 OBJECT_ID = "X0_official_6_R3_liquidity_low_v1"
 BOOK_VERSION = "phase3p_x0_official6_r3_v1_cloud_shadow"
 GATE_VERSION = "phase3o_r3_liquidity_low_2025h2_q33_v1"
+TOP_BOTTOM_QUANTILE = 0.02
+TRAIN_START = pd.Timestamp("2025-08-06")
+TRAIN_END = pd.Timestamp("2025-12-31")
 
 
 def _now() -> str:
@@ -133,8 +139,10 @@ def _panel_status(root: Path) -> dict[str, Any]:
     candidates = [
         root / "input" / "latest_panel.parquet",
         root / "input" / "latest_panel.csv",
+        root / "input" / "latest_panel.csv.gz",
         root / "input" / "daily_market_panel.parquet",
         root / "input" / "daily_market_panel.csv",
+        root / "input" / "daily_market_panel.csv.gz",
     ]
     existing = [p for p in candidates if p.exists()]
     if not existing:
@@ -147,12 +155,191 @@ def _panel_status(root: Path) -> dict[str, Any]:
         }
     selected = existing[0]
     return {
-        "status": "present_not_evaluated_by_cloud_runner",
-        "decision": "HOLD_ALPHA_ENGINE_NOT_WIRED_IN_CLOUD_RUNNER",
+        "status": "present",
+        "decision": "PANEL_PRESENT_READY_FOR_CLOUD_EVAL",
         "required": [str(p) for p in candidates],
         "selected": str(selected),
         "sha256": _sha256(selected),
     }
+
+
+def _load_panel(panel_path: Path) -> pd.DataFrame:
+    if panel_path.suffix == ".parquet":
+        frame = pd.read_parquet(panel_path)
+    else:
+        frame = pd.read_csv(panel_path)
+    frame = frame.copy()
+    frame["date"] = pd.to_datetime(frame["date"], errors="coerce")
+    frame = frame.dropna(subset=["date", "code"]).sort_values(["code", "date"]).reset_index(drop=True)
+    for col in ["open", "close", "amount", "volume", "final_float_market_cap", "final_total_market_cap"]:
+        if col in frame.columns:
+            frame[col] = pd.to_numeric(frame[col], errors="coerce")
+    if "vwap" not in frame.columns:
+        volume = pd.to_numeric(frame.get("volume"), errors="coerce")
+        amount = pd.to_numeric(frame.get("amount"), errors="coerce")
+        close = pd.to_numeric(frame.get("close"), errors="coerce")
+        vwap = amount / volume.replace(0, np.nan)
+        # Defensive fallback: some feeds use incompatible amount/volume units.
+        frame["vwap"] = vwap.where(vwap.notna() & np.isfinite(vwap) & (vwap > 0), close)
+    if "is_limit_up" in frame.columns and "limit_up_event" not in frame.columns:
+        frame["limit_up_event"] = pd.to_numeric(frame["is_limit_up"], errors="coerce").fillna(0).astype(float)
+    if "is_limit_down" in frame.columns and "limit_down_event" not in frame.columns:
+        frame["limit_down_event"] = pd.to_numeric(frame["is_limit_down"], errors="coerce").fillna(0).astype(float)
+    return frame
+
+
+def _rolling_mean(frame: pd.DataFrame, col: str, window: int) -> pd.Series:
+    return frame.groupby("code", sort=False)[col].transform(lambda s: pd.to_numeric(s, errors="coerce").rolling(window, min_periods=max(2, min(window, 5))).mean())
+
+
+def _rolling_std(frame: pd.DataFrame, col: str, window: int) -> pd.Series:
+    return frame.groupby("code", sort=False)[col].transform(lambda s: pd.to_numeric(s, errors="coerce").rolling(window, min_periods=max(2, min(window, 5))).std(ddof=0))
+
+
+def _delta(frame: pd.DataFrame, col: str, lag: int = 1) -> pd.Series:
+    return frame.groupby("code", sort=False)[col].transform(lambda s: pd.to_numeric(s, errors="coerce").diff(lag))
+
+
+def _cs_rank(frame: pd.DataFrame, series: pd.Series) -> pd.Series:
+    return series.groupby(frame["date"], sort=False).rank(pct=True, method="average")
+
+
+def _zscore(frame: pd.DataFrame, series: pd.Series) -> pd.Series:
+    grouped = series.groupby(frame["date"], sort=False)
+    mean = grouped.transform("mean")
+    std = grouped.transform(lambda s: s.std(ddof=0))
+    return (series - mean) / std.replace(0, np.nan)
+
+
+def _cs_residual(frame: pd.DataFrame, y: pd.Series, x: pd.Series) -> pd.Series:
+    data = pd.DataFrame({"date": frame["date"], "y": y, "x": x})
+    out = pd.Series(np.nan, index=frame.index, dtype=float)
+    for _, idx in data.dropna().groupby("date").groups.items():
+        block = data.loc[idx]
+        if len(block) < 3 or block["x"].nunique() < 2:
+            continue
+        x_arr = block["x"].to_numpy(dtype=float)
+        y_arr = block["y"].to_numpy(dtype=float)
+        x_mean = float(np.mean(x_arr))
+        y_mean = float(np.mean(y_arr))
+        var = float(np.mean((x_arr - x_mean) ** 2))
+        if var <= 0:
+            continue
+        beta = float(np.mean((x_arr - x_mean) * (y_arr - y_mean)) / var)
+        alpha = y_mean - beta * x_mean
+        out.loc[idx] = y_arr - (alpha + beta * x_arr)
+    return out
+
+
+def _cluster_signal(frame: pd.DataFrame, short_id: str) -> pd.Series:
+    if short_id == "001":
+        raw = _rolling_mean(frame.assign(_x=_delta(frame, "vwap").abs()), "_x", 21)
+        return _cs_rank(frame, _zscore(frame, raw))
+    if short_id == "002":
+        raw = _cs_rank(frame, frame["open"]) * _cs_rank(frame, _rolling_mean(frame, "amount", 8))
+        return _cs_rank(frame, raw)
+    if short_id == "004":
+        raw = _zscore(frame, _rolling_mean(frame, "close", 8)) * _zscore(frame, _rolling_mean(frame, "final_float_market_cap", 34))
+        return _cs_rank(frame, raw)
+    if short_id == "005":
+        raw = _cs_rank(frame, _rolling_std(frame, "open", 8)) * _zscore(frame, _rolling_mean(frame.assign(_x=_delta(frame, "vwap").abs()), "_x", 21))
+        return _cs_rank(frame, raw)
+    if short_id == "006":
+        raw = _zscore(frame, _rolling_mean(frame.assign(_x=pd.to_numeric(frame["close"], errors="coerce").abs()), "_x", 8)) * _zscore(
+            frame, _rolling_mean(frame.assign(_x=pd.to_numeric(frame["amount"], errors="coerce").abs()), "_x", 21)
+        )
+        return _cs_rank(frame, raw)
+    if short_id == "009":
+        ranked_close = _cs_rank(frame, _cs_rank(frame, frame["close"]))
+        ranked_log_cap = _cs_rank(frame, np.log(pd.to_numeric(frame["final_total_market_cap"], errors="coerce").where(lambda s: s > 0)))
+        residual = _cs_rank(frame, _cs_residual(frame, ranked_close, ranked_log_cap))
+        vol = _zscore(frame, _rolling_mean(frame.assign(_x=_delta(frame, "close").abs()), "_x", 20))
+        return _cs_rank(frame, residual * vol)
+    raise ValueError(f"unsupported_cluster_short_id:{short_id}")
+
+
+def _build_r3_gate(frame: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, Any]]:
+    work = frame[["date", "code", "close", "amount"]].copy()
+    work["panel_return"] = work.groupby("code", sort=False)["close"].pct_change()
+    daily = (
+        work.groupby("date", sort=True)
+        .agg(
+            ew_return=("panel_return", "mean"),
+            up_ratio=("panel_return", lambda s: float((pd.to_numeric(s, errors="coerce") > 0).mean())),
+            instrument_count=("code", "nunique"),
+            amount_sum=("amount", "sum"),
+        )
+        .reset_index()
+    )
+    daily["trend_mean_lag1"] = daily["ew_return"].rolling(20, min_periods=5).mean().shift(1)
+    daily["volatility_lag1"] = daily["ew_return"].rolling(20, min_periods=5).std(ddof=0).shift(1)
+    short_liq = daily["amount_sum"].rolling(5, min_periods=5).mean().shift(1)
+    long_liq = daily["amount_sum"].rolling(20, min_periods=10).mean().shift(1)
+    daily["liquidity_ratio_lag1"] = short_liq / long_liq
+    train = daily[(daily["date"] >= TRAIN_START) & (daily["date"] <= TRAIN_END)]["liquidity_ratio_lag1"].dropna()
+    threshold = float(train.quantile(1.0 / 3.0)) if not train.empty else float("nan")
+    daily["r3_liquidity_low_active"] = pd.to_numeric(daily["liquidity_ratio_lag1"], errors="coerce") <= threshold
+    return daily, {
+        "gate": "R3_liquidity_low",
+        "train_start": TRAIN_START.date().isoformat(),
+        "train_end": TRAIN_END.date().isoformat(),
+        "liquidity_ratio_lag1_q33_threshold": threshold,
+        "train_observation_count": int(train.shape[0]),
+    }
+
+
+def _selection_rows(frame: pd.DataFrame, target_date: pd.Timestamp, cluster_short_id: str, cluster_id: str, expression: str, signal: pd.Series) -> list[dict[str, Any]]:
+    date_mask = frame["date"] == target_date
+    work = frame.loc[date_mask, ["date", "code"]].copy()
+    work["signal"] = pd.to_numeric(signal.loc[work.index], errors="coerce")
+    work = work.dropna(subset=["signal"])
+    if work.empty or work["signal"].nunique(dropna=True) < 2:
+        return []
+    count = max(1, int(np.ceil(len(work) * TOP_BOTTOM_QUANTILE)))
+    ranked = work.sort_values(["signal", "code"], ascending=[False, True]).copy()
+    top = ranked.head(count).copy()
+    bottom = ranked.tail(count).copy()
+    top["side"] = "long"
+    bottom["side"] = "short"
+    selected = pd.concat([top, bottom], ignore_index=True)
+    selected["profile"] = "x0_official6_r3_liquidity_low"
+    selected["cluster_id"] = cluster_id
+    selected["source_lane"] = "locked_x0_cloud_formula"
+    selected["expression"] = expression
+    selected["rank_in_side"] = selected.groupby(["cluster_id", "side"]).cumcount() + 1
+    selected["date"] = pd.to_datetime(selected["date"]).dt.date.astype(str)
+    return selected[["date", "code", "signal", "side", "profile", "cluster_id", "source_lane", "expression", "rank_in_side"]].to_dict("records")
+
+
+def _position_rows(signal_rows: list[dict[str, Any]], cluster_count: int) -> list[dict[str, Any]]:
+    acc: dict[str, dict[str, Any]] = {}
+    for row in signal_rows:
+        side_count = max(1, sum(1 for item in signal_rows if item["cluster_id"] == row["cluster_id"] and item["side"] == row["side"]))
+        sign = 1.0 if row["side"] == "long" else -1.0
+        weight = sign * (1.0 / max(1, cluster_count)) * (0.5 / side_count)
+        code = str(row["code"])
+        bucket = acc.setdefault(
+            code,
+            {
+                "date": row["date"],
+                "code": code,
+                "target_weight": 0.0,
+                "long_cluster_count": 0,
+                "short_cluster_count": 0,
+                "cluster_ids": [],
+            },
+        )
+        bucket["target_weight"] += weight
+        bucket["long_cluster_count"] += int(row["side"] == "long")
+        bucket["short_cluster_count"] += int(row["side"] == "short")
+        bucket["cluster_ids"].append(str(row["cluster_id"]))
+    out = []
+    for item in acc.values():
+        row = dict(item)
+        row["target_weight"] = round(float(row["target_weight"]), 10)
+        row["cluster_ids"] = "|".join(sorted(set(row["cluster_ids"])))
+        out.append(row)
+    return sorted(out, key=lambda r: (abs(float(r["target_weight"])), r["code"]), reverse=True)
 
 
 def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, futu_host: str, futu_port: int) -> dict[str, Any]:
@@ -171,6 +358,50 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
     decision = panel["decision"] if object_ok else "BLOCKED_LOCKED_OBJECT_HASH_MISMATCH"
     gate_active = False
     active_or_cash = "blocked_cash" if decision.startswith("BLOCKED") or decision.startswith("HOLD") else "cash"
+    signal_rows: list[dict[str, Any]] = []
+    positions: list[dict[str, Any]] = []
+    gate_detail: dict[str, Any] = {}
+    errors: list[str] = []
+
+    if object_ok and panel.get("selected"):
+        try:
+            frame = _load_panel(Path(str(panel["selected"])))
+            available_dates = sorted(pd.to_datetime(frame["date"], errors="coerce").dropna().unique())
+            target_date = pd.Timestamp(iso_date) if data_date else pd.Timestamp(available_dates[-1])
+            if target_date not in set(pd.Timestamp(x) for x in available_dates):
+                raise ValueError(f"data_date_not_available:{target_date.date().isoformat()}")
+            regime, gate_meta = _build_r3_gate(frame)
+            gate_row = regime[regime["date"] == target_date]
+            if gate_row.empty:
+                raise ValueError(f"gate_date_not_available:{target_date.date().isoformat()}")
+            gate_rec = gate_row.iloc[-1].to_dict()
+            gate_active = bool(gate_rec.get("r3_liquidity_low_active"))
+            gate_detail = {
+                "liquidity_ratio_lag1": float(gate_rec["liquidity_ratio_lag1"]) if pd.notna(gate_rec.get("liquidity_ratio_lag1")) else None,
+                "r3_train_threshold_liquidity_ratio_lag1_q33": gate_meta["liquidity_ratio_lag1_q33_threshold"],
+                "trend_mean_lag1": float(gate_rec["trend_mean_lag1"]) if pd.notna(gate_rec.get("trend_mean_lag1")) else None,
+                "volatility_lag1": float(gate_rec["volatility_lag1"]) if pd.notna(gate_rec.get("volatility_lag1")) else None,
+                "up_ratio": float(gate_rec["up_ratio"]) if pd.notna(gate_rec.get("up_ratio")) else None,
+                "gate_meta": gate_meta,
+            }
+            if gate_active:
+                for short_id in payload.get("clusters", []):
+                    cluster_id = f"cluster_{short_id}"
+                    expression = str(payload.get("cluster_formulas", {}).get(short_id) or "")
+                    try:
+                        signal = _cluster_signal(frame, short_id)
+                        signal_rows.extend(_selection_rows(frame, target_date, short_id, cluster_id, expression, signal))
+                    except Exception as exc:
+                        errors.append(f"{cluster_id}:{type(exc).__name__}:{str(exc)[:200]}")
+                positions = _position_rows(signal_rows, cluster_count=len(payload.get("clusters", [])))
+            active_or_cash = "active" if gate_active else "cash"
+            decision = "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED"
+            iso_date = target_date.date().isoformat()
+            date_key = target_date.strftime("%Y%m%d")
+        except Exception as exc:
+            decision = "BLOCKED_ALPHA_PANEL_EVALUATION_FAILED"
+            active_or_cash = "blocked_cash"
+            errors.append(type(exc).__name__ + ":" + str(exc)[:500])
 
     common = {
         "data_date": iso_date,
@@ -195,6 +426,7 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "gate": payload.get("gate", {}).get("name", "R3_liquidity_low"),
         "gate_active": gate_active,
         "active_or_cash": active_or_cash,
+        "gate_detail": gate_detail,
         "futu_status": futu_status,
         "panel_status": panel,
         "cluster_count": len(payload.get("clusters", [])),
@@ -206,14 +438,13 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "decision": decision,
         "gate": "R3_liquidity_low",
         "gate_active": gate_active,
-        "gate_reason": "cloud_runner_requires_synced_alpha_panel_before_gate_evaluation",
+        "gate_reason": "computed_from_synced_alpha_panel" if panel.get("selected") and not errors else "cloud_runner_requires_synced_alpha_panel_before_gate_evaluation",
         "lag_rule": payload.get("gate", {}).get("lag_rule", "lagged_only"),
         "feature_columns": payload.get("gate", {}).get("feature_columns", ["liquidity_ratio_lag1"]),
+        "gate_detail": gate_detail,
         "panel_status": panel,
     }
 
-    signals: list[dict[str, Any]] = []
-    positions: list[dict[str, Any]] = []
     snapshot = {
         **common,
         "decision": decision,
@@ -222,22 +453,24 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "gate": "R3_liquidity_low",
         "gate_active": gate_active,
         "active_or_cash": active_or_cash,
-        "signal_row_count": 0,
-        "position_count": 0,
+        "signal_row_count": len(signal_rows),
+        "position_count": len(positions),
         "gross_long_weight": 0.0,
         "gross_short_weight": 0.0,
-        "net_weight": 0.0,
-        "errors": [] if object_ok else ["locked_object_hash_mismatch"],
+        "net_weight": round(float(sum(float(row.get("target_weight") or 0.0) for row in positions)), 10),
+        "errors": errors if errors else ([] if object_ok else ["locked_object_hash_mismatch"]),
         "futu_quote_probe_ok": bool(futu_status.get("quote_probe_ok")),
         "panel_status": panel,
     }
+    snapshot["gross_long_weight"] = round(float(sum(max(0.0, float(row.get("target_weight") or 0.0)) for row in positions)), 10)
+    snapshot["gross_short_weight"] = round(float(sum(max(0.0, -float(row.get("target_weight") or 0.0)) for row in positions)), 10)
     pnl = {
         **common,
         "decision": decision,
         "profile": "x0_official6_r3_liquidity_low",
         "active_or_cash": active_or_cash,
         "gate_active": gate_active,
-        "pnl_status": "not_computed_cloud_panel_missing" if panel["status"] == "missing" else "not_computed_engine_not_wired",
+        "pnl_status": "not_computed_cloud_panel_missing" if panel["status"] == "missing" else "pending_next_trade_date",
         "realized_shadow_return_proxy": None,
         "no_gate_counterfactual_return_proxy": None,
         "gate_off_missed_return_proxy": None,
@@ -256,7 +489,7 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
     _write_json(paths["daily_gate_state"], gate_state, force=force)
     _write_csv(
         paths["daily_signals"],
-        signals,
+        signal_rows,
         force=force,
         fieldnames=["date", "code", "signal", "side", "profile", "cluster_id", "source_lane", "expression", "rank_in_side"],
     )
@@ -275,6 +508,10 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "futu_quote_probe_ok": bool(futu_status.get("quote_probe_ok")),
         "panel_status": panel,
         "active_or_cash": active_or_cash,
+        "gate_active": gate_active,
+        "signal_row_count": len(signal_rows),
+        "position_count": len(positions),
+        "errors": errors,
         "outputs": {key: str(value) for key, value in paths.items()},
     }
     summary_path = root / "reports" / "phase3p_cloud_shadow_status.json"
