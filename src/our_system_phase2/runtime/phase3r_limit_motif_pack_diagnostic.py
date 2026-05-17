@@ -141,6 +141,16 @@ def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_r
     o7 = _read_json(o7_summary_path)
     rows = _candidate_rows(max_per_role=max_per_role)
     _write_csv(output_root / "phase3r_limit_diagnostic_candidate_templates.csv", rows)
+    candidate_ledger = {
+        "run_id": "phase3r_limit_motif_pack_diagnostic_v1",
+        "created_at": _now(),
+        "scope": "diagnostic_only_no_retraining_no_X0_R3_changes",
+        "proof_variant": "limit_motif_pack_diagnostic",
+        "record_count": len(rows),
+        "records": rows,
+        "schema_version": "phase3r_limit_diagnostic_ledger_v1",
+    }
+    _write_json(output_root / "phase3r_limit_diagnostic_candidate_ledger.json", candidate_ledger)
     summary = {
         "created_at": _now(),
         "decision": "PASS_LIMIT_MOTIF_DIAGNOSTIC_SCAFFOLD_CREATED",
@@ -159,6 +169,7 @@ def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_r
         "next_action": "Run cheap diagnostic evaluation only if the locked X0/R3 shadow continues unchanged.",
         "outputs": {
             "candidate_templates_csv": str(output_root / "phase3r_limit_diagnostic_candidate_templates.csv"),
+            "candidate_ledger_json": str(output_root / "phase3r_limit_diagnostic_candidate_ledger.json"),
             "summary_json": str(output_root / "phase3r_limit_motif_pack_diagnostic.json"),
             "summary_md": str(output_root / "PHASE3R_LIMIT_MOTIF_PACK_DIAGNOSTIC_2026-05-17.md"),
         },

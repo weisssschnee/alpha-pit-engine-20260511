@@ -1,0 +1,460 @@
+{
+  "created_at": "2026-05-17T21:41:33+08:00",
+  "proof_variant": "limit_motif_pack_diagnostic",
+  "record_count": 50,
+  "records": [
+    {
+      "candidate_id": "limit_diag_event_factor_001",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_event,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_002",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_event,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_003",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_event,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_004",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_event,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_005",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_event,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_006",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_event,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_007",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_break,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_008",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_break,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_009",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_break,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_010",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_up_to_down,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_011",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_up_to_down,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_012",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_up_to_down,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_013",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_down_to_up,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_014",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_down_to_up,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_015",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_flip_down_to_up,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_016",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_streak,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_017",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_streak,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_018",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_up_streak,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_019",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_streak,2))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_020",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_streak,3))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_021",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Mean($limit_down_streak,5))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_022",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Sub(Mean($limit_up_event,2),Mean($limit_up_event,8)))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_023",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Sub(Mean($limit_up_event,2),Mean($limit_up_event,10)))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_event_factor_024",
+      "diagnostic_role": "event_factor",
+      "expression": "CSRank(Sub(Mean($limit_up_event,2),Mean($limit_up_event,20)))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_001",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),8)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_002",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),10)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_003",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),20)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_004",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),8)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_005",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),10)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_006",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),20)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_007",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),8)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_008",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),10)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_009",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),20)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_010",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),8)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_011",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),10)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_012",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),20)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_013",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),8)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_014",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),10)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_015",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),20)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_016",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),8)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_017",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),10)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_018",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($open,1)),20)),ZScore(Mean($limit_up_event,5))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_019",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),8)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_020",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),10)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_021",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),20)),ZScore(Mean($limit_up_event,2))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_022",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),8)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_023",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),10)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_interaction_factor_024",
+      "diagnostic_role": "interaction_factor",
+      "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($vwap,1)),20)),ZScore(Mean($limit_up_event,3))))",
+      "official_book_eligible": false,
+      "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_r3_gate_001",
+      "diagnostic_role": "r3_secondary_gate",
+      "expression": "R3_liquidity_low AND limit_density_high",
+      "official_book_eligible": false,
+      "required_audits": "R3_2x2|random_active_day_placebo|inverted_gate",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    },
+    {
+      "candidate_id": "limit_diag_r3_gate_002",
+      "diagnostic_role": "r3_secondary_gate",
+      "expression": "R3_liquidity_low AND limit_density_not_high",
+      "official_book_eligible": false,
+      "required_audits": "R3_2x2|random_active_day_placebo|inverted_gate",
+      "required_lag_days": 1,
+      "uses_limit_token": true
+    }
+  ],
+  "run_id": "phase3r_limit_motif_pack_diagnostic_v1",
+  "schema_version": "phase3r_limit_diagnostic_ledger_v1",
+  "scope": "diagnostic_only_no_retraining_no_X0_R3_changes"
+}
