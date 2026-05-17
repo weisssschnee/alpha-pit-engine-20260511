@@ -1,0 +1,5 @@
+stage,action,owner,status,blocker
+daily_locked_shadow,Run append-only signal and position export for every new trading day.,research_ops,ready,
+paper_trading,Add broker-agnostic paper fill ledger and daily reconciliation.,execution_ops,next,paper fill/reconciliation not configured
+minute_execution_calibration,Acquire or connect 1min data and calibrate slippage/capacity on frozen 6-cluster book.,data_ops,blocked,minute data unavailable locally
+live_readiness,"Implement kill switches, alerting, position reconciliation, and risk limits before any live order.",risk_ops,blocked,"no broker integration, no kill switch, no live reconciliation"
