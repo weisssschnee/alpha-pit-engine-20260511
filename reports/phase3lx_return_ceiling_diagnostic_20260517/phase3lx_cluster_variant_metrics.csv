@@ -1,0 +1,7 @@
+variant,clusters,cluster_count,diagnostic_only,days,mean_daily,ann_simple,ann_compound,sharpe,sortino,hit_rate,max_drawdown,total_return
+X0_official_6,cluster_001|cluster_005|cluster_006|cluster_009|cluster_002|cluster_004,6,False,204,0.00149337,0.376329,0.456518,1.502206,2.43936,0.54902,-0.15009483,0.321857
+X1_research_9,cluster_001|cluster_005|cluster_008|cluster_006|cluster_009|cluster_003|cluster_002|cluster_007|cluster_004,9,False,204,0.00163796,0.412765,0.510479,1.55719,2.487098,0.539216,-0.15940499,0.357235
+X2_official_6_plus_003,cluster_001|cluster_005|cluster_006|cluster_009|cluster_002|cluster_004|cluster_003,7,False,204,0.00163363,0.411675,0.508837,1.628288,2.628953,0.54902,-0.14530039,0.359533
+X3_official_6_minus_002,cluster_001|cluster_005|cluster_006|cluster_009|cluster_004,5,False,204,0.0015051,0.379284,0.460822,1.582093,2.569481,0.534314,-0.13835742,0.327867
+X4_official_6_plus_003_minus_002,cluster_001|cluster_005|cluster_006|cluster_009|cluster_004|cluster_003,6,False,204,0.00166678,0.420029,0.521473,1.719161,2.797335,0.553922,-0.13466306,0.371097
+X5_oracle_005_003_004_diagnostic,cluster_005|cluster_003|cluster_004,3,True,204,0.00183566,0.462587,0.587504,2.03276,3.346796,0.54902,-0.1190031,0.423639

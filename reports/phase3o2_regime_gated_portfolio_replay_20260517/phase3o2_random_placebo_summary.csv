@@ -1,0 +1,7 @@
+gate,true_oos_ann_compound,random_mean_ann_compound,random_p90_ann_compound,random_p95_ann_compound,true_gt_random_p95,draws
+R1_volatility_high,0.936759,0.415551,0.841574,1.009145,False,200
+R2_trend_low,0.590611,0.310146,0.693537,0.916849,False,200
+R3_liquidity_low,1.175657,0.355316,0.746837,0.868295,True,200
+R5_vol_or_trendlow_or_liqlow,1.12819,0.434331,0.802494,0.966584,True,200
+R6_at_least_2_of_vol_trend_liq,0.983379,0.386968,0.809625,0.912343,True,200
+R7_weighted_train_score_gate,0.936759,0.415551,0.841574,1.009145,False,200
