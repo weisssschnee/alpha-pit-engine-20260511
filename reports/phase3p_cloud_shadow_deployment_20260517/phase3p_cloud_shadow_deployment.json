@@ -1,0 +1,19 @@
+{
+  "active_or_cash": "blocked_cash",
+  "book_version": "phase3p_x0_official6_r3_v1_cloud_shadow",
+  "cloud_host": "admin@120.78.231.37",
+  "cloud_root": "/home/admin/alpha_shadow/x0_official_shadow_v1",
+  "cron_installed": true,
+  "cron_line": "20 16 * * 1-5 /usr/bin/flock -n /tmp/phase3p_cloud_shadow_x0_cron.lock /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh >> /home/admin/alpha_shadow/x0_official_shadow_v1/logs/cron.log 2>&1",
+  "decision": "PASS_CLOUD_SHADOW_SCAFFOLD_DEPLOYED",
+  "futu_quote_probe_ok": true,
+  "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
+  "locked_object_ok": true,
+  "object_id": "X0_official_6_R3_liquidity_low_v1",
+  "output_date": "2026-05-17",
+  "panel_decision": "BLOCKED_INPUT_PANEL_MISSING",
+  "position_count": 0,
+  "signal_row_count": 0,
+  "stable_object_hash": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896",
+  "trade_context_used": false
+}
