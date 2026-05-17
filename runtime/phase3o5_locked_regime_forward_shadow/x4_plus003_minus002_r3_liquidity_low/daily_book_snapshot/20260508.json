@@ -1,0 +1,39 @@
+{
+  "append_only_policy": "do_not_overwrite_existing_daily_outputs_without_force",
+  "cluster_count": 6,
+  "cluster_ids": [
+    "cluster_001",
+    "cluster_005",
+    "cluster_006",
+    "cluster_009",
+    "cluster_004",
+    "cluster_003"
+  ],
+  "created_at": "2026-05-17T15:58:00+08:00",
+  "date_key": "20260508",
+  "errors": [],
+  "experiment_id": "20260517_phase3o5_locked_regime_forward_export",
+  "gate": "R3_liquidity_low",
+  "gate_active": false,
+  "gross_long_weight": 0.0,
+  "gross_short_weight": 0.0,
+  "net_weight": 0.0,
+  "not_confirmed": [
+    "execution_fill",
+    "minute_slippage",
+    "capacity",
+    "live_or_paper_survival"
+  ],
+  "outputs": {
+    "daily_book_snapshot": "runtime\\phase3o5_locked_regime_forward_shadow\\x4_plus003_minus002_r3_liquidity_low\\daily_book_snapshot\\20260508.json",
+    "daily_gate_state": "runtime\\phase3o5_locked_regime_forward_shadow\\x4_plus003_minus002_r3_liquidity_low\\daily_gate_state\\20260508.json",
+    "daily_positions": "runtime\\phase3o5_locked_regime_forward_shadow\\x4_plus003_minus002_r3_liquidity_low\\daily_positions\\20260508.csv",
+    "daily_signals": "runtime\\phase3o5_locked_regime_forward_shadow\\x4_plus003_minus002_r3_liquidity_low\\daily_signals\\20260508.csv"
+  },
+  "position_count": 0,
+  "profile": "x4_plus003_minus002_r3_liquidity_low",
+  "profile_status": "research_candidate_shadow_diagnostic",
+  "scope": "append_only_regime_gated_shadow_no_execution",
+  "signal_date": "2026-05-08",
+  "signal_row_count": 0
+}
