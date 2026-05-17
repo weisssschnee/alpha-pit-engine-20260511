@@ -1,0 +1,66 @@
+{
+  "created_at": "2026-05-17T22:19:01+08:00",
+  "dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "decision": "HOLD_DIRECT_LIMIT_DIAGNOSTIC_NO_SMOKE_PASS",
+  "evaluated_count": 48,
+  "execution_policy": "signal_t_execute_t_plus_1_exit_t_plus_2_close_to_close",
+  "feature_timestamp_policy": "signal_clock_field_lags_without_whole_expression_lag",
+  "formula_ledger": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\phase3r_limit_formula_candidate_ledger.json",
+  "hard_boundary": "results cannot alter X0_official_6_R3_liquidity_low_v1",
+  "outputs": {
+    "candidate_csv": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\phase3r_limit_formula_eval_candidates.csv",
+    "formula_ledger": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\phase3r_limit_formula_candidate_ledger.json",
+    "role_summary_csv": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\phase3r_limit_formula_eval_by_role.csv",
+    "summary_json": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\phase3r_limit_diagnostic_cheap_eval.json",
+    "summary_md": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\PHASE3R_LIMIT_DIAGNOSTIC_CHEAP_EVAL_2026-05-17.md",
+    "validation_report": "reports\\phase3r_limit_motif_pack_diagnostic_eval_20260517\\stage1_validation_report.json"
+  },
+  "passed_smoke_count": 0,
+  "promoted_to_full_history_review_count": 0,
+  "role_summary": [
+    {
+      "best_long_sortino": 0.425403,
+      "best_rank_ic": 0.010892,
+      "diagnostic_role": "event_factor",
+      "evaluated": 24,
+      "mean_long_sortino": -0.826021,
+      "mean_rank_ic": -0.013122,
+      "mean_turnover": 0.08178,
+      "pass_smoke": 0,
+      "promoted": 0
+    },
+    {
+      "best_long_sortino": 1.922721,
+      "best_rank_ic": -0.001329,
+      "diagnostic_role": "interaction_factor",
+      "evaluated": 24,
+      "mean_long_sortino": 0.918063,
+      "mean_rank_ic": -0.004626,
+      "mean_turnover": 0.084362,
+      "pass_smoke": 0,
+      "promoted": 0
+    }
+  ],
+  "scope": "diagnostic_only_no_retraining_no_locked_shadow_changes",
+  "screening_mode": "recent_2_quarter_multi_cycle_smoke",
+  "signal_clock": "after_open",
+  "source_ledger": "reports\\phase3r_limit_motif_pack_diagnostic_20260517\\phase3r_limit_diagnostic_candidate_ledger.json",
+  "top_candidate": {
+    "candidate_id": "limit_diag_interaction_factor_008",
+    "diagnostic_role": "interaction_factor",
+    "expression": "CSRank(Mul(ZScore(Mean(Abs(Delta($close,1)),10)),ZScore(Mean($limit_up_event,5))))",
+    "mean_window_long_return": 0.000762,
+    "mean_window_long_selected_turnover_rate": 0.110786,
+    "mean_window_long_sortino": 1.922721,
+    "mean_window_rank_ic": -0.004146,
+    "passes_real_market_smoke": false,
+    "promoted_to_full_history_review": false,
+    "recent_mean_rank_ic": -0.004146,
+    "recent_mean_sortino": -2.71325,
+    "required_lag_days": 1,
+    "smoke_flags": "weak_mean_rank_ic_below_0_01|non_positive_recent_mean_rank_ic|insufficient_quarterly_windows",
+    "tradability_ic_excluded_row_count": 7997,
+    "uses_limit_token": true
+  },
+  "unsupported_count": 0
+}

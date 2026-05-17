@@ -1,0 +1,3 @@
+diagnostic_role,evaluated,pass_smoke,promoted,mean_rank_ic,best_rank_ic,mean_long_sortino,best_long_sortino,mean_turnover
+event_factor,24,0,0,-0.013122,0.010892,-0.826021,0.425403,0.08178
+interaction_factor,24,0,0,-0.004626,-0.001329,0.918063,1.922721,0.084362
