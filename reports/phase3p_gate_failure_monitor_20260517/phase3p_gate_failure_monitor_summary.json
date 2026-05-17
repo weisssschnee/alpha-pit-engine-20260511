@@ -1,0 +1,62 @@
+{
+  "book": "candidate_book_6",
+  "created_at": "2026-05-17T17:24:18+08:00",
+  "decision": "PASS_PHASE3P_GATE_FAILURE_MONITOR_CREATED",
+  "not_confirmed": [
+    "production_ready",
+    "live_survival",
+    "minute_execution",
+    "true_capacity"
+  ],
+  "official_clusters": [
+    "cluster_001",
+    "cluster_005",
+    "cluster_006",
+    "cluster_009",
+    "cluster_002",
+    "cluster_004"
+  ],
+  "outputs": {
+    "loss_cluster_attribution_csv": "reports\\phase3p_gate_failure_monitor_20260517\\phase3p_gate_on_loss_cluster_attribution.csv",
+    "loss_days_csv": "reports\\phase3p_gate_failure_monitor_20260517\\phase3p_gate_on_loss_days.csv",
+    "missed_return_by_regime_csv": "reports\\phase3p_gate_failure_monitor_20260517\\phase3p_gate_off_missed_return_by_regime.csv",
+    "state_combo_monitor_csv": "reports\\phase3p_gate_failure_monitor_20260517\\phase3p_gate_state_combo_monitor.csv",
+    "summary_json": "reports\\phase3p_gate_failure_monitor_20260517\\phase3p_gate_failure_monitor_summary.json",
+    "summary_md": "reports\\phase3p_gate_failure_monitor_20260517\\PHASE3P_GATE_FAILURE_MONITOR_2026-05-17.md"
+  },
+  "r3_liquidity_ratio_lag1_threshold": 0.9888283511695009,
+  "recent_oos_cluster_002_loss_attribution": {
+    "active_loss_days": 13,
+    "cluster_available_days": 13,
+    "cluster_id": "cluster_002",
+    "cluster_mean_return_on_loss_days": -0.01181847,
+    "cluster_negative_book_contribution": 0.02640101,
+    "cluster_negative_days": 11,
+    "cluster_sum_book_contribution_on_loss_days": -0.02560669,
+    "share_of_total_loss_abs": 0.202702,
+    "window": "recent_oos_2026"
+  },
+  "recent_oos_top_gate_off_missed_regime": {
+    "gate_off_days": 40,
+    "gate_off_mean_return": -0.00178176,
+    "gate_off_total_return_sum": -0.07127053,
+    "group": "limit_density_high",
+    "group_col": "pit_regime_label",
+    "missed_positive_days": 17,
+    "missed_positive_sum": 0.22413831,
+    "share_of_all_missed_positive_sum": 1.0,
+    "window": "recent_oos_2026"
+  },
+  "recent_oos_worst_loss_cluster": {
+    "active_loss_days": 13,
+    "cluster_available_days": 13,
+    "cluster_id": "cluster_009",
+    "cluster_mean_return_on_loss_days": -0.01190767,
+    "cluster_negative_book_contribution": 0.02828785,
+    "cluster_negative_days": 10,
+    "cluster_sum_book_contribution_on_loss_days": -0.02579996,
+    "share_of_total_loss_abs": 0.217189,
+    "window": "recent_oos_2026"
+  },
+  "scope": "fixed_r3_gate_failure_monitor_no_search_no_retuning"
+}
