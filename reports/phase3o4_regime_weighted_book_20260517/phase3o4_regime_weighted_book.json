@@ -1,0 +1,60 @@
+{
+  "best_equal_gated": {
+    "active_day_ratio": 0.487179,
+    "active_days": 38,
+    "ann_compound": 1.272218,
+    "ann_simple": 0.822095,
+    "cluster_count": 9,
+    "clusters": "cluster_001|cluster_005|cluster_008|cluster_006|cluster_009|cluster_003|cluster_002|cluster_007|cluster_004",
+    "days": 78,
+    "gate": "R3_liquidity_low",
+    "hit_rate": 0.307692,
+    "max_drawdown": -0.03901198,
+    "mean_daily": 0.00326228,
+    "sharpe": 4.491351,
+    "sortino": 5.515173,
+    "total_return": 0.282624,
+    "variant": "X1_research_9",
+    "weight_mode": "equal"
+  },
+  "best_walk_forward_gated": {
+    "active_day_ratio": 0.487179,
+    "active_days": 38,
+    "ann_compound": 1.268388,
+    "ann_simple": 0.820402,
+    "cluster_count": 9,
+    "clusters": "cluster_001|cluster_005|cluster_008|cluster_006|cluster_009|cluster_003|cluster_002|cluster_007|cluster_004",
+    "days": 78,
+    "gate": "R3_liquidity_low",
+    "hit_rate": 0.320513,
+    "lookback": 120,
+    "max_drawdown": -0.03925991,
+    "max_weight": 0.3,
+    "mean_daily": 0.00325556,
+    "sharpe": 4.401581,
+    "shrink_to_equal": 0.5,
+    "sortino": 5.187846,
+    "total_return": 0.281712,
+    "variant": "X1_research_9",
+    "weight_mode": "walk_forward"
+  },
+  "created_at": "2026-05-17T15:49:18+08:00",
+  "decision": "PASS_REGIME_WEIGHTED_DIAGNOSTIC_COMPLETED",
+  "experiment_id": "20260517_phase3o4_regime_weighted_book",
+  "oos_window": [
+    "2026-01-01",
+    "2026-05-08"
+  ],
+  "outputs": {
+    "equal_metrics_csv": "reports\\phase3o4_regime_weighted_book_20260517\\phase3o4_equal_gate_variant_metrics.csv",
+    "summary_json": "reports\\phase3o4_regime_weighted_book_20260517\\phase3o4_regime_weighted_book.json",
+    "summary_md": "reports\\phase3o4_regime_weighted_book_20260517\\PHASE3O4_REGIME_WEIGHTED_BOOK_2026-05-17.md",
+    "walk_forward_metrics_csv": "reports\\phase3o4_regime_weighted_book_20260517\\phase3o4_walk_forward_gate_variant_metrics.csv",
+    "walk_forward_weights_csv": "reports\\phase3o4_regime_weighted_book_20260517\\phase3o4_walk_forward_weights.csv"
+  },
+  "scope": "fixed_regime_gates_non_oracle_variants_walk_forward_weighting_diagnostic",
+  "train_window": [
+    "2025-07-01",
+    "2025-12-31"
+  ]
+}
