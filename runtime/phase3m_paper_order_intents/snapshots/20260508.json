@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-05-17T12:33:27+08:00",
+  "date_key": "20260508",
+  "experiment_id": "20260517_phase3m_paper_order_intent",
+  "gross_abs_delta_weight": 0.96363638,
+  "net_delta_weight": -2e-08,
+  "not_confirmed": [
+    "order_execution",
+    "paper_fills",
+    "broker_reconciliation",
+    "slippage",
+    "capacity"
+  ],
+  "order_count": 743,
+  "outputs": {
+    "orders": "runtime\\phase3m_paper_order_intents\\orders\\20260508.csv",
+    "snapshot": "runtime\\phase3m_paper_order_intents\\snapshots\\20260508.json"
+  },
+  "previous_date_key": null,
+  "scope": "paper_order_intent_no_fills_no_execution",
+  "shadow_root": "runtime\\phase3l_o_locked_forward_shadow"
+}

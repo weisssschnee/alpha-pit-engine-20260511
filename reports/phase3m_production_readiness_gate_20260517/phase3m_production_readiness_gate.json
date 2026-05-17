@@ -1,0 +1,102 @@
+{
+  "candidate_book_clusters": [
+    "cluster_005",
+    "cluster_001",
+    "cluster_006",
+    "cluster_009",
+    "cluster_004",
+    "cluster_002"
+  ],
+  "candidate_book_sha256": "ae7a9ebfd737e3f31122e200b75660aa2b858d1625981a012d8e999987ba9f5e",
+  "checklist_path": "reports\\phase3m_production_readiness_gate_20260517\\phase3m_go_live_checklist.csv",
+  "created_at": "2026-05-17T12:33:46+08:00",
+  "decision": "PASS_SHADOW_READY_HOLD_LIVE_EXECUTION",
+  "experiment_id": "20260517_phase3m_production_readiness_gate",
+  "gates": [
+    {
+      "evidence": "PASS_DAILY_STRONG_PROOF_BOOK_L2_5",
+      "gate": "daily_proof_frozen",
+      "required_for": "shadow",
+      "status": "PASS"
+    },
+    {
+      "evidence": "cluster_005|cluster_001|cluster_006|cluster_009|cluster_004|cluster_002",
+      "gate": "candidate_book_matches_locked_6_clusters",
+      "required_for": "shadow",
+      "status": "PASS"
+    },
+    {
+      "evidence": "oracle_combo=cluster_005|cluster_003|cluster_004; candidate_book=cluster_005|cluster_001|cluster_006|cluster_009|cluster_004|cluster_002",
+      "gate": "oracle_combo_not_formal_book",
+      "required_for": "shadow",
+      "status": "PASS"
+    },
+    {
+      "evidence": "runtime\\phase3l_o_locked_forward_shadow\\daily_book_snapshot\\20260508.json",
+      "gate": "append_only_shadow_snapshot_exists",
+      "required_for": "paper",
+      "status": "PASS"
+    },
+    {
+      "evidence": "candidate=ae7a9ebfd737e3f31122e200b75660aa2b858d1625981a012d8e999987ba9f5e; snapshot=ae7a9ebfd737e3f31122e200b75660aa2b858d1625981a012d8e999987ba9f5e",
+      "gate": "shadow_snapshot_uses_current_candidate_book_hash",
+      "required_for": "paper",
+      "status": "PASS"
+    },
+    {
+      "evidence": "runtime\\phase3m_paper_order_intents\\snapshots\\20260508.json",
+      "gate": "paper_order_intent_ledger_exists",
+      "required_for": "paper",
+      "status": "PASS"
+    },
+    {
+      "evidence": "HOLD_MINUTE_DATA_NOT_AVAILABLE",
+      "gate": "minute_execution_data_available",
+      "required_for": "live",
+      "status": "HOLD"
+    },
+    {
+      "evidence": "not_configured",
+      "gate": "broker_or_paper_reconciliation_configured",
+      "required_for": "paper_or_live",
+      "status": "HOLD"
+    },
+    {
+      "evidence": "not_configured",
+      "gate": "kill_switch_and_alerting_configured",
+      "required_for": "live",
+      "status": "HOLD"
+    },
+    {
+      "evidence": "minute_execution_calibration_not_run",
+      "gate": "capacity_and_slippage_model_validated",
+      "required_for": "live",
+      "status": "HOLD"
+    }
+  ],
+  "latest_paper_order_snapshot": "runtime\\phase3m_paper_order_intents\\snapshots\\20260508.json",
+  "latest_shadow_snapshot": "runtime\\phase3l_o_locked_forward_shadow\\daily_book_snapshot\\20260508.json",
+  "live_ready": false,
+  "next_actions": [
+    "Run daily append-only shadow export and reconciliation.",
+    "Build paper fill ledger and broker-independent reconciliation.",
+    "Connect 1min data for execution calibration.",
+    "Only after paper and minute gates pass, design small-capital live pilot."
+  ],
+  "not_allowed": [
+    "live_order_submission",
+    "production_ready_claim",
+    "capacity_claim",
+    "minute_slippage_claim",
+    "using_oracle_combo_as_formal_book"
+  ],
+  "outputs": {
+    "checklist": "reports\\phase3m_production_readiness_gate_20260517\\phase3m_go_live_checklist.csv",
+    "json": "reports\\phase3m_production_readiness_gate_20260517\\phase3m_production_readiness_gate.json",
+    "markdown": "reports\\phase3m_production_readiness_gate_20260517\\PHASE3M_PRODUCTION_READINESS_GATE_2026-05-17.md",
+    "runbook": "reports\\phase3m_production_readiness_gate_20260517\\PHASE3M_SHADOW_OPS_RUNBOOK_2026-05-17.md"
+  },
+  "paper_ready": true,
+  "scope": "production_gate_for_locked_daily_proof_book",
+  "shadow_ready": true
+}
