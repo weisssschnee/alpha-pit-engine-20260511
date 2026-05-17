@@ -71,6 +71,17 @@ Gate-on smoke:
 - signal_row_count: `1408`
 - position_count: `943`
 
+Parallel diagnostic gate-on smoke:
+
+| profile | status | decision allowed | signal rows | positions |
+|---|---:|---:|---:|---:|
+| `x0_official6_r3_liquidity_low` | `official_daily_shadow` | `true` | `1408` | `943` |
+| `x4_plus003_minus002_r3` | `diagnostic_only` | `false` | `1408` | `1029` |
+| `oracle_005_003_004_r3` | `oracle_diagnostic_only` | `false` | `704` | `636` |
+| `research9_r3` | `research_monitor_only` | `false` | `2090` | `1154` |
+| `single_cluster_005_r3` | `single_cluster_diagnostic` | `false` | `242` | `242` |
+| `single_cluster_003_r3` | `single_cluster_diagnostic` | `false` | `242` | `242` |
+
 Latest snapshot shadow:
 
 - data_date: `2026-05-15`
@@ -81,6 +92,8 @@ Latest snapshot shadow:
 - active_or_cash: `cash`
 - signal_row_count: `0`
 - position_count: `0`
+
+All parallel profiles also wrote cash snapshots for `2026-05-15` because R3 was off.
 
 ## Cron
 

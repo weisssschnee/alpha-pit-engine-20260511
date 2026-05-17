@@ -35,6 +35,48 @@ GATE_VERSION = "phase3o_r3_liquidity_low_2025h2_q33_v1"
 TOP_BOTTOM_QUANTILE = 0.02
 TRAIN_START = pd.Timestamp("2025-08-06")
 TRAIN_END = pd.Timestamp("2025-12-31")
+EXTRA_CLUSTER_FORMULAS = {
+    "003": "CSRank(CSResidual(ZScore(Mean(Abs(Delta($open,1)),34)),CSRank($high)))",
+    "007": "CSRank(Add(Sign(Mom($final_total_market_cap,34)),CSRank(Mean(Abs(Delta($open,1)),34))))",
+    "008": "CSRank(Mul(CSRank(Mul(ZScore(Mean($amount,34)),ZScore(Mean($final_float_market_cap,8)))),ZScore(Mean(Abs(Delta($close,1)),20))))",
+}
+DIAGNOSTIC_PROFILE_SPECS = [
+    {
+        "profile": "x4_plus003_minus002_r3",
+        "profile_status": "diagnostic_only",
+        "decision_allowed": False,
+        "description": "official 6 + cluster_003 - cluster_002 + R3",
+        "clusters": ["001", "005", "006", "009", "004", "003"],
+    },
+    {
+        "profile": "oracle_005_003_004_r3",
+        "profile_status": "oracle_diagnostic_only",
+        "decision_allowed": False,
+        "description": "posthoc theoretical ceiling diagnostic; not a formal selection rule",
+        "clusters": ["005", "003", "004"],
+    },
+    {
+        "profile": "research9_r3",
+        "profile_status": "research_monitor_only",
+        "decision_allowed": False,
+        "description": "9-cluster daily proof research pool",
+        "clusters": ["001", "005", "008", "006", "009", "003", "002", "007", "004"],
+    },
+    {
+        "profile": "single_cluster_005_r3",
+        "profile_status": "single_cluster_diagnostic",
+        "decision_allowed": False,
+        "description": "single strongest core cluster monitor",
+        "clusters": ["005"],
+    },
+    {
+        "profile": "single_cluster_003_r3",
+        "profile_status": "single_cluster_diagnostic",
+        "decision_allowed": False,
+        "description": "diagnostic oracle member monitor",
+        "clusters": ["003"],
+    },
+]
 
 
 def _now() -> str:
@@ -200,6 +242,10 @@ def _delta(frame: pd.DataFrame, col: str, lag: int = 1) -> pd.Series:
     return frame.groupby("code", sort=False)[col].transform(lambda s: pd.to_numeric(s, errors="coerce").diff(lag))
 
 
+def _mom(frame: pd.DataFrame, col: str, lag: int) -> pd.Series:
+    return frame.groupby("code", sort=False)[col].transform(lambda s: pd.to_numeric(s, errors="coerce").diff(lag))
+
+
 def _cs_rank(frame: pd.DataFrame, series: pd.Series) -> pd.Series:
     return series.groupby(frame["date"], sort=False).rank(pct=True, method="average")
 
@@ -238,6 +284,10 @@ def _cluster_signal(frame: pd.DataFrame, short_id: str) -> pd.Series:
     if short_id == "002":
         raw = _cs_rank(frame, frame["open"]) * _cs_rank(frame, _rolling_mean(frame, "amount", 8))
         return _cs_rank(frame, raw)
+    if short_id == "003":
+        y = _zscore(frame, _rolling_mean(frame.assign(_x=_delta(frame, "open").abs()), "_x", 34))
+        x = _cs_rank(frame, frame["high"])
+        return _cs_rank(frame, _cs_residual(frame, y, x))
     if short_id == "004":
         raw = _zscore(frame, _rolling_mean(frame, "close", 8)) * _zscore(frame, _rolling_mean(frame, "final_float_market_cap", 34))
         return _cs_rank(frame, raw)
@@ -248,6 +298,13 @@ def _cluster_signal(frame: pd.DataFrame, short_id: str) -> pd.Series:
         raw = _zscore(frame, _rolling_mean(frame.assign(_x=pd.to_numeric(frame["close"], errors="coerce").abs()), "_x", 8)) * _zscore(
             frame, _rolling_mean(frame.assign(_x=pd.to_numeric(frame["amount"], errors="coerce").abs()), "_x", 21)
         )
+        return _cs_rank(frame, raw)
+    if short_id == "007":
+        raw = np.sign(_mom(frame, "final_total_market_cap", 34)) + _cs_rank(frame, _rolling_mean(frame.assign(_x=_delta(frame, "open").abs()), "_x", 34))
+        return _cs_rank(frame, raw)
+    if short_id == "008":
+        inner = _zscore(frame, _rolling_mean(frame, "amount", 34)) * _zscore(frame, _rolling_mean(frame, "final_float_market_cap", 8))
+        raw = _cs_rank(frame, inner) * _zscore(frame, _rolling_mean(frame.assign(_x=_delta(frame, "close").abs()), "_x", 20))
         return _cs_rank(frame, raw)
     if short_id == "009":
         ranked_close = _cs_rank(frame, _cs_rank(frame, frame["close"]))
@@ -342,6 +399,131 @@ def _position_rows(signal_rows: list[dict[str, Any]], cluster_count: int) -> lis
     return sorted(out, key=lambda r: (abs(float(r["target_weight"])), r["code"]), reverse=True)
 
 
+def _profile_specs(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    official = {
+        "profile": "x0_official6_r3_liquidity_low",
+        "profile_status": "official_daily_shadow",
+        "decision_allowed": True,
+        "description": "official locked X0 6-cluster R3 shadow",
+        "clusters": list(payload.get("clusters", [])),
+    }
+    return [official, *DIAGNOSTIC_PROFILE_SPECS]
+
+
+def _cluster_formulas(payload: dict[str, Any]) -> dict[str, str]:
+    formulas = {str(k): str(v) for k, v in (payload.get("cluster_formulas") or {}).items()}
+    formulas.update(EXTRA_CLUSTER_FORMULAS)
+    return formulas
+
+
+def _profile_outputs(
+    *,
+    root: Path,
+    profile_spec: dict[str, Any],
+    common: dict[str, Any],
+    payload: dict[str, Any],
+    frame: pd.DataFrame | None,
+    target_date: pd.Timestamp | None,
+    gate_active: bool,
+    active_or_cash: str,
+    decision: str,
+    panel: dict[str, Any],
+    errors: list[str],
+    force: bool,
+) -> dict[str, Any]:
+    profile = str(profile_spec["profile"])
+    profile_status = str(profile_spec["profile_status"])
+    clusters = [str(x) for x in profile_spec.get("clusters", [])]
+    formulas = _cluster_formulas(payload)
+    signal_rows: list[dict[str, Any]] = []
+    profile_errors = list(errors)
+
+    if gate_active and frame is not None and target_date is not None:
+        for short_id in clusters:
+            cluster_id = f"cluster_{short_id}"
+            expression = formulas.get(short_id, "")
+            try:
+                signal = _cluster_signal(frame, short_id)
+                rows = _selection_rows(frame, target_date, short_id, cluster_id, expression, signal)
+                for row in rows:
+                    row["profile"] = profile
+                    row["source_lane"] = f"{profile_status}_locked_formula"
+                signal_rows.extend(rows)
+            except Exception as exc:
+                profile_errors.append(f"{profile}:{cluster_id}:{type(exc).__name__}:{str(exc)[:200]}")
+    positions = _position_rows(signal_rows, cluster_count=len(clusters))
+    profile_active_or_cash = "active" if gate_active and signal_rows else active_or_cash
+
+    snapshot = {
+        **common,
+        "decision": decision,
+        "profile": profile,
+        "profile_status": profile_status,
+        "decision_allowed": bool(profile_spec.get("decision_allowed")),
+        "description": profile_spec.get("description"),
+        "gate": "R3_liquidity_low",
+        "gate_active": gate_active,
+        "active_or_cash": profile_active_or_cash,
+        "clusters": clusters,
+        "signal_row_count": len(signal_rows),
+        "position_count": len(positions),
+        "gross_long_weight": 0.0,
+        "gross_short_weight": 0.0,
+        "net_weight": round(float(sum(float(row.get("target_weight") or 0.0) for row in positions)), 10),
+        "errors": profile_errors if profile_errors else ([] if common.get("locked_object_ok") else ["locked_object_hash_mismatch"]),
+        "panel_status": panel,
+    }
+    snapshot["gross_long_weight"] = round(float(sum(max(0.0, float(row.get("target_weight") or 0.0)) for row in positions)), 10)
+    snapshot["gross_short_weight"] = round(float(sum(max(0.0, -float(row.get("target_weight") or 0.0)) for row in positions)), 10)
+    pnl = {
+        **common,
+        "decision": decision,
+        "profile": profile,
+        "profile_status": profile_status,
+        "decision_allowed": bool(profile_spec.get("decision_allowed")),
+        "active_or_cash": profile_active_or_cash,
+        "gate_active": gate_active,
+        "pnl_status": "not_computed_cloud_panel_missing" if panel["status"] == "missing" else "pending_next_trade_date",
+        "realized_shadow_return_proxy": None,
+        "no_gate_counterfactual_return_proxy": None,
+        "gate_off_missed_return_proxy": None,
+    }
+
+    profile_root = root / "runtime" / "phase3p_cloud_shadow" / profile
+    date_key = str(common["date_key"])
+    paths = {
+        "daily_signals": profile_root / "daily_signals" / f"{date_key}.csv",
+        "daily_positions": profile_root / "daily_positions" / f"{date_key}.csv",
+        "daily_book_snapshot": profile_root / "daily_book_snapshot" / f"{date_key}.json",
+        "daily_shadow_pnl": profile_root / "daily_shadow_pnl" / f"{date_key}.json",
+    }
+    _write_csv(
+        paths["daily_signals"],
+        signal_rows,
+        force=force,
+        fieldnames=["date", "code", "signal", "side", "profile", "cluster_id", "source_lane", "expression", "rank_in_side"],
+    )
+    _write_csv(
+        paths["daily_positions"],
+        positions,
+        force=force,
+        fieldnames=["date", "code", "target_weight", "long_cluster_count", "short_cluster_count", "cluster_ids"],
+    )
+    _write_json(paths["daily_book_snapshot"], snapshot, force=force)
+    _write_json(paths["daily_shadow_pnl"], pnl, force=force)
+    return {
+        "profile": profile,
+        "profile_status": profile_status,
+        "decision_allowed": bool(profile_spec.get("decision_allowed")),
+        "clusters": clusters,
+        "active_or_cash": profile_active_or_cash,
+        "signal_row_count": len(signal_rows),
+        "position_count": len(positions),
+        "errors": profile_errors,
+        "outputs": {key: str(value) for key, value in paths.items()},
+    }
+
+
 def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, futu_host: str, futu_port: int) -> dict[str, Any]:
     root.mkdir(parents=True, exist_ok=True)
     date_key = _date_key(data_date)
@@ -358,8 +540,8 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
     decision = panel["decision"] if object_ok else "BLOCKED_LOCKED_OBJECT_HASH_MISMATCH"
     gate_active = False
     active_or_cash = "blocked_cash" if decision.startswith("BLOCKED") or decision.startswith("HOLD") else "cash"
-    signal_rows: list[dict[str, Any]] = []
-    positions: list[dict[str, Any]] = []
+    frame: pd.DataFrame | None = None
+    target_date: pd.Timestamp | None = None
     gate_detail: dict[str, Any] = {}
     errors: list[str] = []
 
@@ -384,16 +566,6 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
                 "up_ratio": float(gate_rec["up_ratio"]) if pd.notna(gate_rec.get("up_ratio")) else None,
                 "gate_meta": gate_meta,
             }
-            if gate_active:
-                for short_id in payload.get("clusters", []):
-                    cluster_id = f"cluster_{short_id}"
-                    expression = str(payload.get("cluster_formulas", {}).get(short_id) or "")
-                    try:
-                        signal = _cluster_signal(frame, short_id)
-                        signal_rows.extend(_selection_rows(frame, target_date, short_id, cluster_id, expression, signal))
-                    except Exception as exc:
-                        errors.append(f"{cluster_id}:{type(exc).__name__}:{str(exc)[:200]}")
-                positions = _position_rows(signal_rows, cluster_count=len(payload.get("clusters", [])))
             active_or_cash = "active" if gate_active else "cash"
             decision = "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED"
             iso_date = target_date.date().isoformat()
@@ -445,62 +617,32 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "panel_status": panel,
     }
 
-    snapshot = {
-        **common,
-        "decision": decision,
-        "profile": "x0_official6_r3_liquidity_low",
-        "profile_status": "official_daily_shadow",
-        "gate": "R3_liquidity_low",
-        "gate_active": gate_active,
-        "active_or_cash": active_or_cash,
-        "signal_row_count": len(signal_rows),
-        "position_count": len(positions),
-        "gross_long_weight": 0.0,
-        "gross_short_weight": 0.0,
-        "net_weight": round(float(sum(float(row.get("target_weight") or 0.0) for row in positions)), 10),
-        "errors": errors if errors else ([] if object_ok else ["locked_object_hash_mismatch"]),
-        "futu_quote_probe_ok": bool(futu_status.get("quote_probe_ok")),
-        "panel_status": panel,
-    }
-    snapshot["gross_long_weight"] = round(float(sum(max(0.0, float(row.get("target_weight") or 0.0)) for row in positions)), 10)
-    snapshot["gross_short_weight"] = round(float(sum(max(0.0, -float(row.get("target_weight") or 0.0)) for row in positions)), 10)
-    pnl = {
-        **common,
-        "decision": decision,
-        "profile": "x0_official6_r3_liquidity_low",
-        "active_or_cash": active_or_cash,
-        "gate_active": gate_active,
-        "pnl_status": "not_computed_cloud_panel_missing" if panel["status"] == "missing" else "pending_next_trade_date",
-        "realized_shadow_return_proxy": None,
-        "no_gate_counterfactual_return_proxy": None,
-        "gate_off_missed_return_proxy": None,
-    }
-
     profile_root = root / "runtime" / "phase3p_cloud_shadow" / "x0_official6_r3_liquidity_low"
     paths = {
         "daily_regime_state": profile_root / "daily_regime_state" / f"{date_key}.json",
         "daily_gate_state": profile_root / "daily_gate_state" / f"{date_key}.json",
-        "daily_signals": profile_root / "daily_signals" / f"{date_key}.csv",
-        "daily_positions": profile_root / "daily_positions" / f"{date_key}.csv",
-        "daily_book_snapshot": profile_root / "daily_book_snapshot" / f"{date_key}.json",
-        "daily_shadow_pnl": profile_root / "daily_shadow_pnl" / f"{date_key}.json",
     }
     _write_json(paths["daily_regime_state"], regime_state, force=force)
     _write_json(paths["daily_gate_state"], gate_state, force=force)
-    _write_csv(
-        paths["daily_signals"],
-        signal_rows,
-        force=force,
-        fieldnames=["date", "code", "signal", "side", "profile", "cluster_id", "source_lane", "expression", "rank_in_side"],
-    )
-    _write_csv(
-        paths["daily_positions"],
-        positions,
-        force=force,
-        fieldnames=["date", "code", "target_weight", "long_cluster_count", "short_cluster_count", "cluster_ids"],
-    )
-    _write_json(paths["daily_book_snapshot"], snapshot, force=force)
-    _write_json(paths["daily_shadow_pnl"], pnl, force=force)
+
+    profile_summaries = [
+        _profile_outputs(
+            root=root,
+            profile_spec=spec,
+            common=common,
+            payload=payload,
+            frame=frame,
+            target_date=target_date,
+            gate_active=gate_active,
+            active_or_cash=active_or_cash,
+            decision=decision,
+            panel=panel,
+            errors=errors,
+            force=force,
+        )
+        for spec in _profile_specs(payload)
+    ]
+    official = next((item for item in profile_summaries if item.get("decision_allowed")), profile_summaries[0])
 
     summary = {
         **common,
@@ -509,10 +651,11 @@ def run(*, root: Path, locked_object: Path, data_date: str | None, force: bool, 
         "panel_status": panel,
         "active_or_cash": active_or_cash,
         "gate_active": gate_active,
-        "signal_row_count": len(signal_rows),
-        "position_count": len(positions),
+        "signal_row_count": official.get("signal_row_count"),
+        "position_count": official.get("position_count"),
         "errors": errors,
         "outputs": {key: str(value) for key, value in paths.items()},
+        "profiles": profile_summaries,
     }
     summary_path = root / "reports" / "phase3p_cloud_shadow_status.json"
     _write_json(summary_path, summary, force=True)
