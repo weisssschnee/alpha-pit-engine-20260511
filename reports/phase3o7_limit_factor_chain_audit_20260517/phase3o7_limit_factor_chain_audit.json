@@ -1,0 +1,262 @@
+{
+  "created_at": "2026-05-17T21:31:23+08:00",
+  "decision": "HOLD_LIMIT_GENERATOR_COVERAGE_GAP",
+  "experiment_id": "20260517_phase3o7_limit_factor_chain_audit",
+  "funnel": [
+    {
+      "direct_limit_rows": 0,
+      "direct_limit_share_rows": 0.0,
+      "direct_limit_unique_candidate_expression": 0,
+      "raw_rows": 1992,
+      "role_counts": {
+        "no_limit": 1992
+      },
+      "stage": "generated_candidate_ledgers",
+      "unique_candidate_expression": 642
+    },
+    {
+      "direct_limit_rows": 0,
+      "direct_limit_share_rows": 0.0,
+      "direct_limit_unique_candidate_expression": 0,
+      "raw_rows": 1728,
+      "role_counts": {
+        "tradability_only": 1728
+      },
+      "stage": "stage1_validated",
+      "unique_candidate_expression": 634
+    },
+    {
+      "direct_limit_rows": 0,
+      "direct_limit_share_rows": 0.0,
+      "direct_limit_unique_candidate_expression": 0,
+      "raw_rows": 4672,
+      "role_counts": {
+        "no_limit": 988,
+        "other_limit_reference": 3587,
+        "tradability_only": 97
+      },
+      "stage": "strict_replay_aggregate_rows",
+      "unique_candidate_expression": 2143
+    }
+  ],
+  "gate_performance_rows": [
+    {
+      "active_ann_compound": 3.918442,
+      "active_ann_simple": 1.598037,
+      "active_day_ratio": 0.487179,
+      "active_days": 38,
+      "active_hit_rate": 0.657895,
+      "active_max_drawdown": -0.03442312,
+      "active_mean_daily": 0.00634142,
+      "active_sharpe": 6.815622,
+      "active_sortino": 12.490783,
+      "active_total_return": 0.266314,
+      "book": "candidate_book_6",
+      "calendar_days": 78,
+      "full_ann_compound": 1.175657,
+      "full_ann_simple": 0.778531,
+      "full_days": 78,
+      "full_hit_rate": 0.320513,
+      "full_max_drawdown": -0.03442312,
+      "full_mean_daily": 0.00308941,
+      "full_sharpe": 4.547115,
+      "full_sortino": 6.085253,
+      "full_total_return": 0.266314,
+      "gate": "R3_liquidity_low",
+      "gate_switch_count": 3,
+      "inactive_ann_compound": -0.361992,
+      "inactive_ann_simple": -0.449004,
+      "inactive_days": 40,
+      "inactive_hit_rate": 0.425,
+      "inactive_max_drawdown": -0.0997549,
+      "inactive_mean_daily": -0.00178176,
+      "inactive_sharpe": -1.854517,
+      "inactive_sortino": -3.739327,
+      "inactive_total_return": -0.073174,
+      "window": "oos_2026"
+    },
+    {
+      "active_ann_compound": 0.340663,
+      "active_ann_simple": 0.293335,
+      "active_day_ratio": 0.615385,
+      "active_days": 48,
+      "active_hit_rate": 0.541667,
+      "active_max_drawdown": -0.09227455,
+      "active_mean_daily": 0.00116403,
+      "active_sharpe": 1.134958,
+      "active_sortino": 2.345896,
+      "active_total_return": 0.050736,
+      "book": "candidate_book_6",
+      "calendar_days": 78,
+      "full_ann_compound": 0.197755,
+      "full_ann_simple": 0.180514,
+      "full_days": 78,
+      "full_hit_rate": 0.333333,
+      "full_max_drawdown": -0.09227455,
+      "full_mean_daily": 0.00071632,
+      "full_sharpe": 0.88946,
+      "full_sortino": 1.443628,
+      "full_total_return": 0.050736,
+      "gate": "R4_limit_density_high",
+      "gate_switch_count": 8,
+      "inactive_ann_compound": 1.597015,
+      "inactive_ann_simple": 0.956172,
+      "inactive_days": 30,
+      "inactive_hit_rate": 0.533333,
+      "inactive_max_drawdown": -0.02671104,
+      "inactive_mean_daily": 0.00379433,
+      "inactive_sharpe": 4.248859,
+      "inactive_sortino": 9.258418,
+      "inactive_total_return": 0.116982,
+      "window": "oos_2026"
+    }
+  ],
+  "outputs": {
+    "examples_csv": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_candidate_examples.csv",
+    "funnel_csv": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_token_funnel.csv",
+    "stage1_metrics_csv": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_stage1_metrics.csv",
+    "strict_metrics_csv": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_strict_replay_metrics.csv",
+    "summary_json": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_factor_chain_audit.json",
+    "summary_md": "reports\\phase3o7_limit_factor_chain_audit_20260517\\PHASE3O7_LIMIT_FACTOR_CHAIN_AUDIT_2026-05-17.md"
+  },
+  "r3_limit_interaction_rows": [
+    {
+      "ann_compound": 7.27247,
+      "days": 14,
+      "hit_rate": 0.785714,
+      "limit_state": "limit_high",
+      "max_drawdown": -0.03073301,
+      "mean_daily": 0.00841991,
+      "median_daily": 0.01212864,
+      "r3_state": "R3_on",
+      "return_sum": 0.11787867,
+      "sharpe": 9.482523,
+      "total_return": 0.123003
+    },
+    {
+      "ann_compound": 2.629869,
+      "days": 24,
+      "hit_rate": 0.583333,
+      "limit_state": "limit_not_high",
+      "max_drawdown": -0.02658464,
+      "mean_daily": 0.00512897,
+      "median_daily": 0.00408096,
+      "r3_state": "R3_on",
+      "return_sum": 0.12309522,
+      "sharpe": 5.421733,
+      "total_return": 0.127615
+    },
+    {
+      "ann_compound": 6.669287,
+      "days": 13,
+      "hit_rate": 0.692308,
+      "limit_state": "limit_low",
+      "max_drawdown": -0.00598447,
+      "mean_daily": 0.00811699,
+      "median_daily": 0.00858908,
+      "r3_state": "R3_on",
+      "return_sum": 0.10552082,
+      "sharpe": 7.815586,
+      "total_return": 0.108883
+    },
+    {
+      "ann_compound": 0.495248,
+      "days": 11,
+      "hit_rate": 0.454545,
+      "limit_state": "limit_mid",
+      "max_drawdown": -0.02085725,
+      "mean_daily": 0.00159767,
+      "median_daily": -0.0021719,
+      "r3_state": "R3_on",
+      "return_sum": 0.0175744,
+      "sharpe": 2.086247,
+      "total_return": 0.016892
+    },
+    {
+      "ann_compound": -0.368709,
+      "days": 34,
+      "hit_rate": 0.441176,
+      "limit_state": "limit_high",
+      "max_drawdown": -0.09118558,
+      "mean_daily": -0.00182369,
+      "median_daily": -0.00255844,
+      "r3_state": "R3_off",
+      "return_sum": -0.06200533,
+      "sharpe": -1.789207,
+      "total_return": -0.064352
+    },
+    {
+      "ann_compound": -0.322563,
+      "days": 6,
+      "hit_rate": 0.333333,
+      "limit_state": "limit_not_high",
+      "max_drawdown": -0.01774682,
+      "mean_daily": -0.0015442,
+      "median_daily": -0.00496105,
+      "r3_state": "R3_off",
+      "return_sum": -0.0092652,
+      "sharpe": -2.991737,
+      "total_return": -0.009429
+    },
+    {
+      "ann_compound": -0.04462,
+      "days": 2,
+      "hit_rate": 0.5,
+      "limit_state": "limit_low",
+      "max_drawdown": 0.0,
+      "mean_daily": -0.00018112,
+      "median_daily": -0.00018112,
+      "r3_state": "R3_off",
+      "return_sum": -0.00036224,
+      "sharpe": -0.252262,
+      "total_return": -0.000492
+    },
+    {
+      "ann_compound": -0.429654,
+      "days": 4,
+      "hit_rate": 0.25,
+      "limit_state": "limit_mid",
+      "max_drawdown": -0.01290804,
+      "mean_daily": -0.00222574,
+      "median_daily": -0.00496105,
+      "r3_state": "R3_off",
+      "return_sum": -0.00890296,
+      "sharpe": -6.027788,
+      "total_return": -0.008941
+    }
+  ],
+  "scope": "diagnostic_only_no_retraining_no_locked_book_changes",
+  "stage1_metrics": [
+    {
+      "bucket": "direct_limit",
+      "row_count": 0
+    },
+    {
+      "bucket": "non_limit",
+      "mean_recent_rank_ic": 0.001322,
+      "mean_recent_sortino": -0.890721,
+      "mean_selected_turnover_rate": 0.078335,
+      "mean_tradability_excluded_rows": 7922.802083,
+      "passes_real_market_smoke": 0,
+      "promoted_to_full_history_review": 0,
+      "row_count": 1728,
+      "unique_candidate_expression": 634
+    }
+  ],
+  "strict_replay_metrics": [
+    {
+      "bucket": "direct_limit",
+      "row_count": 0
+    },
+    {
+      "audited_or_strict_rows": 4672,
+      "bucket": "non_limit",
+      "deployable_cluster_count_proxy": 377,
+      "mean_portfolio_long_only_sortino": 2.066187,
+      "mean_portfolio_replay_turnover": 0.289892,
+      "portfolio_replay_pass": 3281,
+      "strict_pass_proxy": 2204,
+      "unique_candidate_expression": 2143
+    }
+  ]
+}
