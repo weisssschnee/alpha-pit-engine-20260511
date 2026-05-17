@@ -1,0 +1,152 @@
+{
+  "candidate_book": {
+    "cluster_count": 6,
+    "clusters": [
+      "cluster_001",
+      "cluster_005",
+      "cluster_006",
+      "cluster_009",
+      "cluster_002",
+      "cluster_004"
+    ],
+    "metrics": {
+      "book_label": "candidate_book_6_locked",
+      "cluster_count": 6,
+      "clusters": "cluster_001|cluster_005|cluster_006|cluster_009|cluster_002|cluster_004",
+      "entry_type_distribution": "{\"full_formula_survivor\": 3, \"low_order_rescue\": 3}",
+      "hit_rate": 0.535294,
+      "max_drawdown_proxy": -0.15703209,
+      "max_pairwise_corr": 0.936907,
+      "max_turnover": 0.199872,
+      "mean_daily_return": 0.00138141,
+      "mean_pairwise_corr": 0.835851,
+      "median_daily_return": 0.00086014,
+      "median_score": 1.553142,
+      "median_turnover": 0.075111,
+      "min_score": 1.229064,
+      "min_strict_cost_adjusted_sortino": 2.484331,
+      "p90_turnover": 0.151635,
+      "sharpe_proxy": 1.005367,
+      "sortino_proxy": 1.543331,
+      "source_distribution": "{\"agnostic_freeform_ast\": 3, \"formula_gen_v2_repair_expansion\": 2, \"r0_cem_led\": 1}",
+      "source_top_share": 0.5
+    }
+  },
+  "created_at": "2026-05-17T12:10:21+08:00",
+  "decision": "PASS_DAILY_STRONG_PROOF_BOOK_L2_5",
+  "evidence_level": "L2.5_daily_strong_proof_no_execution",
+  "experiment_id": "20260517_phase3l_o_daily_proof_freeze_pack",
+  "inputs": {
+    "book_path": "reports\\phase3l_k_daily_proof_book_20260517\\phase3l_daily_strong_proof_book.csv",
+    "book_sha256": "375b21f912f5a404d2075c276ee01110e7c430aca24ff189bba705705556ba92",
+    "cluster_strength_path": "reports\\phase3l_n_factor_strength_frontier_20260517\\phase3l_n_cluster_strength.csv",
+    "daily_returns_path": "reports\\phase3l_l_regime_proxy_audit_20260517\\phase3l_l_daily_returns_by_survivor.csv",
+    "daily_returns_sha256": "0e037580bc57b752fd8b1cefef98532a8a7a2654e9e4b5d476820423a5c4e767",
+    "frontier_path": "reports\\phase3l_n_factor_strength_frontier_20260517\\phase3l_n_factor_strength_frontier.json"
+  },
+  "not_confirmed": [
+    "production_readiness",
+    "true_execution",
+    "true_capacity",
+    "minute_slippage",
+    "live_or_paper_survival",
+    "true_regime_replay"
+  ],
+  "oracle_combo": {
+    "clusters": [
+      "cluster_005",
+      "cluster_003",
+      "cluster_004"
+    ],
+    "metrics": {
+      "book_label": "oracle_diagnostic_3_locked",
+      "cluster_count": 3,
+      "clusters": "cluster_005|cluster_003|cluster_004",
+      "entry_type_distribution": "{\"full_formula_survivor\": 2, \"low_order_rescue\": 1}",
+      "hit_rate": 0.532051,
+      "max_drawdown_proxy": -0.12336038,
+      "max_pairwise_corr": 0.881779,
+      "max_turnover": 0.199872,
+      "mean_daily_return": 0.00198848,
+      "mean_pairwise_corr": 0.816955,
+      "median_daily_return": 0.0012964,
+      "median_score": 1.507126,
+      "median_turnover": 0.069113,
+      "min_score": 1.229064,
+      "min_strict_cost_adjusted_sortino": 2.81205,
+      "p90_turnover": 0.17372,
+      "sharpe_proxy": 1.659477,
+      "sortino_proxy": 2.910011,
+      "source_distribution": "{\"agnostic_freeform_ast\": 2, \"formula_gen_v2_repair_expansion\": 1}",
+      "source_top_share": 0.666667
+    },
+    "source_frontier_oracle": {
+      "book_label": "subset_3",
+      "cluster_count": 3,
+      "clusters": "cluster_005|cluster_003|cluster_004",
+      "entry_type_distribution": "{\"full_formula_survivor\": 2, \"low_order_rescue\": 1}",
+      "hit_rate": 0.532051,
+      "max_drawdown_proxy": -0.12336038,
+      "max_pairwise_corr": 0.881779,
+      "max_turnover": 0.199872,
+      "mean_daily_return": 0.00198848,
+      "mean_pairwise_corr": 0.816955,
+      "median_daily_return": 0.0012964,
+      "median_score": 1.507126,
+      "median_turnover": 0.069113,
+      "min_score": 1.229064,
+      "min_strict_cost_adjusted_sortino": 2.81205,
+      "p90_turnover": 0.17372,
+      "sharpe_proxy": 1.659477,
+      "sortino_proxy": 2.910011,
+      "source_distribution": "{\"agnostic_freeform_ast\": 2, \"formula_gen_v2_repair_expansion\": 1}",
+      "source_top_share": 0.666667
+    },
+    "status": "diagnostic_only_not_formal_selection_rule"
+  },
+  "outputs": {
+    "alpha_cards_csv": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\phase3l_alpha_cards.csv",
+    "candidate_book_csv": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\phase3l_candidate_book_6_clusters.csv",
+    "decision_record_md": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\PHASE3L_DAILY_PROOF_DECISION_RECORD_2026-05-17.md",
+    "freeze_json": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\phase3l_locked_daily_proof_objects.json",
+    "proof_pack_md": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\PHASE3L_ALPHA_PROOF_PACK_2026-05-17.md",
+    "stress_json": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\phase3l_candidate_book_stress_report.json"
+  },
+  "research_pool": {
+    "cluster_count": 9,
+    "clusters": [
+      "cluster_001",
+      "cluster_005",
+      "cluster_008",
+      "cluster_006",
+      "cluster_009",
+      "cluster_003",
+      "cluster_002",
+      "cluster_007",
+      "cluster_004"
+    ],
+    "metrics": {
+      "book_label": "research_pool_9_locked",
+      "cluster_count": 9,
+      "clusters": "cluster_001|cluster_005|cluster_008|cluster_006|cluster_009|cluster_003|cluster_002|cluster_007|cluster_004",
+      "entry_type_distribution": "{\"full_formula_survivor\": 6, \"low_order_rescue\": 3}",
+      "hit_rate": 0.523529,
+      "max_drawdown_proxy": -0.16819953,
+      "max_pairwise_corr": 0.976093,
+      "max_turnover": 0.199872,
+      "mean_daily_return": 0.00150115,
+      "mean_pairwise_corr": 0.870863,
+      "median_daily_return": 0.00131415,
+      "median_score": 1.541851,
+      "median_turnover": 0.073418,
+      "min_score": 1.229064,
+      "min_strict_cost_adjusted_sortino": 2.484331,
+      "p90_turnover": 0.15451,
+      "sharpe_proxy": 1.047657,
+      "sortino_proxy": 1.600177,
+      "source_distribution": "{\"agnostic_freeform_ast\": 5, \"formula_gen_v2_repair_expansion\": 3, \"r0_cem_led\": 1}",
+      "source_top_share": 0.555556
+    }
+  },
+  "scope": "frozen_daily_proof_objects_no_new_search"
+}
