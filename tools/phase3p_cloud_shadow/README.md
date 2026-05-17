@@ -21,6 +21,7 @@ Expected layout:
 ```text
 config/phase3o_x0_official_shadow_v1.json
 bin/phase3p_cloud_shadow_runner.py
+bin/phase3p_futu_snapshot_panel_sync.py
 bin/run_phase3p_cloud_shadow.sh
 input/latest_panel.parquet   # optional future alpha panel
 input/latest_panel.csv.gz    # preferred cloud-safe panel without pyarrow
@@ -45,7 +46,9 @@ Current smoke coverage:
 
 - gate-off path: `2026-05-08`, `0` signals, `0` positions, cash snapshot.
 - gate-on path: `2026-04-10`, `1408` signal rows, `943` shadow positions.
+- Futu snapshot sync path: `2026-05-15`, `5200 / 5200` valid SH/SZ symbols mapped, BJ unsupported and excluded from the appended snapshot date.
+- latest cloud shadow date: `2026-05-15`, R3 gate off, cash snapshot.
 - Futu quote probe: OK.
 - Trade context / orders: not used.
 
-The current synced panel is historical through `2026-05-08`. True daily forward operation still requires a daily post-close panel sync/update before the cron run.
+The cron runs Futu snapshot sync before the shadow runner. Snapshot sync is quote-context only. It updates SH/SZ rows; BJ rows are not available through Futu snapshot in this environment.

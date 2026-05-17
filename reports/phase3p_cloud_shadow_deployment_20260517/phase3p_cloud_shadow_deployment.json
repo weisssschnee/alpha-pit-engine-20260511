@@ -13,7 +13,7 @@
   "cloud_root": "/home/admin/alpha_shadow/x0_official_shadow_v1",
   "cron_installed": true,
   "cron_line": "20 16 * * 1-5 /usr/bin/flock -n /tmp/phase3p_cloud_shadow_x0_cron.lock /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh >> /home/admin/alpha_shadow/x0_official_shadow_v1/logs/cron.log 2>&1",
-  "decision": "PASS_CLOUD_SHADOW_PANEL_EVAL_DEPLOYED",
+  "decision": "PASS_CLOUD_SHADOW_FUTU_SNAPSHOT_SYNC_DEPLOYED",
   "execution_scope": "append_only_cloud_shadow_no_execution",
   "futu_quote_probe_ok": true,
   "gate_off_smoke": {
@@ -25,17 +25,36 @@
     "position_count": 0,
     "signal_row_count": 0
   },
+  "latest_snapshot_shadow": {
+    "active_or_cash": "cash",
+    "data_date": "2026-05-15",
+    "decision": "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED",
+    "gate_active": false,
+    "liquidity_ratio_lag1": 1.1526629007762443,
+    "position_count": 0,
+    "signal_row_count": 0
+  },
   "gate_threshold": 0.9378730200373636,
   "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
   "locked_object_ok": true,
   "object_id": "X0_official_6_R3_liquidity_low_v1",
   "panel": {
     "cloud_path": "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz",
-    "date_max": "2026-05-08",
+    "date_max": "2026-05-15",
     "date_min": "2025-08-06",
-    "rows": 1090783,
-    "sha256": "265579e6081a17ffd179b47cd8e7a5e6988dfd9fec2ff601df166dc02781a2df",
+    "rows": 1095983,
+    "sha256": "08608324f437353b80b2d9927fd22cf8ef719a578ad6675b41e09f207cfdb70e",
     "status": "present"
+  },
+  "snapshot_sync": {
+    "batch_error_count": 0,
+    "coverage_ratio_vs_source_universe": 0.82109584714985,
+    "coverage_ratio_vs_valid_futu_universe": 1.0,
+    "decision": "PASS_FUTU_SNAPSHOT_PANEL_SYNC",
+    "snapshot_date": "2026-05-15",
+    "snapshot_rows_mapped": 5200,
+    "unsupported_code_count": 565,
+    "unsupported_note": "BJ symbols are not supported by Futu snapshot in this environment."
   },
   "stable_object_hash": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896",
   "trade_context_used": false

@@ -1,6 +1,6 @@
 # Phase3P Cloud Shadow Deployment
 
-- decision: `PASS_CLOUD_SHADOW_PANEL_EVAL_DEPLOYED`
+- decision: `PASS_CLOUD_SHADOW_FUTU_SNAPSHOT_SYNC_DEPLOYED`
 - cloud_host: `admin@120.78.231.37`
 - cloud_root: `/home/admin/alpha_shadow/x0_official_shadow_v1`
 - object_id: `X0_official_6_R3_liquidity_low_v1`
@@ -12,6 +12,7 @@
 
 ```text
 /home/admin/alpha_shadow/x0_official_shadow_v1/bin/phase3p_cloud_shadow_runner.py
+/home/admin/alpha_shadow/x0_official_shadow_v1/bin/phase3p_futu_snapshot_panel_sync.py
 /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh
 /home/admin/alpha_shadow/x0_official_shadow_v1/config/phase3o_x0_official_shadow_v1.json
 /home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz
@@ -21,12 +22,22 @@
 ## Synced Panel
 
 - cloud_path: `/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz`
-- rows: `1,090,783`
+- rows: `1,095,983`
 - date_min: `2025-08-06`
-- date_max: `2026-05-08`
-- sha256: `265579e6081a17ffd179b47cd8e7a5e6988dfd9fec2ff601df166dc02781a2df`
+- date_max: `2026-05-15`
+- sha256: `08608324f437353b80b2d9927fd22cf8ef719a578ad6675b41e09f207cfdb70e`
 
-The cloud panel currently ends at `2026-05-08`. True daily forward operation requires a post-close panel sync/update before the scheduled cron run.
+The cloud panel is updated by Futu snapshot before the scheduled shadow run. Futu snapshot covers valid SH/SZ symbols; BJ symbols are unsupported in this environment and are excluded from the appended snapshot date.
+
+Snapshot sync result:
+
+- snapshot_date: `2026-05-15`
+- valid SH/SZ requested: `5200`
+- snapshot rows mapped: `5200`
+- coverage vs valid Futu universe: `100%`
+- coverage vs source universe including BJ: `82.11%`
+- unsupported BJ/source symbols: `565`
+- batch_error_count: `0`
 
 ## Smoke Results
 
@@ -60,6 +71,17 @@ Gate-on smoke:
 - signal_row_count: `1408`
 - position_count: `943`
 
+Latest snapshot shadow:
+
+- data_date: `2026-05-15`
+- decision: `PASS_CLOUD_SHADOW_SIGNALS_EXPORTED`
+- gate_active: `false`
+- liquidity_ratio_lag1: `1.1526629008`
+- threshold: `0.9378730200`
+- active_or_cash: `cash`
+- signal_row_count: `0`
+- position_count: `0`
+
 ## Cron
 
 Installed isolated cron entry:
@@ -68,7 +90,7 @@ Installed isolated cron entry:
 20 16 * * 1-5 /usr/bin/flock -n /tmp/phase3p_cloud_shadow_x0_cron.lock /home/admin/alpha_shadow/x0_official_shadow_v1/bin/run_phase3p_cloud_shadow.sh >> /home/admin/alpha_shadow/x0_official_shadow_v1/logs/cron.log 2>&1
 ```
 
-This writes append-only daily artifacts. It does not place orders or open a trade context.
+This first runs Futu snapshot sync, then writes append-only daily artifacts. It does not place orders or open a trade context.
 
 ## Daily Outputs
 
@@ -92,10 +114,4 @@ runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_shadow_pnl/YYYY
 
 ## Next Required Step
 
-Automate daily post-close panel sync/update into:
-
-```text
-/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz
-```
-
-Until that sync is live, the cloud runner is a verified historical shadow generator plus scheduled heartbeat, not a current-date live shadow feed.
+Monitor the first scheduled post-close run and verify that the snapshot date advances as expected. If BJ coverage becomes required, it must be sourced from a separate data feed because Futu snapshot rejects `BJ.*` symbols in this environment.
