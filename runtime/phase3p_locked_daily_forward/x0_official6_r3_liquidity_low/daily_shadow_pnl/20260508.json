@@ -1,0 +1,31 @@
+{
+  "active_or_cash": "cash",
+  "book_version": "phase3p_x0_official6_r3_v1",
+  "data_date": "2026-05-08",
+  "gate_active": false,
+  "gate_off_missed_return_proxy": null,
+  "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
+  "generation_time": "2026-05-17T16:52:29+08:00",
+  "git_commit": "aacc60c",
+  "gross_position_weight": 0.0,
+  "input_data_hash": "1ed18c8515f8da698340793817efb16ae4f744a860946ab6c4b286442ad67035",
+  "matched_position_count": 0,
+  "next_trade_date": null,
+  "no_gate_counterfactual_gross_weight": 0.0,
+  "no_gate_counterfactual_matched_count": 0,
+  "no_gate_counterfactual_position_count": 746,
+  "no_gate_counterfactual_return_proxy": null,
+  "not_confirmed": [
+    "execution_fill",
+    "minute_slippage",
+    "real_capacity",
+    "live_survival"
+  ],
+  "pnl_status": "pending_next_trade_date",
+  "position_file_hash": "08aae12e167e6728c7e4ed40dfb27044a8c49d913bc1fb3379945d77a4f94ce1",
+  "profile": "x0_official6_r3_liquidity_low",
+  "realized_shadow_return_proxy": null,
+  "regime_state_file": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_regime_state\\20260508.json",
+  "signal_file_hash": "adb002ab9f6280795571682a7e525955ec96563e273adc2fecb385faef2ff05b",
+  "snapshot_file_hash": "ab47814929332b319817e13292ba5e172b219d1aadc2e27e7be39566cf3c2e51"
+}

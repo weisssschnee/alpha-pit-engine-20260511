@@ -1,0 +1,84 @@
+{
+  "alpha_cards_path": "reports\\phase3l_o_daily_proof_freeze_pack_20260517\\phase3l_alpha_cards.csv",
+  "alpha_cards_sha256": "eec9d1f5cb1e6ca5cc3b7406dce6a269d9c8e22ef53b5f85054be8847ae86bf6",
+  "created_at": "2026-05-17T16:52:43+08:00",
+  "dataset_path": "G:\\Project_V7_Rotation\\scripts\\data\\phase3n_stock_tdx_official_20200101_to_20260508_maxopt.parquet",
+  "dataset_sha256": "1ed18c8515f8da698340793817efb16ae4f744a860946ab6c4b286442ad67035",
+  "decision": "PASS_PHASE3P_LOCKED_DAILY_FORWARD_EXPORTED",
+  "diagnostic_profile": "x4_plus003_minus002_r3_liquidity_low",
+  "experiment_id": "20260517_phase3p_locked_daily_forward",
+  "formal_profile": "x0_official6_r3_liquidity_low",
+  "gate_active": false,
+  "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
+  "git_commit": "aacc60c",
+  "not_confirmed": [
+    "production_ready",
+    "minute_execution",
+    "real_slippage",
+    "real_capacity",
+    "live_survival"
+  ],
+  "profile_rows": [
+    {
+      "active_or_cash": "cash",
+      "book_version": "phase3p_x0_official6_r3_v1",
+      "data_date": "2026-05-08",
+      "gate_active": false,
+      "gate_off_missed_return_proxy": null,
+      "no_gate_counterfactual_return_proxy": null,
+      "output_hashes": {
+        "daily_book_snapshot": "ab47814929332b319817e13292ba5e172b219d1aadc2e27e7be39566cf3c2e51",
+        "daily_positions": "08aae12e167e6728c7e4ed40dfb27044a8c49d913bc1fb3379945d77a4f94ce1",
+        "daily_regime_state": "3c9376cc7b45d9b0255ddfabf78092d31d5f0c65358a9e42dc9e77714d61c19a",
+        "daily_shadow_pnl": "c18c58d42f389acbaaf41a8fb4ec7f15a509518c11bdb5e8454a9f5a744bf704",
+        "daily_signals": "adb002ab9f6280795571682a7e525955ec96563e273adc2fecb385faef2ff05b"
+      },
+      "outputs": {
+        "daily_book_snapshot": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_book_snapshot\\20260508.json",
+        "daily_positions": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_positions\\20260508.csv",
+        "daily_regime_state": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_regime_state\\20260508.json",
+        "daily_shadow_pnl": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_shadow_pnl\\20260508.json",
+        "daily_signals": "runtime\\phase3p_locked_daily_forward\\x0_official6_r3_liquidity_low\\daily_signals\\20260508.csv"
+      },
+      "pnl_status": "pending_next_trade_date",
+      "position_count": 0,
+      "profile": "x0_official6_r3_liquidity_low",
+      "realized_shadow_return_proxy": null,
+      "selected_universe_count": 5490,
+      "signal_row_count": 0,
+      "status": "formal_candidate_shadow"
+    },
+    {
+      "active_or_cash": "cash",
+      "book_version": "phase3p_x4_plus003_minus002_r3_v1",
+      "data_date": "2026-05-08",
+      "gate_active": false,
+      "gate_off_missed_return_proxy": null,
+      "no_gate_counterfactual_return_proxy": null,
+      "output_hashes": {
+        "daily_book_snapshot": "005b7b0be3a51baaa8afaf96bfacbb217ceb034348b87a413d440234b9e531f8",
+        "daily_positions": "08aae12e167e6728c7e4ed40dfb27044a8c49d913bc1fb3379945d77a4f94ce1",
+        "daily_regime_state": "c6eb6ad8aa2b14bfbd5998cfdf1e32e64dcd0e5724761e174964e1624facbfad",
+        "daily_shadow_pnl": "b3cf9d9fb55c91932190d1e4e9e4d0096d7d84ec8a2be2a95ebefa97aad47f4a",
+        "daily_signals": "adb002ab9f6280795571682a7e525955ec96563e273adc2fecb385faef2ff05b"
+      },
+      "outputs": {
+        "daily_book_snapshot": "runtime\\phase3p_locked_daily_forward\\x4_plus003_minus002_r3_liquidity_low\\daily_book_snapshot\\20260508.json",
+        "daily_positions": "runtime\\phase3p_locked_daily_forward\\x4_plus003_minus002_r3_liquidity_low\\daily_positions\\20260508.csv",
+        "daily_regime_state": "runtime\\phase3p_locked_daily_forward\\x4_plus003_minus002_r3_liquidity_low\\daily_regime_state\\20260508.json",
+        "daily_shadow_pnl": "runtime\\phase3p_locked_daily_forward\\x4_plus003_minus002_r3_liquidity_low\\daily_shadow_pnl\\20260508.json",
+        "daily_signals": "runtime\\phase3p_locked_daily_forward\\x4_plus003_minus002_r3_liquidity_low\\daily_signals\\20260508.csv"
+      },
+      "pnl_status": "pending_next_trade_date",
+      "position_count": 0,
+      "profile": "x4_plus003_minus002_r3_liquidity_low",
+      "realized_shadow_return_proxy": null,
+      "selected_universe_count": 5490,
+      "signal_row_count": 0,
+      "status": "research_candidate_shadow_diagnostic"
+    }
+  ],
+  "scope": "append_only_daily_shadow_no_execution",
+  "signal_clock": "after_open",
+  "target_signal_date": "2026-05-08"
+}

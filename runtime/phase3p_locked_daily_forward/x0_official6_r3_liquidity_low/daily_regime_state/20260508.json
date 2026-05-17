@@ -1,0 +1,34 @@
+{
+  "active_or_cash": "cash",
+  "alpha_cards_hash": "eec9d1f5cb1e6ca5cc3b7406dce6a269d9c8e22ef53b5f85054be8847ae86bf6",
+  "book_version": "phase3p_x0_official6_r3_v1",
+  "data_date": "2026-05-08",
+  "gate_state": {
+    "date": "2026-05-08",
+    "limit_density_lag1": 0.027146922690040605,
+    "liquidity_ratio_lag1": 1.073815504740658,
+    "pit_regime_label": "limit_density_high",
+    "r3_liquidity_low_active": false,
+    "r3_train_threshold_liquidity_ratio_lag1_q33": 0.9888283511695009,
+    "trend_mean_lag1": 0.005347462634746675,
+    "up_ratio": 0.629507112140258,
+    "volatility_lag1": 0.011222613115698112
+  },
+  "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
+  "generation_time": "2026-05-17T16:52:29+08:00",
+  "git_commit": "aacc60c",
+  "input_data_hash": "1ed18c8515f8da698340793817efb16ae4f744a860946ab6c4b286442ad67035",
+  "limit_susp_exclusion_count": null,
+  "not_confirmed": [
+    "execution_fill",
+    "minute_slippage",
+    "real_capacity",
+    "live_survival"
+  ],
+  "position_count": 0,
+  "profile": "x0_official6_r3_liquidity_low",
+  "profile_status": "formal_candidate_shadow",
+  "selected_universe_count": 5490,
+  "signal_row_count": 0,
+  "turnover_proxy": null
+}
