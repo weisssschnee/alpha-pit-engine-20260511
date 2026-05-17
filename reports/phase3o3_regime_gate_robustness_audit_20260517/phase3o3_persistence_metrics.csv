@@ -1,0 +1,9 @@
+gate,active_days,active_run_count,mean_active_run_length,max_active_run_length,gate_switch_count
+R3_liquidity_low,38,2,19.0,36,3
+R5_vol_or_trendlow_or_liqlow,52,5,10.4,43,8
+R6_at_least_2_of_vol_trend_liq,43,2,21.5,42,4
+R1_volatility_high,47,2,23.5,43,3
+R2_trend_low,35,5,7.0,25,10
+F1_breadth_low_failed_control,29,19,1.526316,4,38
+F2_trend_high_failed_control,24,5,4.8,17,10
+F3_liquidity_high_failed_control,16,1,16.0,16,2

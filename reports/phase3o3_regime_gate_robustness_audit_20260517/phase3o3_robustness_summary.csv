@@ -1,0 +1,9 @@
+gate,primary_gate,true_full_ann_compound,true_full_sharpe,true_full_max_drawdown,active_day_ratio,random_active_days_p90_ann,random_active_days_p95_ann,true_gt_random_active_days_p95,block_run_placebo_p90_ann,block_run_placebo_p95_ann,true_gt_block_run_placebo_p95,circular_shift_p90_ann,circular_shift_p95_ann,true_gt_circular_shift_p95,max_wrong_lag_ann,inverted_ann,robustness_pass_count,decision
+R3_liquidity_low,True,1.175657,4.547115,-0.03442312,0.487179,0.761576,0.933008,True,0.801133,0.9983,True,1.036621,1.098173,True,1.136384,-0.205755,3,PASS_STRICT_GATE_ROBUSTNESS
+R5_vol_or_trendlow_or_liqlow,True,1.12819,3.827856,-0.04184402,0.666667,0.852232,0.998501,True,0.838159,0.942271,True,1.01932,1.112831,True,1.150284,-0.18797,3,PASS_STRICT_GATE_ROBUSTNESS
+R6_at_least_2_of_vol_trend_liq,True,0.983379,3.842269,-0.04667989,0.551282,0.780985,0.932219,True,0.724381,0.970535,True,1.09621,1.119395,False,1.249777,-0.128464,2,PASS_STRICT_GATE_ROBUSTNESS
+R1_volatility_high,False,0.936759,3.541104,-0.04994616,0.602564,0.853401,1.002085,False,0.754004,0.895563,True,1.019784,1.097095,False,1.179901,-0.107418,1,HOLD_STRICT_GATE_ROBUSTNESS
+R2_trend_low,False,0.590611,2.812692,-0.0472475,0.448718,0.698309,0.807392,False,0.767104,0.91899,False,0.968599,1.017133,False,0.886699,0.087316,0,HOLD_STRICT_GATE_ROBUSTNESS
+F1_breadth_low_failed_control,False,-0.011777,-0.083235,-0.08071471,0.371795,0.629786,0.774509,False,0.591147,0.741615,False,0.599339,0.829881,False,0.963655,0.749793,0,HOLD_STRICT_GATE_ROBUSTNESS
+F2_trend_high_failed_control,False,-0.011854,-0.082592,-0.06133498,0.307692,0.532955,0.645939,False,0.607807,0.728816,False,0.681841,0.769324,False,0.315957,0.749928,0,HOLD_STRICT_GATE_ROBUSTNESS
+F3_liquidity_high_failed_control,False,-0.060578,-0.503754,-0.0653037,0.205128,0.405477,0.490547,False,0.5407,0.559761,False,0.490795,0.558409,False,-0.052433,0.840462,0,HOLD_STRICT_GATE_ROBUSTNESS
