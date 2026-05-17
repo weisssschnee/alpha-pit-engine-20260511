@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-05-17T21:39:06+08:00",
+  "decision": "PASS_X0_OFFICIAL_SHADOW_LOCK_CREATED",
+  "object_id": "X0_official_6_R3_liquidity_low_v1",
+  "outputs": {
+    "lock_json": "runtime\\baselines\\phase3o_x0_official_shadow_v1.json",
+    "lock_sha256": "runtime\\baselines\\phase3o_x0_official_shadow_v1.sha256",
+    "proof_manifest": "reports\\phase3o_x0_shadow_v1_proof_pack_20260517\\PHASE3O_PROOF_PACK_MANIFEST.md",
+    "proof_zip": "G:\\Project_V7_Rotation\\backups\\phase3o_x0_shadow_v1_proof_pack.zip",
+    "proof_zip_sha256": "fcff3a2c329be12a0f89e36b3e8627c7873f0fbe57997da6772a2e5af174b534"
+  },
+  "stable_object_hash": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896"
+}
