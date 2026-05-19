@@ -1,11 +1,13 @@
 {
-  "date": "2026-05-19T11:57:15+08:00",
+  "date": "2026-05-19T12:25:17+08:00",
   "decision": "PAPER_INFO_PACK_READY_WITH_EVIDENCE_BOUNDARIES",
   "experiment_id": "20260519_phase3o_paper_info_pack",
+  "generated_from_research_state_commit": "23f5039",
   "inputs": {
     "active_sanity_json": "reports\\phase3o6_active_return_sanity_audit_20260517\\phase3o6_active_return_sanity_audit.json",
     "active_sanity_md": "reports\\phase3o6_active_return_sanity_audit_20260517\\PHASE3O6_ACTIVE_RETURN_SANITY_AUDIT_2026-05-17.md",
     "cloud_shadow_json": "reports\\phase3p_cloud_shadow_deployment_20260517\\phase3p_cloud_shadow_deployment.json",
+    "cloud_shadow_latest_status_json": "paper\\phase3o_automl_2026\\generated\\cloud_shadow_latest_status.json",
     "daily_blotter_csv": "reports\\phase3q_theoretical_ceiling_pack_20260517\\phase3q_daily_proxy_blotter.csv",
     "forward_tracker_csv": "reports\\phase3p_forward_evidence_tracker_20260517\\phase3p_forward_evidence_profile_summary.csv",
     "forward_tracker_md": "reports\\phase3p_forward_evidence_tracker_20260517\\PHASE3P_FORWARD_EVIDENCE_TRACKER_2026-05-17.md",
@@ -35,6 +37,7 @@
     "r3_gate_definition": "paper\\phase3o_automl_2026\\generated\\r3_gate_definition.csv",
     "regime_gate_oos_table": "paper\\phase3o_automl_2026\\generated\\regime_gate_oos_table.csv"
   },
+  "paper_pack_first_commit": "92440a6",
   "reproducible": "yes_if_source_reports_present",
   "status": "completed"
 }

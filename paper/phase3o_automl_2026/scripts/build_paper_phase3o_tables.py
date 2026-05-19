@@ -37,7 +37,11 @@ REPORT_PATHS = {
     "locked_object_json": ROOT / "runtime" / "baselines" / "phase3o_x0_official_shadow_v1.json",
     "locked_object_sha": ROOT / "runtime" / "baselines" / "phase3o_x0_official_shadow_v1.sha256",
     "cloud_shadow_json": ROOT / "reports" / "phase3p_cloud_shadow_deployment_20260517" / "phase3p_cloud_shadow_deployment.json",
+    "cloud_shadow_latest_status_json": ROOT / "paper" / "phase3o_automl_2026" / "generated" / "cloud_shadow_latest_status.json",
 }
+
+PAPER_PACK_FIRST_COMMIT = "92440a6"
+GENERATED_FROM_RESEARCH_STATE_COMMIT = "23f5039"
 
 
 def sha256(path: Path) -> str | None:
@@ -51,7 +55,7 @@ def sha256(path: Path) -> str | None:
 
 
 def read_json(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    return json.loads(path.read_text(encoding="utf-8-sig")) if path.exists() else {}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -107,6 +111,8 @@ def build_freeze_status(locked: dict[str, Any]) -> list[dict[str, Any]]:
             "object_id": locked.get("object_id", ""),
             "git_commit_current": current_commit,
             "git_commit_origin_main": origin_commit,
+            "paper_pack_first_commit": PAPER_PACK_FIRST_COMMIT,
+            "generated_from_research_state_commit": GENERATED_FROM_RESEARCH_STATE_COMMIT,
             "freeze_tag": "phase3o-x0-shadow-v1",
             "freeze_tag_commit": tag_commit[:7] if tag_commit != "unknown" else "unknown",
             "object_source_commit": locked.get("source_commit", ""),
@@ -230,6 +236,7 @@ def build_forward_status(cloud: dict[str, Any]) -> list[dict[str, Any]]:
     for row in rows:
         out.append(row)
     if cloud:
+        latest = cloud.get("latest_snapshot_shadow") if isinstance(cloud.get("latest_snapshot_shadow"), dict) else cloud
         out.append(
             {
                 "profile": "cloud_x0_official6_r3_liquidity_low",
@@ -242,7 +249,7 @@ def build_forward_status(cloud: dict[str, Any]) -> list[dict[str, Any]]:
                 "cash_observed_days": "",
                 "process_issue_count": "",
                 "first_date": "",
-                "last_date": cloud.get("latest_snapshot_shadow", {}).get("data_date", ""),
+                "last_date": latest.get("data_date", ""),
                 "book_version": cloud.get("book_version", ""),
                 "gate_version": cloud.get("gate_version", ""),
                 "full_observed_total_return": "",
@@ -322,7 +329,8 @@ def build_author_template() -> list[dict[str, Any]]:
 def write_summary_md(paths: dict[str, Path], locked: dict[str, Any], active: dict[str, Any], limit: dict[str, Any]) -> None:
     md = OUT / "PHASE3O_PAPER_INFO_PACK.md"
     metrics = locked.get("key_metrics_2026", {})
-    cloud = read_json(REPORT_PATHS["cloud_shadow_json"])
+    cloud = read_json(REPORT_PATHS["cloud_shadow_latest_status_json"]) or read_json(REPORT_PATHS["cloud_shadow_json"])
+    latest = cloud.get("latest_snapshot_shadow") if isinstance(cloud.get("latest_snapshot_shadow"), dict) else cloud
     lines = [
         "# Phase3O Paper Info Pack",
         "",
@@ -337,6 +345,8 @@ def write_summary_md(paths: dict[str, Path], locked: dict[str, Any], active: dic
         f"- gate: `{locked.get('gate', {}).get('name', '')}`",
         f"- current_head: `{git_value(['rev-parse', '--short', 'HEAD'])}`",
         f"- origin_main: `{git_value(['rev-parse', '--short', 'origin/main'])}`",
+        f"- paper_pack_first_commit: `{PAPER_PACK_FIRST_COMMIT}`",
+        f"- generated_from_research_state_commit: `{GENERATED_FROM_RESEARCH_STATE_COMMIT}`",
         f"- post_freeze_note: code/deployment extended after freeze; locked object hash unchanged.",
         "",
         "## Key 2026 X0+R3 Metrics",
@@ -364,9 +374,9 @@ def write_summary_md(paths: dict[str, Path], locked: dict[str, Any], active: dic
         "## Forward Shadow Status",
         "",
         f"- cloud_decision: `{cloud.get('decision', '')}`",
-        f"- latest_cloud_snapshot_date: `{cloud.get('latest_snapshot_shadow', {}).get('data_date', '')}`",
-        f"- latest_cloud_gate_active: `{cloud.get('latest_snapshot_shadow', {}).get('gate_active', '')}`",
-        f"- latest_cloud_positions: `{cloud.get('latest_snapshot_shadow', {}).get('position_count', '')}`",
+        f"- latest_cloud_snapshot_date: `{latest.get('data_date', '')}`",
+        f"- latest_cloud_gate_active: `{latest.get('gate_active', '')}`",
+        f"- latest_cloud_positions: `{latest.get('position_count', '')}`",
         "- forward performance claim: not made; active-day sample is insufficient.",
         "",
         "## Generated Tables",
@@ -391,7 +401,7 @@ def main() -> int:
     locked = read_json(REPORT_PATHS["locked_object_json"])
     active = read_json(REPORT_PATHS["active_sanity_json"])
     limit = read_json(REPORT_PATHS["limit_chain_json"])
-    cloud = read_json(REPORT_PATHS["cloud_shadow_json"])
+    cloud = read_json(REPORT_PATHS["cloud_shadow_latest_status_json"]) or read_json(REPORT_PATHS["cloud_shadow_json"])
 
     outputs: dict[str, Path] = {}
     tables = {
@@ -419,6 +429,8 @@ def main() -> int:
         "mode": "light",
         "inputs": {k: str(v.relative_to(ROOT)) for k, v in REPORT_PATHS.items()},
         "outputs": {k: str(v.relative_to(ROOT)) for k, v in outputs.items()},
+        "paper_pack_first_commit": PAPER_PACK_FIRST_COMMIT,
+        "generated_from_research_state_commit": GENERATED_FROM_RESEARCH_STATE_COMMIT,
         "reproducible": "yes_if_source_reports_present",
         "decision": "PAPER_INFO_PACK_READY_WITH_EVIDENCE_BOUNDARIES",
     }
@@ -432,4 +444,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

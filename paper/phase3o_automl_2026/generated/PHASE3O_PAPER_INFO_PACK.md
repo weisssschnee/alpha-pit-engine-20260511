@@ -1,6 +1,6 @@
 # Phase3O Paper Info Pack
 
-Generated: `2026-05-19T11:57:15+08:00`
+Generated: `2026-05-19T12:25:17+08:00`
 
 ## Freeze Status
 
@@ -9,8 +9,10 @@ Generated: `2026-05-19T11:57:15+08:00`
 - stable_object_hash: `454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896`
 - official_clusters: `001 | 005 | 006 | 009 | 002 | 004`
 - gate: `R3_liquidity_low`
-- current_head: `23f5039`
-- origin_main: `23f5039`
+- current_head: `92440a6`
+- origin_main: `92440a6`
+- paper_pack_first_commit: `92440a6`
+- generated_from_research_state_commit: `23f5039`
 - post_freeze_note: code/deployment extended after freeze; locked object hash unchanged.
 
 ## Key 2026 X0+R3 Metrics
@@ -37,8 +39,8 @@ Generated: `2026-05-19T11:57:15+08:00`
 
 ## Forward Shadow Status
 
-- cloud_decision: `PASS_CLOUD_SHADOW_FUTU_SNAPSHOT_SYNC_DEPLOYED`
-- latest_cloud_snapshot_date: `2026-05-15`
+- cloud_decision: `PASS_CLOUD_SHADOW_SIGNALS_EXPORTED`
+- latest_cloud_snapshot_date: `2026-05-18`
 - latest_cloud_gate_active: `False`
 - latest_cloud_positions: `0`
 - forward performance claim: not made; active-day sample is insufficient.

@@ -1,0 +1,178 @@
+﻿{
+  "active_or_cash": "cash",
+  "book_version": "phase3p_x0_official6_r3_v1_cloud_shadow",
+  "data_date": "2026-05-18",
+  "date_key": "20260518",
+  "decision": "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED",
+  "errors": [],
+  "futu_quote_probe_ok": true,
+  "gate_active": false,
+  "gate_version": "phase3o_r3_liquidity_low_2025h2_q33_v1",
+  "generation_time": "2026-05-18T16:20:30+08:00",
+  "git_commit": "unknown",
+  "locked_object_ok": true,
+  "locked_object_path": "/home/admin/alpha_shadow/x0_official_shadow_v1/config/phase3o_x0_official_shadow_v1.json",
+  "locked_object_sha256": "fec3b59cffdb15fe9adc6abca5de6dee1c1804abda61131044b7dfc6deaead0a",
+  "not_confirmed": [
+    "production_ready",
+    "minute_execution",
+    "real_slippage",
+    "real_capacity",
+    "live_trading"
+  ],
+  "object_id": "X0_official_6_R3_liquidity_low_v1",
+  "outputs": {
+    "daily_gate_state": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_gate_state/20260518.json",
+    "daily_regime_state": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_regime_state/20260518.json"
+  },
+  "panel_status": {
+    "decision": "PANEL_PRESENT_READY_FOR_CLOUD_EVAL",
+    "required": [
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.parquet",
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv",
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz",
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/daily_market_panel.parquet",
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/daily_market_panel.csv",
+      "/home/admin/alpha_shadow/x0_official_shadow_v1/input/daily_market_panel.csv.gz"
+    ],
+    "selected": "/home/admin/alpha_shadow/x0_official_shadow_v1/input/latest_panel.csv.gz",
+    "sha256": "96d880dc8393b2240b84d046a236a152c84e70229e5daaaac83a1c845da22e44",
+    "status": "present"
+  },
+  "position_count": 0,
+  "profiles": [
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "001",
+        "005",
+        "006",
+        "009",
+        "002",
+        "004"
+      ],
+      "decision_allowed": true,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x0_official6_r3_liquidity_low/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "x0_official6_r3_liquidity_low",
+      "profile_status": "official_daily_shadow",
+      "signal_row_count": 0
+    },
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "001",
+        "005",
+        "006",
+        "009",
+        "004",
+        "003"
+      ],
+      "decision_allowed": false,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x4_plus003_minus002_r3/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x4_plus003_minus002_r3/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x4_plus003_minus002_r3/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/x4_plus003_minus002_r3/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "x4_plus003_minus002_r3",
+      "profile_status": "diagnostic_only",
+      "signal_row_count": 0
+    },
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "005",
+        "003",
+        "004"
+      ],
+      "decision_allowed": false,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/oracle_005_003_004_r3/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/oracle_005_003_004_r3/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/oracle_005_003_004_r3/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/oracle_005_003_004_r3/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "oracle_005_003_004_r3",
+      "profile_status": "oracle_diagnostic_only",
+      "signal_row_count": 0
+    },
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "001",
+        "005",
+        "008",
+        "006",
+        "009",
+        "003",
+        "002",
+        "007",
+        "004"
+      ],
+      "decision_allowed": false,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/research9_r3/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/research9_r3/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/research9_r3/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/research9_r3/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "research9_r3",
+      "profile_status": "research_monitor_only",
+      "signal_row_count": 0
+    },
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "005"
+      ],
+      "decision_allowed": false,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_005_r3/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_005_r3/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_005_r3/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_005_r3/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "single_cluster_005_r3",
+      "profile_status": "single_cluster_diagnostic",
+      "signal_row_count": 0
+    },
+    {
+      "active_or_cash": "cash",
+      "clusters": [
+        "003"
+      ],
+      "decision_allowed": false,
+      "errors": [],
+      "outputs": {
+        "daily_book_snapshot": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_003_r3/daily_book_snapshot/20260518.json",
+        "daily_positions": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_003_r3/daily_positions/20260518.csv",
+        "daily_shadow_pnl": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_003_r3/daily_shadow_pnl/20260518.json",
+        "daily_signals": "/home/admin/alpha_shadow/x0_official_shadow_v1/runtime/phase3p_cloud_shadow/single_cluster_003_r3/daily_signals/20260518.csv"
+      },
+      "position_count": 0,
+      "profile": "single_cluster_003_r3",
+      "profile_status": "single_cluster_diagnostic",
+      "signal_row_count": 0
+    }
+  ],
+  "scope": "append_only_cloud_shadow_no_execution",
+  "signal_row_count": 0,
+  "stable_object_hash_computed": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896",
+  "stable_object_hash_expected": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896"
+}
+
