@@ -1,0 +1,44 @@
+{
+  "blockers": [
+    "fresh_may_10bp_negative"
+  ],
+  "cost_tiers": {
+    "normal_5bp": 5.0,
+    "severe_20bp": 20.0,
+    "stress_10bp": 10.0
+  },
+  "decision": "HOLD_FUNDINGCORE_ALPHA_SHADOW_PROOF",
+  "generated_at": "2026-05-19T12:18:23Z",
+  "key_metrics": {
+    "fresh_may_10bp_ann": -2.856188962009161,
+    "fresh_may_compounded_dd": -0.18084837903829232,
+    "recent_oos_10bp_ann": 0.7862907354498385,
+    "recent_oos_20bp_ann": 0.5112879701508529,
+    "recent_oos_compounded_dd": -0.619464975189921,
+    "recent_symbol_loo_min_ann": 1.692624937165766,
+    "recent_symbol_loo_positive_rate": 1.0,
+    "validation_10bp_ann": 1.969657672528783,
+    "validation_20bp_ann": 1.7112490999138206,
+    "validation_compounded_dd": -0.3767349232919377
+  },
+  "outputs": {
+    "component_leave_one_out": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_component_leave_one_out_20260519.csv",
+    "component_meta": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_component_meta_20260519.csv",
+    "component_standalone": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_component_standalone_20260519.csv",
+    "may_failure_attribution": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_may_failure_attribution_20260519.csv",
+    "metrics": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_metrics_20260519.csv",
+    "placebo": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_placebo_20260519.csv",
+    "placebo_meta": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_placebo_meta_20260519.csv",
+    "symbol_leave_one_out": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7c_fundingcore_narrow_audit\\crypto_a7c_fundingcore_symbol_leave_one_out_20260519.csv"
+  },
+  "purge_embargo_bars": 24,
+  "risk_variant": "R3_vol_target_gross_0p5x_cap",
+  "rng_seed": 20260519,
+  "status": "fundingcore_research_baseline_only",
+  "warnings": [
+    "validation_drawdown_large",
+    "recent_oos_drawdown_large",
+    "fresh_may_drawdown_large",
+    "future_wrong_lag_diagnostic_stronger_than_live_lag"
+  ]
+}

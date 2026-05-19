@@ -30,6 +30,7 @@ Blocking result:
 - A7.1: only 1 of 4 Core clusters beat its component baseline.
 - A7.2: recent OOS remained positive, but drawdown/fresh-May behavior was not acceptable.
 - A7B: funding-only dominance risk remains; Core4 residual edge is not enough to promote.
+- A7C: FundingCore is retained as the mandatory simpler benchmark, but it is also blocked from alpha shadow proof by fresh-May loss and drawdown risk.
 
 ## Evidence Level
 
@@ -53,11 +54,11 @@ Do not expand crypto search until the method gate is repaired.
 
 Recommended next task:
 
-`A7B/FundingCore narrow audit`
+`Funding time-semantics and residual-edge audit`
 
 Purpose:
 
-- Decide whether a simpler funding-related object should replace Core4.
-- Re-run the same split, cost, funding-fee, placebo, ablation, drawdown, symbol/month stability checks.
-- Only after a simple object passes should generator/reward bakeoff resume.
-
+- Explain why future wrong-lag funding is materially stronger than live-lag FundingCore.
+- Confirm funding availability semantics and payment timing one more time before any reward redesign.
+- Redesign crypto reward around residual edge versus FundingCore, not raw funding-wrapper return.
+- Only after the funding baseline is methodologically settled should generator/reward bakeoff resume.
