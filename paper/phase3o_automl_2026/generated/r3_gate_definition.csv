@@ -1,0 +1,2 @@
+gate,plain_language,features,lag_rule,threshold_source,does_2026_participate_in_threshold_selection,active_ratio_2026,active_days_2026,calendar_days_2026,evidence_boundary
+R3_liquidity_low,Market-wide low-liquidity regime identified from lagged short/long liquidity ratio.,liquidity_ratio_lag1,lagged_only,2025H2 train window; q33 liquidity_ratio_lag1 in cloud runner implementation,no_for_numeric_threshold; yes_research_touched_for_gate_choice,0.487179,38,78,recent-OOS/research-touched historical OOS; not untouched locked-forward OOS

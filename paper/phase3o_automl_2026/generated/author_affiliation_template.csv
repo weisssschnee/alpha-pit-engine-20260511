@@ -1,0 +1,5 @@
+field,recommended_value,note
+author_name,TBD,Fill before submission.
+affiliation,Independent Researcher,Use this unless company authorization is explicit.
+orcid,TBD/optional,Do not invent.
+company_info_public,false,Avoid company attribution unless authorized.

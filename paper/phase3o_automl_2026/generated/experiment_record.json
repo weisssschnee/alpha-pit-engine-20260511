@@ -1,0 +1,40 @@
+{
+  "date": "2026-05-19T11:57:15+08:00",
+  "decision": "PAPER_INFO_PACK_READY_WITH_EVIDENCE_BOUNDARIES",
+  "experiment_id": "20260519_phase3o_paper_info_pack",
+  "inputs": {
+    "active_sanity_json": "reports\\phase3o6_active_return_sanity_audit_20260517\\phase3o6_active_return_sanity_audit.json",
+    "active_sanity_md": "reports\\phase3o6_active_return_sanity_audit_20260517\\PHASE3O6_ACTIVE_RETURN_SANITY_AUDIT_2026-05-17.md",
+    "cloud_shadow_json": "reports\\phase3p_cloud_shadow_deployment_20260517\\phase3p_cloud_shadow_deployment.json",
+    "daily_blotter_csv": "reports\\phase3q_theoretical_ceiling_pack_20260517\\phase3q_daily_proxy_blotter.csv",
+    "forward_tracker_csv": "reports\\phase3p_forward_evidence_tracker_20260517\\phase3p_forward_evidence_profile_summary.csv",
+    "forward_tracker_md": "reports\\phase3p_forward_evidence_tracker_20260517\\PHASE3P_FORWARD_EVIDENCE_TRACKER_2026-05-17.md",
+    "limit_chain_json": "reports\\phase3o7_limit_factor_chain_audit_20260517\\phase3o7_limit_factor_chain_audit.json",
+    "limit_chain_md": "reports\\phase3o7_limit_factor_chain_audit_20260517\\PHASE3O7_LIMIT_FACTOR_CHAIN_AUDIT_2026-05-17.md",
+    "locked_object_json": "runtime\\baselines\\phase3o_x0_official_shadow_v1.json",
+    "locked_object_sha": "runtime\\baselines\\phase3o_x0_official_shadow_v1.sha256",
+    "proof_pack_manifest": "reports\\phase3o_x0_shadow_v1_proof_pack_20260517\\PHASE3O_PROOF_PACK_MANIFEST.md",
+    "regime_replay_csv": "reports\\phase3o2_regime_gated_portfolio_replay_20260517\\phase3o2_gate_metrics.csv",
+    "regime_replay_md": "reports\\phase3o2_regime_gated_portfolio_replay_20260517\\PHASE3O2_REGIME_GATED_PORTFOLIO_REPLAY_2026-05-17.md",
+    "robustness_csv": "reports\\phase3o3_regime_gate_robustness_audit_20260517\\phase3o3_robustness_summary.csv",
+    "robustness_md": "reports\\phase3o3_regime_gate_robustness_audit_20260517\\PHASE3O3_REGIME_GATE_ROBUSTNESS_AUDIT_2026-05-17.md",
+    "theoretical_ceiling_csv": "reports\\phase3q_theoretical_ceiling_pack_20260517\\phase3q_theoretical_ceiling_metrics.csv",
+    "theoretical_ceiling_md": "reports\\phase3q_theoretical_ceiling_pack_20260517\\PHASE3Q_THEORETICAL_CEILING_PACK_2026-05-17.md"
+  },
+  "mode": "light",
+  "objective": "Build paper-facing reproducibility tables from frozen reports without new search.",
+  "outputs": {
+    "author_affiliation_template": "paper\\phase3o_automl_2026\\generated\\author_affiliation_template.csv",
+    "cluster_composition": "paper\\phase3o_automl_2026\\generated\\cluster_composition.csv",
+    "core_report_manifest": "paper\\phase3o_automl_2026\\generated\\core_report_manifest.csv",
+    "daily_oos_r3_curve": "paper\\phase3o_automl_2026\\generated\\daily_oos_r3_curve.csv",
+    "evidence_boundary": "paper\\phase3o_automl_2026\\generated\\evidence_boundary.csv",
+    "forward_status": "paper\\phase3o_automl_2026\\generated\\forward_status.csv",
+    "freeze_status": "paper\\phase3o_automl_2026\\generated\\freeze_status.csv",
+    "placebo_robustness_table": "paper\\phase3o_automl_2026\\generated\\placebo_robustness_table.csv",
+    "r3_gate_definition": "paper\\phase3o_automl_2026\\generated\\r3_gate_definition.csv",
+    "regime_gate_oos_table": "paper\\phase3o_automl_2026\\generated\\regime_gate_oos_table.csv"
+  },
+  "reproducible": "yes_if_source_reports_present",
+  "status": "completed"
+}
