@@ -1,5 +1,0 @@
-cluster_id,expression,orientation,train_ic_mean,horizon
-funding_rate_h6,ZScore(latest_known_funding_rate),-1.0,-0.019099199241048068,6
-funding_rate_h12,ZScore(latest_known_funding_rate),-1.0,-0.0272782721976099,12
-funding_persistence_h6,ZScore(funding_rate_persistence_3),-1.0,-0.014513756638242786,6
-funding_persistence_h12,ZScore(funding_rate_persistence_3),-1.0,-0.02378520238278919,12

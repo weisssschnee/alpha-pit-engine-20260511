@@ -1,5 +1,0 @@
-cluster_id,candidate_id,expression,horizon,orientation,train_ic_mean,valid_signal_count,long_symbols,short_symbols,raw_gross_exposure
-crypto_a4_1h_001,crypto_a1_1h_6_price_funding_state_9a00b8ca89fa,"Mul(Rank(ret_12),ZScore(latest_known_funding_rate))",6,-1.0,-0.016853870114968826,12,BCHUSDT|SUIUSDT|LTCUSDT,AVAXUSDT|ETHUSDT|LINKUSDT,1.9999999999999998
-crypto_a4_1h_002,crypto_a1_1h_12_basis_funding_state_ff70353aad8e,"Mul(Rank(mark_index_ratio),ZScore(latest_known_funding_rate))",12,-1.0,-0.02468664747070575,12,BCHUSDT|SUIUSDT|LTCUSDT,ETHUSDT|BTCUSDT|LINKUSDT,1.9999999999999998
-crypto_a4_1h_003,crypto_a1_1h_6_basis_funding_state_aa00f3501663,"Mul(Rank(mark_minus_index),ZScore(funding_rate_persistence_3))",6,-1.0,-0.019916942445892146,12,DOGEUSDT|ADAUSDT|XRPUSDT,LINKUSDT|AVAXUSDT|SOLUSDT,1.9999999999999998
-crypto_a4_1h_004,crypto_a1_1h_12_price_funding_state_07c3e440d74b,"Mul(Rank(hl_range),ZScore(latest_known_funding_rate))",12,-1.0,-0.036914414772893984,12,BCHUSDT|SUIUSDT|DOGEUSDT,AVAXUSDT|ETHUSDT|LINKUSDT,1.9999999999999998
