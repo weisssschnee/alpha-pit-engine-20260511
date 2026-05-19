@@ -1,0 +1,28 @@
+{
+  "blockers": [
+    "Core4_recent_not_above_funding_only",
+    "Core4_validation_not_above_funding_only"
+  ],
+  "decision": "HOLD_A7B_FUNDING_BASELINE_DOMINANCE_RISK",
+  "generated_at": "2026-05-19T11:14:02Z",
+  "key_metrics": {
+    "core_fresh_may_10bp_ann": -2.7640661825779107,
+    "core_recent_10bp_ann": 0.5808011796214989,
+    "core_residual_recent_10bp_ann": 0.44329576658581427,
+    "core_residual_validation_10bp_ann": 0.1914239483963761,
+    "core_validation_10bp_ann": 1.0631977428208363,
+    "funding_fresh_may_10bp_ann": -2.856188962009162,
+    "funding_recent_10bp_ann": 0.7862907354498387,
+    "funding_validation_10bp_ann": 1.9696576725287829
+  },
+  "outputs": {
+    "baseline_metrics": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_baseline_metrics_20260519.csv",
+    "component_ablation": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_component_ablation_20260519.csv",
+    "may_failure_attribution": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_may_failure_attribution_20260519.csv",
+    "metric_consistency": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_metric_consistency_20260519.csv",
+    "residual_vs_funding": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_residual_vs_funding_20260519.csv",
+    "symbol_leave_one_out": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a7b_funding_baseline_audit\\crypto_a7b_symbol_leave_one_out_20260519.csv"
+  },
+  "purge_embargo_bars": 24,
+  "risk_variant": "R3_vol_target_gross_0p5x_cap"
+}

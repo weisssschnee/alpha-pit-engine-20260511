@@ -1,0 +1,10 @@
+cluster_id,interval,representative_candidate_id,representative_expression,representative_motif,representative_horizon,representative_score_proxy,member_count
+crypto_a4_1h_001,1h,crypto_a1_1h_6_price_funding_state_9a00b8ca89fa,"Mul(Rank(ret_12),ZScore(latest_known_funding_rate))",price_funding_state,6,0.6812597577093427,3
+crypto_a4_1h_002,1h,crypto_a1_1h_12_basis_funding_state_ff70353aad8e,"Mul(Rank(mark_index_ratio),ZScore(latest_known_funding_rate))",basis_funding_state,12,0.6532814247458562,5
+crypto_a4_1h_003,1h,crypto_a1_1h_6_basis_funding_state_aa00f3501663,"Mul(Rank(mark_minus_index),ZScore(funding_rate_persistence_3))",basis_funding_state,6,0.5117615446544134,1
+crypto_a4_1h_004,1h,crypto_a1_1h_12_price_funding_state_07c3e440d74b,"Mul(Rank(hl_range),ZScore(latest_known_funding_rate))",price_funding_state,12,0.5057003390492214,2
+crypto_a4_1h_005,1h,crypto_a1_1h_6_price_funding_state_de2cab5e2f2b,"Mul(Rank(ret_12),ZScore(funding_rate_persistence_3))",price_funding_state,6,0.4320404703207046,2
+crypto_a4_1h_006,1h,crypto_a1_1h_12_basis_funding_state_00c74eea59eb,"Mul(Rank(mark_index_ratio),ZScore(funding_rate_persistence_3))",basis_funding_state,12,0.4076741298223866,2
+crypto_a4_1h_007,1h,crypto_a1_1h_12_price_funding_state_076b6d10ef3a,"Mul(Rank(hl_range),ZScore(funding_rate_persistence_3))",price_funding_state,12,0.3263634186719746,2
+crypto_a4_1h_008,1h,crypto_a1_1h_12_price_momentum_continuation_b1bbef70a917,Rank(ret_24),price_momentum_continuation,12,,1
+crypto_a4_5m_001,5m,crypto_a1_5m_12_price_funding_state_b987e15a2541,"Mul(Rank(ret_24),ZScore(latest_known_funding_rate))",price_funding_state,12,0.4302068713364796,1

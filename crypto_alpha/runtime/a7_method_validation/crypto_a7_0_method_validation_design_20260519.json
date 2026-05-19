@@ -1,0 +1,85 @@
+{
+  "alignment_requirement": "feature_available_time < execution_time <= label_start",
+  "baseline_placebo_required": [
+    "price momentum only",
+    "basis only",
+    "funding only",
+    "price x funding",
+    "basis x funding",
+    "random signal",
+    "shuffled funding",
+    "wrong-lag funding",
+    "symbol-shuffled signal",
+    "sign flip"
+  ],
+  "core4_clusters": [
+    {
+      "candidate_id": "crypto_a1_1h_6_price_funding_state_9a00b8ca89fa",
+      "cluster_id": "crypto_a4_1h_001",
+      "expression": "Mul(Rank(ret_12),ZScore(latest_known_funding_rate))",
+      "family": "price_funding_state",
+      "horizon": 6
+    },
+    {
+      "candidate_id": "crypto_a1_1h_12_basis_funding_state_ff70353aad8e",
+      "cluster_id": "crypto_a4_1h_002",
+      "expression": "Mul(Rank(mark_index_ratio),ZScore(latest_known_funding_rate))",
+      "family": "basis_funding_state",
+      "horizon": 12
+    },
+    {
+      "candidate_id": "crypto_a1_1h_6_basis_funding_state_aa00f3501663",
+      "cluster_id": "crypto_a4_1h_003",
+      "expression": "Mul(Rank(mark_minus_index),ZScore(funding_rate_persistence_3))",
+      "family": "basis_funding_state",
+      "horizon": 6
+    },
+    {
+      "candidate_id": "crypto_a1_1h_12_price_funding_state_07c3e440d74b",
+      "cluster_id": "crypto_a4_1h_004",
+      "expression": "Mul(Rank(hl_range),ZScore(latest_known_funding_rate))",
+      "family": "price_funding_state",
+      "horizon": 12
+    }
+  ],
+  "core4_locked_object": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\baselines\\crypto_core4_locked_research_book_v1.json",
+  "cost_assumption_bps": [
+    5,
+    10,
+    20
+  ],
+  "created_at": "2026-05-19T10:29:14Z",
+  "decision_scope": "method validation before any crypto alpha shadow proof promotion",
+  "execution_time": "next 1h bar open",
+  "experiment_id": "20260519_crypto_a7_method_validation",
+  "feature_available_time": "1h bar close timestamp; formula uses current and past normalized features only",
+  "funding_fee_treatment": "latest_known_funding_rate may enter signal; forward funding event cost is subtracted for long positions in tradable replay",
+  "label_end": "next 1h bar open plus candidate horizon bars",
+  "label_start": "next 1h bar open",
+  "method_file": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\config\\crypto_alphafactory_method_v1.json",
+  "panel_path": "G:\\AlphaFactory_CryptoData\\gold\\panels\\crypto_core12_1h_v1.parquet",
+  "panel_sha256_first_64mb": "e982c33225513a83fd31b97e70531afe3751c731218d7f547b63a8d23a22dc31",
+  "promotion_boundary": "A7 pass may promote Core4 to crypto alpha candidate; it does not authorize paper/live trading",
+  "purge_embargo_bars": 24,
+  "purge_embargo_rule": "drop first and last 24 1h bars from each split; covers max Core4 lookback/horizon plus funding-cycle buffer",
+  "splits": {
+    "fresh_forward_2026May": [
+      "2026-05-01T00:00:00Z",
+      null
+    ],
+    "recent_oos_2025H2_2026Apr": [
+      "2025-07-01T00:00:00Z",
+      "2026-04-30T23:59:59Z"
+    ],
+    "train_2024": [
+      "2024-01-01T00:00:00Z",
+      "2024-12-31T23:59:59Z"
+    ],
+    "validation_2025H1": [
+      "2025-01-01T00:00:00Z",
+      "2025-06-30T23:59:59Z"
+    ]
+  },
+  "stable_design_hash": "bb938d242d8d9d952b9104fe57fb10640dc39025a29646bc2813080510e866e2",
+  "universe_rule": "static core12 futures for research validation; time-varying live universe remains not confirmed"
+}

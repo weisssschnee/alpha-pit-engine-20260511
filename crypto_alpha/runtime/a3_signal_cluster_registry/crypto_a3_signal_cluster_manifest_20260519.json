@@ -1,0 +1,30 @@
+{
+  "a2_csv": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_strict_replay\\crypto_a2_strict_replay_20260519.csv",
+  "assignments_path": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a3_signal_cluster_registry\\crypto_a3_candidate_cluster_assignments_20260519.csv",
+  "cluster_corr_threshold": 0.85,
+  "clusters_path": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a3_signal_cluster_registry\\crypto_a3_signal_clusters_20260519.csv",
+  "counts": {
+    "candidate_assignments_by_interval": {
+      "1h": 89,
+      "5m": 105
+    },
+    "clusters_by_interval": {
+      "1h": 31,
+      "5m": 22
+    },
+    "keep_candidates": 194,
+    "representative_motif_counts": {
+      "basis_funding_state": 5,
+      "basis_premium_continuation": 6,
+      "momentum_liquidity_state": 3,
+      "momentum_volatility_state": 7,
+      "price_basis_confirmation": 15,
+      "price_funding_state": 8,
+      "price_momentum_continuation": 9
+    },
+    "signal_clusters": 53
+  },
+  "decision": "PASS_A3_SIGNAL_CLUSTER_REGISTRY",
+  "generated_at": "2026-05-19T06:18:04Z",
+  "recent_sample_max_timestamps": 20000
+}

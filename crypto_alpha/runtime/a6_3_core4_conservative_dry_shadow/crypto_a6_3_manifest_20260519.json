@@ -1,0 +1,15 @@
+{
+  "decision": "PASS_A6_3_CONSERVATIVE_DRY_SHADOW_REPLAY_WITH_WARNINGS",
+  "dry_shadow_object": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\baselines\\crypto_core4_conservative_dry_shadow_v0.json",
+  "dry_shadow_object_hash": "5336e046183b3cfcd2f4ae07695761ef4ce74cf0aed550d4b43239e299d38895",
+  "generated_at": "2026-05-19T08:24:26Z",
+  "outputs": {
+    "monthly": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_3_core4_conservative_dry_shadow\\crypto_a6_3_core4_conservative_dry_shadow_monthly_20260519.csv",
+    "panel": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_3_core4_conservative_dry_shadow\\crypto_a6_3_core4_conservative_dry_shadow_panel_20260519.csv",
+    "report": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\reports\\CRYPTO_A6_3_CORE4_CONSERVATIVE_DRY_SHADOW_REPLAY_20260519.md",
+    "summary": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_3_core4_conservative_dry_shadow\\crypto_a6_3_core4_conservative_dry_shadow_summary_20260519.csv"
+  },
+  "warnings": [
+    "validation_month_pass_rate_below_70pct"
+  ]
+}

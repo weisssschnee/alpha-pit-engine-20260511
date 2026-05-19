@@ -1,0 +1,23 @@
+# Keep crypto_alpha as a lightweight research artifact folder.
+# Large market data, generated panels, and append-only shadow snapshots live under
+# G:\AlphaFactory_CryptoData and should not be committed here.
+
+*.parquet
+*.npz
+*.zip
+*.pyc
+__pycache__/
+
+raw/
+bronze/
+silver/
+gold/
+shadow_forward/
+
+**/*scaled_panel*.csv
+**/*multipliers*.csv
+**/*residual_vs_funding*.csv
+**/*book_returns*.csv
+**/*positions*.csv
+**/*component_panel*.csv
+

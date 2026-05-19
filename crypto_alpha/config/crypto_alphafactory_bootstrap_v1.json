@@ -1,0 +1,62 @@
+{
+  "object_id": "crypto_alphafactory_bootstrap_v1",
+  "created_at": "2026-05-19",
+  "data_root": "G:/AlphaFactory_CryptoData",
+  "research_workspace": "G:/AlphaFactory_CryptoData/alphafactory_crypto",
+  "universe": {
+    "futures_core12": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "SOLUSDT",
+      "BNBUSDT",
+      "XRPUSDT",
+      "DOGEUSDT",
+      "ADAUSDT",
+      "LINKUSDT",
+      "AVAXUSDT",
+      "LTCUSDT",
+      "BCHUSDT",
+      "SUIUSDT"
+    ],
+    "spot_core6": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "SOLUSDT",
+      "BNBUSDT",
+      "XRPUSDT",
+      "DOGEUSDT"
+    ]
+  },
+  "raw_inputs": {
+    "futures_binance_vision": "raw/binance_vision/phase1_core12_202401_202604",
+    "spot_binance_vision": "raw/binance_vision/spot_core6_202401_202604",
+    "funding_rate": "raw/binance_api/fundingRate_core12_202401_current",
+    "positioning_recent": "raw/binance_api/positioning_core12_recent29d_5m"
+  },
+  "manifest_inputs": {
+    "futures_binance_vision": "manifests/phase1_core12_202401_202604_manifest_combined.csv",
+    "spot_binance_vision": "manifests/spot_core6_202401_202604_manifest.csv",
+    "funding_rate": "manifests/fundingRate_core12_202401_current_manifest.csv",
+    "positioning_recent": "manifests/positioning_core12_recent29d_5m_manifest.csv"
+  },
+  "first_research_scope": {
+    "preferred_bar": "1h",
+    "secondary_bar": "5m",
+    "historical_backtest_start": "2024-01-01",
+    "historical_backtest_end": "2026-04-30",
+    "recent_refresh_allowed": true,
+    "positioning_historical_backtest_allowed": false
+  },
+  "validation_policy": {
+    "no_same_bar_label_leakage": true,
+    "funding_asof_lag_required": true,
+    "positioning_recent_diagnostic_only_until_history_exists": true,
+    "timestamp_unit_normalization_required": true,
+    "raw_zip_immutable": true
+  },
+  "cn_reference_scope": {
+    "copied_for_reference_only": true,
+    "formula_gen_v2": "alphafactory_crypto/cn_reference/formula_gen_v2",
+    "runtime_refs": "alphafactory_crypto/cn_reference/runtime_refs"
+  }
+}

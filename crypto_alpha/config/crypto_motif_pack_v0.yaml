@@ -1,0 +1,52 @@
+schema_version: crypto_motif_pack_v0
+
+windows:
+  micro: [3, 6, 12]
+  short: [24, 48]
+  medium: [96, 168]
+  long: [336, 720]
+
+field_families:
+  price: ["$close", "$mark_close", "$index_close", "$spot_close"]
+  flow: ["$quote_volume", "$trade_count", "$taker_buy_quote_volume", "$taker_imbalance"]
+  basis: ["$mark_index_basis", "$premium_close", "$spot_perp_spread"]
+  crowding: ["$funding_rate", "$sum_open_interest_value", "$long_short_ratio", "$top_trader_crowding"]
+  liquidity: ["$quote_volume", "$amihud_proxy", "$volume_shock"]
+
+motif_families:
+  price_momentum:
+    roles: ["B"]
+    templates:
+      - "ZScore(Mom({price},{w1}))"
+      - "ZScore(Sub(Mom({price},{w1}),Mom({price},{w2})))"
+  flow_confirmation:
+    roles: ["C"]
+    templates:
+      - "Mean(Mul(Sign(Delta({price},1)),Sign(Delta({flow},1))),{w1})"
+      - "Corr(Delta({flow},1),Delay(Delta({flow},1),1),{w1})"
+  basis_reversion:
+    roles: ["B", "S"]
+    templates:
+      - "Mul(ZScore({basis}),ZScore(Mom({price},{w1})))"
+      - "Mul(ZScore(Delta({basis},1)),ZScore(Mean(Abs(Delta({price},1)),{w2})))"
+  funding_crowding:
+    roles: ["S"]
+    templates:
+      - "ZScore(Mean({crowding},{w1}))"
+      - "Sub(ZScore(Mean({crowding},{w1})),ZScore(Mean({crowding},{w2})))"
+  oi_price_interaction:
+    roles: ["B", "C"]
+    templates:
+      - "Mul(ZScore(Mom({price},{w1})),ZScore(Delta($sum_open_interest_value,1)))"
+  liquidity_state:
+    roles: ["S"]
+    templates:
+      - "Sub(ZScore(Mean({liquidity},{w1})),ZScore(Mean({liquidity},{w2})))"
+
+first_phase_constraints:
+  positioning_recent_diagnostic_only: true
+  max_roles: 3
+  max_tree_depth: 8
+  no_nested_corr: true
+  all_products_normalized_or_sign_bounded: true
+  funding_features_lagged_asof_only: true

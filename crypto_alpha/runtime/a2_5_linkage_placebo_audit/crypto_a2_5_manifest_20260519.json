@@ -1,0 +1,69 @@
+{
+  "blockers": [
+    "current A2 label is close-to-close proxy; tradable next-bar execution label is not yet used",
+    "no purged/embargo replay has been run",
+    "funding fee is not included in return/cost",
+    "cost stress materially reduces high-turnover 5m candidates",
+    "universe is static core12, not time-varying tradable universe"
+  ],
+  "decision": "HOLD_ALPHA_PROOF_A2_5",
+  "generated_at": "2026-05-19T07:04:11Z",
+  "inputs": {
+    "a2_csv": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_strict_replay\\crypto_a2_strict_replay_20260519.csv",
+    "a3_clusters": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a3_signal_cluster_registry\\crypto_a3_signal_clusters_20260519.csv"
+  },
+  "outputs": {
+    "baseline_ablation": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_simple_baseline_ablation.csv",
+    "cost_stress": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_cost_stress.csv",
+    "funding_alignment": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_funding_alignment.csv",
+    "label_source_audit": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_label_source_audit.csv",
+    "placebo_audit": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_placebo_audit.csv",
+    "universe_audit": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a2_5_linkage_placebo_audit\\crypto_a2_5_universe_audit.csv"
+  },
+  "summaries": {
+    "a2_keep_count": 194,
+    "ablation_summary": {
+      "median_marginal_ls": -0.1284663503639084,
+      "pass_count": 55,
+      "pass_rate": 0.35714285714285715,
+      "rows": 154
+    },
+    "cost_summary": {
+      "low_1bp": {
+        "median_net": 0.22933630071059355,
+        "positive_count": 128,
+        "positive_rate": 0.6597938144329897
+      },
+      "normal_5bp": {
+        "median_net": -1.5081306604129614,
+        "positive_count": 44,
+        "positive_rate": 0.2268041237113402
+      },
+      "stress_2x_10bp": {
+        "median_net": -3.641425823189504,
+        "positive_count": 24,
+        "positive_rate": 0.12371134020618557
+      },
+      "stress_5x_25bp": {
+        "median_net": -9.964536992711832,
+        "positive_count": 2,
+        "positive_rate": 0.010309278350515464
+      }
+    },
+    "label_source_median_ls_annualized": {
+      "index_close": 0.3755930990090274,
+      "mark_close": 0.9432496327557551,
+      "perp_last_close": 1.0456439741928358,
+      "spot_close_core6": NaN
+    },
+    "placebo_median_ls_annualized": {
+      "basis_shuffle": 0.6386476366097882,
+      "label_shuffle": -0.0839845695073757,
+      "original": 2.0827492073741407,
+      "sign_flip": -2.0827492073741407,
+      "symbol_shuffle": 0.14986951376840357,
+      "time_shift": -0.945909253769737,
+      "wrong_lag_funding_future_shift": -0.47861309590226425
+    }
+  }
+}

@@ -1,0 +1,5 @@
+cluster_id,expression,orientation,train_ic_mean,horizon
+crypto_a4_1h_001,"Mul(Rank(ret_12),ZScore(latest_known_funding_rate))",-1.0,-0.01753969368511011,6
+crypto_a4_1h_002,"Mul(Rank(mark_index_ratio),ZScore(latest_known_funding_rate))",-1.0,-0.025425051012867857,12
+crypto_a4_1h_003,"Mul(Rank(mark_minus_index),ZScore(funding_rate_persistence_3))",-1.0,-0.020245417807432612,6
+crypto_a4_1h_004,"Mul(Rank(hl_range),ZScore(latest_known_funding_rate))",-1.0,-0.03840041318393899,12

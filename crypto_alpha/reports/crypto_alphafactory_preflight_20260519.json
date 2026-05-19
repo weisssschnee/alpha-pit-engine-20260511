@@ -1,0 +1,178 @@
+{
+  "api_csv_check_count": 72,
+  "api_csv_issues": [],
+  "blockers": [],
+  "decision": "PASS_BOOTSTRAP_PREFLIGHT_WITH_WARNINGS",
+  "generated_at": "2026-05-19T03:34:20Z",
+  "manifest_summaries": {
+    "funding_rate": {
+      "data_type_counts": {
+        "fundingRate": 12
+      },
+      "date_range_count": 1,
+      "interval_counts": {
+        "8h": 12
+      },
+      "local_files_missing": 0,
+      "local_files_present": 12,
+      "manifest_rows": 12,
+      "name": "funding_rate",
+      "status_counts": {
+        "downloaded": 12
+      },
+      "symbol_count": 12,
+      "symbols": [
+        "ADAUSDT",
+        "AVAXUSDT",
+        "BCHUSDT",
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "LTCUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "total_source_row_count": 31296
+    },
+    "futures_vision": {
+      "data_type_counts": {
+        "indexPriceKlines": 672,
+        "klines": 1344,
+        "markPriceKlines": 672,
+        "premiumIndexKlines": 672
+      },
+      "date_range_count": 28,
+      "interval_counts": {
+        "1d": 336,
+        "1h": 1344,
+        "1m": 1344,
+        "5m": 336
+      },
+      "local_files_missing": 0,
+      "local_files_present": 3360,
+      "manifest_rows": 3360,
+      "name": "futures_vision",
+      "status_counts": {
+        "duplicate_file": 39,
+        "ok": 3285,
+        "row_count_mismatch": 36
+      },
+      "symbol_count": 12,
+      "symbols": [
+        "ADAUSDT",
+        "AVAXUSDT",
+        "BCHUSDT",
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "LTCUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "total_source_row_count": 62756028
+    },
+    "positioning_recent": {
+      "data_type_counts": {
+        "globalLongShortAccountRatio": 12,
+        "openInterestHist": 12,
+        "takerlongshortRatio": 12,
+        "topLongShortAccountRatio": 12,
+        "topLongShortPositionRatio": 12
+      },
+      "date_range_count": 1,
+      "interval_counts": {
+        "5m": 60
+      },
+      "local_files_missing": 0,
+      "local_files_present": 60,
+      "manifest_rows": 60,
+      "name": "positioning_recent",
+      "status_counts": {
+        "downloaded": 60
+      },
+      "symbol_count": 12,
+      "symbols": [
+        "ADAUSDT",
+        "AVAXUSDT",
+        "BCHUSDT",
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "LTCUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "total_source_row_count": 500928
+    },
+    "spot_vision": {
+      "data_type_counts": {
+        "spot_klines": 672
+      },
+      "date_range_count": 28,
+      "interval_counts": {
+        "1d": 168,
+        "1h": 168,
+        "1m": 168,
+        "5m": 168
+      },
+      "local_files_missing": 0,
+      "local_files_present": 672,
+      "manifest_rows": 672,
+      "name": "spot_vision",
+      "status_counts": {
+        "downloaded": 672
+      },
+      "symbol_count": 6,
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "total_source_row_count": 8950818
+    }
+  },
+  "recommended_next_step": "build bronze normalizer for futures/spot/funding; keep positioning diagnostic-only until longer history exists",
+  "root": "G:\\AlphaFactory_CryptoData",
+  "universe_gaps": {
+    "funding_missing_core12": [],
+    "futures_missing_core12": [],
+    "positioning_missing_core12": []
+  },
+  "vision_bad_column_samples": [],
+  "vision_sample_count": 84,
+  "vision_sample_errors": [
+    {
+      "data_type": "premiumIndexKlines",
+      "date_range": "2024-04",
+      "error": "BadZipFile:File is not a zip file",
+      "first_col_count": 0,
+      "interval": "1m",
+      "local_path": "G:\\AlphaFactory_CryptoData\\raw\\binance_vision\\phase1_core12_202401_202605\\futures_um\\premiumIndexKlines\\BTCUSDT\\1m\\BTCUSDT-premiumIndexKlines-1m-2024-04.zip",
+      "scanned_rows": null,
+      "status": "duplicate_file",
+      "symbol": "BTCUSDT",
+      "timestamp_unit": null
+    }
+  ],
+  "vision_timestamp_unit_counts": {
+    "milliseconds": 83,
+    "unknown": 1
+  },
+  "warnings": [
+    "positioning appears recent-only; keep diagnostic-only for historical backtest",
+    "some sampled zip files could not be scanned"
+  ],
+  "workspace": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto"
+}

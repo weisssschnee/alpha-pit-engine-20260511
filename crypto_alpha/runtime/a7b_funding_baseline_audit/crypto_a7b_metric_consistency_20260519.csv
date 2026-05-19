@@ -1,0 +1,7 @@
+object,timestamp_match,same_row_count,raw_rows,scaled_rows,risk_variant,cost_basis
+B0_Core4,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier
+B1_funding_only,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier
+B2_price_only,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier
+B3_basis_only,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier
+B4_price_x_funding,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier
+B5_basis_x_funding,True,1,20864,20864,R3_vol_target_gross_0p5x_cap,scaled uses raw gross/funding/turnover from same object; 10bps fee after risk multiplier

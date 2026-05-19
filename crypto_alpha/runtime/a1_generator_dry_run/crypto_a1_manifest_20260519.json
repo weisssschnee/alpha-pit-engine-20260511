@@ -1,0 +1,38 @@
+{
+  "blockers": [],
+  "counts": {
+    "accepted": 235,
+    "by_interval": {
+      "1h": 119,
+      "5m": 116
+    },
+    "by_motif": {
+      "basis_funding_state": 32,
+      "basis_premium_continuation": 23,
+      "momentum_liquidity_state": 16,
+      "momentum_taker_flow_diagnostic": 4,
+      "momentum_volatility_state": 32,
+      "price_basis_confirmation": 48,
+      "price_funding_state": 48,
+      "price_momentum_continuation": 32
+    },
+    "by_priority": {
+      "diagnostic": 20,
+      "high": 52,
+      "low": 32,
+      "medium": 131
+    },
+    "rejected": 0,
+    "total": 235
+  },
+  "csv_path": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a1_generator_dry_run\\crypto_a1_candidates_20260519.csv",
+  "decision": "PASS_A1_GENERATOR_DRY_RUN",
+  "generated_at": "2026-05-19T06:05:41Z",
+  "jsonl_path": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a1_generator_dry_run\\crypto_a1_candidates_20260519.jsonl",
+  "jsonl_sha256": "8fc04a1e1de300600cce3a8b1033c69f9c4b796addf3bc4fdbe43dc571d7ff6d",
+  "method_path": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\config\\crypto_alphafactory_method_v1.json",
+  "method_sha256": "caa22b025b502330846ee0544d64ecd4965a244c6e213822a394fe64b9c76892",
+  "rejected_sample": [],
+  "smoke_csv": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\reports\\crypto_alpha_smoke_v0_results_20260519.csv",
+  "smoke_csv_sha256": "b5d5a13a5997d86e11d1a88f44ebaa3af7acad9d523d375af9f0da1d5cc0dc21"
+}

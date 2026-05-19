@@ -1,0 +1,28 @@
+{
+  "book_rule": {
+    "cluster_weighting": "equal_weight",
+    "clusters": [
+      "crypto_a4_1h_001",
+      "crypto_a4_1h_002",
+      "crypto_a4_1h_003",
+      "crypto_a4_1h_004"
+    ],
+    "execution_assumption": "next 1h bar open proxy",
+    "gross_cap": 0.2
+  },
+  "created_at": "2026-05-19T08:24:26Z",
+  "gross_cap": 0.2,
+  "not_confirmed": [
+    "live_ready",
+    "exchange_orders",
+    "real_slippage",
+    "real_capacity",
+    "production_risk"
+  ],
+  "object_hash": "5336e046183b3cfcd2f4ae07695761ef4ce74cf0aed550d4b43239e299d38895",
+  "object_id": "crypto_core4_conservative_dry_shadow_v0",
+  "parent_object_hash": "f07b8a9387c1c80be70c29c06a22d3782710d5d46a074ece7d4a6e7c6175f33b",
+  "parent_object_id": "crypto_core4_locked_research_book_v1",
+  "risk_budget_source": "A6 diagnostic risk budget; requires explicit human approval before any forward shadow activation",
+  "status": "dry_shadow_candidate_not_live"
+}

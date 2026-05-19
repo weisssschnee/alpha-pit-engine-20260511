@@ -1,0 +1,27 @@
+{
+  "decision": "HOLD_A6_2_NO_RISK_SCALED_SHADOW_CANDIDATE",
+  "generated_at": "2026-05-19T08:19:25Z",
+  "locked_object": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\baselines\\crypto_core4_locked_research_book_v1.json",
+  "outputs": {
+    "multipliers": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_2_core4_risk_scaling\\crypto_a6_2_core4_multipliers_20260519.csv",
+    "report": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\reports\\CRYPTO_A6_2_CORE4_RISK_SCALING_20260519.md",
+    "scaled_panel": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_2_core4_risk_scaling\\crypto_a6_2_core4_scaled_panel_20260519.csv",
+    "summary": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_2_core4_risk_scaling\\crypto_a6_2_core4_risk_scaling_summary_20260519.csv",
+    "top_loss_hours": "G:\\AlphaFactory_CryptoData\\alphafactory_crypto\\runtime\\a6_2_core4_risk_scaling\\crypto_a6_2_core4_selected_top_loss_hours_20260519.csv"
+  },
+  "parameters": {
+    "cost_bps": {
+      "normal_5bp": 5.0,
+      "severe_20bp": 20.0,
+      "stress_10bp": 10.0,
+      "zero_0bp": 0.0
+    },
+    "gross_cap_r1": 1.0,
+    "gross_cap_r3": 0.5,
+    "min_vol_bars": 120,
+    "rolling_vol_bars": 480,
+    "target_hourly_vol": 0.005,
+    "vol_estimate_lag": "shift(1), no future realized vol"
+  },
+  "selected_variant": null
+}

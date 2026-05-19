@@ -1,0 +1,3 @@
+interval,rows,funding_rows,future_funding_rows,exact_funding_time_rows,min_lag_ms,median_lag_ms,max_lag_ms,funding_fee_included_in_return
+5m,2941056,2941056,0,20388,0.0,14399999.5,28800000.0,False
+1h,245088,245088,0,20388,0.0,14399999.5,28800000.0,False
