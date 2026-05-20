@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#111827} .axis{stroke:#6b7280;stroke-width:1} .grid{stroke:#e5e7eb;stroke-width:1} .blue{stroke:#2563eb;fill:none;stroke-width:2} .green{fill:#16a34a} .gray{fill:#9ca3af} .red{fill:#dc2626}</style>
+<text x="70" y="30" font-size="18" font-weight="700">R3 placebo robustness</text>
+<line x1="95" y1="306.06" x2="790" y2="306.06" class="axis"/>
+<rect x="135" y="55.00" width="90" height="251.06" class="green" opacity="0.8"/>
+<text x="135" y="377" font-size="12">true</text>
+<text x="135" y="49.00" font-size="12">1.176</text>
+<rect x="270" y="106.82" width="90" height="199.24" class="gray" opacity="0.8"/>
+<text x="270" y="377" font-size="12">random p95</text>
+<text x="270" y="100.82" font-size="12">0.933</text>
+<rect x="405" y="92.87" width="90" height="213.19" class="gray" opacity="0.8"/>
+<text x="405" y="377" font-size="12">block p95</text>
+<text x="405" y="86.87" font-size="12">0.998</text>
+<rect x="540" y="71.55" width="90" height="234.51" class="gray" opacity="0.8"/>
+<text x="540" y="377" font-size="12">circular p95</text>
+<text x="540" y="65.55" font-size="12">1.098</text>
+<rect x="675" y="306.06" width="90" height="43.94" class="red" opacity="0.8"/>
+<text x="675" y="377" font-size="12">inverted</text>
+<text x="675" y="300.06" font-size="12">-0.206</text>
+<text x="70" y="402" font-size="12">Source: generated/placebo_robustness_table.csv.</text>
+</svg>

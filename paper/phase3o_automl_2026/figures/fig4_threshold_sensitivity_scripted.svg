@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420">
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#111827} .axis{stroke:#6b7280;stroke-width:1} .grid{stroke:#e5e7eb;stroke-width:1} .blue{stroke:#2563eb;fill:none;stroke-width:2} .green{fill:#16a34a} .gray{fill:#9ca3af} .red{fill:#dc2626}</style>
+<text x="70" y="30" font-size="18" font-weight="700">R3 threshold sensitivity</text>
+<line x1="80" y1="350" x2="790" y2="350" class="axis"/>
+<line x1="80" y1="55" x2="80" y2="350" class="axis"/>
+<rect x="125" y="240.78" width="82" height="109.22" class="gray" opacity="0.82"/>
+<text x="141" y="377" font-size="12">q25</text>
+<text x="125" y="234.78" font-size="12">0.435</text>
+<rect x="249" y="199.50" width="82" height="150.50" class="gray" opacity="0.82"/>
+<text x="265" y="377" font-size="12">q30</text>
+<text x="249" y="193.50" font-size="12">0.600</text>
+<rect x="373" y="55.00" width="82" height="295.00" class="green" opacity="0.82"/>
+<text x="389" y="377" font-size="12">q33</text>
+<text x="373" y="49.00" font-size="12">1.176</text>
+<rect x="497" y="67.81" width="82" height="282.19" class="gray" opacity="0.82"/>
+<text x="513" y="377" font-size="12">q35</text>
+<text x="497" y="61.81" font-size="12">1.125</text>
+<rect x="621" y="106.79" width="82" height="243.21" class="gray" opacity="0.82"/>
+<text x="637" y="377" font-size="12">q40</text>
+<text x="621" y="100.79" font-size="12">0.969</text>
+<text x="70" y="402" font-size="12">Source: generated/r3_sensitivity_audit.csv. q33 remains the locked official threshold.</text>
+</svg>

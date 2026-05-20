@@ -16,11 +16,17 @@ The main evidence chain is traceable to committed paper-pack artifacts. The rema
 | Audit base `origin/main` | `a39cfc28694d84bec14391603db1d43cd59e68a4` | `git rev-parse origin/main` before submission hygiene files | PASS |
 | Paper pack first commit | `92440a6` | `generated/freeze_status.csv` | PASS |
 | Research state commit used to generate pack | `23f5039` | `generated/freeze_status.csv` | PASS |
+| Frozen evidence-pack tag | `phase3o-automl-paper-pack-v0.1 -> 10f379d` | `git ls-remote --tags origin phase3o-automl-paper-pack-v0.1` | PASS |
+| Submission hygiene commit | `0459a5d` | `git log --oneline` | PASS |
 | X0 freeze tag | `phase3o-x0-shadow-v1` | local + remote `git ls-remote --tags` | PASS |
 | Freeze tag target commit | `a60bfbe` | `generated/freeze_status.csv`, remote tag deref | PASS |
 | Latest `main` moved after paper pack | yes, includes `a39cfc2` after `10f379d` | `git log --oneline` | FIX |
 
-Recommended citation for reproducibility: cite `phase3o-x0-shadow-v1` for the frozen object and a dedicated paper tag/branch for `paper/phase3o_automl_2026`, rather than moving `main`.
+Recommended citation for reproducibility: cite `phase3o-x0-shadow-v1` for the frozen object and `phase3o-automl-paper-pack-v0.1` for the frozen paper evidence pack, rather than moving `main`.
+
+Suggested reproducibility wording:
+
+> The frozen evidence pack is tagged as `phase3o-automl-paper-pack-v0.1` and points to commit `10f379d`. Submission statements and hygiene files were added later in commit `0459a5d` without changing the frozen X0/R3 evidence object.
 
 ## Confidentiality / Redaction Policy
 
@@ -193,10 +199,21 @@ The current GitHub paper pack supports:
 - Forward shadow protocol is deployed, but forward performance evidence is not yet mature.
 - The result is daily-proxy L2.5 evidence, not production or execution proof.
 
-## Required Fixes Before Submission
+## Resolved Hygiene Items
 
-1. Add a paper-freeze tag or branch for the paper pack state, not just moving `main`.
-2. Commit draft assets and figure-generation scripts if figures are referenced.
-3. Refresh or clearly version `cloud_shadow_latest_status.json`; the paper-pack version is stale relative to cloud runtime.
-4. Add `DATA_AVAILABILITY.md` and `AI_USE_STATEMENT.md` under `paper/phase3o_automl_2026/submission/`.
-5. Keep formulas either private or intentionally redacted; do not accidentally publish commercial formula details.
+| Item | Resolution | Commit / Artifact | Status |
+|---|---|---|---|
+| Paper evidence state needs immutable reference | Added `phase3o-automl-paper-pack-v0.1` tag pointing to `10f379d` | Git tag | RESOLVED |
+| Fact-check file missing | Added `submission/FACT_CHECK.md` | `0459a5d` | RESOLVED |
+| Data availability statement missing | Added `submission/DATA_AVAILABILITY.md` | `0459a5d` | RESOLVED |
+| AI use statement missing | Added `submission/AI_USE_STATEMENT.md` | `0459a5d` | RESOLVED |
+| Conflict / confidentiality statement missing | Added `submission/CONFLICT_OF_INTEREST.md` | `0459a5d` | RESOLVED |
+| Draft/figure directories absent | Added guarded README files | `0459a5d` | PARTIAL_RESOLVED |
+| Figure-generation script missing | Added `scripts/build_paper_figures.py`; script uses aggregate CSVs only | post-`0459a5d` hygiene update | RESOLVED |
+| Redacted scripted figures missing | Added SVG figures generated from public aggregate CSVs | post-`0459a5d` hygiene update | RESOLVED |
+
+## Remaining Fixes Before Submission
+
+1. Refresh or clearly version `cloud_shadow_latest_status.json`; the paper-pack version is stale relative to cloud runtime.
+2. Decide whether the v0.5/v0.6 manuscript enters the public repo as redacted PDF/Markdown. Do not publish a DOCX containing private comments or unreleased formulas.
+3. Keep formulas private or intentionally redacted; do not accidentally publish commercial formula details.
