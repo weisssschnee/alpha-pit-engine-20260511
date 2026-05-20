@@ -139,7 +139,9 @@ Important update: cloud runtime has later shadow outputs after the paper pack. T
 
 | Asset Type | Verified State | Source | Status |
 |---|---|---|---|
-| Figure files (`png/jpg/svg/pdf`) | no committed files found under `paper/phase3o_automl_2026` | `git ls-files`, local file scan | FIX |
+| Figure 2 equity curve | scripted redacted SVG generated from `generated/daily_oos_r3_curve.csv`; caption must state full-calendar daily-proxy, not live equity or executable PnL | `figures/fig2_equity_curve_scripted.svg`, `scripts/build_paper_figures.py` | PASS_WITH_CAPTION_BOUNDARY |
+| Figure 3 robustness audit | scripted redacted SVG generated from `generated/placebo_robustness_table.csv` | `figures/fig3_robustness_audit_scripted.svg`, `scripts/build_paper_figures.py` | PASS |
+| Figure 4 threshold sensitivity | scripted redacted SVG generated from `generated/r3_sensitivity_audit.csv` | `figures/fig4_threshold_sensitivity_scripted.svg`, `scripts/build_paper_figures.py` | PASS |
 | Draft files (`docx/md` under drafts/submission) | no committed draft found before this fact-check file | `git ls-files`, local file scan | FIX |
 | Submission statements | absent before this fact-check file | `git ls-files`, local file scan | FIX |
 
