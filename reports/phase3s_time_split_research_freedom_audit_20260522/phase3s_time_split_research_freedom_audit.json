@@ -1,0 +1,183 @@
+{
+  "allowed_next_research": [
+    "R3-on regime-specific search using existing historical data only as research-touched development.",
+    "Limit interaction diagnostic lane remains allowed, but only as diagnostic and with lag/tradability checks.",
+    "Book-marginal selector work may proceed only if it does not use locked-forward outcomes for tuning."
+  ],
+  "blocked_actions": [
+    "Do not call 2026 historical results untouched OOS.",
+    "Do not use locked-forward observations to tune X0/R3, J2/J4, or diagnostic profiles.",
+    "Do not promote X4/oracle based on historical performance alone.",
+    "Do not retrain mainline solely because limit diagnostics exist; current limit smoke has zero promoted candidates."
+  ],
+  "cloud_shadow": {
+    "decision": "PASS_CLOUD_SHADOW_FUTU_SNAPSHOT_SYNC_DEPLOYED",
+    "forward_tracker_exists": true,
+    "latest_snapshot_shadow": {
+      "active_or_cash": "cash",
+      "data_date": "2026-05-15",
+      "decision": "PASS_CLOUD_SHADOW_SIGNALS_EXPORTED",
+      "gate_active": false,
+      "liquidity_ratio_lag1": 1.1526629007762443,
+      "position_count": 0,
+      "signal_row_count": 0
+    },
+    "parallel_profiles": [
+      {
+        "decision_allowed": true,
+        "profile": "x0_official6_r3_liquidity_low",
+        "status": "official_daily_shadow"
+      },
+      {
+        "decision_allowed": false,
+        "profile": "x4_plus003_minus002_r3",
+        "status": "diagnostic_only"
+      },
+      {
+        "decision_allowed": false,
+        "profile": "oracle_005_003_004_r3",
+        "status": "oracle_diagnostic_only"
+      },
+      {
+        "decision_allowed": false,
+        "profile": "research9_r3",
+        "status": "research_monitor_only"
+      },
+      {
+        "decision_allowed": false,
+        "profile": "single_cluster_005_r3",
+        "status": "single_cluster_diagnostic"
+      },
+      {
+        "decision_allowed": false,
+        "profile": "single_cluster_003_r3",
+        "status": "single_cluster_diagnostic"
+      }
+    ]
+  },
+  "created_at": "2026-05-22T17:07:35+08:00",
+  "decision": "PASS_TIME_SPLIT_AUDIT_WITH_LOCKED_FORWARD_REQUIRED",
+  "diagnostic_objects": {
+    "X4": {
+      "clusters": [
+        "001",
+        "005",
+        "006",
+        "009",
+        "004",
+        "003"
+      ],
+      "description": "official 6 + cluster_003 - cluster_002 + R3",
+      "not_formal_reason": "post_hoc_diagnostic_variant_not_official_selection_rule",
+      "status": "diagnostic_only"
+    }
+  },
+  "evidence_labels": {
+    "locked_forward_after_2026_05_17": "highest-grade future OOS if append-only and no rule changes",
+    "oos_2026": "recent-OOS relative to 2025H2 gate training; research-touched relative to full project",
+    "train_2025h2": "development/gate-training window"
+  },
+  "gate_metrics": {
+    "R0_2026_full_ann_compound": 0.729231,
+    "R0_train_full_ann_compound": 0.309629,
+    "R3_2026_active_ann_compound": 3.918442,
+    "R3_2026_active_day_ratio": 0.487179,
+    "R3_2026_full_ann_compound": 1.175657,
+    "R3_recent_full_ann_compound": 0.467349,
+    "R3_train_full_ann_compound": 0.149494
+  },
+  "limit_diagnostic": {
+    "by_role": {
+      "event_factor": {
+        "best_long_sortino": 0.425403,
+        "best_rank_ic": 0.010892,
+        "evaluated": 24,
+        "pass_smoke": 0,
+        "promoted": 0
+      },
+      "interaction_factor": {
+        "best_long_sortino": 1.922721,
+        "best_rank_ic": -0.001329,
+        "evaluated": 24,
+        "pass_smoke": 0,
+        "promoted": 0
+      }
+    },
+    "decision": "HOLD_DIRECT_LIMIT_DIAGNOSTIC_NO_SMOKE_PASS",
+    "interpretation": "Limit fields remain diagnostic; no mainline retraining or X0/R3 changes are justified by current smoke results."
+  },
+  "locked_daily_proof": {
+    "candidate_book_clusters": [
+      "cluster_001",
+      "cluster_005",
+      "cluster_006",
+      "cluster_009",
+      "cluster_002",
+      "cluster_004"
+    ],
+    "decision": "PASS_DAILY_STRONG_PROOF_BOOK_L2_5",
+    "evidence_level": "L2.5_daily_strong_proof_no_execution",
+    "oracle_combo_status": "diagnostic_only_not_formal_selection_rule",
+    "research_pool_clusters": [
+      "cluster_001",
+      "cluster_005",
+      "cluster_008",
+      "cluster_006",
+      "cluster_009",
+      "cluster_003",
+      "cluster_002",
+      "cluster_007",
+      "cluster_004"
+    ]
+  },
+  "object_id": "X0_official_6_R3_liquidity_low_v1",
+  "official_clusters": [
+    "001",
+    "005",
+    "006",
+    "009",
+    "002",
+    "004"
+  ],
+  "stage_rows": [
+    {
+      "boundary": "Not an untouched test because multiple iterations inspected recent 2026 outcomes.",
+      "description": "Formula generation, AST repair, agnostic freeform, G2 signal-vector selection, cluster registry construction.",
+      "primary_dates": "2025-08-06..2026-05-08",
+      "sample_use": "research_touched_development",
+      "stage": "formula_search_and_cluster_discovery"
+    },
+    {
+      "boundary": "2026 is OOS relative to the 2025H2 gate training window, but not untouched relative to the full research process.",
+      "description": "R3_liquidity_low selected from regime-gated book tests and robustness checks.",
+      "primary_dates": "train=2025H2; validation=2026 historical slice",
+      "sample_use": "train_validation_split_with_research_touch",
+      "stage": "gate_selection"
+    },
+    {
+      "boundary": "Valid L2.5 daily proof; not production or untouched holdout proof.",
+      "description": "9-cluster research pool and 6-cluster candidate book were frozen after daily proof filters.",
+      "primary_dates": "2025H2+2026 through 2026-05-08",
+      "sample_use": "research_touched_recent_oos_proof",
+      "stage": "daily_proof_book_freeze"
+    },
+    {
+      "boundary": "This becomes the highest-quality OOS only after accumulating active days without rule changes.",
+      "description": "Append-only cloud shadow with Futu snapshot sync and parallel diagnostic profiles.",
+      "primary_dates": "starts after 2026-05-17 freeze",
+      "sample_use": "locked_forward_infrastructure",
+      "stage": "cloud_shadow_deployment"
+    }
+  ],
+  "x0_key_metrics_2026": {
+    "active_annualized": 3.918442,
+    "active_days": 38,
+    "active_ratio": 0.487179,
+    "calendar_days": 78,
+    "full_calendar_annualized": 1.175657,
+    "max_drawdown": -0.03442312,
+    "sharpe": 4.547115,
+    "sortino": 6.085253,
+    "total_return": 0.266314
+  }
+}
