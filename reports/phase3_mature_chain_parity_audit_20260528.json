@@ -1,0 +1,56 @@
+{
+  "audit_id": "phase3_mature_chain_parity_audit_20260528",
+  "date": "2026-05-28",
+  "decision": "PASS_NO_REGRESSION_WITH_GOVERNANCE_IMPROVEMENT",
+  "algorithmic_superiority_claim": "HOLD",
+  "compared_revisions": {
+    "old_research_state_baseline": "f01ddd5",
+    "locked_diagnostic_chain_baseline": "2b9096f",
+    "current_workspace_policy": "ce61a05"
+  },
+  "verified_official_objects": {
+    "discovery_primary": "G2_signal_vector_diversified_selector",
+    "official_shadow": "X0_official_6_R3_liquidity_low_v1",
+    "book_filters": ["J2_balanced", "J4_relaxed"],
+    "forward_shadow": "Phase3P_locked_daily_forward"
+  },
+  "verified_improvements": [
+    "unified_app_entrypoint",
+    "diagnostic_requires_allow_diagnostic",
+    "algorithm_chain_lock",
+    "mature_feature_workspace_profile",
+    "feature_adapter_policy",
+    "promotion_gate_policy",
+    "z45b_diagnostic_failure_recorded"
+  ],
+  "verified_paths_exist": [
+    "reports/PHASE3H_DECISION_RECORD_2026-05-16.md",
+    "reports/PHASE3O_REGIME_GATED_SHADOW_DECISION_RECORD_2026-05-17.md",
+    "runtime/baselines/phase3o_x0_official_shadow_v1.json",
+    "runtime/baselines/phase3j_locked_book_filters.json",
+    "reports/phase3p_locked_daily_forward_20260517/PHASE3P_LOCKED_DAILY_FORWARD_2026-05-17.md",
+    "reports/phase3s_time_split_research_freedom_audit_20260522/PHASE3S_TIME_SPLIT_RESEARCH_FREEDOM_AUDIT_2026-05-22.md",
+    "reports/PHASE3Z45B_RESEARCH_DECISION_RECORD_2026-05-28.md",
+    "docs/MATURE_CHAIN_FEATURE_WORKSPACE_2026-05-28.md",
+    "runtime/baselines/phase3_mature_feature_workspace_v1.json",
+    "scripts/create_mature_feature_workspace.ps1"
+  ],
+  "verified_modules_import": [
+    "our_system_phase2.runtime.phase3p_locked_daily_forward",
+    "our_system_phase2.runtime.phase3s_time_split_research_freedom_audit",
+    "our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic",
+    "our_system_phase2.runtime.phase3z45b_parametric_limit_result_audit",
+    "our_system_phase2.runtime.phase3z45b_deep_identity_audit",
+    "our_system_phase2.runtime.phase3z45b_oos_regime_candidate_audit",
+    "our_system_phase2.runtime.phase3z45b_vs_x0_marginal_audit",
+    "our_system_phase2.runtime.phase3z45b_regime_timing_audit",
+    "our_system_phase2.runtime.phase3z45b_regime_fragility_audit"
+  ],
+  "limitations": [
+    "No new replay/search was run, so alpha performance superiority is not proven.",
+    "Historical untracked local assets remain diagnostic until cataloged and promoted.",
+    "authority_commit currently pins the algorithm-chain authority baseline, not latest repository HEAD."
+  ],
+  "recommended_next_step": "Use ce61a05 as feature-adapter workspace baseline; split algorithm_authority_commit and workspace_policy_commit if future tooling requires HEAD equality."
+}
+
