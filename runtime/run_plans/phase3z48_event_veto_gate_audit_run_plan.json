@@ -1,0 +1,31 @@
+{
+  "phase": "Phase3Z48",
+  "run_type": "event_veto_gate_audit",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only_reference_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "modifies_formula_search": false,
+  "input_manifest_required": true,
+  "output_root": "reports/phase3z48_event_veto_gate_audit_YYYYMMDD/",
+  "allowed_triggers": [
+    "break_after_streak_ge2",
+    "break_after_streak_ge3",
+    "open_not_close_up",
+    "touch_not_close_up"
+  ],
+  "allowed_modes": [
+    "market_day_veto",
+    "long_pool_veto",
+    "universe_veto"
+  ],
+  "required_audits": [
+    "x0_r3_delta",
+    "same_count_random_veto_placebo",
+    "missed_return_audit",
+    "turnover_impact",
+    "veto_hit_rate",
+    "no_official_promotion"
+  ]
+}

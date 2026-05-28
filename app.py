@@ -150,6 +150,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run sparse event-study diagnostics with matched controls and placebo.",
     },
+    "z48-event-veto-gate-audit": {
+        "module": "our_system_phase2.runtime.phase3z48_event_veto_gate_audit",
+        "diagnostic": True,
+        "description": "Audit Z47 negative-event triggers as stock-level vetoes against locked X0/R3.",
+    },
 }
 
 

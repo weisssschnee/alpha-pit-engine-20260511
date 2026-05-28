@@ -98,6 +98,12 @@
       "run_plan": "runtime/run_plans/phase3z47_event_study_run_plan.json",
       "status": "diagnostic_only_sparse_event_study",
       "policy": "Evaluates fixed event triggers with matched controls, same-count placebo, event concentration, and tradability diagnostics. It is separate from dense formula search and cannot alter official X0/R3, G2, J2/J4, or Phase3P."
+    },
+    "phase3z48_event_veto_gate_audit": {
+      "runtime_module": "our_system_phase2.runtime.phase3z48_event_veto_gate_audit",
+      "run_plan": "runtime/run_plans/phase3z48_event_veto_gate_audit_run_plan.json",
+      "status": "diagnostic_only_event_veto_delta_audit",
+      "policy": "Tests Z47 negative-event triggers as read-only stock-level vetoes against locked X0/R3. It cannot alter official X0/R3, G2, J2/J4, Phase3P, or formula search state."
     }
   },
   "entrypoint_policy": {
@@ -130,7 +136,8 @@
       "z46-reward-dry-audit": "Diagnostic only.",
       "event-alpha-validation": "Diagnostic only.",
       "z46-eventalpha-canary": "Diagnostic only.",
-      "z47-event-study": "Diagnostic only."
+      "z47-event-study": "Diagnostic only.",
+      "z48-event-veto-gate-audit": "Diagnostic only."
     }
   },
   "promotion_gates": [
