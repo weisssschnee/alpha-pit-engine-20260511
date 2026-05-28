@@ -1,0 +1,25 @@
+{
+  "phase": "Phase3Z46",
+  "run_type": "reward_dry_audit",
+  "created_date": "2026-05-28",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "input_manifest_required": true,
+  "event_actor_registry": "runtime/registries/event_actor_motif_registry.yaml",
+  "output_root": "reports/phase3z46_reward_lane_dry_audit_20260528",
+  "allowed_inputs": [
+    "Phase3Z45b strict/deep/oos/regime/marginal diagnostic outputs",
+    "locked X0/R3 daily returns for read-only marginal comparison"
+  ],
+  "blocked_actions": [
+    "new_search",
+    "X0_R3_replacement",
+    "G2_replacement",
+    "J2_J4_replacement",
+    "official_book_promotion"
+  ],
+  "decision_use": "Test whether lane-specific reward correctly rejects known bad overlay candidates and preserves event-module/challenger diagnostics."
+}

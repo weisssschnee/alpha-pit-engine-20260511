@@ -80,6 +80,17 @@
       "evidence": "reports/PHASE3Z45B_RESEARCH_DECISION_RECORD_2026-05-28.md",
       "status": "diagnostic_only_failed_promotion",
       "policy": "Cannot alter X0/R3, G2, J2/J4, or Phase3P locked forward. Results may only inform future reward redesign."
+    },
+    "phase3z46_eventalpha_v2": {
+      "actor_motif_registry": "runtime/registries/event_actor_motif_registry.yaml",
+      "reward_dry_audit_module": "our_system_phase2.runtime.phase3z46_reward_lane_dry_audit",
+      "event_validation_module": "our_system_phase2.runtime.phase3_event_alpha_validation",
+      "run_plans": [
+        "runtime/run_plans/phase3z46_reward_dry_audit_run_plan.json",
+        "runtime/run_plans/phase3z46_canary_run_plan.json"
+      ],
+      "status": "diagnostic_only_reward_redesign_not_search",
+      "policy": "Phase3Z46 can separate overlay, challenger, event module, and veto/intensifier diagnostics. It cannot alter official X0/R3, G2, J2/J4, or Phase3P without a later explicit promotion record."
     }
   },
   "entrypoint_policy": {
@@ -108,7 +119,9 @@
       "z45b-oos-regime-audit": "Diagnostic only.",
       "z45b-vs-x0-marginal-audit": "Diagnostic only.",
       "z45b-regime-timing-audit": "Diagnostic only.",
-      "z45b-regime-fragility-audit": "Diagnostic only."
+      "z45b-regime-fragility-audit": "Diagnostic only.",
+      "z46-reward-dry-audit": "Diagnostic only.",
+      "event-alpha-validation": "Diagnostic only."
     }
   },
   "promotion_gates": [

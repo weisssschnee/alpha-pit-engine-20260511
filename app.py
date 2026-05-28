@@ -130,6 +130,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Check whether Phase3Z45b best regime slices are small-sample, top-day, or random-slice fragile.",
     },
+    "z46-reward-dry-audit": {
+        "module": "our_system_phase2.runtime.phase3z46_reward_lane_dry_audit",
+        "diagnostic": True,
+        "description": "Dry-audit Phase3Z46 lane-specific event alpha reward on known Z45b cases.",
+    },
+    "event-alpha-validation": {
+        "module": "our_system_phase2.runtime.phase3_event_alpha_validation",
+        "diagnostic": True,
+        "description": "Validate event alpha candidates with event counts, placebo, concentration, and tradability metadata.",
+    },
 }
 
 

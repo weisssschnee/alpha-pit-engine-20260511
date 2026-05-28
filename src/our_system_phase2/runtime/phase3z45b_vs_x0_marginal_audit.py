@@ -157,16 +157,20 @@ def run(z45b_daily_path: Path, identity_path: Path, x0_daily_path: Path, output_
         candidate_r3 = candidate_cash.where(base["R3_liquidity_low"], 0.0)
         blend7_r3 = ((base["candidate_book_6"] * 6.0) + candidate_cash) / 7.0
         blend7_r3 = blend7_r3.where(base["R3_liquidity_low"], 0.0)
-        joined_active = pd.concat(
-            [
-                candidate_cash[base["R3_liquidity_low"] & active],
-                base.loc[base["R3_liquidity_low"] & active, "candidate_book_6"].reset_index(drop=True),
-            ],
-            axis=1,
+        active_mask = base["R3_liquidity_low"] & active
+        joined_active = pd.DataFrame(
+            {
+                "candidate": candidate_cash.loc[active_mask].to_numpy(),
+                "x0": base.loc[active_mask, "candidate_book_6"].to_numpy(),
+            }
         ).dropna()
         corr = None
-        if len(joined_active) >= 5 and joined_active.iloc[:, 0].nunique() > 1 and joined_active.iloc[:, 1].nunique() > 1:
-            corr = _round(joined_active.iloc[:, 0].corr(joined_active.iloc[:, 1]))
+        if (
+            len(joined_active) >= 5
+            and joined_active["candidate"].nunique() > 1
+            and joined_active["x0"].nunique() > 1
+        ):
+            corr = _round(joined_active["candidate"].corr(joined_active["x0"]))
 
         cand_full = _metrics(candidate_cash)
         cand_r3 = _metrics(candidate_r3)

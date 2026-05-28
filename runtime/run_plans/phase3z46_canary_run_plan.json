@@ -1,0 +1,29 @@
+{
+  "phase": "Phase3Z46",
+  "run_type": "canary_only_after_reward_dry_audit_pass",
+  "created_date": "2026-05-28",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "max_audited": 64,
+  "allowed_lanes": [
+    "challenger",
+    "event_module",
+    "veto_intensifier",
+    "overlay_only_if_positive_marginal_score"
+  ],
+  "blocked_lanes": [
+    "standalone_direct_limit_raw_search",
+    "posthoc_oracle_combo",
+    "same_day_limit_leakage"
+  ],
+  "required_preconditions": [
+    "phase3z46_reward_lane_dry_audit decision pass",
+    "event_actor_motif_registry present",
+    "run_plan_hash recorded",
+    "diagnostic flag required"
+  ],
+  "output_root": "reports/phase3z46_canary_YYYYMMDD"
+}
