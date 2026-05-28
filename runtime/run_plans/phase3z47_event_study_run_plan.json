@@ -1,0 +1,22 @@
+{
+  "phase": "Phase3Z47",
+  "run_type": "event_study_diagnostic",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only_reference_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "modifies_g2": false,
+  "modifies_j2_j4": false,
+  "input_manifest_required": true,
+  "event_trigger_source": "runtime/registries/event_actor_motif_registry.yaml",
+  "validation_required": [
+    "event_count",
+    "matched_control_excess",
+    "same_count_random_placebo",
+    "top_event_contribution",
+    "tradability_failure_rate"
+  ],
+  "promotion_allowed": false,
+  "output_root": "reports/phase3z47_event_study_YYYYMMDD/"
+}

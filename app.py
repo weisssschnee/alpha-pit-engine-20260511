@@ -145,6 +145,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run bounded Phase3Z46 EventAlpha canary using event-state candidates and search memory.",
     },
+    "z47-event-study": {
+        "module": "our_system_phase2.runtime.phase3z47_event_study",
+        "diagnostic": True,
+        "description": "Run sparse event-study diagnostics with matched controls and placebo.",
+    },
 }
 
 
