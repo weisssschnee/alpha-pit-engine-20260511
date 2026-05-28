@@ -51,6 +51,12 @@
       "evidence": "reports/phase3r_limit_motif_pack_diagnostic_20260517/PHASE3R_LIMIT_MOTIF_PACK_DIAGNOSTIC_2026-05-17.md",
       "status": "diagnostic_only_not_X0_budget"
     },
+    "event_derived_feature_layer": {
+      "runtime_module": "our_system_phase2.runtime.phase3_event_derived_feature_audit",
+      "service_module": "our_system_phase2.services.event_derived_features",
+      "status": "feature_adapter_diagnostic_ready",
+      "policy": "Provides systematic limit/event derived fields and metadata. It does not alter official X0/R3 or promote any alpha without strict validation and promotion gates."
+    },
     "phase3t_to_phase3z_local": {
       "status": "local_diagnostic_unpromoted",
       "policy": "May be used as candidate source only after strict replay, global clustering, leakage audit, OOS/regime audit, and explicit promotion record."
@@ -89,6 +95,7 @@
       "runtime-state": "Inspect/update lightweight runtime state registry.",
       "diagnostic-catalog": "Catalog local diagnostic assets without promoting them.",
       "promotion-triage": "Triage diagnostic assets for promotion gate readiness.",
+      "event-derived-feature-audit": "Diagnostic only.",
       "proof-suite": "Run stock PIT proof suite.",
       "phase3r-limit-diagnostic": "Diagnostic only.",
       "z39-validate": "Diagnostic only.",

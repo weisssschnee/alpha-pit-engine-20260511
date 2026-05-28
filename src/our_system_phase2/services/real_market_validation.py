@@ -14,6 +14,12 @@ import pandas as pd
 
 from our_system_phase2.services.feature_algebra import WINDOW_PRIOR, expand_derived_fields
 from our_system_phase2.services.field_encoder import FIELD_ALIASES
+from our_system_phase2.services.event_derived_features import (
+    EVENT_DERIVED_FEATURE_FIELDS,
+    EVENT_DERIVED_FULL_DAY_FIELDS,
+    EVENT_DERIVED_OPEN_PRINT_FIELDS,
+    attach_event_derived_features,
+)
 from our_system_phase2.services.market_regime_state import (
     PIT_TREND_STATE_FEATURE_FIELDS,
     attach_pit_trend_state_features,
@@ -74,6 +80,7 @@ OPTIONAL_FEATURE_COLUMNS = (
     "limit_down_repair",
     "limit_flip_up_to_down",
     "limit_flip_down_to_up",
+    *EVENT_DERIVED_FEATURE_FIELDS,
     "float_share",
     "total_share",
     "after_float_share_10k",
@@ -106,7 +113,7 @@ SIGNAL_CLOCK_AFTER_CLOSE = "after_close"
 SIGNAL_CLOCK_PRE_OPEN = "pre_open"
 SIGNAL_CLOCK_AFTER_OPEN = "after_open"
 VALID_SIGNAL_CLOCKS = {SIGNAL_CLOCK_AFTER_CLOSE, SIGNAL_CLOCK_PRE_OPEN, SIGNAL_CLOCK_AFTER_OPEN}
-OPEN_PRINT_FIELDS = {"open", "overnight"}
+OPEN_PRINT_FIELDS = {"open", "overnight", *EVENT_DERIVED_OPEN_PRINT_FIELDS}
 FULL_DAY_BAR_FIELDS = {
     "high",
     "low",
@@ -145,6 +152,7 @@ FULL_DAY_BAR_FIELDS = {
     "limit_down_repair",
     "limit_flip_up_to_down",
     "limit_flip_down_to_up",
+    *EVENT_DERIVED_FULL_DAY_FIELDS,
     "float_share",
     "total_share",
     "after_float_share_10k",
@@ -486,6 +494,7 @@ def _augment_market_fields(frame: pd.DataFrame) -> pd.DataFrame:
         frame["limit_flip_up_to_down"] = (previous_up & current_down).astype(float)
     if "limit_flip_down_to_up" not in frame.columns:
         frame["limit_flip_down_to_up"] = (previous_down & current_up).astype(float)
+    frame = attach_event_derived_features(frame)
     return frame
 
 

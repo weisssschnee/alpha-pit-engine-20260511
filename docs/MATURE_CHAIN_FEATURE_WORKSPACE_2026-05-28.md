@@ -108,3 +108,41 @@ use: inform future reward redesign, not direct promotion
 
 The next event/limit feature work must be represented as feature adapters inside the mature chain, not as standalone promotion evidence.
 
+## Event Derived Feature Layer
+
+The first executable adapter is:
+
+```text
+service: our_system_phase2.services.event_derived_features
+audit:   our_system_phase2.runtime.phase3_event_derived_feature_audit
+route:   app.py --allow-diagnostic event-derived-feature-audit
+```
+
+It standardizes:
+
+```text
+close-lock limit up/down
+open-limit up/down
+intraday touch up/down
+touch/open then not close
+close-lock streak ge n
+touch streak ge n
+break board after streak ge n
+limit-down rebound after streak ge n
+market high-board rank
+post high-board t+d
+break after high-board t+d
+```
+
+It records:
+
+```text
+source fields
+lag rule
+availability clock
+tradability rule
+leakage flag
+coverage
+```
+
+This is still a feature adapter. It does not promote limit/event alpha by itself.

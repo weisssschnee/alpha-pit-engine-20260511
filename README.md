@@ -85,6 +85,14 @@ feature adapter -> search memory -> shared pool -> frozen selection
 
 Diagnostic feature probes remain allowed, but they cannot be promoted without the locked gates.
 
+The current executable event/limit adapter is:
+
+```powershell
+G:\PythonProject\.venv\Scripts\python.exe app.py --allow-diagnostic event-derived-feature-audit
+```
+
+It builds systematic open/touch/close limit events, streak `n` fields, high-board fields, lag metadata, tradability metadata, and coverage reports.
+
 ## Quick Checks
 
 ```powershell

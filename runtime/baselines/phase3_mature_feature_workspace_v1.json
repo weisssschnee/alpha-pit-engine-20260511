@@ -30,7 +30,9 @@
   },
   "allowed_feature_adapters": {
     "limit_event_morphology": {
-      "status": "diagnostic_feature_adapter_allowed",
+      "status": "diagnostic_feature_adapter_ready",
+      "service_module": "our_system_phase2.services.event_derived_features",
+      "audit_module": "our_system_phase2.runtime.phase3_event_derived_feature_audit",
       "required_metadata": [
         "event_definition_lag",
         "open_touch_close_limit_distinction",
@@ -83,4 +85,3 @@
     }
   }
 }
-

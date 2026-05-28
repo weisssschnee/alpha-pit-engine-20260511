@@ -75,6 +75,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Triage diagnostic assets for promotion gate readiness.",
     },
+    "event-derived-feature-audit": {
+        "module": "our_system_phase2.runtime.phase3_event_derived_feature_audit",
+        "diagnostic": True,
+        "description": "Audit limit/event derived feature layer coverage, lag policy, and tradability metadata.",
+    },
     "phase3r-limit-diagnostic": {
         "module": "our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic",
         "diagnostic": True,

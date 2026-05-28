@@ -10,6 +10,11 @@ from our_system_phase2.services.feature_algebra import (
     operator_semantic_profile,
     parse_derived_feature_name,
 )
+from our_system_phase2.services.event_derived_features import (
+    canonical_event_feature_name,
+    event_feature_behavior_profile,
+    event_feature_type,
+)
 
 
 FIRST_BATCH_FIELDS = (
@@ -173,6 +178,32 @@ class FieldEncoder:
 
     def encode(self, field_name: str, field_data: Any | None = None) -> EncodedField:
         normalized = field_name.lower().lstrip("$")
+        event_name = canonical_event_feature_name(normalized)
+        if event_name is not None:
+            profile = event_feature_behavior_profile(event_name) or {
+                "momentum": 0.55,
+                "size": 0.05,
+                "value": 0.12,
+                "volatility": 0.80,
+                "turnover": 0.40,
+            }
+            field_type = event_feature_type(event_name) or "event_ts"
+            base = (
+                profile["momentum"],
+                profile["size"],
+                profile["value"],
+                profile["volatility"],
+                profile["turnover"],
+                0.0,
+                0.0,
+                1.0 if field_type == "event_crosssec" else 0.0,
+            )
+            return EncodedField(
+                field_name=event_name,
+                field_type=field_type,
+                vector=tuple(round(value, 6) for value in base[: self.d_model]),
+                behavior_profile=dict(profile),
+            )
         derived = parse_derived_feature_name(normalized)
         if derived is not None:
             base_field = self.encode(derived.base_field)
@@ -225,6 +256,9 @@ def _closest_known_field(field_name: str) -> str:
 
 def canonical_field_name(field_name: str) -> str | None:
     normalized = field_name.lower().lstrip("$")
+    event_name = canonical_event_feature_name(normalized)
+    if event_name is not None:
+        return event_name
     derived = parse_derived_feature_name(normalized)
     if derived is not None:
         base = canonical_field_name(derived.base_field)
