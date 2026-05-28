@@ -1,0 +1,19 @@
+{
+  "phase": "Phase3Z49",
+  "run_type": "event_long_selection_overlap_audit",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only_reference_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "modifies_formula_search": false,
+  "output_root": "reports/phase3z49_event_long_selection_overlap_YYYYMMDD/",
+  "objective": "Check whether Z47 negative-event stocks are actually selected by the locked X0 long legs under R3 before running expensive stock-level veto replay.",
+  "required_audits": [
+    "selected_long_event_overlap",
+    "selected_event_forward_return_vs_non_event",
+    "cluster_level_overlap",
+    "r3_only_accounting",
+    "no_official_promotion"
+  ]
+}

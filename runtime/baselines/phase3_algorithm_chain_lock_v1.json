@@ -104,6 +104,12 @@
       "run_plan": "runtime/run_plans/phase3z48_event_veto_gate_audit_run_plan.json",
       "status": "diagnostic_only_event_veto_delta_audit",
       "policy": "Tests Z47 negative-event triggers as read-only stock-level vetoes against locked X0/R3. It cannot alter official X0/R3, G2, J2/J4, Phase3P, or formula search state."
+    },
+    "phase3z49_event_long_selection_overlap": {
+      "runtime_module": "our_system_phase2.runtime.phase3z49_event_long_selection_overlap",
+      "run_plan": "runtime/run_plans/phase3z49_event_long_selection_overlap_run_plan.json",
+      "status": "diagnostic_only_event_overlap_audit",
+      "policy": "Checks whether Z47 negative-event stocks actually enter locked X0/R3 long selections before any expensive stock-level veto replay. It cannot promote or alter official objects."
     }
   },
   "entrypoint_policy": {
@@ -137,7 +143,8 @@
       "event-alpha-validation": "Diagnostic only.",
       "z46-eventalpha-canary": "Diagnostic only.",
       "z47-event-study": "Diagnostic only.",
-      "z48-event-veto-gate-audit": "Diagnostic only."
+      "z48-event-veto-gate-audit": "Diagnostic only.",
+      "z49-event-long-selection-overlap": "Diagnostic only."
     }
   },
   "promotion_gates": [

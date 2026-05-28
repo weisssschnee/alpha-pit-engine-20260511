@@ -155,6 +155,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Audit Z47 negative-event triggers as stock-level vetoes against locked X0/R3.",
     },
+    "z49-event-long-selection-overlap": {
+        "module": "our_system_phase2.runtime.phase3z49_event_long_selection_overlap",
+        "diagnostic": True,
+        "description": "Check whether Z47 negative-event stocks enter locked X0/R3 long selections.",
+    },
 }
 
 
