@@ -90,6 +90,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run Phase3R limit motif diagnostic.",
     },
+    "phase3r-limit-cheap-eval": {
+        "module": "our_system_phase2.runtime.phase3r_limit_diagnostic_cheap_eval",
+        "diagnostic": True,
+        "description": "Run cheap diagnostic validation for Phase3R limit/event motif formulas.",
+    },
     "z39-validate": {
         "module": "our_system_phase2.runtime.phase3z39_automated_validation_flow",
         "diagnostic": True,

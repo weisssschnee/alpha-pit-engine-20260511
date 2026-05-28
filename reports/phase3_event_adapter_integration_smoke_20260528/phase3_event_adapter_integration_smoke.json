@@ -131,7 +131,7 @@
     },
     "signal_clock": "after_open"
   },
-  "created_at": "2026-05-28T23:13:01+08:00",
+  "created_at": "2026-05-28T23:32:50+08:00",
   "dataset": "G:\\Project_V7_Rotation\\scripts\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
   "decision": "PASS_EVENT_ADAPTER_INTEGRATION_SMOKE",
   "eval_error_count": 0,

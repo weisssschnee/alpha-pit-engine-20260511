@@ -21,8 +21,9 @@ from our_system_phase2.services.real_market_data import DEFAULT_REAL_MARKET_DATA
 from our_system_phase2.services.real_market_validation import SIGNAL_CLOCK_AFTER_OPEN, batch_validate_candidate_ledger
 
 
-DEFAULT_LEDGER = Path("reports/phase3r_limit_motif_pack_diagnostic_20260517/phase3r_limit_diagnostic_candidate_ledger.json")
-DEFAULT_OUTPUT_ROOT = Path("reports/phase3r_limit_motif_pack_diagnostic_eval_20260517")
+DEFAULT_LEDGER = Path("reports/phase3r_limit_motif_pack_diagnostic_20260528/phase3r_limit_diagnostic_candidate_ledger.json")
+DEFAULT_OUTPUT_ROOT = Path("reports/phase3r_limit_motif_pack_diagnostic_eval_20260528")
+REPORT_FILENAME = "PHASE3R_LIMIT_DIAGNOSTIC_CHEAP_EVAL_2026-05-28.md"
 
 
 def _now() -> str:
@@ -97,6 +98,14 @@ def _summary_rows(validation: dict[str, Any], metadata_by_id: dict[str, dict[str
                 "candidate_id": row.get("candidate_id"),
                 "diagnostic_role": row.get("diagnostic_role") or meta.get("diagnostic_role"),
                 "uses_limit_token": meta.get("uses_limit_token"),
+                "feature_adapter": meta.get("feature_adapter"),
+                "event_family": meta.get("event_family"),
+                "event_fields": meta.get("event_fields"),
+                "contains_new_event_adapter_field": meta.get("contains_new_event_adapter_field"),
+                "search_memory_key": meta.get("search_memory_key"),
+                "pool_priority_score": meta.get("pool_priority_score"),
+                "source_quota_group": meta.get("source_quota_group"),
+                "source_credit_cap_basis": meta.get("source_credit_cap_basis"),
                 "required_lag_days": meta.get("required_lag_days"),
                 "expression": row.get("expression"),
                 "passes_real_market_smoke": row.get("passes_real_market_smoke"),
@@ -223,7 +232,7 @@ def run(
             "candidate_csv": str(output_root / "phase3r_limit_formula_eval_candidates.csv"),
             "role_summary_csv": str(output_root / "phase3r_limit_formula_eval_by_role.csv"),
             "summary_json": str(output_root / "phase3r_limit_diagnostic_cheap_eval.json"),
-            "summary_md": str(output_root / "PHASE3R_LIMIT_DIAGNOSTIC_CHEAP_EVAL_2026-05-17.md"),
+            "summary_md": str(output_root / REPORT_FILENAME),
         },
     }
     _write_json(output_root / "phase3r_limit_diagnostic_cheap_eval.json", summary)
@@ -273,7 +282,7 @@ def run(
             "",
         ]
     )
-    (output_root / "PHASE3R_LIMIT_DIAGNOSTIC_CHEAP_EVAL_2026-05-17.md").write_text("\n".join(md), encoding="utf-8")
+    (output_root / REPORT_FILENAME).write_text("\n".join(md), encoding="utf-8")
     return summary
 
 

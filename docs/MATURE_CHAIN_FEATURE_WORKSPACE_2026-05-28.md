@@ -172,4 +172,9 @@ leakage_flag
 search_memory_key
 ```
 
+The diagnostic motif scaffold writes `search_memory.json` and can inherit a previous
+run with `--previous-memory-root`, using the existing `LocalSearchMemory`
+expression/skeleton duplicate policy. This is required before scaling any event
+feature search.
+
 The smoke is not replay, not global clustering, and not alpha promotion.

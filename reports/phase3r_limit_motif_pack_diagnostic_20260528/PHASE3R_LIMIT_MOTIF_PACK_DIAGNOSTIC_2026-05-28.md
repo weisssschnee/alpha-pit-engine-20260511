@@ -3,6 +3,9 @@
 - decision: `PASS_LIMIT_MOTIF_DIAGNOSTIC_SCAFFOLD_CREATED`
 - prior O7 decision: `HOLD_LIMIT_GENERATOR_COVERAGE_GAP`
 - candidate_template_count: `47`
+- pre_memory_candidate_template_count: `47`
+- duplicate_skip_count: `0`
+- search_memory_json: `reports\phase3r_limit_motif_pack_diagnostic_20260528\search_memory.json`
 - status: diagnostic only; not official book budget.
 
 ## Roles

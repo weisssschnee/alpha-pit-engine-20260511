@@ -15,7 +15,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from our_system_phase2.services.candidate_pool_priority import enrich_candidate_pool_priority
 from our_system_phase2.services.event_derived_features import event_derived_feature_contract, event_feature_spec
+from our_system_phase2.services.search_memory import (
+    LocalSearchMemory,
+    expression_memory_key,
+    production_rule_key,
+    skeleton_memory_key,
+)
 
 
 DEFAULT_MOTIF_PACK = Path("src/our_system_phase2/formula_gen_v2/motif_pack_limit_diagnostic.yaml")
@@ -227,20 +234,23 @@ def _candidate_rows(max_per_role: int) -> list[dict[str, Any]]:
             role_counts[role] = count + 1
             metadata = _event_metadata_for_expression(expression)
             rows.append(
-                {
+                enrich_candidate_pool_priority(
+                    {
                     "candidate_id": f"limit_diag_{role}_{role_counts[role]:03d}",
                     "diagnostic_role": role,
                     "expression": expression,
-                    "uses_limit_token": bool(re.search(r"limit_", expression)),
+                    "uses_limit_token": bool(re.search(r"(limit_|high_board|market_high)", expression)),
                     "official_book_eligible": False,
                     "required_lag_days": 1,
                     "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
                     **metadata,
-                }
+                    }
+                )
             )
     rows.extend(
         [
-            {
+            enrich_candidate_pool_priority(
+                {
                 "candidate_id": "limit_diag_r3_gate_001",
                 "diagnostic_role": "r3_secondary_gate",
                 "expression": "R3_liquidity_low AND limit_density_high",
@@ -256,8 +266,10 @@ def _candidate_rows(max_per_role: int) -> list[dict[str, Any]]:
                 "leakage_flag": "requires_gate_lag_audit",
                 "search_memory_key": "event_adapter:r3_limit_density_high",
                 "contains_new_event_adapter_field": False,
-            },
-            {
+                }
+            ),
+            enrich_candidate_pool_priority(
+                {
                 "candidate_id": "limit_diag_r3_gate_002",
                 "diagnostic_role": "r3_secondary_gate",
                 "expression": "R3_liquidity_low AND limit_density_not_high",
@@ -273,25 +285,117 @@ def _candidate_rows(max_per_role: int) -> list[dict[str, Any]]:
                 "leakage_flag": "requires_gate_lag_audit",
                 "search_memory_key": "event_adapter:r3_limit_density_not_high",
                 "contains_new_event_adapter_field": False,
-            },
+                }
+            ),
         ]
     )
     return rows
 
 
-def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_role: int) -> dict[str, Any]:
+def _memory_filter_rows(
+    rows: list[dict[str, Any]],
+    *,
+    previous_memory_root: Path | None,
+    dataset_role: str | None,
+    run_id: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    memory = LocalSearchMemory.from_previous_run(previous_memory_root, expected_dataset_role=dataset_role)
+    kept: list[dict[str, Any]] = []
+    duplicate_count = 0
+    for row in rows:
+        expression = str(row.get("expression") or "")
+        if not expression:
+            kept.append(row)
+            continue
+        is_gate = row.get("diagnostic_role") == "r3_secondary_gate"
+        if not is_gate and memory.has_seen_expression(expression):
+            duplicate_count += 1
+            memory.record_duplicate_skip(
+                expression=expression,
+                run_id=run_id,
+                round_index=0,
+                lane=str(row.get("diagnostic_role") or "limit_event_diagnostic"),
+                source_mode="event_derived_feature_layer",
+                reason="event_adapter_search_memory_duplicate_expression",
+            )
+            continue
+        kept.append(row)
+        if not is_gate:
+            expression_key = expression_memory_key(expression)
+            skeleton_key = skeleton_memory_key(expression)
+            memory.expression_keys.add(expression_key)
+            memory.skeleton_keys.add(skeleton_key)
+            memory.records.append(
+                {
+                    "run_id": run_id,
+                    "candidate_id": row.get("candidate_id") or expression_key,
+                    "expression": expression,
+                    "expression_key": expression_key,
+                    "skeleton_key": skeleton_key,
+                    "production_rule_key": production_rule_key(
+                        source_mode="event_derived_feature_layer",
+                        frontier_lane=str(row.get("diagnostic_role") or "limit_event_diagnostic"),
+                        generation_context={
+                            "source": "phase3r_limit_motif_pack_diagnostic",
+                            "feature_adapter": row.get("feature_adapter"),
+                            "event_family": row.get("event_family"),
+                        },
+                    ),
+                    "source_mode": "event_derived_feature_layer",
+                    "frontier_lane": row.get("diagnostic_role"),
+                    "retained": False,
+                    "label": "diagnostic_candidate_template",
+                    "real_replay_dataset_role": dataset_role,
+                    "feature_adapter": row.get("feature_adapter"),
+                    "event_fields": row.get("event_fields"),
+                    "event_family": row.get("event_family"),
+                    "search_memory_key": row.get("search_memory_key"),
+                }
+            )
+    return kept, {
+        "active": True,
+        "run_id": run_id,
+        "previous_memory_root": str(previous_memory_root) if previous_memory_root else None,
+        "dataset_role": dataset_role,
+        "input_candidate_count": len(rows),
+        "kept_candidate_count": len(kept),
+        "duplicate_skip_count": duplicate_count,
+        "search_memory": memory.report(run_id=run_id),
+    }
+
+
+def run(
+    *,
+    motif_pack: Path,
+    o7_summary_path: Path,
+    output_root: Path,
+    max_per_role: int,
+    previous_memory_root: Path | None = None,
+    dataset_role: str = "stock_pit_panel",
+) -> dict[str, Any]:
     output_root.mkdir(parents=True, exist_ok=True)
     o7 = _read_json(o7_summary_path)
-    rows = _candidate_rows(max_per_role=max_per_role)
+    run_id = "phase3r_limit_motif_pack_diagnostic_v2_event_adapter_memory"
+    all_rows = _candidate_rows(max_per_role=max_per_role)
+    rows, memory_report = _memory_filter_rows(
+        all_rows,
+        previous_memory_root=previous_memory_root,
+        dataset_role=dataset_role,
+        run_id=run_id,
+    )
     _write_csv(output_root / "phase3r_limit_diagnostic_candidate_templates.csv", rows)
+    _write_json(output_root / "search_memory.json", memory_report["search_memory"])
     candidate_ledger = {
-        "run_id": "phase3r_limit_motif_pack_diagnostic_v1",
+        "run_id": run_id,
         "created_at": _now(),
         "scope": "diagnostic_only_no_retraining_no_X0_R3_changes",
         "feature_adapter_contract": event_derived_feature_contract(max_streak_n=10),
         "proof_variant": "limit_motif_pack_diagnostic",
         "record_count": len(rows),
         "records": rows,
+        "search_memory_report": {
+            key: value for key, value in memory_report.items() if key != "search_memory"
+        },
         "schema_version": "phase3r_limit_diagnostic_ledger_v2_event_adapter_metadata",
     }
     _write_json(output_root / "phase3r_limit_diagnostic_candidate_ledger.json", candidate_ledger)
@@ -302,7 +406,11 @@ def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_r
         "motif_pack": str(motif_pack),
         "o7_prior_decision": o7.get("decision"),
         "candidate_template_count": len(rows),
+        "pre_memory_candidate_template_count": len(all_rows),
         "new_event_adapter_candidate_count": int(sum(bool(row.get("contains_new_event_adapter_field")) for row in rows)),
+        "search_memory": {
+            key: value for key, value in memory_report.items() if key != "search_memory"
+        },
         "roles": sorted({row["diagnostic_role"] for row in rows}),
         "hard_boundaries": [
             "not_official_budget",
@@ -315,6 +423,7 @@ def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_r
         "outputs": {
             "candidate_templates_csv": str(output_root / "phase3r_limit_diagnostic_candidate_templates.csv"),
             "candidate_ledger_json": str(output_root / "phase3r_limit_diagnostic_candidate_ledger.json"),
+            "search_memory_json": str(output_root / "search_memory.json"),
             "summary_json": str(output_root / "phase3r_limit_motif_pack_diagnostic.json"),
             "summary_md": str(output_root / REPORT_FILENAME),
         },
@@ -326,6 +435,9 @@ def run(*, motif_pack: Path, o7_summary_path: Path, output_root: Path, max_per_r
         f"- decision: `{summary['decision']}`",
         f"- prior O7 decision: `{summary['o7_prior_decision']}`",
         f"- candidate_template_count: `{summary['candidate_template_count']}`",
+        f"- pre_memory_candidate_template_count: `{summary['pre_memory_candidate_template_count']}`",
+        f"- duplicate_skip_count: `{summary['search_memory']['duplicate_skip_count']}`",
+        f"- search_memory_json: `{summary['outputs']['search_memory_json']}`",
         "- status: diagnostic only; not official book budget.",
         "",
         "## Roles",
@@ -359,6 +471,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--o7-summary", type=Path, default=DEFAULT_O7_SUMMARY)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--max-per-role", type=int, default=24)
+    parser.add_argument("--previous-memory-root", type=Path, default=None)
+    parser.add_argument("--dataset-role", default="stock_pit_panel")
     return parser.parse_args()
 
 
@@ -369,6 +483,8 @@ def main() -> int:
         o7_summary_path=args.o7_summary,
         output_root=args.output_root,
         max_per_role=args.max_per_role,
+        previous_memory_root=args.previous_memory_root,
+        dataset_role=args.dataset_role,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
     return 0

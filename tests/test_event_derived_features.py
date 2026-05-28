@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+import json
+import tempfile
+from pathlib import Path
+
 import pandas as pd
 
+from our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic import _candidate_rows, run as run_limit_motif_diagnostic
 from our_system_phase2.services.event_derived_features import (
     attach_event_derived_features,
     event_derived_feature_coverage_report,
@@ -14,7 +19,7 @@ from our_system_phase2.services.real_market_validation import (
     _signal_evaluation_frame,
     evaluate_panel_expression,
 )
-from our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic import _candidate_rows
+from our_system_phase2.services.search_memory import expression_memory_key, skeleton_memory_key
 
 
 def _sample_panel() -> pd.DataFrame:
@@ -110,8 +115,58 @@ def test_limit_motif_diagnostic_uses_event_adapter_metadata() -> None:
         "tradability_rule",
         "leakage_flag",
         "search_memory_key",
+        "pool_priority_score",
+        "source_quota_group",
+        "source_credit_cap_basis",
     }
     for row in formula_rows:
         assert required.issubset(row)
         assert row["feature_adapter"] == "event_derived_feature_layer"
         assert row["search_memory_key"].startswith("event_adapter:")
+        assert float(row["pool_priority_score"]) > 0.0
+        assert row["source_credit_cap_basis"] == row["search_memory_key"]
+
+
+def test_limit_motif_diagnostic_writes_and_inherits_search_memory() -> None:
+    first_expression = next(
+        row["expression"]
+        for row in _candidate_rows(max_per_role=24)
+        if row["diagnostic_role"] != "r3_secondary_gate"
+    )
+    with tempfile.TemporaryDirectory(prefix="event-adapter-memory-test-") as temp:
+        root = Path(temp)
+        previous = root / "previous"
+        previous.mkdir()
+        previous_payload = {
+            "run_id": "previous-memory",
+            "expression_keys": [expression_memory_key(first_expression)],
+            "skeleton_keys": [skeleton_memory_key(first_expression)],
+            "records": [
+                {
+                    "candidate_id": "previous-duplicate",
+                    "expression_key": expression_memory_key(first_expression),
+                    "skeleton_key": skeleton_memory_key(first_expression),
+                    "real_replay_dataset_role": "stock_pit_panel",
+                }
+            ],
+            "duplicate_skip_events": [],
+            "inherited_paths": [],
+            "replay_enrichment_paths": [],
+        }
+        (previous / "search_memory.json").write_text(json.dumps(previous_payload), encoding="utf-8")
+
+        out = root / "out"
+        summary = run_limit_motif_diagnostic(
+            motif_pack=Path("src/our_system_phase2/formula_gen_v2/motif_pack_limit_diagnostic.yaml"),
+            o7_summary_path=Path("missing-o7.json"),
+            output_root=out,
+            max_per_role=24,
+            previous_memory_root=previous,
+            dataset_role="stock_pit_panel",
+        )
+
+        assert summary["search_memory"]["duplicate_skip_count"] == 1
+        assert summary["candidate_template_count"] == summary["pre_memory_candidate_template_count"] - 1
+        memory = json.loads((out / "search_memory.json").read_text(encoding="utf-8"))
+        assert memory["duplicate_skip_count"] == 1
+        assert memory["dataset_role_filter"]["expected_dataset_role"] == "stock_pit_panel"

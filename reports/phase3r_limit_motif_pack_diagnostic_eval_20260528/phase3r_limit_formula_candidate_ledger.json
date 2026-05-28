@@ -1,397 +1,11 @@
 {
-  "created_at": "2026-05-28T23:30:20+08:00",
-  "feature_adapter_contract": {
-    "adapter": "event_derived_feature_layer",
-    "default_max_streak_n": 10,
-    "default_post_high_board_days": [
-      1,
-      2,
-      3,
-      5
-    ],
-    "fields": [
-      "break_after_high_board_tplus_1",
-      "break_after_high_board_tplus_2",
-      "break_after_high_board_tplus_3",
-      "break_after_high_board_tplus_5",
-      "break_board_after_streak_ge_1",
-      "break_board_after_streak_ge_10",
-      "break_board_after_streak_ge_2",
-      "break_board_after_streak_ge_3",
-      "break_board_after_streak_ge_4",
-      "break_board_after_streak_ge_5",
-      "break_board_after_streak_ge_6",
-      "break_board_after_streak_ge_7",
-      "break_board_after_streak_ge_8",
-      "break_board_after_streak_ge_9",
-      "high_board_rank",
-      "is_market_high_board",
-      "limit_down_close_event",
-      "limit_down_event",
-      "limit_down_open_event",
-      "limit_down_open_not_close",
-      "limit_down_rebound_after_streak_ge_1",
-      "limit_down_rebound_after_streak_ge_10",
-      "limit_down_rebound_after_streak_ge_2",
-      "limit_down_rebound_after_streak_ge_3",
-      "limit_down_rebound_after_streak_ge_4",
-      "limit_down_rebound_after_streak_ge_5",
-      "limit_down_rebound_after_streak_ge_6",
-      "limit_down_rebound_after_streak_ge_7",
-      "limit_down_rebound_after_streak_ge_8",
-      "limit_down_rebound_after_streak_ge_9",
-      "limit_down_repair",
-      "limit_down_streak",
-      "limit_down_streak_close",
-      "limit_down_streak_ge_1",
-      "limit_down_streak_ge_10",
-      "limit_down_streak_ge_2",
-      "limit_down_streak_ge_3",
-      "limit_down_streak_ge_4",
-      "limit_down_streak_ge_5",
-      "limit_down_streak_ge_6",
-      "limit_down_streak_ge_7",
-      "limit_down_streak_ge_8",
-      "limit_down_streak_ge_9",
-      "limit_down_streak_touch",
-      "limit_down_touch_event",
-      "limit_down_touch_not_close",
-      "limit_down_touch_streak_ge_1",
-      "limit_down_touch_streak_ge_10",
-      "limit_down_touch_streak_ge_2",
-      "limit_down_touch_streak_ge_3",
-      "limit_down_touch_streak_ge_4",
-      "limit_down_touch_streak_ge_5",
-      "limit_down_touch_streak_ge_6",
-      "limit_down_touch_streak_ge_7",
-      "limit_down_touch_streak_ge_8",
-      "limit_down_touch_streak_ge_9",
-      "limit_flip_down_to_up",
-      "limit_flip_up_to_down",
-      "limit_up_break",
-      "limit_up_close_event",
-      "limit_up_event",
-      "limit_up_open_event",
-      "limit_up_open_not_close",
-      "limit_up_streak",
-      "limit_up_streak_close",
-      "limit_up_streak_ge_1",
-      "limit_up_streak_ge_10",
-      "limit_up_streak_ge_2",
-      "limit_up_streak_ge_3",
-      "limit_up_streak_ge_4",
-      "limit_up_streak_ge_5",
-      "limit_up_streak_ge_6",
-      "limit_up_streak_ge_7",
-      "limit_up_streak_ge_8",
-      "limit_up_streak_ge_9",
-      "limit_up_streak_touch",
-      "limit_up_touch_event",
-      "limit_up_touch_not_close",
-      "limit_up_touch_streak_ge_1",
-      "limit_up_touch_streak_ge_10",
-      "limit_up_touch_streak_ge_2",
-      "limit_up_touch_streak_ge_3",
-      "limit_up_touch_streak_ge_4",
-      "limit_up_touch_streak_ge_5",
-      "limit_up_touch_streak_ge_6",
-      "limit_up_touch_streak_ge_7",
-      "limit_up_touch_streak_ge_8",
-      "limit_up_touch_streak_ge_9",
-      "market_high_board",
-      "post_market_high_board_tplus_1",
-      "post_market_high_board_tplus_2",
-      "post_market_high_board_tplus_3",
-      "post_market_high_board_tplus_5",
-      "streak_gap_to_market_high"
-    ],
-    "full_day_fields": [
-      "break_after_high_board_tplus_1",
-      "break_after_high_board_tplus_2",
-      "break_after_high_board_tplus_3",
-      "break_after_high_board_tplus_5",
-      "break_board_after_streak_ge_1",
-      "break_board_after_streak_ge_10",
-      "break_board_after_streak_ge_2",
-      "break_board_after_streak_ge_3",
-      "break_board_after_streak_ge_4",
-      "break_board_after_streak_ge_5",
-      "break_board_after_streak_ge_6",
-      "break_board_after_streak_ge_7",
-      "break_board_after_streak_ge_8",
-      "break_board_after_streak_ge_9",
-      "high_board_rank",
-      "is_market_high_board",
-      "limit_down_close_event",
-      "limit_down_event",
-      "limit_down_open_not_close",
-      "limit_down_rebound_after_streak_ge_1",
-      "limit_down_rebound_after_streak_ge_10",
-      "limit_down_rebound_after_streak_ge_2",
-      "limit_down_rebound_after_streak_ge_3",
-      "limit_down_rebound_after_streak_ge_4",
-      "limit_down_rebound_after_streak_ge_5",
-      "limit_down_rebound_after_streak_ge_6",
-      "limit_down_rebound_after_streak_ge_7",
-      "limit_down_rebound_after_streak_ge_8",
-      "limit_down_rebound_after_streak_ge_9",
-      "limit_down_repair",
-      "limit_down_streak",
-      "limit_down_streak_close",
-      "limit_down_streak_ge_1",
-      "limit_down_streak_ge_10",
-      "limit_down_streak_ge_2",
-      "limit_down_streak_ge_3",
-      "limit_down_streak_ge_4",
-      "limit_down_streak_ge_5",
-      "limit_down_streak_ge_6",
-      "limit_down_streak_ge_7",
-      "limit_down_streak_ge_8",
-      "limit_down_streak_ge_9",
-      "limit_down_streak_touch",
-      "limit_down_touch_event",
-      "limit_down_touch_not_close",
-      "limit_down_touch_streak_ge_1",
-      "limit_down_touch_streak_ge_10",
-      "limit_down_touch_streak_ge_2",
-      "limit_down_touch_streak_ge_3",
-      "limit_down_touch_streak_ge_4",
-      "limit_down_touch_streak_ge_5",
-      "limit_down_touch_streak_ge_6",
-      "limit_down_touch_streak_ge_7",
-      "limit_down_touch_streak_ge_8",
-      "limit_down_touch_streak_ge_9",
-      "limit_flip_down_to_up",
-      "limit_flip_up_to_down",
-      "limit_up_break",
-      "limit_up_close_event",
-      "limit_up_event",
-      "limit_up_open_not_close",
-      "limit_up_streak",
-      "limit_up_streak_close",
-      "limit_up_streak_ge_1",
-      "limit_up_streak_ge_10",
-      "limit_up_streak_ge_2",
-      "limit_up_streak_ge_3",
-      "limit_up_streak_ge_4",
-      "limit_up_streak_ge_5",
-      "limit_up_streak_ge_6",
-      "limit_up_streak_ge_7",
-      "limit_up_streak_ge_8",
-      "limit_up_streak_ge_9",
-      "limit_up_streak_touch",
-      "limit_up_touch_event",
-      "limit_up_touch_not_close",
-      "limit_up_touch_streak_ge_1",
-      "limit_up_touch_streak_ge_10",
-      "limit_up_touch_streak_ge_2",
-      "limit_up_touch_streak_ge_3",
-      "limit_up_touch_streak_ge_4",
-      "limit_up_touch_streak_ge_5",
-      "limit_up_touch_streak_ge_6",
-      "limit_up_touch_streak_ge_7",
-      "limit_up_touch_streak_ge_8",
-      "limit_up_touch_streak_ge_9",
-      "market_high_board",
-      "post_market_high_board_tplus_1",
-      "post_market_high_board_tplus_2",
-      "post_market_high_board_tplus_3",
-      "post_market_high_board_tplus_5",
-      "streak_gap_to_market_high"
-    ],
-    "open_print_fields": [
-      "limit_down_open_event",
-      "limit_up_open_event"
-    ],
-    "specs": {
-      "high_board_rank": {
-        "availability_clock": "after_close",
-        "description": "Cross-sectional dense rank of close-lock limit-up streak, descending.",
-        "family": "high_board",
-        "lag_rule": "same_day_close_streak; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_streak_close"
-        ],
-        "tradability_rule": "not_a_tradeability_filter"
-      },
-      "is_market_high_board": {
-        "availability_clock": "after_close",
-        "description": "Stock is tied for the market high-board streak on the date.",
-        "family": "high_board",
-        "lag_rule": "same_day_close_streak; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_streak_close",
-          "market_high_board"
-        ],
-        "tradability_rule": "high_board_member_may_be_untradeable"
-      },
-      "limit_down_close_event": {
-        "availability_clock": "after_close",
-        "description": "Close-locked limit-down event.",
-        "family": "limit_close",
-        "lag_rule": "same_day_close_lock; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "tdxgp_limit_status",
-          "is_limit_down",
-          "rt_change_pct",
-          "close"
-        ],
-        "tradability_rule": "entry_sell_blocked_if_next_session_limit_down"
-      },
-      "limit_down_open_event": {
-        "availability_clock": "after_open",
-        "description": "Open printed at or below the limit-down proxy/price.",
-        "family": "limit_open",
-        "lag_rule": "same_day_open_print; pre_open must lag by one session",
-        "leakage_flag": "safe_after_open_only_if_open_print_is_available",
-        "source_fields": [
-          "open",
-          "prev_close",
-          "down_limit_price"
-        ],
-        "tradability_rule": "sell_at_open_may_be_unfilled_when_open_locked_limit_down"
-      },
-      "limit_down_open_not_close": {
-        "availability_clock": "after_close",
-        "description": "Opened limit-down but did not close locked limit-down.",
-        "family": "limit_open_break",
-        "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_down_open_event",
-          "limit_down_close_event"
-        ],
-        "tradability_rule": "open_locked_then_repair_not_assumed_fillable"
-      },
-      "limit_down_touch_event": {
-        "availability_clock": "after_close",
-        "description": "Intraday touched limit-down using low/limit proxy or TDXGP touch state.",
-        "family": "limit_touch",
-        "lag_rule": "same_day_intraday_low; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "low",
-          "prev_close",
-          "down_limit_price",
-          "tdxgp_limit_status"
-        ],
-        "tradability_rule": "intraday_touch_not_assumed_fillable"
-      },
-      "limit_down_touch_not_close": {
-        "availability_clock": "after_close",
-        "description": "Touched limit-down but did not close locked limit-down.",
-        "family": "limit_break",
-        "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_down_touch_event",
-          "limit_down_close_event"
-        ],
-        "tradability_rule": "touch_then_repair_not_assumed_fillable"
-      },
-      "limit_up_close_event": {
-        "availability_clock": "after_close",
-        "description": "Close-locked limit-up event.",
-        "family": "limit_close",
-        "lag_rule": "same_day_close_lock; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "tdxgp_limit_status",
-          "is_limit_up",
-          "rt_change_pct",
-          "close"
-        ],
-        "tradability_rule": "entry_buy_blocked_if_next_session_limit_up"
-      },
-      "limit_up_open_event": {
-        "availability_clock": "after_open",
-        "description": "Open printed at or above the limit-up proxy/price.",
-        "family": "limit_open",
-        "lag_rule": "same_day_open_print; pre_open must lag by one session",
-        "leakage_flag": "safe_after_open_only_if_open_print_is_available",
-        "source_fields": [
-          "open",
-          "prev_close",
-          "up_limit_price"
-        ],
-        "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up"
-      },
-      "limit_up_open_not_close": {
-        "availability_clock": "after_close",
-        "description": "Opened limit-up but did not close locked limit-up.",
-        "family": "limit_open_break",
-        "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_open_event",
-          "limit_up_close_event"
-        ],
-        "tradability_rule": "open_locked_then_break_not_assumed_fillable"
-      },
-      "limit_up_touch_event": {
-        "availability_clock": "after_close",
-        "description": "Intraday touched limit-up using high/limit proxy or TDXGP touch state.",
-        "family": "limit_touch",
-        "lag_rule": "same_day_intraday_high; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "high",
-          "prev_close",
-          "up_limit_price",
-          "tdxgp_limit_status"
-        ],
-        "tradability_rule": "intraday_touch_not_assumed_fillable"
-      },
-      "limit_up_touch_not_close": {
-        "availability_clock": "after_close",
-        "description": "Touched limit-up but did not close locked limit-up.",
-        "family": "limit_break",
-        "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_touch_event",
-          "limit_up_close_event"
-        ],
-        "tradability_rule": "touch_then_break_not_assumed_fillable"
-      },
-      "market_high_board": {
-        "availability_clock": "after_close",
-        "description": "Market-wide maximum close-lock limit-up streak for the date.",
-        "family": "high_board",
-        "lag_rule": "same_day_market_max_streak; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_streak_close"
-        ],
-        "tradability_rule": "market_state_only"
-      },
-      "streak_gap_to_market_high": {
-        "availability_clock": "after_close",
-        "description": "Market high-board streak minus stock close-lock streak.",
-        "family": "high_board",
-        "lag_rule": "same_day_close_streak; after_open must lag by one session",
-        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
-        "source_fields": [
-          "limit_up_streak_close",
-          "market_high_board"
-        ],
-        "tradability_rule": "not_a_tradeability_filter"
-      }
-    },
-    "status": "feature_adapter_diagnostic_ready",
-    "strict_rules": {
-      "open_fields": "available_after_open_but_not_pre_open",
-      "promotion": "diagnostic until strict replay, global clustering, OOS/regime/marginal audit, and chain-lock update",
-      "same_day_close_or_touch_fields": "must_be_lagged_for_after_open_selection",
-      "tradability": "open/close locked limit-up/down may be unfillable; use entry limit masks in replay"
-    },
-    "version": "event-derived-feature-layer-v1-2026-05-28"
+  "created_at": "2026-05-28T23:31:01+08:00",
+  "recommended_validation_kwargs": {
+    "execution_lag_days": 1,
+    "feature_lag_days": 0,
+    "signal_clock": "after_open"
   },
-  "proof_variant": "limit_motif_pack_diagnostic",
-  "record_count": 47,
+  "record_count": 45,
   "records": [
     {
       "candidate_id": "limit_diag_event_factor_001",
@@ -406,13 +20,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:b8bce0c3056379eb",
       "source_credit_cap_basis": "event_adapter:b8bce0c3056379eb",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_close",
       "tradability_rule": "entry_buy_blocked_if_next_session_limit_up",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -428,13 +50,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:517b05433262cbc1",
       "source_credit_cap_basis": "event_adapter:517b05433262cbc1",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_close",
       "tradability_rule": "entry_sell_blocked_if_next_session_limit_down",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -450,13 +80,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:b8bce0c3056379eb",
       "source_credit_cap_basis": "event_adapter:b8bce0c3056379eb",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_close",
       "tradability_rule": "entry_buy_blocked_if_next_session_limit_up",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -472,13 +110,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:278cd4c7dac16ecb",
       "source_credit_cap_basis": "event_adapter:278cd4c7dac16ecb",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_open",
       "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -494,13 +140,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:80ce8966f369ffa7",
       "source_credit_cap_basis": "event_adapter:80ce8966f369ffa7",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_open",
       "tradability_rule": "sell_at_open_may_be_unfilled_when_open_locked_limit_down",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -516,13 +170,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:278cd4c7dac16ecb",
       "source_credit_cap_basis": "event_adapter:278cd4c7dac16ecb",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_open",
       "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -538,13 +200,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:26ec79ba93aaaf95",
       "source_credit_cap_basis": "event_adapter:26ec79ba93aaaf95",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_touch",
       "tradability_rule": "intraday_touch_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -560,13 +230,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:8b2b62324609db45",
       "source_credit_cap_basis": "event_adapter:8b2b62324609db45",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_touch",
       "tradability_rule": "intraday_touch_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -582,13 +260,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:26ec79ba93aaaf95",
       "source_credit_cap_basis": "event_adapter:26ec79ba93aaaf95",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_touch",
       "tradability_rule": "intraday_touch_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -604,13 +290,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:2a2776d689825429",
       "source_credit_cap_basis": "event_adapter:2a2776d689825429",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_break",
       "tradability_rule": "touch_then_break_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -626,13 +320,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:329618c2fb5e7dc6",
       "source_credit_cap_basis": "event_adapter:329618c2fb5e7dc6",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_break",
       "tradability_rule": "touch_then_repair_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -648,13 +350,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:8438c6a8315d5902",
       "source_credit_cap_basis": "event_adapter:8438c6a8315d5902",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_open_break",
       "tradability_rule": "open_locked_then_break_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -670,13 +380,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f57402e4788ab1ea",
       "source_credit_cap_basis": "event_adapter:f57402e4788ab1ea",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -692,13 +410,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:d2375c669e2b265f",
       "source_credit_cap_basis": "event_adapter:d2375c669e2b265f",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -714,13 +440,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:3613a87827f89dce",
       "source_credit_cap_basis": "event_adapter:3613a87827f89dce",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -736,13 +470,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:bb29ce6ab6305c51",
       "source_credit_cap_basis": "event_adapter:bb29ce6ab6305c51",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:high_board",
       "tradability_rule": "not_a_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -758,13 +500,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f9c677ebe36c4488",
       "source_credit_cap_basis": "event_adapter:f9c677ebe36c4488",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:high_board",
       "tradability_rule": "market_state_only",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -780,13 +530,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.85,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:3ec9ed0d8b8a1fc4",
       "source_credit_cap_basis": "event_adapter:3ec9ed0d8b8a1fc4",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:high_board",
       "tradability_rule": "high_board_member_may_be_untradeable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -802,13 +560,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -824,13 +590,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:89206a642991b89b",
       "source_credit_cap_basis": "event_adapter:89206a642991b89b",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_close",
       "tradability_rule": "sell_side_may_be_unfilled_on_limit_down; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -846,13 +620,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:70a5f67d8c606fe4",
       "source_credit_cap_basis": "event_adapter:70a5f67d8c606fe4",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_break",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -868,13 +650,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:58f6734db5ca7610",
       "source_credit_cap_basis": "event_adapter:58f6734db5ca7610",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -890,13 +680,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:b69399b49b2ca14d",
       "source_credit_cap_basis": "event_adapter:b69399b49b2ca14d",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "sell_side_may_be_unfilled_on_limit_down; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -912,13 +710,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.75,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:58f6734db5ca7610",
       "source_credit_cap_basis": "event_adapter:58f6734db5ca7610",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:event_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -934,13 +740,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -956,13 +770,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -978,13 +800,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1000,13 +830,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1022,13 +860,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1044,13 +890,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1066,13 +920,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:6a419745a95b2032",
       "source_credit_cap_basis": "event_adapter:6a419745a95b2032",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1088,13 +950,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:89206a642991b89b",
       "source_credit_cap_basis": "event_adapter:89206a642991b89b",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_close",
       "tradability_rule": "sell_side_may_be_unfilled_on_limit_down; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1110,13 +980,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.8,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:70a5f67d8c606fe4",
       "source_credit_cap_basis": "event_adapter:70a5f67d8c606fe4",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_break",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1132,13 +1010,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:2a2776d689825429",
       "source_credit_cap_basis": "event_adapter:2a2776d689825429",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_break",
       "tradability_rule": "touch_then_break_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1154,13 +1040,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:2a2776d689825429",
       "source_credit_cap_basis": "event_adapter:2a2776d689825429",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_break",
       "tradability_rule": "touch_then_break_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1176,13 +1070,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:2a2776d689825429",
       "source_credit_cap_basis": "event_adapter:2a2776d689825429",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_break",
       "tradability_rule": "touch_then_break_not_assumed_fillable",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1198,13 +1100,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f57402e4788ab1ea",
       "source_credit_cap_basis": "event_adapter:f57402e4788ab1ea",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1220,13 +1130,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f57402e4788ab1ea",
       "source_credit_cap_basis": "event_adapter:f57402e4788ab1ea",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1242,13 +1160,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f57402e4788ab1ea",
       "source_credit_cap_basis": "event_adapter:f57402e4788ab1ea",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:limit_streak",
       "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1264,13 +1190,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:bb29ce6ab6305c51",
       "source_credit_cap_basis": "event_adapter:bb29ce6ab6305c51",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "not_a_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1286,13 +1220,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:bb29ce6ab6305c51",
       "source_credit_cap_basis": "event_adapter:bb29ce6ab6305c51",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "not_a_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1308,13 +1250,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:bb29ce6ab6305c51",
       "source_credit_cap_basis": "event_adapter:bb29ce6ab6305c51",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "not_a_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1330,13 +1280,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:bb29ce6ab6305c51",
       "source_credit_cap_basis": "event_adapter:bb29ce6ab6305c51",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "not_a_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1352,13 +1310,21 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:f9c677ebe36c4488",
       "source_credit_cap_basis": "event_adapter:f9c677ebe36c4488",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "market_state_only",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     },
     {
@@ -1374,70 +1340,25 @@
       "official_book_eligible": false,
       "pool_priority_score": 0.9,
       "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
+      "proof_variant": "limit_motif_pack_diagnostic",
+      "recommended_validation_kwargs": {
+        "execution_lag_days": 1,
+        "feature_lag_days": 0,
+        "signal_clock": "after_open"
+      },
       "required_audits": "gate_lag_check|tradability_exclusion_check|same_day_leakage_check",
       "required_lag_days": 1,
+      "retained": true,
       "search_memory_key": "event_adapter:3ec9ed0d8b8a1fc4",
       "source_credit_cap_basis": "event_adapter:3ec9ed0d8b8a1fc4",
       "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
       "source_quota_group": "event_derived_feature_layer:interaction_factor:high_board",
       "tradability_rule": "high_board_member_may_be_untradeable",
-      "uses_limit_token": true
-    },
-    {
-      "candidate_id": "limit_diag_r3_gate_001",
-      "contains_new_event_adapter_field": false,
-      "diagnostic_role": "r3_secondary_gate",
-      "event_family": "limit_density",
-      "event_fields": "limit_density_high",
-      "expression": "R3_liquidity_low AND limit_density_high",
-      "feature_adapter": "event_derived_feature_layer",
-      "lag_rule": "gate_definition_must_use_lagged_regime_state",
-      "leakage_flag": "requires_gate_lag_audit",
-      "official_book_eligible": false,
-      "pool_priority_score": 0.6,
-      "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
-      "required_audits": "R3_2x2|random_active_day_placebo|inverted_gate",
-      "required_lag_days": 1,
-      "search_memory_key": "event_adapter:r3_limit_density_high",
-      "source_credit_cap_basis": "event_adapter:r3_limit_density_high",
-      "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
-      "source_quota_group": "event_derived_feature_layer:r3_secondary_gate:limit_density",
-      "tradability_rule": "secondary_gate_not_direct_tradeability_filter",
-      "uses_limit_token": true
-    },
-    {
-      "candidate_id": "limit_diag_r3_gate_002",
-      "contains_new_event_adapter_field": false,
-      "diagnostic_role": "r3_secondary_gate",
-      "event_family": "limit_density",
-      "event_fields": "limit_density_not_high",
-      "expression": "R3_liquidity_low AND limit_density_not_high",
-      "feature_adapter": "event_derived_feature_layer",
-      "lag_rule": "gate_definition_must_use_lagged_regime_state",
-      "leakage_flag": "requires_gate_lag_audit",
-      "official_book_eligible": false,
-      "pool_priority_score": 0.6,
-      "pool_priority_version": "candidate-pool-source-priority-v1-2026-05-28",
-      "required_audits": "R3_2x2|random_active_day_placebo|inverted_gate",
-      "required_lag_days": 1,
-      "search_memory_key": "event_adapter:r3_limit_density_not_high",
-      "source_credit_cap_basis": "event_adapter:r3_limit_density_not_high",
-      "source_credit_policy": "metadata_only_opt_in_no_locked_selector_behavior_change",
-      "source_quota_group": "event_derived_feature_layer:r3_secondary_gate:limit_density",
-      "tradability_rule": "secondary_gate_not_direct_tradeability_filter",
+      "true_limit_bakeoff_variant": "limit_motif_pack_diagnostic",
       "uses_limit_token": true
     }
   ],
-  "run_id": "phase3r_limit_motif_pack_diagnostic_v2_event_adapter_memory",
-  "schema_version": "phase3r_limit_diagnostic_ledger_v2_event_adapter_metadata",
-  "scope": "diagnostic_only_no_retraining_no_X0_R3_changes",
-  "search_memory_report": {
-    "active": true,
-    "dataset_role": "stock_pit_panel",
-    "duplicate_skip_count": 0,
-    "input_candidate_count": 47,
-    "kept_candidate_count": 47,
-    "previous_memory_root": null,
-    "run_id": "phase3r_limit_motif_pack_diagnostic_v2_event_adapter_memory"
-  }
+  "run_id": "phase3r_limit_diagnostic_formula_only_eval_v1",
+  "schema_version": "phase3r_limit_formula_eval_ledger_v1",
+  "scope": "diagnostic_only_formula_templates_no_X0_R3_changes"
 }

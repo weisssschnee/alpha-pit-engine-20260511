@@ -48,6 +48,7 @@
   "diagnostic_only_assets": {
     "limit_motif_pack": {
       "runtime_module": "our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic",
+      "cheap_eval_module": "our_system_phase2.runtime.phase3r_limit_diagnostic_cheap_eval",
       "evidence": "reports/phase3r_limit_motif_pack_diagnostic_20260517/PHASE3R_LIMIT_MOTIF_PACK_DIAGNOSTIC_2026-05-17.md",
       "status": "diagnostic_only_not_X0_budget"
     },
@@ -100,6 +101,7 @@
       "event-adapter-integration-smoke": "Diagnostic only.",
       "proof-suite": "Run stock PIT proof suite.",
       "phase3r-limit-diagnostic": "Diagnostic only.",
+      "phase3r-limit-cheap-eval": "Diagnostic only.",
       "z39-validate": "Diagnostic only.",
       "z45b-result-audit": "Diagnostic only.",
       "z45b-deep-identity-audit": "Diagnostic only.",
@@ -134,8 +136,8 @@
   },
   "candidate_pool_priority": {
     "module": "our_system_phase2.services.candidate_pool_priority",
-    "version": "candidate-pool-source-priority-v1-2026-05-25",
-    "status": "opt_in_selector_metadata_and_source_weighting_profile_only",
+    "version": "candidate-pool-source-priority-v1-2026-05-28",
+    "status": "implemented_opt_in_selector_metadata_and_source_weighting_profile_only",
     "policy": "Existing locked G2/X0 behavior is unchanged unless a selector profile explicitly opts into source weighting."
   },
   "feature_workspace_policy": {

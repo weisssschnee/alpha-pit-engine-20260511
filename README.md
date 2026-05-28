@@ -90,11 +90,14 @@ The current executable event/limit adapter is:
 ```powershell
 G:\PythonProject\.venv\Scripts\python.exe app.py --allow-diagnostic event-derived-feature-audit
 G:\PythonProject\.venv\Scripts\python.exe app.py --allow-diagnostic event-adapter-integration-smoke
+G:\PythonProject\.venv\Scripts\python.exe app.py --allow-diagnostic phase3r-limit-cheap-eval
 ```
 
 It builds systematic open/touch/close limit events, streak `n` fields, high-board fields, lag metadata, tradability metadata, and coverage reports.
 
 The integration smoke verifies that those fields enter the diagnostic motif ledger with event-family, lag, leakage, tradability, and search-memory metadata and can be evaluated under the after-open lag policy. It remains diagnostic-only.
+
+The limit/event diagnostic motif scaffold now also emits `search_memory.json` and can inherit prior search memory via `--previous-memory-root`, so follow-up event searches can avoid replaying duplicate expression/skeleton space.
 
 ## Quick Checks
 
