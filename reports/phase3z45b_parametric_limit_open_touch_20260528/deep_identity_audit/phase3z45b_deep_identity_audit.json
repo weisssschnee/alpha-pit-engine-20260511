@@ -1,0 +1,19 @@
+{
+  "action_counts": {
+    "ALLOW_OOS_REGIME_REPLAY": 1,
+    "ALLOW_OOS_REGIME_REPLAY_WITH_STRICT_MISMATCH_FLAG": 2,
+    "HOLD_EXPAND_SAMPLE_BEFORE_REPLAY": 1,
+    "HOLD_TURNOVER_COST_STRESS_BEFORE_OOS": 1
+  },
+  "cluster_count": 5,
+  "decision": "HOLD_RESEARCH_AFTER_IDENTITY_AUDIT",
+  "event_family_counts": {
+    "limit_open_not_close": 1,
+    "limit_streak": 4
+  },
+  "outputs": {
+    "candidate_audit": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\deep_identity_audit\\phase3z45b_deep_identity_candidate_audit.csv",
+    "cluster_audit": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\deep_identity_audit\\phase3z45b_deep_identity_cluster_audit.csv",
+    "markdown": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\deep_identity_audit\\PHASE3Z45B_DEEP_IDENTITY_AUDIT_2026-05-28.md"
+  }
+}

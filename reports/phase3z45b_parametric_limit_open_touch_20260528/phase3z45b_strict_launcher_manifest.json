@@ -1,0 +1,114 @@
+﻿{
+    "experiment_id":  "phase3z45b_parametric_limit_open_touch_boost_20260528",
+    "created_at":  "2026-05-28T18:00:24.2305754+08:00",
+    "source_report_count":  16,
+    "strict_budget":  192,
+    "top_overall_budget":  64,
+    "top_limit_budget":  96,
+    "top_diverse_budget":  32,
+    "decile_sample_per_bucket":  1,
+    "max_per_family":  4,
+    "cost_bps":  10,
+    "top_bottom_quantile":  0.02,
+    "recent_quarter_window_count":  2,
+    "recent_warmup_days":  60,
+    "reward_profile":  "event_long_only_guard_v1",
+    "source_rows":  [
+                        {
+                            "lane":  "ff_parametric_high_board_primary_post",
+                            "shard_dir":  "ff_parametric_high_board_primary_post-shard_00_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45_parametric_limit_open_touch_20260528\\search\\ff_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_parametric_high_board_primary_post",
+                            "shard_dir":  "ff_parametric_high_board_primary_post-shard_01_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45_parametric_limit_open_touch_20260528\\search\\ff_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_parametric_high_board_primary_post",
+                            "shard_dir":  "ff_parametric_high_board_primary_post-shard_02_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45_parametric_limit_open_touch_20260528\\search\\ff_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_parametric_high_board_primary_post",
+                            "shard_dir":  "ff_parametric_high_board_primary_post-shard_03_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45_parametric_limit_open_touch_20260528\\search\\ff_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_parametric_high_board_primary_post",
+                            "shard_dir":  "rx_parametric_high_board_primary_post-shard_00_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_parametric_high_board_primary_post",
+                            "shard_dir":  "rx_parametric_high_board_primary_post-shard_01_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_parametric_high_board_primary_post",
+                            "shard_dir":  "rx_parametric_high_board_primary_post-shard_02_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_parametric_high_board_primary_post",
+                            "shard_dir":  "rx_parametric_high_board_primary_post-shard_03_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_limit_open_touch_split",
+                            "shard_dir":  "ff_limit_open_touch_split-shard_00_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\ff_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_limit_open_touch_split",
+                            "shard_dir":  "ff_limit_open_touch_split-shard_01_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\ff_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_limit_open_touch_split",
+                            "shard_dir":  "ff_limit_open_touch_split-shard_02_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\ff_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "ff_limit_open_touch_split",
+                            "shard_dir":  "ff_limit_open_touch_split-shard_03_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\ff_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_limit_open_touch_split",
+                            "shard_dir":  "rx_limit_open_touch_split-shard_00_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_limit_open_touch_split",
+                            "shard_dir":  "rx_limit_open_touch_split-shard_01_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_limit_open_touch_split",
+                            "shard_dir":  "rx_limit_open_touch_split-shard_02_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json"
+                        },
+                        {
+                            "lane":  "rx_limit_open_touch_split",
+                            "shard_dir":  "rx_limit_open_touch_split-shard_03_of_04",
+                            "source_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\search\\rx_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json",
+                            "validation_report":  "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json"
+                        }
+                    ]
+}

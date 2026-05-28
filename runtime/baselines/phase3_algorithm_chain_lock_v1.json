@@ -1,0 +1,132 @@
+{
+  "lock_id": "phase3_algorithm_chain_lock_v1",
+  "created_date": "2026-05-25",
+  "authority": {
+    "git_remote": "https://github.com/weisssschnee/alpha-pit-engine-20260511.git",
+    "branch": "main",
+    "authority_commit": "f01ddd56797dc0fca66460027747ef1ba782e239",
+    "policy": "Git-tracked files at the authority commit define the official algorithm chain. Local and company-machine outputs are diagnostic unless explicitly promoted through the locked gates."
+  },
+  "official_algorithm_chain": {
+    "discovery_primary": {
+      "name": "G2_signal_vector_diversified_selector",
+      "evidence": "reports/PHASE3H_DECISION_RECORD_2026-05-16.md",
+      "status": "diversified_discovery_primary",
+      "not_status": [
+        "true_book_marginal",
+        "production_ready",
+        "live_trading"
+      ]
+    },
+    "official_shadow": {
+      "name": "X0_official_6_R3_liquidity_low_v1",
+      "object_file": "runtime/baselines/phase3o_x0_official_shadow_v1.json",
+      "stable_object_hash": "454b5b5e225c5acbefb7a49629eb5aec97a07871625bf38e2aeb3ee2b68af896",
+      "evidence": "reports/PHASE3O_REGIME_GATED_SHADOW_DECISION_RECORD_2026-05-17.md",
+      "status": "official_daily_shadow",
+      "evidence_level": "L2.5_daily_regime_gated_shadow_proof"
+    },
+    "book_filters": {
+      "object_file": "runtime/baselines/phase3j_locked_book_filters.json",
+      "baseline_book_candidate": "J2_balanced",
+      "overlay_candidate": "J4_relaxed",
+      "status": "book_readiness_filters_not_production_capacity_model"
+    },
+    "forward_shadow": {
+      "name": "Phase3P_locked_daily_forward",
+      "runtime_module": "our_system_phase2.runtime.phase3p_locked_daily_forward",
+      "evidence": "reports/phase3p_locked_daily_forward_20260517/PHASE3P_LOCKED_DAILY_FORWARD_2026-05-17.md",
+      "policy": "append_only_after_freeze"
+    },
+    "bias_and_split_audit": {
+      "name": "Phase3S_time_split_research_freedom_audit",
+      "runtime_module": "our_system_phase2.runtime.phase3s_time_split_research_freedom_audit",
+      "evidence": "reports/phase3s_time_split_research_freedom_audit_20260522/PHASE3S_TIME_SPLIT_RESEARCH_FREEDOM_AUDIT_2026-05-22.md",
+      "decision": "PASS_TIME_SPLIT_AUDIT_WITH_LOCKED_FORWARD_REQUIRED"
+    }
+  },
+  "diagnostic_only_assets": {
+    "limit_motif_pack": {
+      "runtime_module": "our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic",
+      "evidence": "reports/phase3r_limit_motif_pack_diagnostic_20260517/PHASE3R_LIMIT_MOTIF_PACK_DIAGNOSTIC_2026-05-17.md",
+      "status": "diagnostic_only_not_X0_budget"
+    },
+    "phase3t_to_phase3z_local": {
+      "status": "local_diagnostic_unpromoted",
+      "policy": "May be used as candidate source only after strict replay, global clustering, leakage audit, OOS/regime audit, and explicit promotion record."
+    },
+    "phase3z39_company_validation": {
+      "status": "local_company_diagnostic_unpromoted",
+      "observed_result": "Validation found strict low-corr candidates, but no official promotion record exists.",
+      "policy": "Cannot alter X0/R3, G2, J2/J4, or Phase3P locked forward without promotion gate."
+    },
+    "phase3z45b_parametric_limit_open_touch": {
+      "runtime_modules": [
+        "our_system_phase2.runtime.phase3z45b_parametric_limit_result_audit",
+        "our_system_phase2.runtime.phase3z45b_deep_identity_audit",
+        "our_system_phase2.runtime.phase3z45b_oos_regime_candidate_audit",
+        "our_system_phase2.runtime.phase3z45b_vs_x0_marginal_audit",
+        "our_system_phase2.runtime.phase3z45b_regime_timing_audit",
+        "our_system_phase2.runtime.phase3z45b_regime_fragility_audit"
+      ],
+      "evidence": "reports/PHASE3Z45B_RESEARCH_DECISION_RECORD_2026-05-28.md",
+      "status": "diagnostic_only_failed_promotion",
+      "policy": "Cannot alter X0/R3, G2, J2/J4, or Phase3P locked forward. Results may only inform future reward redesign."
+    }
+  },
+  "entrypoint_policy": {
+    "official_entrypoint": "app.py",
+    "diagnostic_requires_flag": "--allow-diagnostic",
+    "commands": {
+      "status": "Print this lock summary.",
+      "phase3h-official": "Run Phase3H shared-pool official path.",
+      "phase3h-aggregate": "Aggregate Phase3H official shared path.",
+      "phase3j-filter-audit": "Run Phase3J cluster book filter audit.",
+      "phase3k-locked-validation": "Run locked book validation.",
+      "phase3o-freeze-x0": "Rebuild/freeze X0 official shadow object.",
+      "phase3p-forward": "Run locked daily forward export.",
+      "phase3s-time-split-audit": "Run time split / research freedom audit.",
+      "runtime-state": "Inspect/update lightweight runtime state registry.",
+      "diagnostic-catalog": "Catalog local diagnostic assets without promoting them.",
+      "promotion-triage": "Triage diagnostic assets for promotion gate readiness.",
+      "proof-suite": "Run stock PIT proof suite.",
+      "phase3r-limit-diagnostic": "Diagnostic only.",
+      "z39-validate": "Diagnostic only.",
+      "z45b-result-audit": "Diagnostic only.",
+      "z45b-deep-identity-audit": "Diagnostic only.",
+      "z45b-oos-regime-audit": "Diagnostic only.",
+      "z45b-vs-x0-marginal-audit": "Diagnostic only.",
+      "z45b-regime-timing-audit": "Diagnostic only.",
+      "z45b-regime-fragility-audit": "Diagnostic only."
+    }
+  },
+  "promotion_gates": [
+    "frozen_queue_before_replay",
+    "no_replay_label_in_selection",
+    "strict_replay_pass",
+    "global_cluster_not_seed_local",
+    "new_vs_current_discovery_baseline",
+    "time_split_or_locked_forward_accounting",
+    "leakage_and_cache_audit",
+    "explicit_decision_record",
+    "chain_lock_update"
+  ],
+  "blocked_without_new_decision_record": [
+    "replace_X0_official_shadow",
+    "replace_G2_discovery_primary",
+    "promote_phase3z_diagnostic_assets",
+    "call_any_strategy_production_ready",
+    "use_oracle_or_posthoc_combo_as_official_book"
+  ],
+  "runtime_state_registry": {
+    "module": "our_system_phase2.runtime.phase3_runtime_state_registry",
+    "default_state_path": "runtime/phase3_runtime_state_registry.json",
+    "purpose": "Single operational source of truth for active local/company/cloud jobs. It is not an alpha promotion record."
+  },
+  "candidate_pool_priority": {
+    "module": "our_system_phase2.services.candidate_pool_priority",
+    "version": "candidate-pool-source-priority-v1-2026-05-25",
+    "status": "opt_in_selector_metadata_and_source_weighting_profile_only",
+    "policy": "Existing locked G2/X0 behavior is unchanged unless a selector profile explicitly opts into source weighting."
+  }
+}

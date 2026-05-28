@@ -1,0 +1,68 @@
+{
+  "cluster_count": 39,
+  "decision": "HOLD_RESEARCH_FOR_CANDIDATE_DEEP_AUDIT",
+  "deep_audit_cluster_count": 5,
+  "limit_deep_audit_cluster_count": 5,
+  "limit_event_vs_non_limit_summary": {
+    "limit_event": {
+      "cost_survival_count": 27,
+      "cost_survival_rate": 0.267327,
+      "family_entropy": 3.477614,
+      "fast_to_strict_decay_mean": -0.000468,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "low_corr_strict_pass_count": 6,
+      "portfolio_replay_pass_count": 6,
+      "portfolio_replay_pass_rate": 0.059406,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0,
+      "signal_cluster_entropy": 2.993173,
+      "strict_audited_count": 101,
+      "strict_pass_count": 22,
+      "strict_pass_rate": 0.217822
+    },
+    "non_limit": {
+      "cost_survival_count": 57,
+      "cost_survival_rate": 0.626374,
+      "family_entropy": 3.941154,
+      "fast_to_strict_decay_mean": 0.002657,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "low_corr_strict_pass_count": 7,
+      "portfolio_replay_pass_count": 16,
+      "portfolio_replay_pass_rate": 0.175824,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0,
+      "signal_cluster_entropy": 2.649753,
+      "strict_audited_count": 91,
+      "strict_pass_count": 35,
+      "strict_pass_rate": 0.384615
+    }
+  },
+  "nonlimit_deep_audit_cluster_count": 0,
+  "output_dir": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\audit",
+  "outputs": {
+    "candidate_shortlist": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\audit\\phase3z45b_candidate_shortlist.csv",
+    "cluster_summary": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\audit\\phase3z45b_cluster_summary.csv",
+    "event_bucket_summary": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\audit\\phase3z45b_event_bucket_summary.csv",
+    "markdown": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\audit\\PHASE3Z45B_PARAMETRIC_LIMIT_RESULT_AUDIT_2026-05-28.md"
+  },
+  "report_dir": "reports\\phase3z45b_parametric_limit_open_touch_20260528",
+  "strict_metric_summary": {
+    "cost_survival_count": 84,
+    "cost_survival_rate": 0.4375,
+    "family_entropy": 4.389103,
+    "fast_to_strict_decay_mean": 0.001013,
+    "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+    "low_corr_strict_pass_count": 10,
+    "portfolio_replay_pass_count": 22,
+    "portfolio_replay_pass_rate": 0.114583,
+    "random_pass_through_count": 0,
+    "random_pass_through_strict_pass_count": 0,
+    "random_pass_through_strict_pass_rate": 0.0,
+    "signal_cluster_entropy": 3.277892,
+    "strict_audited_count": 192,
+    "strict_pass_count": 57,
+    "strict_pass_rate": 0.296875
+  }
+}

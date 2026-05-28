@@ -1,0 +1,15 @@
+{
+  "candidate_count": 5,
+  "decision": "HOLD_RESEARCH_NO_FORMAL_OVERLAY_PROMOTION",
+  "decision_counts": {
+    "REJECT_OVERLAY_HIGH_TURNOVER": 1,
+    "REJECT_OVERLAY_NO_MARGINAL_VALUE": 4
+  },
+  "outputs": {
+    "audit_csv": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\vs_x0_marginal_audit\\phase3z45b_vs_x0_marginal_audit.csv",
+    "daily_csv": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\vs_x0_marginal_audit\\phase3z45b_vs_x0_marginal_daily.csv",
+    "markdown": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\vs_x0_marginal_audit\\PHASE3Z45B_VS_X0_MARGINAL_AUDIT_2026-05-28.md"
+  },
+  "x0_r3_ann_compound": 0.723808,
+  "x0_r3_sortino": 6.209199
+}

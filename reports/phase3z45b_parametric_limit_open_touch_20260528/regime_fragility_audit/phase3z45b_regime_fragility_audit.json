@@ -1,0 +1,10 @@
+{
+  "candidate_count": 5,
+  "decision": "HOLD_RESEARCH_REGIME_FRAGILITY_AUDIT_COMPLETE",
+  "fragile_oos_count": 5,
+  "outputs": {
+    "daily_csv": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\regime_fragility_audit\\phase3z45b_best_slice_daily_returns.csv",
+    "fragility_csv": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\regime_fragility_audit\\phase3z45b_regime_fragility.csv",
+    "markdown": "reports\\phase3z45b_parametric_limit_open_touch_20260528\\regime_fragility_audit\\PHASE3Z45B_REGIME_FRAGILITY_AUDIT_2026-05-28.md"
+  }
+}

@@ -1,0 +1,1237 @@
+{
+  "flow_version": "phase3z39-automated-validation-flow-v1-2026-05-25",
+  "created_at": "2026-05-28T10:23:47+00:00",
+  "decision": "PASS_AUTOMATED_VALIDATION_HAS_STRICT_LOW_CORR_CANDIDATES_NOT_PROMOTION",
+  "scope": "research_validation_only_no_alpha_promotion",
+  "search_root": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source",
+  "output_root": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation",
+  "dataset_path": "D:\\HermesWorker\\data\\phase3n_stock_tdx_official_20200101_to_20260508_maxopt.parquet",
+  "stage1_report_count": 16,
+  "reward_profile": "event_long_only_guard_v1",
+  "queue_summary": {
+    "raw_stage1_rows": 3619,
+    "deduped_expression_rows": 3523,
+    "strict_queue_count": 192,
+    "strict_budget": 192,
+    "selection_role_counts": {
+      "top_reward": 64,
+      "top_limit_event_reward": 96,
+      "family_diverse_reward": 32
+    },
+    "limit_event_queue_count": 101,
+    "family_counts_top20": [
+      [
+        "turnover_ratio_x_limit_up_streak_ge9_density_curve",
+        5
+      ],
+      [
+        "volume_ratio_x_limit_up_streak_ge9_density_curve",
+        5
+      ],
+      [
+        "market_high_board_leader_ge9_density_zscore",
+        4
+      ],
+      [
+        "market_high_board_leader_ge9_density_rank",
+        4
+      ],
+      [
+        "amount_ratio_x_limit_up_streak_ge10_density_curve",
+        4
+      ],
+      [
+        "amount_ratio_x_limit_up_streak_ge9_density_curve",
+        4
+      ],
+      [
+        "turnover_ratio_x_limit_up_streak_ge8_density_curve",
+        4
+      ],
+      [
+        "volume_ratio_x_limit_up_streak_ge8_density_curve",
+        4
+      ],
+      [
+        "amount_ratio_x_limit_up_streak_ge8_density_curve",
+        4
+      ],
+      [
+        "limit_up_touch_recent_count_zscore",
+        4
+      ],
+      [
+        "limit_up_touch_recent_count_rank",
+        4
+      ],
+      [
+        "volume_ratio_x_limit_up_touch_not_close_density_curve",
+        4
+      ],
+      [
+        "amount_ratio_x_limit_up_touch_not_close_density_curve",
+        4
+      ],
+      [
+        "turnover_ratio_x_limit_up_touch_not_close_density_curve",
+        4
+      ],
+      [
+        "limit_up_touch_not_close_density_zscore",
+        4
+      ],
+      [
+        "limit_up_touch_not_close_density_rank",
+        4
+      ],
+      [
+        "limit_up_streak_ge1_density_zscore",
+        4
+      ],
+      [
+        "market_high_board_primary_leader_ge9_density_zscore",
+        3
+      ],
+      [
+        "market_high_board_primary_leader_ge9_density_rank",
+        3
+      ],
+      [
+        "market_high_board_leader_ge8_density_rank",
+        3
+      ]
+    ]
+  },
+  "strict_metric_summary": {
+    "strict_audited_count": 192,
+    "strict_pass_count": 57,
+    "strict_pass_rate": 0.296875,
+    "low_corr_strict_pass_count": 10,
+    "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+    "portfolio_replay_pass_count": 22,
+    "portfolio_replay_pass_rate": 0.114583,
+    "cost_survival_count": 84,
+    "cost_survival_rate": 0.4375,
+    "fast_to_strict_decay_mean": 0.001013,
+    "family_entropy": 4.389103,
+    "signal_cluster_entropy": 3.277892,
+    "random_pass_through_count": 0,
+    "random_pass_through_strict_pass_count": 0,
+    "random_pass_through_strict_pass_rate": 0.0
+  },
+  "role_summary": [
+    {
+      "strict_selection_role": "family_diverse_reward",
+      "strict_audited_count": 32,
+      "strict_pass_count": 10,
+      "strict_pass_rate": 0.3125,
+      "low_corr_strict_pass_count": 2,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 6,
+      "portfolio_replay_pass_rate": 0.1875,
+      "cost_survival_count": 18,
+      "cost_survival_rate": 0.5625,
+      "fast_to_strict_decay_mean": 0.003321,
+      "family_entropy": 3.465736,
+      "signal_cluster_entropy": 2.200604,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "strict_selection_role": "top_limit_event_reward",
+      "strict_audited_count": 96,
+      "strict_pass_count": 18,
+      "strict_pass_rate": 0.1875,
+      "low_corr_strict_pass_count": 5,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 4,
+      "portfolio_replay_pass_rate": 0.041667,
+      "cost_survival_count": 23,
+      "cost_survival_rate": 0.239583,
+      "fast_to_strict_decay_mean": -0.000761,
+      "family_entropy": 3.443152,
+      "signal_cluster_entropy": 2.955574,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "strict_selection_role": "top_reward",
+      "strict_audited_count": 64,
+      "strict_pass_count": 29,
+      "strict_pass_rate": 0.453125,
+      "low_corr_strict_pass_count": 6,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 12,
+      "portfolio_replay_pass_rate": 0.1875,
+      "cost_survival_count": 43,
+      "cost_survival_rate": 0.671875,
+      "fast_to_strict_decay_mean": 0.00252,
+      "family_entropy": 3.860941,
+      "signal_cluster_entropy": 2.528065,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    }
+  ],
+  "decile_summary": [
+    {
+      "reward_decile": 1,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 2,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 3,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 4,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 5,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 6,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 7,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 8,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 9,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    {
+      "reward_decile": 10,
+      "strict_audited_count": 0,
+      "strict_pass_count": 0,
+      "strict_pass_rate": 0.0,
+      "low_corr_strict_pass_count": 0,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 0,
+      "portfolio_replay_pass_rate": 0.0,
+      "cost_survival_count": 0,
+      "cost_survival_rate": 0.0,
+      "fast_to_strict_decay_mean": null,
+      "family_entropy": 0.0,
+      "signal_cluster_entropy": 0.0,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    }
+  ],
+  "limit_event_vs_non_limit_summary": {
+    "limit_event": {
+      "strict_audited_count": 101,
+      "strict_pass_count": 22,
+      "strict_pass_rate": 0.217822,
+      "low_corr_strict_pass_count": 6,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 6,
+      "portfolio_replay_pass_rate": 0.059406,
+      "cost_survival_count": 27,
+      "cost_survival_rate": 0.267327,
+      "fast_to_strict_decay_mean": -0.000468,
+      "family_entropy": 3.477614,
+      "signal_cluster_entropy": 2.993173,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    },
+    "non_limit": {
+      "strict_audited_count": 91,
+      "strict_pass_count": 35,
+      "strict_pass_rate": 0.384615,
+      "low_corr_strict_pass_count": 7,
+      "low_corr_definition": "unique_signal_cluster_count_among_strict_pass_rows",
+      "portfolio_replay_pass_count": 16,
+      "portfolio_replay_pass_rate": 0.175824,
+      "cost_survival_count": 57,
+      "cost_survival_rate": 0.626374,
+      "fast_to_strict_decay_mean": 0.002657,
+      "family_entropy": 3.941154,
+      "signal_cluster_entropy": 2.649753,
+      "random_pass_through_count": 0,
+      "random_pass_through_strict_pass_count": 0,
+      "random_pass_through_strict_pass_rate": 0.0
+    }
+  },
+  "portfolio_replay_report": {
+    "portfolio_replay_count": 192,
+    "unique_expression_replay_count": 192,
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-05-08",
+    "cost_bps": 10.0
+  },
+  "signal_cluster_report": {
+    "cluster_count": 39,
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "signal_cluster_entropy": 3.277892,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 21,
+        "cluster_budget_share": 0.109375,
+        "strict_pass_count": 21,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 5,
+        "cluster_replay_pass_rate": 0.238095,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,11))),ZScore(Sub(Mean(Delay($limit_up_streak_ge9,1),2),Mean(Delay($limit_up_streak_ge9,1),11))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 17,
+        "cluster_budget_share": 0.088542,
+        "strict_pass_count": 4,
+        "cluster_strict_pass_rate": 0.235294,
+        "cluster_replay_contribution_count": 5,
+        "cluster_replay_pass_rate": 0.294118,
+        "representative_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge9,1),8)))"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 14,
+        "cluster_budget_share": 0.072917,
+        "strict_pass_count": 10,
+        "cluster_strict_pass_rate": 0.714286,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))"
+      },
+      {
+        "signal_cluster_id": "cluster_038",
+        "candidate_count": 13,
+        "cluster_budget_share": 0.067708,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Mean(Delay($limit_up_streak,1),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_036",
+        "candidate_count": 12,
+        "cluster_budget_share": 0.0625,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_touch_not_close,1),2),Mean(Delay($limit_up_touch_not_close,1),24))),CSRank(Div(Mean($volume,1),Mean($volume,24)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_017",
+        "candidate_count": 10,
+        "cluster_budget_share": 0.052083,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 5,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),15)))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 9,
+        "cluster_budget_share": 0.046875,
+        "strict_pass_count": 9,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($volume,1),Mean($volume,5))),ZScore(Sub(Mean(Delay($market_high_board_leader_ge9,1),2),Mean(Delay($market_high_board_leader_ge9,1),5))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),7)))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 0.333333,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($market_high_board_leader_ge8,1),2),Mean(Delay($market_high_board_leader_ge8,1),5))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_011",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank($post_market_high_board_active_ge8_d1))"
+      },
+      {
+        "signal_cluster_id": "cluster_018",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_027",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Mul(Mean(Delay($limit_up_touch_event,1),3),3)))"
+      },
+      {
+        "signal_cluster_id": "cluster_035",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Mean(Delay($limit_up_touch_not_close,1),5)))"
+      },
+      {
+        "signal_cluster_id": "cluster_039",
+        "candidate_count": 6,
+        "cluster_budget_share": 0.03125,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Mean(Delay($limit_up_streak,1),6)))"
+      },
+      {
+        "signal_cluster_id": "cluster_029",
+        "candidate_count": 5,
+        "cluster_budget_share": 0.026042,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_open_not_close,1),2),Mean(Delay($limit_up_open_not_close,1),27))),CSRank(Div(Mean($amount,1),Mean($amount,27)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.020833,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($break_after_high_board_ge10,1),2),Mean(Delay($break_after_high_board_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.020833,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_025",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.020833,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 0.5,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,25))),ZScore(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),25))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_032",
+        "candidate_count": 4,
+        "cluster_budget_share": 0.020833,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Mul(Mean(Delay($limit_up_touch_event,1),12),12)))"
+      },
+      {
+        "signal_cluster_id": "cluster_014",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.015625,
+        "strict_pass_count": 3,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,4))),ZScore(Sub(Mean(Delay($break_after_high_board_ge9,1),2),Mean(Delay($break_after_high_board_ge9,1),4))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_016",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.015625,
+        "strict_pass_count": 3,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,11))),ZScore(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),11))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_024",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.015625,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),13))),CSRank(Div(Mean($volume,1),Mean($volume,13))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_010",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Delay($market_high_board_coleader_ge6,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_012",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_active_ge3,1),2),Mean(Delay($market_high_board_active_ge3,1),3))),CSRank(Div(Mean($volume,1),Mean($volume,2))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_013",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($volume,1),Mean($volume,2))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_020",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Delay($market_high_board_nonleader_ge4,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_021",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($volume,1),Mean($volume,7))),ZScore(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),7))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_030",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 0.5,
+        "representative_expression": "Neg(CSRank(Delay($limit_up_open_not_close,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_037",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.010417,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(ZScore(Delay($limit_up_touch_event,1)))"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_active_ge4,1),2),Mean(Delay($market_high_board_active_ge4,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_015",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_active_ge4,1),2),Mean(Delay($market_high_board_active_ge4,1),3))),CSRank(Div(Mean($volume,1),Mean($volume,2))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_019",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Delay($market_high_board_nonleader_ge5,1))"
+      },
+      {
+        "signal_cluster_id": "cluster_022",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),15))),CSRank(Div(Mean($turnover_rate,1),Mean($turnover_rate,15))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_023",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,2))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_026",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),15))),CSRank(Div(Mean($turnover_rate,1),Mean($turnover_rate,15))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_028",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge7,1),2),Mean(Delay($limit_up_streak_ge7,1),5))),CSRank(Div(Mean($amount,1),Mean($amount,5)))))"
+      },
+      {
+        "signal_cluster_id": "cluster_031",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),16))),CSRank(Div(Mean($amount,1),Mean($amount,16))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_033",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($limit_up_streak_ge8,1),2),Mean(Delay($limit_up_streak_ge8,1),5))))))"
+      },
+      {
+        "signal_cluster_id": "cluster_034",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.005208,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,35))),ZScore(Sub(Mean(Delay($limit_up_streak_ge7,1),2),Mean(Delay($limit_up_streak_ge7,1),35))))))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge9,1),8)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge9,1),8)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($market_high_board_primary_leader_ge9,1),8)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge9,1),8)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($market_high_board_primary_leader_ge9,1),8)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge9,1),8)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge8,1),7)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),7)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($market_high_board_primary_leader_ge8,1),7)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),7)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($market_high_board_primary_leader_ge8,1),7)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),7)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore($post_market_high_board_leader_ge7_d1))",
+        "right_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($market_high_board_leader_ge7,1)))",
+        "right_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_leader_ge7,1)))",
+        "right_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_leader_ge10,1),2),Mean(Delay($market_high_board_leader_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_primary_leader_ge10,1),2),Mean(Delay($market_high_board_primary_leader_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($amount,1),Mean($amount,3))))))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,10))),ZScore(Sub(Mean(Delay($market_high_board_primary_leader_ge9,1),2),Mean(Delay($market_high_board_primary_leader_ge9,1),10))))))",
+        "right_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($turnover_rate,1),Mean($turnover_rate,10))),ZScore(Sub(Mean(Delay($market_high_board_leader_ge9,1),2),Mean(Delay($market_high_board_leader_ge9,1),10))))))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($market_high_board_primary_leader_ge9,1),2),Mean(Delay($market_high_board_primary_leader_ge9,1),5))))))",
+        "right_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($market_high_board_leader_ge9,1),2),Mean(Delay($market_high_board_leader_ge9,1),5))))))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($market_high_board_primary_leader_ge8,1),2),Mean(Delay($market_high_board_primary_leader_ge8,1),5))))))",
+        "right_expression": "Neg(CSRank(Mul(ZScore(Div(Mean($amount,1),Mean($amount,5))),ZScore(Sub(Mean(Delay($market_high_board_leader_ge8,1),2),Mean(Delay($market_high_board_leader_ge8,1),5))))))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge6,1)))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_coleader_ge6,1)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_active_ge8,1)))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_active_ge8,1)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($market_high_board_leader_count_ge8,1)))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_active_ge8,1)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_leader_count_ge8,1)))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_active_ge8,1)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Delay($market_high_board_leader_ge7,1))",
+        "right_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank($post_market_high_board_leader_ge7_d1)",
+        "right_expression": "Neg(CSRank($post_market_high_board_leader_ge7_d1))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($market_high_board_leader_ge10,1),2),Mean(Delay($market_high_board_leader_ge10,1),3))),CSRank(Div(Mean($volume,1),Mean($volume,2))))))",
+        "right_expression": "Neg(CSRank(CSResidual(CSRank(Sub(Mean(Delay($limit_up_streak_ge10,1),2),Mean(Delay($limit_up_streak_ge10,1),3))),CSRank(Div(Mean($volume,1),Mean($volume,2))))))",
+        "right_cluster_id": "cluster_013",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($market_high_board_leader_ge8,1),15)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),15)))",
+        "right_cluster_id": "cluster_017",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($market_high_board_primary_leader_ge8,1),15)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),15)))",
+        "right_cluster_id": "cluster_017",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($market_high_board_primary_leader_ge8,1),15)))",
+        "right_expression": "Neg(CSRank(Mean(Delay($market_high_board_leader_ge8,1),15)))",
+        "right_cluster_id": "cluster_017",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($market_high_board_coleader_ge5,1)))",
+        "right_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_nonleader_ge4,1)))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_nonleader_ge4,1)))",
+        "right_cluster_id": "cluster_020",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge3,1)))",
+        "right_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge2,1)))",
+        "right_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($market_high_board_coleader_ge3,1)))",
+        "right_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($market_high_board_coleader_ge2,1)))",
+        "right_expression": "Neg(ZScore(Delay($market_high_board_coleader_ge5,1)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(Mean(Delay($limit_up_touch_event,1),3),3)))",
+        "right_expression": "Neg(ZScore(Mul(Mean(Delay($limit_up_touch_event,1),3),3)))",
+        "right_cluster_id": "cluster_027",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Delay($limit_up_open_not_close,1)))",
+        "right_expression": "Neg(CSRank(Delay($limit_up_open_not_close,1)))",
+        "right_cluster_id": "cluster_030",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mul(Mean(Delay($limit_up_touch_event,1),12),12)))",
+        "right_expression": "Neg(ZScore(Mul(Mean(Delay($limit_up_touch_event,1),12),12)))",
+        "right_cluster_id": "cluster_032",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($limit_up_touch_not_close,1),5)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($limit_up_touch_not_close,1),5)))",
+        "right_cluster_id": "cluster_035",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Delay($limit_up_touch_event,1)))",
+        "right_expression": "Neg(ZScore(Delay($limit_up_touch_event,1)))",
+        "right_cluster_id": "cluster_037",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($limit_up_streak_ge1,1),3)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($limit_up_streak_ge1,1),3)))",
+        "right_cluster_id": "cluster_038",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore(Mean(Delay($limit_up_close_event,1),3)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($limit_up_streak_ge1,1),3)))",
+        "right_cluster_id": "cluster_038",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($limit_up_close_event,1),3)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($limit_up_streak_ge1,1),3)))",
+        "right_cluster_id": "cluster_038",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(CSRank(Mean(Delay($limit_up_streak,1),6)))",
+        "right_expression": "Neg(ZScore(Mean(Delay($limit_up_streak,1),6)))",
+        "right_cluster_id": "cluster_039",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "Neg(ZScore($post_market_high_board_active_ge8_d1))",
+        "right_expression": "Neg(CSRank(Delay($market_high_board_active_ge8,1)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.999991,
+        "abs_signal_corr": 0.999991
+      }
+    ],
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-05-08"
+  },
+  "bias_audit_contract": {
+    "signal_clock": "after_open",
+    "feature_availability": "field_lag_policy_from_real_market_validation",
+    "execution_lag_days": 1,
+    "cost_bps": 10.0,
+    "recent_quarter_window_count": 2,
+    "oos_grade": "WEAK_RECENT_DAILY_UNTIL_LONGER_FORWARD_REPLAY",
+    "promotion_allowed": false
+  },
+  "experiment_record": {
+    "date": "2026-05-28",
+    "experiment_id": "phase3z39_reward_event_auto_validation",
+    "objective": "Validate completed Z39 reward/event search rows with strict replay, portfolio replay, signal clustering, and control calibration.",
+    "status": "completed",
+    "mode": "research",
+    "inputs": {
+      "search_root": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source",
+      "stage1_report_count": 16,
+      "stage1_report_manifests": [
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json",
+          "size_bytes": 5515253,
+          "mtime_utc": "2026-05-28T08:39:19Z",
+          "sha256": "d6858ef8f1df359f5249356da4a2539ce799390d1d41195ff9924153cc19b88c"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json",
+          "size_bytes": 5569412,
+          "mtime_utc": "2026-05-28T09:05:44Z",
+          "sha256": "791419b7ea3ed8f540eab582dbd7eb82200aeb7533698b1ff52cf534dfba821b"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json",
+          "size_bytes": 5555785,
+          "mtime_utc": "2026-05-28T09:32:30Z",
+          "sha256": "b8f7eb23901bfaa6b02ee61b7b96da224cf2ae34405f90c486b6833a229a1d2d"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_limit_open_touch_split\\ff_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json",
+          "size_bytes": 5558640,
+          "mtime_utc": "2026-05-28T09:59:55Z",
+          "sha256": "8ce41bde031e35ea5ac43db09b9ba00002b1583ce7c8c2d2f813a2db9cc0059b"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json",
+          "size_bytes": 6546475,
+          "mtime_utc": "2026-05-28T06:40:18Z",
+          "sha256": "3bfd0668107f0e08990a2443b6c3e9486fb7e6604387d278d6e6ad37d2a74cfd"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json",
+          "size_bytes": 6269643,
+          "mtime_utc": "2026-05-28T07:11:21Z",
+          "sha256": "02b112b59c9ea6bbf8a0236737002ee08780482c8a5991a1678ce4eaaa6710cd"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json",
+          "size_bytes": 6319796,
+          "mtime_utc": "2026-05-28T07:42:35Z",
+          "sha256": "08c581937aade86220092408a85ddb4bcd7e51d09fc1d88ff5a4a2cb7a92fb34"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\ff_parametric_high_board_primary_post\\ff_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json",
+          "size_bytes": 6372504,
+          "mtime_utc": "2026-05-28T08:13:57Z",
+          "sha256": "899b24b71f1e14edbaab7a1f2da3143f50c51ddd927cbc90e39051d9f14b36d8"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_00_of_04\\stage1_validation_report.json",
+          "size_bytes": 224011,
+          "mtime_utc": "2026-05-28T08:39:32Z",
+          "sha256": "b2cbba628325154f9af1f9122436d1540203d76b5311778f2ef5693b757c1ea3"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_01_of_04\\stage1_validation_report.json",
+          "size_bytes": 10626,
+          "mtime_utc": "2026-05-28T08:42:14Z",
+          "sha256": "38d2306023e342cde245548e91e24e9df24e6914ed63fe8013a3556f7c780ca8"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_02_of_04\\stage1_validation_report.json",
+          "size_bytes": 10626,
+          "mtime_utc": "2026-05-28T08:44:55Z",
+          "sha256": "23560c5a4cf14f09808aa239bf099cf6bf6f851908010906b3bad3a95af63a5f"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_limit_open_touch_split\\rx_limit_open_touch_split-shard_03_of_04\\stage1_validation_report.json",
+          "size_bytes": 10626,
+          "mtime_utc": "2026-05-28T08:47:35Z",
+          "sha256": "7b2a58933a279b99a2bbb37b8d146be92a789b09eba8be1327bb2dfe89d5bbb9"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_00_of_04\\stage1_validation_report.json",
+          "size_bytes": 2788421,
+          "mtime_utc": "2026-05-28T08:28:18Z",
+          "sha256": "a4a91ea91f491e5968a687f4a9deb466e72265e330df0e084e1a29c542928149"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_01_of_04\\stage1_validation_report.json",
+          "size_bytes": 10686,
+          "mtime_utc": "2026-05-28T08:30:55Z",
+          "sha256": "58cd18abbc0520d6a15d11c833dc922d1e1d92c02255a1a76831a14988121ce4"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_02_of_04\\stage1_validation_report.json",
+          "size_bytes": 10686,
+          "mtime_utc": "2026-05-28T08:33:35Z",
+          "sha256": "99c8650f3a2fb66d0eb7b1a1c3d09517ca91823ff1f0ae0a67a9bd2a92b0bcca"
+        },
+        {
+          "path": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_source\\rx_parametric_high_board_primary_post\\rx_parametric_high_board_primary_post-shard_03_of_04\\stage1_validation_report.json",
+          "size_bytes": 10686,
+          "mtime_utc": "2026-05-28T08:36:15Z",
+          "sha256": "1db70bb9072226170d1249f53c491d37e7b3d36bce5a1e736d45e0b293fd0c0a"
+        }
+      ],
+      "dataset": {
+        "path": "D:\\HermesWorker\\data\\phase3n_stock_tdx_official_20200101_to_20260508_maxopt.parquet",
+        "exists": true,
+        "size_bytes": 857797814,
+        "mtime_utc": "2026-05-22T17:19:49Z"
+      }
+    },
+    "outputs": {
+      "output_root": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation"
+    },
+    "reproducibility": "yes",
+    "parameters": {
+      "strict_budget": 192,
+      "top_overall_budget": 64,
+      "top_limit_budget": 96,
+      "top_diverse_budget": 32,
+      "decile_sample_per_bucket": 1,
+      "max_per_family": 4,
+      "top_bottom_quantile": 0.02,
+      "cost_bps": 10.0,
+      "recent_quarter_window_count": 2,
+      "recent_warmup_days": 60,
+      "low_corr_threshold": 0.8,
+      "seed": "phase3z45b_parametric_limit_open_touch_boost_20260528",
+      "reward_profile": "event_long_only_guard_v1"
+    },
+    "commands": {
+      "script": "python -m our_system_phase2.runtime.phase3z39_automated_validation_flow ..."
+    }
+  },
+  "outputs": {
+    "frozen_queue_csv": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation\\phase3z39_frozen_strict_queue.csv",
+    "strict_rows_csv": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation\\phase3z39_strict_replay_rows.csv",
+    "summary_json": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation\\phase3z39_automated_validation_report.json",
+    "summary_md": "D:\\HermesWorker\\runtime\\phase3z45b_parametric_limit_open_touch_boost_20260528\\strict_validation\\PHASE3Z39_AUTOMATED_VALIDATION_REPORT_2026-05-25.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
