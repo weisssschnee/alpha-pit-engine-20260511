@@ -33,6 +33,7 @@
       "status": "diagnostic_feature_adapter_ready",
       "service_module": "our_system_phase2.services.event_derived_features",
       "audit_module": "our_system_phase2.runtime.phase3_event_derived_feature_audit",
+      "integration_smoke_module": "our_system_phase2.runtime.phase3_event_adapter_integration_smoke",
       "required_metadata": [
         "event_definition_lag",
         "open_touch_close_limit_distinction",

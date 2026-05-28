@@ -10,11 +10,48 @@ field_families:
     - "$limit_up_event"
     - "$limit_down_event"
     - "$limit_up_break"
+    - "$limit_down_repair"
     - "$limit_flip_up_to_down"
     - "$limit_flip_down_to_up"
+  limit_close:
+    - "$limit_up_close_event"
+    - "$limit_down_close_event"
+  limit_open:
+    - "$limit_up_open_event"
+    - "$limit_down_open_event"
+  limit_touch:
+    - "$limit_up_touch_event"
+    - "$limit_down_touch_event"
+  limit_break:
+    - "$limit_up_touch_not_close"
+    - "$limit_down_touch_not_close"
+    - "$limit_up_open_not_close"
+    - "$limit_down_open_not_close"
+    - "$break_board_after_streak_ge_2"
+    - "$break_board_after_streak_ge_3"
+    - "$limit_down_rebound_after_streak_ge_2"
+    - "$limit_down_rebound_after_streak_ge_3"
   limit_streak:
     - "$limit_up_streak"
     - "$limit_down_streak"
+  limit_streak_ge:
+    - "$limit_up_streak_ge_2"
+    - "$limit_up_streak_ge_3"
+    - "$limit_up_streak_ge_4"
+    - "$limit_up_touch_streak_ge_2"
+    - "$limit_up_touch_streak_ge_3"
+    - "$limit_up_touch_streak_ge_4"
+    - "$limit_down_streak_ge_2"
+    - "$limit_down_streak_ge_3"
+  high_board:
+    - "$high_board_rank"
+    - "$market_high_board"
+    - "$is_market_high_board"
+    - "$streak_gap_to_market_high"
+    - "$post_market_high_board_tplus_1"
+    - "$post_market_high_board_tplus_2"
+    - "$break_after_high_board_tplus_1"
+    - "$break_after_high_board_tplus_2"
   price:
     - "$close"
     - "$open"
@@ -33,6 +70,12 @@ windows:
 roles:
   event_factor:
     templates:
+      - "CSRank(Mean({limit_close},{w1}))"
+      - "CSRank(Mean({limit_open},{w1}))"
+      - "CSRank(Mean({limit_touch},{w1}))"
+      - "CSRank(Mean({limit_break},{w1}))"
+      - "CSRank(Mean({limit_streak_ge},{w1}))"
+      - "CSRank(Mean({high_board},{w1}))"
       - "CSRank(Mean({limit_event},{w1}))"
       - "CSRank(Mean({limit_streak},{w1}))"
       - "CSRank(Sub(Mean({limit_event},{w1}),Mean({limit_event},{w2})))"
@@ -41,6 +84,10 @@ roles:
       - "CSRank(Mul(ZScore(Mean(Abs(Delta({price},1)),{w2})),ZScore(Mean({limit_event},{w1}))))"
       - "CSRank(Mul(ZScore(Mean({flow},{w2})),ZScore(Mean({limit_event},{w1}))))"
       - "CSRank(CSResidual(ZScore(Mean({limit_event},{w1})),CSRank(Log($final_float_market_cap))))"
+      - "CSRank(Mul(ZScore(Mean({flow},{w2})),ZScore(Mean({limit_break},{w1}))))"
+      - "CSRank(Mul(ZScore(Mean({flow},{w2})),ZScore(Mean({limit_streak_ge},{w1}))))"
+      - "CSRank(Mul(ZScore(Mean({flow},{w2})),ZScore(Mean({high_board},{w1}))))"
+      - "CSRank(CSResidual(ZScore(Mean({high_board},{w1})),CSRank(Log($final_float_market_cap))))"
   r3_secondary_gate_diagnostic:
     templates:
       - "R3_liquidity_low AND limit_density_high"
@@ -48,11 +95,16 @@ roles:
       - "R3_liquidity_low AND limit_density_low"
 
 constraints:
+  feature_adapter: "event_derived_feature_layer"
   direct_mainline_budget: 0
   official_book_eligible: false
   same_day_limit_status_allowed: false
   required_feature_lag_days: 1
   execution_boundary: "signal_t_execute_t_plus_1"
+  adapter_field_policy:
+    open_print_fields: "available only after open, not before open"
+    close_touch_break_high_board_fields: "must be lagged for after-open selection"
+    promotion: "strict validation + global clustering + OOS/regime/marginal audit + chain-lock update"
   mandatory_audits:
     - gate_lag_check
     - tradability_exclusion_check

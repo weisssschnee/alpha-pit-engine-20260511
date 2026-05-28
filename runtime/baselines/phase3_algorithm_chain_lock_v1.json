@@ -53,8 +53,9 @@
     },
     "event_derived_feature_layer": {
       "runtime_module": "our_system_phase2.runtime.phase3_event_derived_feature_audit",
+      "integration_smoke_module": "our_system_phase2.runtime.phase3_event_adapter_integration_smoke",
       "service_module": "our_system_phase2.services.event_derived_features",
-      "status": "feature_adapter_diagnostic_ready",
+      "status": "feature_adapter_diagnostic_ready_with_candidate_path_smoke",
       "policy": "Provides systematic limit/event derived fields and metadata. It does not alter official X0/R3 or promote any alpha without strict validation and promotion gates."
     },
     "phase3t_to_phase3z_local": {
@@ -96,6 +97,7 @@
       "diagnostic-catalog": "Catalog local diagnostic assets without promoting them.",
       "promotion-triage": "Triage diagnostic assets for promotion gate readiness.",
       "event-derived-feature-audit": "Diagnostic only.",
+      "event-adapter-integration-smoke": "Diagnostic only.",
       "proof-suite": "Run stock PIT proof suite.",
       "phase3r-limit-diagnostic": "Diagnostic only.",
       "z39-validate": "Diagnostic only.",

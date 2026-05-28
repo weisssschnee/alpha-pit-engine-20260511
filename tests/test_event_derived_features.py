@@ -14,6 +14,7 @@ from our_system_phase2.services.real_market_validation import (
     _signal_evaluation_frame,
     evaluate_panel_expression,
 )
+from our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic import _candidate_rows
 
 
 def _sample_panel() -> pd.DataFrame:
@@ -89,3 +90,28 @@ def test_event_derived_feature_contract_and_field_encoder() -> None:
     assert report["coverage"]["limit_up_open_not_close"]["present"] is True
     assert report["coverage"]["limit_up_open_not_close"]["positive_ratio"] > 0.0
 
+
+def test_limit_motif_diagnostic_uses_event_adapter_metadata() -> None:
+    rows = _candidate_rows(max_per_role=24)
+    assert rows
+    expressions = "\n".join(str(row["expression"]) for row in rows)
+    assert "$limit_up_streak_ge_3" in expressions
+    assert "$limit_up_touch_not_close" in expressions
+    assert "$market_high_board" in expressions or "$is_market_high_board" in expressions
+
+    formula_rows = [row for row in rows if row["diagnostic_role"] != "r3_secondary_gate"]
+    assert formula_rows
+    assert any(row["contains_new_event_adapter_field"] for row in formula_rows)
+    required = {
+        "feature_adapter",
+        "event_fields",
+        "event_family",
+        "lag_rule",
+        "tradability_rule",
+        "leakage_flag",
+        "search_memory_key",
+    }
+    for row in formula_rows:
+        assert required.issubset(row)
+        assert row["feature_adapter"] == "event_derived_feature_layer"
+        assert row["search_memory_key"].startswith("event_adapter:")

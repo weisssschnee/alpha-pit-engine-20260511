@@ -116,6 +116,7 @@ The first executable adapter is:
 service: our_system_phase2.services.event_derived_features
 audit:   our_system_phase2.runtime.phase3_event_derived_feature_audit
 route:   app.py --allow-diagnostic event-derived-feature-audit
+smoke:   app.py --allow-diagnostic event-adapter-integration-smoke
 ```
 
 It standardizes:
@@ -146,3 +147,29 @@ coverage
 ```
 
 This is still a feature adapter. It does not promote limit/event alpha by itself.
+
+## Event Adapter Integration Smoke
+
+The diagnostic smoke proves the adapter reaches the mature candidate path:
+
+```text
+event-derived field contract
+-> limit/event motif ledger
+-> source/search-memory metadata
+-> after-open lag policy
+-> real panel expression evaluation
+```
+
+Required metadata for each diagnostic candidate:
+
+```text
+feature_adapter
+event_fields
+event_family
+lag_rule
+tradability_rule
+leakage_flag
+search_memory_key
+```
+
+The smoke is not replay, not global clustering, and not alpha promotion.
