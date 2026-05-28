@@ -140,6 +140,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Validate event alpha candidates with event counts, placebo, concentration, and tradability metadata.",
     },
+    "z46-eventalpha-canary": {
+        "module": "our_system_phase2.runtime.phase3z46_eventalpha_canary",
+        "diagnostic": True,
+        "description": "Run bounded Phase3Z46 EventAlpha canary using event-state candidates and search memory.",
+    },
 }
 
 
