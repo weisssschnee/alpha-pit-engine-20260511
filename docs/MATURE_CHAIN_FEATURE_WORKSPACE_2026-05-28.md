@@ -1,0 +1,110 @@
+# Mature Chain Feature Workspace
+
+Date: 2026-05-28
+
+This workspace exists to adapt new research features without bypassing the mature Phase3 chain.
+
+## Workspace
+
+Path:
+
+```text
+G:\Project_V7_Rotation\alpha_pit_engine_mature_feature_workspace_20260528
+```
+
+Branch:
+
+```text
+feature/mature-chain-adapter-20260528
+```
+
+Base:
+
+```text
+origin/main @ 2b9096f
+```
+
+## Rule
+
+New feature work must reuse the locked chain:
+
+```text
+generator / feature adapter
+-> search memory / duplicate control
+-> shared candidate pool
+-> frozen selection
+-> strict replay / validation
+-> global clustering
+-> OOS / regime / marginal audit
+-> promotion triage
+-> chain-lock update
+```
+
+Diagnostic probes can be fast and narrow, but they cannot become official candidates unless they pass the promotion gates.
+
+## Official Entry
+
+Use:
+
+```powershell
+G:\PythonProject\.venv\Scripts\python.exe app.py status
+G:\PythonProject\.venv\Scripts\python.exe app.py list
+```
+
+Diagnostic commands require:
+
+```powershell
+--allow-diagnostic
+```
+
+## Feature Adapter Policy
+
+Allowed feature adapters:
+
+```text
+limit/event morphology
+regime-conditional clustering
+candidate-pool source weighting
+runtime state registry
+search-memory / ledger policy updates
+```
+
+Adapter constraints:
+
+```text
+1. Do not replace G2, X0/R3, J2/J4, or Phase3P without an explicit decision record.
+2. Do not use replay/deployable/final-cluster labels in pre-replay selection.
+3. Do not run seed-local clustering as promotion evidence.
+4. Do not treat diagnostic output as an alpha candidate.
+5. Do not add a feature lane without source metadata, search-memory metadata, and promotion-gate metadata.
+```
+
+## Current Official Objects
+
+```text
+Discovery primary:
+    G2_signal_vector_diversified_selector
+
+Official shadow:
+    X0_official_6_R3_liquidity_low_v1
+
+Book-readiness filters:
+    J2_balanced
+    J4_relaxed
+
+Forward object:
+    Phase3P_locked_daily_forward
+```
+
+## Current Diagnostic Lessons
+
+Phase3Z45b limit/open/touch search is diagnostic only:
+
+```text
+status: diagnostic_only_failed_promotion
+reason: no marginal value vs X0/R3 after timing, regime, and fragility audits
+use: inform future reward redesign, not direct promotion
+```
+
+The next event/limit feature work must be represented as feature adapters inside the mature chain, not as standalone promotion evidence.
+

@@ -67,6 +67,24 @@ Key current reports:
 - `reports/phase3h_book_vector_preflight_20260515/PHASE3H_BOOK_VECTOR_PREFLIGHT_2026-05-15.md`
 - `reports/phase3g_s29_s32_company_fixed_mixed_aggregate_20260515/PHASE3G_S29_S32_COMPANY_FIXED_MIXED_GLOBAL_AGGREGATE_2026-05-15.md`
 
+## Mature Feature Workspace
+
+New feature research should use the locked mature-chain adapter workspace instead of standalone scripts:
+
+- Policy: `docs/MATURE_CHAIN_FEATURE_WORKSPACE_2026-05-28.md`
+- Profile: `runtime/baselines/phase3_mature_feature_workspace_v1.json`
+- Bootstrap: `scripts/create_mature_feature_workspace.ps1`
+
+The adapter workspace keeps new features on the official path:
+
+```text
+feature adapter -> search memory -> shared pool -> frozen selection
+-> strict validation -> global clustering -> OOS/regime/marginal audit
+-> promotion triage -> chain-lock update
+```
+
+Diagnostic feature probes remain allowed, but they cannot be promoted without the locked gates.
+
 ## Quick Checks
 
 ```powershell

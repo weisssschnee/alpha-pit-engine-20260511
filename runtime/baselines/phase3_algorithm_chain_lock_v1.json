@@ -4,7 +4,7 @@
   "authority": {
     "git_remote": "https://github.com/weisssschnee/alpha-pit-engine-20260511.git",
     "branch": "main",
-    "authority_commit": "f01ddd56797dc0fca66460027747ef1ba782e239",
+    "authority_commit": "2b9096f7671f08aa538ecdb353a352ce637b8114",
     "policy": "Git-tracked files at the authority commit define the official algorithm chain. Local and company-machine outputs are diagnostic unless explicitly promoted through the locked gates."
   },
   "official_algorithm_chain": {
@@ -128,5 +128,12 @@
     "version": "candidate-pool-source-priority-v1-2026-05-25",
     "status": "opt_in_selector_metadata_and_source_weighting_profile_only",
     "policy": "Existing locked G2/X0 behavior is unchanged unless a selector profile explicitly opts into source weighting."
+  },
+  "feature_workspace_policy": {
+    "profile": "runtime/baselines/phase3_mature_feature_workspace_v1.json",
+    "bootstrap": "scripts/create_mature_feature_workspace.ps1",
+    "status": "official_adapter_workspace_policy",
+    "policy": "New feature adapters must reuse the locked mature chain. Diagnostic probes are allowed, but promotion requires frozen selection, strict validation, global clustering, OOS/regime/marginal audit, promotion triage, and a chain-lock update.",
+    "default_workspace": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528"
   }
 }

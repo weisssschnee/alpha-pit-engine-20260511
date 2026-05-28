@@ -1,0 +1,86 @@
+{
+  "profile_id": "phase3_mature_feature_workspace_v1",
+  "created_date": "2026-05-28",
+  "workspace": {
+    "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528",
+    "branch": "feature/mature-chain-adapter-20260528",
+    "base_ref": "origin/main",
+    "base_commit": "2b9096f7671f08aa538ecdb353a352ce637b8114"
+  },
+  "purpose": "Adapt new research features while preserving the locked mature Phase3 algorithm chain.",
+  "required_chain": [
+    "feature_adapter_or_generator",
+    "search_memory_or_duplicate_control",
+    "shared_candidate_pool",
+    "frozen_selection",
+    "strict_replay_or_validation",
+    "global_clustering",
+    "oos_regime_marginal_audit",
+    "promotion_triage",
+    "chain_lock_update"
+  ],
+  "official_objects": {
+    "discovery_primary": "G2_signal_vector_diversified_selector",
+    "official_shadow": "X0_official_6_R3_liquidity_low_v1",
+    "book_filters": [
+      "J2_balanced",
+      "J4_relaxed"
+    ],
+    "forward_shadow": "Phase3P_locked_daily_forward"
+  },
+  "allowed_feature_adapters": {
+    "limit_event_morphology": {
+      "status": "diagnostic_feature_adapter_allowed",
+      "required_metadata": [
+        "event_definition_lag",
+        "open_touch_close_limit_distinction",
+        "tradability_filter",
+        "source_lane",
+        "search_memory_key"
+      ]
+    },
+    "regime_conditional_clustering": {
+      "status": "diagnostic_feature_adapter_allowed",
+      "required_metadata": [
+        "regime_definition_lag",
+        "regime_train_period",
+        "regime_oos_period",
+        "cluster_baseline"
+      ]
+    },
+    "candidate_pool_source_priority": {
+      "status": "opt_in_only",
+      "required_metadata": [
+        "generator_source",
+        "pool_priority_score",
+        "source_quota",
+        "source_credit_cap"
+      ]
+    },
+    "search_memory": {
+      "status": "required_for_large_search",
+      "required_metadata": [
+        "expr_hash",
+        "feature_family_hash",
+        "cluster_seen_count",
+        "novelty_key",
+        "credit_cap_basis"
+      ]
+    }
+  },
+  "blocked_without_decision_record": [
+    "replace_G2_discovery_primary",
+    "replace_X0_R3_official_shadow",
+    "promote_limit_event_diagnostic_lane",
+    "promote_oracle_combo",
+    "call_any_daily_object_production_ready"
+  ],
+  "diagnostic_lessons": {
+    "phase3z45b_parametric_limit_open_touch": {
+      "status": "diagnostic_only_failed_promotion",
+      "evidence": "reports/PHASE3Z45B_RESEARCH_DECISION_RECORD_2026-05-28.md",
+      "use": "Inform reward redesign and feature adapter design only."
+    }
+  }
+}
+
