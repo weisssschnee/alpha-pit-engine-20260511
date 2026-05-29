@@ -1,0 +1,101 @@
+{
+  "phase": "Phase3AA",
+  "run_type": "mature_chain_heavy_search",
+  "created_date": "2026-05-29",
+  "experiment_id": "20260529_phase3aa_mature_chain_heavy_search_001",
+  "objective": "Run a mature-chain heavy fresh-cluster search without changing the locked X0/R3 shadow object. Reuse search memory, reward-control memory, G2-era decongestion principles, and event-derived fields as candidate-space inputs only.",
+  "official_stats_allowed": false,
+  "uses_x0_official": "read_only",
+  "modifies_x0": false,
+  "modifies_gate": false,
+  "modifies_cluster_book": false,
+  "current_shadow_object": "X0_official_6_R3_liquidity_low_v1",
+  "dataset_path": "G:/Project_V7_Rotation/scripts/data/phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "mature_entrypoints": {
+    "primary_supervisor": "our_system_phase2.runtime.stock_pit_unreached_search_supervisor",
+    "worker": "our_system_phase2.runtime.stock_pit_unreached_search_worker",
+    "g2_fresh_runner_reference": "our_system_phase2.runtime.phase3k_run_g2_fresh"
+  },
+  "required_controls": {
+    "runtime_state_registry": "runtime/phase3_runtime_state_registry.json",
+    "previous_search_roots_required": true,
+    "reward_control_roots_required": true,
+    "policy_state_path_required": true,
+    "max_family_share": 0.18,
+    "reward_exploration_share": 0.35,
+    "use_fast_context": true,
+    "forbid_per_arm_scattered_search": true
+  },
+  "search_lanes": [
+    {
+      "lane": "general_g2_fresh_discovery",
+      "purpose": "Continue broad fresh discovery with decongestion and duplicate-family control."
+    },
+    {
+      "lane": "regime_conditional_search",
+      "purpose": "Explore volatility/trend/liquidity/limit-density conditional robustness without modifying R3/X0."
+    },
+    {
+      "lane": "event_derived_feature_integration",
+      "purpose": "Allow limit/open-touch/high-board derived fields as interaction features, not as direct X0 overlay claims."
+    },
+    {
+      "lane": "within_group_micro_regime",
+      "purpose": "Search size/liquidity/turnover/limit-density/board-age relative structures below coarse industry level."
+    }
+  ],
+  "smoke_plan": {
+    "machine": "local",
+    "output_root": "G:/Project_V7_Rotation/runtime/phase3aa_smoke_20260529",
+    "shard_count": 4,
+    "max_active": 2,
+    "parallel_workers_per_shard": 2,
+    "target_window_count": 12,
+    "max_window": 126,
+    "expected_runtime": "30-90 minutes depending on validation cache",
+    "pass_gate": [
+      "supervisor_status.json exists",
+      "failed_count == 0",
+      "completed_count >= 4",
+      "candidate_ledger exists for each shard",
+      "stage1_summary exists for each shard",
+      "ledger_selection_policy.active == true",
+      "search_control_schedule.active == true or policy_state has nonzero observations"
+    ]
+  },
+  "heavy_plan": {
+    "machine_split": {
+      "company": {
+        "output_root": "D:/p3aa/company_heavy_20260529",
+        "shard_count": 32,
+        "max_active_initial": 6,
+        "parallel_workers_per_shard": 2,
+        "target_window_count": 24,
+        "notes": "Use detached scheduled-task execution through company-remote.ps1. Increase max_active only after memory telemetry is stable."
+      },
+      "local": {
+        "output_root": "G:/Project_V7_Rotation/runtime/phase3aa_local_heavy_20260529",
+        "shard_count": 16,
+        "max_active_initial": 4,
+        "parallel_workers_per_shard": 2,
+        "target_window_count": 24,
+        "notes": "Allowed when user is asleep or local machine is free."
+      }
+    },
+    "stop_conditions": [
+      "machine reboot or detached task failure",
+      "failed_count > 0 before first 25% shards complete",
+      "available memory below configured safety floor for 3 consecutive polls",
+      "policy_state cannot be built from reward-control roots"
+    ]
+  },
+  "blocked_actions": [
+    "X0_R3_replacement",
+    "J2_J4_replacement",
+    "posthoc_oracle_combo_promotion",
+    "direct_event_overlay_promotion",
+    "running without search-memory roots",
+    "running without runtime-state registration"
+  ],
+  "decision_use": "Only a fresh-search discovery input. Promotion still requires strict/replay/global clustering and later daily-proof gates."
+}

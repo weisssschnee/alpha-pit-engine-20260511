@@ -1,0 +1,29 @@
+{
+  "active_jobs": {},
+  "created_at": "1970-01-01T00:00:00+00:00",
+  "current_shadow_object": "X0_official_6_R3_liquidity_low_v1",
+  "finished_jobs": {},
+  "machines": {
+    "cloud": {
+      "active_job_ids": [],
+      "status": "unknown"
+    },
+    "company": {
+      "active_job_ids": [],
+      "status": "unknown"
+    },
+    "local": {
+      "active_job_ids": [],
+      "status": "unknown"
+    },
+    "unknown": {
+      "active_job_ids": [],
+      "status": "unknown"
+    }
+  },
+  "notes": [
+    "Local runtime state is written to runtime/phase3_runtime_state_registry.json and is intentionally git-ignored."
+  ],
+  "updated_at": "1970-01-01T00:00:00+00:00",
+  "version": "phase3-runtime-state-registry-v1-2026-05-29"
+}

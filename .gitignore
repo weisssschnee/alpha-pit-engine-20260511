@@ -18,6 +18,7 @@ venv/
 runtime/**/shard*
 runtime/**/candidate_ledger.json
 runtime/**/ab_ucb_policy_state.json
+runtime/phase3_runtime_state_registry.json
 
 # Local machine state
 .env
