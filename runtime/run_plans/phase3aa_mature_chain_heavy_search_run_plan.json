@@ -67,6 +67,7 @@
     "machine_split": {
       "company": {
         "output_root": "D:/p3aa/company_heavy_20260529",
+        "memory_base": "D:/HermesWorker/workspace/our_system_phase1_repo/reports",
         "shard_count": 32,
         "max_active_initial": 6,
         "parallel_workers_per_shard": 2,

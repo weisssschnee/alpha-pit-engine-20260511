@@ -124,6 +124,13 @@ def main() -> int:
     parser.add_argument("--parallel-workers", type=int, default=2)
     parser.add_argument("--previous-root-limit", type=int, default=80)
     parser.add_argument("--reward-root-limit", type=int, default=40)
+    parser.add_argument(
+        "--memory-base",
+        type=Path,
+        action="append",
+        default=[],
+        help="Additional reports/runtime roots to scan for candidate_ledgers and validation summaries.",
+    )
     parser.add_argument("--max-family-share", type=float, default=0.18)
     parser.add_argument("--reward-exploration-share", type=float, default=0.35)
     parser.add_argument("--poll-seconds", type=float, default=30.0)
@@ -133,7 +140,7 @@ def main() -> int:
     repo_root = args.repo_root.resolve()
     launch_root = args.launch_root.resolve()
     launch_root.mkdir(parents=True, exist_ok=True)
-    search_bases = [DEFAULT_CURRENT_REPORTS_ROOT, DEFAULT_OLD_REPORTS_ROOT]
+    search_bases = list(dict.fromkeys([DEFAULT_CURRENT_REPORTS_ROOT, DEFAULT_OLD_REPORTS_ROOT, *args.memory_base]))
     previous_roots = _discover_roots(
         search_bases,
         marker_names=("candidate_ledger.json",),

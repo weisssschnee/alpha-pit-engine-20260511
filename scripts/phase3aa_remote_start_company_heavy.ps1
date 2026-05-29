@@ -4,8 +4,9 @@ $Archive = "D:\HermesWorker\runtime\phase3aa_source_current.zip"
 $RepoRoot = "D:\HermesWorker\workspace\phase3aa_current"
 $Python = "D:\HermesWorker\workspace\.venv\Scripts\python.exe"
 $DatasetPath = "D:\HermesWorker\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
-$LaunchRoot = "D:\p3aa\company_heavy_20260529_current"
-$JobId = "phase3aa_company_heavy_20260529_current"
+$LegacyReports = "D:\HermesWorker\workspace\our_system_phase1_repo\reports"
+$LaunchRoot = "D:\p3aa\company_heavy_20260529_r3_memory"
+$JobId = "phase3aa_company_heavy_20260529_r3_memory"
 
 if (-not (Test-Path $Archive)) {
   throw "missing archive: $Archive"
@@ -31,6 +32,7 @@ $env:PYTHONPATH = "src"
   --job-id $JobId `
   --machine company `
   --dataset-path $DatasetPath `
+  --memory-base $LegacyReports `
   --shard-count 32 `
   --max-active 6 `
   --target-window-count 24 `
