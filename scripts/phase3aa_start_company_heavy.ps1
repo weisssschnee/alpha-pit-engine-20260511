@@ -1,13 +1,14 @@
 $ErrorActionPreference = "Stop"
 
 $RemoteTool = "G:\Chengbo\tools\company-remote\company-remote.ps1"
-$RepoRoot = "D:\HermesWorker\alpha-pit-engine-20260511"
-$Python = "D:\HermesWorker\.venv\Scripts\python.exe"
-$LaunchRoot = "D:\p3aa\company_heavy_20260529"
-$JobId = "phase3aa_company_heavy_20260529"
+$RepoRoot = "G:\Project_V7_Rotation\alpha_pit_engine_mature_feature_workspace_20260528"
+$Archive = "G:\Project_V7_Rotation\runtime\phase3aa_sync\phase3aa_source_current.zip"
+$RemoteArchive = "D:/HermesWorker/runtime/phase3aa_source_current.zip"
+$RemoteScript = "D:/HermesWorker/runtime/phase3aa_remote_start_company_heavy.ps1"
 
-$RemoteCommand = @"
-cd /d $RepoRoot && git fetch origin && git checkout feature/mature-chain-adapter-20260528 && git pull --ff-only origin feature/mature-chain-adapter-20260528 && set PYTHONPATH=src && "$Python" -m our_system_phase2.runtime.phase3aa_launch_mature_search --repo-root "$RepoRoot" --launch-root "$LaunchRoot" --job-id "$JobId" --machine company --shard-count 32 --max-active 6 --target-window-count 24 --parallel-workers 2 --previous-root-limit 120 --reward-root-limit 60 --max-family-share 0.18 --reward-exploration-share 0.35
-"@
+New-Item -ItemType Directory -Force -Path (Split-Path $Archive -Parent) | Out-Null
+git -C $RepoRoot archive --format=zip --output=$Archive HEAD
 
-powershell -ExecutionPolicy Bypass -File $RemoteTool -Action start-detached -DetachedCommand $RemoteCommand
+powershell -ExecutionPolicy Bypass -File $RemoteTool -Action upload -LocalPath $Archive -RemotePath $RemoteArchive
+powershell -ExecutionPolicy Bypass -File $RemoteTool -Action upload -LocalPath (Join-Path $RepoRoot "scripts\phase3aa_remote_start_company_heavy.ps1") -RemotePath $RemoteScript
+powershell -ExecutionPolicy Bypass -File $RemoteTool -Action start-detached -DetachedCommand "powershell -ExecutionPolicy Bypass -File D:\HermesWorker\runtime\phase3aa_remote_start_company_heavy.ps1"
