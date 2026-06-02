@@ -1,0 +1,130 @@
+{
+  "phase3_version": "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29",
+  "created_at": "2026-06-02T05:33:19+00:00",
+  "experiment_id": "phase3aa_mature_g2_event_selector_33",
+  "status": "selection_only_stratified",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "dataset_role": "stock_pit_panel",
+  "output_root": "D:\\p3cn_integrated\\selector_only_20260602\\selector\\aa",
+  "ablation_arm": "Phase3AA_G2_event_source_priority",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "phase3e_cumulative_baseline_path": "D:\\HermesWorker\\workspace\\cn_integrated_factor_pack_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_selector_vector_baseline_count": 137,
+    "event_bucket": "event_derived_feature_layer",
+    "research_bucket": "research_factor_feature_layer",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields",
+    "shared_candidate_pool_source": "Phase3H_H0_G0_stable",
+    "pool_enrichment": {
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 211,
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "input_candidate_pool_count": 388,
+      "output_candidate_pool_count": 599,
+      "memory_roots": [],
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "include_gate_candidates": false,
+      "include_fundamental_candidates": true,
+      "include_research_factor_candidates": true,
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v1_20260602.json"
+      ],
+      "pre_dedup_event_source_rows": 211,
+      "factor_pack_source_rows": 211,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool"
+    }
+  },
+  "parameters": {
+    "candidate_pool_count": 160,
+    "candidate_pool_count_before_prefilter": 599,
+    "pool_cap": 160,
+    "default_selected_count": 64,
+    "selected_count": 64,
+    "strict_audit_budget": 64,
+    "budgets": {
+      "r0_cem_led": 18,
+      "ast_failure_aware_repair": 9,
+      "replay_aware_residual": 1,
+      "novelty_diagnostic": 0,
+      "formula_gen_v2_defined": 0,
+      "agnostic_freeform_ast": 8,
+      "formula_gen_v2_repair_expansion": 5,
+      "event_derived_feature_layer": 13,
+      "research_factor_feature_layer": 10
+    },
+    "selector_baseline_path": "D:\\HermesWorker\\workspace\\cn_integrated_factor_pack_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "signal_sample_size": 1500,
+    "signal_warmup_days": 60,
+    "signal_recent_quarter_window_count": 1,
+    "research_share": 0.16,
+    "signal_runtime_cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache"
+  },
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_integrated_feature_layer": 90,
+      "unknown": 70
+    },
+    "selected_source_counts": {
+      "cn_integrated_feature_layer": 35,
+      "unknown": 29
+    },
+    "event_candidates_in_pool": 48,
+    "event_candidates_selected": 13,
+    "fundamental_candidates_in_pool": 13,
+    "fundamental_candidates_selected": 6,
+    "research_candidates_in_pool": 29,
+    "research_candidates_selected": 16,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "signal_vector_proxy_requirement_pass": true,
+    "stratified_selected_source_lane_counts": {
+      "cn_integrated_feature_layer": 35
+    },
+    "stratified_selected_source_generator_counts": {
+      "cn_integrated_factor_pack_v1": 35
+    }
+  },
+  "schema_version": "phase2-v2_1-prototype-v1",
+  "stratification": {
+    "created_at": "2026-06-02T14:21:39+00:00",
+    "stratum_name": "integrated_feature_layer_selected",
+    "source_selection_root": "runtime\\cn_integrated_factor_pack_company_selector_20260602",
+    "source_dir": "runtime\\cn_integrated_factor_pack_company_selector_20260602",
+    "source_lane": [
+      "cn_integrated_feature_layer"
+    ],
+    "source_generator": [],
+    "field_prefix": [],
+    "field_contains": [],
+    "candidate_contains": [],
+    "max_count": 64,
+    "source_selected_count": 64,
+    "stratum_selected_count": 35,
+    "scope": "frozen-selection slice; no candidate generation, no selector rescoring"
+  }
+}

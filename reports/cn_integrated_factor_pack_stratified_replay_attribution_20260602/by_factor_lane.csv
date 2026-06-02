@@ -1,0 +1,8 @@
+factor_lane,audited,raw_non_gap_replay_pass,cost_survive,deployable,median_replay_sortino,median_turnover,median_strict_cost_adjusted_sortino
+rzrq_direct_rank,14,0,10,0,-2.129926,0.210446,-0.530621
+minute_direct_rank,8,0,8,0,-0.587566,0.054567000000000004,-0.5792984999999999
+fundamental_quality_direct,5,3,3,0,-1.733496,0.058333,-1.239228
+minute_direct_rank_zrank,4,0,1,0,-3.9735069999999997,0.787536,-2.2437199999999997
+rzrq_direct_rank_zrank,2,0,2,0,-2.2355735,0.143265,-0.530621
+fundamental_risk_inverse,1,0,1,0,-2.726574,0.027083,32.694809
+holder_structure_direct,1,0,1,0,-0.266459,0.034292,-0.592367

@@ -114,14 +114,32 @@ def run(*, replay_root: Path, output_root: Path) -> dict[str, Any]:
 
     replay_sortino = [_safe_float(row.get("portfolio_replay_long_short_sortino")) for row in rows]
     turnover = [_safe_float(row.get("portfolio_replay_avg_one_way_turnover")) for row in rows]
+    deployable_clusters = report.get("main_kpi", {}).get("primary", {}).get("cost_turnover_deployable_unique_clusters")
+    raw_non_gap = report.get("main_kpi", {}).get("secondary", {}).get("raw_non_gap_replay_pass")
+    try:
+        deployable_cluster_count = int(deployable_clusters or 0)
+    except (TypeError, ValueError):
+        deployable_cluster_count = 0
+    try:
+        raw_non_gap_count = int(raw_non_gap or 0)
+    except (TypeError, ValueError):
+        raw_non_gap_count = 0
+    if deployable_cluster_count > 0:
+        decision = "REVIEW_STRATIFIED_REPLAY_HAS_DEPLOYABLE_BUT_NEEDS_CONCENTRATION_AUDIT"
+    elif raw_non_gap_count > 0:
+        decision = "HOLD_STRATIFIED_REPLAY_RAW_SIGNAL_NO_DEPLOYABLE_CLUSTER"
+    else:
+        decision = "HOLD_STRATIFIED_REPLAY_NO_DEPLOYABLE_SIGNAL"
+
     summary = {
-        "decision": "HOLD_STRATIFIED_REPLAY_NO_DEPLOYABLE_SIGNAL",
+        "decision": decision,
         "replay_root": str(replay_root),
         "audited": len(rows),
-        "raw_non_gap_replay_pass": sum(_flag(row.get("portfolio_replay_pass")) for row in rows),
+        "raw_non_gap_replay_pass": raw_non_gap_count,
+        "row_portfolio_replay_pass": sum(_flag(row.get("portfolio_replay_pass")) for row in rows),
         "cost_survive": sum(_flag(row.get("cost_survives")) for row in rows),
-        "deployable": sum(_flag(row.get("cost_turnover_deployable")) for row in rows),
-        "deployable_clusters": report.get("main_kpi", {}).get("primary", {}).get("cost_turnover_deployable_unique_clusters"),
+        "row_deployable": sum(_flag(row.get("cost_turnover_deployable")) for row in rows),
+        "deployable_clusters": deployable_cluster_count,
         "top_cluster_share": report.get("main_kpi", {}).get("secondary", {}).get("top_cluster_raw_pass_share"),
         "median_replay_sortino": _median([v for v in replay_sortino if v is not None]),
         "median_turnover": _median([v for v in turnover if v is not None]),
@@ -144,7 +162,7 @@ def run(*, replay_root: Path, output_root: Path) -> dict[str, Any]:
         f"audited: `{summary['audited']}`",
         f"raw_non_gap_replay_pass: `{summary['raw_non_gap_replay_pass']}`",
         f"cost_survive: `{summary['cost_survive']}`",
-        f"deployable: `{summary['deployable']}`",
+        f"row_deployable: `{summary['row_deployable']}`",
         f"deployable_clusters: `{summary['deployable_clusters']}`",
         f"median_replay_sortino: `{summary['median_replay_sortino']}`",
         f"median_turnover: `{summary['median_turnover']}`",

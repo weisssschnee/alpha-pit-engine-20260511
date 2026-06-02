@@ -1,0 +1,36 @@
+{
+  "decision": "REVIEW_STRATIFIED_REPLAY_HAS_DEPLOYABLE_BUT_NEEDS_CONCENTRATION_AUDIT",
+  "replay_root": "runtime\\cn_integrated_factor_pack_replay_smoke_integrated_only_20260602\\aa",
+  "audited": 35,
+  "raw_non_gap_replay_pass": 3,
+  "row_portfolio_replay_pass": 3,
+  "cost_survive": 26,
+  "row_deployable": 0,
+  "deployable_clusters": 1,
+  "top_cluster_share": 0.666667,
+  "median_replay_sortino": -1.92524,
+  "median_turnover": 0.097008,
+  "source_lane_counts": {
+    "cn_integrated_feature_layer": 35
+  },
+  "source_generator_counts": {
+    "cn_integrated_factor_pack_v1": 35
+  },
+  "factor_lane_counts": {
+    "rzrq_direct_rank_zrank": 2,
+    "rzrq_direct_rank": 14,
+    "minute_direct_rank_zrank": 4,
+    "holder_structure_direct": 1,
+    "minute_direct_rank": 8,
+    "fundamental_risk_inverse": 1,
+    "fundamental_quality_direct": 5
+  },
+  "outputs": {
+    "rows": "reports\\cn_integrated_factor_pack_stratified_replay_attribution_20260602\\stratified_replay_rows.csv",
+    "by_factor_lane": "reports\\cn_integrated_factor_pack_stratified_replay_attribution_20260602\\by_factor_lane.csv",
+    "by_source_lane": "reports\\cn_integrated_factor_pack_stratified_replay_attribution_20260602\\by_source_lane.csv",
+    "json": "reports\\cn_integrated_factor_pack_stratified_replay_attribution_20260602\\phase3aa_stratified_replay_attribution.json",
+    "markdown": "reports\\cn_integrated_factor_pack_stratified_replay_attribution_20260602\\PHASE3AA_STRATIFIED_REPLAY_ATTRIBUTION.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

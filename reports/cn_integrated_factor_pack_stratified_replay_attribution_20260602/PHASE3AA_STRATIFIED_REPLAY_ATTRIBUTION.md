@@ -1,13 +1,13 @@
 # Phase3AA Stratified Replay Attribution
 
-decision: `HOLD_STRATIFIED_REPLAY_NO_DEPLOYABLE_SIGNAL`
-audited: `27`
-raw_non_gap_replay_pass: `0`
-cost_survive: `3`
+decision: `REVIEW_STRATIFIED_REPLAY_HAS_DEPLOYABLE_BUT_NEEDS_CONCENTRATION_AUDIT`
+audited: `35`
+raw_non_gap_replay_pass: `3`
+cost_survive: `26`
 row_deployable: `0`
-deployable_clusters: `0`
-median_replay_sortino: `-2.434472`
-median_turnover: `1.0`
+deployable_clusters: `1`
+median_replay_sortino: `-1.92524`
+median_turnover: `0.097008`
 
 ## Interpretation
 

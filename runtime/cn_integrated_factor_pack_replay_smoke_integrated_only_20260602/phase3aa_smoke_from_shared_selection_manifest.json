@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-06-02T14:26:08+00:00",
+  "selection_root": "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_company_selector_20260602\\integrated_only",
+  "arm": {
+    "short": "aa",
+    "arm": "Phase3AA_G2_event_source_priority",
+    "audit_count": 35,
+    "deployable_clusters": 1,
+    "top_cluster_share": 0.666667,
+    "median_turnover_proxy": null,
+    "output_root": "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_replay_smoke_integrated_only_20260602\\aa"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
