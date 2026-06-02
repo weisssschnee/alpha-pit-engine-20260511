@@ -275,6 +275,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run read-only QA for the non-1min PIT context panel v1.",
     },
+    "cn-integrated-feature-transform-plan-v1": {
+        "module": "our_system_phase2.runtime.cn_integrated_feature_transform_plan_v1",
+        "diagnostic": False,
+        "description": "Build the selector-facing transform plan across 1min fields, non-1min PIT context, and remaining high-value gaps.",
+    },
+    "cn-integrated-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build integrated candidate expressions from 1min and non-1min PIT context fields with search-memory metadata.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,

@@ -1,0 +1,21 @@
+family,field_count,materialized_count,selector_candidate_count,blocked_count,diagnostic_count,regime_context_count,registered_not_panelized_count,source_counts
+audit_meta_forbidden,7,7,0,7,0,0,0,{'nonminute_pit_context_panel_v1': 7}
+billboard_disclosure_diagnostic,16,16,0,0,16,0,0,{'nonminute_pit_context_panel_v1': 16}
+capacity_size,8,0,0,0,0,0,8,{'high_value_gap': 8}
+disclosure_event,13,0,0,0,0,0,13,{'high_value_gap': 13}
+fundamental,279,0,0,0,0,0,279,{'high_value_gap': 279}
+fundamental_balance_risk,18,18,18,0,0,0,0,{'nonminute_pit_context_panel_v1': 18}
+fundamental_cashflow_quality,8,8,8,0,0,0,0,{'nonminute_pit_context_panel_v1': 8}
+fundamental_income_quality,17,17,17,0,0,0,0,{'nonminute_pit_context_panel_v1': 17}
+holder_structure,11,11,11,0,0,0,0,{'nonminute_pit_context_panel_v1': 11}
+key,6,6,0,6,0,0,0,"{'minute_panel_v2': 3, 'nonminute_pit_context_panel_v1': 3}"
+label_forbidden,5,5,0,5,0,0,0,{'minute_panel_v2': 5}
+market_breadth_regime,15,15,0,0,0,15,0,{'nonminute_pit_context_panel_v1': 15}
+minute_coverage,4,4,4,0,0,0,0,{'minute_panel_v2': 4}
+minute_flow_liquidity,8,8,8,0,0,0,0,{'minute_panel_v2': 8}
+minute_other,3,3,3,0,0,0,0,{'minute_panel_v2': 3}
+minute_price_state,3,3,3,0,0,0,0,{'minute_panel_v2': 3}
+minute_range_volatility,11,11,11,0,0,0,0,{'minute_panel_v2': 11}
+minute_return_pressure,5,5,5,0,0,0,0,{'minute_panel_v2': 5}
+minute_vwap_pressure,6,6,6,0,0,0,0,{'minute_panel_v2': 6}
+rzrq_flow_leverage,31,31,31,0,0,0,0,{'nonminute_pit_context_panel_v1': 31}

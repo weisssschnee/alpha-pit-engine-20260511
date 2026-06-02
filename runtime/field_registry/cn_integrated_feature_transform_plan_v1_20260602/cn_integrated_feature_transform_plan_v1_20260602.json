@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-06-02T02:44:55.670093+00:00",
+  "decision": "PASS_INTEGRATED_FEATURE_TRANSFORM_PLAN_V1",
+  "minute_panel": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+  "nonminute_panel": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+  "nonminute_registry": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\field_registry.csv",
+  "high_value_gaps": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\high_value_nonminute_gaps.csv",
+  "minute_field_count": 48,
+  "nonminute_context_field_count": 126,
+  "nonminute_registry_field_count": 1855,
+  "transform_plan_rows": 474,
+  "high_priority_backlog_rows": 76,
+  "medium_priority_backlog_rows": 54,
+  "outputs": {
+    "plan_csv": "runtime\\field_registry\\cn_integrated_feature_transform_plan_v1_20260602\\integrated_feature_transform_plan.csv",
+    "family_summary_csv": "runtime\\field_registry\\cn_integrated_feature_transform_plan_v1_20260602\\integrated_feature_family_summary.csv",
+    "priority_backlog_csv": "runtime\\field_registry\\cn_integrated_feature_transform_plan_v1_20260602\\integrated_feature_backlog_priority.csv",
+    "summary_json": "runtime\\field_registry\\cn_integrated_feature_transform_plan_v1_20260602\\cn_integrated_feature_transform_plan_v1_20260602.json",
+    "markdown": "reports\\cn_integrated_feature_transform_plan_v1_20260602\\CN_INTEGRATED_FEATURE_TRANSFORM_PLAN_V1_2026-06-02.md"
+  },
+  "critical_findings": [
+    "1-minute fields are usable as early-window execution/signal features, but label_* fields are blocked from selector input.",
+    "RZRQ, holder, and fundamental context fields are now materialized as PIT-safe lagged context and should enter factor-pack templates.",
+    "Market up/down breadth fields should be used as regime or interaction context first, not as standalone alpha proof.",
+    "Billboard fields remain diagnostic until disclosure timestamp policy is strong enough.",
+    "High-value non-minute gaps still exist; next panelization should prioritize fields with selector_candidate routes and high/medium priority."
+  ],
+  "next_action": "build_integrated_factor_pack_v1_from_high_priority_backlog_then_run_selector_only_smoke",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
