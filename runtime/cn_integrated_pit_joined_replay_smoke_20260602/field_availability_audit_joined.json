@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-06-02T07:52:58+00:00",
+  "decision": "PASS_REPLAY_FIELD_AVAILABILITY",
+  "selection_inputs": "D:\\p3cn_integrated\\selector_only_20260602\\selector\\aa\\phase3_strict_selection_inputs.json",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_selected_v1.parquet",
+  "dataset_field_count": 81,
+  "selected_count": 64,
+  "selected_executable_count": 64,
+  "selected_with_missing_fields": 0,
+  "integrated_selected_count": 35,
+  "integrated_selected_executable_count": 35,
+  "integrated_selected_with_missing_fields": 0,
+  "by_lane_status": [
+    {
+      "source_lane": "cn_integrated_feature_layer",
+      "status": "executable",
+      "count": 35
+    },
+    {
+      "source_lane": "legacy_unknown",
+      "status": "executable",
+      "count": 29
+    }
+  ],
+  "missing_field_counts": [],
+  "blocking_reason": "",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
