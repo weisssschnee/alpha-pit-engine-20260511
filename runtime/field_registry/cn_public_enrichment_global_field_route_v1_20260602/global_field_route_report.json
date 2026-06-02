@@ -1,0 +1,164 @@
+{
+  "bulk_transform_field_count": 1537,
+  "by_family": {
+    "capacity_size": 82,
+    "disclosure_event_flow": 51,
+    "flow_liquidity": 94,
+    "fundamental_quality_risk": 415,
+    "future_label": 14,
+    "group_market_context": 42,
+    "holder_corporate_action": 52,
+    "instrument_key": 38,
+    "leverage_flow": 39,
+    "limit_event_sentiment": 40,
+    "metadata": 50,
+    "other": 333,
+    "price_state": 597,
+    "text_or_description": 41,
+    "time_key_or_cutoff": 83,
+    "tradability_universe": 98
+  },
+  "by_priority": {
+    "blocked": 491,
+    "high": 127,
+    "low": 887,
+    "medium": 518,
+    "very_high": 46
+  },
+  "by_route": {
+    "announcement_pit_feature": 1408,
+    "blocked_future_label": 14,
+    "event_cutoff_key": 13,
+    "index_minute_market_context": 8,
+    "join_key": 108,
+    "lagged_daily_context_feature": 75,
+    "manual_review_required": 56,
+    "metadata": 50,
+    "probe_only_candidate_source": 250,
+    "stock_minute_feature": 10,
+    "text_diagnostic": 41,
+    "timestamped_event_feature": 36
+  },
+  "by_source_root": {
+    "cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1": 1372,
+    "cn_local_index_1min_silver_v2_20260601\\index_1min_silver_by_date": 10,
+    "cn_local_minute_daily_silver_v1_20260531": 40,
+    "cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet": 2,
+    "cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date": 12,
+    "cn_public_xsection_no_kline_silver_v1_20260530": 189,
+    "cn_zzshare_advanced_field_probe_v1_20260602": 183,
+    "cn_zzshare_moneyflow_probe_v1_20260602": 152,
+    "cn_zzshare_plate_fund_completeness_probe_v1_20260602": 29,
+    "cn_zzshare_uplimit_history_silver_v1_20260531": 80
+  },
+  "created_at": "2026-06-02T13:05:19.970098+00:00",
+  "data_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment",
+  "decision": "PASS_GLOBAL_FIELD_ROUTE_LEDGER_READY_FOR_BATCH_PANELIZATION_AND_FACTOR_PACK",
+  "field_count": 2069,
+  "high_value_unwired_count": 36,
+  "mature_chain_batch_plan": [
+    {
+      "batch_id": "minute_stock_observed_window",
+      "field_count": 10,
+      "field_examples": "year|amount|change|close|high|low|open|pct_chg",
+      "promotion_gate": "observed-window timing QA plus replay field availability",
+      "route_set": "stock_minute_feature",
+      "routes": [
+        "stock_minute_feature"
+      ],
+      "source_count": 2,
+      "source_roots": "cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet|cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date",
+      "status": "mature_chain_available",
+      "target_command": "cn-minute-feature-panel-v2 -> cn-integrated-feature-transform-plan-v1 -> cn-integrated-factor-pack-v1"
+    },
+    {
+      "batch_id": "minute_index_market_context",
+      "field_count": 8,
+      "field_examples": "amount|amplitude_pct|close|high|index_code|low|open|pct_chg",
+      "promotion_gate": "market-context only; no standalone stock rank without interaction/placebo",
+      "route_set": "index_minute_market_context",
+      "routes": [
+        "index_minute_market_context"
+      ],
+      "source_count": 1,
+      "source_roots": "cn_local_index_1min_silver_v2_20260601\\index_1min_silver_by_date",
+      "status": "needs_context_sidecar_before_factor_pack",
+      "target_command": "build index-minute context sidecar -> integrated transform plan"
+    },
+    {
+      "batch_id": "nonminute_lagged_daily_and_pit",
+      "field_count": 1483,
+      "field_examples": "amount_yuan|amplitude_pct|close_hfq|float_market_cap_yuan|float_shares|high_hfq|industry|is_limit_up|ACCEPT_DEPOSIT|ACCEPT_DEPOSIT_INTERBANK|ACCEPT_DEPOSIT_INTERBANK_YOY|ACCEPT_DEPOSIT_YOY|ACCOUNTS_PAYABLE|ACCOUNTS_PAYABLE_YOY|ACCOUNTS_RECE|ACCOUNTS_RECE_YOY",
+      "promotion_gate": "PIT/lag date QA and field availability audit",
+      "route_set": "lagged_daily_context_feature|announcement_pit_feature",
+      "routes": [
+        "lagged_daily_context_feature",
+        "announcement_pit_feature"
+      ],
+      "source_count": 3,
+      "source_roots": "cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1|cn_local_minute_daily_silver_v1_20260531|cn_public_xsection_no_kline_silver_v1_20260530",
+      "status": "mature_chain_available_for_panelized_fields",
+      "target_command": "cn-nonminute-pit-context-panel-v1 -> cn-integrated-feature-transform-plan-v1 -> cn-integrated-factor-pack-v1"
+    },
+    {
+      "batch_id": "timestamped_limit_event",
+      "field_count": 36,
+      "field_examples": "amount|auction_buy|auction_money|auction_offer|auction_pre1max_ratio|auction_turnover|fd_close|fd_max",
+      "promotion_gate": "event timestamp check; no same-day after-open leakage",
+      "route_set": "timestamped_event_feature",
+      "routes": [
+        "timestamped_event_feature"
+      ],
+      "source_count": 3,
+      "source_roots": "cn_zzshare_advanced_field_probe_v1_20260602|cn_zzshare_moneyflow_probe_v1_20260602|cn_zzshare_uplimit_history_silver_v1_20260531",
+      "status": "blocked_from_daily_replay_until_lag_or_event_time_path",
+      "target_command": "materialize evt_*_lag1 daily fields or build event-time evaluator"
+    },
+    {
+      "batch_id": "probe_to_silver",
+      "field_count": 306,
+      "field_examples": "modal_id|p_close|p_close_pre1d|p_high|p_low|p_open|attention|last_pct|CHANGE_RATE|CLOSE_PRICE|EVENT_TYPE|EVENT_TYPE_CODE|INFO_CODE|LEVEL1_CONTENT|ORG_CODE|SECURITY_INNER_CODE",
+      "promotion_gate": "coverage, schema, PIT availability, and no raw JSON selector use",
+      "route_set": "probe_only_candidate_source|manual_review_required",
+      "routes": [
+        "probe_only_candidate_source",
+        "manual_review_required"
+      ],
+      "source_count": 5,
+      "source_roots": "cn_public_xsection_no_kline_silver_v1_20260530|cn_zzshare_advanced_field_probe_v1_20260602|cn_zzshare_moneyflow_probe_v1_20260602|cn_zzshare_plate_fund_completeness_probe_v1_20260602|cn_zzshare_uplimit_history_silver_v1_20260531",
+      "status": "data_engineering_backlog",
+      "target_command": "build silver/PIT panel and field contract first"
+    },
+    {
+      "batch_id": "blocked_and_diagnostic",
+      "field_count": 226,
+      "field_examples": "next_close_pct|next_day|next_gt9_offer_v|next_gt9_time|next_gt9_turnover|next_open_pct|next_open_yi|next_close_pct|SECURITY_NAME_ABBR|SECURITY_NAME_ABBR|SECURITY_NAME_ABBR|index_name|name|EXPLANATION|OPERATEDEPT_NAME|EXPLANATION",
+      "promotion_gate": "must be transformed into safe numeric/event features first",
+      "route_set": "blocked_future_label|text_diagnostic|metadata|join_key|event_cutoff_key",
+      "routes": [
+        "blocked_future_label",
+        "text_diagnostic",
+        "metadata",
+        "join_key",
+        "event_cutoff_key"
+      ],
+      "source_count": 10,
+      "source_roots": "cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1|cn_local_index_1min_silver_v2_20260601\\index_1min_silver_by_date|cn_local_minute_daily_silver_v1_20260531|cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet|cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date|cn_public_xsection_no_kline_silver_v1_20260530|cn_zzshare_advanced_field_probe_v1_20260602|cn_zzshare_moneyflow_probe_v1_20260602|cn_zzshare_plate_fund_completeness_probe_v1_20260602|cn_zzshare_uplimit_history_silver_v1_20260531",
+      "status": "not_direct_alpha_input",
+      "target_command": "audit/parser/availability only"
+    }
+  ],
+  "outputs": {
+    "bulk_transform_plan": "runtime\\field_registry\\cn_public_enrichment_global_field_route_v1_20260602\\bulk_transform_plan.csv",
+    "global_field_route": "runtime\\field_registry\\cn_public_enrichment_global_field_route_v1_20260602\\global_field_route.csv",
+    "high_value_unwired_fields": "runtime\\field_registry\\cn_public_enrichment_global_field_route_v1_20260602\\high_value_unwired_fields.csv",
+    "mature_chain_batch_plan": "runtime\\field_registry\\cn_public_enrichment_global_field_route_v1_20260602\\mature_chain_batch_plan.csv"
+  },
+  "policy": {
+    "daily_replay_event_fields": "raw timestamped evt fields are forbidden unless lag1 materialized",
+    "official_x0_r3": "read_only",
+    "probe_fields": "not selector data until silver/PIT panel exists",
+    "stock_1min": "observed-window only"
+  },
+  "schema_version": "cn-public-enrichment-global-field-route-v1-2026-06-02"
+}

@@ -250,6 +250,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Route all CN data families into minute-native, timestamped event, lagged daily, announcement/PIT, or diagnostic use classes.",
     },
+    "cn-public-enrichment-global-field-route-v1": {
+        "module": "our_system_phase2.runtime.cn_public_enrichment_global_field_route_v1",
+        "diagnostic": False,
+        "description": "Build a global route ledger for all CN public-enrichment fields, probes, 1min schemas, and high-value unwired gaps.",
+    },
     "cn-minute-limit-event-alignment": {
         "module": "our_system_phase2.runtime.cn_minute_limit_event_alignment_panel",
         "diagnostic": False,
