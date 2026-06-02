@@ -564,10 +564,18 @@ def _available_market_panel_usecols(path: Path | str) -> list[str]:
         if column in columns and column not in base
     ]
     fundamental = sorted(column for column in columns if column.startswith("fund_") and column not in base)
+    integrated = sorted(
+        column
+        for column in columns
+        if (column.startswith("ctx_") or column.startswith("m1_") or column == "vwap")
+        and not column.startswith("meta_")
+        and not column.startswith("label_")
+        and column not in base
+    )
     metadata = [column for column in MARKET_PANEL_METADATA_COLUMNS if column in columns and column not in base]
     out: list[str] = []
     seen: set[str] = set()
-    for column in [*base, *metadata, *optional, *fundamental]:
+    for column in [*base, *metadata, *optional, *fundamental, *integrated]:
         if column in seen:
             continue
         seen.add(column)
@@ -688,6 +696,9 @@ def _prepare_market_panel(
         if column in frame.columns:
             if column == "sector":
                 continue
+            frame[column] = pd.to_numeric(frame[column], errors="coerce")
+    for column in frame.columns:
+        if column.startswith("ctx_") or column.startswith("m1_") or column == "vwap":
             frame[column] = pd.to_numeric(frame[column], errors="coerce")
     frame = _augment_market_fields(frame)
     if enable_trend_state_features:
