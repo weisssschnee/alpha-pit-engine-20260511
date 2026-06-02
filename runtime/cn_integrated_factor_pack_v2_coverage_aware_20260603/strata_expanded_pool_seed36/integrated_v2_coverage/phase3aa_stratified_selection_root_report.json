@@ -1,0 +1,49 @@
+{
+  "created_at": "2026-06-02T17:07:14+00:00",
+  "stratum_name": "cn_integrated_factor_pack_v2_coverage_aware_expanded_pool_seed36_selected",
+  "source_selection_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_20260603\\selector_only_expanded_pool_seed36\\aa",
+  "source_dir": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_20260603\\selector_only_expanded_pool_seed36\\aa",
+  "source_lane": [],
+  "source_generator": [
+    "cn_integrated_factor_pack_v2"
+  ],
+  "field_prefix": [],
+  "field_contains": [],
+  "candidate_contains": [],
+  "max_count": 64,
+  "source_selected_count": 64,
+  "stratum_selected_count": 21,
+  "scope": "frozen-selection slice; no candidate generation, no selector rescoring",
+  "output_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_20260603\\strata_expanded_pool_seed36\\integrated_v2_coverage",
+  "short": "integrated_v2_coverage_expanded_s36",
+  "selected_source_lane_counts": {
+    "cn_integrated_feature_layer": 21
+  },
+  "selected_source_generator_counts": {
+    "cn_integrated_factor_pack_v2": 21
+  },
+  "selected_candidate_ids": [
+    "phase3aa_event_0245_cn_integrated_v2_rzrq_size_normalized_00306",
+    "phase3aa_event_0272_cn_integrated_v2_rzrq_size_normalized_00333",
+    "phase3aa_event_0247_cn_integrated_v2_rzrq_size_normalized_00308",
+    "phase3aa_event_0288_cn_integrated_v2_minute_amount_share_daily_00349",
+    "phase3aa_event_0273_cn_integrated_v2_rzrq_size_normalized_00334",
+    "phase3aa_event_0268_cn_integrated_v2_rzrq_size_normalized_00329",
+    "phase3aa_event_0261_cn_integrated_v2_rzrq_size_normalized_00322",
+    "phase3aa_event_0249_cn_integrated_v2_rzrq_size_normalized_00310",
+    "phase3aa_event_0167_cn_integrated_v2_quality_x_rzrq_flow_00228",
+    "phase3aa_event_0279_cn_integrated_v2_rzrq_size_normalized_00340",
+    "phase3aa_event_0275_cn_integrated_v2_rzrq_size_normalized_00336",
+    "phase3aa_event_0280_cn_integrated_v2_rzrq_size_normalized_00341",
+    "phase3aa_event_0065_cn_integrated_v2_quality_size_residual_00065",
+    "phase3aa_event_0253_cn_integrated_v2_rzrq_size_normalized_00314",
+    "phase3aa_event_0251_cn_integrated_v2_rzrq_size_normalized_00312",
+    "phase3aa_event_0168_cn_integrated_v2_quality_x_rzrq_flow_00229",
+    "phase3aa_event_0256_cn_integrated_v2_rzrq_size_normalized_00317",
+    "phase3aa_event_0198_cn_integrated_v2_quality_x_minute_pressure_00259",
+    "phase3aa_event_0278_cn_integrated_v2_rzrq_size_normalized_00339",
+    "phase3aa_event_0001_cn_integrated_v2_quality_direct_control_00001",
+    "phase3aa_event_0123_cn_integrated_v2_quality_direct_control_00184"
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
