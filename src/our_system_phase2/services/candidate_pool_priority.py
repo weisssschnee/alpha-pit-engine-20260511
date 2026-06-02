@@ -51,6 +51,10 @@ def pool_priority_score(row: dict[str, Any]) -> float:
         score -= 0.20
     if row.get("leakage_flag") and "unsafe_same_day" in str(row.get("leakage_flag")):
         score -= 0.05
+    try:
+        score += float(row.get("coverage_priority_delta") or 0.0)
+    except (TypeError, ValueError):
+        pass
     return round(max(0.05, min(1.50, score)), 6)
 
 

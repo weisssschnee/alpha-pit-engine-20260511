@@ -305,6 +305,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build integrated candidate expressions v2 with quality residuals and context interactions after v1 replay attribution.",
     },
+    "cn-integrated-factor-pack-coverage-adjust": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_coverage_adjust",
+        "diagnostic": False,
+        "description": "Build a coverage-aware integrated factor pack by measuring candidate field observability on a PIT replay panel.",
+    },
     "cn-integrated-factor-pack-selector-preflight": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_selector_preflight",
         "diagnostic": False,

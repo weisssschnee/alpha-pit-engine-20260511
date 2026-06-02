@@ -1,0 +1,109 @@
+{
+  "phase3_version": "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29",
+  "created_at": "2026-06-02T16:39:35+00:00",
+  "experiment_id": "phase3aa_mature_g2_event_selector_33",
+  "status": "selection_only",
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_all_fields_local.parquet",
+  "dataset_role": "stock_pit_panel",
+  "output_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_20260603\\selector_only\\aa",
+  "ablation_arm": "Phase3AA_G2_event_source_priority",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "phase3e_cumulative_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_selector_vector_baseline_count": 137,
+    "event_bucket": "event_derived_feature_layer",
+    "research_bucket": "research_factor_feature_layer",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields",
+    "shared_candidate_pool_source": "Phase3H_H0_G0_stable",
+    "pool_enrichment": {
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 294,
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "input_candidate_pool_count": 388,
+      "output_candidate_pool_count": 682,
+      "memory_roots": [],
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "include_gate_candidates": false,
+      "include_fundamental_candidates": false,
+      "include_research_factor_candidates": true,
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v2_coverage_aware_20260603.json"
+      ],
+      "pre_dedup_event_source_rows": 294,
+      "factor_pack_source_rows": 294,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool"
+    }
+  },
+  "parameters": {
+    "candidate_pool_count": 360,
+    "candidate_pool_count_before_prefilter": 682,
+    "pool_cap": 360,
+    "default_selected_count": 64,
+    "selected_count": 64,
+    "strict_audit_budget": 64,
+    "budgets": {
+      "r0_cem_led": 8,
+      "ast_failure_aware_repair": 4,
+      "replay_aware_residual": 1,
+      "novelty_diagnostic": 0,
+      "formula_gen_v2_defined": 0,
+      "agnostic_freeform_ast": 4,
+      "formula_gen_v2_repair_expansion": 2,
+      "event_derived_feature_layer": 26,
+      "research_factor_feature_layer": 19
+    },
+    "selector_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "signal_sample_size": 3000,
+    "signal_warmup_days": 60,
+    "signal_recent_quarter_window_count": 1,
+    "signal_vector_npz": "runtime\\phase3g_signal_vectors\\phase3g_signal_vectors_20260514.npz",
+    "signal_vector_metadata": "runtime\\phase3g_signal_vectors\\vector_metadata.parquet",
+    "research_share": 0.3,
+    "signal_runtime_cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache_integrated_v2_coverage_aware"
+  },
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_integrated_feature_layer": 108,
+      "unknown": 252
+    },
+    "selected_source_counts": {
+      "cn_integrated_feature_layer": 19,
+      "unknown": 45
+    },
+    "event_candidates_in_pool": 0,
+    "event_candidates_selected": 0,
+    "fundamental_candidates_in_pool": 43,
+    "fundamental_candidates_selected": 0,
+    "research_candidates_in_pool": 65,
+    "research_candidates_selected": 19,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "signal_vector_proxy_requirement_pass": true
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

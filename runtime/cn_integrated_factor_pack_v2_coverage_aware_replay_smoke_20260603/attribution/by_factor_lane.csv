@@ -1,0 +1,4 @@
+factor_lane,audited,raw_non_gap_replay_pass,cost_survive,deployable,median_replay_sortino,median_turnover,median_strict_cost_adjusted_sortino
+rzrq_size_normalized,15,13,10,0,-0.12646600000000002,0.573237,0.058917
+quality_x_rzrq_flow,3,2,2,0,5.645311,0.4,0.072866
+minute_amount_share_daily,1,1,0,0,-8.939376,0.959552,-4.913875
