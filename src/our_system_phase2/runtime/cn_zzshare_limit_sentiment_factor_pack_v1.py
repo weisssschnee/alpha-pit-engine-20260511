@@ -85,7 +85,8 @@ def _safe_add(*items: str) -> str:
 
 
 def _plan_by_candidate(plan: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    return {str(row["candidate_field"]): row for row in plan}
+    allowed = {"raw_numeric", "parse HH:MM event time; usable only when event_time <= decision_time"}
+    return {str(row["candidate_field"]): row for row in plan if row.get("transform") in allowed}
 
 
 def _eligible(plan: list[dict[str, Any]], *, dataset: str | None = None, role: str | None = None) -> list[dict[str, Any]]:

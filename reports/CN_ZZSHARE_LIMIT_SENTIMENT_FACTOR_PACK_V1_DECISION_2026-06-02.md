@@ -2,7 +2,7 @@
 
 decision: `PASS_ZZSHARE_FACTOR_PACK_V1_READY_FOR_PANELIZATION`
 
-candidate_count: `157`
+candidate_count: `49`
 replay_executable: `False`
 requires_panelization: `True`
 

@@ -1,7 +1,7 @@
 # CN ZZShare Limit/Sentiment Factor Pack v1
 
 status: `zzshare_limit_sentiment_factor_pack_ready_for_panelization_then_selector_no_replay_yet`
-candidate_count: `157`
+candidate_count: `49`
 replay_executable: `False`
 requires_panelization: `True`
 
@@ -9,8 +9,8 @@ requires_panelization: `True`
 
 - `zls_auction_money_to_offer`: `1`
 - `zls_auction_turnover_to_amount`: `1`
-- `zls_event_direct`: `30`
-- `zls_event_direct_zrank`: `24`
+- `zls_event_direct`: `6`
+- `zls_event_direct_zrank`: `6`
 - `zls_high_board_x_open_board`: `1`
 - `zls_hot_rank_direct`: `4`
 - `zls_hot_rank_inverse`: `1`
@@ -22,8 +22,8 @@ requires_panelization: `True`
 - `zls_max_seal_to_amount`: `1`
 - `zls_open_board_rate`: `1`
 - `zls_seal_to_amount`: `1`
-- `zls_sentiment_direct`: `48`
-- `zls_sentiment_direct_zrank`: `38`
+- `zls_sentiment_direct`: `10`
+- `zls_sentiment_direct_zrank`: `10`
 - `zls_streak_x_seal`: `1`
 
 ## Policy

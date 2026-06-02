@@ -1,12 +1,12 @@
 {
   "canonical_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1",
-  "created_at": "2026-06-02T10:08:13.094246+00:00",
+  "created_at": "2026-06-02T11:00:37.546852+00:00",
   "date_max": "2026-04-10",
   "date_min": "2025-08-06",
   "decision": "PASS_ZZSHARE_SELECTED_SIDECAR_V1",
   "feature_count": 40,
   "index_sidecar": "runtime\\cn_integrated_pit_selected_sidecars_20260602\\nonminute_selected_sidecar.parquet",
-  "mean_feature_nonnull_rate": 0.5242312854064989,
+  "mean_feature_nonnull_rate": 0.5138998916344344,
   "output": "runtime\\cn_zzshare_limit_sentiment_selected_sidecar_v1_20260602\\zzshare_selected_sidecar.parquet",
   "pit_policy": {
     "daily_context": "market sentiment and hot-rank fields are T+1 lagged",
@@ -16,6 +16,264 @@
   },
   "rows": 859129,
   "tables": {
+    "candidate_transform_plan": {
+      "materialized_feature_count": 40,
+      "mean_feature_nonnull_rate": 0.5138998916344344,
+      "requested_transform_rows": 205,
+      "skipped": [
+        {
+          "candidate_field": "evt_zls_amount_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_amount"
+        },
+        {
+          "candidate_field": "evt_zls_amount_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_amount"
+        },
+        {
+          "candidate_field": "evt_zls_amount_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_amount"
+        },
+        {
+          "candidate_field": "evt_zls_amount_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_amount"
+        },
+        {
+          "candidate_field": "evt_zls_auction_buy_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_auction_buy"
+        },
+        {
+          "candidate_field": "evt_zls_auction_buy_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_auction_buy"
+        },
+        {
+          "candidate_field": "evt_zls_auction_buy_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_auction_buy"
+        },
+        {
+          "candidate_field": "evt_zls_auction_buy_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_auction_buy"
+        },
+        {
+          "candidate_field": "evt_zls_auction_money_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_auction_money"
+        },
+        {
+          "candidate_field": "evt_zls_auction_money_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_auction_money"
+        },
+        {
+          "candidate_field": "evt_zls_auction_money_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_auction_money"
+        },
+        {
+          "candidate_field": "evt_zls_auction_money_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_auction_money"
+        },
+        {
+          "candidate_field": "evt_zls_auction_offer_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_auction_offer"
+        },
+        {
+          "candidate_field": "evt_zls_auction_offer_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_auction_offer"
+        },
+        {
+          "candidate_field": "evt_zls_auction_offer_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_auction_offer"
+        },
+        {
+          "candidate_field": "evt_zls_auction_offer_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_auction_offer"
+        },
+        {
+          "candidate_field": "evt_zls_auction_pre1max_ratio_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_auction_pre1max_ratio"
+        },
+        {
+          "candidate_field": "evt_zls_auction_pre1max_ratio_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_auction_pre1max_ratio"
+        },
+        {
+          "candidate_field": "evt_zls_auction_pre1max_ratio_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_auction_pre1max_ratio"
+        },
+        {
+          "candidate_field": "evt_zls_auction_pre1max_ratio_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_auction_pre1max_ratio"
+        },
+        {
+          "candidate_field": "evt_zls_auction_turnover_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_auction_turnover"
+        },
+        {
+          "candidate_field": "evt_zls_auction_turnover_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_auction_turnover"
+        },
+        {
+          "candidate_field": "evt_zls_auction_turnover_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_auction_turnover"
+        },
+        {
+          "candidate_field": "evt_zls_auction_turnover_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_auction_turnover"
+        },
+        {
+          "candidate_field": "evt_zls_fd_close_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_fd_close"
+        },
+        {
+          "candidate_field": "evt_zls_fd_close_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_fd_close"
+        },
+        {
+          "candidate_field": "evt_zls_fd_close_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_fd_close"
+        },
+        {
+          "candidate_field": "evt_zls_fd_close_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_fd_close"
+        },
+        {
+          "candidate_field": "evt_zls_fd_max_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_fd_max"
+        },
+        {
+          "candidate_field": "evt_zls_fd_max_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_fd_max"
+        },
+        {
+          "candidate_field": "evt_zls_fd_max_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_fd_max"
+        },
+        {
+          "candidate_field": "evt_zls_fd_max_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_fd_max"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_market_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_market_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_market_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_market_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_c_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_market_c_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_c_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_market_c_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_c_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_market_c_c"
+        },
+        {
+          "candidate_field": "evt_zls_market_c_c_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_market_c_c"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_keep_times_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_up_limit_keep_times"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_keep_times_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_up_limit_keep_times"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_keep_times_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_up_limit_keep_times"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_keep_times_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_up_limit_keep_times"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_type",
+          "reason": "missing_raw_source",
+          "source_col": "__raw_uplimit_stocks_up_limit_type"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_type_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_uplimit_stocks_up_limit_type"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_type_zscore",
+          "reason": "deferred_to_expression_layer:zscore",
+          "source_col": "__raw_uplimit_stocks_up_limit_type"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_type_rolling_3d",
+          "reason": "deferred_to_expression_layer:rolling_3d",
+          "source_col": "__raw_uplimit_stocks_up_limit_type"
+        },
+        {
+          "candidate_field": "evt_zls_up_limit_type_rolling_5d",
+          "reason": "deferred_to_expression_layer:rolling_5d",
+          "source_col": "__raw_uplimit_stocks_up_limit_type"
+        },
+        {
+          "candidate_field": "ctx_zls_lb_2_num_lag1_cross_sectional_rank",
+          "reason": "deferred_to_expression_layer:cross_sectional_rank",
+          "source_col": "__raw_open_sentiment_data_lb_2_num"
+        }
+      ],
+      "skipped_count": 161
+    },
     "market_daily": {
       "open_sentiment_daily": {
         "feature_count": 19,
@@ -32,9 +290,10 @@
       "mean_nonnull_rate": 0.001842563805901093
     },
     "uplimit_stock_event_day": {
-      "feature_count": 11,
+      "feature_count": 12,
       "matched_rows": 413,
-      "mean_nonnull_rate": 0.000469291361578783
+      "mean_nonnull_rate": 0.0004702437003057749
     }
-  }
+  },
+  "transform_plan": "runtime\\field_registry\\cn_zzshare_limit_sentiment_route_v1_20260602\\candidate_transform_plan.csv"
 }
