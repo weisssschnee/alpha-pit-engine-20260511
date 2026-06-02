@@ -1,0 +1,18 @@
+{"ablation_arm": "Phase3I_I0_G2_primary", "candidate_budget": 96, "seed": "36", "stage": "start", "strict_audit_budget": 64, "time": "2026-06-02T17:32:00+00:00"}
+{"budgets": {"agnostic_freeform_ast": 12, "ast_failure_aware_repair": 9, "formula_gen_v2_defined": 0, "formula_gen_v2_repair_expansion": 8, "novelty_diagnostic": 0, "r0_cem_led": 31, "replay_aware_residual": 4}, "stage": "budgets_resolved", "time": "2026-06-02T17:32:00+00:00"}
+{"stage": "base_variant_ledgers_built", "time": "2026-06-02T17:44:30+00:00", "variant_count": 8}
+{"stage": "agnostic_freeform_ledger_built", "time": "2026-06-02T17:44:30+00:00", "variant_count": 9}
+{"stage": "ast_repair_ledger_built", "time": "2026-06-02T17:44:30+00:00", "variant_count": 10}
+{"stage": "stage1_variant_reports_written", "time": "2026-06-02T18:39:11+00:00", "variant_count": 10}
+{"direct_cluster_credit_cap": false, "direct_r0_quota": true, "selected_count": 31, "stage": "r0_selected", "time": "2026-06-02T19:26:01+00:00"}
+{"repair_quota_mode": "phase3A_hard", "selected_count": 0, "stage": "repair_selected", "time": "2026-06-02T19:26:01+00:00"}
+{"selected_count": 0, "stage": "formula_selected", "time": "2026-06-02T19:26:01+00:00"}
+{"selected_count": 12, "stage": "agnostic_selected", "time": "2026-06-02T19:26:01+00:00"}
+{"selected_count": 8, "stage": "repair_expansion_selected", "time": "2026-06-02T19:31:03+00:00"}
+{"all_fast_row_count": 960, "residual_budget": 4, "stage": "pre_residual_selection", "time": "2026-06-02T19:31:03+00:00"}
+{"scored_count": 909, "selected_count": 4, "stage": "residual_selected", "time": "2026-06-02T19:31:03+00:00"}
+{"selected_count": 0, "stage": "diagnostic_selected", "time": "2026-06-02T19:31:03+00:00"}
+{"candidate_pool_count": 484, "default_selected_count": 55, "path": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_fresh_pool_20260603\\s36\\shared_candidate_pool_raw.json", "stage": "shared_candidate_pool_written", "time": "2026-06-02T19:31:03+00:00"}
+{"audit_row_count": 472, "book_marginal_mode": "signal_vector_proxy", "selected_count": 64, "selector_profile": "signal_vector_diversified_proxy", "stage": "phase3e_selector_applied", "time": "2026-06-02T19:43:24+00:00"}
+{"stage": "strict_selection_written", "strict_input_count": 64, "time": "2026-06-02T19:43:24+00:00"}
+{"stage": "selection_only_report_written", "status": "selection_only", "time": "2026-06-02T19:43:24+00:00"}

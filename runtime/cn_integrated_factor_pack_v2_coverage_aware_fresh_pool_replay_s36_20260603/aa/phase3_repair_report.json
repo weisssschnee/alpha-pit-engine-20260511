@@ -1,0 +1,588 @@
+{
+  "phase3_version": "phase3-repair-v2-2026-05-12",
+  "created_at": "2026-06-02T19:53:10+00:00",
+  "experiment_id": "phase3h_smoke_from_shared_selection_aa",
+  "ablation_arm": "Phase3AA_G2_event_source_priority",
+  "status": "completed",
+  "objective": "Phase3H smoke from frozen shared selector queue without candidate regeneration.",
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_all_fields_local.parquet",
+  "dataset_role": "stock_pit_panel",
+  "output_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_fresh_pool_replay_s36_20260603\\aa",
+  "source_selection_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_fresh_pool_20260603\\s36\\replay_input\\aa",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "phase3e_cumulative_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_selector_vector_baseline_count": 137,
+    "event_bucket": "event_derived_feature_layer",
+    "research_bucket": "research_factor_feature_layer",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields",
+    "shared_candidate_pool_source": "Phase3I_I0_G2_primary",
+    "pool_enrichment": {
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 294,
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "input_candidate_pool_count": 484,
+      "output_candidate_pool_count": 778,
+      "memory_roots": [],
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "include_gate_candidates": false,
+      "include_fundamental_candidates": false,
+      "include_research_factor_candidates": true,
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v2_coverage_aware_20260603.json"
+      ],
+      "pre_dedup_event_source_rows": 294,
+      "factor_pack_source_rows": 294,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool"
+    }
+  },
+  "parameters": {
+    "audit_count": 19,
+    "top_bottom_quantile": 0.02,
+    "strict_cost_bps": 10.0,
+    "low_corr_threshold": 0.8,
+    "recent_quarter_window_count": 1,
+    "recent_warmup_days": 60,
+    "turnover_survival_max_one_way": 0.75
+  },
+  "fixed_contract": {
+    "evaluator": "TDXGP true-limit preferred",
+    "limit_status_preferred_source": "tdxgp_gpjvalue_15_status",
+    "signal_clock": "after_open",
+    "execution_lag_days": 1,
+    "feature_lag_days": 0,
+    "raw_pass_is_diagnostic_only": true
+  },
+  "main_kpi": {
+    "primary": {
+      "cost_turnover_deployable_unique_clusters": 8,
+      "audited_count": 19,
+      "cost_turnover_deployable_unique_clusters_per_audited": 0.421053
+    },
+    "secondary": {
+      "unique_return_corr_clusters": 14,
+      "unique_return_corr_clusters_per_audited": 0.736842,
+      "new_clusters_not_covered_by_r0": 14,
+      "new_clusters_not_covered_by_r0_per_audited": 0.736842,
+      "raw_non_gap_replay_pass": 14,
+      "raw_non_gap_replay_pass_per_audited": 0.736842,
+      "top_cluster_raw_pass_share": 0.071429,
+      "top_cluster_id": "cluster_009"
+    },
+    "raw_pass_is_diagnostic_only": true
+  },
+  "policy_table": [
+    {
+      "phase3_budget_bucket": "research_factor_feature_layer",
+      "selection_policy": "phase3e_signal_vector_diversified_source_priority_proxy",
+      "audited": 19,
+      "raw_non_gap_replay_pass": 14,
+      "unique_return_corr_clusters": 14,
+      "deployable_unique_clusters": 8,
+      "deployable_cluster_per_audited": 0.421053
+    }
+  ],
+  "replay_report": {
+    "portfolio_replay_count": 19,
+    "unique_expression_replay_count": 19,
+    "evaluation_start_date": "2026-04-01",
+    "evaluation_end_date": "2026-04-10",
+    "cost_bps": 10.0
+  },
+  "signal_cluster_report": {
+    "cluster_count": 19,
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "signal_cluster_entropy": 2.944439,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqye,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($m1_amount_day,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($m1_first30_amount,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqjmg,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_010",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_011",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_012",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqmcl,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_013",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_bs_cash_to_assets),ZScore($ctx_rzrq_rzjme)))"
+      },
+      {
+        "signal_cluster_id": "cluster_014",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_bs_cash_to_assets),ZScore($ctx_rzrq_rzche)))"
+      },
+      {
+        "signal_cluster_id": "cluster_015",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_016",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqmcl5d,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_017",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqjmg3d,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_018",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqjmg5d,Add(Abs($final_float_market_cap),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_019",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.052632,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Div($ctx_rzrq_rqjmg10d,Add(Abs($final_float_market_cap),0.000001)))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqmcl5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqmcl,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.74923,
+        "abs_signal_corr": 0.74923
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.667135,
+        "abs_signal_corr": 0.667135
+      },
+      {
+        "left_expression": "CSRank(Div($m1_first30_amount,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($m1_amount_day,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.65717,
+        "abs_signal_corr": 0.65717
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.652835,
+        "abs_signal_corr": 0.652835
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqmcl5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqye,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.628897,
+        "abs_signal_corr": 0.628897
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_017",
+        "signal_corr": 0.625536,
+        "abs_signal_corr": 0.625536
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.567164,
+        "abs_signal_corr": 0.567164
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqmcl,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqye,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.539517,
+        "abs_signal_corr": 0.539517
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.517824,
+        "abs_signal_corr": 0.517824
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.512764,
+        "abs_signal_corr": 0.512764
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg10d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_018",
+        "signal_corr": 0.499643,
+        "abs_signal_corr": 0.499643
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.468029,
+        "abs_signal_corr": 0.468029
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 0.447234,
+        "abs_signal_corr": 0.447234
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -0.424132,
+        "abs_signal_corr": 0.424132
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": 0.422461,
+        "abs_signal_corr": 0.422461
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.395977,
+        "abs_signal_corr": 0.395977
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqmcl,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": 0.382547,
+        "abs_signal_corr": 0.382547
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.375855,
+        "abs_signal_corr": 0.375855
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg10d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_017",
+        "signal_corr": 0.372413,
+        "abs_signal_corr": 0.372413
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.367071,
+        "abs_signal_corr": 0.367071
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": -0.324624,
+        "abs_signal_corr": 0.324624
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": -0.314296,
+        "abs_signal_corr": 0.314296
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": 0.313105,
+        "abs_signal_corr": 0.313105
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqye,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": -0.281442,
+        "abs_signal_corr": 0.281442
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": -0.274575,
+        "abs_signal_corr": 0.274575
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($m1_amount_day,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.272879,
+        "abs_signal_corr": 0.272879
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.267478,
+        "abs_signal_corr": 0.267478
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 0.261219,
+        "abs_signal_corr": 0.261219
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.252704,
+        "abs_signal_corr": 0.252704
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme10d,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 0.251242,
+        "abs_signal_corr": 0.251242
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqmcl5d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_016",
+        "signal_corr": 0.242469,
+        "abs_signal_corr": 0.242469
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.222658,
+        "abs_signal_corr": 0.222658
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_bs_cash_to_assets),ZScore($ctx_rzrq_rzjme)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzjme,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": -0.216862,
+        "abs_signal_corr": 0.216862
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -0.212827,
+        "abs_signal_corr": 0.212827
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzche10d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqye,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_001",
+        "signal_corr": 0.208431,
+        "abs_signal_corr": 0.208431
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg3d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqmcl,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.203515,
+        "abs_signal_corr": 0.203515
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rqjmg10d,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rqjmg,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_009",
+        "signal_corr": 0.202216,
+        "abs_signal_corr": 0.202216
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.201271,
+        "abs_signal_corr": 0.201271
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_bs_cash_to_assets),ZScore($ctx_rzrq_rzche)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzmre,Add(Abs($final_float_market_cap),0.000001)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": -0.188368,
+        "abs_signal_corr": 0.188368
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_rzrq_rzjme5d,Add(Abs($amount),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_rzrq_rzche,Add(Abs($amount),0.000001)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": -0.185185,
+        "abs_signal_corr": 0.185185
+      }
+    ],
+    "evaluation_start_date": "2026-04-01",
+    "evaluation_end_date": "2026-04-10"
+  },
+  "selector_queue_metrics": {
+    "median_turnover_proxy": null,
+    "median_turnover_structure_risk": 0.0,
+    "median_selected_queue_signal_corr": 0.404752
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
