@@ -17,6 +17,7 @@ DEFAULT_SOURCE_WEIGHTS = {
     "cn_flow_liquidity_feature_layer": 0.95,
     "cn_underutilized_field_feature_layer": 0.95,
     "cn_integrated_feature_layer": 0.95,
+    "cn_zzshare_limit_sentiment_feature_layer": 0.95,
     "research_factor_feature_layer": 0.95,
     "legacy_or_non_event": 0.75,
 }
