@@ -1,0 +1,119 @@
+{
+    "experiment_id":  "cn_underutilized_field_replay_smoke128_20260601",
+    "created_at":  "2026-06-01T02:59:28+00:00",
+    "decision":  "PASS_REPLAY_SMOKE_EXECUTION_GATE",
+    "algorithmic_decision":  "PASS_REPLAY_SMOKE_HAS_DEPLOYABLE_SIGNAL",
+    "scope":  "frozen replay smoke from batched selector256 unique selected rows",
+    "inputs":  {
+                   "selected_unique_csv":  "reports\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\cn_underutilized_field_batched_selector256_selected_unique.csv",
+                   "selector_summary":  "reports\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\cn_underutilized_field_batched_selector256.json",
+                   "dataset_path":  "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet"
+               },
+    "parameters":  {
+                       "audit_count":  128,
+                       "queue_mode":  "lane-balanced",
+                       "top_bottom_quantile":  0.02,
+                       "strict_cost_bps":  10.0,
+                       "low_corr_threshold":  0.8,
+                       "recent_quarter_window_count":  2,
+                       "recent_warmup_days":  60
+                   },
+    "counts":  {
+                   "source_unique_rows":  215,
+                   "frozen_queue_rows":  128,
+                   "forbidden_field_hit_count":  0,
+                   "selected_factor_lane_count":  23
+               },
+    "frozen_queue_counts":  {
+                                "source_lane":  {
+                                                    "cn_flow_liquidity_feature_layer":  47,
+                                                    "cn_research_feature_layer_v2":  25,
+                                                    "cn_underutilized_field_feature_layer":  50,
+                                                    "event_derived_feature_layer":  6
+                                                },
+                                "source_generator":  {
+                                                         "cn_field_factor_pack_v1":  6,
+                                                         "cn_flow_liquidity_factor_pack_v1":  47,
+                                                         "cn_research_factor_pack_v2":  25,
+                                                         "cn_underutilized_field_factor_pack_v1":  50
+                                                     },
+                                "factor_lane":  {
+                                                    "amihud_illiquidity":  4,
+                                                    "capacity_normalized_activity":  5,
+                                                    "capacity_normalized_flow":  4,
+                                                    "capacity_residual_activity":  7,
+                                                    "capacity_residual_flow":  1,
+                                                    "event_x_flow_liquidity":  7,
+                                                    "event_x_seal_flow":  7,
+                                                    "event_x_theme":  6,
+                                                    "flow_impulse":  6,
+                                                    "flow_ratio_curve":  3,
+                                                    "flow_relative_activity":  7,
+                                                    "flow_volatility":  7,
+                                                    "fundamental_capacity_value":  2,
+                                                    "fundamental_quality":  7,
+                                                    "fundamental_risk_inverse":  7,
+                                                    "fundamental_size_residual":  4,
+                                                    "fundamental_x_activity":  7,
+                                                    "fundamental_x_event":  7,
+                                                    "fundamental_x_flow":  7,
+                                                    "limit_seal_flow":  7,
+                                                    "price_flow_divergence":  7,
+                                                    "seal_to_amount":  6,
+                                                    "theme_activity_proxy":  3
+                                                }
+                            },
+    "forbidden_field_hits":  [
+
+                             ],
+    "replay_summary":  {
+                           "short":  "aa",
+                           "arm":  "CN_Underutilized_Field_Batched_G2_ReplaySmoke",
+                           "audit_count":  128,
+                           "deployable_clusters":  14,
+                           "top_cluster_share":  0.047619,
+                           "median_turnover_proxy":  null,
+                           "output_root":  "runtime\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\replay\\aa"
+                       },
+    "source_attribution":  {
+                               "strict_row_count":  128,
+                               "raw_pass_count":  12,
+                               "portfolio_replay_pass_count":  42,
+                               "cost_survive_count":  27,
+                               "raw_pass_by_source_lane":  {
+                                                               "cn_flow_liquidity_feature_layer":  1,
+                                                               "cn_research_feature_layer_v2":  5,
+                                                               "cn_underutilized_field_feature_layer":  3,
+                                                               "event_derived_feature_layer":  3
+                                                           },
+                               "raw_pass_by_factor_lane":  {
+                                                               "event_x_seal_flow":  1,
+                                                               "event_x_theme":  3,
+                                                               "flow_impulse":  1,
+                                                               "fundamental_risk_inverse":  3,
+                                                               "fundamental_size_residual":  2,
+                                                               "fundamental_x_activity":  1,
+                                                               "limit_seal_flow":  1
+                                                           },
+                               "replay_pass_by_source_lane":  {
+                                                                  "cn_flow_liquidity_feature_layer":  10,
+                                                                  "cn_research_feature_layer_v2":  21,
+                                                                  "cn_underutilized_field_feature_layer":  11
+                                                              },
+                               "cost_survive_by_source_lane":  {
+                                                                   "cn_flow_liquidity_feature_layer":  6,
+                                                                   "cn_research_feature_layer_v2":  7,
+                                                                   "cn_underutilized_field_feature_layer":  9,
+                                                                   "event_derived_feature_layer":  5
+                                                               },
+                               "unique_signal_clusters_raw_pass":  9,
+                               "top_signal_cluster_id":  "cluster_063",
+                               "top_signal_cluster_share":  0.25
+                           },
+    "paths":  {
+                  "selection_root":  "runtime\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\selection",
+                  "replay_root":  "runtime\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\replay",
+                  "report_dir":  "reports\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601"
+              },
+    "schema_version":  "phase2-v2_1-prototype-v1"
+}

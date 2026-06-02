@@ -394,6 +394,7 @@ def feature_row(
     provisional_cluster_id = _provisional_cluster_id(expression)
     source_lane = _source_lane(row)
     source_lane_cluster_id = f"{source_lane}|{known_cluster_id or provisional_cluster_id}"
+    pool_priority = _safe_float(row.get("pool_priority_score"), default=1.0)
     missing = []
     if turnover is None:
         missing.append("turnover_proxy")
@@ -457,6 +458,11 @@ def feature_row(
         "expression": expression,
         "source_lane": source_lane,
         "source_profile": row.get("source_profile"),
+        "pool_priority_score": round(float(pool_priority), 6),
+        "pool_priority_version": row.get("pool_priority_version") or "",
+        "source_quota_group": row.get("source_quota_group") or "",
+        "source_credit_cap_basis": row.get("source_credit_cap_basis") or "",
+        "source_credit_policy": row.get("source_credit_policy") or "",
         "base_quality": round(float(base_quality), 8),
         "turnover_proxy": turnover,
         "turnover_proxy_source": turnover_source,
@@ -674,6 +680,11 @@ def _attach_selector_feature_metadata(item: dict[str, Any], features: dict[str, 
         "known_cluster_id",
         "provisional_cluster_id",
         "source_lane_cluster_id",
+        "pool_priority_score",
+        "pool_priority_version",
+        "source_quota_group",
+        "source_credit_cap_basis",
+        "source_credit_policy",
         "max_corr_to_selected_queue",
         "mean_corr_to_selected_queue",
         "base_e3_score",
@@ -695,6 +706,7 @@ def _attach_selector_feature_metadata(item: dict[str, Any], features: dict[str, 
         "capacity_proxy",
         "liquidity_penalty",
         "capacity_penalty",
+        "pool_priority_bonus",
         "registry_symbolic_corr_penalty",
         "complexity_penalty",
         "cap_reject_reason",

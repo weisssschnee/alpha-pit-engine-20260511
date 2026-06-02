@@ -1,0 +1,432 @@
+{
+  "experiment_id": "cn_underutilized_field_survivor_attribution_20260601",
+  "created_at": "2026-06-01T03:24:13+00:00",
+  "decision": "PASS_SURVIVOR_ATTRIBUTION_READY_FOR_REGISTRY_REVIEW",
+  "scope": "posthoc attribution of frozen replay128 strict rows; no selection or replay rerun",
+  "inputs": {
+    "strict_rows_path": "runtime\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\replay\\aa\\phase3_strict_rows.json",
+    "replay_report_path": "runtime\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\replay\\aa\\phase3_repair_report.json",
+    "registry_path": "runtime\\baselines\\phase3K_complete_149_representative_registry_20260517.json"
+  },
+  "counts": {
+    "audited": 128,
+    "survivor_rows": 54,
+    "raw_non_gap_pass": 42,
+    "deployable_rows": 14,
+    "deployable_unique_clusters": 14,
+    "deployable_cluster_representatives": 14,
+    "registry_rows": 149,
+    "registry_exact_match_reps": 0,
+    "registry_skeleton_match_reps": 2,
+    "registry_high_symbolic_similarity_reps": 2
+  },
+  "top_cluster": {
+    "signal_cluster_id": "cluster_021",
+    "share": 0.047619047619047616
+  },
+  "source_lane_table": [
+    {
+      "source_lane": "cn_flow_liquidity_feature_layer",
+      "audited": 47,
+      "raw_non_gap_pass": 10,
+      "portfolio_replay_pass": 10,
+      "cost_survive": 6,
+      "deployable_rows": 2,
+      "deployable_unique_clusters": 2,
+      "raw_pass_unique_clusters": 8,
+      "median_turnover": 0.251197,
+      "median_cost_adjusted_sortino": -1.025233
+    },
+    {
+      "source_lane": "cn_research_feature_layer_v2",
+      "audited": 25,
+      "raw_non_gap_pass": 21,
+      "portfolio_replay_pass": 21,
+      "cost_survive": 7,
+      "deployable_rows": 7,
+      "deployable_unique_clusters": 7,
+      "raw_pass_unique_clusters": 18,
+      "median_turnover": 0.117614,
+      "median_cost_adjusted_sortino": -1.166021
+    },
+    {
+      "source_lane": "cn_underutilized_field_feature_layer",
+      "audited": 50,
+      "raw_non_gap_pass": 11,
+      "portfolio_replay_pass": 11,
+      "cost_survive": 9,
+      "deployable_rows": 5,
+      "deployable_unique_clusters": 5,
+      "raw_pass_unique_clusters": 11,
+      "median_turnover": 0.1495185,
+      "median_cost_adjusted_sortino": -0.359358
+    },
+    {
+      "source_lane": "event_derived_feature_layer",
+      "audited": 6,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 5,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.908068,
+      "median_cost_adjusted_sortino": 1.0346715
+    }
+  ],
+  "factor_lane_table": [
+    {
+      "factor_lane": "amihud_illiquidity",
+      "audited": 4,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.120809,
+      "median_cost_adjusted_sortino": -3.2427075
+    },
+    {
+      "factor_lane": "capacity_normalized_activity",
+      "audited": 5,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.073332,
+      "median_cost_adjusted_sortino": -1.111414
+    },
+    {
+      "factor_lane": "capacity_normalized_flow",
+      "audited": 4,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 1,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.11633199999999999,
+      "median_cost_adjusted_sortino": -0.49441
+    },
+    {
+      "factor_lane": "capacity_residual_activity",
+      "audited": 7,
+      "raw_non_gap_pass": 1,
+      "portfolio_replay_pass": 1,
+      "cost_survive": 3,
+      "deployable_rows": 1,
+      "deployable_unique_clusters": 1,
+      "raw_pass_unique_clusters": 1,
+      "median_turnover": 0.080306,
+      "median_cost_adjusted_sortino": -0.149993
+    },
+    {
+      "factor_lane": "capacity_residual_flow",
+      "audited": 1,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 1,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.092254,
+      "median_cost_adjusted_sortino": 1.990964
+    },
+    {
+      "factor_lane": "event_x_flow_liquidity",
+      "audited": 7,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.75,
+      "median_cost_adjusted_sortino": 0.0
+    },
+    {
+      "factor_lane": "event_x_seal_flow",
+      "audited": 7,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 1,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.75,
+      "median_cost_adjusted_sortino": 0.0
+    },
+    {
+      "factor_lane": "event_x_theme",
+      "audited": 6,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 5,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.908068,
+      "median_cost_adjusted_sortino": 1.0346715
+    },
+    {
+      "factor_lane": "flow_impulse",
+      "audited": 6,
+      "raw_non_gap_pass": 1,
+      "portfolio_replay_pass": 1,
+      "cost_survive": 2,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 1,
+      "median_turnover": 0.7956455,
+      "median_cost_adjusted_sortino": -1.987471
+    },
+    {
+      "factor_lane": "flow_ratio_curve",
+      "audited": 3,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.698487,
+      "median_cost_adjusted_sortino": 0.0
+    },
+    {
+      "factor_lane": "flow_relative_activity",
+      "audited": 7,
+      "raw_non_gap_pass": 1,
+      "portfolio_replay_pass": 1,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 1,
+      "median_turnover": 0.148155,
+      "median_cost_adjusted_sortino": -1.010933
+    },
+    {
+      "factor_lane": "flow_volatility",
+      "audited": 7,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.43929799999999997,
+      "median_cost_adjusted_sortino": -0.674798
+    },
+    {
+      "factor_lane": "fundamental_capacity_value",
+      "audited": 2,
+      "raw_non_gap_pass": 2,
+      "portfolio_replay_pass": 2,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 2,
+      "median_turnover": 0.051420499999999994,
+      "median_cost_adjusted_sortino": -1.576886
+    },
+    {
+      "factor_lane": "fundamental_quality",
+      "audited": 7,
+      "raw_non_gap_pass": 4,
+      "portfolio_replay_pass": 4,
+      "cost_survive": 2,
+      "deployable_rows": 2,
+      "deployable_unique_clusters": 2,
+      "raw_pass_unique_clusters": 3,
+      "median_turnover": 0.059091,
+      "median_cost_adjusted_sortino": -1.254979
+    },
+    {
+      "factor_lane": "fundamental_risk_inverse",
+      "audited": 7,
+      "raw_non_gap_pass": 7,
+      "portfolio_replay_pass": 7,
+      "cost_survive": 3,
+      "deployable_rows": 3,
+      "deployable_unique_clusters": 3,
+      "raw_pass_unique_clusters": 6,
+      "median_turnover": 0.074431,
+      "median_cost_adjusted_sortino": -1.687852
+    },
+    {
+      "factor_lane": "fundamental_size_residual",
+      "audited": 4,
+      "raw_non_gap_pass": 3,
+      "portfolio_replay_pass": 3,
+      "cost_survive": 2,
+      "deployable_rows": 2,
+      "deployable_unique_clusters": 2,
+      "raw_pass_unique_clusters": 3,
+      "median_turnover": 0.0838065,
+      "median_cost_adjusted_sortino": -0.4652255
+    },
+    {
+      "factor_lane": "fundamental_x_activity",
+      "audited": 7,
+      "raw_non_gap_pass": 7,
+      "portfolio_replay_pass": 7,
+      "cost_survive": 4,
+      "deployable_rows": 4,
+      "deployable_unique_clusters": 4,
+      "raw_pass_unique_clusters": 7,
+      "median_turnover": 0.108978,
+      "median_cost_adjusted_sortino": 0.374979
+    },
+    {
+      "factor_lane": "fundamental_x_event",
+      "audited": 7,
+      "raw_non_gap_pass": 7,
+      "portfolio_replay_pass": 7,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 6,
+      "median_turnover": 0.495395,
+      "median_cost_adjusted_sortino": -1.090821
+    },
+    {
+      "factor_lane": "fundamental_x_flow",
+      "audited": 7,
+      "raw_non_gap_pass": 6,
+      "portfolio_replay_pass": 6,
+      "cost_survive": 2,
+      "deployable_rows": 2,
+      "deployable_unique_clusters": 2,
+      "raw_pass_unique_clusters": 4,
+      "median_turnover": 0.242647,
+      "median_cost_adjusted_sortino": -1.371177
+    },
+    {
+      "factor_lane": "limit_seal_flow",
+      "audited": 7,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 1,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.9623205,
+      "median_cost_adjusted_sortino": 0.0
+    },
+    {
+      "factor_lane": "price_flow_divergence",
+      "audited": 7,
+      "raw_non_gap_pass": 3,
+      "portfolio_replay_pass": 3,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 3,
+      "median_turnover": 0.479487,
+      "median_cost_adjusted_sortino": -0.802345
+    },
+    {
+      "factor_lane": "seal_to_amount",
+      "audited": 6,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.7916665,
+      "median_cost_adjusted_sortino": -0.029025
+    },
+    {
+      "factor_lane": "theme_activity_proxy",
+      "audited": 3,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 0,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.916667,
+      "median_cost_adjusted_sortino": -0.320667
+    }
+  ],
+  "field_family_table": [
+    {
+      "primary_field_family": "capacity",
+      "audited": 19,
+      "raw_non_gap_pass": 3,
+      "portfolio_replay_pass": 3,
+      "cost_survive": 5,
+      "deployable_rows": 1,
+      "deployable_unique_clusters": 1,
+      "raw_pass_unique_clusters": 3,
+      "median_turnover": 0.080306,
+      "median_cost_adjusted_sortino": -0.688398
+    },
+    {
+      "primary_field_family": "flow_liquidity",
+      "audited": 58,
+      "raw_non_gap_pass": 18,
+      "portfolio_replay_pass": 18,
+      "cost_survive": 8,
+      "deployable_rows": 6,
+      "deployable_unique_clusters": 6,
+      "raw_pass_unique_clusters": 16,
+      "median_turnover": 0.278787,
+      "median_cost_adjusted_sortino": -0.839139
+    },
+    {
+      "primary_field_family": "fundamental",
+      "audited": 25,
+      "raw_non_gap_pass": 21,
+      "portfolio_replay_pass": 21,
+      "cost_survive": 7,
+      "deployable_rows": 7,
+      "deployable_unique_clusters": 7,
+      "raw_pass_unique_clusters": 18,
+      "median_turnover": 0.117614,
+      "median_cost_adjusted_sortino": -1.166021
+    },
+    {
+      "primary_field_family": "limit_event",
+      "audited": 26,
+      "raw_non_gap_pass": 0,
+      "portfolio_replay_pass": 0,
+      "cost_survive": 7,
+      "deployable_rows": 0,
+      "deployable_unique_clusters": 0,
+      "raw_pass_unique_clusters": 0,
+      "median_turnover": 0.8983715,
+      "median_cost_adjusted_sortino": 0.0
+    }
+  ],
+  "replay_main_kpi": {
+    "primary": {
+      "cost_turnover_deployable_unique_clusters": 14,
+      "audited_count": 128,
+      "cost_turnover_deployable_unique_clusters_per_audited": 0.109375
+    },
+    "secondary": {
+      "unique_return_corr_clusters": 36,
+      "unique_return_corr_clusters_per_audited": 0.28125,
+      "new_clusters_not_covered_by_r0": 36,
+      "new_clusters_not_covered_by_r0_per_audited": 0.28125,
+      "raw_non_gap_replay_pass": 42,
+      "raw_non_gap_replay_pass_per_audited": 0.328125,
+      "top_cluster_raw_pass_share": 0.047619,
+      "top_cluster_id": "cluster_021"
+    },
+    "raw_pass_is_diagnostic_only": true
+  },
+  "outputs": {
+    "survivor_rows": "reports\\cn_underutilized_field_survivor_attribution_20260601\\survivor_rows.csv",
+    "deployable_cluster_representatives": "reports\\cn_underutilized_field_survivor_attribution_20260601\\deployable_cluster_representatives.csv",
+    "by_source_lane": "reports\\cn_underutilized_field_survivor_attribution_20260601\\by_source_lane.csv",
+    "by_factor_lane": "reports\\cn_underutilized_field_survivor_attribution_20260601\\by_factor_lane.csv",
+    "by_formula_skeleton": "reports\\cn_underutilized_field_survivor_attribution_20260601\\by_formula_skeleton.csv",
+    "by_primary_field_family": "reports\\cn_underutilized_field_survivor_attribution_20260601\\by_primary_field_family.csv"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

@@ -1,0 +1,35 @@
+{
+  "phase": "Phase3AB",
+  "run_type": "candidate_deep_validation",
+  "created_at": "2026-05-30",
+  "scope": "no_search_deep_validation",
+  "official_stats_allowed": false,
+  "modifies_x0_r3": false,
+  "input_aggregate": "reports/phase3ab_large_search_aggregate_retry_20260530/phase3ab_top_candidates.csv",
+  "dataset": "G:/Project_V7_Rotation/scripts/data/phase3n_stock_tdx_official_20200101_to_20260508_maxopt.parquet",
+  "primary_job": {
+    "machine": "local",
+    "top_n": 80,
+    "top_bottom_quantile": 0.02,
+    "output_root": "reports/phase3ab_candidate_deep_validation_20260530_top80",
+    "expected_duration": "approximately 4-6 hours based on top-2 smoke"
+  },
+  "smoke_result": {
+    "top_n": 2,
+    "output_root": "reports/phase3ab_candidate_deep_validation_smoke_20260530",
+    "succeeded": 2,
+    "failed": 0
+  },
+  "decision_boundary": {
+    "allowed": [
+      "rank candidates for next full proof suite",
+      "identify candidates that only work in R3 or recent regime",
+      "reject Stage1 artifacts with weak full-history or OOS behavior"
+    ],
+    "not_allowed": [
+      "promote any candidate directly",
+      "modify X0/R3 official shadow",
+      "tune formulas based on this audit"
+    ]
+  }
+}

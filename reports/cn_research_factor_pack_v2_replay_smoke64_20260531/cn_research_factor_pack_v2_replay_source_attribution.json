@@ -1,0 +1,134 @@
+{
+  "by_source_lane": [
+    {
+      "group": "cn_research_feature_layer_v2",
+      "audited": 24,
+      "raw_pass": 24,
+      "deployable_proxy": 12,
+      "unique_clusters": 20,
+      "top_cluster": "cluster_037",
+      "top_cluster_count": 2
+    },
+    {
+      "group": "agnostic_freeform_ast",
+      "audited": 10,
+      "raw_pass": 10,
+      "deployable_proxy": 9,
+      "unique_clusters": 8,
+      "top_cluster": "cluster_003",
+      "top_cluster_count": 3
+    },
+    {
+      "group": "formula_gen_v2_repair_expansion",
+      "audited": 10,
+      "raw_pass": 10,
+      "deployable_proxy": 8,
+      "unique_clusters": 8,
+      "top_cluster": "cluster_013",
+      "top_cluster_count": 2
+    },
+    {
+      "group": "r0_cem_led",
+      "audited": 10,
+      "raw_pass": 10,
+      "deployable_proxy": 8,
+      "unique_clusters": 8,
+      "top_cluster": "cluster_003",
+      "top_cluster_count": 3
+    },
+    {
+      "group": "ast_failure_aware_repair",
+      "audited": 8,
+      "raw_pass": 8,
+      "deployable_proxy": 6,
+      "unique_clusters": 8,
+      "top_cluster": "cluster_003",
+      "top_cluster_count": 1
+    },
+    {
+      "group": "event_derived_feature_layer",
+      "audited": 2,
+      "raw_pass": 0,
+      "deployable_proxy": 0,
+      "unique_clusters": 2,
+      "top_cluster": "cluster_047",
+      "top_cluster_count": 1
+    }
+  ],
+  "by_factor_lane": [
+    {
+      "group": "non_fundamental",
+      "audited": 38,
+      "raw_pass": 38,
+      "deployable_proxy": 31,
+      "unique_clusters": 25,
+      "top_cluster": "cluster_003",
+      "top_cluster_count": 8
+    },
+    {
+      "group": "fundamental_x_event",
+      "audited": 10,
+      "raw_pass": 10,
+      "deployable_proxy": 5,
+      "unique_clusters": 6,
+      "top_cluster": "cluster_037",
+      "top_cluster_count": 2
+    },
+    {
+      "group": "fundamental_risk_inverse",
+      "audited": 5,
+      "raw_pass": 5,
+      "deployable_proxy": 2,
+      "unique_clusters": 5,
+      "top_cluster": "cluster_032",
+      "top_cluster_count": 1
+    },
+    {
+      "group": "fundamental_size_residual",
+      "audited": 5,
+      "raw_pass": 5,
+      "deployable_proxy": 3,
+      "unique_clusters": 5,
+      "top_cluster": "cluster_041",
+      "top_cluster_count": 1
+    },
+    {
+      "group": "fundamental_quality",
+      "audited": 4,
+      "raw_pass": 4,
+      "deployable_proxy": 2,
+      "unique_clusters": 4,
+      "top_cluster": "cluster_029",
+      "top_cluster_count": 1
+    },
+    {
+      "group": "event_x_theme",
+      "audited": 2,
+      "raw_pass": 0,
+      "deployable_proxy": 0,
+      "unique_clusters": 2,
+      "top_cluster": "cluster_047",
+      "top_cluster_count": 1
+    }
+  ],
+  "by_contains_fundamental": [
+    {
+      "group": "nonfund_expr",
+      "audited": 40,
+      "raw_pass": 38,
+      "deployable_proxy": 31,
+      "unique_clusters": 27,
+      "top_cluster": "cluster_003",
+      "top_cluster_count": 8
+    },
+    {
+      "group": "fundamental_expr",
+      "audited": 24,
+      "raw_pass": 24,
+      "deployable_proxy": 12,
+      "unique_clusters": 20,
+      "top_cluster": "cluster_037",
+      "top_cluster_count": 2
+    }
+  ]
+}

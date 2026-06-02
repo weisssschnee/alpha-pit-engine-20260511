@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "candidate_count": 4,
+    "signal_vector_error_count": 0,
+    "signal_vector_ready_count": 4
+  },
+  "created_at": "2026-05-31T13:53:27.701729+00:00",
+  "dataset_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+  "decision": "PASS_EVENT_FIELD_SIGNAL_VECTOR_SMOKE",
+  "errors": [],
+  "factor_pack": "runtime\\factor_packs\\cn_research_factor_candidate_pack_v2_20260531.json",
+  "parameters": {
+    "max_rows": 4,
+    "require_field_prefix": "fund_",
+    "sample_size": 512,
+    "warmup_days": 30
+  },
+  "registry_store_ready": true
+}

@@ -37,6 +37,7 @@ FIELD_TYPE_MAP = {
     "volume": "volume_ts",
     "amount": "volume_ts",
     "turnover_rate": "crosssec",
+    "turnover_ratio": "crosssec",
     "ret": "price_ts",
     "amtm": "price_ts",
     "return_1d": "price_ts",
@@ -74,6 +75,7 @@ FIELD_TYPE_MAP = {
     "total_share": "capacity_crosssec",
     "market_cap": "capacity_crosssec",
     "float_market_cap": "capacity_crosssec",
+    "float_market_cap_yuan": "capacity_crosssec",
     "market_cap_billion": "capacity_crosssec",
     "float_market_cap_billion": "capacity_crosssec",
     "final_total_market_cap": "capacity_crosssec",
@@ -83,6 +85,7 @@ FIELD_TYPE_MAP = {
     "tdxgp_total_market_cap": "capacity_crosssec",
     "tdxgp_total_market_cap_billion": "capacity_crosssec",
     "market_cap_conflict_gt5pct": "data_quality_event",
+    "plate_score": "event_crosssec",
 }
 
 
@@ -95,6 +98,7 @@ FIELD_BEHAVIOR_PROFILES = {
     "volume": {"momentum": 0.10, "size": 0.75, "value": 0.10, "volatility": 0.35, "turnover": 0.85},
     "amount": {"momentum": 0.25, "size": 0.85, "value": 0.15, "volatility": 0.30, "turnover": 0.70},
     "turnover_rate": {"momentum": 0.15, "size": 0.65, "value": 0.10, "volatility": 0.40, "turnover": 0.95},
+    "turnover_ratio": {"momentum": 0.15, "size": 0.65, "value": 0.10, "volatility": 0.40, "turnover": 0.95},
     "ret": {"momentum": 0.60, "size": 0.05, "value": 0.10, "volatility": 0.65, "turnover": 0.10},
     "amtm": {"momentum": 0.70, "size": 0.10, "value": 0.20, "volatility": 0.25, "turnover": 0.05},
     "return_1d": {"momentum": 0.55, "size": 0.05, "value": 0.10, "volatility": 0.65, "turnover": 0.10},
@@ -132,6 +136,7 @@ FIELD_BEHAVIOR_PROFILES = {
     "total_share": {"momentum": 0.05, "size": 0.98, "value": 0.20, "volatility": 0.05, "turnover": 0.25},
     "market_cap": {"momentum": 0.10, "size": 0.98, "value": 0.35, "volatility": 0.08, "turnover": 0.28},
     "float_market_cap": {"momentum": 0.10, "size": 0.96, "value": 0.35, "volatility": 0.08, "turnover": 0.38},
+    "float_market_cap_yuan": {"momentum": 0.10, "size": 0.96, "value": 0.35, "volatility": 0.08, "turnover": 0.38},
     "market_cap_billion": {"momentum": 0.10, "size": 0.98, "value": 0.35, "volatility": 0.08, "turnover": 0.28},
     "float_market_cap_billion": {"momentum": 0.10, "size": 0.96, "value": 0.35, "volatility": 0.08, "turnover": 0.38},
     "final_total_market_cap": {"momentum": 0.10, "size": 0.99, "value": 0.35, "volatility": 0.08, "turnover": 0.28},
@@ -141,6 +146,7 @@ FIELD_BEHAVIOR_PROFILES = {
     "tdxgp_total_market_cap": {"momentum": 0.10, "size": 0.98, "value": 0.35, "volatility": 0.08, "turnover": 0.28},
     "tdxgp_total_market_cap_billion": {"momentum": 0.10, "size": 0.98, "value": 0.35, "volatility": 0.08, "turnover": 0.28},
     "market_cap_conflict_gt5pct": {"momentum": 0.02, "size": 0.45, "value": 0.05, "volatility": 0.50, "turnover": 0.10},
+    "plate_score": {"momentum": 0.62, "size": 0.15, "value": 0.04, "volatility": 0.65, "turnover": 0.42},
 }
 
 FIELD_ALIASES = {
@@ -154,6 +160,21 @@ FIELD_ALIASES = {
 
 def _clip(value: float) -> float:
     return round(max(0.0, min(1.0, value)), 6)
+
+
+def _fundamental_behavior_profile(field_name: str) -> dict[str, float] | None:
+    normalized = field_name.lower().lstrip("$")
+    if not normalized.startswith("fund_"):
+        return None
+    if any(token in normalized for token in ("debt", "goodwill", "inventory")):
+        return {"momentum": 0.05, "size": 0.15, "value": 0.70, "volatility": 0.45, "turnover": 0.05}
+    if any(token in normalized for token in ("total_assets", "total_operate_income", "total_shares")):
+        return {"momentum": 0.05, "size": 0.85, "value": 0.25, "volatility": 0.15, "turnover": 0.03}
+    if any(token in normalized for token in ("netprofit", "ocf", "cash", "current_ratio", "research", "margin")):
+        return {"momentum": 0.20, "size": 0.25, "value": 0.75, "volatility": 0.20, "turnover": 0.04}
+    if any(token in normalized for token in ("holder", "float_share", "circulate")):
+        return {"momentum": 0.15, "size": 0.35, "value": 0.45, "volatility": 0.25, "turnover": 0.06}
+    return {"momentum": 0.10, "size": 0.35, "value": 0.55, "volatility": 0.25, "turnover": 0.05}
 
 
 @dataclass(slots=True)
@@ -228,6 +249,24 @@ class FieldEncoder:
                 vector=tuple(round(value, 6) for value in base[: self.d_model]),
                 behavior_profile=profile,
             )
+        fundamental_profile = _fundamental_behavior_profile(normalized)
+        if fundamental_profile is not None:
+            base = (
+                fundamental_profile["momentum"],
+                fundamental_profile["size"],
+                fundamental_profile["value"],
+                fundamental_profile["volatility"],
+                fundamental_profile["turnover"],
+                0.0,
+                0.0,
+                1.0,
+            )
+            return EncodedField(
+                field_name=normalized,
+                field_type="fundamental_crosssec",
+                vector=tuple(round(value, 6) for value in base[: self.d_model]),
+                behavior_profile=dict(fundamental_profile),
+            )
         if normalized not in FIELD_TYPE_MAP:
             normalized = _closest_known_field(normalized)
         profile = FIELD_BEHAVIOR_PROFILES[normalized]
@@ -265,6 +304,8 @@ def canonical_field_name(field_name: str) -> str | None:
         if base is None:
             return None
         return derived.field_name
+    if _fundamental_behavior_profile(normalized) is not None:
+        return normalized
     if normalized in FIELD_TYPE_MAP:
         return normalized
     if normalized in FIELD_ALIASES:

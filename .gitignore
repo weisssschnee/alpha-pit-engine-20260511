@@ -19,6 +19,21 @@ runtime/**/shard*
 runtime/**/candidate_ledger.json
 runtime/**/ab_ucb_policy_state.json
 runtime/phase3_runtime_state_registry.json
+archive/
+
+# Generated CN research outputs kept locally; commit only selected manifests/contracts.
+runtime/cn_*_*/
+runtime/factor_packs/
+runtime/minute_feature_panels/
+runtime/nonminute_context_panels/
+runtime/phase3g_signal_vectors/
+runtime/registry_review/
+reports/cn_minute_2023_2025_reconvert_20260601_*/
+reports/cn_minute_2023_2025_reconvert_20260601_full/
+reports/cn_minute_2023_2025_reconvert_20260601_year2024/
+reports/cn_minute_2023_2025_reconvert_20260601_year2025/
+reports/cn_nonminute_pit_context_panel_v1_20260602_canary_2026/
+reports/PHASE3AA_MATURE_CHAIN_EVENT_CANARY_2026-05-29.md
 
 # Local machine state
 .env

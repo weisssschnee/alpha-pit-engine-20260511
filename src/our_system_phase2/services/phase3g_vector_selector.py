@@ -7,6 +7,7 @@ from typing import Any
 PHASE3G_VECTOR_SELECTOR_VERSION = "phase3g-signal-vector-selector-v1-2026-05-14"
 PHASE3G_SIGNAL_VECTOR_SELECTOR_PROFILES = {
     "signal_vector_diversified_proxy",
+    "signal_vector_diversified_source_priority_proxy",
     "signal_vector_turnover_calibrated_proxy",
     "signal_vector_cost_turnover_constrained_proxy",
     "signal_vector_turnover_tail_guard_v2",
@@ -71,6 +72,7 @@ def score_signal_vector_selector(
     capacity_liquidity = selector_profile == "signal_vector_capacity_liquidity_proxy"
     book_proxy_hardened = selector_profile == "signal_vector_book_proxy_hardened"
     queue_diversity_v2 = selector_profile == "signal_vector_queue_diversity_v2"
+    source_priority_profile = selector_profile == "signal_vector_diversified_source_priority_proxy"
     known_cluster = str(features.get("known_signal_cluster_id") or "")
     provisional_cluster = str(features.get("provisional_signal_cluster_id") or "")
     source_lane = str(features.get("source_lane") or "")
@@ -141,6 +143,11 @@ def score_signal_vector_selector(
     liquidity_penalty = 1.0 / max(1.0, math.log1p(max(0.0, liquidity_proxy)))
     capacity_penalty = 1.0 / max(1.0, math.log1p(max(0.0, capacity_proxy)))
     registry_symbolic_corr = float(features.get("max_corr_to_103_registry") or 0.0)
+    try:
+        pool_priority = float(features.get("pool_priority_score") or 1.0)
+    except (TypeError, ValueError):
+        pool_priority = 1.0
+    pool_priority_bonus = 0.35 * max(-0.50, min(0.50, pool_priority - 1.0))
 
     if strengthened:
         score = (
@@ -239,6 +246,20 @@ def score_signal_vector_selector(
             - 0.20 * complexity_penalty
             - 0.40 * cluster_special_penalty
         )
+    elif source_priority_profile:
+        score = (
+            float(base_e3_score)
+            + 0.45 * novelty
+            + pool_priority_bonus
+            - 0.95 * selected_corr
+            - 0.60 * known_penalty
+            - 0.50 * provisional_penalty
+            - 0.40 * source_lane_penalty
+            - 0.30 * turnover_penalty
+            - 0.65 * turnover_structure_penalty
+            - 0.20 * complexity_penalty
+            - 0.30 * cluster_special_penalty
+        )
     else:
         score = (
             float(base_e3_score)
@@ -276,6 +297,8 @@ def score_signal_vector_selector(
         "capacity_proxy": round(float(capacity_proxy), 6),
         "liquidity_penalty": round(float(liquidity_penalty), 6),
         "capacity_penalty": round(float(capacity_penalty), 6),
+        "pool_priority_score": round(float(pool_priority), 6),
+        "pool_priority_bonus": round(float(pool_priority_bonus), 6),
         "registry_symbolic_corr_penalty": round(float(registry_symbolic_corr), 6),
         "complexity_penalty": round(float(complexity_penalty), 6),
         "cap_reject_reason": "|".join(cap_reasons),

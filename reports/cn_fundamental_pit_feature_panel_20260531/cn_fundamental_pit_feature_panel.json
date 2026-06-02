@@ -1,0 +1,134 @@
+{
+  "counts": {
+    "codes": 6241,
+    "columns": 60,
+    "fundamental_feature_columns": 42,
+    "rows": 1090783,
+    "rows_with_any_fundamental_feature": 36119
+  },
+  "coverage": {
+    "balance_sheet": {
+      "event_rows": 919,
+      "feature_cols": [
+        "fund_total_assets",
+        "fund_total_liabilities",
+        "fund_total_equity",
+        "fund_total_current_assets",
+        "fund_total_current_liab",
+        "fund_monetary_funds",
+        "fund_inventory",
+        "fund_goodwill",
+        "fund_fixed_asset"
+      ],
+      "row_any_feature_coverage": 0.033113
+    },
+    "cash_flow_sheet": {
+      "event_rows": 919,
+      "feature_cols": [
+        "fund_netcash_operate",
+        "fund_netcash_invest",
+        "fund_netcash_finance",
+        "fund_end_cash",
+        "fund_cash_statement_netprofit"
+      ],
+      "row_any_feature_coverage": 0.033113
+    },
+    "holder": {
+      "event_rows": 1001,
+      "feature_cols": [
+        "fund_top1_holder_pct",
+        "fund_top10_holder_pct",
+        "fund_holder_count",
+        "fund_avg_holding",
+        "fund_circulate_top10_holder_pct"
+      ],
+      "row_any_feature_coverage": 0.033113
+    },
+    "profit_sheet": {
+      "event_rows": 920,
+      "feature_cols": [
+        "fund_total_operate_income",
+        "fund_operate_income",
+        "fund_total_operate_cost",
+        "fund_operate_profit",
+        "fund_total_profit",
+        "fund_netprofit",
+        "fund_parent_netprofit",
+        "fund_deduct_parent_netprofit",
+        "fund_basic_eps",
+        "fund_research_expense"
+      ],
+      "row_any_feature_coverage": 0.033113
+    },
+    "share_change": {
+      "event_rows": 897,
+      "feature_cols": [
+        "fund_total_shares_cninfo",
+        "fund_float_shares_cninfo",
+        "fund_restricted_shares_cninfo"
+      ],
+      "row_any_feature_coverage": 0.032948
+    }
+  },
+  "created_at": "2026-05-31T13:12:26.565724+00:00",
+  "date_range": {
+    "max_date": "2026-05-08",
+    "min_date": "2025-08-06"
+  },
+  "decision": "PASS_CN_FUNDAMENTAL_PIT_FEATURE_PANEL_BUILT",
+  "feature_columns": [
+    "fund_total_assets",
+    "fund_total_liabilities",
+    "fund_total_equity",
+    "fund_total_current_assets",
+    "fund_total_current_liab",
+    "fund_monetary_funds",
+    "fund_inventory",
+    "fund_goodwill",
+    "fund_fixed_asset",
+    "fund_total_operate_income",
+    "fund_operate_income",
+    "fund_total_operate_cost",
+    "fund_operate_profit",
+    "fund_total_profit",
+    "fund_netprofit",
+    "fund_parent_netprofit",
+    "fund_deduct_parent_netprofit",
+    "fund_basic_eps",
+    "fund_research_expense",
+    "fund_netcash_operate",
+    "fund_netcash_invest",
+    "fund_netcash_finance",
+    "fund_end_cash",
+    "fund_cash_statement_netprofit",
+    "fund_top1_holder_pct",
+    "fund_top10_holder_pct",
+    "fund_holder_count",
+    "fund_avg_holding",
+    "fund_circulate_top10_holder_pct",
+    "fund_total_shares_cninfo",
+    "fund_float_shares_cninfo",
+    "fund_restricted_shares_cninfo",
+    "fund_debt_to_assets",
+    "fund_cash_to_assets",
+    "fund_goodwill_to_assets",
+    "fund_inventory_to_assets",
+    "fund_current_ratio",
+    "fund_netprofit_margin",
+    "fund_ocf_to_netprofit",
+    "fund_ocf_to_assets",
+    "fund_research_to_income",
+    "fund_float_share_ratio_cninfo"
+  ],
+  "output_panel": "runtime\\fundamental_features\\cn_fundamental_daily_pit_features_v1_20260531.parquet",
+  "output_sha256": "a57b50f30b01a65da3acf5f21d08aa0291fd0d905d03df7fac4fcf8ab9489962",
+  "policy": {
+    "availability": "announcement/notice date plus next trading day only",
+    "not_included": "financial_analysis_indicator_sina, zygc_em, dividend_cninfo until announcement-date issues are resolved",
+    "scope": "top200 fundamental controlled smoke joined onto mature daily panel"
+  },
+  "source": {
+    "agg_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1",
+    "daily_panel": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_augmented_v1_20260531.parquet"
+  }
+}

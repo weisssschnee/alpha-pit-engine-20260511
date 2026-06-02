@@ -1,0 +1,56 @@
+{
+  "manifest_id": "cn_data_feature_workspace_save_manifest_20260602",
+  "created_at": "2026-06-02T09:50:43",
+  "git_branch": "",
+  "scope": "code_reports_and_local_large_artifact_hashes",
+  "large_artifacts_not_committed_to_git": [
+    "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2023\\part.parquet",
+    "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2024\\part.parquet",
+    "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2025\\part.parquet",
+    "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2026\\part.parquet"
+  ],
+  "items": [
+    {
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2023\\part.parquet",
+      "exists": true,
+      "bytes": 3341040,
+      "sha256": "ddc732020dec9f1d37543da74b3dcfb246e88fa6c391d70c4cc331e7ca9f827a"
+    },
+    {
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2024\\part.parquet",
+      "exists": true,
+      "bytes": 164147204,
+      "sha256": "fef1b7c2fd9d1fd5d90cd3ce09361c2c2a51c7219e55a17cffc663e69ff66483"
+    },
+    {
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2025\\part.parquet",
+      "exists": true,
+      "bytes": 176867983,
+      "sha256": "f3c453e594cba297237c3967b32633de320ffb56e60763b3aa3480cd65ad8e2e"
+    },
+    {
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2026\\part.parquet",
+      "exists": true,
+      "bytes": 54133827,
+      "sha256": "4d80bd2426bbe5fa8a68b2e8edd9e0ef394f19c3f8b023295f75e7521311bd8a"
+    },
+    {
+      "path": "reports\\cn_nonminute_pit_context_panel_v1_20260602\\cn_nonminute_pit_context_panel_v1.json",
+      "exists": true,
+      "bytes": 2466,
+      "sha256": "cda1cc33f2c74dbf117578d90ea961984a8dcae0b3af316dd78302824cc6f163"
+    },
+    {
+      "path": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\cn_nonminute_pit_context_panel_v1_qa.json",
+      "exists": true,
+      "bytes": 1056,
+      "sha256": "03c97e362b7886529ed51d94807d5b212dc576977ed0c237bf6f842216ff32da"
+    },
+    {
+      "path": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\cn_nonminute_system_integration_audit.json",
+      "exists": true,
+      "bytes": 4277,
+      "sha256": "45c6bb22bafb7a0eea5f957a762b42060e1d01a022a0e5fdffa2e133d797a317"
+    }
+  ]
+}

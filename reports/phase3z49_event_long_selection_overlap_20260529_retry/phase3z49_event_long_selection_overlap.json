@@ -1,0 +1,63 @@
+{
+  "candidate_count": 0,
+  "code_count": 5987,
+  "created_at": "2026-05-29T17:30:31+08:00",
+  "dataset": "G:\\Project_V7_Rotation\\scripts\\data\\phase3n_stock_tdx_official_20200101_to_20260508_maxopt.parquet",
+  "date_max": "2026-05-08",
+  "date_min": "2020-01-02",
+  "decision": "HOLD_Z49_STOCK_VETO_NOT_JUSTIFIED_BY_OVERLAP",
+  "hard_boundary": "Z49 cannot alter X0/R3, G2, J2/J4, Phase3P, or formula search state.",
+  "outputs": {
+    "by_cluster_csv": "reports\\phase3z49_event_long_selection_overlap_20260529_retry\\phase3z49_event_long_selection_overlap_by_cluster.csv",
+    "summary_csv": "reports\\phase3z49_event_long_selection_overlap_20260529_retry\\phase3z49_event_long_selection_overlap_summary.csv",
+    "summary_json": "reports\\phase3z49_event_long_selection_overlap_20260529_retry\\phase3z49_event_long_selection_overlap.json",
+    "summary_md": "reports\\phase3z49_event_long_selection_overlap_20260529_retry\\PHASE3Z49_EVENT_LONG_SELECTION_OVERLAP_2026-05-29.md"
+  },
+  "row_count": 7726056,
+  "run_plan": "runtime\\run_plans\\phase3z49_event_long_selection_overlap_run_plan.json",
+  "scope": "diagnostic_only_overlap_audit_no_official_promotion",
+  "shadow_object": "runtime\\baselines\\phase3o_x0_official_shadow_v1.json",
+  "top_bottom_quantile": 0.02,
+  "top_rows": [
+    {
+      "actor_motif": "intraday_touch_exhaustion",
+      "clusters_with_material_bad_overlap": 0,
+      "decision": "HOLD_STOCK_VETO_NOT_JUSTIFIED",
+      "selected_event_count": 1340,
+      "selected_event_share": 0.054236,
+      "selected_long_count": 24707,
+      "trigger_id": "touch_not_close_up",
+      "weighted_event_minus_non_event_return": 0.00097559
+    },
+    {
+      "actor_motif": "high_board_chaser_unwind",
+      "clusters_with_material_bad_overlap": 0,
+      "decision": "HOLD_STOCK_VETO_NOT_JUSTIFIED",
+      "selected_event_count": 25,
+      "selected_event_share": 0.001012,
+      "selected_long_count": 24707,
+      "trigger_id": "break_after_streak_ge2",
+      "weighted_event_minus_non_event_return": 0.01269824
+    },
+    {
+      "actor_motif": "open_board_liquidity_failure",
+      "clusters_with_material_bad_overlap": 0,
+      "decision": "HOLD_STOCK_VETO_NOT_JUSTIFIED",
+      "selected_event_count": 34,
+      "selected_event_share": 0.001376,
+      "selected_long_count": 24707,
+      "trigger_id": "open_not_close_up",
+      "weighted_event_minus_non_event_return": 0.0353367
+    },
+    {
+      "actor_motif": "high_board_chaser_unwind",
+      "clusters_with_material_bad_overlap": 0,
+      "decision": "HOLD_STOCK_VETO_NOT_JUSTIFIED",
+      "selected_event_count": 4,
+      "selected_event_share": 0.000162,
+      "selected_long_count": 24707,
+      "trigger_id": "break_after_streak_ge3",
+      "weighted_event_minus_non_event_return": null
+    }
+  ]
+}

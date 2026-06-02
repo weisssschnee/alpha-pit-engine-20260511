@@ -57,6 +57,7 @@ OPTIONAL_TRADABILITY_COLUMNS = (
 )
 OPTIONAL_FEATURE_COLUMNS = (
     "sector",
+    "daily_ret",
     "return_1d",
     "return_5d",
     "return_20d",
@@ -64,6 +65,11 @@ OPTIONAL_FEATURE_COLUMNS = (
     "rps_score",
     "rps_slope_3d",
     "money_flow",
+    "turnover_ratio",
+    "turnover_ratio_real",
+    "seal_money",
+    "seal_rate",
+    "seal_circulation_rate",
     "f9_quantile_250d",
     "crowding",
     "overnight",
@@ -99,6 +105,7 @@ OPTIONAL_FEATURE_COLUMNS = (
     "final_float_market_cap",
     "final_float_market_cap_billion",
     "market_cap_conflict_gt5pct",
+    "actual_circulation_value",
     *PIT_TREND_STATE_FEATURE_FIELDS,
 )
 MARKET_PANEL_METADATA_COLUMNS = ("instrument_type", "market")
@@ -122,7 +129,10 @@ FULL_DAY_BAR_FIELDS = {
     "volume",
     "vwap",
     "turnover_rate",
+    "turnover_ratio",
+    "turnover_ratio_real",
     "ret",
+    "daily_ret",
     "amtm",
     "reta",
     "retb",
@@ -137,6 +147,9 @@ FULL_DAY_BAR_FIELDS = {
     "rps_score",
     "rps_slope_3d",
     "money_flow",
+    "seal_money",
+    "seal_rate",
+    "seal_circulation_rate",
     "f9_quantile_250d",
     "crowding",
     "low_20",
@@ -171,6 +184,7 @@ FULL_DAY_BAR_FIELDS = {
     "final_float_market_cap",
     "final_float_market_cap_billion",
     "market_cap_conflict_gt5pct",
+    "actual_circulation_value",
     *PIT_TREND_STATE_FEATURE_FIELDS,
 }
 LONG_SELECTION_DIAGNOSTIC_FIELDS = {
@@ -549,8 +563,16 @@ def _available_market_panel_usecols(path: Path | str) -> list[str]:
         for column in (*OPTIONAL_TRADABILITY_COLUMNS, *OPTIONAL_FEATURE_COLUMNS)
         if column in columns and column not in base
     ]
+    fundamental = sorted(column for column in columns if column.startswith("fund_") and column not in base)
     metadata = [column for column in MARKET_PANEL_METADATA_COLUMNS if column in columns and column not in base]
-    return [*base, *metadata, *optional]
+    out: list[str] = []
+    seen: set[str] = set()
+    for column in [*base, *metadata, *optional, *fundamental]:
+        if column in seen:
+            continue
+        seen.add(column)
+        out.append(column)
+    return out
 
 
 def _has_effective_numeric_column(frame: pd.DataFrame, column: str) -> bool:

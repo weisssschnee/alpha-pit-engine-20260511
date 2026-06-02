@@ -1,0 +1,31 @@
+{
+  "audit_rows": 507,
+  "factor_lane_selected": {},
+  "hard_reject_counts": {
+    "": 408,
+    "operator_pathology": 31,
+    "source_lane_signal_cluster_cap": 68
+  },
+  "selected_rows": 128,
+  "signal_error_counts": {
+    "": 507
+  },
+  "source_generator_selected": {
+    "agnostic_freeform_ast": 20,
+    "ast_evolutionary_mutation": 6,
+    "ast_failure_aware_repair": 14,
+    "cem_adaptive_grammar": 15,
+    "cn_flow_liquidity_factor_pack_v1": 41,
+    "cn_underutilized_field_factor_pack_v1": 21,
+    "formula_gen_v2_repair_expansion": 8,
+    "simple_template": 3
+  },
+  "source_lane_selected": {
+    "agnostic_freeform_ast": 20,
+    "ast_failure_aware_repair": 14,
+    "event_derived_feature_layer": 38,
+    "formula_gen_v2_repair_expansion": 8,
+    "r0_cem_led": 24,
+    "research_factor_feature_layer": 24
+  }
+}

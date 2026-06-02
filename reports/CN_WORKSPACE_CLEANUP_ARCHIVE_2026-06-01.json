@@ -1,0 +1,216 @@
+{
+  "archive_actions": [
+    {
+      "bytes": 187617,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_20260531"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_20260531"
+    },
+    {
+      "bytes": 55453,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_fast_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_fast_20260531"
+    },
+    {
+      "bytes": 9006958,
+      "source": "runtime\\cn_factor_pack_phase3aa_preflight_light_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_preflight_light_20260531"
+    },
+    {
+      "bytes": 438064,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_micro_selector_20260601",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_micro_selector_20260601"
+    },
+    {
+      "bytes": 389354,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_tiny_selector_20260601",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_tiny_selector_20260601"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_selector_gate_20260601",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_selector_gate_20260601"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_underutilized_field_factor_pack_v1_selector256_20260601",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_underutilized_field_factor_pack_v1_selector256_20260601"
+    },
+    {
+      "bytes": 9988685,
+      "source": "runtime\\cn_research_factor_pack_v2_micro_selector_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_micro_selector_20260531"
+    },
+    {
+      "bytes": 374687,
+      "source": "runtime\\cn_research_factor_pack_v2_micro_selector_fast_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_micro_selector_fast_20260531"
+    },
+    {
+      "bytes": 238163,
+      "source": "runtime\\cn_research_factor_pack_v2_replay_smoke_20260531",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_replay_smoke_20260531"
+    }
+  ],
+  "archive_root": "archive\\workspace_cleanup_20260601",
+  "cache_remove_actions": [
+    {
+      "bytes": 19568,
+      "path": "__pycache__"
+    },
+    {
+      "bytes": 287,
+      "path": "src\\our_system_phase2\\__pycache__"
+    },
+    {
+      "bytes": 6311,
+      "path": "src\\our_system_phase2\\domain\\__pycache__"
+    },
+    {
+      "bytes": 61706,
+      "path": "src\\our_system_phase2\\formula_gen_v2\\__pycache__"
+    },
+    {
+      "bytes": 673189,
+      "path": "src\\our_system_phase2\\runtime\\__pycache__"
+    },
+    {
+      "bytes": 1084232,
+      "path": "src\\our_system_phase2\\services\\__pycache__"
+    },
+    {
+      "bytes": 45337,
+      "path": "tests\\__pycache__"
+    },
+    {
+      "bytes": 1405,
+      "path": ".pytest_cache"
+    }
+  ],
+  "created_at": "2026-06-01T01:27:38.834589+00:00",
+  "executed_at": "2026-06-01T01:27:39.010627+00:00",
+  "manifest_path": "runtime\\manifests\\cn_data_feature_workspace_key_artifacts_20260601.json",
+  "mode": "executed",
+  "moved": [
+    {
+      "bytes": 187617,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_20260531"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_20260531"
+    },
+    {
+      "bytes": 55453,
+      "source": "runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_fast_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_micro_selector_augmented_fast_20260531"
+    },
+    {
+      "bytes": 9006958,
+      "source": "runtime\\cn_factor_pack_phase3aa_preflight_light_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_factor_pack_phase3aa_preflight_light_20260531"
+    },
+    {
+      "bytes": 438064,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_micro_selector_20260601",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_micro_selector_20260601"
+    },
+    {
+      "bytes": 389354,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_tiny_selector_20260601",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_tiny_selector_20260601"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_flow_liquidity_factor_pack_v1_selector_gate_20260601",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_flow_liquidity_factor_pack_v1_selector_gate_20260601"
+    },
+    {
+      "bytes": 0,
+      "source": "runtime\\cn_underutilized_field_factor_pack_v1_selector256_20260601",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_underutilized_field_factor_pack_v1_selector256_20260601"
+    },
+    {
+      "bytes": 9988685,
+      "source": "runtime\\cn_research_factor_pack_v2_micro_selector_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_micro_selector_20260531"
+    },
+    {
+      "bytes": 374687,
+      "source": "runtime\\cn_research_factor_pack_v2_micro_selector_fast_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_micro_selector_fast_20260531"
+    },
+    {
+      "bytes": 238163,
+      "source": "runtime\\cn_research_factor_pack_v2_replay_smoke_20260531",
+      "status": "moved",
+      "target": "archive\\workspace_cleanup_20260601\\stale_runtime\\runtime\\cn_research_factor_pack_v2_replay_smoke_20260531"
+    }
+  ],
+  "removed": [
+    {
+      "bytes": 19568,
+      "path": "__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 287,
+      "path": "src\\our_system_phase2\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 6311,
+      "path": "src\\our_system_phase2\\domain\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 61706,
+      "path": "src\\our_system_phase2\\formula_gen_v2\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 673189,
+      "path": "src\\our_system_phase2\\runtime\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 1084232,
+      "path": "src\\our_system_phase2\\services\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 45337,
+      "path": "tests\\__pycache__",
+      "status": "removed"
+    },
+    {
+      "bytes": 1405,
+      "path": ".pytest_cache",
+      "status": "removed"
+    }
+  ],
+  "skipped": [],
+  "totals": {
+    "archive_bytes": 20678981,
+    "archive_count": 11,
+    "cache_remove_bytes": 1892035,
+    "cache_remove_count": 8
+  },
+  "workspace_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531"
+}

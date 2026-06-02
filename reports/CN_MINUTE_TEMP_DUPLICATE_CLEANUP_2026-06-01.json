@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-06-01T16:02:03",
+  "manifest": [
+    {
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet_v2_canary",
+      "action": "deleted_temp_duplicate",
+      "files": 6,
+      "bytes": 5701286
+    },
+    {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\minute_feature_panels\\cn_minute_feature_panel_v1_20260601_smoke",
+      "action": "deleted_temp_duplicate",
+      "files": 5,
+      "bytes": 3469812
+    },
+    {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\cn_minute_feature_alignment_audit_20260601_smoke",
+      "action": "deleted_temp_duplicate",
+      "files": 7,
+      "bytes": 82796
+    },
+    {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\cn_underutilized_field_minute_execution_calibration_20260601_codefix_smoke",
+      "action": "deleted_temp_duplicate",
+      "files": 5,
+      "bytes": 9598
+    }
+  ]
+}

@@ -1,0 +1,3660 @@
+{
+  "by_family": {
+    "capacity": 3,
+    "event_capacity": 1,
+    "event_liquidity": 1,
+    "high_board": 4,
+    "limit_break": 2,
+    "limit_close": 1,
+    "limit_close_without_open": 1,
+    "limit_data_quality": 2,
+    "limit_event_count": 72,
+    "limit_open": 1,
+    "limit_open_break": 1,
+    "limit_reason_record": 1,
+    "limit_seal_flow": 3,
+    "limit_streak": 32,
+    "limit_streak_vendor": 1,
+    "limit_touch": 1,
+    "liquidity": 3,
+    "open_board_record": 1,
+    "price_state": 1,
+    "raw_or_unclassified": 21,
+    "theme_plate": 1
+  },
+  "by_status": {
+    "diagnostic_only_not_promotion": 2,
+    "eligible_for_candidate_generation": 144,
+    "metadata_only_not_formula_numeric": 8
+  },
+  "feature_panel": "runtime\\derived_features\\cn_event_daily_features_v1_20260531.parquet",
+  "field_count": 154,
+  "field_pack_id": "cn_field_factor_field_pack_v1_20260531",
+  "policy": {
+    "data_quality_fields": "diagnostic_only_until_source_mismatch_review",
+    "metadata_text_fields": "not_numeric_formula_inputs",
+    "official_x0_r3": "read_only",
+    "promotion": "requires shared-pool frozen selection, replay, global clustering, OOS/regime/marginal audit",
+    "same_day_close_touch": "must_lag_for_daily_after_open_selection"
+  },
+  "records": [
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "date",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "event_available_date",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "event_availability_policy",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "code",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "name",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "industry",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.2
+        },
+        "canonical_field_name": "open",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "open",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.45,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.15,
+          "volatility": 0.65
+        },
+        "canonical_field_name": "high",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "high",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.2,
+          "size": 0.05,
+          "turnover": 0.05,
+          "value": 0.7,
+          "volatility": 0.45
+        },
+        "canonical_field_name": "low",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "low",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "close",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "pre_close",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.25,
+          "size": 0.85,
+          "turnover": 0.7,
+          "value": 0.15,
+          "volatility": 0.3
+        },
+        "canonical_field_name": "amount",
+        "field_type": "volume_ts"
+      },
+      "family": "liquidity",
+      "field": "amount",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.1,
+          "size": 0.75,
+          "turnover": 0.85,
+          "value": 0.1,
+          "volatility": 0.35
+        },
+        "canonical_field_name": "volume",
+        "field_type": "volume_ts"
+      },
+      "family": "liquidity",
+      "field": "volume",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.15,
+          "size": 0.65,
+          "turnover": 0.95,
+          "value": 0.1,
+          "volatility": 0.4
+        },
+        "canonical_field_name": "turnover_ratio",
+        "field_type": "crosssec"
+      },
+      "family": "liquidity",
+      "field": "turnover_ratio",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "price_state",
+      "field": "pct_chg",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "is_st",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "capacity",
+      "field": "float_shares",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "capacity",
+      "field": "market_cap_yuan",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.1,
+          "size": 0.96,
+          "turnover": 0.38,
+          "value": 0.35,
+          "volatility": 0.08
+        },
+        "canonical_field_name": "float_market_cap_yuan",
+        "field_type": "capacity_crosssec"
+      },
+      "family": "capacity",
+      "field": "float_market_cap_yuan",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.78,
+          "size": 0.05,
+          "turnover": 0.38,
+          "value": 0.05,
+          "volatility": 0.78
+        },
+        "canonical_field_name": "limit_up_close_event",
+        "field_type": "event_ts"
+      },
+      "family": "limit_close",
+      "field": "limit_up_close_event",
+      "lag_policy": "same_day_close_lock; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.01249,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "entry_buy_blocked_if_next_session_limit_up"
+    },
+    {
+      "availability_clock": "after_open",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.78,
+          "size": 0.05,
+          "turnover": 0.38,
+          "value": 0.05,
+          "volatility": 0.78
+        },
+        "canonical_field_name": "limit_up_open_event",
+        "field_type": "event_ts"
+      },
+      "family": "limit_open",
+      "field": "limit_up_open_event",
+      "lag_policy": "same_day_open_print; pre_open must lag by one session",
+      "leakage_flag": "safe_after_open_only_if_open_print_is_available",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.003149,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.78,
+          "size": 0.05,
+          "turnover": 0.38,
+          "value": 0.05,
+          "volatility": 0.78
+        },
+        "canonical_field_name": "limit_up_touch_event",
+        "field_type": "event_ts"
+      },
+      "family": "limit_touch",
+      "field": "limit_up_touch_event",
+      "lag_policy": "same_day_intraday_high; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.030757,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "intraday_touch_not_assumed_fillable"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.42,
+          "size": 0.05,
+          "turnover": 0.5,
+          "value": 0.18,
+          "volatility": 0.92
+        },
+        "canonical_field_name": "limit_up_touch_not_close",
+        "field_type": "event_ts"
+      },
+      "family": "limit_break",
+      "field": "limit_up_touch_not_close",
+      "lag_policy": "derived_from_same_day_touch_and_close; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.018581,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "touch_then_break_not_assumed_fillable"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.42,
+          "size": 0.05,
+          "turnover": 0.5,
+          "value": 0.18,
+          "volatility": 0.92
+        },
+        "canonical_field_name": "limit_up_open_not_close",
+        "field_type": "event_ts"
+      },
+      "family": "limit_open_break",
+      "field": "limit_up_open_not_close",
+      "lag_policy": "same_day_open_known_after_open; close component must lag for after_open signals",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.001695,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "open_locked_then_break_not_assumed_fillable"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.42,
+          "size": 0.05,
+          "turnover": 0.5,
+          "value": 0.18,
+          "volatility": 0.92
+        },
+        "canonical_field_name": "limit_up_close_not_open",
+        "field_type": "event_ts"
+      },
+      "family": "limit_close_without_open",
+      "field": "limit_up_close_not_open",
+      "lag_policy": "same_day_close_lock; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 1.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.011035,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "close_locked_entry_next_session_may_be_unfilled"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.42,
+          "size": 0.05,
+          "turnover": 0.5,
+          "value": 0.18,
+          "volatility": 0.92
+        },
+        "canonical_field_name": "limit_up_break",
+        "field_type": "event_ts"
+      },
+      "family": "limit_break",
+      "field": "limit_up_break",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.010055,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_close",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_close",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.01249,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_touch",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_touch",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.030757,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.88,
+          "size": 0.08,
+          "turnover": 0.34,
+          "value": 0.02,
+          "volatility": 0.86
+        },
+        "canonical_field_name": "market_high_board",
+        "field_type": "event_crosssec"
+      },
+      "family": "high_board",
+      "field": "market_high_board",
+      "lag_policy": "same_day_market_max_streak; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 1.0,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "market_state_only"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.88,
+          "size": 0.08,
+          "turnover": 0.34,
+          "value": 0.02,
+          "volatility": 0.86
+        },
+        "canonical_field_name": "is_market_high_board",
+        "field_type": "event_crosssec"
+      },
+      "family": "high_board",
+      "field": "is_market_high_board",
+      "lag_policy": "same_day_close_streak; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.00067,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "high_board_member_may_be_untradeable"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.88,
+          "size": 0.08,
+          "turnover": 0.34,
+          "value": 0.02,
+          "volatility": 0.86
+        },
+        "canonical_field_name": "streak_gap_to_market_high",
+        "field_type": "event_crosssec"
+      },
+      "family": "high_board",
+      "field": "streak_gap_to_market_high",
+      "lag_policy": "same_day_close_streak; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.99933,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_tradeability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.88,
+          "size": 0.08,
+          "turnover": 0.34,
+          "value": 0.02,
+          "volatility": 0.86
+        },
+        "canonical_field_name": "high_board_rank",
+        "field_type": "event_crosssec"
+      },
+      "family": "high_board",
+      "field": "high_board_rank",
+      "lag_policy": "same_day_close_streak; after_open must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 1.0,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_tradeability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.78,
+          "size": 0.05,
+          "turnover": 0.38,
+          "value": 0.05,
+          "volatility": 0.78
+        },
+        "canonical_field_name": "reason_record_exists",
+        "field_type": "event_ts"
+      },
+      "family": "limit_reason_record",
+      "field": "reason_record_exists",
+      "lag_policy": "vendor event record; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 1.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.012492,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "reason_record_is_not_entry_fillability"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.42,
+          "size": 0.05,
+          "turnover": 0.5,
+          "value": 0.18,
+          "volatility": 0.92
+        },
+        "canonical_field_name": "open_board_record",
+        "field_type": "event_ts"
+      },
+      "family": "open_board_record",
+      "field": "open_board_record",
+      "lag_policy": "vendor event record; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 1.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.012492,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "open_board_record_is_not_entry_fillability"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.05,
+          "size": 0.05,
+          "turnover": 0.05,
+          "value": 0.05,
+          "volatility": 0.4
+        },
+        "canonical_field_name": "close_limit_without_reason_record",
+        "field_type": "event_ts"
+      },
+      "family": "limit_data_quality",
+      "field": "close_limit_without_reason_record",
+      "lag_policy": "data-quality diagnostic; must not drive promotion without manual review",
+      "leakage_flag": "diagnostic_only_until_source_mismatch_review",
+      "max": 1.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7.9e-05,
+      "role": "diagnostic_only",
+      "status": "diagnostic_only_not_promotion",
+      "tradability_rule": "data_quality_diagnostic_not_trade_signal"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.05,
+          "size": 0.05,
+          "turnover": 0.05,
+          "value": 0.05,
+          "volatility": 0.4
+        },
+        "canonical_field_name": "reason_record_without_close_limit",
+        "field_type": "event_ts"
+      },
+      "family": "limit_data_quality",
+      "field": "reason_record_without_close_limit",
+      "lag_policy": "data-quality diagnostic; must not drive promotion without manual review",
+      "leakage_flag": "diagnostic_only_until_source_mismatch_review",
+      "max": 1.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 8.1e-05,
+      "role": "diagnostic_only",
+      "status": "diagnostic_only_not_promotion",
+      "tradability_rule": "data_quality_diagnostic_not_trade_signal"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "vendor_streak_minus_derived_close_streak",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_keep_times_vendor",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak_vendor",
+      "field": "limit_up_keep_times_vendor",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "vendor_streak_may_indicate_unfillable_limit_queue"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "limit_up_type",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "limit_up_time",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "seal_volume",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.68,
+          "size": 0.55,
+          "turnover": 0.5,
+          "value": 0.04,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "seal_money",
+        "field_type": "event_ts"
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_money",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "seal_size_is_not_fillability"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.68,
+          "size": 0.55,
+          "turnover": 0.5,
+          "value": 0.04,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "seal_rate",
+        "field_type": "event_ts"
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_rate",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "seal_rate_is_not_fillability"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.68,
+          "size": 0.55,
+          "turnover": 0.5,
+          "value": 0.04,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "seal_circulation_rate",
+        "field_type": "event_ts"
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_circulation_rate",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "seal_circulation_rate_is_not_fillability"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.08,
+          "size": 0.92,
+          "turnover": 0.25,
+          "value": 0.25,
+          "volatility": 0.15
+        },
+        "canonical_field_name": "actual_circulation_value",
+        "field_type": "event_ts"
+      },
+      "family": "event_capacity",
+      "field": "actual_circulation_value",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "capacity_proxy_not_alpha_by_itself"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.25,
+          "size": 0.65,
+          "turnover": 0.85,
+          "value": 0.05,
+          "volatility": 0.55
+        },
+        "canonical_field_name": "turnover_ratio_real",
+        "field_type": "event_ts"
+      },
+      "family": "event_liquidity",
+      "field": "turnover_ratio_real",
+      "lag_policy": "vendor event field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "constraint_or_interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "liquidity_proxy_not_alpha_by_itself"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.7,
+          "size": 0.1,
+          "turnover": 0.05,
+          "value": 0.2,
+          "volatility": 0.25
+        },
+        "canonical_field_name": "close",
+        "field_type": "price_ts"
+      },
+      "family": "raw_or_unclassified",
+      "field": "limit_reason_amount",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "plate_code",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "plate_name",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.62,
+          "size": 0.15,
+          "turnover": 0.42,
+          "value": 0.04,
+          "volatility": 0.65
+        },
+        "canonical_field_name": "plate_score",
+        "field_type": "event_ts"
+      },
+      "family": "theme_plate",
+      "field": "plate_score",
+      "lag_policy": "vendor event/theme field; daily use must lag by one session",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "interaction",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "theme_score_not_entry_fillability"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "reason_record",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "source_dependent",
+      "encoded": null,
+      "family": "raw_or_unclassified",
+      "field": "open_board_reason",
+      "lag_policy": "see_source_field_registry",
+      "leakage_flag": "requires_field_contract_review",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "support",
+      "status": "metadata_only_not_formula_numeric",
+      "tradability_rule": "source_dependent"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_1",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_1",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.01249,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_1",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_1",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.030757,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_1",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_1",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.010055,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.002306,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.005679,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.001542,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000757,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.001898,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000435,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000322,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000776,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000198,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000124,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000302,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 5.4e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.000115,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 2.5e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 2.9e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 5.6e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 1.4e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 1.6e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 2.7e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 9e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 1.4e-05,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 2e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_streak_ge_10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_streak_ge_10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "limit_up_touch_streak_ge_10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "limit_up_touch_streak_ge_10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.86,
+          "size": 0.05,
+          "turnover": 0.3,
+          "value": 0.04,
+          "volatility": 0.82
+        },
+        "canonical_field_name": "break_board_after_streak_ge_10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_streak",
+      "field": "break_board_after_streak_ge_10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 2e-06,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "not_a_direct_tradability_filter"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 2.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.022544,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 2.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.002448,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 2.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.0207,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t2",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t2",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.031857,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.00319,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.029682,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t3",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t3",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 4.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.040512,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.003916,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 4.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.037978,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t4",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t4",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 5.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.048549,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.004631,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 5.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.045713,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t5",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t5",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t6",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t6",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t7",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t7",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t8",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t8",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t9",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t9",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 10.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.082916,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_open_not_close_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_open_not_close_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 3.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.008111,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_touch_not_close_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_touch_not_close_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_close_not_open_count_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_close_not_open_count_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": 7.0,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.078799,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_open_not_close_in_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_open_not_close_in_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    },
+    {
+      "availability_clock": "after_close",
+      "encoded": {
+        "behavior_profile": {
+          "momentum": 0.55,
+          "size": 0.05,
+          "turnover": 0.4,
+          "value": 0.12,
+          "volatility": 0.8
+        },
+        "canonical_field_name": "limit_up_any_close_not_open_in_t10",
+        "field_type": "event_ts"
+      },
+      "family": "limit_event_count",
+      "field": "limit_up_any_close_not_open_in_t10",
+      "lag_policy": "derived_event_field; see family source fields",
+      "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+      "max": null,
+      "non_null_ratio": null,
+      "positive_ratio": null,
+      "role": "alpha_candidate",
+      "status": "eligible_for_candidate_generation",
+      "tradability_rule": "buy_side_may_be_unfilled_on_limit_up; enforce entry limit mask"
+    }
+  ],
+  "source_field_registry": "cn_alpha_field_registry_v1_20260531",
+  "status": "field_to_factor_ready_no_promotion"
+}

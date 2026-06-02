@@ -1,0 +1,49 @@
+{
+  "decision": "PASS_MINUTE_DAILY_ALIGNMENT_AUDIT",
+  "minute_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531",
+  "daily_panel_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+  "minute_schema": {
+    "columns": [
+      "code",
+      "trade_time",
+      "close",
+      "open",
+      "high",
+      "low",
+      "vol",
+      "amount",
+      "date",
+      "pre_close",
+      "change",
+      "pct_chg"
+    ],
+    "rows": 1318029,
+    "unique_codes": 5469,
+    "time_min": "2026-01-05 09:30:00",
+    "time_max": "2026-01-05 15:00:00"
+  },
+  "audited_minute_days": 63,
+  "minute_date_start": "2026-01-05",
+  "minute_date_end": "2026-04-10",
+  "median_prior_signal_overlap_rate": 0.997633,
+  "min_prior_signal_overlap_rate": 0.996179,
+  "daily_columns": 152,
+  "daily_field_groups": {
+    "daily_flow_liquidity_capacity_context_lagged": 22,
+    "daily_limit_event_context_lagged": 68,
+    "daily_price_state_context_lagged": 10,
+    "fundamental_context_lagged": 18,
+    "other_daily_context_lagged": 20,
+    "tradability_context_lagged": 12
+  },
+  "outputs": {
+    "overlap_csv": "reports\\cn_minute_feature_alignment_audit_20260601\\minute_daily_overlap_by_date.csv",
+    "field_route_contract_csv": "reports\\cn_minute_feature_alignment_audit_20260601\\field_route_contract.csv",
+    "coverage_csv": "reports\\cn_minute_feature_alignment_audit_20260601\\lagged_context_coverage_by_group.csv",
+    "minute_derived_contract_csv": "reports\\cn_minute_feature_alignment_audit_20260601\\minute_derived_feature_contract.csv",
+    "early_feature_sample_csv": "reports\\cn_minute_feature_alignment_audit_20260601\\minute_early_feature_sample.csv",
+    "json": "reports\\cn_minute_feature_alignment_audit_20260601\\cn_minute_feature_alignment_audit.json",
+    "markdown": "reports\\cn_minute_feature_alignment_audit_20260601\\CN_MINUTE_FEATURE_ALIGNMENT_AUDIT_2026-06-01.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

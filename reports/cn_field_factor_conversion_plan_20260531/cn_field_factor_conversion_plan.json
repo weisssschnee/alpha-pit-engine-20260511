@@ -1,0 +1,46 @@
+{
+  "candidate_count": 760,
+  "candidate_csv": "reports\\cn_field_factor_conversion_plan_20260531\\cn_event_factor_candidate_pack_v1_20260531.csv",
+  "conversion_path": [
+    "source table field",
+    "normalized field registry with lag/PIT policy",
+    "derived daily event feature panel",
+    "field pack with formula eligibility",
+    "factor candidate pack with expression metadata",
+    "Phase3AA shared-pool enrichment with search memory",
+    "G2/source-priority frozen selection",
+    "strict replay/global clustering/OOS-regime-marginal audit"
+  ],
+  "decision": "PASS_CN_FIELD_FACTOR_CONVERSION_PACK",
+  "factor_pack": "runtime\\factor_packs\\cn_event_factor_candidate_pack_v1_20260531.json",
+  "field_count": 154,
+  "field_family": {
+    "capacity": 3,
+    "event_capacity": 1,
+    "event_liquidity": 1,
+    "high_board": 4,
+    "limit_break": 2,
+    "limit_close": 1,
+    "limit_close_without_open": 1,
+    "limit_data_quality": 2,
+    "limit_event_count": 72,
+    "limit_open": 1,
+    "limit_open_break": 1,
+    "limit_reason_record": 1,
+    "limit_seal_flow": 3,
+    "limit_streak": 32,
+    "limit_streak_vendor": 1,
+    "limit_touch": 1,
+    "liquidity": 3,
+    "open_board_record": 1,
+    "price_state": 1,
+    "raw_or_unclassified": 21,
+    "theme_plate": 1
+  },
+  "field_pack": "runtime\\field_registry\\cn_field_factor_field_pack_v1_20260531.json",
+  "field_status": {
+    "diagnostic_only_not_promotion": 2,
+    "eligible_for_candidate_generation": 144,
+    "metadata_only_not_formula_numeric": 8
+  }
+}

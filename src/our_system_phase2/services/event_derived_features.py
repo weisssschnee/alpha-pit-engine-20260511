@@ -126,6 +126,136 @@ BASE_EVENT_DERIVED_FEATURE_SPECS: dict[str, EventDerivedFeatureSpec] = {
         "unsafe_same_day_for_after_open_without_field_lag",
         "Opened limit-down but did not close locked limit-down.",
     ),
+    "limit_up_close_not_open": EventDerivedFeatureSpec(
+        "limit_up_close_not_open",
+        "limit_close_without_open",
+        ("limit_up_close_event", "limit_up_open_event"),
+        "same_day_close_lock; after_open must lag by one session",
+        "after_close",
+        "close_locked_entry_next_session_may_be_unfilled",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Closed limit-up but was not locked limit-up at open.",
+    ),
+    "limit_down_close_not_open": EventDerivedFeatureSpec(
+        "limit_down_close_not_open",
+        "limit_close_without_open",
+        ("limit_down_close_event", "limit_down_open_event"),
+        "same_day_close_lock; after_open must lag by one session",
+        "after_close",
+        "close_locked_exit_next_session_may_be_unfilled",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Closed limit-down but was not locked limit-down at open.",
+    ),
+    "reason_record_exists": EventDerivedFeatureSpec(
+        "reason_record_exists",
+        "limit_reason_record",
+        ("review_uplimit_reason.reason",),
+        "vendor event record; daily use must lag by one session",
+        "after_close",
+        "reason_record_is_not_entry_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Vendor limit-reason record exists for the stock-date.",
+    ),
+    "open_board_record": EventDerivedFeatureSpec(
+        "open_board_record",
+        "open_board_record",
+        ("review_uplimit_reason_open.reason",),
+        "vendor event record; daily use must lag by one session",
+        "after_close",
+        "open_board_record_is_not_entry_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Vendor open-board record exists for the stock-date.",
+    ),
+    "close_limit_without_reason_record": EventDerivedFeatureSpec(
+        "close_limit_without_reason_record",
+        "limit_data_quality",
+        ("limit_up_close_event", "reason_record_exists"),
+        "data-quality diagnostic; must not drive promotion without manual review",
+        "after_close",
+        "data_quality_diagnostic_not_trade_signal",
+        "diagnostic_only_until_source_mismatch_review",
+        "Close-limit event without matching vendor reason record.",
+    ),
+    "reason_record_without_close_limit": EventDerivedFeatureSpec(
+        "reason_record_without_close_limit",
+        "limit_data_quality",
+        ("reason_record_exists", "limit_up_close_event"),
+        "data-quality diagnostic; must not drive promotion without manual review",
+        "after_close",
+        "data_quality_diagnostic_not_trade_signal",
+        "diagnostic_only_until_source_mismatch_review",
+        "Vendor reason record exists without close-limit event in daily panel.",
+    ),
+    "limit_up_keep_times_vendor": EventDerivedFeatureSpec(
+        "limit_up_keep_times_vendor",
+        "limit_streak_vendor",
+        ("review_uplimit_reason.up_limit_keep_times",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "vendor_streak_may_indicate_unfillable_limit_queue",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Vendor-reported limit-up keep/streak count.",
+    ),
+    "seal_money": EventDerivedFeatureSpec(
+        "seal_money",
+        "limit_seal_flow",
+        ("review_uplimit_reason.fengdan_money",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "seal_size_is_not_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Limit-up seal/order money proxy.",
+    ),
+    "seal_rate": EventDerivedFeatureSpec(
+        "seal_rate",
+        "limit_seal_flow",
+        ("review_uplimit_reason.fengdan_rate",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "seal_rate_is_not_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Limit-up seal/order rate proxy.",
+    ),
+    "seal_circulation_rate": EventDerivedFeatureSpec(
+        "seal_circulation_rate",
+        "limit_seal_flow",
+        ("review_uplimit_reason.feng_circulation_rate",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "seal_circulation_rate_is_not_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Limit-up seal amount relative to circulation proxy.",
+    ),
+    "actual_circulation_value": EventDerivedFeatureSpec(
+        "actual_circulation_value",
+        "event_capacity",
+        ("review_uplimit_reason.actualcirculation_value",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "capacity_proxy_not_alpha_by_itself",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Actual circulation value proxy attached to limit event.",
+    ),
+    "turnover_ratio_real": EventDerivedFeatureSpec(
+        "turnover_ratio_real",
+        "event_liquidity",
+        ("review_uplimit_reason.turnover_ration_real",),
+        "vendor event field; daily use must lag by one session",
+        "after_close",
+        "liquidity_proxy_not_alpha_by_itself",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Real turnover ratio proxy attached to limit event.",
+    ),
+    "plate_score": EventDerivedFeatureSpec(
+        "plate_score",
+        "theme_plate",
+        ("review_uplimit_reason.plate_score",),
+        "vendor event/theme field; daily use must lag by one session",
+        "after_close",
+        "theme_score_not_entry_fillability",
+        "unsafe_same_day_for_after_open_without_field_lag",
+        "Limit-event theme/plate score.",
+    ),
     "high_board_rank": EventDerivedFeatureSpec(
         "high_board_rank",
         "high_board",
@@ -203,6 +333,19 @@ def _parametric_feature_names(max_streak_n: int = DEFAULT_MAX_STREAK_N) -> set[s
                 f"limit_down_rebound_after_streak_ge_{n}",
             }
         )
+    for n in range(2, int(max_streak_n) + 1):
+        names.update(
+            {
+                f"limit_up_close_count_t{n}",
+                f"limit_up_open_count_t{n}",
+                f"limit_up_touch_count_t{n}",
+                f"limit_up_open_not_close_count_t{n}",
+                f"limit_up_touch_not_close_count_t{n}",
+                f"limit_up_close_not_open_count_t{n}",
+                f"limit_up_any_open_not_close_in_t{n}",
+                f"limit_up_any_close_not_open_in_t{n}",
+            }
+        )
     for days in DEFAULT_POST_HIGH_BOARD_DAYS:
         names.update(
             {
@@ -261,12 +404,22 @@ def event_feature_behavior_profile(field_name: str) -> dict[str, float] | None:
     if spec is None:
         return None
     family = spec.family
-    if family in {"limit_close", "limit_touch", "limit_open"}:
+    if family in {"limit_close", "limit_touch", "limit_open", "limit_reason_record"}:
         return {"momentum": 0.78, "size": 0.05, "value": 0.05, "volatility": 0.78, "turnover": 0.38}
-    if family in {"limit_break", "limit_open_break"}:
+    if family in {"limit_break", "limit_open_break", "limit_close_without_open", "open_board_record"}:
         return {"momentum": 0.42, "size": 0.05, "value": 0.18, "volatility": 0.92, "turnover": 0.50}
-    if family == "limit_streak":
+    if family in {"limit_streak", "limit_streak_vendor"}:
         return {"momentum": 0.86, "size": 0.05, "value": 0.04, "volatility": 0.82, "turnover": 0.30}
+    if family == "limit_seal_flow":
+        return {"momentum": 0.68, "size": 0.55, "value": 0.04, "volatility": 0.80, "turnover": 0.50}
+    if family == "event_capacity":
+        return {"momentum": 0.08, "size": 0.92, "value": 0.25, "volatility": 0.15, "turnover": 0.25}
+    if family == "event_liquidity":
+        return {"momentum": 0.25, "size": 0.65, "value": 0.05, "volatility": 0.55, "turnover": 0.85}
+    if family == "theme_plate":
+        return {"momentum": 0.62, "size": 0.15, "value": 0.04, "volatility": 0.65, "turnover": 0.42}
+    if family == "limit_data_quality":
+        return {"momentum": 0.05, "size": 0.05, "value": 0.05, "volatility": 0.40, "turnover": 0.05}
     if family == "high_board":
         return {"momentum": 0.88, "size": 0.08, "value": 0.02, "volatility": 0.86, "turnover": 0.34}
     if family == "limit_down_repair":
@@ -499,6 +652,22 @@ def _source_report(frame: pd.DataFrame) -> dict[str, Any]:
 
 
 def _infer_event_family(name: str) -> str:
+    if "count_t" in name or "any_" in name:
+        return "limit_event_count"
+    if "close_not_open" in name:
+        return "limit_close_without_open"
+    if "reason_record" in name:
+        return "limit_reason_record" if "without" not in name else "limit_data_quality"
+    if "open_board_record" in name:
+        return "open_board_record"
+    if "seal_" in name:
+        return "limit_seal_flow"
+    if "circulation" in name or "capacity" in name:
+        return "event_capacity"
+    if "turnover_ratio_real" in name:
+        return "event_liquidity"
+    if "plate_score" in name:
+        return "theme_plate"
     if "high_board" in name or "market_high" in name or "streak_gap" in name:
         return "high_board"
     if "down_rebound" in name or "down_repair" in name:

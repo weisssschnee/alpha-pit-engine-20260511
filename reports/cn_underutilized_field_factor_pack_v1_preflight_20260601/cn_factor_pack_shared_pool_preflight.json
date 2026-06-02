@@ -1,0 +1,69 @@
+{
+  "by_factor_lane": {
+    "amihud_capacity_cost": 4,
+    "capacity_normalized_activity": 16,
+    "capacity_residual_activity": 16,
+    "event_x_seal_flow": 78,
+    "flow_impulse_curve": 16,
+    "flow_ratio_curve": 40,
+    "flow_volatility_curve": 16,
+    "fundamental_capacity_value": 2,
+    "fundamental_x_activity": 78,
+    "limit_seal_flow": 24,
+    "price_flow_confirmation": 12,
+    "price_flow_correlation": 12,
+    "price_flow_divergence": 12,
+    "seal_to_amount": 9,
+    "theme_activity_proxy": 9
+  },
+  "by_field_status": {
+    "eligible_for_candidate_generation": 20,
+    "unknown": 19
+  },
+  "by_source_lane": {
+    "cn_flow_liquidity_feature_layer": 306,
+    "cn_research_feature_layer_v2": 74,
+    "cn_underutilized_field_feature_layer": 200,
+    "event_derived_feature_layer": 1169,
+    "unknown": 388
+  },
+  "counts": {
+    "enriched_pool_rows": 2137,
+    "event_rows_added": 506,
+    "factor_fields_missing_from_derived_panel": 0,
+    "factor_fields_missing_from_mature_signal_vector_panel": 0,
+    "factor_fields_used": 39,
+    "factor_pack_rows": 344,
+    "factor_pack_rows_in_enriched_pool": 344,
+    "factor_pack_rows_not_in_enriched_pool": 0,
+    "factor_pack_source_rows": 650,
+    "memory_duplicate_skipped": 0,
+    "pre_dedup_event_source_rows": 926
+  },
+  "created_at": "2026-05-31T17:34:44.600934+00:00",
+  "decision": "PASS_FACTOR_PACK_READY_FOR_G2_SELECTOR",
+  "inputs": {
+    "derived_panel_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "enriched_pool_path": "runtime\\cn_underutilized_field_factor_pack_v1_phase3aa_smoke_20260601\\shared_candidate_pool_event_fund_flow_underutilized_enriched.json",
+    "factor_pack_path": "runtime\\factor_packs\\cn_underutilized_field_factor_candidate_pack_v1_20260601.json",
+    "field_pack_path": "runtime\\field_registry\\cn_field_factor_field_pack_v1_20260531.json",
+    "mature_panel_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet"
+  },
+  "missing_from_derived_panel": [],
+  "missing_from_mature_signal_vector_panel": [],
+  "policy": {
+    "allowed_next_step": "join derived feature panel into mature evaluator/signal-vector dataset, then rerun frozen G2 selector",
+    "official_x0_r3": "read_only",
+    "promotion": "not_allowed_from_this_preflight"
+  },
+  "scope": "field_factor_pack_to_mature_shared_pool_preflight_no_replay",
+  "selector_micro_smoke": {
+    "event_candidates_selected": 13,
+    "selected_count": 64,
+    "selector_report_path": "runtime\\cn_flow_liquidity_factor_pack_v1_selector64_20260601\\selector_safe_v2\\aa\\phase3_selection_only_report.json",
+    "selector_report_present": true,
+    "selector_uses_forbidden_fields": false,
+    "signal_vector_proxy_requirement_pass": true,
+    "signal_vector_store_ready": true
+  }
+}

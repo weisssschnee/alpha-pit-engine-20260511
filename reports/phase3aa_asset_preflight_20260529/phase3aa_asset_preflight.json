@@ -1,0 +1,134 @@
+{
+  "created_at": "2026-05-29T04:22:48+00:00",
+  "decision": "PASS_PHASE3AA_ASSET_PREFLIGHT",
+  "acceleration_decision": "PASS_ACCEL_PACKAGE_MATRIX",
+  "repo_root": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528",
+  "files": {
+    "chain_lock": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\baselines\\phase3_algorithm_chain_lock_v1.json",
+      "exists": true,
+      "length": 10647
+    },
+    "mature_workspace_profile": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\baselines\\phase3_mature_feature_workspace_v1.json",
+      "exists": true,
+      "length": 2864
+    },
+    "x0_shadow": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\baselines\\phase3o_x0_official_shadow_v1.json",
+      "exists": true,
+      "length": 7273,
+      "sha256": "fec3b59cffdb15fe9adc6abca5de6dee1c1804abda61131044b7dfc6deaead0a"
+    },
+    "x0_shadow_sha": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\baselines\\phase3o_x0_official_shadow_v1.sha256",
+      "exists": true,
+      "length": 102
+    },
+    "phase3h_149_baseline": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+      "exists": true,
+      "length": 126965
+    },
+    "phase3aa_run_plan": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\run_plans\\phase3aa_mature_chain_event_g2_run_plan.json",
+      "exists": true,
+      "length": 1425
+    },
+    "phase3g_vector_npz": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\phase3g_signal_vectors\\phase3g_signal_vectors_20260514.npz",
+      "exists": true,
+      "length": 27440681,
+      "sha256": "ecb85b5ec12067ded72d5245011bff4bd4a0e8d0e6a43ef0da1cb71813c121f8"
+    },
+    "phase3g_vector_metadata": {
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_engine_mature_feature_workspace_20260528\\runtime\\phase3g_signal_vectors\\vector_metadata.parquet",
+      "exists": true,
+      "length": 96876,
+      "sha256": "edd4a0d4c59a503288a8ea5c5ff74df197fa68ed0fd44da92d33f8b06f4d994d"
+    }
+  },
+  "checks": {
+    "required_files_exist": true,
+    "phase3g_signal_vector_store_ready": true,
+    "event_derived_factor_rows_available": true,
+    "event_field_breadth_count": 33,
+    "source_priority_selector_registered": true,
+    "x0_shadow_read_only_declared": true,
+    "chain_lock_names_g2": true,
+    "mature_profile_requires_shared_pool": true,
+    "no_local_phase3aa_processes": true,
+    "old_worktree_status": {
+      "exists": true,
+      "returncode": 0,
+      "stdout": [
+        "## master",
+        "?? reports/phase3g_official_seed29_local_20260514/"
+      ],
+      "stderr": []
+    }
+  },
+  "vector_store_error": "",
+  "event_candidate_count": 420,
+  "event_field_breadth_count": 33,
+  "event_field_sample": [
+    "break_after_high_board_tplus_1",
+    "break_after_high_board_tplus_2",
+    "break_after_high_board_tplus_3",
+    "break_board_after_streak_ge_2",
+    "break_board_after_streak_ge_3",
+    "break_board_after_streak_ge_4",
+    "high_board_rank",
+    "is_market_high_board",
+    "limit_down_close_event",
+    "limit_down_open_event",
+    "limit_down_open_not_close",
+    "limit_down_rebound_after_streak_ge_2",
+    "limit_down_rebound_after_streak_ge_3",
+    "limit_down_rebound_after_streak_ge_4",
+    "limit_down_streak_ge_2",
+    "limit_down_streak_ge_3",
+    "limit_down_touch_event",
+    "limit_down_touch_not_close",
+    "limit_up_close_event",
+    "limit_up_open_event",
+    "limit_up_open_not_close",
+    "limit_up_streak_ge_2",
+    "limit_up_streak_ge_3",
+    "limit_up_streak_ge_4",
+    "limit_up_streak_ge_5",
+    "limit_up_streak_ge_6",
+    "limit_up_streak_ge_8",
+    "limit_up_touch_event",
+    "limit_up_touch_not_close",
+    "market_high_board",
+    "post_market_high_board_tplus_1",
+    "post_market_high_board_tplus_2",
+    "post_market_high_board_tplus_3"
+  ],
+  "selector_profile": "signal_vector_diversified_source_priority_proxy",
+  "package_matrix": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "pyarrow": "19.0.1",
+    "numba": "0.64.0",
+    "bottleneck": "1.6.0",
+    "numexpr": "2.14.1",
+    "polars": "1.41.0",
+    "joblib": "1.4.2",
+    "scikit-learn": "1.6.1"
+  },
+  "missing_packages": [],
+  "local_phase3aa_processes": [],
+  "launch_contract": {
+    "entrypoint": "app.py phase3aa-mature-chain",
+    "requires_shared_pool": true,
+    "requires_event_injection": true,
+    "requires_source_priority_selector": true,
+    "requires_frozen_selection": true,
+    "requires_signal_vector_artifacts": true,
+    "unreached_supervisor_primary_allowed": false,
+    "x0_r3_shadow_mutation_allowed": false
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

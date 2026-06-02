@@ -1,0 +1,1412 @@
+{
+  "decision": "PASS_CN_EVENT_DERIVED_FEATURE_SMOKE",
+  "feature_path": "runtime\\derived_features\\cn_event_daily_features_v1_20260531.parquet",
+  "rows": 443570,
+  "date_min": "2026-01-05",
+  "date_max": "2026-05-14",
+  "code_count": 5521,
+  "max_streak_n": 10,
+  "max_window_n": 10,
+  "coverage": {
+    "adapter": "event_derived_feature_layer",
+    "version": "event-derived-feature-layer-v1-2026-05-28",
+    "rows": 443570,
+    "date_min": "2026-01-05",
+    "date_max": "2026-05-14",
+    "code_count": 5521,
+    "source_report": {
+      "has_tdxgp_limit_status": false,
+      "has_exact_up_limit_price": false,
+      "has_exact_down_limit_price": false,
+      "has_open_high_low": true,
+      "has_rt_change_pct": false,
+      "price_touch_mode": "exact_limit_price_if_available_else_prev_close_pct_proxy"
+    },
+    "coverage": {
+      "break_after_high_board_tplus_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000374
+      },
+      "break_after_high_board_tplus_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000162
+      },
+      "break_after_high_board_tplus_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 9.2e-05
+      },
+      "break_after_high_board_tplus_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 4.5e-05
+      },
+      "break_board_after_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.010055
+      },
+      "break_board_after_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2e-06
+      },
+      "break_board_after_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.001542
+      },
+      "break_board_after_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000435
+      },
+      "break_board_after_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000198
+      },
+      "break_board_after_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 7e-05
+      },
+      "break_board_after_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2.5e-05
+      },
+      "break_board_after_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.4e-05
+      },
+      "break_board_after_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 7e-06
+      },
+      "break_board_after_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2e-06
+      },
+      "high_board_rank": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.0
+      },
+      "is_market_high_board": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.00067
+      },
+      "limit_down_close_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.004818
+      },
+      "limit_down_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.004818
+      },
+      "limit_down_open_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.001483
+      },
+      "limit_down_open_not_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000419
+      },
+      "limit_down_rebound_after_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.003981
+      },
+      "limit_down_rebound_after_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_rebound_after_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000395
+      },
+      "limit_down_rebound_after_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 9e-05
+      },
+      "limit_down_rebound_after_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.1e-05
+      },
+      "limit_down_rebound_after_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2e-06
+      },
+      "limit_down_rebound_after_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_rebound_after_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_rebound_after_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_rebound_after_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_repair": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.003981
+      },
+      "limit_down_streak": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.004818
+      },
+      "limit_down_streak_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.004818
+      },
+      "limit_down_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.004818
+      },
+      "limit_down_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000514
+      },
+      "limit_down_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000108
+      },
+      "limit_down_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.6e-05
+      },
+      "limit_down_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2e-06
+      },
+      "limit_down_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_streak_touch": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.008743
+      },
+      "limit_down_touch_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.008743
+      },
+      "limit_down_touch_not_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.003925
+      },
+      "limit_down_touch_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.008743
+      },
+      "limit_down_touch_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_touch_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.001046
+      },
+      "limit_down_touch_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000268
+      },
+      "limit_down_touch_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 8.3e-05
+      },
+      "limit_down_touch_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2.5e-05
+      },
+      "limit_down_touch_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 5e-06
+      },
+      "limit_down_touch_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2e-06
+      },
+      "limit_down_touch_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_down_touch_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.0
+      },
+      "limit_flip_down_to_up": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 9.9e-05
+      },
+      "limit_flip_up_to_down": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000417
+      },
+      "limit_up_break": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.010055
+      },
+      "limit_up_close_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.01249
+      },
+      "limit_up_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.01249
+      },
+      "limit_up_open_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.003149
+      },
+      "limit_up_open_not_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.001695
+      },
+      "limit_up_streak": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.01249
+      },
+      "limit_up_streak_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.01249
+      },
+      "limit_up_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.01249
+      },
+      "limit_up_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 7e-06
+      },
+      "limit_up_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.002306
+      },
+      "limit_up_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000757
+      },
+      "limit_up_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000322
+      },
+      "limit_up_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000124
+      },
+      "limit_up_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 5.4e-05
+      },
+      "limit_up_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2.9e-05
+      },
+      "limit_up_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.6e-05
+      },
+      "limit_up_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 9e-06
+      },
+      "limit_up_streak_touch": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.030757
+      },
+      "limit_up_touch_event": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.030757
+      },
+      "limit_up_touch_not_close": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.018581
+      },
+      "limit_up_touch_streak_ge_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.030757
+      },
+      "limit_up_touch_streak_ge_10": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 7e-06
+      },
+      "limit_up_touch_streak_ge_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.005679
+      },
+      "limit_up_touch_streak_ge_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.001898
+      },
+      "limit_up_touch_streak_ge_4": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000776
+      },
+      "limit_up_touch_streak_ge_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000302
+      },
+      "limit_up_touch_streak_ge_6": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000115
+      },
+      "limit_up_touch_streak_ge_7": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 5.6e-05
+      },
+      "limit_up_touch_streak_ge_8": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 2.7e-05
+      },
+      "limit_up_touch_streak_ge_9": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.4e-05
+      },
+      "market_high_board": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 1.0
+      },
+      "post_market_high_board_tplus_1": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000663
+      },
+      "post_market_high_board_tplus_2": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000661
+      },
+      "post_market_high_board_tplus_3": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000658
+      },
+      "post_market_high_board_tplus_5": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.000649
+      },
+      "streak_gap_to_market_high": {
+        "present": true,
+        "non_null_ratio": 1.0,
+        "positive_ratio": 0.99933
+      }
+    },
+    "contract": {
+      "adapter": "event_derived_feature_layer",
+      "version": "event-derived-feature-layer-v1-2026-05-28",
+      "status": "feature_adapter_diagnostic_ready",
+      "fields": [
+        "break_after_high_board_tplus_1",
+        "break_after_high_board_tplus_2",
+        "break_after_high_board_tplus_3",
+        "break_after_high_board_tplus_5",
+        "break_board_after_streak_ge_1",
+        "break_board_after_streak_ge_10",
+        "break_board_after_streak_ge_2",
+        "break_board_after_streak_ge_3",
+        "break_board_after_streak_ge_4",
+        "break_board_after_streak_ge_5",
+        "break_board_after_streak_ge_6",
+        "break_board_after_streak_ge_7",
+        "break_board_after_streak_ge_8",
+        "break_board_after_streak_ge_9",
+        "high_board_rank",
+        "is_market_high_board",
+        "limit_down_close_event",
+        "limit_down_event",
+        "limit_down_open_event",
+        "limit_down_open_not_close",
+        "limit_down_rebound_after_streak_ge_1",
+        "limit_down_rebound_after_streak_ge_10",
+        "limit_down_rebound_after_streak_ge_2",
+        "limit_down_rebound_after_streak_ge_3",
+        "limit_down_rebound_after_streak_ge_4",
+        "limit_down_rebound_after_streak_ge_5",
+        "limit_down_rebound_after_streak_ge_6",
+        "limit_down_rebound_after_streak_ge_7",
+        "limit_down_rebound_after_streak_ge_8",
+        "limit_down_rebound_after_streak_ge_9",
+        "limit_down_repair",
+        "limit_down_streak",
+        "limit_down_streak_close",
+        "limit_down_streak_ge_1",
+        "limit_down_streak_ge_10",
+        "limit_down_streak_ge_2",
+        "limit_down_streak_ge_3",
+        "limit_down_streak_ge_4",
+        "limit_down_streak_ge_5",
+        "limit_down_streak_ge_6",
+        "limit_down_streak_ge_7",
+        "limit_down_streak_ge_8",
+        "limit_down_streak_ge_9",
+        "limit_down_streak_touch",
+        "limit_down_touch_event",
+        "limit_down_touch_not_close",
+        "limit_down_touch_streak_ge_1",
+        "limit_down_touch_streak_ge_10",
+        "limit_down_touch_streak_ge_2",
+        "limit_down_touch_streak_ge_3",
+        "limit_down_touch_streak_ge_4",
+        "limit_down_touch_streak_ge_5",
+        "limit_down_touch_streak_ge_6",
+        "limit_down_touch_streak_ge_7",
+        "limit_down_touch_streak_ge_8",
+        "limit_down_touch_streak_ge_9",
+        "limit_flip_down_to_up",
+        "limit_flip_up_to_down",
+        "limit_up_break",
+        "limit_up_close_event",
+        "limit_up_event",
+        "limit_up_open_event",
+        "limit_up_open_not_close",
+        "limit_up_streak",
+        "limit_up_streak_close",
+        "limit_up_streak_ge_1",
+        "limit_up_streak_ge_10",
+        "limit_up_streak_ge_2",
+        "limit_up_streak_ge_3",
+        "limit_up_streak_ge_4",
+        "limit_up_streak_ge_5",
+        "limit_up_streak_ge_6",
+        "limit_up_streak_ge_7",
+        "limit_up_streak_ge_8",
+        "limit_up_streak_ge_9",
+        "limit_up_streak_touch",
+        "limit_up_touch_event",
+        "limit_up_touch_not_close",
+        "limit_up_touch_streak_ge_1",
+        "limit_up_touch_streak_ge_10",
+        "limit_up_touch_streak_ge_2",
+        "limit_up_touch_streak_ge_3",
+        "limit_up_touch_streak_ge_4",
+        "limit_up_touch_streak_ge_5",
+        "limit_up_touch_streak_ge_6",
+        "limit_up_touch_streak_ge_7",
+        "limit_up_touch_streak_ge_8",
+        "limit_up_touch_streak_ge_9",
+        "market_high_board",
+        "post_market_high_board_tplus_1",
+        "post_market_high_board_tplus_2",
+        "post_market_high_board_tplus_3",
+        "post_market_high_board_tplus_5",
+        "streak_gap_to_market_high"
+      ],
+      "open_print_fields": [
+        "limit_down_open_event",
+        "limit_up_open_event"
+      ],
+      "full_day_fields": [
+        "break_after_high_board_tplus_1",
+        "break_after_high_board_tplus_2",
+        "break_after_high_board_tplus_3",
+        "break_after_high_board_tplus_5",
+        "break_board_after_streak_ge_1",
+        "break_board_after_streak_ge_10",
+        "break_board_after_streak_ge_2",
+        "break_board_after_streak_ge_3",
+        "break_board_after_streak_ge_4",
+        "break_board_after_streak_ge_5",
+        "break_board_after_streak_ge_6",
+        "break_board_after_streak_ge_7",
+        "break_board_after_streak_ge_8",
+        "break_board_after_streak_ge_9",
+        "high_board_rank",
+        "is_market_high_board",
+        "limit_down_close_event",
+        "limit_down_event",
+        "limit_down_open_not_close",
+        "limit_down_rebound_after_streak_ge_1",
+        "limit_down_rebound_after_streak_ge_10",
+        "limit_down_rebound_after_streak_ge_2",
+        "limit_down_rebound_after_streak_ge_3",
+        "limit_down_rebound_after_streak_ge_4",
+        "limit_down_rebound_after_streak_ge_5",
+        "limit_down_rebound_after_streak_ge_6",
+        "limit_down_rebound_after_streak_ge_7",
+        "limit_down_rebound_after_streak_ge_8",
+        "limit_down_rebound_after_streak_ge_9",
+        "limit_down_repair",
+        "limit_down_streak",
+        "limit_down_streak_close",
+        "limit_down_streak_ge_1",
+        "limit_down_streak_ge_10",
+        "limit_down_streak_ge_2",
+        "limit_down_streak_ge_3",
+        "limit_down_streak_ge_4",
+        "limit_down_streak_ge_5",
+        "limit_down_streak_ge_6",
+        "limit_down_streak_ge_7",
+        "limit_down_streak_ge_8",
+        "limit_down_streak_ge_9",
+        "limit_down_streak_touch",
+        "limit_down_touch_event",
+        "limit_down_touch_not_close",
+        "limit_down_touch_streak_ge_1",
+        "limit_down_touch_streak_ge_10",
+        "limit_down_touch_streak_ge_2",
+        "limit_down_touch_streak_ge_3",
+        "limit_down_touch_streak_ge_4",
+        "limit_down_touch_streak_ge_5",
+        "limit_down_touch_streak_ge_6",
+        "limit_down_touch_streak_ge_7",
+        "limit_down_touch_streak_ge_8",
+        "limit_down_touch_streak_ge_9",
+        "limit_flip_down_to_up",
+        "limit_flip_up_to_down",
+        "limit_up_break",
+        "limit_up_close_event",
+        "limit_up_event",
+        "limit_up_open_not_close",
+        "limit_up_streak",
+        "limit_up_streak_close",
+        "limit_up_streak_ge_1",
+        "limit_up_streak_ge_10",
+        "limit_up_streak_ge_2",
+        "limit_up_streak_ge_3",
+        "limit_up_streak_ge_4",
+        "limit_up_streak_ge_5",
+        "limit_up_streak_ge_6",
+        "limit_up_streak_ge_7",
+        "limit_up_streak_ge_8",
+        "limit_up_streak_ge_9",
+        "limit_up_streak_touch",
+        "limit_up_touch_event",
+        "limit_up_touch_not_close",
+        "limit_up_touch_streak_ge_1",
+        "limit_up_touch_streak_ge_10",
+        "limit_up_touch_streak_ge_2",
+        "limit_up_touch_streak_ge_3",
+        "limit_up_touch_streak_ge_4",
+        "limit_up_touch_streak_ge_5",
+        "limit_up_touch_streak_ge_6",
+        "limit_up_touch_streak_ge_7",
+        "limit_up_touch_streak_ge_8",
+        "limit_up_touch_streak_ge_9",
+        "market_high_board",
+        "post_market_high_board_tplus_1",
+        "post_market_high_board_tplus_2",
+        "post_market_high_board_tplus_3",
+        "post_market_high_board_tplus_5",
+        "streak_gap_to_market_high"
+      ],
+      "default_max_streak_n": 10,
+      "default_post_high_board_days": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "strict_rules": {
+        "same_day_close_or_touch_fields": "must_be_lagged_for_after_open_selection",
+        "open_fields": "available_after_open_but_not_pre_open",
+        "tradability": "open/close locked limit-up/down may be unfillable; use entry limit masks in replay",
+        "promotion": "diagnostic until strict replay, global clustering, OOS/regime/marginal audit, and chain-lock update"
+      },
+      "specs": {
+        "high_board_rank": {
+          "family": "high_board",
+          "source_fields": [
+            "limit_up_streak_close"
+          ],
+          "lag_rule": "same_day_close_streak; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "not_a_tradeability_filter",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Cross-sectional dense rank of close-lock limit-up streak, descending."
+        },
+        "is_market_high_board": {
+          "family": "high_board",
+          "source_fields": [
+            "limit_up_streak_close",
+            "market_high_board"
+          ],
+          "lag_rule": "same_day_close_streak; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "high_board_member_may_be_untradeable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Stock is tied for the market high-board streak on the date."
+        },
+        "limit_down_close_event": {
+          "family": "limit_close",
+          "source_fields": [
+            "tdxgp_limit_status",
+            "is_limit_down",
+            "rt_change_pct",
+            "close"
+          ],
+          "lag_rule": "same_day_close_lock; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "entry_sell_blocked_if_next_session_limit_down",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Close-locked limit-down event."
+        },
+        "limit_down_open_event": {
+          "family": "limit_open",
+          "source_fields": [
+            "open",
+            "prev_close",
+            "down_limit_price"
+          ],
+          "lag_rule": "same_day_open_print; pre_open must lag by one session",
+          "availability_clock": "after_open",
+          "tradability_rule": "sell_at_open_may_be_unfilled_when_open_locked_limit_down",
+          "leakage_flag": "safe_after_open_only_if_open_print_is_available",
+          "description": "Open printed at or below the limit-down proxy/price."
+        },
+        "limit_down_open_not_close": {
+          "family": "limit_open_break",
+          "source_fields": [
+            "limit_down_open_event",
+            "limit_down_close_event"
+          ],
+          "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
+          "availability_clock": "after_close",
+          "tradability_rule": "open_locked_then_repair_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Opened limit-down but did not close locked limit-down."
+        },
+        "limit_down_touch_event": {
+          "family": "limit_touch",
+          "source_fields": [
+            "low",
+            "prev_close",
+            "down_limit_price",
+            "tdxgp_limit_status"
+          ],
+          "lag_rule": "same_day_intraday_low; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "intraday_touch_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Intraday touched limit-down using low/limit proxy or TDXGP touch state."
+        },
+        "limit_down_touch_not_close": {
+          "family": "limit_break",
+          "source_fields": [
+            "limit_down_touch_event",
+            "limit_down_close_event"
+          ],
+          "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "touch_then_repair_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Touched limit-down but did not close locked limit-down."
+        },
+        "limit_up_close_event": {
+          "family": "limit_close",
+          "source_fields": [
+            "tdxgp_limit_status",
+            "is_limit_up",
+            "rt_change_pct",
+            "close"
+          ],
+          "lag_rule": "same_day_close_lock; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "entry_buy_blocked_if_next_session_limit_up",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Close-locked limit-up event."
+        },
+        "limit_up_open_event": {
+          "family": "limit_open",
+          "source_fields": [
+            "open",
+            "prev_close",
+            "up_limit_price"
+          ],
+          "lag_rule": "same_day_open_print; pre_open must lag by one session",
+          "availability_clock": "after_open",
+          "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up",
+          "leakage_flag": "safe_after_open_only_if_open_print_is_available",
+          "description": "Open printed at or above the limit-up proxy/price."
+        },
+        "limit_up_open_not_close": {
+          "family": "limit_open_break",
+          "source_fields": [
+            "limit_up_open_event",
+            "limit_up_close_event"
+          ],
+          "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
+          "availability_clock": "after_close",
+          "tradability_rule": "open_locked_then_break_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Opened limit-up but did not close locked limit-up."
+        },
+        "limit_up_touch_event": {
+          "family": "limit_touch",
+          "source_fields": [
+            "high",
+            "prev_close",
+            "up_limit_price",
+            "tdxgp_limit_status"
+          ],
+          "lag_rule": "same_day_intraday_high; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "intraday_touch_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Intraday touched limit-up using high/limit proxy or TDXGP touch state."
+        },
+        "limit_up_touch_not_close": {
+          "family": "limit_break",
+          "source_fields": [
+            "limit_up_touch_event",
+            "limit_up_close_event"
+          ],
+          "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "touch_then_break_not_assumed_fillable",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Touched limit-up but did not close locked limit-up."
+        },
+        "market_high_board": {
+          "family": "high_board",
+          "source_fields": [
+            "limit_up_streak_close"
+          ],
+          "lag_rule": "same_day_market_max_streak; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "market_state_only",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Market-wide maximum close-lock limit-up streak for the date."
+        },
+        "streak_gap_to_market_high": {
+          "family": "high_board",
+          "source_fields": [
+            "limit_up_streak_close",
+            "market_high_board"
+          ],
+          "lag_rule": "same_day_close_streak; after_open must lag by one session",
+          "availability_clock": "after_close",
+          "tradability_rule": "not_a_tradeability_filter",
+          "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+          "description": "Market high-board streak minus stock close-lock streak."
+        }
+      }
+    }
+  },
+  "extra": {
+    "reason_record_exists": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.012492,
+      "max": 1.0
+    },
+    "open_board_record": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.012492,
+      "max": 1.0
+    },
+    "limit_up_open_not_close": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.001695,
+      "max": 1.0
+    },
+    "limit_up_touch_not_close": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.018581,
+      "max": 1.0
+    },
+    "limit_up_close_not_open": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.011035,
+      "max": 1.0
+    },
+    "close_limit_without_reason_record": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 7.9e-05,
+      "max": 1.0
+    },
+    "reason_record_without_close_limit": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 8.1e-05,
+      "max": 1.0
+    },
+    "limit_up_close_count_t2": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.022544,
+      "max": 2.0
+    },
+    "limit_up_open_not_close_count_t2": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.002448,
+      "max": 2.0
+    },
+    "limit_up_close_not_open_count_t2": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.0207,
+      "max": 2.0
+    },
+    "limit_up_close_count_t3": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.031857,
+      "max": 3.0
+    },
+    "limit_up_open_not_close_count_t3": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.00319,
+      "max": 3.0
+    },
+    "limit_up_close_not_open_count_t3": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.029682,
+      "max": 3.0
+    },
+    "limit_up_close_count_t4": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.040512,
+      "max": 4.0
+    },
+    "limit_up_open_not_close_count_t4": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.003916,
+      "max": 3.0
+    },
+    "limit_up_close_not_open_count_t4": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.037978,
+      "max": 4.0
+    },
+    "limit_up_close_count_t5": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.048549,
+      "max": 5.0
+    },
+    "limit_up_open_not_close_count_t5": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.004631,
+      "max": 3.0
+    },
+    "limit_up_close_not_open_count_t5": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.045713,
+      "max": 5.0
+    },
+    "limit_up_close_count_t10": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.082916,
+      "max": 10.0
+    },
+    "limit_up_open_not_close_count_t10": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.008111,
+      "max": 3.0
+    },
+    "limit_up_close_not_open_count_t10": {
+      "present": true,
+      "non_null_ratio": 1.0,
+      "positive_ratio": 0.078799,
+      "max": 7.0
+    }
+  },
+  "contract": {
+    "adapter": "event_derived_feature_layer",
+    "version": "event-derived-feature-layer-v1-2026-05-28",
+    "status": "feature_adapter_diagnostic_ready",
+    "fields": [
+      "break_after_high_board_tplus_1",
+      "break_after_high_board_tplus_2",
+      "break_after_high_board_tplus_3",
+      "break_after_high_board_tplus_5",
+      "break_board_after_streak_ge_1",
+      "break_board_after_streak_ge_10",
+      "break_board_after_streak_ge_2",
+      "break_board_after_streak_ge_3",
+      "break_board_after_streak_ge_4",
+      "break_board_after_streak_ge_5",
+      "break_board_after_streak_ge_6",
+      "break_board_after_streak_ge_7",
+      "break_board_after_streak_ge_8",
+      "break_board_after_streak_ge_9",
+      "high_board_rank",
+      "is_market_high_board",
+      "limit_down_close_event",
+      "limit_down_event",
+      "limit_down_open_event",
+      "limit_down_open_not_close",
+      "limit_down_rebound_after_streak_ge_1",
+      "limit_down_rebound_after_streak_ge_10",
+      "limit_down_rebound_after_streak_ge_2",
+      "limit_down_rebound_after_streak_ge_3",
+      "limit_down_rebound_after_streak_ge_4",
+      "limit_down_rebound_after_streak_ge_5",
+      "limit_down_rebound_after_streak_ge_6",
+      "limit_down_rebound_after_streak_ge_7",
+      "limit_down_rebound_after_streak_ge_8",
+      "limit_down_rebound_after_streak_ge_9",
+      "limit_down_repair",
+      "limit_down_streak",
+      "limit_down_streak_close",
+      "limit_down_streak_ge_1",
+      "limit_down_streak_ge_10",
+      "limit_down_streak_ge_2",
+      "limit_down_streak_ge_3",
+      "limit_down_streak_ge_4",
+      "limit_down_streak_ge_5",
+      "limit_down_streak_ge_6",
+      "limit_down_streak_ge_7",
+      "limit_down_streak_ge_8",
+      "limit_down_streak_ge_9",
+      "limit_down_streak_touch",
+      "limit_down_touch_event",
+      "limit_down_touch_not_close",
+      "limit_down_touch_streak_ge_1",
+      "limit_down_touch_streak_ge_10",
+      "limit_down_touch_streak_ge_2",
+      "limit_down_touch_streak_ge_3",
+      "limit_down_touch_streak_ge_4",
+      "limit_down_touch_streak_ge_5",
+      "limit_down_touch_streak_ge_6",
+      "limit_down_touch_streak_ge_7",
+      "limit_down_touch_streak_ge_8",
+      "limit_down_touch_streak_ge_9",
+      "limit_flip_down_to_up",
+      "limit_flip_up_to_down",
+      "limit_up_break",
+      "limit_up_close_event",
+      "limit_up_event",
+      "limit_up_open_event",
+      "limit_up_open_not_close",
+      "limit_up_streak",
+      "limit_up_streak_close",
+      "limit_up_streak_ge_1",
+      "limit_up_streak_ge_10",
+      "limit_up_streak_ge_2",
+      "limit_up_streak_ge_3",
+      "limit_up_streak_ge_4",
+      "limit_up_streak_ge_5",
+      "limit_up_streak_ge_6",
+      "limit_up_streak_ge_7",
+      "limit_up_streak_ge_8",
+      "limit_up_streak_ge_9",
+      "limit_up_streak_touch",
+      "limit_up_touch_event",
+      "limit_up_touch_not_close",
+      "limit_up_touch_streak_ge_1",
+      "limit_up_touch_streak_ge_10",
+      "limit_up_touch_streak_ge_2",
+      "limit_up_touch_streak_ge_3",
+      "limit_up_touch_streak_ge_4",
+      "limit_up_touch_streak_ge_5",
+      "limit_up_touch_streak_ge_6",
+      "limit_up_touch_streak_ge_7",
+      "limit_up_touch_streak_ge_8",
+      "limit_up_touch_streak_ge_9",
+      "market_high_board",
+      "post_market_high_board_tplus_1",
+      "post_market_high_board_tplus_2",
+      "post_market_high_board_tplus_3",
+      "post_market_high_board_tplus_5",
+      "streak_gap_to_market_high"
+    ],
+    "open_print_fields": [
+      "limit_down_open_event",
+      "limit_up_open_event"
+    ],
+    "full_day_fields": [
+      "break_after_high_board_tplus_1",
+      "break_after_high_board_tplus_2",
+      "break_after_high_board_tplus_3",
+      "break_after_high_board_tplus_5",
+      "break_board_after_streak_ge_1",
+      "break_board_after_streak_ge_10",
+      "break_board_after_streak_ge_2",
+      "break_board_after_streak_ge_3",
+      "break_board_after_streak_ge_4",
+      "break_board_after_streak_ge_5",
+      "break_board_after_streak_ge_6",
+      "break_board_after_streak_ge_7",
+      "break_board_after_streak_ge_8",
+      "break_board_after_streak_ge_9",
+      "high_board_rank",
+      "is_market_high_board",
+      "limit_down_close_event",
+      "limit_down_event",
+      "limit_down_open_not_close",
+      "limit_down_rebound_after_streak_ge_1",
+      "limit_down_rebound_after_streak_ge_10",
+      "limit_down_rebound_after_streak_ge_2",
+      "limit_down_rebound_after_streak_ge_3",
+      "limit_down_rebound_after_streak_ge_4",
+      "limit_down_rebound_after_streak_ge_5",
+      "limit_down_rebound_after_streak_ge_6",
+      "limit_down_rebound_after_streak_ge_7",
+      "limit_down_rebound_after_streak_ge_8",
+      "limit_down_rebound_after_streak_ge_9",
+      "limit_down_repair",
+      "limit_down_streak",
+      "limit_down_streak_close",
+      "limit_down_streak_ge_1",
+      "limit_down_streak_ge_10",
+      "limit_down_streak_ge_2",
+      "limit_down_streak_ge_3",
+      "limit_down_streak_ge_4",
+      "limit_down_streak_ge_5",
+      "limit_down_streak_ge_6",
+      "limit_down_streak_ge_7",
+      "limit_down_streak_ge_8",
+      "limit_down_streak_ge_9",
+      "limit_down_streak_touch",
+      "limit_down_touch_event",
+      "limit_down_touch_not_close",
+      "limit_down_touch_streak_ge_1",
+      "limit_down_touch_streak_ge_10",
+      "limit_down_touch_streak_ge_2",
+      "limit_down_touch_streak_ge_3",
+      "limit_down_touch_streak_ge_4",
+      "limit_down_touch_streak_ge_5",
+      "limit_down_touch_streak_ge_6",
+      "limit_down_touch_streak_ge_7",
+      "limit_down_touch_streak_ge_8",
+      "limit_down_touch_streak_ge_9",
+      "limit_flip_down_to_up",
+      "limit_flip_up_to_down",
+      "limit_up_break",
+      "limit_up_close_event",
+      "limit_up_event",
+      "limit_up_open_not_close",
+      "limit_up_streak",
+      "limit_up_streak_close",
+      "limit_up_streak_ge_1",
+      "limit_up_streak_ge_10",
+      "limit_up_streak_ge_2",
+      "limit_up_streak_ge_3",
+      "limit_up_streak_ge_4",
+      "limit_up_streak_ge_5",
+      "limit_up_streak_ge_6",
+      "limit_up_streak_ge_7",
+      "limit_up_streak_ge_8",
+      "limit_up_streak_ge_9",
+      "limit_up_streak_touch",
+      "limit_up_touch_event",
+      "limit_up_touch_not_close",
+      "limit_up_touch_streak_ge_1",
+      "limit_up_touch_streak_ge_10",
+      "limit_up_touch_streak_ge_2",
+      "limit_up_touch_streak_ge_3",
+      "limit_up_touch_streak_ge_4",
+      "limit_up_touch_streak_ge_5",
+      "limit_up_touch_streak_ge_6",
+      "limit_up_touch_streak_ge_7",
+      "limit_up_touch_streak_ge_8",
+      "limit_up_touch_streak_ge_9",
+      "market_high_board",
+      "post_market_high_board_tplus_1",
+      "post_market_high_board_tplus_2",
+      "post_market_high_board_tplus_3",
+      "post_market_high_board_tplus_5",
+      "streak_gap_to_market_high"
+    ],
+    "default_max_streak_n": 10,
+    "default_post_high_board_days": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "strict_rules": {
+      "same_day_close_or_touch_fields": "must_be_lagged_for_after_open_selection",
+      "open_fields": "available_after_open_but_not_pre_open",
+      "tradability": "open/close locked limit-up/down may be unfillable; use entry limit masks in replay",
+      "promotion": "diagnostic until strict replay, global clustering, OOS/regime/marginal audit, and chain-lock update"
+    },
+    "specs": {
+      "high_board_rank": {
+        "family": "high_board",
+        "source_fields": [
+          "limit_up_streak_close"
+        ],
+        "lag_rule": "same_day_close_streak; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "not_a_tradeability_filter",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Cross-sectional dense rank of close-lock limit-up streak, descending."
+      },
+      "is_market_high_board": {
+        "family": "high_board",
+        "source_fields": [
+          "limit_up_streak_close",
+          "market_high_board"
+        ],
+        "lag_rule": "same_day_close_streak; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "high_board_member_may_be_untradeable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Stock is tied for the market high-board streak on the date."
+      },
+      "limit_down_close_event": {
+        "family": "limit_close",
+        "source_fields": [
+          "tdxgp_limit_status",
+          "is_limit_down",
+          "rt_change_pct",
+          "close"
+        ],
+        "lag_rule": "same_day_close_lock; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "entry_sell_blocked_if_next_session_limit_down",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Close-locked limit-down event."
+      },
+      "limit_down_open_event": {
+        "family": "limit_open",
+        "source_fields": [
+          "open",
+          "prev_close",
+          "down_limit_price"
+        ],
+        "lag_rule": "same_day_open_print; pre_open must lag by one session",
+        "availability_clock": "after_open",
+        "tradability_rule": "sell_at_open_may_be_unfilled_when_open_locked_limit_down",
+        "leakage_flag": "safe_after_open_only_if_open_print_is_available",
+        "description": "Open printed at or below the limit-down proxy/price."
+      },
+      "limit_down_open_not_close": {
+        "family": "limit_open_break",
+        "source_fields": [
+          "limit_down_open_event",
+          "limit_down_close_event"
+        ],
+        "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
+        "availability_clock": "after_close",
+        "tradability_rule": "open_locked_then_repair_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Opened limit-down but did not close locked limit-down."
+      },
+      "limit_down_touch_event": {
+        "family": "limit_touch",
+        "source_fields": [
+          "low",
+          "prev_close",
+          "down_limit_price",
+          "tdxgp_limit_status"
+        ],
+        "lag_rule": "same_day_intraday_low; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "intraday_touch_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Intraday touched limit-down using low/limit proxy or TDXGP touch state."
+      },
+      "limit_down_touch_not_close": {
+        "family": "limit_break",
+        "source_fields": [
+          "limit_down_touch_event",
+          "limit_down_close_event"
+        ],
+        "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "touch_then_repair_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Touched limit-down but did not close locked limit-down."
+      },
+      "limit_up_close_event": {
+        "family": "limit_close",
+        "source_fields": [
+          "tdxgp_limit_status",
+          "is_limit_up",
+          "rt_change_pct",
+          "close"
+        ],
+        "lag_rule": "same_day_close_lock; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "entry_buy_blocked_if_next_session_limit_up",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Close-locked limit-up event."
+      },
+      "limit_up_open_event": {
+        "family": "limit_open",
+        "source_fields": [
+          "open",
+          "prev_close",
+          "up_limit_price"
+        ],
+        "lag_rule": "same_day_open_print; pre_open must lag by one session",
+        "availability_clock": "after_open",
+        "tradability_rule": "buy_at_open_may_be_unfilled_when_open_locked_limit_up",
+        "leakage_flag": "safe_after_open_only_if_open_print_is_available",
+        "description": "Open printed at or above the limit-up proxy/price."
+      },
+      "limit_up_open_not_close": {
+        "family": "limit_open_break",
+        "source_fields": [
+          "limit_up_open_event",
+          "limit_up_close_event"
+        ],
+        "lag_rule": "same_day_open_known_after_open; close component must lag for after_open signals",
+        "availability_clock": "after_close",
+        "tradability_rule": "open_locked_then_break_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Opened limit-up but did not close locked limit-up."
+      },
+      "limit_up_touch_event": {
+        "family": "limit_touch",
+        "source_fields": [
+          "high",
+          "prev_close",
+          "up_limit_price",
+          "tdxgp_limit_status"
+        ],
+        "lag_rule": "same_day_intraday_high; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "intraday_touch_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Intraday touched limit-up using high/limit proxy or TDXGP touch state."
+      },
+      "limit_up_touch_not_close": {
+        "family": "limit_break",
+        "source_fields": [
+          "limit_up_touch_event",
+          "limit_up_close_event"
+        ],
+        "lag_rule": "derived_from_same_day_touch_and_close; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "touch_then_break_not_assumed_fillable",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Touched limit-up but did not close locked limit-up."
+      },
+      "market_high_board": {
+        "family": "high_board",
+        "source_fields": [
+          "limit_up_streak_close"
+        ],
+        "lag_rule": "same_day_market_max_streak; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "market_state_only",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Market-wide maximum close-lock limit-up streak for the date."
+      },
+      "streak_gap_to_market_high": {
+        "family": "high_board",
+        "source_fields": [
+          "limit_up_streak_close",
+          "market_high_board"
+        ],
+        "lag_rule": "same_day_close_streak; after_open must lag by one session",
+        "availability_clock": "after_close",
+        "tradability_rule": "not_a_tradeability_filter",
+        "leakage_flag": "unsafe_same_day_for_after_open_without_field_lag",
+        "description": "Market high-board streak minus stock close-lock streak."
+      }
+    }
+  }
+}

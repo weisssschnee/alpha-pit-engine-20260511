@@ -1,0 +1,68 @@
+{
+  "counts": {
+    "internal_corr_pairs_ge_high_threshold": 0,
+    "internal_corr_pairs_ge_review_threshold": 0,
+    "internal_multi_cluster_components": 0,
+    "known_or_duplicate_signal_cluster": 1,
+    "provisional_new_signal_space": 13,
+    "registry_rows": 149,
+    "registry_similarity_review": 0,
+    "registry_vector_ready": 149,
+    "registry_zero_vector_count": 0,
+    "survivor_representatives": 14,
+    "survivor_vector_ready": 14,
+    "survivor_zero_vector_count": 0
+  },
+  "created_at": "2026-06-01T03:43:17+00:00",
+  "decision": "PASS_SIGNAL_VECTOR_REGISTRY_RECLUSTER_AUDIT",
+  "experiment_id": "cn_underutilized_field_registry_recluster_20260601",
+  "inputs": {
+    "dataset_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "registry_path": "runtime\\baselines\\phase3K_complete_149_representative_registry_20260517.json",
+    "runtime_cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache\\underutilized_recluster_20260601",
+    "survivor_reps_path": "reports\\cn_underutilized_field_survivor_attribution_20260601\\deployable_cluster_representatives.csv"
+  },
+  "outputs": {
+    "internal_components_csv": "reports\\cn_underutilized_field_registry_recluster_20260601\\survivor_internal_components.csv",
+    "internal_pairs_csv": "reports\\cn_underutilized_field_registry_recluster_20260601\\survivor_internal_signal_corr_pairs.csv",
+    "review_rows_csv": "reports\\cn_underutilized_field_registry_recluster_20260601\\recluster_review_rows.csv",
+    "top3_csv": "reports\\cn_underutilized_field_registry_recluster_20260601\\recluster_top3_registry_matches.csv"
+  },
+  "scope": "posthoc signal-vector comparison of replay128 deployable survivor representatives vs frozen 149 registry; no selection or replay rerun",
+  "thresholds": {
+    "high_corr_duplicate_threshold": 0.8,
+    "review_corr_threshold": 0.65
+  },
+  "tier_counts_by_factor_lane": {
+    "capacity_residual_activity": {
+      "known_or_duplicate_signal_cluster": 1
+    },
+    "fundamental_quality": {
+      "provisional_new_signal_space": 2
+    },
+    "fundamental_risk_inverse": {
+      "provisional_new_signal_space": 3
+    },
+    "fundamental_size_residual": {
+      "provisional_new_signal_space": 2
+    },
+    "fundamental_x_activity": {
+      "provisional_new_signal_space": 4
+    },
+    "fundamental_x_flow": {
+      "provisional_new_signal_space": 2
+    }
+  },
+  "tier_counts_by_source_lane": {
+    "cn_flow_liquidity_feature_layer": {
+      "provisional_new_signal_space": 2
+    },
+    "cn_research_feature_layer_v2": {
+      "provisional_new_signal_space": 7
+    },
+    "cn_underutilized_field_feature_layer": {
+      "known_or_duplicate_signal_cluster": 1,
+      "provisional_new_signal_space": 4
+    }
+  }
+}

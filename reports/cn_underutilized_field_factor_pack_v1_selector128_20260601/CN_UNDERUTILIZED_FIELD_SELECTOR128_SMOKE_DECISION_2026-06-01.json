@@ -1,0 +1,67 @@
+{
+  "artifacts": {
+    "selected_full_attribution": "reports/cn_underutilized_field_factor_pack_v1_selector128_20260601/selector128_selected_full_attribution.csv",
+    "selector_audit": "runtime/cn_underutilized_field_factor_pack_v1_selector128_20260601/selector_safe_v1/aa/phase3e_selector_audit.csv",
+    "selector_report": "runtime/cn_underutilized_field_factor_pack_v1_selector128_20260601/selector_safe_v1/aa/phase3_selection_only_report.json",
+    "summary_json": "reports/cn_underutilized_field_factor_pack_v1_selector128_20260601/selector128_attribution_summary.json"
+  },
+  "created_at": "2026-05-31T19:00:27.937946+00:00",
+  "decision": "PASS_UNDERUTILIZED_FIELD_PACK_AND_SELECTOR128_SMOKE_NO_REPLAY",
+  "experiment_id": "cn_underutilized_field_factor_pack_v1_selector128_20260601",
+  "inputs": {
+    "dataset": "runtime/datasets/phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "enriched_pool": "runtime/cn_underutilized_field_factor_pack_v1_phase3aa_smoke_20260601/shared_candidate_pool_event_fund_flow_underutilized_enriched.json",
+    "factor_pack": "runtime/factor_packs/cn_underutilized_field_factor_candidate_pack_v1_20260601.json",
+    "flow_pack": "runtime/factor_packs/cn_flow_liquidity_factor_candidate_pack_v1_20260601.json"
+  },
+  "next_action": "inspect selector256 process/report; if completes, aggregate larger field-family attribution; if not, stop and rerun batched/family-balanced selector path",
+  "pack_counts": {
+    "enriched_pool_rows": 2137,
+    "factor_fields_used": 39,
+    "factor_pack_rows_in_enriched_pool": 344,
+    "flow_candidate_count": 306,
+    "missing_derived_fields": 0,
+    "missing_mature_signal_vector_fields": 0,
+    "underutilized_candidate_count": 344
+  },
+  "scope": "selector-only smoke; no replay/deployability claims",
+  "selector128": {
+    "candidate_source_counts": {
+      "cn_flow_liquidity_feature_layer": 145,
+      "cn_research_feature_layer_v2": 44,
+      "cn_underutilized_field_feature_layer": 103,
+      "unknown": 220
+    },
+    "event_candidates_in_pool": 154,
+    "event_candidates_selected": 38,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "fundamental_candidates_in_pool": 46,
+    "fundamental_candidates_selected": 0,
+    "research_candidates_in_pool": 92,
+    "research_candidates_selected": 24,
+    "selected_source_counts": {
+      "cn_flow_liquidity_feature_layer": 41,
+      "cn_underutilized_field_feature_layer": 21,
+      "unknown": 66
+    },
+    "signal_vector_proxy_requirement_pass": true
+  },
+  "selector256_status": "running_after_interactive_timeout; do not treat as failed until process exits or no report is produced"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "selected_candidates": 80,
+  "succeeded": 80,
+  "failed": 0,
+  "output_root": "reports\\phase3ab_candidate_deep_validation_20260530_top80",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

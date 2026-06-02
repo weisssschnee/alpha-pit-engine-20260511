@@ -1,0 +1,389 @@
+{
+  "combined_selected_factor_lane_counts": {
+    "amihud_illiquidity": 4,
+    "capacity_normalized_activity": 5,
+    "capacity_normalized_flow": 4,
+    "capacity_residual_activity": 7,
+    "capacity_residual_flow": 1,
+    "event_x_flow_liquidity": 28,
+    "event_x_seal_flow": 12,
+    "event_x_theme": 6,
+    "flow_impulse": 7,
+    "flow_ratio_curve": 3,
+    "flow_relative_activity": 15,
+    "flow_volatility": 8,
+    "fundamental_capacity_value": 2,
+    "fundamental_quality": 18,
+    "fundamental_risk_inverse": 8,
+    "fundamental_size_residual": 4,
+    "fundamental_x_activity": 12,
+    "fundamental_x_event": 17,
+    "fundamental_x_flow": 16,
+    "limit_seal_flow": 12,
+    "price_flow_divergence": 17,
+    "seal_to_amount": 6,
+    "theme_activity_proxy": 3
+  },
+  "combined_selected_source_generator_counts": {
+    "cn_field_factor_pack_v1": 6,
+    "cn_flow_liquidity_factor_pack_v1": 89,
+    "cn_research_factor_pack_v2": 47,
+    "cn_underutilized_field_factor_pack_v1": 73
+  },
+  "combined_selected_source_lane_counts": {
+    "cn_flow_liquidity_feature_layer": 89,
+    "cn_research_feature_layer_v2": 47,
+    "cn_underutilized_field_feature_layer": 73,
+    "event_derived_feature_layer": 6
+  },
+  "counts": {
+    "combined_selected_rows": 256,
+    "combined_unique_selected_rows": 215,
+    "shard_count": 4
+  },
+  "created_at": "2026-06-01T00:16:15.275640+00:00",
+  "decision": "PASS_BATCHED_SELECTOR_SMOKE_NO_REPLAY",
+  "experiment_id": "cn_underutilized_field_batched_selector256_20260601",
+  "inputs": {
+    "dataset_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "enriched_pool": "runtime\\cn_underutilized_field_factor_pack_v1_phase3aa_smoke_20260601\\shared_candidate_pool_event_fund_flow_underutilized_enriched.json"
+  },
+  "parameters": {
+    "base_cap": 96,
+    "budget_per_shard": 64,
+    "max_factor_rows": 192,
+    "pool_cap": 256,
+    "sample_size": 96,
+    "timeout_seconds": 900,
+    "warmup_days": 30
+  },
+  "scope": "batched selector-only smoke; no replay/deployability claims",
+  "shards": [
+    {
+      "candidate_pool_count": 288,
+      "factor_rows_in_shard_pool": 192,
+      "selected_count": 64,
+      "selector_checks": {
+        "candidate_source_counts": {
+          "cn_flow_liquidity_feature_layer": 47,
+          "cn_research_feature_layer_v2": 31,
+          "cn_underutilized_field_feature_layer": 48
+        },
+        "event_candidates_in_pool": 77,
+        "event_candidates_selected": 40,
+        "forbidden_label_guard": {
+          "forbidden_fields": [
+            "cost_survives",
+            "deployable",
+            "global_signal_cluster_id",
+            "portfolio_replay_avg_one_way_turnover",
+            "portfolio_replay_long_only_net_mean",
+            "portfolio_replay_long_only_sortino",
+            "portfolio_replay_long_short_net_mean",
+            "portfolio_replay_long_short_sortino",
+            "portfolio_replay_pass",
+            "signal_cluster_id",
+            "strict_cost_adjusted_sortino",
+            "strict_mean_one_way_turnover",
+            "strict_mean_rank_ic"
+          ],
+          "selector_uses_forbidden_fields": false
+        },
+        "fundamental_candidates_in_pool": 31,
+        "fundamental_candidates_selected": 6,
+        "research_candidates_in_pool": 18,
+        "research_candidates_selected": 18,
+        "selected_source_counts": {
+          "cn_flow_liquidity_feature_layer": 28,
+          "cn_research_feature_layer_v2": 6,
+          "cn_underutilized_field_feature_layer": 30
+        },
+        "signal_vector_proxy_requirement_pass": true
+      },
+      "selector_report_path": "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\event_seal_flow\\aa\\phase3_selection_only_report.json",
+      "selector_run": {
+        "command": [
+          "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+          "-m",
+          "our_system_phase2.runtime.phase3aa_apply_mature_g2_selector",
+          "--pool",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\shard_pools\\event_seal_flow.json",
+          "--output-root",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\event_seal_flow",
+          "--dataset-path",
+          "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+          "--total-budget",
+          "64",
+          "--event-share",
+          "0.28",
+          "--research-share",
+          "0.42",
+          "--pool-cap",
+          "256",
+          "--signal-sample-size",
+          "96",
+          "--signal-warmup-days",
+          "30",
+          "--signal-recent-quarter-window-count",
+          "1",
+          "--signal-runtime-cache-dir",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\signal_vector_cache",
+          "--seed",
+          "underutilized_batched_event_seal_flow"
+        ],
+        "elapsed_seconds": 113.252,
+        "returncode": 0,
+        "status": "completed",
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"candidate_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 47,\n    \"cn_research_feature_layer_v2\": 31,\n    \"cn_underutilized_field_feature_layer\": 48\n  },\n  \"selected_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 28,\n    \"cn_research_feature_layer_v2\": 6,\n    \"cn_underutilized_field_feature_layer\": 30\n  },\n  \"event_candidates_in_pool\": 77,\n  \"event_candidates_selected\": 40,\n  \"fundamental_candidates_in_pool\": 31,\n  \"fundamental_candidates_selected\": 6,\n  \"research_candidates_in_pool\": 18,\n  \"research_candidates_selected\": 18,\n  \"forbidden_label_guard\": {\n    \"forbidden_fields\": [\n      \"cost_survives\",\n      \"deployable\",\n      \"global_signal_cluster_id\",\n      \"portfolio_replay_avg_one_way_turnover\",\n      \"portfolio_replay_long_only_net_mean\",\n      \"portfolio_replay_long_only_sortino\",\n      \"portfolio_replay_long_short_net_mean\",\n      \"portfolio_replay_long_short_sortino\",\n      \"portfolio_replay_pass\",\n      \"signal_cluster_id\",\n      \"strict_cost_adjusted_sortino\",\n      \"strict_mean_one_way_turnover\",\n      \"strict_mean_rank_ic\"\n    ],\n    \"selector_uses_forbidden_fields\": false\n  },\n  \"signal_vector_proxy_requirement_pass\": true\n}\n"
+      },
+      "shard": "event_seal_flow"
+    },
+    {
+      "candidate_pool_count": 220,
+      "factor_rows_in_shard_pool": 124,
+      "selected_count": 64,
+      "selector_checks": {
+        "candidate_source_counts": {
+          "cn_flow_liquidity_feature_layer": 80,
+          "cn_research_feature_layer_v2": 74,
+          "cn_underutilized_field_feature_layer": 44,
+          "event_derived_feature_layer": 22
+        },
+        "event_candidates_in_pool": 52,
+        "event_candidates_selected": 12,
+        "forbidden_label_guard": {
+          "forbidden_fields": [
+            "cost_survives",
+            "deployable",
+            "global_signal_cluster_id",
+            "portfolio_replay_avg_one_way_turnover",
+            "portfolio_replay_long_only_net_mean",
+            "portfolio_replay_long_only_sortino",
+            "portfolio_replay_long_short_net_mean",
+            "portfolio_replay_long_short_sortino",
+            "portfolio_replay_pass",
+            "signal_cluster_id",
+            "strict_cost_adjusted_sortino",
+            "strict_mean_one_way_turnover",
+            "strict_mean_rank_ic"
+          ],
+          "selector_uses_forbidden_fields": false
+        },
+        "fundamental_candidates_in_pool": 44,
+        "fundamental_candidates_selected": 2,
+        "research_candidates_in_pool": 124,
+        "research_candidates_selected": 50,
+        "selected_source_counts": {
+          "cn_flow_liquidity_feature_layer": 36,
+          "cn_research_feature_layer_v2": 12,
+          "cn_underutilized_field_feature_layer": 14,
+          "event_derived_feature_layer": 2
+        },
+        "signal_vector_proxy_requirement_pass": true
+      },
+      "selector_report_path": "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\pure_flow_price\\aa\\phase3_selection_only_report.json",
+      "selector_run": {
+        "command": [
+          "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+          "-m",
+          "our_system_phase2.runtime.phase3aa_apply_mature_g2_selector",
+          "--pool",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\shard_pools\\pure_flow_price.json",
+          "--output-root",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\pure_flow_price",
+          "--dataset-path",
+          "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+          "--total-budget",
+          "64",
+          "--event-share",
+          "0.28",
+          "--research-share",
+          "0.42",
+          "--pool-cap",
+          "256",
+          "--signal-sample-size",
+          "96",
+          "--signal-warmup-days",
+          "30",
+          "--signal-recent-quarter-window-count",
+          "1",
+          "--signal-runtime-cache-dir",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\signal_vector_cache",
+          "--seed",
+          "underutilized_batched_pure_flow_price"
+        ],
+        "elapsed_seconds": 279.474,
+        "returncode": 0,
+        "status": "completed",
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"candidate_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 80,\n    \"cn_research_feature_layer_v2\": 74,\n    \"cn_underutilized_field_feature_layer\": 44,\n    \"event_derived_feature_layer\": 22\n  },\n  \"selected_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 36,\n    \"cn_research_feature_layer_v2\": 12,\n    \"cn_underutilized_field_feature_layer\": 14,\n    \"event_derived_feature_layer\": 2\n  },\n  \"event_candidates_in_pool\": 52,\n  \"event_candidates_selected\": 12,\n  \"fundamental_candidates_in_pool\": 44,\n  \"fundamental_candidates_selected\": 2,\n  \"research_candidates_in_pool\": 124,\n  \"research_candidates_selected\": 50,\n  \"forbidden_label_guard\": {\n    \"forbidden_fields\": [\n      \"cost_survives\",\n      \"deployable\",\n      \"global_signal_cluster_id\",\n      \"portfolio_replay_avg_one_way_turnover\",\n      \"portfolio_replay_long_only_net_mean\",\n      \"portfolio_replay_long_only_sortino\",\n      \"portfolio_replay_long_short_net_mean\",\n      \"portfolio_replay_long_short_sortino\",\n      \"portfolio_replay_pass\",\n      \"signal_cluster_id\",\n      \"strict_cost_adjusted_sortino\",\n      \"strict_mean_one_way_turnover\",\n      \"strict_mean_rank_ic\"\n    ],\n    \"selector_uses_forbidden_fields\": false\n  },\n  \"signal_vector_proxy_requirement_pass\": true\n}\n"
+      },
+      "shard": "pure_flow_price"
+    },
+    {
+      "candidate_pool_count": 134,
+      "factor_rows_in_shard_pool": 38,
+      "selected_count": 64,
+      "selector_checks": {
+        "candidate_source_counts": {
+          "cn_flow_liquidity_feature_layer": 16,
+          "cn_research_feature_layer_v2": 74,
+          "cn_underutilized_field_feature_layer": 22,
+          "event_derived_feature_layer": 22
+        },
+        "event_candidates_in_pool": 52,
+        "event_candidates_selected": 17,
+        "forbidden_label_guard": {
+          "forbidden_fields": [
+            "cost_survives",
+            "deployable",
+            "global_signal_cluster_id",
+            "portfolio_replay_avg_one_way_turnover",
+            "portfolio_replay_long_only_net_mean",
+            "portfolio_replay_long_only_sortino",
+            "portfolio_replay_long_short_net_mean",
+            "portfolio_replay_long_short_sortino",
+            "portfolio_replay_pass",
+            "signal_cluster_id",
+            "strict_cost_adjusted_sortino",
+            "strict_mean_one_way_turnover",
+            "strict_mean_rank_ic"
+          ],
+          "selector_uses_forbidden_fields": false
+        },
+        "fundamental_candidates_in_pool": 46,
+        "fundamental_candidates_selected": 26,
+        "research_candidates_in_pool": 36,
+        "research_candidates_selected": 21,
+        "selected_source_counts": {
+          "cn_flow_liquidity_feature_layer": 9,
+          "cn_research_feature_layer_v2": 37,
+          "cn_underutilized_field_feature_layer": 14,
+          "event_derived_feature_layer": 4
+        },
+        "signal_vector_proxy_requirement_pass": true
+      },
+      "selector_report_path": "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\capacity_liquidity_cost\\aa\\phase3_selection_only_report.json",
+      "selector_run": {
+        "command": [
+          "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+          "-m",
+          "our_system_phase2.runtime.phase3aa_apply_mature_g2_selector",
+          "--pool",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\shard_pools\\capacity_liquidity_cost.json",
+          "--output-root",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\capacity_liquidity_cost",
+          "--dataset-path",
+          "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+          "--total-budget",
+          "64",
+          "--event-share",
+          "0.28",
+          "--research-share",
+          "0.42",
+          "--pool-cap",
+          "256",
+          "--signal-sample-size",
+          "96",
+          "--signal-warmup-days",
+          "30",
+          "--signal-recent-quarter-window-count",
+          "1",
+          "--signal-runtime-cache-dir",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\signal_vector_cache",
+          "--seed",
+          "underutilized_batched_capacity_liquidity_cost"
+        ],
+        "elapsed_seconds": 87.565,
+        "returncode": 0,
+        "status": "completed",
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"candidate_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 16,\n    \"cn_research_feature_layer_v2\": 74,\n    \"cn_underutilized_field_feature_layer\": 22,\n    \"event_derived_feature_layer\": 22\n  },\n  \"selected_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 9,\n    \"cn_research_feature_layer_v2\": 37,\n    \"cn_underutilized_field_feature_layer\": 14,\n    \"event_derived_feature_layer\": 4\n  },\n  \"event_candidates_in_pool\": 52,\n  \"event_candidates_selected\": 17,\n  \"fundamental_candidates_in_pool\": 46,\n  \"fundamental_candidates_selected\": 26,\n  \"research_candidates_in_pool\": 36,\n  \"research_candidates_selected\": 21,\n  \"forbidden_label_guard\": {\n    \"forbidden_fields\": [\n      \"cost_survives\",\n      \"deployable\",\n      \"global_signal_cluster_id\",\n      \"portfolio_replay_avg_one_way_turnover\",\n      \"portfolio_replay_long_only_net_mean\",\n      \"portfolio_replay_long_only_sortino\",\n      \"portfolio_replay_long_short_net_mean\",\n      \"portfolio_replay_long_short_sortino\",\n      \"portfolio_replay_pass\",\n      \"signal_cluster_id\",\n      \"strict_cost_adjusted_sortino\",\n      \"strict_mean_one_way_turnover\",\n      \"strict_mean_rank_ic\"\n    ],\n    \"selector_uses_forbidden_fields\": false\n  },\n  \"signal_vector_proxy_requirement_pass\": true\n}\n"
+      },
+      "shard": "capacity_liquidity_cost"
+    },
+    {
+      "candidate_pool_count": 197,
+      "factor_rows_in_shard_pool": 101,
+      "selected_count": 64,
+      "selector_checks": {
+        "candidate_source_counts": {
+          "cn_flow_liquidity_feature_layer": 30,
+          "cn_research_feature_layer_v2": 74,
+          "cn_underutilized_field_feature_layer": 71,
+          "event_derived_feature_layer": 22
+        },
+        "event_candidates_in_pool": 55,
+        "event_candidates_selected": 16,
+        "forbidden_label_guard": {
+          "forbidden_fields": [
+            "cost_survives",
+            "deployable",
+            "global_signal_cluster_id",
+            "portfolio_replay_avg_one_way_turnover",
+            "portfolio_replay_long_only_net_mean",
+            "portfolio_replay_long_only_sortino",
+            "portfolio_replay_long_short_net_mean",
+            "portfolio_replay_long_short_sortino",
+            "portfolio_replay_pass",
+            "signal_cluster_id",
+            "strict_cost_adjusted_sortino",
+            "strict_mean_one_way_turnover",
+            "strict_mean_rank_ic"
+          ],
+          "selector_uses_forbidden_fields": false
+        },
+        "fundamental_candidates_in_pool": 44,
+        "fundamental_candidates_selected": 20,
+        "research_candidates_in_pool": 98,
+        "research_candidates_selected": 28,
+        "selected_source_counts": {
+          "cn_flow_liquidity_feature_layer": 16,
+          "cn_research_feature_layer_v2": 30,
+          "cn_underutilized_field_feature_layer": 15,
+          "event_derived_feature_layer": 3
+        },
+        "signal_vector_proxy_requirement_pass": true
+      },
+      "selector_report_path": "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\fund_theme_activity\\aa\\phase3_selection_only_report.json",
+      "selector_run": {
+        "command": [
+          "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+          "-m",
+          "our_system_phase2.runtime.phase3aa_apply_mature_g2_selector",
+          "--pool",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\shard_pools\\fund_theme_activity.json",
+          "--output-root",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\selectors\\fund_theme_activity",
+          "--dataset-path",
+          "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+          "--total-budget",
+          "64",
+          "--event-share",
+          "0.28",
+          "--research-share",
+          "0.42",
+          "--pool-cap",
+          "256",
+          "--signal-sample-size",
+          "96",
+          "--signal-warmup-days",
+          "30",
+          "--signal-recent-quarter-window-count",
+          "1",
+          "--signal-runtime-cache-dir",
+          "runtime\\cn_underutilized_field_factor_pack_v1_batched_selector256_20260601\\signal_vector_cache",
+          "--seed",
+          "underutilized_batched_fund_theme_activity"
+        ],
+        "elapsed_seconds": 124.232,
+        "returncode": 0,
+        "status": "completed",
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"candidate_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 30,\n    \"cn_research_feature_layer_v2\": 74,\n    \"cn_underutilized_field_feature_layer\": 71,\n    \"event_derived_feature_layer\": 22\n  },\n  \"selected_source_counts\": {\n    \"cn_flow_liquidity_feature_layer\": 16,\n    \"cn_research_feature_layer_v2\": 30,\n    \"cn_underutilized_field_feature_layer\": 15,\n    \"event_derived_feature_layer\": 3\n  },\n  \"event_candidates_in_pool\": 55,\n  \"event_candidates_selected\": 16,\n  \"fundamental_candidates_in_pool\": 44,\n  \"fundamental_candidates_selected\": 20,\n  \"research_candidates_in_pool\": 98,\n  \"research_candidates_selected\": 28,\n  \"forbidden_label_guard\": {\n    \"forbidden_fields\": [\n      \"cost_survives\",\n      \"deployable\",\n      \"global_signal_cluster_id\",\n      \"portfolio_replay_avg_one_way_turnover\",\n      \"portfolio_replay_long_only_net_mean\",\n      \"portfolio_replay_long_only_sortino\",\n      \"portfolio_replay_long_short_net_mean\",\n      \"portfolio_replay_long_short_sortino\",\n      \"portfolio_replay_pass\",\n      \"signal_cluster_id\",\n      \"strict_cost_adjusted_sortino\",\n      \"strict_mean_one_way_turnover\",\n      \"strict_mean_rank_ic\"\n    ],\n    \"selector_uses_forbidden_fields\": false\n  },\n  \"signal_vector_proxy_requirement_pass\": true\n}\n"
+      },
+      "shard": "fund_theme_activity"
+    }
+  ]
+}

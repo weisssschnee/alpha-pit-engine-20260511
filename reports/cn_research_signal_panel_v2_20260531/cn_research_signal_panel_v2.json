@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "event_augmented_columns": 134,
+    "factor_fields": 107,
+    "fundamental_panel_columns": 60,
+    "joined_fundamental_factor_fields": 18,
+    "rows": 1090783,
+    "rows_with_any_fundamental_field": 36119,
+    "rows_without_fundamental_field": 1054664
+  },
+  "created_at": "2026-05-31T13:28:48.475578+00:00",
+  "date_range": {
+    "max_date": "2026-05-08",
+    "min_date": "2025-08-06"
+  },
+  "decision": "PASS_CN_RESEARCH_SIGNAL_PANEL_V2_BUILT",
+  "factor_fundamental_fields_missing_from_panel": [],
+  "joined_fundamental_columns": [
+    "fund_cash_to_assets",
+    "fund_circulate_top10_holder_pct",
+    "fund_current_ratio",
+    "fund_debt_to_assets",
+    "fund_float_share_ratio_cninfo",
+    "fund_goodwill_to_assets",
+    "fund_inventory_to_assets",
+    "fund_netcash_operate",
+    "fund_netprofit_margin",
+    "fund_ocf_to_assets",
+    "fund_ocf_to_netprofit",
+    "fund_parent_netprofit",
+    "fund_research_to_income",
+    "fund_top10_holder_pct",
+    "fund_top1_holder_pct",
+    "fund_total_assets",
+    "fund_total_operate_income",
+    "fund_total_shares_cninfo"
+  ],
+  "output_panel": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+  "output_sha256": "0edb63bfee42912b871674a55d142dff845db254ccb77fafbaf7cd5fa70467f5",
+  "policy": {
+    "event_fields": "kept as columns; evaluator signal clock must apply event lag policy",
+    "fundamental_fields": "already lagged by notice-date next-trading-day as-of panel",
+    "official_x0_r3": "read_only",
+    "scope": "signal-vector/evaluator dataset augmentation only"
+  },
+  "source_panels": {
+    "event_augmented_panel": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_augmented_v1_20260531.parquet",
+    "factor_pack": "runtime\\factor_packs\\cn_research_factor_candidate_pack_v2_20260531.json",
+    "fundamental_panel": "runtime\\fundamental_features\\cn_fundamental_daily_pit_features_v1_20260531.parquet"
+  }
+}

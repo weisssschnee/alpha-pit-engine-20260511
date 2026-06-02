@@ -1,0 +1,21 @@
+{
+  "decision": "PASS_NONMINUTE_PIT_CONTEXT_PANEL_V1_QA",
+  "panel_root": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+  "report_root": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa",
+  "files": 4,
+  "total_rows": 3997944,
+  "columns": 126,
+  "duplicate_key_rows": 0,
+  "key_null_rows": 0,
+  "pit_available_date_gt_panel_date_rows": 0,
+  "forbidden_label_prefix_columns": 0,
+  "blocking": [],
+  "outputs": {
+    "year_qa": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\year_qa.csv",
+    "coverage": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\coverage_by_family_year.csv",
+    "pit_metadata_qa": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\pit_metadata_qa.csv",
+    "json": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\cn_nonminute_pit_context_panel_v1_qa.json",
+    "markdown": "reports\\cn_nonminute_pit_context_panel_v1_20260602_qa\\CN_NONMINUTE_PIT_CONTEXT_PANEL_V1_QA_2026-06-02.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

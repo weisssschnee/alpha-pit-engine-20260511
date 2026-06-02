@@ -1,0 +1,114 @@
+{
+  "decision": "PASS_NONMINUTE_SYSTEM_INTEGRATION_AUDIT_WITH_GAPS",
+  "registry_path": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\field_registry.csv",
+  "minute_panel": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+  "event_panel": "runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+  "context_panel": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+  "registry_fields": 1855,
+  "minute_panel_columns": 231,
+  "event_panel_columns": 78,
+  "context_panel_columns": 126,
+  "integration_status_counts": {
+    "registered_pit_not_panelized": 1362,
+    "integrated_nonminute_pit_context_panel": 189,
+    "registered_lagged_not_panelized": 93,
+    "integrated_minute_context_panel": 73,
+    "registered_diagnostic_not_panelized": 60,
+    "registered_not_panelized": 37,
+    "integrated_event_alignment_panel": 34,
+    "blocked_manual_contract": 5,
+    "key_or_metadata_integrated_indirectly": 2
+  },
+  "route_status_counts": [
+    {
+      "route": "announcement_pit_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 58
+    },
+    {
+      "route": "announcement_pit_context",
+      "integration_status": "registered_pit_not_panelized",
+      "count": 1362
+    },
+    {
+      "route": "event_disclosure_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 22
+    },
+    {
+      "route": "event_disclosure_context",
+      "integration_status": "registered_diagnostic_not_panelized",
+      "count": 60
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "integrated_minute_context_panel",
+      "count": 72
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 93
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "key_or_metadata_integrated_indirectly",
+      "count": 2
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "registered_lagged_not_panelized",
+      "count": 93
+    },
+    {
+      "route": "lagged_market_regime_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 14
+    },
+    {
+      "route": "lagged_market_regime_context",
+      "integration_status": "registered_not_panelized",
+      "count": 26
+    },
+    {
+      "route": "manual_contract_required",
+      "integration_status": "blocked_manual_contract",
+      "count": 5
+    },
+    {
+      "route": "timestamped_market_intraday_event",
+      "integration_status": "integrated_event_alignment_panel",
+      "count": 13
+    },
+    {
+      "route": "timestamped_stock_intraday_event",
+      "integration_status": "integrated_event_alignment_panel",
+      "count": 21
+    },
+    {
+      "route": "timestamped_stock_intraday_event",
+      "integration_status": "integrated_minute_context_panel",
+      "count": 1
+    },
+    {
+      "route": "tradability_calendar_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 2
+    },
+    {
+      "route": "tradability_calendar_context",
+      "integration_status": "registered_not_panelized",
+      "count": 11
+    }
+  ],
+  "table_count": 25,
+  "high_value_gap_count": 544,
+  "outputs": {
+    "field_integration": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\nonminute_field_system_integration.csv",
+    "table_integration": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\nonminute_table_system_integration.csv",
+    "high_value_gaps": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\high_value_nonminute_gaps.csv",
+    "json": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\cn_nonminute_system_integration_audit.json",
+    "markdown": "reports\\cn_nonminute_system_integration_audit_20260602_after_context_panel\\CN_NONMINUTE_SYSTEM_INTEGRATION_AUDIT_2026-06-02.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

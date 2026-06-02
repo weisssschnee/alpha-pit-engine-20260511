@@ -1,0 +1,210 @@
+{
+  "by_factor_lane": {
+    "amihud_capacity_cost": {
+      "errors": {
+        "": 4
+      },
+      "operator_pathology": 0,
+      "sampled": 4,
+      "vector_ok": 4
+    },
+    "amihud_illiquidity": {
+      "errors": {
+        "": 4
+      },
+      "operator_pathology": 0,
+      "sampled": 4,
+      "vector_ok": 4
+    },
+    "capacity_normalized_activity": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "capacity_normalized_flow": {
+      "errors": {
+        "": 8
+      },
+      "operator_pathology": 0,
+      "sampled": 8,
+      "vector_ok": 8
+    },
+    "capacity_residual_activity": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "capacity_residual_flow": {
+      "errors": {
+        "": 4
+      },
+      "operator_pathology": 0,
+      "sampled": 4,
+      "vector_ok": 4
+    },
+    "event_x_flow_liquidity": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "event_x_seal_flow": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_impulse": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_impulse_curve": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_ratio_curve": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_relative_activity": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_volatility": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "flow_volatility_curve": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "fundamental_capacity_value": {
+      "errors": {
+        "": 2
+      },
+      "operator_pathology": 0,
+      "sampled": 2,
+      "vector_ok": 2
+    },
+    "fundamental_x_activity": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "fundamental_x_flow": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "limit_seal_flow": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "price_flow_confirmation": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "price_flow_correlation": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "price_flow_divergence": {
+      "errors": {
+        "": 12
+      },
+      "operator_pathology": 0,
+      "sampled": 12,
+      "vector_ok": 12
+    },
+    "seal_to_amount": {
+      "errors": {
+        "": 9
+      },
+      "operator_pathology": 0,
+      "sampled": 9,
+      "vector_ok": 9
+    },
+    "theme_activity_proxy": {
+      "errors": {
+        "": 9
+      },
+      "operator_pathology": 0,
+      "sampled": 9,
+      "vector_ok": 9
+    }
+  },
+  "counts": {
+    "factor_lanes_sampled": 23,
+    "factor_rows": 650,
+    "operator_pathology_rows": 0,
+    "sampled_rows": 232,
+    "vector_ok_rows": 232
+  },
+  "created_at": "2026-05-31T19:07:59.538863+00:00",
+  "dataset_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+  "decision": "PASS_FIELD_FAMILY_SIGNAL_VECTOR_SMOKE",
+  "experiment_id": "cn_underutilized_field_family_smoke_20260601",
+  "factor_pack_paths": [
+    "runtime\\factor_packs\\cn_flow_liquidity_factor_candidate_pack_v1_20260601.json",
+    "runtime\\factor_packs\\cn_underutilized_field_factor_candidate_pack_v1_20260601.json"
+  ],
+  "parameters": {
+    "cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache_underutilized_family_smoke_20260601",
+    "per_lane": 12,
+    "sample_size": 96,
+    "warmup_days": 30
+  },
+  "scope": "family-balanced signal-vector smoke; no selector/replay/deployability claims"
+}

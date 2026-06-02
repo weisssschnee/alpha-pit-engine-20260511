@@ -1,0 +1,39 @@
+{
+  "phase": "Phase3AA",
+  "run_type": "mature_chain_event_derived_g2_search",
+  "created_date": "2026-05-29",
+  "primary_entrypoint": "app.py phase3aa-mature-chain",
+  "chain": [
+    "Phase3I_I0_G2_primary shared candidate pool generation",
+    "event-derived feature factor candidate injection",
+    "source-priority metadata and opt-in selector bonus",
+    "G2 signal-vector diversified frozen selection",
+    "strict/replay/cluster from frozen queue"
+  ],
+  "required_contract": {
+    "uses_mature_g2_selector": true,
+    "uses_event_derived_feature_layer": true,
+    "uses_source_priority": true,
+    "uses_search_memory_roots": true,
+    "x0_r3_shadow_read_only": true,
+    "old_unreached_supervisor_primary": false
+  },
+  "event_derived_feature_scope": {
+    "role": "factor_candidate_layer",
+    "not_role": "official_shadow_replacement",
+    "gate_candidates_default": "excluded",
+    "same_day_limit_status": "disallowed_by_event_feature_lag_metadata"
+  },
+  "selector": {
+    "profile": "signal_vector_diversified_source_priority_proxy",
+    "baseline": "phase3H_cumulative_149",
+    "event_bucket": "event_derived_feature_layer",
+    "default_event_share": 0.25
+  },
+  "blocked_actions": [
+    "replace_X0_R3",
+    "promote_event_candidate_without_replay_oos_regime_audit",
+    "use_stock_pit_unreached_search_supervisor_as_primary_phase3aa_path",
+    "interpret_event_gate_candidates_as factor candidates"
+  ]
+}

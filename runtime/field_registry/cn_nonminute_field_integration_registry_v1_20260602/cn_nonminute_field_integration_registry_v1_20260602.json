@@ -1,0 +1,46 @@
+{
+  "decision": "PASS_NONMINUTE_FIELD_INTEGRATION_REGISTRY",
+  "registry_id": "cn_nonminute_field_integration_registry_v1_20260602",
+  "table_count": 25,
+  "field_count": 1855,
+  "error_count": 0,
+  "route_counts": {
+    "announcement_pit_context": 11,
+    "lagged_daily_context": 6,
+    "event_disclosure_context": 3,
+    "tradability_calendar_context": 1,
+    "timestamped_stock_intraday_event": 1,
+    "manual_contract_required": 1,
+    "lagged_market_regime_context": 1,
+    "timestamped_market_intraday_event": 1
+  },
+  "field_family_counts": {
+    "other": 890,
+    "fundamental": 522,
+    "price_state": 123,
+    "flow_liquidity": 108,
+    "disclosure_event": 59,
+    "date_key": 44,
+    "instrument_key": 38,
+    "capacity_size": 33,
+    "limit_event": 26,
+    "industry_theme": 6,
+    "tradability_universe": 6
+  },
+  "blocked_or_diagnostic_table_count": 5,
+  "outputs": {
+    "table_registry": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\table_registry.csv",
+    "field_registry": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\field_registry.csv",
+    "error_manifest": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\error_manifest.csv",
+    "json": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\cn_nonminute_field_integration_registry_v1_20260602.json",
+    "markdown": "reports\\cn_nonminute_field_integration_registry_20260602\\CN_NONMINUTE_FIELD_INTEGRATION_REGISTRY_2026-06-02.md"
+  },
+  "policy": {
+    "stock_1min": "excluded; handled by cn_minute_feature_panel_v2",
+    "daily_context": "signal_date/prior-date only for intraday or next-day selector",
+    "announcement_pit": "NOTICE_DATE/announcement date governs availability",
+    "timestamped_event": "usable only after event row time/cutoff",
+    "diagnostic": "can be scanned but cannot promote without PIT contract and frozen replay"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

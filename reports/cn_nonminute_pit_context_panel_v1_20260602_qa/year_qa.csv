@@ -1,0 +1,5 @@
+year,file,rows,columns,duplicate_key_rows,key_null_rows,pit_bad_meta_rows
+2023,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2023\part.parquet,1186529,126,0,0,0
+2024,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2024\part.parquet,1222009,126,0,0,0
+2025,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2025\part.parquet,1249440,126,0,0,0
+2026,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2026\part.parquet,339966,126,0,0,0

@@ -1,0 +1,5 @@
+year,rows,columns,path
+2023,1186529,126,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2023\part.parquet
+2024,1222009,126,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2024\part.parquet
+2025,1249440,126,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2025\part.parquet
+2026,339966,126,runtime\nonminute_context_panels\cn_nonminute_pit_context_panel_v1_20260602\year=2026\part.parquet

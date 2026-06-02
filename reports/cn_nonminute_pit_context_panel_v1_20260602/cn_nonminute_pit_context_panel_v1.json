@@ -1,0 +1,67 @@
+{
+  "decision": "PASS_NONMINUTE_PIT_CONTEXT_PANEL_V1",
+  "minute_panel": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+  "output_root": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+  "report_root": "reports\\cn_nonminute_pit_context_panel_v1_20260602",
+  "years": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "total_rows": 3997944,
+  "year_outputs": [
+    {
+      "year": 2023,
+      "rows": 1186529,
+      "columns": 126,
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2023\\part.parquet"
+    },
+    {
+      "year": 2024,
+      "rows": 1222009,
+      "columns": 126,
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2024\\part.parquet"
+    },
+    {
+      "year": 2025,
+      "rows": 1249440,
+      "columns": 126,
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2025\\part.parquet"
+    },
+    {
+      "year": 2026,
+      "rows": 339966,
+      "columns": 126,
+      "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2026\\part.parquet"
+    }
+  ],
+  "source_sizes": {
+    "rzrq_rows": 2209366,
+    "fund_bs_rows": 2400,
+    "fund_ps_rows": 2401,
+    "fund_cf_rows": 2400,
+    "holder_rows": 93953,
+    "billboard_rows": 38720,
+    "updown_rows": 545
+  },
+  "field_count": 126,
+  "selector_allowed_counts": {
+    "true_after_notice_date": 54,
+    "true_lagged_only": 46,
+    "diagnostic_until_disclosure_timestamp_contract": 16,
+    "false_metadata_only": 7,
+    "false_key_only": 3
+  },
+  "coverage_csv": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\coverage_by_family_year.csv",
+  "field_contract_csv": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\field_contract.csv",
+  "year_outputs_csv": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year_outputs.csv",
+  "pit_boundary": {
+    "rzrq": "source DATE plus next trading day",
+    "fundamentals": "NOTICE_DATE plus next trading day",
+    "holder": "HOLD_NOTICE_DATE plus next trading day",
+    "billboard": "TRADE_DATE plus next trading day, diagnostic only",
+    "updown_distribution": "source date plus next trading day"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

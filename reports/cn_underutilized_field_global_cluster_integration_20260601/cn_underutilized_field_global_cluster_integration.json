@@ -1,0 +1,46 @@
+{
+  "accepted_new_by_factor_lane": {
+    "fundamental_quality": 2,
+    "fundamental_risk_inverse": 3,
+    "fundamental_size_residual": 2,
+    "fundamental_x_activity": 4,
+    "fundamental_x_flow": 2
+  },
+  "accepted_new_by_source_lane": {
+    "cn_flow_liquidity_feature_layer": 2,
+    "cn_research_feature_layer_v2": 7,
+    "cn_underutilized_field_feature_layer": 4
+  },
+  "counts": {
+    "accepted_new_signal_clusters": 13,
+    "candidate_baseline_if_promoted": 162,
+    "candidate_registry_count": 162,
+    "existing_registry": 149,
+    "queued_edges_ge_high_threshold": 0,
+    "queued_edges_ge_review_threshold": 0,
+    "queued_new": 13,
+    "rejected_or_review_queued": 0,
+    "zero_vector_count": 0
+  },
+  "created_at": "2026-06-01T04:06:54+00:00",
+  "decision": "PASS_CANDIDATE_BASELINE_162_SIGNAL_INTEGRATION",
+  "experiment_id": "cn_underutilized_field_global_cluster_integration_20260601",
+  "inputs": {
+    "dataset_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "queue_path": "runtime\\registry_review\\cn_underutilized_field_provisional_new_queue_20260601.json",
+    "registry_path": "runtime\\baselines\\phase3K_complete_149_representative_registry_20260517.json",
+    "runtime_cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache\\underutilized_global_integration_20260601"
+  },
+  "outputs": {
+    "accepted_new_rows_csv": "reports\\cn_underutilized_field_global_cluster_integration_20260601\\accepted_new_rows.csv",
+    "candidate_registry": "runtime\\registry_review\\cn_underutilized_field_candidate_162_registry_20260601.json",
+    "global_integration_rows_csv": "reports\\cn_underutilized_field_global_cluster_integration_20260601\\global_integration_rows.csv",
+    "queued_pair_review_edges_csv": "reports\\cn_underutilized_field_global_cluster_integration_20260601\\queued_pair_review_edges.csv",
+    "rejected_or_review_rows_csv": "reports\\cn_underutilized_field_global_cluster_integration_20260601\\rejected_or_review_rows.csv"
+  },
+  "scope": "global signal-vector integration of frozen 149 registry plus 13 provisional-new underutilized-field representatives",
+  "thresholds": {
+    "high_corr_duplicate_threshold": 0.8,
+    "review_corr_threshold": 0.65
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "decision": "PASS_NONMINUTE_SYSTEM_INTEGRATION_AUDIT_WITH_GAPS",
+  "registry_path": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\field_registry.csv",
+  "minute_panel": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+  "event_panel": "runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+  "registry_fields": 1855,
+  "minute_panel_columns": 48,
+  "event_panel_columns": 78,
+  "integration_status_counts": {
+    "registered_pit_not_panelized": 1420,
+    "registered_lagged_not_panelized": 255,
+    "registered_diagnostic_not_panelized": 82,
+    "registered_not_panelized": 53,
+    "integrated_event_alignment_panel": 35,
+    "blocked_manual_contract": 5,
+    "integrated_minute_context_panel": 3,
+    "key_or_metadata_integrated_indirectly": 2
+  },
+  "route_status_counts": [
+    {
+      "route": "announcement_pit_context",
+      "integration_status": "registered_pit_not_panelized",
+      "count": 1420
+    },
+    {
+      "route": "event_disclosure_context",
+      "integration_status": "registered_diagnostic_not_panelized",
+      "count": 82
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "integrated_minute_context_panel",
+      "count": 3
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "key_or_metadata_integrated_indirectly",
+      "count": 2
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "registered_lagged_not_panelized",
+      "count": 255
+    },
+    {
+      "route": "lagged_market_regime_context",
+      "integration_status": "registered_not_panelized",
+      "count": 40
+    },
+    {
+      "route": "manual_contract_required",
+      "integration_status": "blocked_manual_contract",
+      "count": 5
+    },
+    {
+      "route": "timestamped_market_intraday_event",
+      "integration_status": "integrated_event_alignment_panel",
+      "count": 13
+    },
+    {
+      "route": "timestamped_stock_intraday_event",
+      "integration_status": "integrated_event_alignment_panel",
+      "count": 22
+    },
+    {
+      "route": "tradability_calendar_context",
+      "integration_status": "registered_not_panelized",
+      "count": 13
+    }
+  ],
+  "table_count": 25,
+  "high_value_gap_count": 717,
+  "outputs": {
+    "field_integration": "reports\\cn_nonminute_system_integration_audit_20260602\\nonminute_field_system_integration.csv",
+    "table_integration": "reports\\cn_nonminute_system_integration_audit_20260602\\nonminute_table_system_integration.csv",
+    "high_value_gaps": "reports\\cn_nonminute_system_integration_audit_20260602\\high_value_nonminute_gaps.csv",
+    "json": "reports\\cn_nonminute_system_integration_audit_20260602\\cn_nonminute_system_integration_audit.json",
+    "markdown": "reports\\cn_nonminute_system_integration_audit_20260602\\CN_NONMINUTE_SYSTEM_INTEGRATION_AUDIT_2026-06-02.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

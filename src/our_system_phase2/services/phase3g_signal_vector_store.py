@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 from pathlib import Path
 from typing import Any
@@ -21,6 +22,7 @@ from our_system_phase2.services.variation import canonicalize_expression_light
 PHASE3G_SIGNAL_VECTOR_VERSION = "phase3g-sampled-signal-vector-v1-2026-05-14"
 DEFAULT_PHASE3G_VECTOR_NPZ = Path("runtime/phase3g_signal_vectors/phase3g_signal_vectors_20260514.npz")
 DEFAULT_PHASE3G_VECTOR_METADATA = Path("runtime/phase3g_signal_vectors/vector_metadata.parquet")
+DEFAULT_PHASE3G_RUNTIME_CACHE_DIR = Path("runtime/phase3g_signal_vectors/runtime_eval_cache")
 DEFAULT_PHASE3G_SAMPLE_SIZE = 5000
 DEFAULT_PHASE3G_RECENT_QUARTER_WINDOW_COUNT = 1
 DEFAULT_PHASE3G_RECENT_WARMUP_DAYS = 90
@@ -93,6 +95,7 @@ class Phase3GSignalVectorStore:
         recent_quarter_window_count: int = DEFAULT_PHASE3G_RECENT_QUARTER_WINDOW_COUNT,
         recent_warmup_days: int = DEFAULT_PHASE3G_RECENT_WARMUP_DAYS,
         corr_threshold: float = DEFAULT_PHASE3G_SIGNAL_CORR_THRESHOLD,
+        runtime_cache_dir: Path | str | None = DEFAULT_PHASE3G_RUNTIME_CACHE_DIR,
     ) -> None:
         self.vector_npz = Path(vector_npz)
         self.metadata_path = Path(metadata_path)
@@ -101,6 +104,7 @@ class Phase3GSignalVectorStore:
         self.recent_quarter_window_count = int(recent_quarter_window_count)
         self.recent_warmup_days = int(recent_warmup_days)
         self.corr_threshold = float(corr_threshold)
+        self.runtime_cache_dir = Path(runtime_cache_dir) if runtime_cache_dir else None
         self.version = PHASE3G_SIGNAL_VECTOR_VERSION
         self._vectors_by_id: dict[str, np.ndarray] = {}
         self._metadata_by_id: dict[str, dict[str, Any]] = {}
@@ -151,6 +155,14 @@ class Phase3GSignalVectorStore:
                 "signal_vector_source": "runtime_evaluated",
                 "signal_vector_error": "",
             }
+        disk_vector = self._load_runtime_disk_cache(vector_id)
+        if disk_vector is not None:
+            self._runtime_cache[vector_id] = disk_vector
+            return disk_vector, {
+                "signal_vector_id": vector_id,
+                "signal_vector_source": "runtime_disk_cache",
+                "signal_vector_error": "",
+            }
         try:
             vector = self._evaluate_expression_vector(expression)
         except Exception as exc:
@@ -160,11 +172,64 @@ class Phase3GSignalVectorStore:
                 "signal_vector_error": f"{type(exc).__name__}:{str(exc)[:200]}",
             }
         self._runtime_cache[vector_id] = vector
+        self._write_runtime_disk_cache(vector_id, vector, expression=expression)
         return vector, {
             "signal_vector_id": vector_id,
             "signal_vector_source": "runtime_evaluated",
             "signal_vector_error": "",
         }
+
+    def _runtime_cache_key(self, vector_id: str) -> str:
+        payload = "|".join(
+            [
+                self.version,
+                vector_id,
+                str(self.dataset_path),
+                str(self.sample_size),
+                str(self.recent_quarter_window_count),
+                str(self.recent_warmup_days),
+            ]
+        )
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
+
+    def _runtime_cache_paths(self, vector_id: str) -> tuple[Path, Path] | None:
+        if self.runtime_cache_dir is None:
+            return None
+        key = self._runtime_cache_key(vector_id)
+        return self.runtime_cache_dir / f"{key}.npy", self.runtime_cache_dir / f"{key}.json"
+
+    def _load_runtime_disk_cache(self, vector_id: str) -> np.ndarray | None:
+        paths = self._runtime_cache_paths(vector_id)
+        if paths is None:
+            return None
+        vector_path, _meta_path = paths
+        if not vector_path.exists():
+            return None
+        try:
+            vector = np.load(vector_path).astype(np.float32, copy=False)
+        except Exception:
+            return None
+        return vector
+
+    def _write_runtime_disk_cache(self, vector_id: str, vector: np.ndarray, *, expression: str) -> None:
+        paths = self._runtime_cache_paths(vector_id)
+        if paths is None:
+            return
+        vector_path, meta_path = paths
+        vector_path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_path = vector_path.with_suffix(".tmp.npy")
+        np.save(tmp_path, vector.astype(np.float32, copy=False))
+        tmp_path.replace(vector_path)
+        metadata = {
+            "version": self.version,
+            "vector_id": vector_id,
+            "expression": expression,
+            "dataset_path": str(self.dataset_path),
+            "sample_size": self.sample_size,
+            "recent_quarter_window_count": self.recent_quarter_window_count,
+            "recent_warmup_days": self.recent_warmup_days,
+        }
+        meta_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     def _context(self) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, Any], pd.MultiIndex]:
         if self._panel_context is not None:

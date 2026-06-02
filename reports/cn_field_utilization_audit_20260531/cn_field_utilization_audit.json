@@ -1,0 +1,4117 @@
+{
+  "by_family": [
+    {
+      "encoder_known_fields": 14,
+      "factor_pack_expr_count": 40,
+      "factor_pack_fields_used": 1,
+      "family": "capacity_size",
+      "panel_fields": 21,
+      "replay_pass_expr_count": 16,
+      "replay_pass_fields_used": 2,
+      "selected_expr_count": 16,
+      "selected_fields_used": 2,
+      "shared_pool_expr_count": 184,
+      "shared_pool_fields_used": 3,
+      "strict_expr_count": 16,
+      "strict_fields_used": 2
+    },
+    {
+      "encoder_known_fields": 4,
+      "factor_pack_expr_count": 144,
+      "factor_pack_fields_used": 3,
+      "family": "flow_liquidity",
+      "panel_fields": 4,
+      "replay_pass_expr_count": 12,
+      "replay_pass_fields_used": 2,
+      "selected_expr_count": 12,
+      "selected_fields_used": 2,
+      "shared_pool_expr_count": 373,
+      "shared_pool_fields_used": 4,
+      "strict_expr_count": 12,
+      "strict_fields_used": 2
+    },
+    {
+      "encoder_known_fields": 5,
+      "factor_pack_expr_count": 13,
+      "factor_pack_fields_used": 5,
+      "family": "fundamental_holder_share",
+      "panel_fields": 5,
+      "replay_pass_expr_count": 5,
+      "replay_pass_fields_used": 3,
+      "selected_expr_count": 5,
+      "selected_fields_used": 3,
+      "shared_pool_expr_count": 13,
+      "shared_pool_fields_used": 5,
+      "strict_expr_count": 5,
+      "strict_fields_used": 3
+    },
+    {
+      "encoder_known_fields": 1,
+      "factor_pack_expr_count": 8,
+      "factor_pack_fields_used": 1,
+      "family": "fundamental_quality",
+      "panel_fields": 1,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 0,
+      "selected_fields_used": 0,
+      "shared_pool_expr_count": 8,
+      "shared_pool_fields_used": 1,
+      "strict_expr_count": 0,
+      "strict_fields_used": 0
+    },
+    {
+      "encoder_known_fields": 3,
+      "factor_pack_expr_count": 9,
+      "factor_pack_fields_used": 3,
+      "family": "fundamental_risk",
+      "panel_fields": 3,
+      "replay_pass_expr_count": 5,
+      "replay_pass_fields_used": 3,
+      "selected_expr_count": 5,
+      "selected_fields_used": 3,
+      "shared_pool_expr_count": 9,
+      "shared_pool_fields_used": 3,
+      "strict_expr_count": 5,
+      "strict_fields_used": 3
+    },
+    {
+      "encoder_known_fields": 9,
+      "factor_pack_expr_count": 48,
+      "factor_pack_fields_used": 9,
+      "family": "fundamental_scale_income_cash",
+      "panel_fields": 9,
+      "replay_pass_expr_count": 18,
+      "replay_pass_fields_used": 9,
+      "selected_expr_count": 18,
+      "selected_fields_used": 9,
+      "shared_pool_expr_count": 48,
+      "shared_pool_fields_used": 9,
+      "strict_expr_count": 18,
+      "strict_fields_used": 9
+    },
+    {
+      "encoder_known_fields": 81,
+      "factor_pack_expr_count": 830,
+      "factor_pack_fields_used": 81,
+      "family": "limit_event_morphology",
+      "panel_fields": 81,
+      "replay_pass_expr_count": 10,
+      "replay_pass_fields_used": 4,
+      "selected_expr_count": 12,
+      "selected_fields_used": 6,
+      "shared_pool_expr_count": 944,
+      "shared_pool_fields_used": 81,
+      "strict_expr_count": 12,
+      "strict_fields_used": 6
+    },
+    {
+      "encoder_known_fields": 3,
+      "factor_pack_expr_count": 144,
+      "factor_pack_fields_used": 3,
+      "family": "limit_seal_flow",
+      "panel_fields": 3,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 0,
+      "selected_fields_used": 0,
+      "shared_pool_expr_count": 144,
+      "shared_pool_fields_used": 3,
+      "strict_expr_count": 0,
+      "strict_fields_used": 0
+    },
+    {
+      "encoder_known_fields": 0,
+      "factor_pack_expr_count": 0,
+      "factor_pack_fields_used": 0,
+      "family": "metadata_id",
+      "panel_fields": 5,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 0,
+      "selected_fields_used": 0,
+      "shared_pool_expr_count": 0,
+      "shared_pool_fields_used": 0,
+      "strict_expr_count": 0,
+      "strict_fields_used": 0
+    },
+    {
+      "encoder_known_fields": 0,
+      "factor_pack_expr_count": 0,
+      "factor_pack_fields_used": 0,
+      "family": "other_unclassified",
+      "panel_fields": 5,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 0,
+      "selected_fields_used": 0,
+      "shared_pool_expr_count": 0,
+      "shared_pool_fields_used": 0,
+      "strict_expr_count": 0,
+      "strict_fields_used": 0
+    },
+    {
+      "encoder_known_fields": 5,
+      "factor_pack_expr_count": 0,
+      "factor_pack_fields_used": 0,
+      "family": "price_return",
+      "panel_fields": 7,
+      "replay_pass_expr_count": 27,
+      "replay_pass_fields_used": 3,
+      "selected_expr_count": 27,
+      "selected_fields_used": 3,
+      "shared_pool_expr_count": 283,
+      "shared_pool_fields_used": 4,
+      "strict_expr_count": 27,
+      "strict_fields_used": 3
+    },
+    {
+      "encoder_known_fields": 1,
+      "factor_pack_expr_count": 32,
+      "factor_pack_fields_used": 1,
+      "family": "theme_sector",
+      "panel_fields": 5,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 2,
+      "selected_fields_used": 1,
+      "shared_pool_expr_count": 32,
+      "shared_pool_fields_used": 1,
+      "strict_expr_count": 2,
+      "strict_fields_used": 1
+    },
+    {
+      "encoder_known_fields": 0,
+      "factor_pack_expr_count": 0,
+      "factor_pack_fields_used": 0,
+      "family": "tradability_raw",
+      "panel_fields": 3,
+      "replay_pass_expr_count": 0,
+      "replay_pass_fields_used": 0,
+      "selected_expr_count": 0,
+      "selected_fields_used": 0,
+      "shared_pool_expr_count": 0,
+      "shared_pool_fields_used": 0,
+      "strict_expr_count": 0,
+      "strict_fields_used": 0
+    }
+  ],
+  "created_at": "2026-05-31T15:59:02.392614+00:00",
+  "critical_findings": [
+    "flow/liquidity fields exist in panel and mature generators, but v2 factor pack does not provide a dedicated standalone flow-liquidity lane",
+    "turnover_ratio/seal flow fields appear in event_x_flow but were not selected in the current 64 queue",
+    "raw volume appears through mature generators, not the v2 research factor pack",
+    "volume/amount ratio and price-volume divergence fields are not materialized as named derived fields",
+    "several raw panel columns are metadata or tradability controls and should not be promoted as alpha fields without role separation"
+  ],
+  "decision": "FIELD_UTILIZATION_AUDIT_FINDS_MATERIAL_FLOW_AND_DERIVED_FIELD_GAPS",
+  "factor_pack_candidate_count": 834,
+  "factor_pack_path": "runtime\\factor_packs\\cn_research_factor_candidate_pack_v2_20260531.json",
+  "field_rows": [
+    {
+      "canonical_field": "actual_circulation_value",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(CSResidual(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),CSRank(Log($actual_circulation_value))))",
+      "factor_pack_count": 40,
+      "factor_pack_lanes": {
+        "event_residual_size": 40
+      },
+      "family": "limit_event_morphology",
+      "field": "actual_circulation_value",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 40,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "after_float_share_10k",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "after_total_share_10k",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "amount",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($amount,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "flow_liquidity",
+      "field": "amount",
+      "field_encoder_type": "volume_ts",
+      "in_panel": true,
+      "replay_pass_count": 7,
+      "selected_count": 7,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 1,
+        "ast_failure_aware_repair": 2,
+        "cem_adaptive_grammar": 1,
+        "formula_gen_v2_repair_expansion": 3
+      },
+      "shared_pool_count": 169,
+      "strict_count": 7,
+      "strict_source_lanes": {
+        "unknown": 7
+      }
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_1",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_1,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_1",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_10,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_2,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 21,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_3,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 21,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_4,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 21,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_5,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_6,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_7,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_8,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "break_board_after_streak_ge_9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($break_board_after_streak_ge_9,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "other_unclassified",
+      "field": "capital_event_date",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "other_unclassified",
+      "field": "capital_source_event_date",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "close",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank(CSResidual(CSRank(Std($volume,21)),CSRank(Std($close,5)))))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "close",
+      "field_encoder_type": "price_ts",
+      "in_panel": true,
+      "replay_pass_count": 20,
+      "selected_count": 20,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 2,
+        "ast_failure_aware_repair": 6,
+        "cem_adaptive_grammar": 4,
+        "formula_gen_v2_repair_expansion": 7,
+        "simple_template": 1
+      },
+      "shared_pool_count": 181,
+      "strict_count": 20,
+      "strict_source_lanes": {
+        "unknown": 20
+      }
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "metadata_id",
+      "field": "code",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "daily_ret",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "metadata_id",
+      "field": "date",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "final_float_market_cap",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank(CSResidual(CSRank(Mean($volume,5)),CSRank(Mean($final_float_market_cap,5)))))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_float_market_cap",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 13,
+      "selected_count": 13,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 3,
+        "cem_adaptive_grammar": 6,
+        "formula_gen_v2_repair_expansion": 4
+      },
+      "shared_pool_count": 113,
+      "strict_count": 13,
+      "strict_source_lanes": {
+        "unknown": 13
+      }
+    },
+    {
+      "canonical_field": "final_float_market_cap_billion",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_float_market_cap_billion",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_float_market_cap_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "final_total_market_cap",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(CSRank(Neg(CSRank(Mom($close,21)))),CSRank(Log($final_total_market_cap))))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_total_market_cap",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 3,
+      "selected_count": 3,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 1,
+        "ast_evolutionary_mutation": 1,
+        "ast_failure_aware_repair": 1
+      },
+      "shared_pool_count": 31,
+      "strict_count": 3,
+      "strict_source_lanes": {
+        "unknown": 3
+      }
+    },
+    {
+      "canonical_field": "final_total_market_cap_billion",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_total_market_cap_billion",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "final_total_market_cap_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "float_market_cap",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "float_market_cap",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "float_market_cap_billion",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "float_market_cap_billion",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "float_market_cap_yuan",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),CSRank(Log($float_market_cap_yuan))))",
+      "factor_pack_count": 40,
+      "factor_pack_lanes": {
+        "event_residual_size": 40
+      },
+      "family": "capacity_size",
+      "field": "float_market_cap_yuan",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 40,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "float_share",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "float_share",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "float_share_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "fund_cash_to_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_cash_to_assets)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_cash_to_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 8,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_circulate_top10_holder_pct",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_circulate_top10_holder_pct)",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3
+      },
+      "family": "fundamental_holder_share",
+      "field": "fund_circulate_top10_holder_pct",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 3,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_current_ratio",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_current_ratio)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_quality",
+      "field": "fund_current_ratio",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 8,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "fund_debt_to_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank($fund_debt_to_assets))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_risk_inverse": 3
+      },
+      "family": "fundamental_risk",
+      "field": "fund_debt_to_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 3,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_float_share_ratio_cninfo",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_float_share_ratio_cninfo)",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3
+      },
+      "family": "fundamental_holder_share",
+      "field": "fund_float_share_ratio_cninfo",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 3,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_goodwill_to_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank($fund_goodwill_to_assets))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_risk_inverse": 3
+      },
+      "family": "fundamental_risk",
+      "field": "fund_goodwill_to_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 3,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "fund_inventory_to_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank($fund_inventory_to_assets))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_risk_inverse": 3
+      },
+      "family": "fundamental_risk",
+      "field": "fund_inventory_to_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 3,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_netcash_operate",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(Log($fund_netcash_operate),Log($fund_total_assets)))",
+      "factor_pack_count": 1,
+      "factor_pack_lanes": {
+        "fundamental_size_residual": 1
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_netcash_operate",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 1,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "fund_netprofit_margin",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_netprofit_margin)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_netprofit_margin",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 8,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "fund_ocf_to_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_ocf_to_assets)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_ocf_to_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 8,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_ocf_to_netprofit",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_ocf_to_netprofit)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_ocf_to_netprofit",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 2
+      },
+      "shared_pool_count": 8,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "fund_parent_netprofit",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(Log($fund_parent_netprofit),Log($fund_total_assets)))",
+      "factor_pack_count": 1,
+      "factor_pack_lanes": {
+        "fundamental_size_residual": 1
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_parent_netprofit",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 1,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "fund_research_to_income",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_research_to_income)",
+      "factor_pack_count": 8,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3,
+        "fundamental_x_event": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_research_to_income",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 3,
+      "selected_count": 3,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 3
+      },
+      "shared_pool_count": 8,
+      "strict_count": 3,
+      "strict_source_lanes": {
+        "unknown": 3
+      }
+    },
+    {
+      "canonical_field": "fund_top10_holder_pct",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_top10_holder_pct)",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3
+      },
+      "family": "fundamental_holder_share",
+      "field": "fund_top10_holder_pct",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "fund_top1_holder_pct",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank($fund_top1_holder_pct)",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "fundamental_quality": 3
+      },
+      "family": "fundamental_holder_share",
+      "field": "fund_top1_holder_pct",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "fund_total_assets",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(Log($fund_total_assets),Log($fund_total_assets)))",
+      "factor_pack_count": 5,
+      "factor_pack_lanes": {
+        "fundamental_size_residual": 5
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_total_assets",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 5,
+      "selected_count": 5,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 5
+      },
+      "shared_pool_count": 5,
+      "strict_count": 5,
+      "strict_source_lanes": {
+        "unknown": 5
+      }
+    },
+    {
+      "canonical_field": "fund_total_operate_income",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(Log($fund_total_operate_income),Log($fund_total_assets)))",
+      "factor_pack_count": 1,
+      "factor_pack_lanes": {
+        "fundamental_size_residual": 1
+      },
+      "family": "fundamental_scale_income_cash",
+      "field": "fund_total_operate_income",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 1,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "fund_total_shares_cninfo",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(Log($fund_total_shares_cninfo),Log($fund_total_assets)))",
+      "factor_pack_count": 1,
+      "factor_pack_lanes": {
+        "fundamental_size_residual": 1
+      },
+      "family": "fundamental_holder_share",
+      "field": "fund_total_shares_cninfo",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 1,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "other_unclassified",
+      "field": "gbbq_has_capital",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "high",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(CSRank(Div(Sub(Delay($close,5),Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Div(Mean($volume,1),Mean($volume,3)))))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "high",
+      "field_encoder_type": "price_ts",
+      "in_panel": true,
+      "replay_pass_count": 5,
+      "selected_count": 5,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 5
+      },
+      "shared_pool_count": 35,
+      "strict_count": 5,
+      "strict_source_lanes": {
+        "unknown": 5
+      }
+    },
+    {
+      "canonical_field": "high_board_rank",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($high_board_rank,2))",
+      "factor_pack_count": 9,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "high_board_rank",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 28,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "metadata_id",
+      "field": "instrument_type",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "other_unclassified",
+      "field": "is_capital_applicable",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "tradability_raw",
+      "field": "is_limit_down",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "tradability_raw",
+      "field": "is_limit_up",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "is_market_high_board",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($is_market_high_board,2))",
+      "factor_pack_count": 9,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "is_market_high_board",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 25,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t10,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t2,2))",
+      "factor_pack_count": 18,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1,
+        "fundamental_x_event": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 18,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t3,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t4,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t5,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t6,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t7,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t8,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_close_not_open_in_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_close_not_open_in_t9,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t10,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t2,2))",
+      "factor_pack_count": 18,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1,
+        "fundamental_x_event": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 4,
+      "selected_count": 4,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 4
+      },
+      "shared_pool_count": 18,
+      "strict_count": 4,
+      "strict_source_lanes": {
+        "unknown": 4
+      }
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t3,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t4,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t5,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t6,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t7,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t8,2))",
+      "factor_pack_count": 11,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 11,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_any_open_not_close_in_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_any_open_not_close_in_t9,2))",
+      "factor_pack_count": 11,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 11,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_break",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_break,2))",
+      "factor_pack_count": 9,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_break",
+      "field_encoder_type": "event_ts",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 9,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t10,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t2,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t3,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "fundamental_x_event": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 1,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 1
+      },
+      "shared_pool_count": 12,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "limit_up_close_count_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t4,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t5,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t6,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t7,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t8,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_count_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_count_t9,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_event",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_close_event,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_event",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open,2))",
+      "factor_pack_count": 11,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 11,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t10,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t2,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t3,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t4,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t5,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t6,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t7,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t8,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_close_not_open_count_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_close_not_open_count_t9,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "event_derived_feature_layer": 1
+      },
+      "shared_pool_count": 15,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "limit_up_keep_times_vendor",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_keep_times_vendor,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_keep_times_vendor",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_count_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_count_t10,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_count_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_count_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_count_t2,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_count_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_event",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_open_event,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_event",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close,2))",
+      "factor_pack_count": 11,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 26,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t10,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 1,
+      "selected_source_lanes": {
+        "event_derived_feature_layer": 1
+      },
+      "shared_pool_count": 15,
+      "strict_count": 1,
+      "strict_source_lanes": {
+        "unknown": 1
+      }
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t2,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t3,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t4,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t5,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t6,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t7,2))",
+      "factor_pack_count": 15,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6,
+        "event_x_theme": 1
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 15,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t8,2))",
+      "factor_pack_count": 14,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 14,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_open_not_close_count_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_open_not_close_count_t9,2))",
+      "factor_pack_count": 14,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 14,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_streak_close",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_streak_close,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_streak_close",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_streak_touch",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_streak_touch,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_streak_touch",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_event",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_touch_event,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_event",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 3,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close,2))",
+      "factor_pack_count": 9,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 27,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t10",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t10,2))",
+      "factor_pack_count": 14,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t10",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 14,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t2",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t2,2))",
+      "factor_pack_count": 14,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_residual_size": 2,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t2",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 14,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t3",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t3,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t3",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t4",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t4,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t4",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t5",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t5,2))",
+      "factor_pack_count": 18,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_x_flow": 6,
+        "fundamental_x_event": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t5",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 4,
+      "selected_count": 4,
+      "selected_source_lanes": {
+        "cn_research_feature_layer_v2": 4
+      },
+      "shared_pool_count": 18,
+      "strict_count": 4,
+      "strict_source_lanes": {
+        "unknown": 4
+      }
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t6",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t6,2))",
+      "factor_pack_count": 12,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3,
+        "event_x_flow": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t6",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 12,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t7",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t7,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t7",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t8",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t8,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t8",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "limit_up_touch_not_close_count_t9",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mean($limit_up_touch_not_close_count_t9,2))",
+      "factor_pack_count": 6,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "event_curve": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t9",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 6,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "low",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(CSResidual(CSRank(Div(Sub(Delay($close,5),Mean($low,1)),Sub(Mean($high,1),Mean($low,1)))),CSRank(Div(Mean($volume,1),Mean($volume,3)))))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "low",
+      "field_encoder_type": "price_ts",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 30,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "metadata_id",
+      "field": "market",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "market_cap",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "market_cap",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "market_cap_billion",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "market_cap_billion",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "market_cap_conflict_gt5pct",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "market_cap_conflict_gt5pct",
+      "field_encoder_type": "data_quality_event",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "market_high_board",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($market_high_board,2))",
+      "factor_pack_count": 3,
+      "factor_pack_lanes": {
+        "direct_event": 3
+      },
+      "family": "limit_event_morphology",
+      "field": "market_high_board",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 4,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "open",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1)))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "open",
+      "field_encoder_type": "price_ts",
+      "in_panel": true,
+      "replay_pass_count": 2,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 2
+      },
+      "shared_pool_count": 37,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "open_board_record",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mean($open_board_record,2))",
+      "factor_pack_count": 9,
+      "factor_pack_lanes": {
+        "direct_event": 3,
+        "fundamental_x_event": 6
+      },
+      "family": "limit_event_morphology",
+      "field": "open_board_record",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 9,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "overnight",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "overnight",
+      "field_encoder_type": "crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "plate_score",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore($plate_score)))",
+      "factor_pack_count": 32,
+      "factor_pack_lanes": {
+        "event_x_theme": 32
+      },
+      "family": "theme_sector",
+      "field": "plate_score",
+      "field_encoder_type": "event_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 2,
+      "selected_source_lanes": {
+        "event_derived_feature_layer": 2
+      },
+      "shared_pool_count": 32,
+      "strict_count": 2,
+      "strict_source_lanes": {
+        "unknown": 2
+      }
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "price_return",
+      "field": "rt_change_pct",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "seal_circulation_rate",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($seal_circulation_rate,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_circulation_rate",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 48,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "seal_money",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($seal_money,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_money",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 48,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "seal_rate",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($seal_rate,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "limit_seal_flow",
+      "field": "seal_rate",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 48,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "theme_sector",
+      "field": "sector",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "theme_sector",
+      "field": "sector_code",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "theme_sector",
+      "field": "sector_confidence",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "theme_sector",
+      "field": "sector_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "tradability_raw",
+      "field": "susp",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "metadata_id",
+      "field": "symbol",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "tdxgp_total_market_cap",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "tdxgp_total_market_cap_billion",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap_billion",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "other_unclassified",
+      "field": "tdxgp_total_mv_10k_cny",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "total_share",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "total_share",
+      "field_encoder_type": "capacity_crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "",
+      "encoder_known": false,
+      "event_spec_known": false,
+      "example_expression": "",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "capacity_size",
+      "field": "total_share_source",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 0,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "turnover_ratio",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($turnover_ratio,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "flow_liquidity",
+      "field": "turnover_ratio",
+      "field_encoder_type": "crosssec",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 48,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "turnover_ratio_real",
+      "encoder_known": true,
+      "event_spec_known": true,
+      "example_expression": "CSRank(Mul(ZScore(Mean($limit_up_any_close_not_open_in_t10,5)),ZScore(Mean($turnover_ratio_real,10))))",
+      "factor_pack_count": 48,
+      "factor_pack_lanes": {
+        "event_x_flow": 48
+      },
+      "family": "flow_liquidity",
+      "field": "turnover_ratio_real",
+      "field_encoder_type": "",
+      "in_panel": true,
+      "replay_pass_count": 0,
+      "selected_count": 0,
+      "selected_source_lanes": {},
+      "shared_pool_count": 48,
+      "strict_count": 0,
+      "strict_source_lanes": {}
+    },
+    {
+      "canonical_field": "volume",
+      "encoder_known": true,
+      "event_spec_known": false,
+      "example_expression": "Neg(CSRank(Std($volume,8)))",
+      "factor_pack_count": 0,
+      "factor_pack_lanes": {},
+      "family": "flow_liquidity",
+      "field": "volume",
+      "field_encoder_type": "volume_ts",
+      "in_panel": true,
+      "replay_pass_count": 5,
+      "selected_count": 5,
+      "selected_source_lanes": {
+        "agnostic_freeform_ast": 3,
+        "cem_adaptive_grammar": 1,
+        "formula_gen_v2_repair_expansion": 1
+      },
+      "shared_pool_count": 108,
+      "strict_count": 5,
+      "strict_source_lanes": {
+        "unknown": 5
+      }
+    }
+  ],
+  "material_gaps": [
+    {
+      "family": "limit_event_morphology",
+      "field": "actual_circulation_value",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "capacity_size",
+      "field": "after_float_share_10k",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "after_float_share_10k",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "after_total_share_10k",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "after_total_share_10k",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_1",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "break_board_after_streak_ge_9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "close",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "price_return",
+      "field": "daily_ret",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "price_return",
+      "field": "daily_ret",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_float_market_cap",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_float_market_cap_billion",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_float_market_cap_source",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_float_market_cap_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_total_market_cap",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_total_market_cap_billion",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_total_market_cap_source",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "final_total_market_cap_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_market_cap",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_market_cap_billion",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_market_cap_yuan",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_share",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_share_source",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "float_share_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "fundamental_quality",
+      "field": "fund_current_ratio",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "fundamental_holder_share",
+      "field": "fund_top10_holder_pct",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "fundamental_holder_share",
+      "field": "fund_top1_holder_pct",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "high",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "high_board_rank",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "is_market_high_board",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_close_not_open_in_t9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_any_open_not_close_in_t9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_break",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_count_t9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_event",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_close_not_open_count_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_keep_times_vendor",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_count_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_count_t2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_event",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t5",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_open_not_close_count_t9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_streak_close",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_streak_touch",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_event",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t10",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t2",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t3",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t4",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t6",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t7",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t8",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "limit_up_touch_not_close_count_t9",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "low",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "low",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "market_cap",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "market_cap_billion",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "market_cap_conflict_gt5pct",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "market_high_board",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "open",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "limit_event_morphology",
+      "field": "open_board_record",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "price_return",
+      "field": "overnight",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "price_return",
+      "field": "rt_change_pct",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "price_return",
+      "field": "rt_change_pct",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "limit_seal_flow",
+      "field": "seal_circulation_rate",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_seal_flow",
+      "field": "seal_money",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "limit_seal_flow",
+      "field": "seal_rate",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "theme_sector",
+      "field": "sector",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "theme_sector",
+      "field": "sector_code",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "theme_sector",
+      "field": "sector_confidence",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "theme_sector",
+      "field": "sector_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap_billion",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap_source",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "tdxgp_total_market_cap_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "total_share",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "capacity_size",
+      "field": "total_share_source",
+      "gap": "panel_field_not_encoded"
+    },
+    {
+      "family": "capacity_size",
+      "field": "total_share_source",
+      "gap": "no_dedicated_factor_pack_usage"
+    },
+    {
+      "family": "flow_liquidity",
+      "field": "turnover_ratio",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "flow_liquidity",
+      "field": "turnover_ratio_real",
+      "gap": "in_pool_not_selected_current_gate"
+    },
+    {
+      "family": "flow_liquidity",
+      "field": "volume",
+      "gap": "no_dedicated_factor_pack_usage"
+    }
+  ],
+  "missing_expected_derived_fields": [
+    "volume_ratio_5_20",
+    "amount_ratio_5_20",
+    "turnover_ratio_z20",
+    "amount_to_float_mcap",
+    "volume_to_float_share",
+    "amihud_absret_over_amount",
+    "seal_money_to_amount",
+    "seal_rate_z20",
+    "price_volume_divergence_5",
+    "sector_relative_amount_ratio",
+    "fundamental_quality_x_amount_ratio"
+  ],
+  "next_action": "build_cn_flow_liquidity_factor_pack_v1_before_claiming_field_coverage_complete",
+  "panel_column_count": 152,
+  "panel_path": "runtime\\datasets\\phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+  "replay_pass_row_count": 62,
+  "selected_count": 64,
+  "selection_inputs_path": "runtime\\cn_research_factor_pack_v2_selector_gate_20260531\\selector\\aa\\phase3_strict_selection_inputs.json",
+  "shared_pool_candidate_count": 1631,
+  "shared_pool_path": "runtime\\cn_research_factor_pack_v2_phase3aa_preflight_20260531\\shared_candidate_pool_event_fund_enriched.json",
+  "strict_audited_count": 64,
+  "strict_rows_path": "runtime\\cn_research_factor_pack_v2_replay_smoke64_20260531\\aa\\phase3_strict_rows.json"
+}

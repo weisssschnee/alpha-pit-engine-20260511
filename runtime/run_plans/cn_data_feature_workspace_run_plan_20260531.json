@@ -1,0 +1,47 @@
+{
+  "run_plan_id": "cn_data_feature_workspace_run_plan_20260531",
+  "workspace": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531",
+  "status": "bootstrap_passed",
+  "scope": "controlled_cn_data_acceptance_and_event_feature_construction",
+  "official_chain_policy": {
+    "x0_r3_shadow": "read_only",
+    "promotion_allowed": false,
+    "search_allowed": false,
+    "purpose": "prepare field registry and feature packs before later mature-chain searches"
+  },
+  "entrypoints": [
+    "app.py cn-controlled-data-smoke",
+    "app.py cn-event-derived-feature-smoke",
+    "app.py cn-field-factor-pack"
+  ],
+  "outputs": {
+    "data_smoke": "reports/cn_controlled_data_smoke_20260531",
+    "field_registry": "runtime/field_registry/cn_alpha_field_registry_v1_20260531.json",
+    "event_feature_smoke": "reports/cn_event_derived_feature_smoke_20260531",
+    "event_feature_panel": "runtime/derived_features/cn_event_daily_features_v1_20260531.parquet",
+    "field_factor_plan": "reports/cn_field_factor_conversion_plan_20260531",
+    "field_factor_pack": "runtime/field_registry/cn_field_factor_field_pack_v1_20260531.json",
+    "event_factor_candidate_pack": "runtime/factor_packs/cn_event_factor_candidate_pack_v1_20260531.json",
+    "acceptance": "reports/CN_DATA_FEATURE_WORKSPACE_ACCEPTANCE_2026-05-31.md"
+  },
+  "lag_policy": {
+    "daily_event_default": "next_trading_day_conservative",
+    "minute_bar": "observable_after_bar_close",
+    "holder_num_detail": "pit_by_announcement_date_required",
+    "stock_calendar": "blocked_until_daily_state_standardized"
+  },
+  "next_allowed_actions": [
+    "hand_sample_feature_qa",
+    "selected_1min_partition_open_touch_confirmation",
+    "generator_field_pack_export",
+    "phase3aa_shared_pool_factor_pack_preflight",
+    "mature_chain_preflight"
+  ],
+  "blocked_actions": [
+    "modify_x0_r3_official_shadow",
+    "promote_feature_without_replay",
+    "use_stock_calendar_as_daily_state",
+    "use_holder_num_detail_by_report_end_date",
+    "same_day_close_or_touch_event_selection_without_lag"
+  ]
+}

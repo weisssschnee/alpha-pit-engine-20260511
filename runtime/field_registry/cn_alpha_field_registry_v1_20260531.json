@@ -1,0 +1,2879 @@
+{
+  "registry_id": "cn_alpha_field_registry_v1_20260531",
+  "status": "controlled_data_field_inventory",
+  "data_roots": {
+    "local_minute_daily": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531",
+    "uplimit_history": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_uplimit_history_silver_v1_20260531",
+    "rzrq_daily": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_rzrq_daily_silver_v1_20260530",
+    "xsection_no_kline": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530"
+  },
+  "global_policy": {
+    "default_daily_event_lag": "available_next_trading_day_conservative",
+    "minute_bar_policy": "intraday_observable_after_bar_close; aggregate to daily with explicit lag",
+    "holder_num_detail_policy": "must be keyed by announcement date, not report/end date",
+    "stock_calendar_policy": "not a daily tradable-state input until standardized",
+    "promotion_policy": "field availability does not imply alpha promotion; all features require frozen selection and replay audits"
+  },
+  "tables": [
+    {
+      "table_id": "hfq_daily_2026",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2026\\hfq_daily_2026.parquet",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "notes": "2026 daily hfq price/state/value panel."
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_manifest.csv",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "notes": "Manifest for 2026 1min parquet partitions; full 1min table is not loaded by this smoke."
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date\\date=20260105.parquet",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "notes": "One partition schema/key sample only."
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_uplimit_history_silver_v1_20260531\\review_uplimit_reason\\review_uplimit_reason.parquet",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "notes": "Limit-up reason and seal/order-flow proxy table."
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_uplimit_history_silver_v1_20260531\\review_uplimit_reason_open\\review_uplimit_reason_open.parquet",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "notes": "Open-board/reason auxiliary table."
+    },
+    {
+      "table_id": "updown_distribution",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_uplimit_history_silver_v1_20260531\\updown_distribution\\updown_distribution.parquet",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "notes": "Market up/down distribution summary."
+    },
+    {
+      "table_id": "uplimit_trend",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_uplimit_history_silver_v1_20260531\\uplimit_trend\\uplimit_trend.parquet",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "notes": "Limit/open-board intraday trend summary."
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_rzrq_daily_silver_v1_20260530\\rzrq_margin_xsection_daily.parquet",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "notes": "Margin financing/securities-lending daily xsection."
+    },
+    {
+      "table_id": "billboard_details",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530\\billboard_details\\billboard_details.parquet",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "notes": "Dragon-tiger billboard details."
+    },
+    {
+      "table_id": "billboard_buy",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530\\billboard_buy\\billboard_buy.parquet",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "notes": "Dragon-tiger buy-side departments."
+    },
+    {
+      "table_id": "billboard_sell",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530\\billboard_sell\\billboard_sell.parquet",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "notes": "Dragon-tiger sell-side departments."
+    },
+    {
+      "table_id": "holder_num_detail",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530\\holder_num_detail\\holder_num_detail.parquet",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "notes": "Holder count detail; requires PIT standardization before alpha use."
+    },
+    {
+      "table_id": "stock_calendar",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_public_xsection_no_kline_silver_v1_20260530\\stock_calendar\\stock_calendar.parquet",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "notes": "Company event calendar; not a daily tradable-state table until standardized."
+    }
+  ],
+  "fields": [
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "code",
+      "normalized_field": "code",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "name",
+      "normalized_field": "name",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "industry",
+      "normalized_field": "industry",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "open_hfq",
+      "normalized_field": "open_hfq",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "high_hfq",
+      "normalized_field": "high_hfq",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "low_hfq",
+      "normalized_field": "low_hfq",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "close_hfq",
+      "normalized_field": "close_hfq",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "pre_close_hfq",
+      "normalized_field": "pre_close_hfq",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "volume_shares",
+      "normalized_field": "volume",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "amount_yuan",
+      "normalized_field": "amount",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "turnover_ratio",
+      "normalized_field": "turnover_ratio",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "pct_chg",
+      "normalized_field": "pct_chg",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "amplitude_pct",
+      "normalized_field": "amplitude_pct",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "is_st",
+      "normalized_field": "is_st",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "volume_ratio",
+      "normalized_field": "volume_ratio",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "return_3d_pct",
+      "normalized_field": "return_3d_pct",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "return_6d_pct",
+      "normalized_field": "return_6d_pct",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "return_10d_pct",
+      "normalized_field": "return_10d_pct",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "return_25d_pct",
+      "normalized_field": "return_25d_pct",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "is_limit_up",
+      "normalized_field": "is_limit_up",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "total_shares",
+      "normalized_field": "total_shares",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "float_shares",
+      "normalized_field": "float_shares",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "market_cap_yuan",
+      "normalized_field": "market_cap_yuan",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "float_market_cap_yuan",
+      "normalized_field": "float_market_cap_yuan",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "pe_ttm",
+      "normalized_field": "pe_ttm",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "pb",
+      "normalized_field": "pb",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ps_ttm",
+      "normalized_field": "ps_ttm",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma5",
+      "normalized_field": "ma5",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma10",
+      "normalized_field": "ma10",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma20",
+      "normalized_field": "ma20",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma30",
+      "normalized_field": "ma30",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma60",
+      "normalized_field": "ma60",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma120",
+      "normalized_field": "ma120",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "ma250",
+      "normalized_field": "ma250",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "list_date",
+      "normalized_field": "list_date",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "delist_date",
+      "normalized_field": "delist_date",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "is_marginable",
+      "normalized_field": "is_marginable",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "hfq_daily_2026",
+      "raw_field": "_source_encoding",
+      "normalized_field": "_source_encoding",
+      "source_role": "daily_price_state_value",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot; do not use same-day close fields for after-open decisions",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "rows",
+      "normalized_field": "rows",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "symbols",
+      "normalized_field": "symbols",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "time_min",
+      "normalized_field": "time_min",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "time_max",
+      "normalized_field": "time_max",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "duplicate_code_time",
+      "normalized_field": "duplicate_code_time",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "source_member",
+      "normalized_field": "source_member",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_manifest",
+      "raw_field": "silver_file",
+      "normalized_field": "silver_file",
+      "source_role": "minute_manifest",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "manifest_level",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "code",
+      "normalized_field": "code",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "trade_time",
+      "normalized_field": "trade_time",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "close",
+      "normalized_field": "close",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "open",
+      "normalized_field": "open",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "high",
+      "normalized_field": "high",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "low",
+      "normalized_field": "low",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "vol",
+      "normalized_field": "volume",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "amount",
+      "normalized_field": "amount",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "pre_close",
+      "normalized_field": "pre_close",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "change",
+      "normalized_field": "change",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "stock_1min_2026_sample_partition",
+      "raw_field": "pct_chg",
+      "normalized_field": "pct_chg",
+      "source_role": "minute_price_sample_partition",
+      "lag_policy": "intraday_observable_after_bar_close; daily alpha aggregation must lag unless intraday strategy",
+      "pit_policy": "minute_bar_partition",
+      "usage_status": "usable_with_intraday_clock_or_lagged_daily_aggregate"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "plate_code",
+      "normalized_field": "plate_code",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "plate_name",
+      "normalized_field": "plate_name",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "plate_score",
+      "normalized_field": "plate_score",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "id",
+      "normalized_field": "id",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "date1",
+      "normalized_field": "date",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "stock_code",
+      "normalized_field": "code",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "stock_name",
+      "normalized_field": "stock_name",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "stock_price",
+      "normalized_field": "stock_price",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "up_limit_keep_times",
+      "normalized_field": "limit_up_keep_times",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "up_limit_desc",
+      "normalized_field": "up_limit_desc",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "up_limit_type",
+      "normalized_field": "up_limit_type",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "up_limit_time",
+      "normalized_field": "up_limit_time",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "reason",
+      "normalized_field": "reason",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "fengdan_volumn",
+      "normalized_field": "fengdan_volumn",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "fengdan_money",
+      "normalized_field": "seal_money",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "fengdan_rate",
+      "normalized_field": "seal_rate",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "feng_circulation_rate",
+      "normalized_field": "feng_circulation_rate",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "actualcirculation_value",
+      "normalized_field": "actual_circulation_value",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "turnover_ration_real",
+      "normalized_field": "turnover_ratio_real",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "market_type",
+      "normalized_field": "market_type",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "amount",
+      "normalized_field": "amount",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "limit_event_close_reason",
+      "lag_policy": "available_next_trading_day_conservative unless timestamp contract proves intraday observability",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "raw_field": "stock_code",
+      "normalized_field": "code",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "raw_field": "stock_name",
+      "normalized_field": "stock_name",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "raw_field": "reason",
+      "normalized_field": "reason",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "review_uplimit_reason_open",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "limit_event_open_board_reason",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-1",
+      "normalized_field": "-1",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-10",
+      "normalized_field": "-10",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-2",
+      "normalized_field": "-2",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-3",
+      "normalized_field": "-3",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-4",
+      "normalized_field": "-4",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-5",
+      "normalized_field": "-5",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-6",
+      "normalized_field": "-6",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-7",
+      "normalized_field": "-7",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-8",
+      "normalized_field": "-8",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "-9",
+      "normalized_field": "-9",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "0",
+      "normalized_field": "0",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "1",
+      "normalized_field": "1",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "10",
+      "normalized_field": "10",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "2",
+      "normalized_field": "2",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "3",
+      "normalized_field": "3",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "4",
+      "normalized_field": "4",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "5",
+      "normalized_field": "5",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "6",
+      "normalized_field": "6",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "7",
+      "normalized_field": "7",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "8",
+      "normalized_field": "8",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "9",
+      "normalized_field": "9",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "DT",
+      "normalized_field": "dt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "SJDT",
+      "normalized_field": "sjdt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "SJZT",
+      "normalized_field": "sjzt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "STDT",
+      "normalized_field": "stdt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "STZT",
+      "normalized_field": "stzt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "SZJS",
+      "normalized_field": "szjs",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "XDJS",
+      "normalized_field": "xdjs",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "ZSZDFB",
+      "normalized_field": "zszdfb",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "ZT",
+      "normalized_field": "zt",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "q_zrcs",
+      "normalized_field": "q_zrcs",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "q_zrtj",
+      "normalized_field": "q_zrtj",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "qscln",
+      "normalized_field": "qscln",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "s_zrcs",
+      "normalized_field": "s_zrcs",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "s_zrtj",
+      "normalized_field": "s_zrtj",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "sign",
+      "normalized_field": "sign",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "szln",
+      "normalized_field": "szln",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "updown_distribution",
+      "raw_field": "day",
+      "normalized_field": "day",
+      "source_role": "market_regime_distribution",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "market_level_daily_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "date",
+      "normalized_field": "date",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_DT",
+      "normalized_field": "nums_dt",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_SZJS",
+      "normalized_field": "nums_szjs",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_XDJS",
+      "normalized_field": "nums_xdjs",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_ZBL",
+      "normalized_field": "nums_zbl",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_ZRZT",
+      "normalized_field": "nums_zrzt",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_ZT",
+      "normalized_field": "nums_zt",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_ZTZB",
+      "normalized_field": "nums_ztzb",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "nums_yestRase",
+      "normalized_field": "nums_yestrase",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "time",
+      "normalized_field": "time",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "uplimit_count",
+      "normalized_field": "uplimit_count",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "uplimit_trend",
+      "raw_field": "open_board_count",
+      "normalized_field": "open_board_count",
+      "source_role": "market_limit_trend_intraday_summary",
+      "lag_policy": "timestamped; require explicit time gating before intraday use",
+      "pit_policy": "market_level_intraday_summary",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "DATE",
+      "normalized_field": "date",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "MARKET",
+      "normalized_field": "market",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "SCODE",
+      "normalized_field": "code",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "SECNAME",
+      "normalized_field": "secname",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZYE",
+      "normalized_field": "rzye",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQYL",
+      "normalized_field": "rqyl",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZRQYE",
+      "normalized_field": "rzrqye",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQYE",
+      "normalized_field": "rqye",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQMCL",
+      "normalized_field": "rqmcl",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZRQYECZ",
+      "normalized_field": "rzrqyecz",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZMRE",
+      "normalized_field": "rzmre",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "SZ",
+      "normalized_field": "sz",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZYEZB",
+      "normalized_field": "rzyezb",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZMRE3D",
+      "normalized_field": "rzmre3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZMRE5D",
+      "normalized_field": "rzmre5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZMRE10D",
+      "normalized_field": "rzmre10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZCHE",
+      "normalized_field": "rzche",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZCHE3D",
+      "normalized_field": "rzche3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZCHE5D",
+      "normalized_field": "rzche5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZCHE10D",
+      "normalized_field": "rzche10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZJME",
+      "normalized_field": "rzjme",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZJME3D",
+      "normalized_field": "rzjme3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZJME5D",
+      "normalized_field": "rzjme5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RZJME10D",
+      "normalized_field": "rzjme10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQMCL3D",
+      "normalized_field": "rqmcl3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQMCL5D",
+      "normalized_field": "rqmcl5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQMCL10D",
+      "normalized_field": "rqmcl10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQCHL",
+      "normalized_field": "rqchl",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQCHL3D",
+      "normalized_field": "rqchl3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQCHL5D",
+      "normalized_field": "rqchl5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQCHL10D",
+      "normalized_field": "rqchl10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQJMG",
+      "normalized_field": "rqjmg",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQJMG3D",
+      "normalized_field": "rqjmg3d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQJMG5D",
+      "normalized_field": "rqjmg5d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RQJMG10D",
+      "normalized_field": "rqjmg10d",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "SPJ",
+      "normalized_field": "spj",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "ZDF",
+      "normalized_field": "zdf",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RCHANGE3DCP",
+      "normalized_field": "rchange3dcp",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RCHANGE5DCP",
+      "normalized_field": "rchange5dcp",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "RCHANGE10DCP",
+      "normalized_field": "rchange10dcp",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "KCB",
+      "normalized_field": "kcb",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "TRADE_MARKET_CODE",
+      "normalized_field": "trade_market_code",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "TRADE_MARKET",
+      "normalized_field": "trade_market",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "FIN_BALANCE_GR",
+      "normalized_field": "fin_balance_gr",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "_source_date",
+      "normalized_field": "_source_date",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "rzrq_margin_xsection_daily",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "margin_short_xsection_daily",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "daily_vendor_snapshot",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "TRADE_DATE",
+      "normalized_field": "date",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "DEAL_AMOUNT_RATIO",
+      "normalized_field": "deal_amount_ratio",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BILLBOARD_DEAL_AMT",
+      "normalized_field": "billboard_deal_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "FREE_MARKET_CAP",
+      "normalized_field": "free_market_cap",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "EXPLAIN",
+      "normalized_field": "explain",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SECURITY_CODE",
+      "normalized_field": "security_code",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "CLOSE_PRICE",
+      "normalized_field": "close_price",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "CHANGE_RATE",
+      "normalized_field": "change_rate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "TURNOVERRATE",
+      "normalized_field": "turnoverrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D1_CLOSE_ADJCHRATE",
+      "normalized_field": "d1_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D2_CLOSE_ADJCHRATE",
+      "normalized_field": "d2_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D5_CLOSE_ADJCHRATE",
+      "normalized_field": "d5_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D10_CLOSE_ADJCHRATE",
+      "normalized_field": "d10_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SECURITY_NAME_ABBR",
+      "normalized_field": "security_name_abbr",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "EXPLANATION",
+      "normalized_field": "explanation",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BILLBOARD_SELL_AMT",
+      "normalized_field": "billboard_sell_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BILLBOARD_BUY_AMT",
+      "normalized_field": "billboard_buy_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SECURITY_INNER_CODE",
+      "normalized_field": "security_inner_code",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BILLBOARD_NET_AMT",
+      "normalized_field": "billboard_net_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_as_event_feature_with_conservative_lag"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "DEAL_NET_RATIO",
+      "normalized_field": "deal_net_ratio",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "ACCUM_AMOUNT",
+      "normalized_field": "accum_amount",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "MARKET",
+      "normalized_field": "market",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "CHANGE_TYPE",
+      "normalized_field": "change_type",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "TRADE_ID",
+      "normalized_field": "trade_id",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BUY_SEAT",
+      "normalized_field": "buy_seat",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SELL_SEAT",
+      "normalized_field": "sell_seat",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BUY_RATIO",
+      "normalized_field": "buy_ratio",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SELL_RATIO",
+      "normalized_field": "sell_ratio",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "TRADE_MARKET",
+      "normalized_field": "trade_market",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D30_CLOSE_ADJCHRATE",
+      "normalized_field": "d30_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "D20_CLOSE_ADJCHRATE",
+      "normalized_field": "d20_close_adjchrate",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "TRADE_MARKET_CODE",
+      "normalized_field": "trade_market_code",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "BUY_SEAT_NEW",
+      "normalized_field": "buy_seat_new",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SELL_SEAT_NEW",
+      "normalized_field": "sell_seat_new",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SECURITY_TYPE_CODE",
+      "normalized_field": "security_type_code",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SUM_BUY_AMT",
+      "normalized_field": "sum_buy_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "SUM_SELL_AMT",
+      "normalized_field": "sum_sell_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "NET_BS_AMT",
+      "normalized_field": "net_bs_amt",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_details",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "lhb_billboard_details",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "SECURITY_CODE",
+      "normalized_field": "security_code",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "TRADE_DATE",
+      "normalized_field": "date",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "OPERATEDEPT_CODE",
+      "normalized_field": "operatedept_code",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "OPERATEDEPT_NAME",
+      "normalized_field": "operatedept_name",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "EXPLANATION",
+      "normalized_field": "explanation",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "CHANGE_RATE",
+      "normalized_field": "change_rate",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "CLOSE_PRICE",
+      "normalized_field": "close_price",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "ACCUM_AMOUNT",
+      "normalized_field": "accum_amount",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "ACCUM_VOLUME",
+      "normalized_field": "accum_volume",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "BUY",
+      "normalized_field": "buy",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "SELL",
+      "normalized_field": "sell",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "NET",
+      "normalized_field": "net",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "RISE_PROBABILITY_3DAY",
+      "normalized_field": "rise_probability_3day",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "TOTAL_BUYER_SALESTIMES_3DAY",
+      "normalized_field": "total_buyer_salestimes_3day",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "CHANGE_TYPE",
+      "normalized_field": "change_type",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "OPERATEDEPT_CODE_OLD",
+      "normalized_field": "operatedept_code_old",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "TOTAL_BUYRIO",
+      "normalized_field": "total_buyrio",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "TOTAL_SELLRIO",
+      "normalized_field": "total_sellrio",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "TRADE_ID",
+      "normalized_field": "trade_id",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_buy",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "lhb_buy_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "SECURITY_CODE",
+      "normalized_field": "security_code",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "TRADE_DATE",
+      "normalized_field": "date",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "key_or_time_field"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "OPERATEDEPT_CODE",
+      "normalized_field": "operatedept_code",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "OPERATEDEPT_NAME",
+      "normalized_field": "operatedept_name",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "EXPLANATION",
+      "normalized_field": "explanation",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "CHANGE_RATE",
+      "normalized_field": "change_rate",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "CLOSE_PRICE",
+      "normalized_field": "close_price",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "ACCUM_AMOUNT",
+      "normalized_field": "accum_amount",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "ACCUM_VOLUME",
+      "normalized_field": "accum_volume",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "BUY",
+      "normalized_field": "buy",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "SELL",
+      "normalized_field": "sell",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "NET",
+      "normalized_field": "net",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "RISE_PROBABILITY_3DAY",
+      "normalized_field": "rise_probability_3day",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "TOTAL_BUYER_SALESTIMES_3DAY",
+      "normalized_field": "total_buyer_salestimes_3day",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "CHANGE_TYPE",
+      "normalized_field": "change_type",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "OPERATEDEPT_CODE_OLD",
+      "normalized_field": "operatedept_code_old",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "TOTAL_BUYRIO",
+      "normalized_field": "total_buyrio",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "TOTAL_SELLRIO",
+      "normalized_field": "total_sellrio",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "TRADE_ID",
+      "normalized_field": "trade_id",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "billboard_sell",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "lhb_sell_departments",
+      "lag_policy": "available_next_trading_day_conservative",
+      "pit_policy": "event_disclosure; preserve disclosure date",
+      "usage_status": "usable_after_field_contract_review"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "SECURITY_CODE",
+      "normalized_field": "security_code",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "SECURITY_NAME_ABBR",
+      "normalized_field": "security_name_abbr",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "HOLDER_NUM",
+      "normalized_field": "holder_num",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "PRE_HOLDER_NUM",
+      "normalized_field": "pre_holder_num",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "HOLDER_NUM_CHANGE",
+      "normalized_field": "holder_num_change",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "HOLDER_NUM_RATIO",
+      "normalized_field": "holder_num_ratio",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "INTERVAL_CHRATE",
+      "normalized_field": "interval_chrate",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "END_DATE",
+      "normalized_field": "end_date",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "PRE_END_DATE",
+      "normalized_field": "pre_end_date",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "PRE_E_DATE",
+      "normalized_field": "pre_e_date",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "AVG_MARKET_CAP",
+      "normalized_field": "avg_market_cap",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "AVG_HOLD_NUM",
+      "normalized_field": "avg_hold_num",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "TOTAL_MARKET_CAP",
+      "normalized_field": "total_market_cap",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "TOTAL_A_SHARES",
+      "normalized_field": "total_a_shares",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "HOLD_NOTICE_DATE",
+      "normalized_field": "hold_notice_date",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "HOLD_N_DATE",
+      "normalized_field": "hold_n_date",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "CHANGE_SHARES",
+      "normalized_field": "change_shares",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "CHANGE_REASON",
+      "normalized_field": "change_reason",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "CLOSE_PRICE",
+      "normalized_field": "close_price",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "TRADE_MARKET_CODE",
+      "normalized_field": "trade_market_code",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "ORG_CODE",
+      "normalized_field": "org_code",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "REPORT",
+      "normalized_field": "report",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "holder_num_detail",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "holder_count_detail",
+      "lag_policy": "available_after_announcement_date_only",
+      "pit_policy": "pit_by_announcement_date_required; never by report/end date alone",
+      "usage_status": "blocked_until_announcement_date_pit_verified"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "SECUCODE",
+      "normalized_field": "secucode",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "SECURITY_CODE",
+      "normalized_field": "security_code",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "SECURITY_INNER_CODE",
+      "normalized_field": "security_inner_code",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "ORG_CODE",
+      "normalized_field": "org_code",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "NOTICE_DATE",
+      "normalized_field": "notice_date",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "INFO_CODE",
+      "normalized_field": "info_code",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "EVENT_TYPE",
+      "normalized_field": "event_type",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "EVENT_TYPE_CODE",
+      "normalized_field": "event_type_code",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "LEVEL1_CONTENT",
+      "normalized_field": "level1_content",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "CHANGE_RATE",
+      "normalized_field": "change_rate",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "CLOSE_PRICE",
+      "normalized_field": "close_price",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "DAILY_RANK",
+      "normalized_field": "daily_rank",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    },
+    {
+      "table_id": "stock_calendar",
+      "raw_field": "_source_file",
+      "normalized_field": "_source_file",
+      "source_role": "company_event_calendar",
+      "lag_policy": "not_tradable_daily_state_until_standardized",
+      "pit_policy": "calendar_disclosure",
+      "usage_status": "blocked_until_daily_state_standardized"
+    }
+  ]
+}

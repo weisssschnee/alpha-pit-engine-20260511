@@ -1,0 +1,35 @@
+{
+  "decision": "PASS_MINUTE_FEATURE_PANEL_V2_FINAL_QA",
+  "panel_root": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+  "parquet_files": 5,
+  "total_rows": 3997944,
+  "year_rows": {
+    "2023": 1186529,
+    "2024": 1222009,
+    "2025": 1249440,
+    "2026": 339966
+  },
+  "schema_columns": 231,
+  "duplicate_key_rows": 0,
+  "key_null_rows": 0,
+  "context_sample_any_match_rate": 0.8749049855677657,
+  "required_prefix_coverage": {
+    "m1_first5_": true,
+    "m1_first15_": true,
+    "m1_first30_": true,
+    "ctx_": true,
+    "label_": true
+  },
+  "forbidden_selector_field_count": 11,
+  "unknown_field_count": 0,
+  "error_count": 0,
+  "fail_reasons": [],
+  "boundary": {
+    "ctx_fields": "prior signal_date only",
+    "m1_first5": "available after 09:35",
+    "m1_first15": "available after 09:45",
+    "m1_first30": "available after 10:00",
+    "label_fields": "evaluation only, forbidden for selector input"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

@@ -12,6 +12,11 @@ DEFAULT_SOURCE_WEIGHTS = {
     "agnostic_freeform_ast": 1.0,
     "formula_gen_v2_repair_expansion": 1.05,
     "event_derived_feature_layer": 0.8,
+    "cn_research_feature_layer_v2": 0.95,
+    "fundamental_pit_feature_layer": 0.95,
+    "cn_flow_liquidity_feature_layer": 0.95,
+    "cn_underutilized_field_feature_layer": 0.95,
+    "research_factor_feature_layer": 0.95,
     "legacy_or_non_event": 0.75,
 }
 
@@ -32,6 +37,12 @@ def pool_priority_score(row: dict[str, Any]) -> float:
     score = float(DEFAULT_SOURCE_WEIGHTS.get(source, 0.75))
     if bool(row.get("contains_new_event_adapter_field")):
         score += 0.10
+    if bool(row.get("contains_fundamental_field")):
+        score += 0.05
+    if bool(row.get("contains_flow_liquidity_field")):
+        score += 0.06
+    if bool(row.get("contains_capacity_field")):
+        score += 0.03
     if row.get("diagnostic_role") == "interaction_factor":
         score += 0.05
     if row.get("diagnostic_role") == "r3_secondary_gate":

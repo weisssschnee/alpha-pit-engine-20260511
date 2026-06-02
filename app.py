@@ -65,6 +65,256 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Inspect or update the lightweight runtime state registry.",
     },
+    "phase3aa-mature-chain": {
+        "module": "our_system_phase2.runtime.phase3aa_run_mature_chain",
+        "diagnostic": False,
+        "description": "Run Phase3AA through shared pool, event-derived factor injection, source-priority G2 selection, and optional replay.",
+    },
+    "phase3aa-cached-mature-pool": {
+        "module": "our_system_phase2.runtime.phase3aa_run_cached_mature_pool",
+        "diagnostic": False,
+        "description": "Run Phase3AA from an existing mature shared pool without fresh pool generation.",
+    },
+    "phase3aa-smoke-from-selection": {
+        "module": "our_system_phase2.runtime.phase3aa_smoke_from_shared_selection",
+        "diagnostic": False,
+        "description": "Replay Phase3AA frozen selector output without regenerating candidates.",
+    },
+    "phase3aa-asset-preflight": {
+        "module": "our_system_phase2.runtime.phase3aa_asset_preflight",
+        "diagnostic": False,
+        "description": "Verify mature-chain assets before launching Phase3AA searches.",
+    },
+    "phase3aa-result-audit": {
+        "module": "our_system_phase2.runtime.phase3aa_cached_result_audit",
+        "diagnostic": False,
+        "description": "Audit Phase3AA cached-pool selection and replay source attribution.",
+    },
+    "cn-controlled-data-smoke": {
+        "module": "our_system_phase2.runtime.cn_controlled_data_smoke",
+        "diagnostic": False,
+        "description": "Smoke-test controlled CN data sources and emit the field registry.",
+    },
+    "cn-event-derived-feature-smoke": {
+        "module": "our_system_phase2.runtime.cn_event_derived_feature_smoke",
+        "diagnostic": False,
+        "description": "Build a controlled CN event-derived daily feature smoke panel.",
+    },
+    "cn-field-factor-pack": {
+        "module": "our_system_phase2.runtime.cn_field_factor_pack",
+        "diagnostic": False,
+        "description": "Build the CN field-to-factor conversion plan and candidate factor pack.",
+    },
+    "cn-factor-pack-preflight": {
+        "module": "our_system_phase2.runtime.cn_factor_pack_shared_pool_preflight",
+        "diagnostic": False,
+        "description": "Preflight CN field/factor pack integration into mature shared pool without replay.",
+    },
+    "cn-build-augmented-signal-panel": {
+        "module": "our_system_phase2.runtime.cn_build_augmented_signal_panel",
+        "diagnostic": False,
+        "description": "Build the mature signal-vector/evaluator panel augmented with CN event-derived fields.",
+    },
+    "cn-signal-vector-event-smoke": {
+        "module": "our_system_phase2.runtime.cn_signal_vector_event_field_smoke",
+        "diagnostic": False,
+        "description": "Smoke-test event-derived factor expressions through the Phase3G signal-vector store.",
+    },
+    "cn-fundamental-controlled-smoke": {
+        "module": "our_system_phase2.runtime.cn_fundamental_controlled_smoke",
+        "diagnostic": False,
+        "description": "Smoke-test aggregated CN fundamental data and emit PIT field contracts.",
+    },
+    "cn-fundamental-pit-panel": {
+        "module": "our_system_phase2.runtime.cn_fundamental_pit_feature_panel",
+        "diagnostic": False,
+        "description": "Build a conservative PIT daily feature panel from aggregated CN fundamentals.",
+    },
+    "cn-research-factor-pack-v2": {
+        "module": "our_system_phase2.runtime.cn_research_factor_pack_v2",
+        "diagnostic": False,
+        "description": "Build the combined CN event plus PIT fundamental research factor pack.",
+    },
+    "cn-build-research-signal-panel-v2": {
+        "module": "our_system_phase2.runtime.cn_build_research_signal_panel_v2",
+        "diagnostic": False,
+        "description": "Build the mature evaluator panel augmented with CN event and PIT fundamental fields.",
+    },
+    "cn-field-utilization-audit": {
+        "module": "our_system_phase2.runtime.cn_field_utilization_audit",
+        "diagnostic": False,
+        "description": "Audit panel fields through encoder, factor pack, shared pool, selector queue, and replay rows.",
+    },
+    "cn-flow-liquidity-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_flow_liquidity_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build a dedicated CN flow/liquidity/capacity-normalized research factor pack.",
+    },
+    "cn-underutilized-field-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build a broad CN underutilized-field factor pack across flow, seal, capacity, theme, price, and fundamental activity fields.",
+    },
+    "cn-underutilized-field-family-smoke": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_family_smoke",
+        "diagnostic": False,
+        "description": "Run a family-balanced signal-vector smoke for underutilized CN field factor packs without replay.",
+    },
+    "cn-underutilized-field-batched-selector-smoke": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_batched_selector_smoke",
+        "diagnostic": False,
+        "description": "Run batched mature G2 selector-only smoke for underutilized CN field factor packs without replay.",
+    },
+    "cn-underutilized-field-replay-smoke-gate": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_replay_smoke_gate",
+        "diagnostic": False,
+        "description": "Freeze batched selector256 unique rows and run a replay smoke gate without regenerating candidates.",
+    },
+    "cn-underutilized-field-survivor-attribution": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_survivor_attribution",
+        "diagnostic": False,
+        "description": "Attribute underutilized-field replay survivors by source, factor lane, skeleton, field family, and registry proxy.",
+    },
+    "cn-underutilized-field-registry-recluster": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_registry_recluster",
+        "diagnostic": False,
+        "description": "Compare underutilized-field deployable survivor representatives against the frozen 149 registry with sampled signal vectors.",
+    },
+    "cn-underutilized-field-registry-review-queue": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_registry_review_queue",
+        "diagnostic": False,
+        "description": "Create a baseline-safe registry review queue from provisional-new underutilized-field survivor representatives.",
+    },
+    "cn-underutilized-field-global-cluster-integration": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_global_cluster_integration",
+        "diagnostic": False,
+        "description": "Build a candidate 149+13 integrated registry after signal-vector collision checks.",
+    },
+    "cn-underutilized-field-promote-162-baseline": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_promote_162_baseline",
+        "diagnostic": False,
+        "description": "Promote the candidate 162 registry to a discovery-only baseline with a stable hash.",
+    },
+    "cn-underutilized-field-book-readiness-audit": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_book_readiness_audit",
+        "diagnostic": False,
+        "description": "Run a no-replay book-readiness screen for the 13 newly promoted discovery clusters.",
+    },
+    "cn-underutilized-field-book-marginal-audit": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_book_marginal_audit",
+        "diagnostic": False,
+        "description": "Run a no-search B0/B1/B2/B3 book-level marginal audit against locked X0/R3.",
+    },
+    "cn-underutilized-field-freeze-b2-forward": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_freeze_b2_forward_object",
+        "diagnostic": False,
+        "description": "Freeze B2 X0/R3 plus six core new field clusters as a diagnostic forward candidate.",
+    },
+    "cn-underutilized-field-minute-execution-calibration": {
+        "module": "our_system_phase2.runtime.cn_underutilized_field_minute_execution_calibration",
+        "diagnostic": False,
+        "description": "Calibrate X0/R3 and B2 diagnostic forward against available 1-minute execution proxies.",
+    },
+    "cn-minute-feature-alignment-audit": {
+        "module": "our_system_phase2.runtime.cn_minute_feature_alignment_audit",
+        "diagnostic": False,
+        "description": "Audit 1-minute native fields, lagged daily/enrichment context alignment, and forbidden future-label routes.",
+    },
+    "cn-minute-feature-panel-v1": {
+        "module": "our_system_phase2.runtime.cn_minute_feature_panel_builder",
+        "diagnostic": False,
+        "description": "Build the minute-native feature panel with prior-day daily/enrichment context and separated execution labels.",
+    },
+    "cn-minute-feature-panel-v2": {
+        "module": "our_system_phase2.runtime.cn_minute_feature_panel_v2_builder",
+        "diagnostic": False,
+        "description": "Build the multi-year 2023-2026 minute-native code-date feature panel from validated 1min parquet v2.",
+    },
+    "cn-minute-feature-panel-v2-final-qa": {
+        "module": "our_system_phase2.runtime.cn_minute_feature_panel_v2_final_qa",
+        "diagnostic": False,
+        "description": "Run read-only final QA for the multi-year minute feature panel v2.",
+    },
+    "cn-minute-feature-signal-scan": {
+        "module": "our_system_phase2.runtime.cn_minute_feature_signal_scan",
+        "diagnostic": False,
+        "description": "Run a diagnostic cross-sectional scan of minute-native and lagged-context features against minute execution labels.",
+    },
+    "cn-minute-2023-2025-reconvert": {
+        "module": "our_system_phase2.runtime.cn_minute_2023_2025_reconvert",
+        "diagnostic": False,
+        "description": "Reconvert broken 2023-2025 1-minute source zips into valid symbol parquet with OHLCV/amount fields.",
+    },
+    "cn-multifrequency-field-route-audit": {
+        "module": "our_system_phase2.runtime.cn_multifrequency_field_route_audit",
+        "diagnostic": False,
+        "description": "Route all CN data families into minute-native, timestamped event, lagged daily, announcement/PIT, or diagnostic use classes.",
+    },
+    "cn-minute-limit-event-alignment": {
+        "module": "our_system_phase2.runtime.cn_minute_limit_event_alignment_panel",
+        "diagnostic": False,
+        "description": "Build timestamp-safe up_limit_time and uplimit_trend event features aligned to the 1-minute panel.",
+    },
+    "cn-nonminute-field-integration-registry": {
+        "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
+        "diagnostic": False,
+        "description": "Build the non-1min field routing and PIT integration registry for daily, event, disclosure, RZRQ, and fundamental fields.",
+    },
+    "cn-nonminute-system-integration-audit": {
+        "module": "our_system_phase2.runtime.cn_nonminute_system_integration_audit",
+        "diagnostic": False,
+        "description": "Audit which non-1min registry fields are wired into minute/context/event panels and which remain panelization gaps.",
+    },
+    "cn-nonminute-pit-context-panel-v1": {
+        "module": "our_system_phase2.runtime.cn_nonminute_pit_context_panel_v1",
+        "diagnostic": False,
+        "description": "Build a PIT-safe non-1min context panel from RZRQ, fundamentals, holders, billboard diagnostics, and market distribution.",
+    },
+    "cn-nonminute-pit-context-panel-v1-qa": {
+        "module": "our_system_phase2.runtime.cn_nonminute_pit_context_panel_v1_qa",
+        "diagnostic": False,
+        "description": "Run read-only QA for the non-1min PIT context panel v1.",
+    },
+    "cn-workspace-key-artifacts": {
+        "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
+        "diagnostic": False,
+        "description": "Write a non-destructive key-artifact manifest for workspace cleanup.",
+    },
+    "cn-workspace-cleanup-archive": {
+        "module": "our_system_phase2.runtime.cn_workspace_cleanup_archive",
+        "diagnostic": False,
+        "description": "Archive superseded CN workspace runtime intermediates and remove cache-only directories with protected artifact checks.",
+    },
+    "phase3ab-large-search": {
+        "module": "our_system_phase2.runtime.phase3ab_launch_large_search",
+        "diagnostic": False,
+        "description": "Launch Phase3AB through mature stock-PIT large-search supervisor with memory and reward controls.",
+    },
+    "phase3ab-aggregate": {
+        "module": "our_system_phase2.runtime.phase3ab_large_search_aggregate",
+        "diagnostic": False,
+        "description": "Aggregate Phase3AB large-search shard outputs into top-candidate and source-attribution reports.",
+    },
+    "phase3ab-deep-validate": {
+        "module": "our_system_phase2.runtime.phase3ab_candidate_deep_validation",
+        "diagnostic": False,
+        "description": "Deep-validate Phase3AB aggregate top candidates across long history, OOS, R3, turnover, and cost splits.",
+    },
+    "phase3ab-deep-compare": {
+        "module": "our_system_phase2.runtime.phase3ab_deep_validation_compare",
+        "diagnostic": False,
+        "description": "Compare completed Phase3AB deep-validation output roots into a combined scoreboard.",
+    },
+    "phase3ab-r3-challenger-audit": {
+        "module": "our_system_phase2.runtime.phase3ab_r3_challenger_audit",
+        "diagnostic": False,
+        "description": "Audit Phase3AB recent/R3 challengers against the locked X0/R3 incumbent.",
+    },
+    "phase3ab-challenger-family-audit": {
+        "module": "our_system_phase2.runtime.phase3ab_challenger_family_audit",
+        "diagnostic": False,
+        "description": "Audit Phase3AB R3 challenger family correlation and standalone book value.",
+    },
     "diagnostic-catalog": {
         "module": "our_system_phase2.runtime.phase3_diagnostic_asset_catalog",
         "diagnostic": False,

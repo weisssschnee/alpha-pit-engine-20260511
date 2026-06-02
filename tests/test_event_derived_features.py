@@ -6,7 +6,9 @@ from pathlib import Path
 
 import pandas as pd
 
+from our_system_phase2.runtime.phase3aa_enrich_shared_candidate_pool import PHASE3AA_EVENT_BUCKET, enrich_pool
 from our_system_phase2.runtime.phase3r_limit_motif_pack_diagnostic import _candidate_rows, run as run_limit_motif_diagnostic
+from our_system_phase2.services.phase3g_vector_selector import is_signal_vector_selector
 from our_system_phase2.services.event_derived_features import (
     attach_event_derived_features,
     event_derived_feature_coverage_report,
@@ -50,6 +52,7 @@ def test_event_derived_feature_layer_distinguishes_open_touch_close_and_streaks(
     assert a.loc[2, "limit_up_open_not_close"] == 1.0
     assert a.loc[2, "limit_up_break"] == 1.0
     assert a.loc[2, "break_board_after_streak_ge_1"] == 1.0
+    assert a.loc[3, "limit_up_close_not_open"] == 1.0
 
     assert b.loc[1, "limit_up_touch_event"] == 1.0
     assert b.loc[1, "limit_up_close_event"] == 0.0
@@ -57,6 +60,8 @@ def test_event_derived_feature_layer_distinguishes_open_touch_close_and_streaks(
 
     assert "market_high_board" in frame.columns
     assert "post_market_high_board_tplus_1" in frame.columns
+    assert canonical_field_name("$limit_up_close_count_t4") == "limit_up_close_count_t4"
+    assert canonical_field_name("$limit_up_any_open_not_close_in_t4") == "limit_up_any_open_not_close_in_t4"
     assert frame["limit_up_streak_ge_2"].notna().all()
 
 
@@ -90,6 +95,8 @@ def test_event_derived_feature_contract_and_field_encoder() -> None:
     assert encoded.field_type == "event_ts"
     assert encoded.behavior_profile["volatility"] >= 0.8
     assert canonical_field_name("$limit_up_streak_ge_3") == "limit_up_streak_ge_3"
+    assert canonical_field_name("$seal_money") == "seal_money"
+    assert encoder.encode("$float_market_cap_yuan").field_type == "capacity_crosssec"
 
     report = event_derived_feature_coverage_report(attach_event_derived_features(_sample_panel(), max_streak_n=4), max_streak_n=4)
     assert report["coverage"]["limit_up_open_not_close"]["present"] is True
@@ -125,6 +132,69 @@ def test_limit_motif_diagnostic_uses_event_adapter_metadata() -> None:
         assert row["search_memory_key"].startswith("event_adapter:")
         assert float(row["pool_priority_score"]) > 0.0
         assert row["source_credit_cap_basis"] == row["search_memory_key"]
+
+
+def test_phase3aa_enriches_shared_pool_with_event_factor_bucket() -> None:
+    pool = {
+        "dataset_role": "stock_pit_panel",
+        "candidate_pool": [
+            {
+                "candidate_id": "base_1",
+                "expression": "CSRank($close)",
+                "phase3_budget_bucket": "r0_cem_led",
+            }
+        ],
+        "default_selected": [],
+    }
+    enriched = enrich_pool(pool, max_event_rows=8, max_per_role=8, memory_roots=[])
+    event_rows = [
+        row
+        for row in enriched["candidate_pool"]
+        if row.get("phase3_budget_bucket") == PHASE3AA_EVENT_BUCKET
+    ]
+    assert event_rows
+    assert enriched["phase3aa_enrichment"]["event_rows_added"] == len(event_rows)
+    assert all(row["source_lane"] == "event_derived_feature_layer" for row in event_rows)
+    assert all(row["phase3aa_factor_candidate"] is True for row in event_rows)
+
+
+def test_phase3aa_enrichment_expands_memory_pack_roots() -> None:
+    first_expression = next(
+        row["expression"]
+        for row in _candidate_rows(max_per_role=24)
+        if row["diagnostic_role"] != "r3_secondary_gate"
+    )
+    with tempfile.TemporaryDirectory(prefix="phase3aa-memory-pack-test-") as temp:
+        pack_root = Path(temp)
+        previous = pack_root / "previous" / "root_000"
+        previous.mkdir(parents=True)
+        previous_payload = {
+            "run_id": "previous-memory",
+            "expression_keys": [expression_memory_key(first_expression)],
+            "skeleton_keys": [skeleton_memory_key(first_expression)],
+            "records": [
+                {
+                    "candidate_id": "previous-duplicate",
+                    "expression_key": expression_memory_key(first_expression),
+                    "skeleton_key": skeleton_memory_key(first_expression),
+                    "real_replay_dataset_role": "stock_pit_panel",
+                }
+            ],
+            "duplicate_skip_events": [],
+            "inherited_paths": [],
+            "replay_enrichment_paths": [],
+        }
+        (previous / "search_memory.json").write_text(json.dumps(previous_payload), encoding="utf-8")
+        pool = {"dataset_role": "stock_pit_panel", "candidate_pool": [], "default_selected": []}
+
+        enriched = enrich_pool(pool, max_event_rows=8, max_per_role=24, memory_roots=[pack_root])
+
+        assert enriched["phase3aa_enrichment"]["expanded_memory_root_count"] == 1
+        assert enriched["phase3aa_enrichment"]["duplicate_memory_skipped"] >= 1
+
+
+def test_phase3aa_source_priority_selector_is_opt_in_signal_vector_profile() -> None:
+    assert is_signal_vector_selector("signal_vector_diversified_source_priority_proxy")
 
 
 def test_limit_motif_diagnostic_writes_and_inherits_search_memory() -> None:
