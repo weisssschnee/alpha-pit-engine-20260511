@@ -1,0 +1,12 @@
+{
+  "audited": 19,
+  "raw_pass": 14,
+  "cost_survive": 10,
+  "deployable_proxy": 7,
+  "exact_duplicate_vs_149": 0,
+  "exact_new_vs_149": 7,
+  "registry_rows": 149,
+  "registry_path": "reports\\phase3k_c_complete_149_registry_20260517\\phase3k_c_149_representatives.csv",
+  "rows_path": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_fresh_pool_replay_s36_20260603\\attribution\\stratified_replay_rows.csv",
+  "scope": "exact expression proxy only; not signal-corr new_vs_149"
+}
