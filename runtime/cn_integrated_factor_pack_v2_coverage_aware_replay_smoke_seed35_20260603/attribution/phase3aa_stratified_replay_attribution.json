@@ -1,0 +1,32 @@
+{
+  "decision": "REVIEW_STRATIFIED_REPLAY_HAS_DEPLOYABLE_BUT_NEEDS_CONCENTRATION_AUDIT",
+  "replay_root": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\aa",
+  "audited": 19,
+  "raw_non_gap_replay_pass": 16,
+  "row_portfolio_replay_pass": 16,
+  "cost_survive": 12,
+  "row_deployable": 0,
+  "deployable_clusters": 10,
+  "top_cluster_share": 0.0625,
+  "median_replay_sortino": -0.12646600000000002,
+  "median_turnover": 0.573237,
+  "source_lane_counts": {
+    "cn_integrated_feature_layer": 19
+  },
+  "source_generator_counts": {
+    "cn_integrated_factor_pack_v2": 19
+  },
+  "factor_lane_counts": {
+    "rzrq_size_normalized": 15,
+    "minute_amount_share_daily": 1,
+    "quality_x_rzrq_flow": 3
+  },
+  "outputs": {
+    "rows": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\attribution\\stratified_replay_rows.csv",
+    "by_factor_lane": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\attribution\\by_factor_lane.csv",
+    "by_source_lane": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\attribution\\by_source_lane.csv",
+    "json": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\attribution\\phase3aa_stratified_replay_attribution.json",
+    "markdown": "runtime\\cn_integrated_factor_pack_v2_coverage_aware_replay_smoke_seed35_20260603\\attribution\\PHASE3AA_STRATIFIED_REPLAY_ATTRIBUTION.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
