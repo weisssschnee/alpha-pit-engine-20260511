@@ -1,0 +1,5 @@
+relative_path,row_count,field_count,has_ctx_aug,has_ctx_hfq
+year=2023\part.parquet,1186529,126,False,False
+year=2024\part.parquet,1222009,126,False,False
+year=2025\part.parquet,1249440,126,False,False
+year=2026\part.parquet,339966,126,False,False

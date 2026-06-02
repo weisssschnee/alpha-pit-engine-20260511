@@ -1,0 +1,187 @@
+{
+  "base_schema": {
+    "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+    "date_max": "2026-05-08",
+    "date_min": "2025-08-06",
+    "field_count": 46,
+    "path": "runtime\\field_registry\\cn_integrated_replay_base_schema_20260602\\company_phase2_stock_tdx_schema.json",
+    "row_count": 1090783
+  },
+  "blocking_items": [
+    "Minute/nonminute panel date coverage ends before the base replay panel; replay after panel max date will have missing integrated features.",
+    "Build step must normalize code format before joining: sh/sz/bj prefix to .SH/.SZ/.BJ suffix.",
+    "Build step must derive vwap from base amount/volume with a zero-volume guard."
+  ],
+  "by_lane_status": [
+    {
+      "count": 35,
+      "source_lane": "cn_integrated_feature_layer",
+      "status": "join_executable"
+    },
+    {
+      "count": 29,
+      "source_lane": "legacy_unknown",
+      "status": "join_executable"
+    }
+  ],
+  "created_at": "2026-06-02T06:58:16.230155+00:00",
+  "date_coverage_warning": true,
+  "decision": "PASS_JOIN_PREFLIGHT_WITH_DATE_COVERAGE_WARNING",
+  "derivable_fields": {
+    "vwap": {
+      "formula": "amount / volume",
+      "pit_policy": "same-row daily replay fields only; guard volume > 0",
+      "requires": [
+        "amount",
+        "volume"
+      ],
+      "source": "derived_from_base"
+    }
+  },
+  "field_source_counts": [
+    {
+      "count": 43,
+      "source": "base_replay"
+    },
+    {
+      "count": 23,
+      "source": "nonminute_panel"
+    },
+    {
+      "count": 12,
+      "source": "minute_panel"
+    },
+    {
+      "count": 5,
+      "source": "derivable"
+    }
+  ],
+  "integrated_blocked_count": 0,
+  "integrated_join_executable_count": 35,
+  "integrated_selected_count": 35,
+  "join_policy": {
+    "base_code_format": "tdx_market_prefix_lowercase, e.g. sh600000/sz000001/bj430017",
+    "integrated_panel_code_format": "six_digit.exchange_suffix, e.g. 600000.SH/000001.SZ/430017.BJ",
+    "join_keys": {
+      "minute": [
+        "normalized_code",
+        "date = exec_date"
+      ],
+      "nonminute": [
+        "normalized_code",
+        "date"
+      ]
+    },
+    "required_normalizer": {
+      "bjXXXXXX": "XXXXXX.BJ",
+      "shXXXXXX": "XXXXXX.SH",
+      "szXXXXXX": "XXXXXX.SZ"
+    }
+  },
+  "minute_panel": {
+    "date_max": "2026-04-10",
+    "date_min": "2023-01-04",
+    "field_union_count": 231,
+    "files": [
+      {
+        "date_max": "2023-12-29",
+        "date_min": "2023-01-04",
+        "relative_path": "year=2023\\shard=00-of-02.parquet",
+        "row_count": 593958
+      },
+      {
+        "date_max": "2023-12-29",
+        "date_min": "2023-01-04",
+        "relative_path": "year=2023\\shard=01-of-02.parquet",
+        "row_count": 592571
+      },
+      {
+        "date_max": "2024-12-31",
+        "date_min": "2024-01-03",
+        "relative_path": "year=2024\\shard=00-of-01.parquet",
+        "row_count": 1222009
+      },
+      {
+        "date_max": "2025-12-31",
+        "date_min": "2025-01-03",
+        "relative_path": "year=2025\\shard=00-of-01.parquet",
+        "row_count": 1249440
+      },
+      {
+        "date_max": "2026-04-10",
+        "date_min": "2026-01-06",
+        "relative_path": "year=2026\\part.parquet",
+        "row_count": 339966
+      }
+    ],
+    "path": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+    "row_count": 3997944,
+    "sample_codes": [
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ",
+      "000001.SZ"
+    ]
+  },
+  "missing_field_counts": [],
+  "nonminute_panel": {
+    "date_max": "2026-04-10",
+    "date_min": "2023-01-04",
+    "field_union_count": 126,
+    "files": [
+      {
+        "date_max": "2023-12-29",
+        "date_min": "2023-01-04",
+        "relative_path": "year=2023\\part.parquet",
+        "row_count": 1186529
+      },
+      {
+        "date_max": "2024-12-31",
+        "date_min": "2024-01-03",
+        "relative_path": "year=2024\\part.parquet",
+        "row_count": 1222009
+      },
+      {
+        "date_max": "2025-12-31",
+        "date_min": "2025-01-03",
+        "relative_path": "year=2025\\part.parquet",
+        "row_count": 1249440
+      },
+      {
+        "date_max": "2026-04-10",
+        "date_min": "2026-01-06",
+        "relative_path": "year=2026\\part.parquet",
+        "row_count": 339966
+      }
+    ],
+    "path": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+    "row_count": 3997944,
+    "sample_codes": [
+      "000001.SZ",
+      "000002.SZ",
+      "000004.SZ",
+      "000006.SZ",
+      "000007.SZ",
+      "000008.SZ",
+      "000009.SZ",
+      "000010.SZ",
+      "000011.SZ",
+      "000012.SZ"
+    ]
+  },
+  "schema_file_counts": {
+    "minute_files": 5,
+    "nonminute_files": 4
+  },
+  "schema_version": "cn-integrated-pit-join-preflight-v1",
+  "selected_blocked_count": 0,
+  "selected_count": 64,
+  "selected_join_executable_count": 64,
+  "selection_inputs": "runtime\\cn_integrated_factor_pack_company_selector_20260602\\phase3_strict_selection_inputs.json"
+}

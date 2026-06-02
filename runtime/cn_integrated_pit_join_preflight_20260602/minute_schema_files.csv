@@ -1,0 +1,6 @@
+relative_path,row_count,field_count,has_ctx_aug,has_ctx_hfq
+year=2023\shard=00-of-02.parquet,593958,48,False,False
+year=2023\shard=01-of-02.parquet,592571,48,False,False
+year=2024\shard=00-of-01.parquet,1222009,231,True,True
+year=2025\shard=00-of-01.parquet,1249440,231,True,True
+year=2026\part.parquet,339966,231,True,True

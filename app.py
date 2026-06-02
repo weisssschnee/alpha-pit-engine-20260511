@@ -290,6 +290,21 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run no-replay shared-pool safety preflight for the integrated factor pack before heavier G2 selector execution.",
     },
+    "cn-integrated-factor-pack-field-availability-audit": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_field_availability_audit",
+        "diagnostic": False,
+        "description": "Audit whether integrated factor-pack selections are executable on the current replay PIT panel.",
+    },
+    "cn-integrated-pit-join-preflight": {
+        "module": "our_system_phase2.runtime.cn_integrated_pit_join_preflight",
+        "diagnostic": False,
+        "description": "Preflight the PIT panel join needed to replay CN integrated factor-pack selections.",
+    },
+    "cn-integrated-pit-selected-panel-builder": {
+        "module": "our_system_phase2.runtime.cn_integrated_pit_selected_panel_builder",
+        "diagnostic": False,
+        "description": "Build selected-field sidecars and joined replay panels for CN integrated factor-pack replay.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,
