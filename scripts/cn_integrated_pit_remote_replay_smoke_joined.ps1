@@ -20,8 +20,7 @@ $env:PYTHONPATH = "src"
   --selection-root $SelectionRoot `
   --output-root $OutputRoot `
   --dataset-path $DatasetPath `
-  --audit-count 16 `
-  --force *> (Join-Path $LogRoot "01_replay_smoke_joined.log")
+  --audit-count 16 *> (Join-Path $LogRoot "01_replay_smoke_joined.log")
 
 $Manifest = [ordered]@{
   created_at = (Get-Date).ToString("o")
