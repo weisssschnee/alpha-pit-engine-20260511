@@ -2,19 +2,21 @@
 
 decision: `PASS_NONMINUTE_SYSTEM_INTEGRATION_AUDIT_WITH_GAPS`
 registry_fields: `1855`
-minute_panel_columns: `48`
+minute_panel_columns: `231`
 event_panel_columns: `78`
-high_value_gap_count: `717`
+context_panel_columns: `126`
+high_value_gap_count: `544`
 
 ## Integration Status Counts
 
-- `registered_pit_not_panelized`: `1420`
-- `registered_lagged_not_panelized`: `255`
-- `registered_diagnostic_not_panelized`: `82`
-- `registered_not_panelized`: `53`
-- `integrated_event_alignment_panel`: `35`
+- `registered_pit_not_panelized`: `1362`
+- `integrated_nonminute_pit_context_panel`: `189`
+- `registered_lagged_not_panelized`: `93`
+- `integrated_minute_context_panel`: `73`
+- `registered_diagnostic_not_panelized`: `60`
+- `registered_not_panelized`: `37`
+- `integrated_event_alignment_panel`: `34`
 - `blocked_manual_contract`: `5`
-- `integrated_minute_context_panel`: `3`
 - `key_or_metadata_integrated_indirectly`: `2`
 
 ## Interpretation

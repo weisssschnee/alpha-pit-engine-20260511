@@ -1,0 +1,55 @@
+{
+  "created_at": "2026-06-02T13:57:45+00:00",
+  "stratum_name": "zzshare_limit_sentiment_lag1_alias_selected",
+  "source_selection_root": "runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\company_selector_only_lag1_alias",
+  "source_dir": "runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\company_selector_only_lag1_alias",
+  "source_lane": [
+    "cn_zzshare_limit_sentiment_feature_layer"
+  ],
+  "source_generator": [],
+  "field_prefix": [],
+  "field_contains": [],
+  "candidate_contains": [],
+  "max_count": 64,
+  "source_selected_count": 64,
+  "stratum_selected_count": 27,
+  "scope": "frozen-selection slice; no candidate generation, no selector rescoring",
+  "output_root": "runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\zzshare_only_lag1_alias",
+  "short": "aa",
+  "selected_source_lane_counts": {
+    "cn_zzshare_limit_sentiment_feature_layer": 27
+  },
+  "selected_source_generator_counts": {
+    "cn_zzshare_limit_sentiment_factor_pack_v1": 27
+  },
+  "selected_candidate_ids": [
+    "phase3aa_event_0039_cn_zls_v1_zls_open_board_rate_00039",
+    "phase3aa_event_0027_cn_zls_v1_zls_sentiment_direct_zrank_00027",
+    "phase3aa_event_0048_cn_zls_v1_zls_hot_rank_inverse_00048",
+    "phase3aa_event_0011_cn_zls_v1_zls_event_direct_00011",
+    "phase3aa_event_0009_cn_zls_v1_zls_event_direct_00009",
+    "phase3aa_event_0029_cn_zls_v1_zls_sentiment_direct_zrank_00029",
+    "phase3aa_event_0014_cn_zls_v1_zls_max_seal_to_amount_00014",
+    "phase3aa_event_0033_cn_zls_v1_zls_sentiment_direct_zrank_00033",
+    "phase3aa_event_0025_cn_zls_v1_zls_sentiment_direct_zrank_00025",
+    "phase3aa_event_0035_cn_zls_v1_zls_sentiment_direct_zrank_00035",
+    "phase3aa_event_0031_cn_zls_v1_zls_sentiment_direct_zrank_00031",
+    "phase3aa_event_0023_cn_zls_v1_zls_sentiment_direct_zrank_00023",
+    "phase3aa_event_0037_cn_zls_v1_zls_sentiment_direct_zrank_00037",
+    "phase3aa_event_0012_cn_zls_v1_zls_event_direct_zrank_00012",
+    "phase3aa_event_0010_cn_zls_v1_zls_event_direct_zrank_00010",
+    "phase3aa_event_0019_cn_zls_v1_zls_sentiment_direct_zrank_00019",
+    "phase3aa_event_0021_cn_zls_v1_zls_sentiment_direct_zrank_00021",
+    "phase3aa_event_0015_cn_zls_v1_zls_auction_money_to_offer_00015",
+    "phase3aa_event_0047_cn_zls_v1_zls_hot_rank_direct_00047",
+    "phase3aa_event_0005_cn_zls_v1_zls_event_direct_00005",
+    "phase3aa_event_0013_cn_zls_v1_zls_seal_to_amount_00013",
+    "phase3aa_event_0016_cn_zls_v1_zls_auction_turnover_to_amount_00016",
+    "phase3aa_event_0004_cn_zls_v1_zls_event_direct_zrank_00004",
+    "phase3aa_event_0008_cn_zls_v1_zls_event_direct_zrank_00008",
+    "phase3aa_event_0001_cn_zls_v1_zls_event_direct_00001",
+    "phase3aa_event_0003_cn_zls_v1_zls_event_direct_00003",
+    "phase3aa_event_0007_cn_zls_v1_zls_event_direct_00007"
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

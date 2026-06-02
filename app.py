@@ -80,6 +80,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Replay Phase3AA frozen selector output without regenerating candidates.",
     },
+    "phase3aa-stratified-selection-root": {
+        "module": "our_system_phase2.runtime.phase3aa_stratified_selection_root",
+        "diagnostic": False,
+        "description": "Slice a frozen Phase3AA selector output by source/field stratum for replay-compatible audits.",
+    },
+    "phase3aa-stratified-replay-attribution": {
+        "module": "our_system_phase2.runtime.phase3aa_stratified_replay_attribution",
+        "diagnostic": False,
+        "description": "Attribute a Phase3AA stratified replay smoke by source and factor lane.",
+    },
     "phase3aa-asset-preflight": {
         "module": "our_system_phase2.runtime.phase3aa_asset_preflight",
         "diagnostic": False,

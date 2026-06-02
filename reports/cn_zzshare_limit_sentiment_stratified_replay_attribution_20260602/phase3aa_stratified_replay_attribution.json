@@ -1,0 +1,38 @@
+{
+  "decision": "HOLD_STRATIFIED_REPLAY_NO_DEPLOYABLE_SIGNAL",
+  "replay_root": "runtime\\cn_zzshare_limit_sentiment_replay_smoke_lag1_alias_v1_20260602\\zzshare_only\\aa",
+  "audited": 27,
+  "raw_non_gap_replay_pass": 0,
+  "cost_survive": 3,
+  "deployable": 0,
+  "deployable_clusters": 0,
+  "top_cluster_share": 0.0,
+  "median_replay_sortino": -2.434472,
+  "median_turnover": 1.0,
+  "source_lane_counts": {
+    "cn_zzshare_limit_sentiment_feature_layer": 27
+  },
+  "source_generator_counts": {
+    "cn_zzshare_limit_sentiment_factor_pack_v1": 27
+  },
+  "factor_lane_counts": {
+    "zls_open_board_rate": 1,
+    "zls_sentiment_direct_zrank": 10,
+    "zls_hot_rank_inverse": 1,
+    "zls_event_direct": 6,
+    "zls_max_seal_to_amount": 1,
+    "zls_event_direct_zrank": 4,
+    "zls_auction_money_to_offer": 1,
+    "zls_hot_rank_direct": 1,
+    "zls_seal_to_amount": 1,
+    "zls_auction_turnover_to_amount": 1
+  },
+  "outputs": {
+    "rows": "reports\\cn_zzshare_limit_sentiment_stratified_replay_attribution_20260602\\stratified_replay_rows.csv",
+    "by_factor_lane": "reports\\cn_zzshare_limit_sentiment_stratified_replay_attribution_20260602\\by_factor_lane.csv",
+    "by_source_lane": "reports\\cn_zzshare_limit_sentiment_stratified_replay_attribution_20260602\\by_source_lane.csv",
+    "json": "reports\\cn_zzshare_limit_sentiment_stratified_replay_attribution_20260602\\phase3aa_stratified_replay_attribution.json",
+    "markdown": "reports\\cn_zzshare_limit_sentiment_stratified_replay_attribution_20260602\\PHASE3AA_STRATIFIED_REPLAY_ATTRIBUTION.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

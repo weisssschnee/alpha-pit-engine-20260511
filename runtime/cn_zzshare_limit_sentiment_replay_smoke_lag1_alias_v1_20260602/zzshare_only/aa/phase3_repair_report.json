@@ -1,0 +1,638 @@
+{
+  "phase3_version": "phase3-repair-v2-2026-05-12",
+  "created_at": "2026-06-02T14:09:37+00:00",
+  "experiment_id": "phase3h_smoke_from_shared_selection_aa",
+  "ablation_arm": "Phase3AA_G2_event_source_priority",
+  "status": "completed",
+  "objective": "Phase3H smoke from frozen shared selector queue without candidate regeneration.",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_zzshare_selected_v1.parquet",
+  "dataset_role": "stock_pit_panel",
+  "output_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_replay_smoke_lag1_alias_v1_20260602\\zzshare_only\\aa",
+  "source_selection_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\zzshare_only_lag1_alias\\aa",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "phase3e_cumulative_baseline_path": "D:\\HermesWorker\\workspace\\cn_zzshare_limit_sentiment_join_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_selector_vector_baseline_count": 137,
+    "event_bucket": "event_derived_feature_layer",
+    "research_bucket": "research_factor_feature_layer",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields",
+    "shared_candidate_pool_source": "Phase3H_H0_G0_stable",
+    "pool_enrichment": {
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 49,
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "input_candidate_pool_count": 388,
+      "output_candidate_pool_count": 437,
+      "memory_roots": [],
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "include_gate_candidates": false,
+      "include_fundamental_candidates": false,
+      "include_research_factor_candidates": true,
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602.json"
+      ],
+      "pre_dedup_event_source_rows": 49,
+      "factor_pack_source_rows": 49,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool"
+    }
+  },
+  "parameters": {
+    "audit_count": 27,
+    "top_bottom_quantile": 0.02,
+    "strict_cost_bps": 10.0,
+    "low_corr_threshold": 0.8,
+    "recent_quarter_window_count": 2,
+    "recent_warmup_days": 60,
+    "turnover_survival_max_one_way": 0.75
+  },
+  "fixed_contract": {
+    "evaluator": "TDXGP true-limit preferred",
+    "limit_status_preferred_source": "tdxgp_gpjvalue_15_status",
+    "signal_clock": "after_open",
+    "execution_lag_days": 1,
+    "feature_lag_days": 0,
+    "raw_pass_is_diagnostic_only": true
+  },
+  "main_kpi": {
+    "primary": {
+      "cost_turnover_deployable_unique_clusters": 0,
+      "audited_count": 27,
+      "cost_turnover_deployable_unique_clusters_per_audited": 0.0
+    },
+    "secondary": {
+      "unique_return_corr_clusters": 0,
+      "unique_return_corr_clusters_per_audited": 0.0,
+      "new_clusters_not_covered_by_r0": 0,
+      "new_clusters_not_covered_by_r0_per_audited": 0.0,
+      "raw_non_gap_replay_pass": 0,
+      "raw_non_gap_replay_pass_per_audited": 0.0,
+      "top_cluster_raw_pass_share": 0.0,
+      "top_cluster_id": null
+    },
+    "raw_pass_is_diagnostic_only": true
+  },
+  "policy_table": [
+    {
+      "phase3_budget_bucket": "event_derived_feature_layer",
+      "selection_policy": "phase3e_signal_vector_diversified_source_priority_proxy",
+      "audited": 27,
+      "raw_non_gap_replay_pass": 0,
+      "unique_return_corr_clusters": 0,
+      "deployable_unique_clusters": 0,
+      "deployable_cluster_per_audited": 0.0
+    }
+  ],
+  "replay_report": {
+    "portfolio_replay_count": 27,
+    "unique_expression_replay_count": 27,
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-04-10",
+    "cost_bps": 10.0
+  },
+  "signal_cluster_report": {
+    "cluster_count": 24,
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "signal_cluster_entropy": 3.141804,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.074074,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_zls_evt_fd_max_lag1)"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.074074,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_evt_fd_close_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.074074,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_evt_auction_money_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_zls_last_pct_lag1)"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_zls_evt_amount_lag1)"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Neg($ctx_zls_rank_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_lbgd_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_ztjs_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_strong_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_010",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_zb_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_011",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)"
+      },
+      {
+        "signal_cluster_id": "cluster_012",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_lb_h_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_013",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_lb_3_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_014",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_lb_2_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_015",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)"
+      },
+      {
+        "signal_cluster_id": "cluster_016",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_max_lb_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_017",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_uplimit_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_018",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_downlimit_num_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_019",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(ZScore($ctx_zls_evt_up_limit_keep_times_lag1))"
+      },
+      {
+        "signal_cluster_id": "cluster_020",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_zls_zb_num_lag1,Add(Abs($ctx_zls_uplimit_num_lag1),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_021",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_022",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_023",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_zls_evt_auction_turnover_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))"
+      },
+      {
+        "signal_cluster_id": "cluster_024",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.037037,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Div($ctx_zls_evt_auction_money_lag1,Add(Abs($ctx_zls_evt_auction_offer_lag1),0.000001)))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_max_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_close_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_auction_money_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 1.0,
+        "abs_signal_corr": 1.0
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_turnover_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.781154,
+        "abs_signal_corr": 0.781154
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_cluster_id": "cluster_021",
+        "signal_corr": 0.758464,
+        "abs_signal_corr": 0.758464
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.701755,
+        "abs_signal_corr": 0.701755
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_turnover_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_cluster_id": "cluster_021",
+        "signal_corr": 0.691575,
+        "abs_signal_corr": 0.691575
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_turnover_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_cluster_id": "cluster_022",
+        "signal_corr": 0.680231,
+        "abs_signal_corr": 0.680231
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.676654,
+        "abs_signal_corr": 0.676654
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.674258,
+        "abs_signal_corr": 0.674258
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_close_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.645111,
+        "abs_signal_corr": 0.645111
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_auction_money_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.645111,
+        "abs_signal_corr": 0.645111
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.628839,
+        "abs_signal_corr": 0.628839
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.621617,
+        "abs_signal_corr": 0.621617
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_max_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.615259,
+        "abs_signal_corr": 0.615259
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_close_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.615259,
+        "abs_signal_corr": 0.615259
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.564748,
+        "abs_signal_corr": 0.564748
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_auction_money_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.549753,
+        "abs_signal_corr": 0.549753
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.500888,
+        "abs_signal_corr": 0.500888
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.488575,
+        "abs_signal_corr": 0.488575
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.473987,
+        "abs_signal_corr": 0.473987
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.453899,
+        "abs_signal_corr": 0.453899
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.450348,
+        "abs_signal_corr": 0.450348
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.450248,
+        "abs_signal_corr": 0.450248
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_amount_lag1)",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_max_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_cluster_id": "cluster_015",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_cluster_id": "cluster_015",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_turnover_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_cluster_id": "cluster_015",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_money_lag1,Add(Abs($ctx_zls_evt_auction_offer_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_up_limit_keep_times_lag1)",
+        "right_cluster_id": "cluster_015",
+        "signal_corr": 0.450044,
+        "abs_signal_corr": 0.450044
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_amount_lag1)",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.446068,
+        "abs_signal_corr": 0.446068
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_fd_close_lag1,Add(Abs($ctx_zls_evt_amount_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.433832,
+        "abs_signal_corr": 0.433832
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_max_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.406044,
+        "abs_signal_corr": 0.406044
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_auction_money_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.406044,
+        "abs_signal_corr": 0.406044
+      },
+      {
+        "left_expression": "CSRank(ZScore($ctx_zls_evt_fd_close_lag1))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.391522,
+        "abs_signal_corr": 0.391522
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_money_lag1,Add(Abs($ctx_zls_evt_auction_offer_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_turnover_lag1)",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.391302,
+        "abs_signal_corr": 0.391302
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_amount_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_fd_max_lag1)",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.384382,
+        "abs_signal_corr": 0.384382
+      },
+      {
+        "left_expression": "CSRank($ctx_zls_evt_fd_close_lag1)",
+        "right_expression": "CSRank($ctx_zls_evt_amount_lag1)",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.379353,
+        "abs_signal_corr": 0.379353
+      },
+      {
+        "left_expression": "CSRank(Div($ctx_zls_evt_auction_money_lag1,Add(Abs($ctx_zls_evt_auction_offer_lag1),0.000001)))",
+        "right_expression": "CSRank($ctx_zls_evt_auction_money_lag1)",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.378851,
+        "abs_signal_corr": 0.378851
+      }
+    ],
+    "evaluation_start_date": "2026-01-01",
+    "evaluation_end_date": "2026-04-10"
+  },
+  "selector_queue_metrics": {
+    "median_turnover_proxy": null,
+    "median_turnover_structure_risk": 0.0,
+    "median_selected_queue_signal_corr": 0.0
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

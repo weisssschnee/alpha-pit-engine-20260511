@@ -16,6 +16,8 @@ from our_system_phase2.services.phase3e_selectors import (
     write_selector_artifacts,
 )
 from our_system_phase2.services.phase3g_signal_vector_store import Phase3GSignalVectorStore
+from our_system_phase2.services.phase3g_signal_vector_store import DEFAULT_PHASE3G_VECTOR_METADATA
+from our_system_phase2.services.phase3g_signal_vector_store import DEFAULT_PHASE3G_VECTOR_NPZ
 from our_system_phase2.services.stock_pit_phase3_repair import PHASE3H_CUMULATIVE_BASELINE_PATH
 from our_system_phase2.runtime.phase3aa_enrich_shared_candidate_pool import (
     PHASE3AA_ABLATION_ARM,
@@ -111,6 +113,8 @@ def main() -> int:
     parser.add_argument("--signal-sample-size", type=int, default=5000)
     parser.add_argument("--signal-warmup-days", type=int, default=90)
     parser.add_argument("--signal-recent-quarter-window-count", type=int, default=1)
+    parser.add_argument("--signal-vector-npz", type=Path, default=DEFAULT_PHASE3G_VECTOR_NPZ)
+    parser.add_argument("--signal-vector-metadata", type=Path, default=DEFAULT_PHASE3G_VECTOR_METADATA)
     parser.add_argument("--signal-runtime-cache-dir", type=Path, default=Path("runtime/phase3g_signal_vectors/runtime_eval_cache"))
     parser.add_argument("--total-budget", type=int, default=64)
     parser.add_argument("--event-share", type=float, default=0.25)
@@ -131,6 +135,8 @@ def main() -> int:
     default_selected = strip_forbidden_replay_label_rows(list(pool.get("default_selected") or []))
     context = Phase3ERegistryContext.from_path(PHASE3H_CUMULATIVE_BASELINE_PATH)
     signal_store = Phase3GSignalVectorStore(
+        vector_npz=args.signal_vector_npz,
+        metadata_path=args.signal_vector_metadata,
         dataset_path=dataset_path,
         sample_size=max(1, int(args.signal_sample_size)),
         recent_warmup_days=max(1, int(args.signal_warmup_days)),
@@ -195,6 +201,8 @@ def main() -> int:
             "signal_sample_size": int(args.signal_sample_size),
             "signal_warmup_days": int(args.signal_warmup_days),
             "signal_recent_quarter_window_count": int(args.signal_recent_quarter_window_count),
+            "signal_vector_npz": str(args.signal_vector_npz),
+            "signal_vector_metadata": str(args.signal_vector_metadata),
             "research_share": float(args.research_share),
             "signal_runtime_cache_dir": str(args.signal_runtime_cache_dir),
         },

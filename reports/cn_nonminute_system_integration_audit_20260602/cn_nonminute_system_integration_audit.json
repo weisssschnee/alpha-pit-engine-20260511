@@ -3,34 +3,52 @@
   "registry_path": "runtime\\field_registry\\cn_nonminute_field_integration_registry_v1_20260602\\field_registry.csv",
   "minute_panel": "runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
   "event_panel": "runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+  "context_panel": "runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
   "registry_fields": 1855,
-  "minute_panel_columns": 48,
+  "minute_panel_columns": 231,
   "event_panel_columns": 78,
+  "context_panel_columns": 126,
   "integration_status_counts": {
-    "registered_pit_not_panelized": 1420,
-    "registered_lagged_not_panelized": 255,
-    "registered_diagnostic_not_panelized": 82,
-    "registered_not_panelized": 53,
-    "integrated_event_alignment_panel": 35,
+    "registered_pit_not_panelized": 1362,
+    "integrated_nonminute_pit_context_panel": 189,
+    "registered_lagged_not_panelized": 93,
+    "integrated_minute_context_panel": 73,
+    "registered_diagnostic_not_panelized": 60,
+    "registered_not_panelized": 37,
+    "integrated_event_alignment_panel": 34,
     "blocked_manual_contract": 5,
-    "integrated_minute_context_panel": 3,
     "key_or_metadata_integrated_indirectly": 2
   },
   "route_status_counts": [
     {
       "route": "announcement_pit_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 58
+    },
+    {
+      "route": "announcement_pit_context",
       "integration_status": "registered_pit_not_panelized",
-      "count": 1420
+      "count": 1362
+    },
+    {
+      "route": "event_disclosure_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 22
     },
     {
       "route": "event_disclosure_context",
       "integration_status": "registered_diagnostic_not_panelized",
-      "count": 82
+      "count": 60
     },
     {
       "route": "lagged_daily_context",
       "integration_status": "integrated_minute_context_panel",
-      "count": 3
+      "count": 72
+    },
+    {
+      "route": "lagged_daily_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 93
     },
     {
       "route": "lagged_daily_context",
@@ -40,12 +58,17 @@
     {
       "route": "lagged_daily_context",
       "integration_status": "registered_lagged_not_panelized",
-      "count": 255
+      "count": 93
+    },
+    {
+      "route": "lagged_market_regime_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 14
     },
     {
       "route": "lagged_market_regime_context",
       "integration_status": "registered_not_panelized",
-      "count": 40
+      "count": 26
     },
     {
       "route": "manual_contract_required",
@@ -60,16 +83,26 @@
     {
       "route": "timestamped_stock_intraday_event",
       "integration_status": "integrated_event_alignment_panel",
-      "count": 22
+      "count": 21
+    },
+    {
+      "route": "timestamped_stock_intraday_event",
+      "integration_status": "integrated_minute_context_panel",
+      "count": 1
+    },
+    {
+      "route": "tradability_calendar_context",
+      "integration_status": "integrated_nonminute_pit_context_panel",
+      "count": 2
     },
     {
       "route": "tradability_calendar_context",
       "integration_status": "registered_not_panelized",
-      "count": 13
+      "count": 11
     }
   ],
   "table_count": 25,
-  "high_value_gap_count": 717,
+  "high_value_gap_count": 544,
   "outputs": {
     "field_integration": "reports\\cn_nonminute_system_integration_audit_20260602\\nonminute_field_system_integration.csv",
     "table_integration": "reports\\cn_nonminute_system_integration_audit_20260602\\nonminute_table_system_integration.csv",
