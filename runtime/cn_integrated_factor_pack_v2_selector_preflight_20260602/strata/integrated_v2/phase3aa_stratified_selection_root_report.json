@@ -1,0 +1,48 @@
+{
+  "created_at": "2026-06-02T15:07:59+00:00",
+  "stratum_name": "cn_integrated_factor_pack_v2_selected",
+  "source_selection_root": "runtime\\cn_integrated_factor_pack_v2_selector_preflight_20260602\\selector_only_foreground\\aa",
+  "source_dir": "runtime\\cn_integrated_factor_pack_v2_selector_preflight_20260602\\selector_only_foreground\\aa",
+  "source_lane": [],
+  "source_generator": [
+    "cn_integrated_factor_pack_v2"
+  ],
+  "field_prefix": [],
+  "field_contains": [],
+  "candidate_contains": [],
+  "max_count": 64,
+  "source_selected_count": 64,
+  "stratum_selected_count": 20,
+  "scope": "frozen-selection slice; no candidate generation, no selector rescoring",
+  "output_root": "runtime\\cn_integrated_factor_pack_v2_selector_preflight_20260602\\strata\\integrated_v2",
+  "short": "integrated_v2",
+  "selected_source_lane_counts": {
+    "cn_integrated_feature_layer": 20
+  },
+  "selected_source_generator_counts": {
+    "cn_integrated_factor_pack_v2": 20
+  },
+  "selected_candidate_ids": [
+    "phase3aa_event_0217_cn_integrated_v2_quality_x_rzrq_flow_00217",
+    "phase3aa_event_0187_cn_integrated_v2_quality_size_residual_00187",
+    "phase3aa_event_0145_cn_integrated_v2_quality_x_minute_pressure_00145",
+    "phase3aa_event_0203_cn_integrated_v2_quality_x_minute_pressure_00203",
+    "phase3aa_event_0211_cn_integrated_v2_quality_x_minute_pressure_00211",
+    "phase3aa_event_0158_cn_integrated_v2_quality_x_rzrq_flow_00158",
+    "phase3aa_event_0219_cn_integrated_v2_quality_x_rzrq_flow_00219",
+    "phase3aa_event_0218_cn_integrated_v2_quality_x_rzrq_flow_00218",
+    "phase3aa_event_0216_cn_integrated_v2_quality_x_rzrq_flow_00216",
+    "phase3aa_event_0150_cn_integrated_v2_quality_x_minute_pressure_00150",
+    "phase3aa_event_0215_cn_integrated_v2_quality_x_rzrq_flow_00215",
+    "phase3aa_event_0154_cn_integrated_v2_quality_x_rzrq_flow_00154",
+    "phase3aa_event_0136_cn_integrated_v2_quality_x_minute_pressure_00136",
+    "phase3aa_event_0214_cn_integrated_v2_quality_x_minute_pressure_00214",
+    "phase3aa_event_0157_cn_integrated_v2_quality_x_rzrq_flow_00157",
+    "phase3aa_event_0198_cn_integrated_v2_quality_x_minute_pressure_00198",
+    "phase3aa_event_0142_cn_integrated_v2_quality_x_minute_pressure_00142",
+    "phase3aa_event_0137_cn_integrated_v2_quality_x_minute_pressure_00137",
+    "phase3aa_event_0155_cn_integrated_v2_quality_x_rzrq_flow_00155",
+    "phase3aa_event_0245_cn_integrated_v2_quality_direct_control_00245"
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

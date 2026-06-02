@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-06-02T16:07:33+00:00",
+  "decision": "PASS_REPLAY_FIELD_AVAILABILITY",
+  "selection_inputs": "runtime\\cn_integrated_factor_pack_v2_selector_preflight_20260602\\strata\\integrated_v2\\integrated_v2\\phase3_strict_selection_inputs.json",
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_selected_local.parquet",
+  "dataset_field_count": 95,
+  "selected_count": 20,
+  "selected_executable_count": 20,
+  "selected_with_missing_fields": 0,
+  "integrated_selected_count": 20,
+  "integrated_selected_executable_count": 20,
+  "integrated_selected_with_missing_fields": 0,
+  "by_lane_status": [
+    {
+      "source_lane": "cn_integrated_feature_layer",
+      "status": "executable",
+      "count": 20
+    }
+  ],
+  "missing_field_counts": [],
+  "blocking_reason": "",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

@@ -1,0 +1,11 @@
+factor_lane,candidate_count
+minute_amount_share_daily,6
+minute_vs_daily_vwap_residual,8
+quality_direct_control,5
+quality_holder_residual,30
+quality_minus_balance_risk,15
+quality_size_residual,15
+quality_x_market_breadth,60
+quality_x_minute_pressure,90
+quality_x_rzrq_flow,90
+rzrq_size_normalized,36

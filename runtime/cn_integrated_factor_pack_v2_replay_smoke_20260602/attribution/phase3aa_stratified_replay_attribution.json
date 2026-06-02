@@ -1,0 +1,33 @@
+{
+  "decision": "REVIEW_STRATIFIED_REPLAY_HAS_DEPLOYABLE_BUT_NEEDS_CONCENTRATION_AUDIT",
+  "replay_root": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\aa",
+  "audited": 20,
+  "raw_non_gap_replay_pass": 11,
+  "row_portfolio_replay_pass": 11,
+  "cost_survive": 8,
+  "row_deployable": 0,
+  "deployable_clusters": 3,
+  "top_cluster_share": 0.272727,
+  "median_replay_sortino": -1.099279,
+  "median_turnover": 0.5125,
+  "source_lane_counts": {
+    "cn_integrated_feature_layer": 20
+  },
+  "source_generator_counts": {
+    "cn_integrated_factor_pack_v2": 20
+  },
+  "factor_lane_counts": {
+    "quality_x_rzrq_flow": 9,
+    "quality_size_residual": 1,
+    "quality_x_minute_pressure": 9,
+    "quality_direct_control": 1
+  },
+  "outputs": {
+    "rows": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\attribution\\stratified_replay_rows.csv",
+    "by_factor_lane": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\attribution\\by_factor_lane.csv",
+    "by_source_lane": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\attribution\\by_source_lane.csv",
+    "json": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\attribution\\phase3aa_stratified_replay_attribution.json",
+    "markdown": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\attribution\\PHASE3AA_STRATIFIED_REPLAY_ATTRIBUTION.md"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

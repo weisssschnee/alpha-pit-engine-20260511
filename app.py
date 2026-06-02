@@ -300,6 +300,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build integrated candidate expressions from 1min and non-1min PIT context fields with search-memory metadata.",
     },
+    "cn-integrated-factor-pack-v2": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v2",
+        "diagnostic": False,
+        "description": "Build integrated candidate expressions v2 with quality residuals and context interactions after v1 replay attribution.",
+    },
     "cn-integrated-factor-pack-selector-preflight": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_selector_preflight",
         "diagnostic": False,

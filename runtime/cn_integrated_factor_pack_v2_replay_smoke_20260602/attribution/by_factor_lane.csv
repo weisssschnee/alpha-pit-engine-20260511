@@ -1,0 +1,5 @@
+factor_lane,audited,raw_non_gap_replay_pass,cost_survive,deployable,median_replay_sortino,median_turnover,median_strict_cost_adjusted_sortino
+quality_x_minute_pressure,9,5,4,0,-1.518933,0.5,-1.833745
+quality_x_rzrq_flow,9,6,4,0,-0.5227305,0.65,-0.305004
+quality_direct_control,1,0,0,0,-0.915534,0.2,-0.532648
+quality_size_residual,1,0,0,0,-2.33917,0.5,-1.88648

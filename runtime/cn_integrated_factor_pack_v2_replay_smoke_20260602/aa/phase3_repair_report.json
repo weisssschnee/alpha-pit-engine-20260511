@@ -1,0 +1,557 @@
+{
+  "phase3_version": "phase3-repair-v2-2026-05-12",
+  "created_at": "2026-06-02T16:12:54+00:00",
+  "experiment_id": "phase3h_smoke_from_shared_selection_aa",
+  "ablation_arm": "Phase3AA_G2_event_source_priority",
+  "status": "completed",
+  "objective": "Phase3H smoke from frozen shared selector queue without candidate regeneration.",
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_selected_local.parquet",
+  "dataset_role": "stock_pit_panel",
+  "output_root": "runtime\\cn_integrated_factor_pack_v2_replay_smoke_20260602\\aa",
+  "source_selection_root": "runtime\\cn_integrated_factor_pack_v2_selector_preflight_20260602\\replay_input\\aa",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "phase3e_cumulative_baseline_path": "D:\\HermesWorker\\workspace\\cn_zzshare_limit_sentiment_join_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_selector_vector_baseline_count": 137,
+    "event_bucket": "event_derived_feature_layer",
+    "research_bucket": "research_factor_feature_layer",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields",
+    "shared_candidate_pool_source": "Phase3H_H0_G0_stable",
+    "pool_enrichment": {
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 256,
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "input_candidate_pool_count": 388,
+      "output_candidate_pool_count": 644,
+      "memory_roots": [],
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "include_gate_candidates": false,
+      "include_fundamental_candidates": false,
+      "include_research_factor_candidates": true,
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v2_20260602.json"
+      ],
+      "pre_dedup_event_source_rows": 355,
+      "factor_pack_source_rows": 355,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool"
+    }
+  },
+  "parameters": {
+    "audit_count": 20,
+    "top_bottom_quantile": 0.02,
+    "strict_cost_bps": 10.0,
+    "low_corr_threshold": 0.8,
+    "recent_quarter_window_count": 1,
+    "recent_warmup_days": 60,
+    "turnover_survival_max_one_way": 0.75
+  },
+  "fixed_contract": {
+    "evaluator": "TDXGP true-limit preferred",
+    "limit_status_preferred_source": "tdxgp_gpjvalue_15_status",
+    "signal_clock": "after_open",
+    "execution_lag_days": 1,
+    "feature_lag_days": 0,
+    "raw_pass_is_diagnostic_only": true
+  },
+  "main_kpi": {
+    "primary": {
+      "cost_turnover_deployable_unique_clusters": 3,
+      "audited_count": 20,
+      "cost_turnover_deployable_unique_clusters_per_audited": 0.15
+    },
+    "secondary": {
+      "unique_return_corr_clusters": 8,
+      "unique_return_corr_clusters_per_audited": 0.4,
+      "new_clusters_not_covered_by_r0": 8,
+      "new_clusters_not_covered_by_r0_per_audited": 0.4,
+      "raw_non_gap_replay_pass": 11,
+      "raw_non_gap_replay_pass_per_audited": 0.55,
+      "top_cluster_raw_pass_share": 0.272727,
+      "top_cluster_id": "cluster_010"
+    },
+    "raw_pass_is_diagnostic_only": true
+  },
+  "policy_table": [
+    {
+      "phase3_budget_bucket": "fundamental_pit_feature_layer",
+      "selection_policy": "phase3e_signal_vector_diversified_source_priority_proxy",
+      "audited": 1,
+      "raw_non_gap_replay_pass": 0,
+      "unique_return_corr_clusters": 0,
+      "deployable_unique_clusters": 0,
+      "deployable_cluster_per_audited": 0.0
+    },
+    {
+      "phase3_budget_bucket": "research_factor_feature_layer",
+      "selection_policy": "phase3e_signal_vector_diversified_source_priority_proxy",
+      "audited": 19,
+      "raw_non_gap_replay_pass": 11,
+      "unique_return_corr_clusters": 8,
+      "deployable_unique_clusters": 3,
+      "deployable_cluster_per_audited": 0.157895
+    }
+  ],
+  "replay_report": {
+    "portfolio_replay_count": 20,
+    "unique_expression_replay_count": 20,
+    "evaluation_start_date": "2026-04-01",
+    "evaluation_end_date": "2026-04-10",
+    "cost_bps": 10.0
+  },
+  "signal_cluster_report": {
+    "cluster_count": 15,
+    "low_corr_threshold_abs_signal_corr": 0.8,
+    "signal_cluster_entropy": 2.622996,
+    "clusters": [
+      {
+        "signal_cluster_id": "cluster_010",
+        "candidate_count": 3,
+        "cluster_budget_share": 0.15,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 3,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_amount)))"
+      },
+      {
+        "signal_cluster_id": "cluster_003",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 2,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_vol)))"
+      },
+      {
+        "signal_cluster_id": "cluster_008",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 2,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))"
+      },
+      {
+        "signal_cluster_id": "cluster_012",
+        "candidate_count": 2,
+        "cluster_budget_share": 0.1,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))"
+      },
+      {
+        "signal_cluster_id": "cluster_001",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank($ctx_fund_bs_cash_to_assets)"
+      },
+      {
+        "signal_cluster_id": "cluster_002",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))"
+      },
+      {
+        "signal_cluster_id": "cluster_004",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))"
+      },
+      {
+        "signal_cluster_id": "cluster_005",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg)))"
+      },
+      {
+        "signal_cluster_id": "cluster_006",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg3d)))"
+      },
+      {
+        "signal_cluster_id": "cluster_007",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg5d)))"
+      },
+      {
+        "signal_cluster_id": "cluster_009",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg10d)))"
+      },
+      {
+        "signal_cluster_id": "cluster_011",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))"
+      },
+      {
+        "signal_cluster_id": "cluster_013",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 1,
+        "cluster_strict_pass_rate": 1.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg)))"
+      },
+      {
+        "signal_cluster_id": "cluster_014",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 1,
+        "cluster_replay_pass_rate": 1.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg5d)))"
+      },
+      {
+        "signal_cluster_id": "cluster_015",
+        "candidate_count": 1,
+        "cluster_budget_share": 0.05,
+        "strict_pass_count": 0,
+        "cluster_strict_pass_rate": 0.0,
+        "cluster_replay_contribution_count": 0,
+        "cluster_replay_pass_rate": 0.0,
+        "representative_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg10d)))"
+      }
+    ],
+    "top_pairwise_abs_correlations": [
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.993705,
+        "abs_signal_corr": 0.993705
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_vol)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.991728,
+        "abs_signal_corr": 0.991728
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_amount_day)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": 0.988445,
+        "abs_signal_corr": 0.988445
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_amount_day)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": 0.986246,
+        "abs_signal_corr": 0.986246
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.984448,
+        "abs_signal_corr": 0.984448
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg3d)))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": 0.672725,
+        "abs_signal_corr": 0.672725
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_amount)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.60012,
+        "abs_signal_corr": 0.60012
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.598888,
+        "abs_signal_corr": 0.598888
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.598032,
+        "abs_signal_corr": 0.598032
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.596747,
+        "abs_signal_corr": 0.596747
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_amount_day)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": 0.583027,
+        "abs_signal_corr": 0.583027
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.559806,
+        "abs_signal_corr": 0.559806
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_cluster_id": "cluster_007",
+        "signal_corr": 0.55785,
+        "abs_signal_corr": 0.55785
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_amount_day)))",
+        "right_cluster_id": "cluster_010",
+        "signal_corr": 0.556391,
+        "abs_signal_corr": 0.556391
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.554224,
+        "abs_signal_corr": 0.554224
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_vol)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.543036,
+        "abs_signal_corr": 0.543036
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_vol)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.537368,
+        "abs_signal_corr": 0.537368
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg3d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.477591,
+        "abs_signal_corr": 0.477591
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_cluster_id": "cluster_014",
+        "signal_corr": 0.4773,
+        "abs_signal_corr": 0.4773
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.404894,
+        "abs_signal_corr": 0.404894
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.391072,
+        "abs_signal_corr": 0.391072
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg3d)))",
+        "right_cluster_id": "cluster_006",
+        "signal_corr": 0.38954,
+        "abs_signal_corr": 0.38954
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first15_vol)))",
+        "right_cluster_id": "cluster_003",
+        "signal_corr": 0.344387,
+        "abs_signal_corr": 0.344387
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.30791,
+        "abs_signal_corr": 0.30791
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.30526,
+        "abs_signal_corr": 0.30526
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg)))",
+        "right_cluster_id": "cluster_013",
+        "signal_corr": 0.299377,
+        "abs_signal_corr": 0.299377
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_vol)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.299317,
+        "abs_signal_corr": 0.299317
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.293983,
+        "abs_signal_corr": 0.293983
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first15_vol)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.282833,
+        "abs_signal_corr": 0.282833
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first5_amount)))",
+        "right_cluster_id": "cluster_008",
+        "signal_corr": 0.281082,
+        "abs_signal_corr": 0.281082
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.269377,
+        "abs_signal_corr": 0.269377
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.266915,
+        "abs_signal_corr": 0.266915
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_vol)))",
+        "right_cluster_id": "cluster_012",
+        "signal_corr": 0.260603,
+        "abs_signal_corr": 0.260603
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.259613,
+        "abs_signal_corr": 0.259613
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg10d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg)))",
+        "right_cluster_id": "cluster_005",
+        "signal_corr": 0.256658,
+        "abs_signal_corr": 0.256658
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqjmg5d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_011",
+        "signal_corr": 0.254598,
+        "abs_signal_corr": 0.254598
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($m1_first30_vol)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.253226,
+        "abs_signal_corr": 0.253226
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_amount_day)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.25148,
+        "abs_signal_corr": 0.25148
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_cf_operate_cash_to_netprofit),ZScore($m1_first30_amount)))",
+        "right_expression": "CSRank(Sub(ZScore($ctx_fund_ps_research_to_income),ZScore($amount)))",
+        "right_cluster_id": "cluster_002",
+        "signal_corr": 0.248309,
+        "abs_signal_corr": 0.248309
+      },
+      {
+        "left_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqjmg3d)))",
+        "right_expression": "CSRank(Mul(ZScore($ctx_fund_ps_research_to_income),ZScore($ctx_rzrq_rqmcl)))",
+        "right_cluster_id": "cluster_004",
+        "signal_corr": 0.247891,
+        "abs_signal_corr": 0.247891
+      }
+    ],
+    "evaluation_start_date": "2026-04-01",
+    "evaluation_end_date": "2026-04-10"
+  },
+  "selector_queue_metrics": {
+    "median_turnover_proxy": null,
+    "median_turnover_structure_risk": 0.0,
+    "median_selected_queue_signal_corr": 0.0
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
