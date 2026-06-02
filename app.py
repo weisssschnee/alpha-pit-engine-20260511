@@ -325,6 +325,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build selected-row PIT sidecar for canonical ZZShare event and sentiment fields.",
     },
+    "cn-zzshare-limit-sentiment-joined-panel-v1": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_joined_panel_v1",
+        "diagnostic": False,
+        "description": "Join ZZShare selected sidecar fields into an existing integrated replay panel.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,
