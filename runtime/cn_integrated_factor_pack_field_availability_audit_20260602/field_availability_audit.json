@@ -1,0 +1,278 @@
+{
+  "created_at": "2026-06-02T06:21:17+00:00",
+  "decision": "HOLD_REPLAY_FIELD_JOIN_REQUIRED",
+  "selection_inputs": "D:\\p3cn_integrated\\selector_only_20260602\\selector\\aa\\phase3_strict_selection_inputs.json",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "dataset_field_count": 46,
+  "selected_count": 64,
+  "selected_executable_count": 24,
+  "selected_with_missing_fields": 40,
+  "integrated_selected_count": 35,
+  "integrated_selected_executable_count": 0,
+  "integrated_selected_with_missing_fields": 35,
+  "by_lane_status": [
+    {
+      "source_lane": "cn_integrated_feature_layer",
+      "status": "missing_fields",
+      "count": 35
+    },
+    {
+      "source_lane": "legacy_unknown",
+      "status": "executable",
+      "count": 24
+    },
+    {
+      "source_lane": "legacy_unknown",
+      "status": "missing_fields",
+      "count": 5
+    }
+  ],
+  "missing_field_counts": [
+    {
+      "field": "vwap",
+      "count": 5,
+      "candidate_examples": [
+        "agnostic-freeform-551385e7478d",
+        "agnostic-freeform-806d5235bba6",
+        "agnostic-freeform-a7ad8beeeacf",
+        "agnostic-freeform-0b97263ee18f",
+        "agnostic-freeform-a89759d3657a"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzche3d",
+      "count": 2,
+      "candidate_examples": [
+        "phase3aa_event_0197_cn_integrated_v1_rzrq_direct_rank_zrank_00197",
+        "phase3aa_event_0196_cn_integrated_v1_rzrq_direct_rank_00196"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzche10d",
+      "count": 2,
+      "candidate_examples": [
+        "phase3aa_event_0194_cn_integrated_v1_rzrq_direct_rank_00194",
+        "phase3aa_event_0195_cn_integrated_v1_rzrq_direct_rank_zrank_00195"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzjme5d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0206_cn_integrated_v1_rzrq_direct_rank_00206"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzmre10d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0210_cn_integrated_v1_rzrq_direct_rank_00210"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzjme3d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0204_cn_integrated_v1_rzrq_direct_rank_00204"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzjme10d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0202_cn_integrated_v1_rzrq_direct_rank_00202"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzmre",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0208_cn_integrated_v1_rzrq_direct_rank_00208"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rqmcl5d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0188_cn_integrated_v1_rzrq_direct_rank_00188"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzjme",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0200_cn_integrated_v1_rzrq_direct_rank_00200"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rqye",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0190_cn_integrated_v1_rzrq_direct_rank_00190"
+      ]
+    },
+    {
+      "field": "m1_first15_range",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0135_cn_integrated_v1_minute_direct_rank_zrank_00135"
+      ]
+    },
+    {
+      "field": "m1_first5_range",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0163_cn_integrated_v1_minute_direct_rank_zrank_00163"
+      ]
+    },
+    {
+      "field": "m1_first30_range",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0149_cn_integrated_v1_minute_direct_rank_zrank_00149"
+      ]
+    },
+    {
+      "field": "ctx_holder_avg_market_cap",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0049_cn_integrated_v1_holder_structure_direct_00049"
+      ]
+    },
+    {
+      "field": "m1_first30_last_return_vs_open",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0146_cn_integrated_v1_minute_direct_rank_zrank_00146"
+      ]
+    },
+    {
+      "field": "m1_first30_vwap",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0152_cn_integrated_v1_minute_direct_rank_00152"
+      ]
+    },
+    {
+      "field": "m1_first5_last_return_vs_open",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0159_cn_integrated_v1_minute_direct_rank_00159"
+      ]
+    },
+    {
+      "field": "m1_first5_low",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0161_cn_integrated_v1_minute_direct_rank_00161"
+      ]
+    },
+    {
+      "field": "m1_first30_low",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0147_cn_integrated_v1_minute_direct_rank_00147"
+      ]
+    },
+    {
+      "field": "m1_first5_high",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0157_cn_integrated_v1_minute_direct_rank_00157"
+      ]
+    },
+    {
+      "field": "m1_first15_high",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0129_cn_integrated_v1_minute_direct_rank_00129"
+      ]
+    },
+    {
+      "field": "m1_first15_low",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0133_cn_integrated_v1_minute_direct_rank_00133"
+      ]
+    },
+    {
+      "field": "m1_day_high",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0123_cn_integrated_v1_minute_direct_rank_00123"
+      ]
+    },
+    {
+      "field": "ctx_fund_bs_debt_to_assets",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0040_cn_integrated_v1_fundamental_risk_inverse_00040"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rqmcl3d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0186_cn_integrated_v1_rzrq_direct_rank_00186"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rqmcl10d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0184_cn_integrated_v1_rzrq_direct_rank_00184"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzche5d",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0198_cn_integrated_v1_rzrq_direct_rank_00198"
+      ]
+    },
+    {
+      "field": "ctx_rzrq_rzche",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0192_cn_integrated_v1_rzrq_direct_rank_00192"
+      ]
+    },
+    {
+      "field": "ctx_fund_cf_operate_cash_to_netprofit",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0036_cn_integrated_v1_fundamental_quality_direct_00036"
+      ]
+    },
+    {
+      "field": "ctx_fund_ps_operate_profit_margin",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0034_cn_integrated_v1_fundamental_quality_direct_00034"
+      ]
+    },
+    {
+      "field": "ctx_fund_ps_netprofit_margin",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0032_cn_integrated_v1_fundamental_quality_direct_00032"
+      ]
+    },
+    {
+      "field": "ctx_fund_bs_cash_to_assets",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0030_cn_integrated_v1_fundamental_quality_direct_00030"
+      ]
+    },
+    {
+      "field": "ctx_fund_ps_research_to_income",
+      "count": 1,
+      "candidate_examples": [
+        "phase3aa_event_0038_cn_integrated_v1_fundamental_quality_direct_00038"
+      ]
+    }
+  ],
+  "blocking_reason": "Selected queue references fields that are not present in the replay PIT panel.",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
