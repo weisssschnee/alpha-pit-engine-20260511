@@ -315,6 +315,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build ZZShare limit/sentiment candidate expressions from the PIT-safe route plan.",
     },
+    "cn-zzshare-limit-sentiment-canonicalize-v1": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_canonicalize_v1",
+        "diagnostic": False,
+        "description": "Canonicalize ZZShare limit/sentiment raw silver into stock-date event and daily context grains.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,
