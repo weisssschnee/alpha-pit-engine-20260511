@@ -1,0 +1,6 @@
+{"selected_count": 13, "source_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_replay_smoke_ctxonly_v1_20260602\\selection\\aa", "stage": "start_smoke_from_selection", "time": "2026-06-02T12:05:41+00:00"}
+{"stage": "strict_audit_done", "strict_row_count": 13, "time": "2026-06-02T12:05:54+00:00"}
+{"stage": "portfolio_replay_done", "strict_row_count": 13, "time": "2026-06-02T12:06:06+00:00"}
+{"stage": "signal_cluster_done", "strict_row_count": 13, "time": "2026-06-02T12:06:16+00:00"}
+{"stage": "strict_rows_written", "strict_row_count": 13, "time": "2026-06-02T12:06:16+00:00"}
+{"stage": "report_written", "status": "completed", "time": "2026-06-02T12:06:16+00:00"}

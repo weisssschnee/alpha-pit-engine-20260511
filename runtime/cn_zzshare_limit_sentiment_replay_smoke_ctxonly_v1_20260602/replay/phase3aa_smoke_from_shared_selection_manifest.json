@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-06-02T12:06:16+00:00",
+  "selection_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_replay_smoke_ctxonly_v1_20260602\\selection",
+  "arm": {
+    "short": "aa",
+    "arm": "CN_ZZShare_Limit_Sentiment_CTX_DailySafe_ReplaySmoke",
+    "audit_count": 13,
+    "deployable_clusters": 0,
+    "top_cluster_share": 1.0,
+    "median_turnover_proxy": null,
+    "output_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_replay_smoke_ctxonly_v1_20260602\\replay\\aa"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

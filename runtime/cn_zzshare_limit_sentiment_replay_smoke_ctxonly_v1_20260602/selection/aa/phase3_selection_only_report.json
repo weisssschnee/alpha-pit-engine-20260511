@@ -1,0 +1,115 @@
+{
+  "ablation_arm": "CN_ZZShare_Limit_Sentiment_CTX_DailySafe_ReplaySmoke",
+  "ablation_design": {
+    "description": "Frozen replay smoke for ZZShare lagged daily context candidates only; excludes evt_zls intraday event fields.",
+    "event_bucket": "event_derived_feature_layer",
+    "excluded": "evt_zls_* requires lagged daily materialization or minute/event-time evaluator",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_selector_vector_baseline_count": 137,
+    "phase3e_cumulative_baseline_path": "D:\\HermesWorker\\workspace\\cn_zzshare_limit_sentiment_join_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "pool_enrichment": {
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 49,
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\factor_packs\\cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602.json"
+      ],
+      "factor_pack_source_rows": 49,
+      "include_fundamental_candidates": false,
+      "include_gate_candidates": false,
+      "include_research_factor_candidates": true,
+      "input_candidate_pool_count": 388,
+      "memory_roots": [],
+      "output_candidate_pool_count": 437,
+      "pre_dedup_event_source_rows": 49,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool",
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29"
+    },
+    "queue_mode": "zzshare_ctx_lag1_daily_safe_only",
+    "replay_label_selection_forbidden": true,
+    "research_bucket": "research_factor_feature_layer",
+    "shared_candidate_pool_source": "Phase3H_H0_G0_stable",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields"
+  },
+  "created_at": "2026-06-02T11:48:07+00:00",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_zzshare_selected_v1.parquet",
+  "dataset_role": "stock_pit_panel",
+  "experiment_id": "cn_zzshare_limit_sentiment_replay_smoke_ctxonly_v1_20260602",
+  "output_root": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\selector_only\\aa",
+  "parameters": {
+    "budgets": {
+      "agnostic_freeform_ast": 7,
+      "ast_failure_aware_repair": 7,
+      "event_derived_feature_layer": 19,
+      "formula_gen_v2_defined": 0,
+      "formula_gen_v2_repair_expansion": 4,
+      "novelty_diagnostic": 0,
+      "r0_cem_led": 14,
+      "replay_aware_residual": 1,
+      "research_factor_feature_layer": 12
+    },
+    "candidate_pool_count": 220,
+    "candidate_pool_count_before_prefilter": 437,
+    "default_selected_count": 64,
+    "pool_cap": 220,
+    "research_share": 0.18,
+    "selected_count": 13,
+    "selector_baseline_path": "D:\\HermesWorker\\workspace\\cn_zzshare_limit_sentiment_join_20260602\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "signal_recent_quarter_window_count": 1,
+    "signal_runtime_cache_dir": "D:\\HermesWorker\\runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\signal_vector_cache",
+    "signal_sample_size": 3000,
+    "signal_warmup_days": 60,
+    "strict_audit_budget": 13
+  },
+  "phase3_version": "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29",
+  "schema_version": "phase2-v2_1-prototype-v1",
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_zzshare_limit_sentiment_feature_layer": 49,
+      "unknown": 171
+    },
+    "event_candidates_in_pool": 49,
+    "event_candidates_selected": 27,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "fundamental_candidates_in_pool": 0,
+    "fundamental_candidates_selected": 0,
+    "research_candidates_in_pool": 0,
+    "research_candidates_selected": 0,
+    "selected_factor_lane_counts": {
+      "zls_hot_rank_direct": 1,
+      "zls_hot_rank_inverse": 1,
+      "zls_ladder_to_limit_ratio": 1,
+      "zls_sentiment_direct_zrank": 10
+    },
+    "selected_source_counts": {
+      "cn_zzshare_limit_sentiment_feature_layer": 13
+    },
+    "signal_vector_proxy_requirement_pass": true
+  },
+  "status": "selection_frozen_for_zzshare_ctx_daily_replay_smoke"
+}
