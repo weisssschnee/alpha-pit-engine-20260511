@@ -330,6 +330,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Join ZZShare selected sidecar fields into an existing integrated replay panel.",
     },
+    "cn-zzshare-limit-sentiment-field-availability-gate": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_field_availability_gate",
+        "diagnostic": False,
+        "description": "Check ZZShare factor-pack expression fields against the joined replay panel before selector/replay.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,
