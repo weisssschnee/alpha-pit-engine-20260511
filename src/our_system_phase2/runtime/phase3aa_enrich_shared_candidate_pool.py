@@ -118,11 +118,13 @@ def _event_rows(
     include_gate_candidates: bool,
     include_fundamental_candidates: bool,
     include_research_factor_candidates: bool,
+    factor_pack_only: bool,
     factor_pack_paths: list[Path],
 ) -> list[dict[str, Any]]:
     rows = []
-    rows.extend(limit_candidate_rows(max_per_role=max_per_role))
-    rows.extend(z46_candidate_rows())
+    if not factor_pack_only:
+        rows.extend(limit_candidate_rows(max_per_role=max_per_role))
+        rows.extend(z46_candidate_rows())
     rows.extend(_factor_pack_rows(factor_pack_paths))
     if not include_gate_candidates:
         rows = [row for row in rows if str(row.get("diagnostic_role") or "") != "r3_secondary_gate"]
@@ -157,6 +159,7 @@ def enrich_pool(
     include_gate_candidates: bool = False,
     include_fundamental_candidates: bool = False,
     include_research_factor_candidates: bool = False,
+    factor_pack_only: bool = False,
     factor_pack_paths: list[Path] | None = None,
 ) -> dict[str, Any]:
     dataset_role = str(pool.get("dataset_role") or "") or None
@@ -174,6 +177,7 @@ def enrich_pool(
         include_gate_candidates=include_gate_candidates,
         include_fundamental_candidates=include_fundamental_candidates,
         include_research_factor_candidates=include_research_factor_candidates,
+        factor_pack_only=factor_pack_only,
         factor_pack_paths=factor_pack_paths,
     )
     for raw in pre_dedup_source_rows:
@@ -207,6 +211,7 @@ def enrich_pool(
         "include_gate_candidates": bool(include_gate_candidates),
         "include_fundamental_candidates": bool(include_fundamental_candidates),
         "include_research_factor_candidates": bool(include_research_factor_candidates),
+        "factor_pack_only": bool(factor_pack_only),
         "factor_pack_paths": [str(path) for path in factor_pack_paths],
         "pre_dedup_event_source_rows": len(pre_dedup_source_rows),
         "factor_pack_source_rows": len(_factor_pack_rows(factor_pack_paths)),
@@ -225,6 +230,7 @@ def main() -> int:
     parser.add_argument("--include-gate-candidates", action="store_true")
     parser.add_argument("--include-fundamental-candidates", action="store_true")
     parser.add_argument("--include-research-factor-candidates", action="store_true")
+    parser.add_argument("--factor-pack-only", action="store_true")
     parser.add_argument("--factor-pack", type=Path, action="append", default=[])
     parser.add_argument("--use-default-cn-factor-pack", action="store_true")
     args = parser.parse_args()
@@ -241,6 +247,7 @@ def main() -> int:
         include_gate_candidates=bool(args.include_gate_candidates),
         include_fundamental_candidates=bool(args.include_fundamental_candidates),
         include_research_factor_candidates=bool(args.include_research_factor_candidates),
+        factor_pack_only=bool(args.factor_pack_only),
         factor_pack_paths=factor_packs,
     )
     enriched["created_at"] = utc_now_iso()

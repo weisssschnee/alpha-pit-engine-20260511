@@ -84,6 +84,7 @@ def main() -> int:
     parser.add_argument("--use-default-cn-factor-pack", action="store_true")
     parser.add_argument("--include-fundamental-candidates", action="store_true")
     parser.add_argument("--include-research-factor-candidates", action="store_true")
+    parser.add_argument("--factor-pack-only", action="store_true")
     parser.add_argument("--replay", action="store_true")
     parser.add_argument("--replay-audit-count", type=int, default=None)
     parser.add_argument("--force", action="store_true")
@@ -136,6 +137,8 @@ def main() -> int:
             enrich_args.append("--include-fundamental-candidates")
         if args.include_research_factor_candidates:
             enrich_args.append("--include-research-factor-candidates")
+        if args.factor_pack_only:
+            enrich_args.append("--factor-pack-only")
         _run_module(
             "our_system_phase2.runtime.phase3aa_enrich_shared_candidate_pool",
             enrich_args,
@@ -237,6 +240,7 @@ def main() -> int:
             "uses_source_priority": True,
             "uses_search_memory_roots": bool(args.memory_root),
             "uses_factor_pack": bool(args.factor_pack or args.use_default_cn_factor_pack),
+            "factor_pack_only": bool(args.factor_pack_only),
             "old_unreached_supervisor_primary": False,
             "x0_r3_shadow_read_only": True,
         },

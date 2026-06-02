@@ -1,0 +1,66 @@
+{
+  "decision": "PASS_INTEGRATED_FACTOR_PACK_MICRO_G2_SELECTOR_PREFLIGHT_NO_REPLAY",
+  "manifest": "runtime/cn_integrated_factor_pack_v1_micro_g2_20260602/phase3aa_cached_mature_pool_manifest.json",
+  "parameters": {
+    "budgets": {
+      "agnostic_freeform_ast": 4,
+      "ast_failure_aware_repair": 4,
+      "event_derived_feature_layer": 2,
+      "formula_gen_v2_defined": 0,
+      "formula_gen_v2_repair_expansion": 2,
+      "novelty_diagnostic": 0,
+      "r0_cem_led": 8,
+      "replay_aware_residual": 0,
+      "research_factor_feature_layer": 4
+    },
+    "candidate_pool_count": 60,
+    "candidate_pool_count_before_prefilter": 599,
+    "default_selected_count": 64,
+    "pool_cap": 60,
+    "research_share": 0.16,
+    "selected_count": 24,
+    "selector_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "signal_recent_quarter_window_count": 1,
+    "signal_runtime_cache_dir": "runtime\\phase3g_signal_vectors\\runtime_eval_cache",
+    "signal_sample_size": 200,
+    "signal_warmup_days": 30,
+    "strict_audit_budget": 24
+  },
+  "selected_count": 24,
+  "selected_csv": "reports\\cn_integrated_factor_pack_micro_g2_20260602\\micro_g2_selected_candidates.csv",
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_integrated_feature_layer": 38,
+      "unknown": 22
+    },
+    "event_candidates_in_pool": 18,
+    "event_candidates_selected": 2,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "fundamental_candidates_in_pool": 8,
+    "fundamental_candidates_selected": 3,
+    "research_candidates_in_pool": 12,
+    "research_candidates_selected": 7,
+    "selected_source_counts": {
+      "cn_integrated_feature_layer": 12,
+      "unknown": 12
+    },
+    "signal_vector_proxy_requirement_pass": true
+  }
+}
