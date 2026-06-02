@@ -1,0 +1,40 @@
+{
+  "canonical_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1",
+  "created_at": "2026-06-02T10:08:13.094246+00:00",
+  "date_max": "2026-04-10",
+  "date_min": "2025-08-06",
+  "decision": "PASS_ZZSHARE_SELECTED_SIDECAR_V1",
+  "feature_count": 40,
+  "index_sidecar": "runtime\\cn_integrated_pit_selected_sidecars_20260602\\nonminute_selected_sidecar.parquet",
+  "mean_feature_nonnull_rate": 0.5242312854064989,
+  "output": "runtime\\cn_zzshare_limit_sentiment_selected_sidecar_v1_20260602\\zzshare_selected_sidecar.parquet",
+  "pit_policy": {
+    "daily_context": "market sentiment and hot-rank fields are T+1 lagged",
+    "future_labels": "next_* excluded upstream and absent from sidecar",
+    "join": "selected replay row date uses previous selected trading date as zzshare_lag_date",
+    "uplimit": "previous-day stock event only; no same-day up_limit_time event is used in this daily sidecar"
+  },
+  "rows": 859129,
+  "tables": {
+    "market_daily": {
+      "open_sentiment_daily": {
+        "feature_count": 19,
+        "mean_nonnull_rate": 0.9940102126688771
+      },
+      "sentiment_hot_daily": {
+        "feature_count": 5,
+        "mean_nonnull_rate": 0.4137364703088826
+      }
+    },
+    "ths_hot_stock_day": {
+      "feature_count": 5,
+      "matched_rows": 1583,
+      "mean_nonnull_rate": 0.001842563805901093
+    },
+    "uplimit_stock_event_day": {
+      "feature_count": 11,
+      "matched_rows": 413,
+      "mean_nonnull_rate": 0.000469291361578783
+    }
+  }
+}
