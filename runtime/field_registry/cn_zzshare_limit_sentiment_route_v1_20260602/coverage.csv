@@ -1,0 +1,5 @@
+dataset,rows,columns,date_col,date_min,date_max,stock_count,up_limit_time_nonnull_rate,future_label_field_count
+uplimit_stocks,8062,30,date1,2024-01-02,2026-05-28,1200,1.0,7
+open_sentiment_data,184631,25,date1,2024-01-02,2026-06-02,,,
+sentiment_hot_day,63000,11,Day,2025-12-26,2026-06-01,,,
+ths_hot_top,6300,13,collect_date,2024-01-01,2026-05-29,928,,

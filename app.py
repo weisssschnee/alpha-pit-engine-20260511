@@ -305,6 +305,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build selected-field sidecars and joined replay panels for CN integrated factor-pack replay.",
     },
+    "cn-zzshare-limit-sentiment-route-v1": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_route_v1",
+        "diagnostic": False,
+        "description": "Route the ZZShare limit/sentiment pack into PIT-safe event, context, blocked-label, and transform-plan roles.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,

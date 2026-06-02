@@ -1,0 +1,149 @@
+{
+  "blocked_future_label_fields": [
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_close_pct",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_day",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_gt9_offer_v",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_gt9_time",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_gt9_turnover",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_open_pct",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    },
+    {
+      "allowed_use": "label/audit only",
+      "dataset": "uplimit_stocks",
+      "dtype": "string",
+      "feature_family": "future_label",
+      "field": "next_open_yi",
+      "meaning": "future/next-session outcome field",
+      "pit_rule": "forbidden_as_selector_input",
+      "route": "blocked_future_label"
+    }
+  ],
+  "candidate_priority_counts": {
+    "diagnostic": 4,
+    "high": 81,
+    "medium": 120
+  },
+  "candidate_transform_count": 205,
+  "coverage": [
+    {
+      "columns": 30,
+      "dataset": "uplimit_stocks",
+      "date_col": "date1",
+      "date_max": "2026-05-28",
+      "date_min": "2024-01-02",
+      "future_label_field_count": 7,
+      "rows": 8062,
+      "stock_count": 1200,
+      "up_limit_time_nonnull_rate": 1.0
+    },
+    {
+      "columns": 25,
+      "dataset": "open_sentiment_data",
+      "date_col": "date1",
+      "date_max": "2026-06-02",
+      "date_min": "2024-01-02",
+      "rows": 184631
+    },
+    {
+      "columns": 11,
+      "dataset": "sentiment_hot_day",
+      "date_col": "Day",
+      "date_max": "2026-06-01",
+      "date_min": "2025-12-26",
+      "rows": 63000
+    },
+    {
+      "columns": 13,
+      "dataset": "ths_hot_top",
+      "date_col": "collect_date",
+      "date_max": "2026-05-29",
+      "date_min": "2024-01-01",
+      "rows": 6300,
+      "stock_count": 928
+    }
+  ],
+  "created_at": "2026-06-02T09:28:54.050045+00:00",
+  "dataset_count": 4,
+  "decision": "PASS_ZZSHARE_LIMIT_SENTIMENT_ROUTE_V1",
+  "field_count": 79,
+  "manual_review_fields": [],
+  "outputs": {
+    "candidate_transform_plan_csv": "runtime\\field_registry\\cn_zzshare_limit_sentiment_route_v1_20260602\\candidate_transform_plan.csv",
+    "coverage_csv": "runtime\\field_registry\\cn_zzshare_limit_sentiment_route_v1_20260602\\coverage.csv",
+    "field_route_csv": "runtime\\field_registry\\cn_zzshare_limit_sentiment_route_v1_20260602\\field_route.csv",
+    "markdown": "reports\\CN_ZZSHARE_LIMIT_SENTIMENT_ROUTE_V1_2026-06-02.md",
+    "summary_json": "runtime\\field_registry\\cn_zzshare_limit_sentiment_route_v1_20260602\\cn_zzshare_limit_sentiment_route_v1.json"
+  },
+  "pack_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602",
+  "policy": {
+    "blocked": "next_* and label-like fields are labels/audit only",
+    "open_sentiment_data": "T+1 lagged daily market context only",
+    "sentiment_hot_day": "T+1 lagged daily sentiment context only",
+    "ths_hot_top": "T+1 lagged daily stock hot-rank context only",
+    "uplimit_stocks": "minute event context after up_limit_time; T+1 daily event context also allowed"
+  },
+  "route_counts": {
+    "blocked_future_label": 7,
+    "diagnostic_context": 4,
+    "key_or_timestamp": 9,
+    "lagged_daily_context": 23,
+    "lagged_daily_stock_context": 5,
+    "metadata": 18,
+    "minute_event_cutoff": 1,
+    "minute_event_or_tplus1": 12
+  },
+  "schema_version": "cn-zzshare-limit-sentiment-route-v1"
+}
