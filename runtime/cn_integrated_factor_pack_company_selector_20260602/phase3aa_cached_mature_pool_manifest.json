@@ -1,0 +1,105 @@
+{
+  "created_at": "2026-06-02T05:33:20+00:00",
+  "phase": "Phase3AA",
+  "chain": "cached_mature_pool_event_derived_g2_source_priority",
+  "status": "completed",
+  "repo_root": "D:\\HermesWorker\\workspace\\cn_integrated_factor_pack_20260602",
+  "source_pool": "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_source_pool_raw_20260602.json",
+  "dataset_path": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+  "seed": "aa_cached",
+  "replay_audit_count": 64,
+  "paths": {
+    "raw_pool": "D:\\p3cn_integrated\\selector_only_20260602\\shared_candidate_pool_raw.json",
+    "enriched_pool": "D:\\p3cn_integrated\\selector_only_20260602\\shared_candidate_pool_event_enriched.json",
+    "selector_root": "D:\\p3cn_integrated\\selector_only_20260602\\selector",
+    "replay_root": null
+  },
+  "steps": [
+    {
+      "step": "copy_cached_mature_shared_pool",
+      "status": "completed",
+      "source_pool": "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_source_pool_raw_20260602.json"
+    },
+    {
+      "step": "inject_event_derived_candidates",
+      "status": "completed"
+    },
+    {
+      "step": "apply_source_priority_g2_selector",
+      "status": "completed"
+    }
+  ],
+  "enrichment_summary": {
+    "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29",
+    "ablation_arm": "Phase3AA_G2_event_source_priority",
+    "event_bucket": "event_derived_feature_layer",
+    "event_rows_added": 211,
+    "duplicate_existing_skipped": 0,
+    "duplicate_memory_skipped": 0,
+    "input_candidate_pool_count": 388,
+    "output_candidate_pool_count": 599,
+    "memory_roots": [],
+    "expanded_memory_root_count": 0,
+    "expanded_memory_root_sample": [],
+    "include_gate_candidates": false,
+    "include_fundamental_candidates": true,
+    "include_research_factor_candidates": true,
+    "factor_pack_only": true,
+    "factor_pack_paths": [
+      "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v1_20260602.json"
+    ],
+    "pre_dedup_event_source_rows": 211,
+    "factor_pack_source_rows": 211,
+    "scope": "event-derived factor candidates injected into shared pre-replay pool"
+  },
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_integrated_feature_layer": 90,
+      "unknown": 70
+    },
+    "selected_source_counts": {
+      "cn_integrated_feature_layer": 35,
+      "unknown": 29
+    },
+    "event_candidates_in_pool": 48,
+    "event_candidates_selected": 13,
+    "fundamental_candidates_in_pool": 13,
+    "fundamental_candidates_selected": 6,
+    "research_candidates_in_pool": 29,
+    "research_candidates_selected": 16,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "signal_vector_proxy_requirement_pass": true
+  },
+  "contract": {
+    "uses_cached_mature_shared_pool": true,
+    "fresh_shared_pool_generation": false,
+    "uses_mature_g2_selector": true,
+    "uses_event_derived_feature_layer": true,
+    "uses_fundamental_feature_layer": true,
+    "uses_research_factor_feature_layer": true,
+    "uses_source_priority": true,
+    "uses_search_memory_roots": false,
+    "uses_factor_pack": true,
+    "factor_pack_only": true,
+    "old_unreached_supervisor_primary": false,
+    "x0_r3_shadow_read_only": true
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

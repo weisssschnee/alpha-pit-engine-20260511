@@ -1,0 +1,14 @@
+﻿{
+    "created_at":  "2026-06-02T13:33:20.4367119+08:00",
+    "phase":  "CNIntegratedFactorPack",
+    "mode":  "company_selector_only_no_replay",
+    "output_root":  "D:\\p3cn_integrated\\selector_only_20260602",
+    "source_pool":  "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_source_pool_raw_20260602.json",
+    "signal_vector_archive":  "D:\\HermesWorker\\runtime\\cn_integrated_factor_pack_signal_vectors_20260602.zip",
+    "factor_pack":  "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v1_20260602.json",
+    "dataset_path":  "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet",
+    "strict_audit_budget":  64,
+    "event_share":  0.2,
+    "selector_pool_cap":  160,
+    "signal_sample_size":  1500
+}
