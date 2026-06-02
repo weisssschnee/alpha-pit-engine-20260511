@@ -26,7 +26,8 @@ DEFAULT_OUTPUT_REPORT = Path(
 )
 
 KEY_COLUMNS = ["join_code", "date"]
-ALLOWED_PREFIXES = ("ctx_zls_", "evt_zls_")
+SIDECAR_ALLOWED_PREFIXES = ("ctx_zls_", "evt_zls_")
+PANEL_ALLOWED_PREFIXES = ("ctx_zls_",)
 
 
 def _write_json(path: Path, payload: Any) -> None:
@@ -49,7 +50,7 @@ def _read_sidecar(path: Path) -> pd.DataFrame:
     bad = [
         column
         for column in frame.columns
-        if column not in KEY_COLUMNS and not column.startswith(ALLOWED_PREFIXES)
+        if column not in KEY_COLUMNS and not column.startswith(SIDECAR_ALLOWED_PREFIXES)
     ]
     if bad:
         raise RuntimeError(f"sidecar contains non-ZZShare feature columns: {bad[:20]}")
@@ -65,6 +66,12 @@ def _read_sidecar(path: Path) -> pd.DataFrame:
 def join_panel(*, input_panel: Path, zzshare_sidecar: Path, output_panel: Path, output_report: Path) -> dict[str, Any]:
     base = _read_panel(input_panel)
     sidecar = _read_sidecar(zzshare_sidecar)
+    dropped_sidecar_fields = [
+        column
+        for column in sidecar.columns
+        if column not in KEY_COLUMNS and not column.startswith(PANEL_ALLOWED_PREFIXES)
+    ]
+    sidecar = sidecar[[*KEY_COLUMNS, *[column for column in sidecar.columns if column.startswith(PANEL_ALLOWED_PREFIXES)]]]
     added_fields = [column for column in sidecar.columns if column not in KEY_COLUMNS]
     overlap = [column for column in added_fields if column in base.columns]
     if overlap:
@@ -85,6 +92,8 @@ def join_panel(*, input_panel: Path, zzshare_sidecar: Path, output_panel: Path, 
         "row_count": int(len(joined)),
         "input_column_count": int(len(base.columns)),
         "added_field_count": len(added_fields),
+        "dropped_sidecar_field_count": len(dropped_sidecar_fields),
+        "dropped_sidecar_fields": dropped_sidecar_fields[:80],
         "output_column_count": int(len(joined.columns)),
         "sidecar_rows": int(len(sidecar)),
         "date_min": str(joined["date"].min().date()),
@@ -95,7 +104,9 @@ def join_panel(*, input_panel: Path, zzshare_sidecar: Path, output_panel: Path, 
         "pit_policy": {
             "join_keys": "join_code,date",
             "sidecar_policy": "previous selected trading date only; no same-day event use",
-            "allowed_prefixes": list(ALLOWED_PREFIXES),
+            "sidecar_allowed_prefixes": list(SIDECAR_ALLOWED_PREFIXES),
+            "panel_allowed_prefixes": list(PANEL_ALLOWED_PREFIXES),
+            "raw_evt_policy": "evt_zls_* may exist in sidecar internals but is dropped from replay panel; use ctx_zls_evt_*_lag1 aliases instead",
             "future_labels": "blocked upstream and rejected here",
         },
     }
