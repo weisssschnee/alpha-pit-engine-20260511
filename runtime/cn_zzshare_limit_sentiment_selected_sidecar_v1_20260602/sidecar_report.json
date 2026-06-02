@@ -1,15 +1,16 @@
 {
   "canonical_root": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1",
-  "created_at": "2026-06-02T11:00:37.546852+00:00",
+  "created_at": "2026-06-02T13:09:27.624787+00:00",
   "date_max": "2026-04-10",
   "date_min": "2025-08-06",
   "decision": "PASS_ZZSHARE_SELECTED_SIDECAR_V1",
-  "feature_count": 40,
+  "feature_count": 52,
   "index_sidecar": "runtime\\cn_integrated_pit_selected_sidecars_20260602\\nonminute_selected_sidecar.parquet",
-  "mean_feature_nonnull_rate": 0.5138998916344344,
+  "mean_feature_nonnull_rate": 0.3954161267265586,
   "output": "runtime\\cn_zzshare_limit_sentiment_selected_sidecar_v1_20260602\\zzshare_selected_sidecar.parquet",
   "pit_policy": {
     "daily_context": "market sentiment and hot-rank fields are T+1 lagged",
+    "event_aliases": "`evt_zls_*` previous-day event fields are also materialized as `ctx_zls_evt_*_lag1` for daily replay loaders",
     "future_labels": "next_* excluded upstream and absent from sidecar",
     "join": "selected replay row date uses previous selected trading date as zzshare_lag_date",
     "uplimit": "previous-day stock event only; no same-day up_limit_time event is used in this daily sidecar"
@@ -17,8 +18,59 @@
   "rows": 859129,
   "tables": {
     "candidate_transform_plan": {
-      "materialized_feature_count": 40,
-      "mean_feature_nonnull_rate": 0.5138998916344344,
+      "lag1_event_alias_count": 12,
+      "lag1_event_aliases": [
+        {
+          "lag1_alias": "ctx_zls_evt_amount_lag1",
+          "source_field": "evt_zls_amount"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_auction_buy_lag1",
+          "source_field": "evt_zls_auction_buy"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_auction_money_lag1",
+          "source_field": "evt_zls_auction_money"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_auction_offer_lag1",
+          "source_field": "evt_zls_auction_offer"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_auction_pre1max_ratio_lag1",
+          "source_field": "evt_zls_auction_pre1max_ratio"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_auction_turnover_lag1",
+          "source_field": "evt_zls_auction_turnover"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_fd_close_lag1",
+          "source_field": "evt_zls_fd_close"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_fd_max_lag1",
+          "source_field": "evt_zls_fd_max"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_market_c_lag1",
+          "source_field": "evt_zls_market_c"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_market_c_c_lag1",
+          "source_field": "evt_zls_market_c_c"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_up_limit_keep_times_lag1",
+          "source_field": "evt_zls_up_limit_keep_times"
+        },
+        {
+          "lag1_alias": "ctx_zls_evt_up_limit_time_lag1",
+          "source_field": "evt_zls_up_limit_time"
+        }
+      ],
+      "materialized_feature_count": 52,
+      "mean_feature_nonnull_rate": 0.3954161267265586,
       "requested_transform_rows": 205,
       "skipped": [
         {

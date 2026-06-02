@@ -86,7 +86,19 @@ def _safe_add(*items: str) -> str:
 
 def _plan_by_candidate(plan: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     allowed = {"raw_numeric", "parse HH:MM event time; usable only when event_time <= decision_time"}
-    return {str(row["candidate_field"]): row for row in plan if row.get("transform") in allowed}
+    out: dict[str, dict[str, Any]] = {}
+    for row in plan:
+        if row.get("transform") not in allowed:
+            continue
+        candidate = str(row["candidate_field"])
+        out[candidate] = row
+        if candidate.startswith("evt_zls_"):
+            alias = f"ctx_zls_evt_{candidate[len('evt_zls_'):]}_lag1"
+            alias_row = dict(row)
+            alias_row["candidate_field"] = alias
+            alias_row["daily_safe_alias_of"] = candidate
+            out[alias] = alias_row
+    return out
 
 
 def _eligible(plan: list[dict[str, Any]], *, dataset: str | None = None, role: str | None = None) -> list[dict[str, Any]]:
@@ -132,11 +144,12 @@ def _row(expression: str, *, lane: str, role: str, fields: list[str], plan_rows:
         "input_source_fields": "|".join(source_fields),
         "input_datasets": "|".join(datasets),
         "input_candidate_roles": "|".join(candidate_roles),
-        "contains_zzshare_limit_event": any(field.startswith("evt_zls_") for field in fields),
+        "contains_zzshare_limit_event": any(field.startswith("evt_zls_") or field.startswith("ctx_zls_evt_") for field in fields),
+        "contains_zzshare_lagged_event_alias": any(field.startswith("ctx_zls_evt_") for field in fields),
         "contains_zzshare_sentiment_context": any(field.startswith("ctx_zls_") for field in fields),
         "contains_future_label": False,
         "event_family": role,
-        "leakage_flag": "no_next_fields;uplimit_event_after_up_limit_time_or_Tplus1;sentiment_hot_Tplus1_only",
+        "leakage_flag": "no_next_fields;lagged_event_alias_or_event_time_only;sentiment_hot_Tplus1_only",
     }
     return enrich_candidate_pool_priority(item)
 
@@ -158,7 +171,7 @@ def _direct_rows(rows: list[dict[str, Any]], seen: set[str], plan_rows: dict[str
 
 
 def _event_rows(rows: list[dict[str, Any]], seen: set[str], plan_rows: dict[str, dict[str, Any]]) -> None:
-    event_fields = [field for field in plan_rows if field.startswith("evt_zls_")]
+    event_fields = [field for field in plan_rows if field.startswith("ctx_zls_evt_")]
     high_event = [
         field
         for field in event_fields
@@ -166,13 +179,16 @@ def _event_rows(rows: list[dict[str, Any]], seen: set[str], plan_rows: dict[str,
     ]
     _direct_rows(rows, seen, plan_rows, high_event, lane="zls_event_direct", role="limit_event_pressure", limit=32)
 
-    amount = _pick(plan_rows, "evt_zls_amount")
-    fd_close = _pick(plan_rows, "evt_zls_fd_close")
-    fd_max = _pick(plan_rows, "evt_zls_fd_max")
-    auction_money = _pick(plan_rows, "evt_zls_auction_money")
-    auction_offer = _pick(plan_rows, "evt_zls_auction_offer")
-    auction_turnover = _pick(plan_rows, "evt_zls_auction_turnover")
-    keep_times = _pick(plan_rows, "evt_zls_up_limit_keep_times")
+    def event_alias(name: str) -> str:
+        return f"ctx_zls_evt_{name}_lag1"
+
+    amount = _pick(plan_rows, event_alias("amount"))
+    fd_close = _pick(plan_rows, event_alias("fd_close"))
+    fd_max = _pick(plan_rows, event_alias("fd_max"))
+    auction_money = _pick(plan_rows, event_alias("auction_money"))
+    auction_offer = _pick(plan_rows, event_alias("auction_offer"))
+    auction_turnover = _pick(plan_rows, event_alias("auction_turnover"))
+    keep_times = _pick(plan_rows, event_alias("up_limit_keep_times"))
     if fd_close and amount:
         _add(rows, seen, _rank(_safe_div(_field_expr(fd_close), _field_expr(amount))), lane="zls_seal_to_amount", role="seal_strength", fields=[fd_close, amount], plan_rows=plan_rows)
     if fd_max and amount:

@@ -169,6 +169,7 @@ def _rolling_by_code(frame: pd.DataFrame, column: str, window: int) -> pd.Series
 def _materialize_plan(raw: pd.DataFrame, plan: list[dict[str, Any]]) -> tuple[pd.DataFrame, dict[str, Any]]:
     out = raw[KEY_COLUMNS].copy()
     skipped: list[dict[str, str]] = []
+    lag1_aliases: list[dict[str, str]] = []
     for row in plan:
         if row.get("priority") == "diagnostic":
             continue
@@ -197,10 +198,16 @@ def _materialize_plan(raw: pd.DataFrame, plan: list[dict[str, Any]]) -> tuple[pd
             out[candidate] = _parse_event_minutes(raw[source_col])
         else:
             skipped.append({"candidate_field": candidate, "reason": f"unsupported_transform:{transform}", "source_col": source_col})
+        if candidate.startswith("evt_zls_") and candidate in out.columns:
+            alias = f"ctx_zls_evt_{candidate[len('evt_zls_'):]}_lag1"
+            out[alias] = out[candidate]
+            lag1_aliases.append({"source_field": candidate, "lag1_alias": alias})
     feature_cols = [column for column in out.columns if column not in KEY_COLUMNS]
     metrics = {
         "requested_transform_rows": len(plan),
         "materialized_feature_count": len(feature_cols),
+        "lag1_event_alias_count": len(lag1_aliases),
+        "lag1_event_aliases": lag1_aliases[:80],
         "skipped_count": len(skipped),
         "skipped": skipped[:50],
         "mean_feature_nonnull_rate": float(out[feature_cols].notna().mean().mean()) if feature_cols else 0.0,
@@ -249,6 +256,7 @@ def build_sidecar(*, index_sidecar: Path, canonical_root: Path, transform_plan: 
         "pit_policy": {
             "join": "selected replay row date uses previous selected trading date as zzshare_lag_date",
             "uplimit": "previous-day stock event only; no same-day up_limit_time event is used in this daily sidecar",
+            "event_aliases": "`evt_zls_*` previous-day event fields are also materialized as `ctx_zls_evt_*_lag1` for daily replay loaders",
             "daily_context": "market sentiment and hot-rank fields are T+1 lagged",
             "future_labels": "next_* excluded upstream and absent from sidecar",
         },
@@ -278,6 +286,7 @@ def _markdown(summary: dict[str, Any]) -> str:
                 "- `candidate_transform_plan`: "
                 f"requested=`{metrics['requested_transform_rows']}`, "
                 f"materialized=`{metrics['materialized_feature_count']}`, "
+                f"lag1_event_aliases=`{metrics.get('lag1_event_alias_count', 0)}`, "
                 f"deferred/skipped=`{metrics['skipped_count']}`"
             )
         else:
@@ -289,6 +298,7 @@ def _markdown(summary: dict[str, Any]) -> str:
             "",
             "- Every feature uses the previous selected trading date.",
             "- Same-day `up_limit_time` minute-event usage is not included in this daily sidecar.",
+            "- Previous-day event fields are exposed as `ctx_zls_evt_*_lag1` aliases for daily replay compatibility.",
             "- `next_*` labels are absent.",
             "",
         ]
