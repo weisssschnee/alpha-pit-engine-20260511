@@ -335,6 +335,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Check ZZShare factor-pack expression fields against the joined replay panel before selector/replay.",
     },
+    "cn-zzshare-limit-sentiment-selector-pool-preflight-v1": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_selector_pool_preflight_v1",
+        "diagnostic": False,
+        "description": "Verify ZZShare factor candidates are safely visible in the mature shared pool before full G2 selector-only runs.",
+    },
+    "cn-zzshare-limit-sentiment-selector-only-gate-v1": {
+        "module": "our_system_phase2.runtime.cn_zzshare_limit_sentiment_selector_only_gate_v1",
+        "diagnostic": False,
+        "description": "Aggregate the company-machine mature G2 selector-only gate for ZZShare limit/sentiment candidates.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,

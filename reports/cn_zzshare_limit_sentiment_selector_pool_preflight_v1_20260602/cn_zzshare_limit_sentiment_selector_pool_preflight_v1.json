@@ -1,0 +1,114 @@
+{
+  "blockers": {
+    "missing_expr_keys": [],
+    "missing_required_fields_from_gate": [],
+    "search_memory_roots_attached": 0
+  },
+  "by_diagnostic_role": {
+    "auction_flow": 2,
+    "board_fragility": 1,
+    "board_ladder": 1,
+    "event_interaction": 1,
+    "high_board_fragility": 2,
+    "hot_rank_capacity_interaction": 1,
+    "hot_rank_context": 5,
+    "lagged_sentiment_context": 20,
+    "limit_event_pressure": 12,
+    "market_breadth": 1,
+    "seal_strength": 2,
+    "sentiment_balance": 1
+  },
+  "by_factor_lane": {
+    "zls_auction_money_to_offer": 1,
+    "zls_auction_turnover_to_amount": 1,
+    "zls_event_direct": 6,
+    "zls_event_direct_zrank": 6,
+    "zls_high_board_x_open_board": 1,
+    "zls_hot_rank_direct": 4,
+    "zls_hot_rank_inverse": 1,
+    "zls_hot_rank_x_capacity": 1,
+    "zls_ladder_to_limit_ratio": 1,
+    "zls_lb_height_x_open_board": 1,
+    "zls_limit_up_down_ratio": 1,
+    "zls_market_up_down_ratio": 1,
+    "zls_max_seal_to_amount": 1,
+    "zls_open_board_rate": 1,
+    "zls_seal_to_amount": 1,
+    "zls_sentiment_direct": 10,
+    "zls_sentiment_direct_zrank": 10,
+    "zls_streak_x_seal": 1
+  },
+  "by_source_lane": {
+    "cn_zzshare_limit_sentiment_feature_layer": 49
+  },
+  "counts": {
+    "duplicate_expression_keys_in_pool": 11,
+    "duplicate_zzshare_expression_keys": 0,
+    "enriched_pool_rows": 437,
+    "factor_pack_rows": 49,
+    "factor_pack_rows_missing_from_pool": 0,
+    "forbidden_field_hits": 0,
+    "metadata_missing_rows": 0,
+    "required_expression_fields": 23,
+    "required_fields_missing_from_field_gate": 0,
+    "zzshare_rows_in_pool": 49
+  },
+  "created_at": "2026-06-02T11:22:52.415014+00:00",
+  "decision": "PASS_ZZSHARE_SELECTOR_POOL_PREFLIGHT_HOLD_FULL_G2_SELECTOR",
+  "enriched_pool": "runtime\\cn_zzshare_limit_sentiment_selector_only_v1_20260602\\shared_candidate_pool_zzshare_enriched.json",
+  "factor_pack": "runtime\\factor_packs\\cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602.json",
+  "field_gate": "runtime\\cn_zzshare_limit_sentiment_selected_sidecar_v1_20260602\\field_availability_gate.json",
+  "field_gate_summary": {
+    "candidate_count": 49,
+    "decision": "PASS_ZZSHARE_FIELD_AVAILABILITY_GATE",
+    "mean_required_nonnull_rate": 0.3850522231558853,
+    "min_required_nonnull_rate": 0.0003906862819520144,
+    "present_field_count": 23,
+    "required_field_count": 23
+  },
+  "joined_panel_report": "runtime\\cn_zzshare_limit_sentiment_selected_sidecar_v1_20260602\\company_joined_panel_report.json",
+  "joined_panel_summary": {
+    "added_field_count": 40,
+    "decision": "PASS_ZZSHARE_JOINED_PANEL_V1",
+    "input_column_count": 81,
+    "mean_added_nonnull_rate": 0.4552671545184488,
+    "output_column_count": 121,
+    "row_count": 988005
+  },
+  "outputs": {
+    "forbidden_hits_csv": "reports\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1_20260602\\forbidden_field_hits.csv",
+    "injected_candidate_csv": "reports\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1_20260602\\zzshare_injected_candidates.csv",
+    "markdown": "reports\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1_20260602\\CN_ZZSHARE_LIMIT_SENTIMENT_SELECTOR_POOL_PREFLIGHT_V1_2026-06-02.md",
+    "metadata_missing_csv": "reports\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1_20260602\\metadata_missing_rows.csv",
+    "summary_json": "reports\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1_20260602\\cn_zzshare_limit_sentiment_selector_pool_preflight_v1.json"
+  },
+  "phase3aa_enrichment": {
+    "ablation_arm": "Phase3AA_G2_event_source_priority",
+    "duplicate_existing_skipped": 0,
+    "duplicate_memory_skipped": 0,
+    "event_bucket": "event_derived_feature_layer",
+    "event_rows_added": 49,
+    "expanded_memory_root_count": 0,
+    "expanded_memory_root_sample": [],
+    "factor_pack_only": true,
+    "factor_pack_paths": [
+      "runtime\\factor_packs\\cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602.json"
+    ],
+    "factor_pack_source_rows": 49,
+    "include_fundamental_candidates": false,
+    "include_gate_candidates": false,
+    "include_research_factor_candidates": true,
+    "input_candidate_pool_count": 388,
+    "memory_roots": [],
+    "output_candidate_pool_count": 437,
+    "pre_dedup_event_source_rows": 49,
+    "scope": "event-derived factor candidates injected into shared pre-replay pool",
+    "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29"
+  },
+  "policy": {
+    "next_allowed_step": "run mature G2 selector-only on the ZZShare joined panel and frozen enriched pool",
+    "official_x0_r3": "read_only",
+    "promotion": "not_allowed_from_pool_preflight"
+  },
+  "scope": "shared_pool_visibility_no_replay_no_full_selector"
+}

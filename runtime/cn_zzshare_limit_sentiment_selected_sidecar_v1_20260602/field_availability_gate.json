@@ -1,0 +1,43 @@
+{
+  "blocked_fields": [],
+  "candidate_count": 49,
+  "created_at": "2026-06-02T11:11:18.580655+00:00",
+  "decision": "PASS_ZZSHARE_FIELD_AVAILABILITY_GATE",
+  "factor_pack": "runtime\\factor_packs\\cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602.json",
+  "mean_required_nonnull_rate": 0.3850522231558853,
+  "min_required_nonnull_rate": 0.0003906862819520144,
+  "missing_fields": [],
+  "nonnull_rate_by_required_field": {
+    "ctx_zls_circulation_value_lag1": 0.0015951336278662558,
+    "ctx_zls_down_num_lag1": 0.863326602598165,
+    "ctx_zls_downlimit_num_lag1": 0.863326602598165,
+    "ctx_zls_last_pct_lag1": 0.0015951336278662558,
+    "ctx_zls_lb_2_num_lag1": 0.863326602598165,
+    "ctx_zls_lb_3_num_lag1": 0.863326602598165,
+    "ctx_zls_lb_h_num_lag1": 0.863326602598165,
+    "ctx_zls_lbgd_lag1": 0.359003243910709,
+    "ctx_zls_max_lb_num_lag1": 0.863326602598165,
+    "ctx_zls_rank_diff_lag1": 0.0015951336278662558,
+    "ctx_zls_rank_lag1": 0.0015951336278662558,
+    "ctx_zls_strong_lag1": 0.359003243910709,
+    "ctx_zls_up_num_lag1": 0.863326602598165,
+    "ctx_zls_uplimit_num_lag1": 0.863326602598165,
+    "ctx_zls_zb_num_lag1": 0.863326602598165,
+    "ctx_zls_ztjs_lag1": 0.359003243910709,
+    "evt_zls_amount": 0.00041801407887611904,
+    "evt_zls_auction_money": 0.0003906862819520144,
+    "evt_zls_auction_offer": 0.0003906862819520144,
+    "evt_zls_auction_turnover": 0.00041801407887611904,
+    "evt_zls_fd_close": 0.00041801407887611904,
+    "evt_zls_fd_max": 0.00041801407887611904,
+    "evt_zls_up_limit_keep_times": 0.00041801407887611904
+  },
+  "panel": "D:\\HermesWorker\\data\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_zzshare_selected_v1.parquet",
+  "policy": {
+    "field_scope": "only fields referenced by ZZShare factor-pack expressions are checked",
+    "future_labels": "must be absent",
+    "next_gate": "selector-only queue gate before any replay"
+  },
+  "present_field_count": 23,
+  "required_field_count": 23
+}
