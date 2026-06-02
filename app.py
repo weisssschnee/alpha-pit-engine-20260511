@@ -285,6 +285,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build integrated candidate expressions from 1min and non-1min PIT context fields with search-memory metadata.",
     },
+    "cn-integrated-factor-pack-selector-preflight": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_selector_preflight",
+        "diagnostic": False,
+        "description": "Run no-replay shared-pool safety preflight for the integrated factor pack before heavier G2 selector execution.",
+    },
     "cn-workspace-key-artifacts": {
         "module": "our_system_phase2.runtime.cn_workspace_key_artifact_manifest",
         "diagnostic": False,

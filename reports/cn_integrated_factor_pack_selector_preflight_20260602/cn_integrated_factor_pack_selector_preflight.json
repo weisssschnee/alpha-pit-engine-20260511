@@ -1,0 +1,106 @@
+{
+  "by_injected_factor_lane": {
+    "fundamental_quality_direct": 5,
+    "fundamental_quality_direct_zrank": 5,
+    "fundamental_risk_inverse": 3,
+    "holder_dispersion_inverse": 3,
+    "holder_structure_direct": 5,
+    "market_regime_x_signal": 70,
+    "minute_direct_rank": 19,
+    "minute_direct_rank_zrank": 24,
+    "minute_early_amount_share": 3,
+    "minute_early_range": 3,
+    "minute_early_reversal_pressure": 1,
+    "minute_early_volume_share": 3,
+    "minute_frontloaded_amount": 1,
+    "minute_last_vs_vwap_pressure": 3,
+    "minute_vwap_pressure": 3,
+    "rzrq_balance_normalized_flow": 10,
+    "rzrq_direct_rank": 24,
+    "rzrq_direct_rank_zrank": 24,
+    "rzrq_financing_net_flow": 1,
+    "rzrq_short_net_flow": 1
+  },
+  "by_injected_input_family": {
+    "fundamental_balance_risk": 5,
+    "fundamental_cashflow_quality": 2,
+    "fundamental_income_quality": 6,
+    "holder_structure": 8,
+    "market_breadth_regime": 70,
+    "minute_flow_liquidity": 39,
+    "minute_range_volatility": 22,
+    "minute_return_pressure": 19,
+    "minute_vwap_pressure": 23,
+    "rzrq_flow_leverage": 90
+  },
+  "counts": {
+    "duplicate_expression_keys_in_pool": 11,
+    "duplicate_integrated_expression_keys": 0,
+    "enriched_pool_rows": 1019,
+    "factor_pack_rows": 211,
+    "factor_pack_rows_missing_from_pool": 0,
+    "forbidden_field_hits": 0,
+    "integrated_rows_in_pool": 211,
+    "missing_metadata_rows": 0,
+    "transform_plan_rows": 474
+  },
+  "created_at": "2026-06-02T04:19:18.692769+00:00",
+  "decision": "PASS_INTEGRATED_FACTOR_PACK_SHARED_POOL_LIGHT_PREFLIGHT_HOLD_FULL_G2_SELECTOR",
+  "enriched_pool": "runtime\\cn_integrated_factor_pack_v1_selector_preflight_20260602_rerun\\shared_candidate_pool_event_enriched.json",
+  "enrichment_summary": {
+    "ablation_arm": "Phase3AA_G2_event_source_priority",
+    "duplicate_existing_skipped": 0,
+    "duplicate_memory_skipped": 0,
+    "event_bucket": "event_derived_feature_layer",
+    "event_rows_added": 631,
+    "expanded_memory_root_count": 0,
+    "expanded_memory_root_sample": [],
+    "factor_pack_paths": [
+      "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v1_20260602.json"
+    ],
+    "factor_pack_source_rows": 211,
+    "include_fundamental_candidates": true,
+    "include_gate_candidates": false,
+    "include_research_factor_candidates": true,
+    "input_candidate_pool_count": 388,
+    "memory_roots": [],
+    "output_candidate_pool_count": 1019,
+    "pre_dedup_event_source_rows": 631,
+    "scope": "event-derived factor candidates injected into shared pre-replay pool",
+    "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29"
+  },
+  "factor_pack": "runtime\\factor_packs\\cn_integrated_feature_factor_candidate_pack_v1_20260602.json",
+  "full_g2_selector_status": {
+    "attempted": true,
+    "completed": false,
+    "reason": "full signal-vector selector exceeded interactive preflight runtime; use smaller micro-G2 or background company-machine run"
+  },
+  "outputs": {
+    "duplicate_integrated_expression_keys_csv": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\duplicate_integrated_expression_keys.csv",
+    "forbidden_hits_csv": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\forbidden_field_hits.csv",
+    "injected_candidate_csv": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\integrated_injected_candidates.csv",
+    "markdown": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\CN_INTEGRATED_FACTOR_PACK_SELECTOR_PREFLIGHT_2026-06-02.md",
+    "missing_metadata_csv": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\missing_metadata_rows.csv",
+    "summary_json": "reports\\cn_integrated_factor_pack_selector_preflight_20260602\\cn_integrated_factor_pack_selector_preflight.json"
+  },
+  "policy": {
+    "next_allowed_step": "run micro-G2 selector with reduced pool/sample or company-machine full selector-only job",
+    "official_x0_r3": "read_only",
+    "promotion": "not_allowed_from_light_preflight"
+  },
+  "scope": "no_replay_no_full_signal_vector_selection",
+  "transform_plan": "runtime\\field_registry\\cn_integrated_feature_transform_plan_v1_20260602\\integrated_feature_transform_plan.csv",
+  "transform_plan_priority_counts": {
+    "blocked": 18,
+    "high": 76,
+    "low": 310,
+    "medium": 70
+  },
+  "transform_plan_selector_status_counts": {
+    "blocked_not_selector_input": 18,
+    "diagnostic_until_timestamp_policy": 16,
+    "regime_context_not_standalone_alpha": 15,
+    "registered_not_panelized": 300,
+    "selector_candidate": 125
+  }
+}
