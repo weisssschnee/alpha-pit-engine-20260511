@@ -310,6 +310,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build bounded Phase3AD formula candidates from accepted new data seed axes with panel alias metadata.",
     },
+    "cn-phase3ad-panelization-preflight-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_panelization_preflight_v1",
+        "diagnostic": False,
+        "description": "Verify Phase3AD aliases can be materialized from valid PIT/event source schemas before panel writes or replay.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
