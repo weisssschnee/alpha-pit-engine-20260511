@@ -1,0 +1,54 @@
+{
+  "book_marginal_mode": "signal_vector_proxy",
+  "candidate_count": 177,
+  "coverage": {
+    "candidate_return_vector": 0.0,
+    "capacity_proxy": 0.570621,
+    "complexity_score": 1.0,
+    "cost_adjusted_proxy": 0.570621,
+    "factor_exposure_proxy": 0.0,
+    "liquidity_proxy": 0.570621,
+    "max_corr_to_103_proxy": 1.0,
+    "max_corr_to_134_signal_vector": 1.0,
+    "mean_topk_corr_to_134_signal_vector": 1.0,
+    "operator_pathology_flag": 1.0,
+    "registry_return_vectors": 0.0,
+    "sector_concentration_proxy": 0.0,
+    "selected_queue_signal_corr": 1.0,
+    "signal_vector_ready": 1.0,
+    "turnover_proxy": 0.570621,
+    "turnover_structure_risk": 1.0
+  },
+  "e2_minimum_requirement_pass": true,
+  "e3_proxy_requirement_pass": true,
+  "e3_true_requirement_pass": false,
+  "registry_baseline_name": "phase3H_cumulative_20260515",
+  "replay_label_leakage_guard": {
+    "forbidden_fields": [
+      "cost_survives",
+      "deployable",
+      "global_signal_cluster_id",
+      "portfolio_replay_avg_one_way_turnover",
+      "portfolio_replay_long_only_net_mean",
+      "portfolio_replay_long_only_sortino",
+      "portfolio_replay_long_short_net_mean",
+      "portfolio_replay_long_short_sortino",
+      "portfolio_replay_pass",
+      "signal_cluster_id",
+      "strict_cost_adjusted_sortino",
+      "strict_mean_one_way_turnover",
+      "strict_mean_rank_ic"
+    ],
+    "selector_uses_forbidden_fields": false
+  },
+  "selector_version": "phase3g-signal-vector-selector-v1-2026-05-14",
+  "signal_vector_proxy_requirement_pass": true,
+  "signal_vector_store_ready": true,
+  "thresholds": {
+    "complexity_p90": 15.225000000000005,
+    "cost_adjusted_p10": null,
+    "factor_exposure_p90": null,
+    "sector_concentration_p90": null,
+    "turnover_p90": null
+  }
+}

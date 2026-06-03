@@ -1,0 +1,71 @@
+{
+  "budget_sum": 32,
+  "candidate_pool_count": 180,
+  "candidate_pool_count_before_prefilter": 1065,
+  "candidate_source_counts": {
+    "cn_phase3ad_new_data_feature_layer": 76,
+    "unknown": 104
+  },
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_v1_20260603.parquet",
+  "decision": "PASS_PHASE3AD_SELECTOR_ONLY_CANARY",
+  "event_candidates_selected": 8,
+  "forbidden_label_guard": {
+    "forbidden_fields": [
+      "cost_survives",
+      "deployable",
+      "global_signal_cluster_id",
+      "portfolio_replay_avg_one_way_turnover",
+      "portfolio_replay_long_only_net_mean",
+      "portfolio_replay_long_only_sortino",
+      "portfolio_replay_long_short_net_mean",
+      "portfolio_replay_long_short_sortino",
+      "portfolio_replay_pass",
+      "signal_cluster_id",
+      "strict_cost_adjusted_sortino",
+      "strict_mean_one_way_turnover",
+      "strict_mean_rank_ic"
+    ],
+    "selector_uses_forbidden_fields": false
+  },
+  "fundamental_candidates_selected": 8,
+  "heavy_selector_attempt": "stopped_after_timeout_no_report; replaced with canary_v2 sample_size_500_pool_cap_180",
+  "newdata_selected_by_bucket": {
+    "event_derived_feature_layer": 8,
+    "fundamental_pit_feature_layer": 8
+  },
+  "newdata_selected_by_factor_lane": {
+    "atomic_direct_rank": 2,
+    "event_auction_buy_offer_imbalance": 1,
+    "event_auction_premax_strength": 1,
+    "event_seal_max_strength": 1,
+    "fundamental_finance_expense_inverse": 1,
+    "fundamental_intangible_asset_inverse": 1,
+    "fundamental_inventory_asset_inverse": 1,
+    "fundamental_operate_profit_margin": 1,
+    "fundamental_sales_expense_intensity_inverse": 1,
+    "fundamental_yoy_goodwill_yoy": 1,
+    "fundamental_yoy_inventory_yoy": 1,
+    "fundamental_yoy_operate_profit_yoy": 1,
+    "sentiment_downlimit_pressure_inverse": 1,
+    "stock_heat_rank_strength": 1,
+    "stock_heat_small_liquid_momentum": 1
+  },
+  "newdata_selected_count": 16,
+  "next": "phase3ad_replay_smoke_only_after_canary_review_or_stratified_selection",
+  "not_confirmed": [
+    "replay_pass",
+    "deployable_cluster",
+    "alpha_quality",
+    "book_value"
+  ],
+  "pool_path": "runtime/cn_phase3ad_selector_preflight_v1_20260603/shared_candidate_pool_phase3ad_augmented_panel_enriched.json",
+  "scope": "selector_only_no_replay_no_alpha_promotion",
+  "selected_count": 32,
+  "selected_source_counts": {
+    "cn_phase3ad_new_data_feature_layer": 16,
+    "unknown": 16
+  },
+  "signal_vector_proxy_requirement_pass": true,
+  "strict_audit_budget": 32,
+  "version": "cn-phase3ad-selector-only-canary-v1-2026-06-03"
+}

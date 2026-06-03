@@ -315,6 +315,21 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Verify Phase3AD aliases can be materialized from valid PIT/event source schemas before panel writes or replay.",
     },
+    "cn-phase3ad-selected-sidecar-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_selected_sidecar_v1",
+        "diagnostic": False,
+        "description": "Materialize Phase3AD new-data aliases onto the mature selected-row PIT sidecar index.",
+    },
+    "cn-phase3ad-coverage-filter-candidate-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_coverage_filter_candidate_pack_v1",
+        "diagnostic": False,
+        "description": "Build coverage-aware Phase3AD selector-core and sparse-event candidate packs from materialized sidecar coverage.",
+    },
+    "cn-phase3ad-build-augmented-panel-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_build_augmented_panel_v1",
+        "diagnostic": False,
+        "description": "Join the Phase3AD full-index sidecar into the mature evaluator panel for selector-only smoke.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

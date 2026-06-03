@@ -1,0 +1,103 @@
+{
+  "version": "cn-phase3ad-selected-sidecar-v1-2026-06-03",
+  "decision": "PASS_PHASE3AD_SELECTED_SIDECAR_BUILT",
+  "created_at_utc": "2026-06-03T03:54:01.884257+00:00",
+  "index_sidecar": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_all_fields_local.parquet",
+  "alias_map": "reports\\cn_phase3ad_new_data_factor_pack_v1_20260603\\field_alias_map.csv",
+  "output_path": "runtime\\cn_phase3ad_full_index_sidecar_v1_20260603\\phase3ad_selected_sidecar.parquet",
+  "rows": 988005,
+  "date_min": "2025-08-06",
+  "date_max": "2026-04-10",
+  "feature_count": 531,
+  "alias_count": 531,
+  "mean_feature_nonnull_rate": 0.31975793332168134,
+  "nonzero_feature_count": 426,
+  "zero_nonnull_feature_count": 105,
+  "lt_1pct_nonnull_feature_count": 212,
+  "lt_5pct_nonnull_feature_count": 277,
+  "route_alias_counts": {
+    "announcement_pit_feature": 495,
+    "lagged_market_regime_context": 23,
+    "lagged_stock_heat_context": 5,
+    "timestamped_stock_event_feature": 8
+  },
+  "route_coverage": {
+    "announcement_pit_feature": {
+      "feature_count": 495,
+      "nonzero_feature_count": 390,
+      "zero_nonnull_feature_count": 105,
+      "mean_nonnull_rate": 0.30159431666666636
+    },
+    "lagged_market_regime_context": {
+      "feature_count": 23,
+      "nonzero_feature_count": 23,
+      "zero_nonnull_feature_count": 0,
+      "mean_nonnull_rate": 0.8909090634782606
+    },
+    "lagged_stock_heat_context": {
+      "feature_count": 5,
+      "nonzero_feature_count": 5,
+      "zero_nonnull_feature_count": 0,
+      "mean_nonnull_rate": 0.00161841
+    },
+    "timestamped_stock_event_feature": {
+      "feature_count": 8,
+      "nonzero_feature_count": 8,
+      "zero_nonnull_feature_count": 0,
+      "mean_nonnull_rate": 0.00040941
+    }
+  },
+  "tables": [
+    {
+      "dataset": "fundamental_balance_long",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_fundamental_akshare_fullA_silver_gold_pit_v1_20260603\\silver_long\\fundamental_balance_long.parquet",
+      "source_rows": 252298,
+      "feature_count": 305,
+      "pit_policy": "max(NOTICE_DATE, UPDATE_DATE) + 1 calendar day; REPORT_DATE alone is never used for availability"
+    },
+    {
+      "dataset": "fundamental_profit_long",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_fundamental_akshare_fullA_silver_gold_pit_v1_20260603\\silver_long\\fundamental_profit_long.parquet",
+      "source_rows": 252035,
+      "feature_count": 190,
+      "pit_policy": "max(NOTICE_DATE, UPDATE_DATE) + 1 calendar day; REPORT_DATE alone is never used for availability"
+    },
+    {
+      "dataset": "open_sentiment_daily",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1\\open_sentiment_daily.parquet",
+      "source_rows": 582,
+      "feature_count": 19,
+      "pit_policy": "previous selected trading date broadcast to all stocks"
+    },
+    {
+      "dataset": "sentiment_hot_daily",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1\\sentiment_hot_daily.parquet",
+      "source_rows": 100,
+      "feature_count": 4,
+      "pit_policy": "previous selected trading date broadcast to all stocks"
+    },
+    {
+      "dataset": "ths_hot_stock_day",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1\\ths_hot_stock_day.parquet",
+      "source_rows": 6300,
+      "feature_count": 5,
+      "pit_policy": "previous selected trading date stock-level context"
+    },
+    {
+      "dataset": "uplimit_stock_event_day",
+      "source_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\canonical_v1\\uplimit_stock_event_day.parquet",
+      "source_rows": 1668,
+      "feature_count": 8,
+      "pit_policy": "previous selected trading date stock-level context"
+    }
+  ],
+  "pit_policy": {
+    "fundamental": "max(NOTICE_DATE, UPDATE_DATE) + 1 calendar day; no REPORT_DATE-only availability",
+    "uplimit_stock_event_day": "materialized as previous selected trading day for this daily sidecar",
+    "sentiment_hot/open_sentiment": "previous selected trading day market context",
+    "ths_hot_stock_day": "previous selected trading day stock heat context"
+  },
+  "scope": "selected-row sidecar materialization only; no formula evaluation, no selector, no replay",
+  "next": "phase3ad_coverage_filter_then_selector_only_smoke_with_sidecar",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

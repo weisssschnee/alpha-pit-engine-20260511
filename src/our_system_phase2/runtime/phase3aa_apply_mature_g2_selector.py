@@ -31,24 +31,55 @@ PHASE3AA_SELECTOR_PROFILE = "signal_vector_diversified_source_priority_proxy"
 PHASE3AA_APPLY_VERSION = "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29"
 
 
+def _normalize_budget(budgets: dict[str, int], total: int) -> dict[str, int]:
+    total = max(1, int(total))
+    out = {key: max(0, int(value)) for key, value in budgets.items()}
+    overflow = sum(out.values()) - total
+    reduce_order = [
+        "replay_aware_residual",
+        "formula_gen_v2_repair_expansion",
+        "agnostic_freeform_ast",
+        "ast_failure_aware_repair",
+        "r0_cem_led",
+        PHASE3AA_RESEARCH_BUCKET,
+        PHASE3AA_FUNDAMENTAL_BUCKET,
+        PHASE3AA_EVENT_BUCKET,
+    ]
+    for key in reduce_order:
+        if overflow <= 0:
+            break
+        take = min(out.get(key, 0), overflow)
+        out[key] = out.get(key, 0) - take
+        overflow -= take
+    deficit = total - sum(out.values())
+    if deficit > 0:
+        out["r0_cem_led"] = out.get("r0_cem_led", 0) + deficit
+    return out
+
+
 def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
-def _budget(total: int, event_share: float, research_share: float) -> dict[str, int]:
+def _budget(total: int, event_share: float, research_share: float, fundamental_share: float = 0.0) -> dict[str, int]:
     total = max(1, int(total))
     event = int(round(total * max(0.0, min(0.60, float(event_share)))))
     research = int(round(total * max(0.0, min(0.35, float(research_share)))))
-    if event + research > total:
-        overflow = event + research - total
-        research = max(0, research - overflow)
-    remaining = max(0, total - event - research)
+    fundamental = int(round(total * max(0.0, min(0.25, float(fundamental_share)))))
+    if event + research + fundamental > total:
+        overflow = event + research + fundamental - total
+        research_reduction = min(research, overflow)
+        research = max(0, research - research_reduction)
+        overflow -= research_reduction
+        fundamental = max(0, fundamental - overflow)
+    remaining = max(0, total - event - research - fundamental)
     r0 = int(round(remaining * 0.43))
     repair = int(round(remaining * 0.21))
     agnostic = int(round(remaining * 0.20))
     repair_expansion = int(round(remaining * 0.13))
     residual = max(0, remaining - r0 - repair - agnostic - repair_expansion)
-    return {
+    return _normalize_budget(
+        {
         "r0_cem_led": r0,
         "ast_failure_aware_repair": repair,
         "replay_aware_residual": residual,
@@ -57,8 +88,11 @@ def _budget(total: int, event_share: float, research_share: float) -> dict[str, 
         "agnostic_freeform_ast": agnostic,
         "formula_gen_v2_repair_expansion": repair_expansion,
         PHASE3AA_EVENT_BUCKET: event,
+        PHASE3AA_FUNDAMENTAL_BUCKET: fundamental,
         PHASE3AA_RESEARCH_BUCKET: research,
-    }
+        },
+        total,
+    )
 
 
 def _source_counts(rows: list[dict[str, Any]]) -> dict[str, int]:
@@ -119,6 +153,7 @@ def main() -> int:
     parser.add_argument("--total-budget", type=int, default=64)
     parser.add_argument("--event-share", type=float, default=0.25)
     parser.add_argument("--research-share", type=float, default=0.16)
+    parser.add_argument("--fundamental-share", type=float, default=0.0)
     parser.add_argument("--pool-cap", type=int, default=160)
     parser.add_argument("--seed", default=None)
     args = parser.parse_args()
@@ -128,7 +163,7 @@ def main() -> int:
     output_root = args.output_root / "aa"
     output_root.mkdir(parents=True, exist_ok=True)
     total_budget = max(1, int(args.total_budget or pool.get("strict_audit_budget") or 64))
-    budgets = _budget(total_budget, args.event_share, args.research_share)
+    budgets = _budget(total_budget, args.event_share, args.research_share, args.fundamental_share)
 
     candidate_pool_raw = strip_forbidden_replay_label_rows(list(pool.get("candidate_pool") or []))
     candidate_pool = _prefilter_pool(candidate_pool_raw, pool_cap=int(args.pool_cap))
@@ -204,6 +239,7 @@ def main() -> int:
             "signal_vector_npz": str(args.signal_vector_npz),
             "signal_vector_metadata": str(args.signal_vector_metadata),
             "research_share": float(args.research_share),
+            "fundamental_share": float(args.fundamental_share),
             "signal_runtime_cache_dir": str(args.signal_runtime_cache_dir),
         },
         "selector_checks": {
