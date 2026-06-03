@@ -1,0 +1,76 @@
+{
+  "version": "cn-new-data-asset-integration-v1-2026-06-03",
+  "decision": "PASS_NEW_DATA_ASSET_REGISTRY_READY_WITH_BLOCKERS",
+  "created_at_utc": "2026-06-03T03:01:29.281439+00:00",
+  "scope": "data_asset_quality_and_system_route_registry_no_backtest",
+  "output_root": "runtime\\field_registry\\cn_new_data_asset_integration_v1_20260603",
+  "asset_count": 10,
+  "field_route_count": 1376,
+  "accepted_selector_field_count": 531,
+  "blocked_or_backlog_field_count": 845,
+  "next_factor_pack_seed_axis_count": 531,
+  "asset_status_counts": {
+    "accepted": 6,
+    "blocked": 1,
+    "probe_only": 3
+  },
+  "route_counts": {
+    "announcement_pit_feature": 495,
+    "availability_key": 65,
+    "blocked_future_label": 28,
+    "categorical_or_text_context": 20,
+    "event_cutoff_key": 47,
+    "join_or_audit_metadata": 136,
+    "lagged_market_regime_context": 23,
+    "lagged_stock_heat_context": 5,
+    "probe_only_candidate_source": 549,
+    "timestamped_stock_event_feature": 8
+  },
+  "field_family_counts": {
+    "capacity_size": 10,
+    "event_heat_or_strength": 228,
+    "fundamental_quality_risk": 344,
+    "future_label": 28,
+    "group_market_context": 20,
+    "holder_corporate_action": 4,
+    "instrument_key": 15,
+    "limit_event_sentiment": 297,
+    "metadata": 61,
+    "other_numeric": 156,
+    "price_state": 41,
+    "text_or_description": 60,
+    "time_key_or_cutoff": 112
+  },
+  "accepted_by_route": {
+    "announcement_pit_feature": 495,
+    "lagged_market_regime_context": 23,
+    "lagged_stock_heat_context": 5,
+    "timestamped_stock_event_feature": 8
+  },
+  "critical_blockers": [
+    {
+      "source_group": "fundamental_pit_silver",
+      "dataset": "fundamental_cashflow_long",
+      "asset_status": "blocked",
+      "reason": "invalid_parquet_or_missing_pit_keys",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_fundamental_akshare_fullA_silver_gold_pit_v1_20260603\\silver_long\\fundamental_cashflow_long.parquet",
+      "valid_parquet": false,
+      "row_count": null,
+      "column_count": null,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file."
+    }
+  ],
+  "policy": {
+    "fundamental": "use only valid PIT silver tables with NOTICE_DATE/UPDATE_DATE lag; raw pulled files are not selector inputs",
+    "limit_sentiment": "timestamped stock events need event cutoff or lag1 daily context; daily sentiment uses T+1 by default",
+    "plate_fund_and_advanced_probe": "probe-only until full historical silver/PIT panel exists",
+    "future_labels": "next_* fields are blocked from selector inputs"
+  },
+  "next": [
+    "panelize accepted high-priority fields into nonminute/context sidecars",
+    "rebuild or quarantine blocked cashflow PIT silver before cashflow feature use",
+    "silverize plate fund and advanced zzshare probes before selector use",
+    "build Phase3AD transform pack from next_factor_pack_seed_axes.csv"
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

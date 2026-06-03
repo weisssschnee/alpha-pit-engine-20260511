@@ -300,6 +300,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build a broad field-level utility map for integrated 1min and PIT context fields before formula repair/search.",
     },
+    "cn-new-data-asset-integration-v1": {
+        "module": "our_system_phase2.runtime.cn_new_data_asset_integration_v1",
+        "diagnostic": False,
+        "description": "Audit and register newly delivered CN public-enrichment assets into PIT-safe feature/search routes.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
