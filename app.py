@@ -315,6 +315,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit integrated factor candidates against a frozen registry using sampled pre-replay signal vectors.",
     },
+    "cn-integrated-factor-pack-x0-marginal-audit": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_x0_marginal_audit",
+        "diagnostic": False,
+        "description": "Audit signal-new integrated factor candidates as marginal overlays against locked X0/R3.",
+    },
     "cn-integrated-factor-pack-selector-preflight": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_selector_preflight",
         "diagnostic": False,
