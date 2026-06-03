@@ -330,6 +330,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Join the Phase3AD full-index sidecar into the mature evaluator panel for selector-only smoke.",
     },
+    "cn-phase3ad-hfq-valuation-sidecar-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_hfq_valuation_sidecar_v1",
+        "diagnostic": False,
+        "description": "Build lagged HFQ PE/PB/PS/volume-ratio/turnover-ratio valuation sidecar for Phase3AD.",
+    },
+    "cn-phase3ad-hfq-valuation-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_hfq_valuation_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build focused lagged HFQ valuation/liquidity candidates for Phase3AD selector review.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

@@ -1,0 +1,10 @@
+﻿candidate_id,factor_lane,selector_bucket,selection_rank,selection_score_final,max_corr_to_134_signal_vector,max_corr_to_selected_queue_signal_before_pick,uses_forbidden_replay_labels,expression
+phase3aa_event_0001_phase3ad_hfqval_valuation_low_pe_0001,valuation_low_pe,fundamental_pit_feature_layer,14,0.62351165,0.0,0.151567,False,CSRank($ctx_hfq_inv_pe_ttm_lag1)
+phase3aa_event_0010_phase3ad_hfqval_valuation_low_pb_x_liquidity_0010,valuation_low_pb_x_liquidity,research_factor_feature_layer,15,0.41995995,0.0,0.214253,False,"CSRank(Mul($ctx_hfq_inv_pb_lag1,CSRank($ctx_hfq_turnover_ratio_lag1)))"
+phase3aa_event_0004_phase3ad_hfqval_valuation_low_pe_raw_0004,valuation_low_pe_raw,fundamental_pit_feature_layer,17,0.37266805,0.0,0.273507,False,CSRank(Neg($ctx_hfq_pe_ttm_lag1))
+phase3aa_event_0011_phase3ad_hfqval_valuation_low_ps_x_float_size_0011,valuation_low_ps_x_float_size,fundamental_pit_feature_layer,18,0.3298692,0.0,0.400664,False,"CSRank(Div($ctx_hfq_inv_ps_ttm_lag1,Add(Abs(Log(Add($ctx_hfq_float_market_cap_yuan_lag1,1))),0.000001)))"
+phase3aa_event_0002_phase3ad_hfqval_valuation_low_pb_0002,valuation_low_pb,fundamental_pit_feature_layer,19,-0.01344035,0.0,0.545727,False,CSRank($ctx_hfq_inv_pb_lag1)
+phase3aa_event_0007_phase3ad_hfqval_liquidity_volume_ratio_0007,liquidity_volume_ratio,research_factor_feature_layer,20,-0.07961975,0.0,0.511179,False,CSRank($ctx_hfq_volume_ratio_lag1)
+phase3aa_event_0008_phase3ad_hfqval_liquidity_turnover_ratio_0008,liquidity_turnover_ratio,research_factor_feature_layer,21,-0.18630275,0.0,0.560319,False,CSRank($ctx_hfq_turnover_ratio_lag1)
+phase3aa_event_0003_phase3ad_hfqval_valuation_low_ps_0003,valuation_low_ps,fundamental_pit_feature_layer,22,-1.34353385,0.0,0.998457,False,CSRank($ctx_hfq_inv_ps_ttm_lag1)
+phase3aa_event_0012_phase3ad_hfqval_valuation_pb_size_adjusted_0012,valuation_pb_size_adjusted,fundamental_pit_feature_layer,23,-1.3921668,0.0,0.997544,False,"CSRank(Div($ctx_hfq_inv_pb_lag1,Add(Abs(Log(Add($ctx_hfq_float_market_cap_yuan_lag1,1))),0.000001)))"

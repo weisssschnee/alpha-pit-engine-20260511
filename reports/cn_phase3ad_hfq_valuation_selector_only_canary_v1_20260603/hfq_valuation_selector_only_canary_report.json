@@ -1,0 +1,157 @@
+{
+  "decision": "PASS_HFQ_VALUATION_SELECTOR_ONLY_CANARY",
+  "created_at_utc": "2026-06-03T04:55:44.611834+00:00",
+  "scope": "selector_only_no_replay",
+  "input_pool": "runtime/cn_phase3ad_hfq_valuation_selector_preflight_v1_20260603/shared_candidate_pool_hfqvaluation_enriched.json",
+  "dataset_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_hfqvaluation_v1_20260603.parquet",
+  "candidate_pool_count_before_prefilter": 496,
+  "candidate_pool_count_after_pool_cap": 180,
+  "selected_count": 32,
+  "hfq_candidates_in_pool": 12,
+  "hfq_candidates_selected": 9,
+  "hfq_selected_by_selector_bucket": {
+    "fundamental_pit_feature_layer": 6,
+    "research_factor_feature_layer": 3
+  },
+  "fundamental_candidates_in_pool": 8,
+  "fundamental_candidates_selected": 6,
+  "research_candidates_in_pool": 4,
+  "research_candidates_selected": 3,
+  "forbidden_label_guard": {
+    "forbidden_fields": [
+      "cost_survives",
+      "deployable",
+      "global_signal_cluster_id",
+      "portfolio_replay_avg_one_way_turnover",
+      "portfolio_replay_long_only_net_mean",
+      "portfolio_replay_long_only_sortino",
+      "portfolio_replay_long_short_net_mean",
+      "portfolio_replay_long_short_sortino",
+      "portfolio_replay_pass",
+      "signal_cluster_id",
+      "strict_cost_adjusted_sortino",
+      "strict_mean_one_way_turnover",
+      "strict_mean_rank_ic"
+    ],
+    "selector_uses_forbidden_fields": false
+  },
+  "signal_vector_proxy_requirement_pass": true,
+  "selected_factor_lanes": [
+    "valuation_low_pe",
+    "valuation_low_pb_x_liquidity",
+    "valuation_low_pe_raw",
+    "valuation_low_ps_x_float_size",
+    "valuation_low_pb",
+    "liquidity_volume_ratio",
+    "liquidity_turnover_ratio",
+    "valuation_low_ps",
+    "valuation_pb_size_adjusted"
+  ],
+  "not_confirmed": [
+    "replay_pass",
+    "alpha_quality",
+    "style_neutrality",
+    "production_eligibility"
+  ],
+  "selected_rows": [
+    {
+      "candidate_id": "phase3aa_event_0001_phase3ad_hfqval_valuation_low_pe_0001",
+      "factor_lane": "valuation_low_pe",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 14,
+      "selection_score_final": 0.62351165,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.151567",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank($ctx_hfq_inv_pe_ttm_lag1)"
+    },
+    {
+      "candidate_id": "phase3aa_event_0010_phase3ad_hfqval_valuation_low_pb_x_liquidity_0010",
+      "factor_lane": "valuation_low_pb_x_liquidity",
+      "selector_bucket": "research_factor_feature_layer",
+      "selection_rank": 15,
+      "selection_score_final": 0.41995995,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.214253",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank(Mul($ctx_hfq_inv_pb_lag1,CSRank($ctx_hfq_turnover_ratio_lag1)))"
+    },
+    {
+      "candidate_id": "phase3aa_event_0004_phase3ad_hfqval_valuation_low_pe_raw_0004",
+      "factor_lane": "valuation_low_pe_raw",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 17,
+      "selection_score_final": 0.37266805,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.273507",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank(Neg($ctx_hfq_pe_ttm_lag1))"
+    },
+    {
+      "candidate_id": "phase3aa_event_0011_phase3ad_hfqval_valuation_low_ps_x_float_size_0011",
+      "factor_lane": "valuation_low_ps_x_float_size",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 18,
+      "selection_score_final": 0.3298692,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.400664",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank(Div($ctx_hfq_inv_ps_ttm_lag1,Add(Abs(Log(Add($ctx_hfq_float_market_cap_yuan_lag1,1))),0.000001)))"
+    },
+    {
+      "candidate_id": "phase3aa_event_0002_phase3ad_hfqval_valuation_low_pb_0002",
+      "factor_lane": "valuation_low_pb",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 19,
+      "selection_score_final": -0.01344035,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.545727",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank($ctx_hfq_inv_pb_lag1)"
+    },
+    {
+      "candidate_id": "phase3aa_event_0007_phase3ad_hfqval_liquidity_volume_ratio_0007",
+      "factor_lane": "liquidity_volume_ratio",
+      "selector_bucket": "research_factor_feature_layer",
+      "selection_rank": 20,
+      "selection_score_final": -0.07961975,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.511179",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank($ctx_hfq_volume_ratio_lag1)"
+    },
+    {
+      "candidate_id": "phase3aa_event_0008_phase3ad_hfqval_liquidity_turnover_ratio_0008",
+      "factor_lane": "liquidity_turnover_ratio",
+      "selector_bucket": "research_factor_feature_layer",
+      "selection_rank": 21,
+      "selection_score_final": -0.18630275,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.560319",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank($ctx_hfq_turnover_ratio_lag1)"
+    },
+    {
+      "candidate_id": "phase3aa_event_0003_phase3ad_hfqval_valuation_low_ps_0003",
+      "factor_lane": "valuation_low_ps",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 22,
+      "selection_score_final": -1.34353385,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.998457",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank($ctx_hfq_inv_ps_ttm_lag1)"
+    },
+    {
+      "candidate_id": "phase3aa_event_0012_phase3ad_hfqval_valuation_pb_size_adjusted_0012",
+      "factor_lane": "valuation_pb_size_adjusted",
+      "selector_bucket": "fundamental_pit_feature_layer",
+      "selection_rank": 23,
+      "selection_score_final": -1.3921668,
+      "max_corr_to_134_signal_vector": "0.0",
+      "max_corr_to_selected_queue_signal_before_pick": "0.997544",
+      "uses_forbidden_replay_labels": "False",
+      "expression": "CSRank(Div($ctx_hfq_inv_pb_lag1,Add(Abs(Log(Add($ctx_hfq_float_market_cap_yuan_lag1,1))),0.000001)))"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "cn-phase3ad-hfq-valuation-sidecar-v1-2026-06-03",
+  "decision": "PASS_HFQ_VALUATION_SIDECAR_BUILT",
+  "created_at_utc": "2026-06-03T04:40:57.428363+00:00",
+  "index_panel": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_all_fields_local.parquet",
+  "hfq_2024_2025": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2024_2025",
+  "hfq_2026": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2026\\hfq_daily_2026.parquet",
+  "output_path": "runtime\\cn_phase3ad_hfq_valuation_sidecar_v1_20260603\\hfq_valuation_lag1_sidecar.parquet",
+  "rows": 988005,
+  "feature_count": 10,
+  "date_min": "2025-08-06",
+  "date_max": "2026-04-10",
+  "mean_feature_nonnull_rate": 0.9073654485554222,
+  "pit_policy": "hfq daily valuation/liquidity fields are joined from previous selected trading date only",
+  "scope": "valuation/liquidity sidecar only; no selector, no replay",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

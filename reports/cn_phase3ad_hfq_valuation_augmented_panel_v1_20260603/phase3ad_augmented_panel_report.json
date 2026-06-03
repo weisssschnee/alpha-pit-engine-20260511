@@ -1,0 +1,21 @@
+{
+  "version": "cn-phase3ad-augmented-panel-v1-2026-06-03",
+  "decision": "PASS_PHASE3AD_AUGMENTED_PANEL_BUILT",
+  "created_at_utc": "2026-06-03T04:41:51.878598+00:00",
+  "base_panel": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_v1_20260603.parquet",
+  "sidecar": "runtime\\cn_phase3ad_hfq_valuation_sidecar_v1_20260603\\hfq_valuation_lag1_sidecar.parquet",
+  "output_panel": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_hfqvaluation_v1_20260603.parquet",
+  "output_sha256": "cb8b71480b38dd198f570504f8d2181460cce6945f42dfeeea1130dbc2732069",
+  "rows": 988005,
+  "base_column_count": 674,
+  "sidecar_feature_count": 10,
+  "output_column_count": 684,
+  "rows_with_any_phase3ad_feature": 896510,
+  "rows_with_any_phase3ad_feature_rate": 0.9073941933492239,
+  "date_min": "2025-08-06",
+  "date_max": "2026-04-10",
+  "collision_count": 0,
+  "scope": "evaluator panel augmentation only; no selector, no replay",
+  "next": "phase3ad_selector_only_smoke_on_augmented_panel",
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

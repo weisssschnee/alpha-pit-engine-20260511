@@ -1,0 +1,25 @@
+{
+  "decision": "PASS_HFQ_VALUATION_FACTOR_PACK_READY",
+  "output_pack": "runtime\\factor_packs\\cn_phase3ad_hfq_valuation_factor_pack_v1_20260603.json",
+  "candidate_count": 12,
+  "lanes": [
+    "liquidity_turnover_ratio",
+    "liquidity_volume_ratio",
+    "valuation_low_pb",
+    "valuation_low_pb_raw",
+    "valuation_low_pb_x_liquidity",
+    "valuation_low_pe",
+    "valuation_low_pe_raw",
+    "valuation_low_pe_x_liquidity",
+    "valuation_low_ps",
+    "valuation_low_ps_raw",
+    "valuation_low_ps_x_float_size",
+    "valuation_pb_size_adjusted"
+  ],
+  "not_confirmed": [
+    "alpha_quality",
+    "replay_pass",
+    "style_neutrality"
+  ],
+  "schema_version": "phase2-v2_1-prototype-v1"
+}
