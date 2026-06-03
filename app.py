@@ -295,6 +295,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build the selector-facing transform plan across 1min fields, non-1min PIT context, and remaining high-value gaps.",
     },
+    "cn-integrated-field-utility-map-v1": {
+        "module": "our_system_phase2.runtime.cn_integrated_field_utility_map_v1",
+        "diagnostic": False,
+        "description": "Build a broad field-level utility map for integrated 1min and PIT context fields before formula repair/search.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

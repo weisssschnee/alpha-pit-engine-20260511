@@ -1,0 +1,14 @@
+field_family,field_count,candidate_count,diagnostic_count,median_coverage,best_oos_net10_ann,best_oos_mean_ic_abs
+capacity_size,14,0,0,0.970312,,0.018776
+daily_flow_liquidity,3,0,1,0.980757,-0.011055,0.046901
+fundamental_quality_risk,14,0,0,0.034184,,0.039064
+holder_structure,7,0,0,0.915214,,0.012387
+limit_tradability_or_event,6,0,0,0.980757,-0.653355,0.032524
+market_breadth_regime,12,0,0,0.943598,,
+minute_flow_liquidity,6,0,0,0.943598,-0.270785,0.055394
+minute_range_price_state,15,5,0,0.943598,0.293766,0.058944
+minute_return_pressure,4,0,0,0.943598,,0.006823
+minute_vwap_pressure,5,1,0,0.943598,0.307788,0.026681
+other_numeric,14,0,2,0.97233,0.150628,0.045697
+price_state,5,1,0,0.980757,0.412152,0.023681
+rzrq_flow_leverage,32,0,9,0.647451,0.08984,0.033334
