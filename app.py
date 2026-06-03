@@ -320,6 +320,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit signal-new integrated factor candidates as marginal overlays against locked X0/R3.",
     },
+    "cn-integrated-factor-pack-polarity-regime-audit": {
+        "module": "our_system_phase2.runtime.cn_integrated_factor_pack_polarity_regime_audit",
+        "diagnostic": False,
+        "description": "Diagnose whether integrated factor candidates failed X0/R3 due to polarity or R3 regime mismatch.",
+    },
     "cn-integrated-factor-pack-selector-preflight": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_selector_preflight",
         "diagnostic": False,

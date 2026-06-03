@@ -1,0 +1,6 @@
+book,cluster_count,days,mean_daily,ann_compound,sharpe,sortino,hit_rate,max_drawdown,total_return,top1_day_share,top3_day_share,active_days,active_day_mean,corr_to_x0_r3,delta_ann_vs_x0_r3,delta_sortino_vs_x0_r3,factor_top,factor_top_share,factor_counts
+B0_x0_r3,6,60,0.00145344,0.441958,2.262912,2.820995,0.216667,-0.02658464,0.08768393,0.193834,0.481733,21,0.0041527,1.0,0.0,0.0,,,{}
+I0_original_signal_new_r3_equal,7,60,-0.00097091,-0.217129,-1.334418,-1.268176,0.166667,-0.1123258,-0.06041965,0.248848,0.603574,21,-0.00277402,0.231396,-0.659087,-4.089171,rzrq_size_normalized,1.0,"{""rzrq_size_normalized"": 7}"
+I1_reversed_signal_new_r3_equal,7,60,-0.00098147,-0.219212,-1.40517,-1.332656,0.166667,-0.10772457,-0.06071765,0.223436,0.591486,21,-0.00280419,0.131038,-0.66117,-4.153651,rzrq_size_normalized,1.0,"{""rzrq_size_normalized"": 7}"
+B1_x0_plus_reversed_10pct_overlay,13,60,0.00120995,0.356251,2.046323,2.354943,0.183333,-0.02494929,0.07243319,0.210479,0.493074,21,0.00345701,0.993119,-0.085707,-0.466052,rzrq_size_normalized,0.538462,"{""rzrq_size_normalized"": 7}"
+B1_x0_plus_reversed_20pct_overlay,13,60,0.00096646,0.275618,1.757644,2.20934,0.2,-0.02331395,0.0572693,0.225425,0.507917,21,0.00276132,0.967763,-0.16634,-0.611655,rzrq_size_normalized,0.538462,"{""rzrq_size_normalized"": 7}"
