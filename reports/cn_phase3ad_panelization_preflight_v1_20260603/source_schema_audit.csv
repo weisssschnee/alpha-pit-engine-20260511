@@ -1,0 +1,7 @@
+path,exists,valid_parquet,row_count,column_count,error
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_fundamental_akshare_fullA_silver_gold_pit_v1_20260603\silver_long\fundamental_balance_long.parquet,True,True,294221,324,
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_fundamental_akshare_fullA_silver_gold_pit_v1_20260603\silver_long\fundamental_profit_long.parquet,True,True,305568,208,
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_zzshare_limit_sentiment_pack_v1_20260602\canonical_v1\open_sentiment_daily.parquet,True,True,582,28,
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_zzshare_limit_sentiment_pack_v1_20260602\canonical_v1\sentiment_hot_daily.parquet,True,True,100,14,
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_zzshare_limit_sentiment_pack_v1_20260602\canonical_v1\ths_hot_stock_day.parquet,True,True,6300,16,
+G:\Project_V7_Rotation\data\cn_public_enrichment\cn_zzshare_limit_sentiment_pack_v1_20260602\canonical_v1\uplimit_stock_event_day.parquet,True,True,1668,28,
