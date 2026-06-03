@@ -305,6 +305,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit and register newly delivered CN public-enrichment assets into PIT-safe feature/search routes.",
     },
+    "cn-phase3ad-new-data-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.cn_phase3ad_new_data_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build bounded Phase3AD formula candidates from accepted new data seed axes with panel alias metadata.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
