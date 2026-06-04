@@ -1,0 +1,114 @@
+{
+  "created_at_utc": "2026-06-04T08:42:10.257238+00:00",
+  "decision": "PASS_PHASE3AE_STRUCTURED_LARGE_SEARCH_PRELAUNCH",
+  "evidence": {
+    "blocked_or_key_field_count": 491,
+    "direct_formula_search_ready_count": 1774,
+    "event_state_machine_field_count": 256,
+    "field_count": 4775,
+    "formula_search_repair_queue_count": 1416,
+    "gate_or_regime_field_count": 395,
+    "recluster_decision": "PASS_REPLAY128_RECLUSTER_VS_149_READY_FOR_PHASE3AE",
+    "replay128_known_or_duplicate_signal_cluster": 1,
+    "replay128_new_vs_149_provisional_signal_space": 13,
+    "replay128_survivor_representatives": 14,
+    "searcher_decision": "PASS_SEARCHER_ADAPTATION_CLASSIFICATION_WITH_REPAIR_QUEUE"
+  },
+  "experiment_id": "phase3ae_structured_large_search_prelaunch_20260604",
+  "forbidden_policies": [
+    "Do not throw all 4775 fields into one formula generator.",
+    "Do not allow future labels, timestamps, text, keys, or same-day unavailable fields into alpha search.",
+    "Do not treat event, regime, or tradability fields as ordinary direct rank formulas.",
+    "Do not claim alpha proof from searcher adaptation classification.",
+    "Do not claim new alpha without new-vs-149 signal-vector recluster.",
+    "Do not update official baseline from replay canary alone."
+  ],
+  "inputs": {
+    "recluster_json": "reports\\phase3ae_replay128_recluster_vs_149_20260604\\phase3ae_replay128_recluster_vs_149.json",
+    "searcher_json": "reports\\cn_field_searcher_adaptation_audit_v1_20260604\\field_searcher_adaptation_audit.json",
+    "searcher_summary": "reports\\cn_field_searcher_adaptation_audit_v1_20260604\\searcher_adaptation_summary.csv"
+  },
+  "lanes": [
+    {
+      "arm": "AE0_mature_G2_baseline",
+      "input": "mature G2 selector with frozen 149 discovery baseline",
+      "lane": "baseline",
+      "pass_criteria": [
+        "no forbidden field hits",
+        "top cluster share and turnover comparable to recent G2 controls",
+        "new-vs-149 accounting available"
+      ],
+      "primary_question": "Does the mature G2 baseline still behave under the AE shared-pool path?",
+      "replay_canary_audited": 64,
+      "role": "control",
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE1_direct_lagged_formula",
+      "input": "1774 direct formula-ready fields, especially PE/PB/PS/volume_ratio/turnover_ratio",
+      "lane": "direct_lagged_formula",
+      "pass_criteria": [
+        "new-vs-149 >= 2 / 64 audited",
+        "top cluster share <= 20%",
+        "no PIT/lag violation",
+        "turnover/cost not materially worse than baseline"
+      ],
+      "primary_question": "Do lagged ready fields create new-vs-149 incremental deployable clusters under mature G2?",
+      "replay_canary_audited": 64,
+      "role": "structured_search_lane",
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE2_bounded_factor_pack_repair",
+      "input": "1416 formula repair queue fields; priority BILLBOARD_NET_AMT, ACCUM_AMOUNT, DEAL_AMOUNT_RATIO, RZYEZB, amount_yuan, volume_shares, float_shares, fengdan_rate",
+      "lane": "bounded_factor_pack_repair",
+      "pass_criteria": [
+        "new-vs-149 >= 2 / 64 audited",
+        "true-field beats coverage-mask placebo",
+        "true-field beats shuffled-field placebo",
+        "no PIT, unit, or coverage leakage violation"
+      ],
+      "primary_question": "Do repaired high-value fields create true new-vs-149 signal clusters beyond coverage masks?",
+      "replay_canary_audited": 64,
+      "role": "highest_priority_search_lane",
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE3_event_state_actor_motif",
+      "input": "256 event-state fields: auction_money, fengdan_rate, lb_2_num, max_lb_num, up_limit_keep_times, open-board/high-board transitions",
+      "lane": "event_state_actor_motif",
+      "pass_criteria": [
+        "event_count sufficient",
+        "same-count random placebo pass",
+        "matched-control pass",
+        "tradability pass",
+        "no event cutoff leakage"
+      ],
+      "primary_question": "Do event-state features pass event-specific validation rather than ordinary formula replay only?",
+      "replay_canary_audited": 64,
+      "role": "event_module_lane",
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE4_regime_context_interaction",
+      "input": "395 regime/gate/context fields",
+      "lane": "regime_context_interaction",
+      "pass_criteria": [
+        "full-calendar gated replay improves no-gate",
+        "random/block/circular placebo pass",
+        "inverted and wrong-lag gates fail",
+        "active-day annualized is not used as the promotion metric"
+      ],
+      "primary_question": "Can regime/context fields improve full-calendar gated or interaction replay without active-day overclaim?",
+      "replay_canary_audited": 64,
+      "role": "gate_interaction_lane",
+      "selector_only_selected": 256
+    }
+  ],
+  "outputs": {
+    "lane_manifest": "reports\\phase3ae_structured_large_search_prelaunch_20260604\\phase3ae_lane_manifest.csv",
+    "run_plan": "runtime\\run_plans\\phase3ae_structured_large_search_prelaunch_v1.json",
+    "summary": "reports\\phase3ae_structured_large_search_prelaunch_20260604\\phase3ae_structured_large_search_prelaunch.json"
+  },
+  "scope": "prelaunch gate only; no search launched"
+}

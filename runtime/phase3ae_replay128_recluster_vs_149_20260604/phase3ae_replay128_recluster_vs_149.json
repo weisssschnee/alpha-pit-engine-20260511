@@ -1,0 +1,56 @@
+{
+  "boundary": [
+    "This is stronger than symbolic matching because it uses sampled signal-vector correlation.",
+    "It is still a posthoc audit and does not update the official discovery baseline.",
+    "book_marginal_flag is diagnostic; true book marginal value requires X0/R3 or book-level marginal replay."
+  ],
+  "counts": {
+    "book_marginal_flag_count": 13,
+    "known_or_duplicate_signal_cluster": 1,
+    "new_vs_149_provisional_signal_space": 13,
+    "old_or_review_variant": 1,
+    "registry_similarity_review": 0,
+    "survivor_representatives": 14
+  },
+  "created_at_utc": "2026-06-04T08:41:43.005909+00:00",
+  "decision": "PASS_REPLAY128_RECLUSTER_VS_149_READY_FOR_PHASE3AE",
+  "experiment_id": "phase3ae_replay128_recluster_vs_149_20260604",
+  "factor_lane_counts": {
+    "capacity_residual_activity": 1,
+    "fundamental_quality": 2,
+    "fundamental_risk_inverse": 3,
+    "fundamental_size_residual": 2,
+    "fundamental_x_activity": 4,
+    "fundamental_x_flow": 2
+  },
+  "inputs": {
+    "recluster_json": "reports\\cn_underutilized_field_registry_recluster_20260601\\cn_underutilized_field_registry_recluster.json",
+    "recluster_review": "reports\\cn_underutilized_field_registry_recluster_20260601\\recluster_review_rows.csv",
+    "recluster_top3": "reports\\cn_underutilized_field_registry_recluster_20260601\\recluster_top3_registry_matches.csv",
+    "replay_json": "reports\\cn_underutilized_field_factor_pack_v1_replay_smoke128_20260601\\cn_underutilized_field_replay_smoke128.json",
+    "survivor_reps": "reports\\cn_underutilized_field_survivor_attribution_20260601\\deployable_cluster_representatives.csv"
+  },
+  "outputs": {
+    "survivor_recluster_csv": "reports\\phase3ae_replay128_recluster_vs_149_20260604\\phase3ae_replay128_recluster_vs_149.csv",
+    "top3_csv": "reports\\phase3ae_replay128_recluster_vs_149_20260604\\phase3ae_replay128_top3_registry_matches.csv"
+  },
+  "scope": "posthoc consolidation of existing signal-vector recluster; no candidate generation, no selection, no replay rerun",
+  "source_decisions": {
+    "recluster_decision": "PASS_SIGNAL_VECTOR_REGISTRY_RECLUSTER_AUDIT",
+    "replay_algorithmic_decision": "PASS_REPLAY_SMOKE_HAS_DEPLOYABLE_SIGNAL",
+    "replay_smoke": "PASS_REPLAY_SMOKE_EXECUTION_GATE"
+  },
+  "source_lane_counts": {
+    "cn_flow_liquidity_feature_layer": 2,
+    "cn_research_feature_layer_v2": 7,
+    "cn_underutilized_field_feature_layer": 5
+  },
+  "thresholds": {
+    "high_corr_duplicate_threshold": 0.8,
+    "review_corr_threshold": 0.65
+  },
+  "tier_counts": {
+    "known_or_duplicate_signal_cluster": 1,
+    "provisional_new_signal_space": 13
+  }
+}

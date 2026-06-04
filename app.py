@@ -350,6 +350,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Classify integrated CN fields by mature-searcher lane: formula search, event-state, regime/gate, tradability gate, or blocked.",
     },
+    "phase3ae-replay128-recluster-vs-149": {
+        "module": "our_system_phase2.runtime.phase3ae_replay128_recluster_vs_149",
+        "diagnostic": False,
+        "description": "Consolidate replay128 deployable survivors against the frozen 149 signal-vector registry for Phase3AE prelaunch.",
+    },
+    "phase3ae-structured-prelaunch": {
+        "module": "our_system_phase2.runtime.phase3ae_structured_large_search_prelaunch",
+        "diagnostic": False,
+        "description": "Freeze Phase3AE lane-based structured large-search prelaunch matrix and run plan.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

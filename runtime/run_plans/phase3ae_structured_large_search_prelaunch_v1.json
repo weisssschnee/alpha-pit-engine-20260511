@@ -1,0 +1,57 @@
+{
+  "discovery_baseline": 149,
+  "forbidden_policies": [
+    "Do not throw all 4775 fields into one formula generator.",
+    "Do not allow future labels, timestamps, text, keys, or same-day unavailable fields into alpha search.",
+    "Do not treat event, regime, or tradability fields as ordinary direct rank formulas.",
+    "Do not claim alpha proof from searcher adaptation classification.",
+    "Do not claim new alpha without new-vs-149 signal-vector recluster.",
+    "Do not update official baseline from replay canary alone."
+  ],
+  "input_manifests_required": [
+    "reports\\cn_field_searcher_adaptation_audit_v1_20260604\\field_searcher_adaptation_audit.json",
+    "reports\\cn_field_searcher_adaptation_audit_v1_20260604\\searcher_adaptation_summary.csv",
+    "reports\\phase3ae_replay128_recluster_vs_149_20260604\\phase3ae_replay128_recluster_vs_149.json"
+  ],
+  "matrix": [
+    {
+      "arm": "AE0_mature_G2_baseline",
+      "lane": "baseline",
+      "replay_canary_audited": 64,
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE1_direct_lagged_formula",
+      "lane": "direct_lagged_formula",
+      "replay_canary_audited": 64,
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE2_bounded_factor_pack_repair",
+      "lane": "bounded_factor_pack_repair",
+      "replay_canary_audited": 64,
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE3_event_state_actor_motif",
+      "lane": "event_state_actor_motif",
+      "replay_canary_audited": 64,
+      "selector_only_selected": 256
+    },
+    {
+      "arm": "AE4_regime_context_interaction",
+      "lane": "regime_context_interaction",
+      "replay_canary_audited": 64,
+      "selector_only_selected": 256
+    }
+  ],
+  "modifies_official_baseline": false,
+  "modifies_x0": false,
+  "official_stats_allowed": false,
+  "output_root": "reports\\phase3ae_structured_large_search_prelaunch_20260604",
+  "phase": "Phase3AE",
+  "requires_whitelist_staging": true,
+  "run_type": "structured_large_search_prelaunch",
+  "selector_profile": "mature_G2_signal_vector_diversified",
+  "starts_search": false
+}
