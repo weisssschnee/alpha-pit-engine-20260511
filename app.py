@@ -410,6 +410,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit AF-A date/opportunity effects and control integrity before any large search.",
     },
+    "phase3ah-sparse-event-canary-prep-v1": {
+        "module": "our_system_phase2.runtime.phase3ah_sparse_event_canary_prep_v1",
+        "diagnostic": False,
+        "description": "Prepare sparse limit-event-only canary roots after AF/AG broad-coverage hold.",
+    },
+    "phase3ah-sparse-event-canary-aggregate-v1": {
+        "module": "our_system_phase2.runtime.phase3ah_sparse_event_canary_aggregate_v1",
+        "diagnostic": False,
+        "description": "Aggregate sparse limit-event canary against same-count and matched controls.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

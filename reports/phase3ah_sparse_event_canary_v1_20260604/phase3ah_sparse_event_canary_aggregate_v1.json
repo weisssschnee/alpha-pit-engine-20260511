@@ -1,0 +1,80 @@
+{
+  "arms": {
+    "coverage_sparse_event": {
+      "ablation_arm": "Phase3AH_coverage_sparse_event",
+      "arm": "coverage_sparse_event",
+      "audited": 15,
+      "deployable_clusters": 2,
+      "deployable_per_audited": 0.133333,
+      "raw_non_gap_pass": 9,
+      "raw_non_gap_pass_per_audited": 0.6,
+      "report_path": "runtime\\phase3ah_sparse_event_canary_v1_20260604\\coverage_sparse_event\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_001",
+      "top_cluster_share": 0.333333,
+      "unique_return_corr_clusters": 5
+    },
+    "matched_sparse_event": {
+      "ablation_arm": "Phase3AH_matched_sparse_event",
+      "arm": "matched_sparse_event",
+      "audited": 15,
+      "deployable_clusters": 1,
+      "deployable_per_audited": 0.066667,
+      "raw_non_gap_pass": 10,
+      "raw_non_gap_pass_per_audited": 0.666667,
+      "report_path": "runtime\\phase3ah_sparse_event_canary_v1_20260604\\matched_sparse_event\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_001",
+      "top_cluster_share": 0.3,
+      "unique_return_corr_clusters": 6
+    },
+    "same_count_sparse_event": {
+      "ablation_arm": "Phase3AH_same_count_sparse_event",
+      "arm": "same_count_sparse_event",
+      "audited": 15,
+      "deployable_clusters": 5,
+      "deployable_per_audited": 0.333333,
+      "raw_non_gap_pass": 11,
+      "raw_non_gap_pass_per_audited": 0.733333,
+      "report_path": "runtime\\phase3ah_sparse_event_canary_v1_20260604\\same_count_sparse_event\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_003",
+      "top_cluster_share": 0.181818,
+      "unique_return_corr_clusters": 8
+    },
+    "true_sparse_event": {
+      "ablation_arm": "Phase3AH_true_sparse_event",
+      "arm": "true_sparse_event",
+      "audited": 15,
+      "deployable_clusters": 0,
+      "deployable_per_audited": 0.0,
+      "raw_non_gap_pass": 0,
+      "raw_non_gap_pass_per_audited": 0.0,
+      "report_path": "runtime\\phase3ah_sparse_event_canary_v1_20260604\\true_sparse_event\\aa\\phase3_repair_report.json",
+      "top_cluster_id": null,
+      "top_cluster_share": 0.0,
+      "unique_return_corr_clusters": 0
+    }
+  },
+  "blockers": [
+    "true_sparse_value_not_better_than_sparse_coverage",
+    "true_sparse_value_not_better_than_same_count_control",
+    "sparse_coverage_not_better_than_same_count_control"
+  ],
+  "created_at": "2026-06-04T14:27:10.074354+00:00",
+  "decision": "HOLD_PHASE3AH_SPARSE_EVENT_CANARY_CONTROLS_NOT_BEATEN",
+  "interpretation": {
+    "membership_sparse_event": "Sparse coverage membership produced deployables but did not beat same-count random.",
+    "numeric_sparse_event": "True sparse event values produced no deployable clusters in this canary.",
+    "opportunity_count": "Same-count sparse control was strongest, so event opportunity/date-count effects remain the dominant explanation."
+  },
+  "next_policy": {
+    "allowed_next": "Treat limit/event fields as regime/opportunity diagnostics or veto/intensifier candidates, not rank-alpha search budget.",
+    "event_formula_expansion_allowed": false,
+    "large_search_allowed": false
+  },
+  "outputs": {
+    "markdown": "reports\\phase3ah_sparse_event_canary_v1_20260604\\PHASE3AH_SPARSE_EVENT_CANARY_AGGREGATE_V1_2026-06-04.md",
+    "summary_csv": "reports\\phase3ah_sparse_event_canary_v1_20260604\\phase3ah_sparse_event_canary_arm_summary.csv",
+    "summary_json": "reports\\phase3ah_sparse_event_canary_v1_20260604\\phase3ah_sparse_event_canary_aggregate_v1.json"
+  },
+  "scope": "Sparse limit-event-only canary after broad coverage fields were excluded. This is not a large search.",
+  "version": "phase3ah-sparse-event-canary-aggregate-v1-2026-06-04"
+}
