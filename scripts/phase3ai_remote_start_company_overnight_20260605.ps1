@@ -6,6 +6,7 @@ $Python = "D:\HermesWorker\workspace\.venv\Scripts\python.exe"
 $DatasetPath = "D:\HermesWorker\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
 $RunRoot = "D:\p3ai\overnight_company_20260605_r2"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
+$RunTag = "r2"
 
 if (-not (Test-Path $Archive)) { throw "missing archive: $Archive" }
 if (-not (Test-Path $Python)) { throw "missing python: $Python" }
@@ -75,7 +76,7 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
     "-m", "our_system_phase2.runtime.phase3ab_launch_large_search",
     "--repo-root", $RepoRoot,
     "--launch-root", $launchRoot,
-    "--job-id", "phase3ai_overnight_company_$($leg.name)_$suffix",
+    "--job-id", "phase3ai_overnight_company_$($RunTag)_$($leg.name)_$suffix",
     "--machine", "company",
     "--dataset-path", $DatasetPath,
     "--memory-base", (Join-Path $RepoRoot "reports"),

@@ -5,6 +5,7 @@ $Python = "G:\PythonProject\.venv\Scripts\python.exe"
 $DatasetPath = "G:\Project_V7_Rotation\scripts\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
 $RunRoot = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r2"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
+$RunTag = "r2"
 
 if (-not (Test-Path $Python)) { throw "missing python: $Python" }
 if (-not (Test-Path $DatasetPath)) { throw "missing dataset: $DatasetPath" }
@@ -58,7 +59,7 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
     "-m", "our_system_phase2.runtime.phase3ab_launch_large_search",
     "--repo-root", $RepoRoot,
     "--launch-root", $launchRoot,
-    "--job-id", "phase3ai_overnight_local_$($leg.name)_$suffix",
+    "--job-id", "phase3ai_overnight_local_$($RunTag)_$($leg.name)_$suffix",
     "--machine", "local",
     "--dataset-path", $DatasetPath,
     "--memory-base", (Join-Path $RepoRoot "reports"),
