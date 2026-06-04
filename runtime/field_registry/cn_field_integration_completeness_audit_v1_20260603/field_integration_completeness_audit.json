@@ -1,0 +1,442 @@
+{
+  "asset_field_count": 4775,
+  "created_at_utc": "2026-06-04T02:15:10.105610+00:00",
+  "decision": "HOLD_FIELD_INTEGRATION_NOT_FULLY_CLOSED",
+  "factor_alias_count": 761,
+  "factor_pack_only_missing_panel_count": 0,
+  "family_status_counts": [
+    {
+      "count": 56,
+      "field_family": "capacity_size",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 32,
+      "field_family": "capacity_size",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 22,
+      "field_family": "capacity_size",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 10,
+      "field_family": "capacity_size",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 5,
+      "field_family": "capacity_size",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 44,
+      "field_family": "date_key",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 38,
+      "field_family": "disclosure_event",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 8,
+      "field_family": "disclosure_event",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 3,
+      "field_family": "disclosure_event",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 10,
+      "field_family": "disclosure_event",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 21,
+      "field_family": "disclosure_event_flow",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 9,
+      "field_family": "disclosure_event_flow",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 3,
+      "field_family": "disclosure_event_flow",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 10,
+      "field_family": "disclosure_event_flow",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 8,
+      "field_family": "disclosure_event_flow",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 1,
+      "field_family": "event_heat_or_strength",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 6,
+      "field_family": "event_heat_or_strength",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 25,
+      "field_family": "event_heat_or_strength",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 61,
+      "field_family": "event_heat_or_strength",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 12,
+      "field_family": "flow_liquidity",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 27,
+      "field_family": "flow_liquidity",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 73,
+      "field_family": "flow_liquidity",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 22,
+      "field_family": "flow_liquidity",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 68,
+      "field_family": "flow_liquidity",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 222,
+      "field_family": "fundamental",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 269,
+      "field_family": "fundamental",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 27,
+      "field_family": "fundamental",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 4,
+      "field_family": "fundamental",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 97,
+      "field_family": "fundamental_quality_risk",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 634,
+      "field_family": "fundamental_quality_risk",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 28,
+      "field_family": "fundamental_quality_risk",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 21,
+      "field_family": "future_label",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 3,
+      "field_family": "group_market_context",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 11,
+      "field_family": "group_market_context",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 3,
+      "field_family": "group_market_context",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 39,
+      "field_family": "group_market_context",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 38,
+      "field_family": "holder_corporate_action",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 18,
+      "field_family": "holder_corporate_action",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 2,
+      "field_family": "industry_theme",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 1,
+      "field_family": "industry_theme",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 3,
+      "field_family": "industry_theme",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 88,
+      "field_family": "instrument_key",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 6,
+      "field_family": "leverage_flow",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 10,
+      "field_family": "leverage_flow",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 19,
+      "field_family": "leverage_flow",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 4,
+      "field_family": "leverage_flow",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 11,
+      "field_family": "limit_event",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 4,
+      "field_family": "limit_event",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 4,
+      "field_family": "limit_event",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 7,
+      "field_family": "limit_event",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 9,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 4,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 15,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 57,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 1,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 37,
+      "field_family": "limit_event_sentiment",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 80,
+      "field_family": "metadata",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 758,
+      "field_family": "other",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 403,
+      "field_family": "other",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 18,
+      "field_family": "other",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 27,
+      "field_family": "other",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 17,
+      "field_family": "other",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 6,
+      "field_family": "other_numeric",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 144,
+      "field_family": "other_numeric",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 1,
+      "field_family": "other_numeric",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 5,
+      "field_family": "other_numeric",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 3,
+      "field_family": "price_state",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 524,
+      "field_family": "price_state",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 77,
+      "field_family": "price_state",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 62,
+      "field_family": "price_state",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 49,
+      "field_family": "price_state",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 28,
+      "field_family": "price_state",
+      "integration_status": "probe_or_backlog"
+    },
+    {
+      "count": 62,
+      "field_family": "text_or_description",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 137,
+      "field_family": "time_key_or_cutoff",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 44,
+      "field_family": "tradability_universe",
+      "integration_status": "blocked_or_metadata"
+    },
+    {
+      "count": 23,
+      "field_family": "tradability_universe",
+      "integration_status": "contract_only"
+    },
+    {
+      "count": 26,
+      "field_family": "tradability_universe",
+      "integration_status": "integrated_selector_ready"
+    },
+    {
+      "count": 4,
+      "field_family": "tradability_universe",
+      "integration_status": "integrated_selector_selected"
+    },
+    {
+      "count": 3,
+      "field_family": "tradability_universe",
+      "integration_status": "panel_only"
+    },
+    {
+      "count": 4,
+      "field_family": "tradability_universe",
+      "integration_status": "probe_or_backlog"
+    }
+  ],
+  "high_value_gap_count": 1319,
+  "key_field_watchlist_row_count": 1289,
+  "key_findings": [
+    "Field assets are broad, but end-to-end field integration is not fully closed.",
+    "A field can be present in raw assets or contracts while still absent from factor-pack/search space.",
+    "A field can be panelized while still lacking selector/replay evidence.",
+    "HFQ PE/PB/PS/volume_ratio/turnover_ratio are now wired as a lag1 selector-only route, but replay/style evidence is still missing."
+  ],
+  "outputs": {
+    "factor_candidate_field_refs": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\factor_candidate_field_refs.csv",
+    "factor_pack_only_missing_panel": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\factor_pack_only_missing_panel.csv",
+    "field_integration_completeness": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\field_integration_completeness.csv",
+    "high_value_field_gaps": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\high_value_field_gaps.csv",
+    "key_field_watchlist_status": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\key_field_watchlist_status.csv",
+    "panel_only_high_value_fields": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\panel_only_high_value_fields.csv",
+    "repair_priority_field_gaps": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\repair_priority_field_gaps.csv",
+    "selector_selected_field_refs": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\selector_selected_field_refs.csv",
+    "unmapped_factor_aliases": "runtime\\field_registry\\cn_field_integration_completeness_audit_v1_20260603\\unmapped_factor_aliases.csv"
+  },
+  "panel_field_count": 1045,
+  "panel_only_high_value_count": 113,
+  "repair_priority_top_count": 1319,
+  "selector_alias_count": 143,
+  "status_counts": {
+    "blocked_or_metadata": 488,
+    "contract_only": 1822,
+    "integrated_selector_ready": 1682,
+    "integrated_selector_selected": 358,
+    "panel_only": 153,
+    "probe_or_backlog": 272
+  },
+  "unmapped_factor_alias_count": 34,
+  "version": "cn-field-integration-completeness-audit-v1-2026-06-03"
+}

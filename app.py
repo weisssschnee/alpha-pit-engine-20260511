@@ -340,6 +340,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build focused lagged HFQ valuation/liquidity candidates for Phase3AD selector review.",
     },
+    "cn-field-integration-completeness-audit-v1": {
+        "module": "our_system_phase2.runtime.cn_field_integration_completeness_audit_v1",
+        "diagnostic": False,
+        "description": "Audit field assets through panel materialization, factor packs, selector admission, and replay availability evidence.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
