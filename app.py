@@ -395,6 +395,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Attribute Phase3AE paired canary cluster representatives by arm and input field family.",
     },
+    "phase3af-membership-control-prep-v1": {
+        "module": "our_system_phase2.runtime.phase3af_membership_control_prep_v1",
+        "diagnostic": False,
+        "description": "Prepare same-count random and matched-control AF-A membership control replay roots.",
+    },
+    "phase3af-membership-control-aggregate-v1": {
+        "module": "our_system_phase2.runtime.phase3af_membership_control_aggregate_v1",
+        "diagnostic": False,
+        "description": "Aggregate AF-A coverage membership controls against coverage-mask replay reference.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

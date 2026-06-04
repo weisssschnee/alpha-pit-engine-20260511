@@ -1,0 +1,46 @@
+{
+  "counts": {
+    "control_columns": 22,
+    "coverage_fields": 11,
+    "selected_rows": 31
+  },
+  "created_at": "2026-06-04T13:26:26.081047+00:00",
+  "decision": "PASS_PHASE3AF_MEMBERSHIP_CONTROL_PREP_READY",
+  "inputs": {
+    "coverage_selection_root": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\selection_roots\\coverage_mask",
+    "panel": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_joined_panel_with_placebo_v1.parquet"
+  },
+  "matching_policy": {
+    "cap_bucket_source": "final_float_market_cap",
+    "matched_control": "Preserve per-date and amount/cap bucket active count; fallback to date-level inactive names when bucket sample is insufficient.",
+    "same_count_random": "Preserve per-date active count; prefer inactive names on the same date."
+  },
+  "outputs": {
+    "control_panel": "runtime\\phase3af_membership_control_v1_20260604\\phase3af_membership_control_panel_v1.parquet",
+    "field_diagnostics_csv": "reports\\phase3af_membership_control_v1_20260604\\phase3af_membership_control_field_diagnostics.csv",
+    "markdown": "reports\\phase3af_membership_control_v1_20260604\\PHASE3AF_MEMBERSHIP_CONTROL_PREP_V1_2026-06-04.md",
+    "summary_json": "reports\\phase3af_membership_control_v1_20260604\\phase3af_membership_control_prep_v1.json"
+  },
+  "panel_report": {
+    "column_count": 803,
+    "control_columns_appended": 22,
+    "output_panel": "runtime\\phase3af_membership_control_v1_20260604\\phase3af_membership_control_panel_v1.parquet",
+    "row_count": 988005,
+    "source_panel": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_joined_panel_with_placebo_v1.parquet"
+  },
+  "scope": "Generate AF-A membership controls for coverage-mask canary; no promotion and no full search.",
+  "seed": 4601,
+  "selection_roots": [
+    {
+      "control_type": "same_count_random",
+      "selected_count": 31,
+      "selection_root": "runtime\\phase3af_membership_control_v1_20260604\\selection_roots\\same_count_random"
+    },
+    {
+      "control_type": "matched_control",
+      "selected_count": 31,
+      "selection_root": "runtime\\phase3af_membership_control_v1_20260604\\selection_roots\\matched_control"
+    }
+  ],
+  "version": "phase3af-membership-control-prep-v1-2026-06-04"
+}

@@ -574,6 +574,8 @@ def _available_market_panel_usecols(path: Path | str) -> list[str]:
             or column.startswith("mkt_")
             or column.startswith("plcov_")
             or column.startswith("plshuf_")
+            or column.startswith("plrand_")
+            or column.startswith("plmatch_")
             or column == "vwap"
         )
         and not column.startswith("meta_")
