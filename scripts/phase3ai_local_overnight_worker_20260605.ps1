@@ -3,9 +3,9 @@ $ErrorActionPreference = "Stop"
 $RepoRoot = "G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531"
 $Python = "G:\PythonProject\.venv\Scripts\python.exe"
 $DatasetPath = "G:\Project_V7_Rotation\scripts\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
-$RunRoot = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r2"
+$RunRoot = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r3"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
-$RunTag = "r2"
+$RunTag = "r3"
 
 if (-not (Test-Path $Python)) { throw "missing python: $Python" }
 if (-not (Test-Path $DatasetPath)) { throw "missing dataset: $DatasetPath" }
@@ -63,7 +63,7 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
     "--machine", "local",
     "--dataset-path", $DatasetPath,
     "--memory-base", (Join-Path $RepoRoot "reports"),
-    "--memory-base", "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r2",
+    "--memory-base", "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r3",
     "--shard-count", "$shards",
     "--max-active", "$maxActive",
     "--candidates-per-shard", "$($leg.candidates)",
