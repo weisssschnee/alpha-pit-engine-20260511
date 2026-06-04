@@ -1,0 +1,14 @@
+﻿{
+    "created_at":  "2026-06-05T00:08:38",
+    "root":  "D:\\p3ai\\wide_cp2b_20260604",
+    "shard_count":  24,
+    "total_ledger":  381,
+    "total_eval":  374,
+    "smoke_pass":  0,
+    "promoted":  0,
+    "top_sortino":  4.976787,
+    "top_return":  0.001179,
+    "top_candidate":  "stockpit-ff-b397a210add8",
+    "top_expression":  "CSRank(CSResidual(CSRank(Div(Sub($open,Delay($close,1)),Delay($close,1))),CSRank(Div(Mean(Abs($ret),1),Mean(Abs($ret),78)))))",
+    "output_dir":  "D:\\p3ai\\wide_cp2b_20260604\\checkpoint_aggregate"
+}
