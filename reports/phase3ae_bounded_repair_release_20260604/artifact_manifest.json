@@ -1,0 +1,70 @@
+{
+  "release_id": "phase3ae_bounded_repair_release_20260604",
+  "phase": "Phase3AE",
+  "lane": "AE2_bounded_factor_pack_repair",
+  "decision": "PASS_AE2_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_HOLD_REPLAY_CANARY",
+  "status": "READY_FOR_AE2_REPLAY_CANARY",
+  "not_status": "READY_FOR_AE2_FULL_LARGE_SEARCH",
+  "commits": {
+    "factor_pack": "6294e49",
+    "selector_gate": "a5cce1d"
+  },
+  "counts": {
+    "source_fields": 94,
+    "bounded_candidates": 686,
+    "available_candidates": 686,
+    "missing_field_candidates": 0,
+    "ae2_rows_in_pool": 192,
+    "selector_selected_count": 64,
+    "ae2_selected_count": 31,
+    "selector_audit_rows": 379,
+    "forbidden_selected_hits": 0,
+    "missing_audit_metadata_rows": 0
+  },
+  "selected_lane_split": {
+    "event_state_machine_formula_lane": 12,
+    "lagged_daily_formula_lane": 19
+  },
+  "selected_role_split": {
+    "event_state_bounded_formula_candidate": 12,
+    "flow_liquidity_bounded_formula_candidate": 14,
+    "capacity_normalized_bounded_formula_candidate": 4,
+    "leverage_flow_bounded_formula_candidate": 1
+  },
+  "artifacts": {
+    "release_readme": "reports/phase3ae_bounded_repair_release_20260604/README.md",
+    "factor_pack_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_factor_pack_v1.py",
+    "factor_pack": "runtime/factor_packs/phase3ae_bounded_repair_factor_pack_v1_20260604.json",
+    "factor_pack_report": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_factor_pack_report.json",
+    "factor_pack_markdown": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/PHASE3AE_BOUNDED_REPAIR_FACTOR_PACK_V1_2026-06-04.md",
+    "factor_pack_candidates": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_candidates.csv",
+    "factor_pack_source_fields": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_source_fields.csv",
+    "selector_gate_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_selector_only_gate_v1.py",
+    "selector_gate_report": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selector_only_gate_v1.json",
+    "selector_gate_markdown": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/PHASE3AE_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_V1_2026-06-04.md",
+    "selected_candidates": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selected_candidates.csv",
+    "field_locations": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_field_locations.csv",
+    "joined_panel_report": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_joined_panel_report.json",
+    "frozen_selection_inputs": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json",
+    "selector_audit": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv",
+    "replay_canary_run_plan": "runtime/run_plans/phase3ae_bounded_repair_replay_canary_run_plan_v1_20260604.json"
+  },
+  "local_untracked_runtime_artifacts": {
+    "joined_panel": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/phase3ae_bounded_repair_joined_panel_v1.parquet",
+    "joined_panel_rows": 988005,
+    "joined_panel_columns": 759,
+    "joined_panel_reason_not_tracked": "large regenerable runtime artifact"
+  },
+  "go_no_go": {
+    "can_run_replay_canary": true,
+    "can_run_full_large_search": false,
+    "required_before_full_large_search": [
+      "coverage_mask_placebo_pass",
+      "shuffled_field_placebo_pass",
+      "64_audited_replay_canary_pass",
+      "new_vs_149_signal_recluster_nontrivial",
+      "top_cluster_share_controlled",
+      "turnover_cost_not_collapsed"
+    ]
+  }
+}
