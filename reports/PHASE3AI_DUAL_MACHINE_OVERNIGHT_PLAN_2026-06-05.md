@@ -15,6 +15,7 @@ Run a guarded overnight wide search on both company and local machines while pre
 
 - Each leg runs a canary first.
 - Main leg runs only if canary evaluated count clears a minimum threshold.
+- Canary pass uses supervisor artifact state first: non-empty evaluated count and zero failed shards can override a nonzero wrapper exit code caused by registry/finalization noise.
 - All outputs are discovery/checkpoint only.
 - No X0/R3 change.
 - No candidate promotion from cheap checkpoint metrics.
@@ -81,8 +82,8 @@ Local legs use lower active worker count to avoid destabilizing the desktop.
 
 ## Expected Checkpoints
 
-- `D:\p3ai\overnight_company_20260605_r3\overnight_status.jsonl`
-- `G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r3\overnight_status.jsonl`
+- `D:\p3ai\overnight_company_20260605_r4\overnight_status.jsonl`
+- `G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r4\overnight_status.jsonl`
 
 ## Decision After Completion
 

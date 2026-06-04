@@ -4,9 +4,9 @@ $Archive = "D:\HermesWorker\runtime\phase3ai_overnight_source_20260605.zip"
 $RepoRoot = "D:\HermesWorker\workspace\phase3ai_overnight_current"
 $Python = "D:\HermesWorker\workspace\.venv\Scripts\python.exe"
 $DatasetPath = "D:\HermesWorker\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
-$RunRoot = "D:\p3ai\overnight_company_20260605_r3"
+$RunRoot = "D:\p3ai\overnight_company_20260605_r4"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
-$RunTag = "r3"
+$RunTag = "r4"
 
 if (-not (Test-Path $Archive)) { throw "missing archive: $Archive" }
 if (-not (Test-Path $Python)) { throw "missing python: $Python" }
@@ -44,6 +44,8 @@ function Summarize-Launch($launchRoot) {
     failed = 0
     top_sortino = $null
     top_candidate = $null
+    completed = 0
+    running = 0
   }
   if (-not (Test-Path $launchRoot)) { return $summary }
   Get-ChildItem $launchRoot -Directory -Filter "supervisor-shard_*" | ForEach-Object {
@@ -63,6 +65,8 @@ function Summarize-Launch($launchRoot) {
   if (Test-Path $supervisor) {
     $s = Get-Content $supervisor -Raw | ConvertFrom-Json
     $summary.failed = Get-JsonInt $s "failed_count"
+    $summary.completed = Get-JsonInt $s "completed_count"
+    $summary.running = Get-JsonInt $s "running_count"
   }
   return $summary
 }
@@ -109,8 +113,12 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
   & $Python @argsList
   $code = $LASTEXITCODE
   $summary = Summarize-Launch $launchRoot
-  Write-Status ([ordered]@{time=(Get-Date).ToString("s"); event="finish"; leg=$leg.name; stage=$suffix; exit_code=$code; summary=$summary})
-  return @{code=$code; summary=$summary; launch_root=$launchRoot}
+  $effectiveCode = $code
+  if ([int]$summary.shard_count -gt 0 -and [int]$summary.total_eval -gt 0 -and [int]$summary.failed -eq 0) {
+    $effectiveCode = 0
+  }
+  Write-Status ([ordered]@{time=(Get-Date).ToString("s"); event="finish"; leg=$leg.name; stage=$suffix; exit_code=$code; effective_exit_code=$effectiveCode; summary=$summary})
+  return @{code=$effectiveCode; raw_code=$code; summary=$summary; launch_root=$launchRoot}
 }
 
 $deadline = (Get-Date).AddHours(8.25)

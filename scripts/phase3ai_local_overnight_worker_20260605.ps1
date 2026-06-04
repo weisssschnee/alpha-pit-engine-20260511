@@ -3,9 +3,9 @@ $ErrorActionPreference = "Stop"
 $RepoRoot = "G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531"
 $Python = "G:\PythonProject\.venv\Scripts\python.exe"
 $DatasetPath = "G:\Project_V7_Rotation\scripts\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
-$RunRoot = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r3"
+$RunRoot = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r4"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
-$RunTag = "r3"
+$RunTag = "r4"
 
 if (-not (Test-Path $Python)) { throw "missing python: $Python" }
 if (-not (Test-Path $DatasetPath)) { throw "missing dataset: $DatasetPath" }
@@ -27,7 +27,7 @@ function Get-JsonInt($obj, $name) {
 }
 
 function Summarize-Launch($launchRoot) {
-  $summary = [ordered]@{launch_root=$launchRoot; shard_count=0; total_ledger=0; total_eval=0; failed=0; top_sortino=$null; top_candidate=$null}
+  $summary = [ordered]@{launch_root=$launchRoot; shard_count=0; total_ledger=0; total_eval=0; failed=0; completed=0; running=0; top_sortino=$null; top_candidate=$null}
   if (-not (Test-Path $launchRoot)) { return $summary }
   Get-ChildItem $launchRoot -Directory -Filter "supervisor-shard_*" | ForEach-Object {
     $summary.shard_count += 1
@@ -46,6 +46,8 @@ function Summarize-Launch($launchRoot) {
   if (Test-Path $supervisor) {
     $s = Get-Content $supervisor -Raw | ConvertFrom-Json
     $summary.failed = Get-JsonInt $s "failed_count"
+    $summary.completed = Get-JsonInt $s "completed_count"
+    $summary.running = Get-JsonInt $s "running_count"
   }
   return $summary
 }
@@ -63,7 +65,7 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
     "--machine", "local",
     "--dataset-path", $DatasetPath,
     "--memory-base", (Join-Path $RepoRoot "reports"),
-    "--memory-base", "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r3",
+    "--memory-base", "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r4",
     "--shard-count", "$shards",
     "--max-active", "$maxActive",
     "--candidates-per-shard", "$($leg.candidates)",
@@ -89,8 +91,12 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
   & $Python @argsList
   $code = $LASTEXITCODE
   $summary = Summarize-Launch $launchRoot
-  Write-Status ([ordered]@{time=(Get-Date).ToString("s"); event="finish"; leg=$leg.name; stage=$suffix; exit_code=$code; summary=$summary})
-  return @{code=$code; summary=$summary; launch_root=$launchRoot}
+  $effectiveCode = $code
+  if ([int]$summary.shard_count -gt 0 -and [int]$summary.total_eval -gt 0 -and [int]$summary.failed -eq 0) {
+    $effectiveCode = 0
+  }
+  Write-Status ([ordered]@{time=(Get-Date).ToString("s"); event="finish"; leg=$leg.name; stage=$suffix; exit_code=$code; effective_exit_code=$effectiveCode; summary=$summary})
+  return @{code=$effectiveCode; raw_code=$code; summary=$summary; launch_root=$launchRoot}
 }
 
 $deadline = (Get-Date).AddHours(8.25)

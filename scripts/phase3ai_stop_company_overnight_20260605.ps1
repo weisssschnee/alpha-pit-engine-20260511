@@ -2,7 +2,8 @@ $ErrorActionPreference = "Stop"
 
 $TaskIds = @(
   "job_20260605_004614_3da597",
-  "job_20260605_005923_9287bc"
+  "job_20260605_005923_9287bc",
+  "job_20260605_011913_ed2700"
 )
 $Patterns = @(
   "phase3ai_remote_start_company_overnight_20260605",
