@@ -1,0 +1,395 @@
+{
+  "adaptation_proof_status_counts": {
+    "adapted_as_non_formula_input_or_needs_gate_contract": 195,
+    "formula_search_ready_unselected_or_prior_selected_elsewhere": 1611,
+    "ingestion_or_pit_contract_incomplete": 138,
+    "not_formula_search_suitable": 691,
+    "panel_ready_needs_factor_pack": 139,
+    "proven_selector_admission": 248,
+    "registered_needs_sidecar": 1753
+  },
+  "blocked_or_key_field_count": 491,
+  "created_at_utc": "2026-06-04T04:03:16.792531+00:00",
+  "decision": "PASS_SEARCHER_ADAPTATION_CLASSIFICATION_WITH_REPAIR_QUEUE",
+  "direct_formula_search_ready_count": 1774,
+  "event_state_machine_field_count": 256,
+  "event_state_search_repair_queue_count": 47,
+  "field_count": 4775,
+  "formula_search_repair_queue_count": 1416,
+  "gate_or_regime_field_count": 395,
+  "interpretation": [
+    "Searcher adaptation classification is complete enough for routing, but repair work remains.",
+    "Many fields are suitable for formula search only after PIT sidecar or bounded factor-pack work.",
+    "Timestamp/cutoff/event identity fields should not be forced into direct formula search.",
+    "Regime/context/tradability fields need gate or interaction validation, not ordinary alpha replay alone.",
+    "PE/PB/PS valuation fields now have selector-admission proof, but still need replay/style/cost audit."
+  ],
+  "lane_proof_counts": [
+    {
+      "adaptation_proof_status": "formula_search_ready_unselected_or_prior_selected_elsewhere",
+      "count": 1550,
+      "searcher_lane": "announcement_pit_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "panel_ready_needs_factor_pack",
+      "count": 70,
+      "searcher_lane": "announcement_pit_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "proven_selector_admission",
+      "count": 66,
+      "searcher_lane": "announcement_pit_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "registered_needs_sidecar",
+      "count": 1137,
+      "searcher_lane": "announcement_pit_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 489,
+      "searcher_lane": "blocked_not_search_input"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 1,
+      "searcher_lane": "event_cutoff_contract"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 1,
+      "searcher_lane": "event_cutoff_contract"
+    },
+    {
+      "adaptation_proof_status": "formula_search_ready_unselected_or_prior_selected_elsewhere",
+      "count": 15,
+      "searcher_lane": "event_state_machine_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "ingestion_or_pit_contract_incomplete",
+      "count": 35,
+      "searcher_lane": "event_state_machine_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "panel_ready_needs_factor_pack",
+      "count": 9,
+      "searcher_lane": "event_state_machine_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "proven_selector_admission",
+      "count": 50,
+      "searcher_lane": "event_state_machine_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "registered_needs_sidecar",
+      "count": 3,
+      "searcher_lane": "event_state_machine_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 59,
+      "searcher_lane": "event_state_machine_gate_lane"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 83,
+      "searcher_lane": "event_state_machine_gate_lane"
+    },
+    {
+      "adaptation_proof_status": "formula_search_ready_unselected_or_prior_selected_elsewhere",
+      "count": 37,
+      "searcher_lane": "lagged_daily_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "panel_ready_needs_factor_pack",
+      "count": 44,
+      "searcher_lane": "lagged_daily_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "proven_selector_admission",
+      "count": 108,
+      "searcher_lane": "lagged_daily_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "registered_needs_sidecar",
+      "count": 60,
+      "searcher_lane": "lagged_daily_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 71,
+      "searcher_lane": "lagged_price_context_lane"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 28,
+      "searcher_lane": "lagged_price_context_lane"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 1,
+      "searcher_lane": "lagged_state_context_lane"
+    },
+    {
+      "adaptation_proof_status": "formula_search_ready_unselected_or_prior_selected_elsewhere",
+      "count": 6,
+      "searcher_lane": "manual_review_lane"
+    },
+    {
+      "adaptation_proof_status": "ingestion_or_pit_contract_incomplete",
+      "count": 17,
+      "searcher_lane": "manual_review_lane"
+    },
+    {
+      "adaptation_proof_status": "panel_ready_needs_factor_pack",
+      "count": 14,
+      "searcher_lane": "manual_review_lane"
+    },
+    {
+      "adaptation_proof_status": "proven_selector_admission",
+      "count": 14,
+      "searcher_lane": "manual_review_lane"
+    },
+    {
+      "adaptation_proof_status": "registered_needs_sidecar",
+      "count": 536,
+      "searcher_lane": "manual_review_lane"
+    },
+    {
+      "adaptation_proof_status": "formula_search_ready_unselected_or_prior_selected_elsewhere",
+      "count": 3,
+      "searcher_lane": "pit_context_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "ingestion_or_pit_contract_incomplete",
+      "count": 86,
+      "searcher_lane": "pit_context_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "panel_ready_needs_factor_pack",
+      "count": 2,
+      "searcher_lane": "pit_context_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "proven_selector_admission",
+      "count": 10,
+      "searcher_lane": "pit_context_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "registered_needs_sidecar",
+      "count": 17,
+      "searcher_lane": "pit_context_formula_lane"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 30,
+      "searcher_lane": "regime_context_interaction_lane"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 63,
+      "searcher_lane": "regime_context_interaction_lane"
+    },
+    {
+      "adaptation_proof_status": "adapted_as_non_formula_input_or_needs_gate_contract",
+      "count": 33,
+      "searcher_lane": "tradability_risk_gate_lane"
+    },
+    {
+      "adaptation_proof_status": "not_formula_search_suitable",
+      "count": 27,
+      "searcher_lane": "tradability_risk_gate_lane"
+    }
+  ],
+  "non_formula_search_field_count": 886,
+  "outputs": {
+    "blocked_or_key_fields": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\blocked_or_key_fields.csv",
+    "direct_formula_search_ready_fields": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\direct_formula_search_ready_fields.csv",
+    "event_state_machine_fields": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\event_state_machine_fields.csv",
+    "event_state_search_repair_queue": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\event_state_search_repair_queue.csv",
+    "field_searcher_adaptation": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\field_searcher_adaptation.csv",
+    "formula_search_repair_queue": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\formula_search_repair_queue.csv",
+    "gate_or_regime_fields": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\gate_or_regime_fields.csv",
+    "non_formula_search_fields": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\non_formula_search_fields.csv",
+    "searcher_adaptation_summary": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\searcher_adaptation_summary.csv",
+    "watchlist_searcher_adaptation": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\watchlist_searcher_adaptation.csv"
+  },
+  "searcher_lane_contracts": {
+    "announcement_pit_formula_lane": {
+      "allowed_searcher": "bounded_formula_pack",
+      "required_preconditions": [
+        "PIT notice/disclosure lag",
+        "no same-day label fields",
+        "numeric or rankable alias"
+      ],
+      "required_validation": [
+        "selector canary",
+        "replay/style audit",
+        "cost/turnover audit"
+      ],
+      "role": "direct_formula_search_after_notice_lag"
+    },
+    "blocked_not_search_input": {
+      "allowed_searcher": "none",
+      "required_preconditions": [
+        "remain excluded"
+      ],
+      "required_validation": [
+        "forbidden-field audit"
+      ],
+      "role": "blocked_metadata_key_label_text"
+    },
+    "contract_key_or_cutoff_lane": {
+      "allowed_searcher": "none",
+      "required_preconditions": [
+        "used only for joins/cutoffs"
+      ],
+      "required_validation": [
+        "time-order audit"
+      ],
+      "role": "alignment_contract"
+    },
+    "event_cutoff_contract": {
+      "allowed_searcher": "none_as_rank_field",
+      "required_preconditions": [
+        "cutoff used to materialize after-event features"
+      ],
+      "required_validation": [
+        "cutoff lag audit",
+        "no pre-event leakage"
+      ],
+      "role": "event_observability_cutoff"
+    },
+    "event_state_machine_formula_lane": {
+      "allowed_searcher": "event_state_machine_generator",
+      "required_preconditions": [
+        "observable cutoff",
+        "event age/horizon materialization",
+        "tradability mask"
+      ],
+      "required_validation": [
+        "event count",
+        "matched-control",
+        "same-count random placebo",
+        "event tradability audit"
+      ],
+      "role": "event_state_formula_or_actor_motif"
+    },
+    "event_state_machine_gate_lane": {
+      "allowed_searcher": "event_gate_or_actor_motif",
+      "required_preconditions": [
+        "lag/cutoff proof",
+        "categorical encoding contract"
+      ],
+      "required_validation": [
+        "gate placebo",
+        "matched-control",
+        "event-count stability"
+      ],
+      "role": "event_state_gate_or_categorical_context"
+    },
+    "lagged_daily_formula_lane": {
+      "allowed_searcher": "bounded_formula_pack",
+      "required_preconditions": [
+        "lag1 or earlier availability",
+        "daily summary not used for same-open decisions"
+      ],
+      "required_validation": [
+        "selector canary",
+        "replay/style audit",
+        "cost/turnover audit"
+      ],
+      "role": "direct_formula_search_lagged_daily_context"
+    },
+    "lagged_price_context_lane": {
+      "allowed_searcher": "context_interaction_first",
+      "required_preconditions": [
+        "lagged only",
+        "label-period exclusion"
+      ],
+      "required_validation": [
+        "context interaction replay",
+        "style attribution",
+        "same-family duplicate audit"
+      ],
+      "role": "price_state_context_or_interaction"
+    },
+    "manual_review_lane": {
+      "allowed_searcher": "none_until_review",
+      "required_preconditions": [
+        "field family and PIT route clarified"
+      ],
+      "required_validation": [
+        "manual factor review"
+      ],
+      "role": "unmapped_or_low-confidence"
+    },
+    "pit_context_formula_lane": {
+      "allowed_searcher": "bounded_formula_pack_or_sidecar_first",
+      "required_preconditions": [
+        "field-specific PIT contract",
+        "panel materialization if not already executable"
+      ],
+      "required_validation": [
+        "selector canary",
+        "availability proof",
+        "replay/style audit"
+      ],
+      "role": "direct_formula_search_after_pit_contract"
+    },
+    "regime_context_interaction_lane": {
+      "allowed_searcher": "gate_or_interaction_search",
+      "required_preconditions": [
+        "lagged regime state",
+        "no same-day market summary leakage"
+      ],
+      "required_validation": [
+        "gate lag audit",
+        "random/block/circular placebo",
+        "full-calendar gated replay"
+      ],
+      "role": "regime_gate_or_interaction"
+    },
+    "tradability_risk_gate_lane": {
+      "allowed_searcher": "risk_filter_not_alpha_formula",
+      "required_preconditions": [
+        "known before decision time",
+        "execution feasibility semantics"
+      ],
+      "required_validation": [
+        "fillability",
+        "limit/suspension exclusion audit",
+        "turnover/capacity impact"
+      ],
+      "role": "execution_or_universe_gate"
+    }
+  },
+  "searcher_lane_counts": {
+    "announcement_pit_formula_lane": 2823,
+    "blocked_not_search_input": 489,
+    "event_cutoff_contract": 2,
+    "event_state_machine_formula_lane": 112,
+    "event_state_machine_gate_lane": 142,
+    "lagged_daily_formula_lane": 249,
+    "lagged_price_context_lane": 99,
+    "lagged_state_context_lane": 1,
+    "manual_review_lane": 587,
+    "pit_context_formula_lane": 118,
+    "regime_context_interaction_lane": 93,
+    "tradability_risk_gate_lane": 60
+  },
+  "searcher_suitability_counts": {
+    "context_or_interaction": 193,
+    "diagnostic_review": 587,
+    "direct_formula_candidate": 118,
+    "direct_formula_candidate_after_notice_lag": 2823,
+    "direct_formula_candidate_lagged": 249,
+    "event_module_candidate": 112,
+    "event_module_or_gate": 142,
+    "gate_only": 60,
+    "not_direct_formula": 2,
+    "not_suitable": 489
+  },
+  "version": "cn-field-searcher-adaptation-audit-v1-2026-06-04",
+  "watchlist_row_count": 1289
+}

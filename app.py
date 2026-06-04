@@ -345,6 +345,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit field assets through panel materialization, factor packs, selector admission, and replay availability evidence.",
     },
+    "cn-field-searcher-adaptation-audit-v1": {
+        "module": "our_system_phase2.runtime.cn_field_searcher_adaptation_audit_v1",
+        "diagnostic": False,
+        "description": "Classify integrated CN fields by mature-searcher lane: formula search, event-state, regime/gate, tradability gate, or blocked.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

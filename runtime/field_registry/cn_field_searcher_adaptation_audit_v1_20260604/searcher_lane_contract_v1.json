@@ -1,0 +1,150 @@
+{
+  "announcement_pit_formula_lane": {
+    "allowed_searcher": "bounded_formula_pack",
+    "required_preconditions": [
+      "PIT notice/disclosure lag",
+      "no same-day label fields",
+      "numeric or rankable alias"
+    ],
+    "required_validation": [
+      "selector canary",
+      "replay/style audit",
+      "cost/turnover audit"
+    ],
+    "role": "direct_formula_search_after_notice_lag"
+  },
+  "blocked_not_search_input": {
+    "allowed_searcher": "none",
+    "required_preconditions": [
+      "remain excluded"
+    ],
+    "required_validation": [
+      "forbidden-field audit"
+    ],
+    "role": "blocked_metadata_key_label_text"
+  },
+  "contract_key_or_cutoff_lane": {
+    "allowed_searcher": "none",
+    "required_preconditions": [
+      "used only for joins/cutoffs"
+    ],
+    "required_validation": [
+      "time-order audit"
+    ],
+    "role": "alignment_contract"
+  },
+  "event_cutoff_contract": {
+    "allowed_searcher": "none_as_rank_field",
+    "required_preconditions": [
+      "cutoff used to materialize after-event features"
+    ],
+    "required_validation": [
+      "cutoff lag audit",
+      "no pre-event leakage"
+    ],
+    "role": "event_observability_cutoff"
+  },
+  "event_state_machine_formula_lane": {
+    "allowed_searcher": "event_state_machine_generator",
+    "required_preconditions": [
+      "observable cutoff",
+      "event age/horizon materialization",
+      "tradability mask"
+    ],
+    "required_validation": [
+      "event count",
+      "matched-control",
+      "same-count random placebo",
+      "event tradability audit"
+    ],
+    "role": "event_state_formula_or_actor_motif"
+  },
+  "event_state_machine_gate_lane": {
+    "allowed_searcher": "event_gate_or_actor_motif",
+    "required_preconditions": [
+      "lag/cutoff proof",
+      "categorical encoding contract"
+    ],
+    "required_validation": [
+      "gate placebo",
+      "matched-control",
+      "event-count stability"
+    ],
+    "role": "event_state_gate_or_categorical_context"
+  },
+  "lagged_daily_formula_lane": {
+    "allowed_searcher": "bounded_formula_pack",
+    "required_preconditions": [
+      "lag1 or earlier availability",
+      "daily summary not used for same-open decisions"
+    ],
+    "required_validation": [
+      "selector canary",
+      "replay/style audit",
+      "cost/turnover audit"
+    ],
+    "role": "direct_formula_search_lagged_daily_context"
+  },
+  "lagged_price_context_lane": {
+    "allowed_searcher": "context_interaction_first",
+    "required_preconditions": [
+      "lagged only",
+      "label-period exclusion"
+    ],
+    "required_validation": [
+      "context interaction replay",
+      "style attribution",
+      "same-family duplicate audit"
+    ],
+    "role": "price_state_context_or_interaction"
+  },
+  "manual_review_lane": {
+    "allowed_searcher": "none_until_review",
+    "required_preconditions": [
+      "field family and PIT route clarified"
+    ],
+    "required_validation": [
+      "manual factor review"
+    ],
+    "role": "unmapped_or_low-confidence"
+  },
+  "pit_context_formula_lane": {
+    "allowed_searcher": "bounded_formula_pack_or_sidecar_first",
+    "required_preconditions": [
+      "field-specific PIT contract",
+      "panel materialization if not already executable"
+    ],
+    "required_validation": [
+      "selector canary",
+      "availability proof",
+      "replay/style audit"
+    ],
+    "role": "direct_formula_search_after_pit_contract"
+  },
+  "regime_context_interaction_lane": {
+    "allowed_searcher": "gate_or_interaction_search",
+    "required_preconditions": [
+      "lagged regime state",
+      "no same-day market summary leakage"
+    ],
+    "required_validation": [
+      "gate lag audit",
+      "random/block/circular placebo",
+      "full-calendar gated replay"
+    ],
+    "role": "regime_gate_or_interaction"
+  },
+  "tradability_risk_gate_lane": {
+    "allowed_searcher": "risk_filter_not_alpha_formula",
+    "required_preconditions": [
+      "known before decision time",
+      "execution feasibility semantics"
+    ],
+    "required_validation": [
+      "fillability",
+      "limit/suspension exclusion audit",
+      "turnover/capacity impact"
+    ],
+    "role": "execution_or_universe_gate"
+  }
+}
