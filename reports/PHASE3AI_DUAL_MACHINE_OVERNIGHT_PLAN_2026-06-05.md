@@ -81,8 +81,8 @@ Local legs use lower active worker count to avoid destabilizing the desktop.
 
 ## Expected Checkpoints
 
-- `D:\p3ai\overnight_company_20260605\overnight_status.jsonl`
-- `G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605\overnight_status.jsonl`
+- `D:\p3ai\overnight_company_20260605_r2\overnight_status.jsonl`
+- `G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r2\overnight_status.jsonl`
 
 ## Decision After Completion
 

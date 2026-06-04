@@ -4,7 +4,7 @@ $Archive = "D:\HermesWorker\runtime\phase3ai_overnight_source_20260605.zip"
 $RepoRoot = "D:\HermesWorker\workspace\phase3ai_overnight_current"
 $Python = "D:\HermesWorker\workspace\.venv\Scripts\python.exe"
 $DatasetPath = "D:\HermesWorker\data\phase2_stock_tdx_official_20250806_to_20260508_maxopt.parquet"
-$RunRoot = "D:\p3ai\overnight_company_20260605"
+$RunRoot = "D:\p3ai\overnight_company_20260605_r2"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
 
 if (-not (Test-Path $Archive)) { throw "missing archive: $Archive" }

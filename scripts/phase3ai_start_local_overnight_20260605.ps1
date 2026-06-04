@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $Script = "G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531\scripts\phase3ai_local_overnight_worker_20260605.ps1"
-$LogDir = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605"
+$LogDir = "G:\Project_V7_Rotation\runtime\phase3ai_overnight_local_20260605_r2"
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 $LogPath = Join-Path $LogDir "local_overnight_launcher.log"
 $StatusPath = Join-Path $LogDir "local_overnight_launcher_status.json"
