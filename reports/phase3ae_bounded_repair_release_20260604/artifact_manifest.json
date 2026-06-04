@@ -7,29 +7,49 @@
   "not_status": "READY_FOR_AE2_FULL_LARGE_SEARCH",
   "commits": {
     "factor_pack": "6294e49",
-    "selector_gate": "a5cce1d"
+    "selector_gate": "a5cce1d",
+    "value_coverage_and_placebo": "included_in_current_release_update"
   },
   "counts": {
     "source_fields": 94,
     "bounded_candidates": 686,
     "available_candidates": 686,
+    "value_filtered_candidates": 294,
     "missing_field_candidates": 0,
+    "low_coverage_candidates": 392,
     "ae2_rows_in_pool": 192,
     "selector_selected_count": 64,
     "ae2_selected_count": 31,
     "selector_audit_rows": 379,
     "forbidden_selected_hits": 0,
+    "low_coverage_selected_hits": 0,
     "missing_audit_metadata_rows": 0
   },
   "selected_lane_split": {
-    "event_state_machine_formula_lane": 12,
-    "lagged_daily_formula_lane": 19
+    "event_state_machine_formula_lane": 15,
+    "announcement_pit_formula_lane": 9,
+    "lagged_daily_formula_lane": 7
   },
   "selected_role_split": {
-    "event_state_bounded_formula_candidate": 12,
-    "flow_liquidity_bounded_formula_candidate": 14,
-    "capacity_normalized_bounded_formula_candidate": 4,
-    "leverage_flow_bounded_formula_candidate": 1
+    "event_state_bounded_formula_candidate": 15,
+    "flow_liquidity_bounded_formula_candidate": 8,
+    "leverage_flow_bounded_formula_candidate": 7,
+    "capacity_normalized_bounded_formula_candidate": 1
+  },
+  "value_filter": {
+    "min_field_coverage": 0.001,
+    "min_event_field_coverage": 0.0005,
+    "min_event_nonnull_rows": 50,
+    "zero_nonnull_fields": "always_rejected",
+    "first_placebo_audit_exposed_schema_visible_all_null_fields": true
+  },
+  "placebo_pack": {
+    "decision": "PASS_AE2_PLACEBO_PACK_READY_FOR_REPLAY_CANARY_COMPARISON",
+    "selected_ae2_count": 31,
+    "input_field_count": 11,
+    "candidate_count": 62,
+    "coverage_mask_candidates": 31,
+    "shuffled_value_candidates": 31
   },
   "artifacts": {
     "release_readme": "reports/phase3ae_bounded_repair_release_20260604/README.md",
@@ -40,11 +60,22 @@
     "factor_pack_candidates": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_candidates.csv",
     "factor_pack_source_fields": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_source_fields.csv",
     "selector_gate_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_selector_only_gate_v1.py",
+    "placebo_pack_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_placebo_pack_v1.py",
     "selector_gate_report": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selector_only_gate_v1.json",
     "selector_gate_markdown": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/PHASE3AE_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_V1_2026-06-04.md",
+    "value_filtered_factor_pack": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json",
     "selected_candidates": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selected_candidates.csv",
     "field_locations": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_field_locations.csv",
+    "value_coverage_fields": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_value_coverage_fields.csv",
+    "low_coverage_candidates": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_low_coverage_candidates.csv",
+    "low_coverage_selected_hits": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_low_coverage_selected_hits.csv",
     "joined_panel_report": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_joined_panel_report.json",
+    "placebo_factor_pack": "runtime/factor_packs/phase3ae_bounded_repair_placebo_factor_pack_v1_20260604.json",
+    "placebo_report": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_bounded_repair_placebo_pack_report.json",
+    "placebo_markdown": "reports/phase3ae_bounded_repair_placebo_v1_20260604/PHASE3AE_BOUNDED_REPAIR_PLACEBO_PACK_V1_2026-06-04.md",
+    "placebo_candidate_pairs": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_candidate_pairs.csv",
+    "placebo_field_stats": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_field_stats.csv",
+    "placebo_candidates": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_candidates.csv",
     "frozen_selection_inputs": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json",
     "selector_audit": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv",
     "replay_canary_run_plan": "runtime/run_plans/phase3ae_bounded_repair_replay_canary_run_plan_v1_20260604.json"

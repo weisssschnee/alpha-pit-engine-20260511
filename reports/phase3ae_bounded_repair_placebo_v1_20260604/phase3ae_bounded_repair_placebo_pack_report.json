@@ -1,0 +1,31 @@
+{
+  "by_placebo_type": {
+    "coverage_mask": 31,
+    "shuffled_value": 31
+  },
+  "candidate_count": 62,
+  "created_at": "2026-06-04T11:41:45.033997+00:00",
+  "decision": "PASS_AE2_PLACEBO_PACK_READY_FOR_REPLAY_CANARY_COMPARISON",
+  "factor_pack_id": "phase3ae_bounded_repair_placebo_factor_pack_v1_20260604",
+  "factor_pack_version": "phase3ae-bounded-repair-placebo-pack-v1-2026-06-04",
+  "input_field_count": 11,
+  "joined_panel": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
+  "outputs": {
+    "candidate_pairs": "reports\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_placebo_candidate_pairs.csv",
+    "candidates_csv": "reports\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_placebo_candidates.csv",
+    "field_stats": "reports\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_placebo_field_stats.csv",
+    "markdown": "reports\\phase3ae_bounded_repair_placebo_v1_20260604\\PHASE3AE_BOUNDED_REPAIR_PLACEBO_PACK_V1_2026-06-04.md",
+    "placebo_factor_pack": "runtime\\factor_packs\\phase3ae_bounded_repair_placebo_factor_pack_v1_20260604.json",
+    "placebo_sidecar": "runtime\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_bounded_repair_placebo_sidecar_v1.parquet",
+    "report_json": "reports\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_bounded_repair_placebo_pack_report.json"
+  },
+  "placebo_sidecar": "runtime\\phase3ae_bounded_repair_placebo_v1_20260604\\phase3ae_bounded_repair_placebo_sidecar_v1.parquet",
+  "policy": {
+    "coverage_mask_interpretation": "tests whether field availability/event membership alone explains behavior; pass/fail is diagnostic, not automatic rejection",
+    "promotion": "placebo pack cannot promote alpha; only paired replay comparison can inform AE2 canary",
+    "shuffled_value_interpretation": "tests whether numeric field values add information beyond date-level coverage/distribution"
+  },
+  "selected_ae2_count": 31,
+  "selection_inputs": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\selector_only\\aa\\phase3_strict_selection_inputs.json",
+  "status": "ready_for_paired_replay_canary_comparison"
+}

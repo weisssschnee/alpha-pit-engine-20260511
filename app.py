@@ -370,6 +370,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run AE2 bounded repair selector-only gate with panel availability, PIT sidecars, mature G2 selector, and replay-canary blockers.",
     },
+    "phase3ae-bounded-repair-placebo-pack-v1": {
+        "module": "our_system_phase2.runtime.phase3ae_bounded_repair_placebo_pack_v1",
+        "diagnostic": False,
+        "description": "Build AE2 paired coverage-mask and shuffled-value placebo packs for replay canary comparison.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

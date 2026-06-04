@@ -1,6 +1,6 @@
 {
   "phase3_version": "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29",
-  "created_at": "2026-06-04T10:24:54+00:00",
+  "created_at": "2026-06-04T11:41:06+00:00",
   "experiment_id": "phase3aa_mature_g2_event_selector_36",
   "status": "selection_only",
   "dataset_path": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
@@ -29,16 +29,16 @@
       "expanded_memory_root_sample": [],
       "factor_pack_only": true,
       "factor_pack_paths": [
-        "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_factor_pack_available_v1_20260604.json"
+        "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json"
       ],
-      "factor_pack_source_rows": 686,
+      "factor_pack_source_rows": 294,
       "include_fundamental_candidates": true,
       "include_gate_candidates": false,
       "include_research_factor_candidates": true,
       "input_candidate_pool_count": 1065,
       "memory_roots": [],
       "output_candidate_pool_count": 1257,
-      "pre_dedup_event_source_rows": 686,
+      "pre_dedup_event_source_rows": 294,
       "scope": "event-derived factor candidates injected into shared pre-replay pool",
       "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29"
     }
@@ -74,8 +74,8 @@
   },
   "selector_checks": {
     "candidate_source_counts": {
-      "cn_phase3ad_new_data_feature_layer": 67,
-      "phase3ae_bounded_repair_feature_layer": 163,
+      "cn_phase3ad_new_data_feature_layer": 69,
+      "phase3ae_bounded_repair_feature_layer": 161,
       "unknown": 154
     },
     "selected_source_counts": {

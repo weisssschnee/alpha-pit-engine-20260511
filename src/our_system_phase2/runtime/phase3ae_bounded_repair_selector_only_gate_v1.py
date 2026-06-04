@@ -190,6 +190,126 @@ def _filter_pack_by_availability(
     return filtered, missing_rows, field_locations
 
 
+def _is_sparse_event_field(field: str) -> bool:
+    text = field.lower()
+    return (
+        text.startswith("evt_")
+        or "limit" in text
+        or "fengdan" in text
+        or "uplimit" in text
+        or re.search(r"\blb_\d+_num\b", text) is not None
+    )
+
+
+def _field_value_coverage(
+    *,
+    panel_path: Path,
+    fields: list[str],
+    min_field_coverage: float,
+    min_event_field_coverage: float,
+    min_event_nonnull_rows: int,
+) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    if not fields:
+        return {}, []
+    schema = _schema(panel_path)
+    read_cols = [field for field in fields if field in schema]
+    frame = pd.read_parquet(panel_path, columns=read_cols) if read_cols else pd.DataFrame()
+    total = max(1, len(frame))
+    coverage: dict[str, dict[str, Any]] = {}
+    rows: list[dict[str, Any]] = []
+    for field in fields:
+        if field not in frame.columns:
+            nonnull = 0
+            unique_nonnull = 0
+            mean = None
+            std = None
+        else:
+            values = pd.to_numeric(frame[field], errors="coerce")
+            nonnull = int(values.notna().sum())
+            unique_nonnull = int(values.nunique(dropna=True)) if nonnull else 0
+            mean = float(values.mean()) if nonnull else None
+            std = float(values.std()) if nonnull else None
+        ratio = float(nonnull / total)
+        is_event = _is_sparse_event_field(field)
+        threshold = float(min_event_field_coverage if is_event else min_field_coverage)
+        min_rows = int(min_event_nonnull_rows if is_event else 1)
+        pass_value_gate = nonnull > 0 and (ratio >= threshold or (is_event and nonnull >= min_rows))
+        reason = "pass"
+        if nonnull <= 0:
+            reason = "zero_nonnull"
+        elif ratio < threshold and not (is_event and nonnull >= min_rows):
+            reason = "below_coverage_threshold"
+        row = {
+            "field": field,
+            "coverage": round(ratio, 8),
+            "nonnull_rows": nonnull,
+            "total_rows": total,
+            "unique_nonnull": unique_nonnull,
+            "mean": mean,
+            "std": std,
+            "is_sparse_event_field": is_event,
+            "coverage_threshold": threshold,
+            "min_event_nonnull_rows": min_event_nonnull_rows if is_event else None,
+            "pass_value_gate": pass_value_gate,
+            "reason": reason,
+        }
+        coverage[field] = row
+        rows.append(row)
+    return coverage, rows
+
+
+def _filter_pack_by_value_coverage(
+    factor_pack: dict[str, Any],
+    *,
+    panel_path: Path,
+    min_field_coverage: float,
+    min_event_field_coverage: float,
+    min_event_nonnull_rows: int,
+) -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
+    rows = [dict(row) for row in factor_pack.get("candidate_rows") or []]
+    fields = sorted({field for row in rows for field in _fields(str(row.get("expression") or ""))})
+    coverage, coverage_rows = _field_value_coverage(
+        panel_path=panel_path,
+        fields=fields,
+        min_field_coverage=min_field_coverage,
+        min_event_field_coverage=min_event_field_coverage,
+        min_event_nonnull_rows=min_event_nonnull_rows,
+    )
+    kept: list[dict[str, Any]] = []
+    low_coverage_rows: list[dict[str, Any]] = []
+    for row in rows:
+        input_fields = _fields(str(row.get("expression") or ""))
+        failed = [field for field in input_fields if not coverage.get(field, {}).get("pass_value_gate")]
+        if failed:
+            low_coverage_rows.append(
+                {
+                    "candidate_id": row.get("candidate_id"),
+                    "expression": row.get("expression"),
+                    "field_name": row.get("field_name"),
+                    "factor_lane": row.get("factor_lane"),
+                    "failed_fields": "|".join(failed),
+                    "failed_reasons": "|".join(f"{field}:{coverage.get(field, {}).get('reason', 'missing')}" for field in failed),
+                    "failed_coverages": "|".join(str(coverage.get(field, {}).get("coverage", "")) for field in failed),
+                }
+            )
+            continue
+        kept.append(row)
+    filtered = dict(factor_pack)
+    filtered["factor_pack_id"] = f"{factor_pack.get('factor_pack_id')}_value_filtered"
+    filtered["factor_pack_version"] = f"{factor_pack.get('factor_pack_version')}-value-filtered"
+    filtered["candidate_rows"] = kept
+    filtered["candidate_count"] = len(kept)
+    filtered["source_candidate_count_before_value_filter"] = len(rows)
+    filtered["value_filter_low_coverage_candidate_count"] = len(low_coverage_rows)
+    filtered["value_filter_policy"] = {
+        "min_field_coverage": min_field_coverage,
+        "min_event_field_coverage": min_event_field_coverage,
+        "min_event_nonnull_rows": min_event_nonnull_rows,
+        "zero_nonnull_fields": "always_rejected",
+    }
+    return filtered, low_coverage_rows, coverage_rows
+
+
 def _build_joined_panel(
     *,
     base_dataset_path: Path,
@@ -364,6 +484,9 @@ def build_gate(
     warmup_days: int,
     timeout_seconds: int,
     reuse_joined_panel: bool,
+    min_field_coverage: float,
+    min_event_field_coverage: float,
+    min_event_nonnull_rows: int,
 ) -> dict[str, Any]:
     output_root.mkdir(parents=True, exist_ok=True)
     report_root.mkdir(parents=True, exist_ok=True)
@@ -407,6 +530,18 @@ def build_gate(
             end_date="2026-04-10",
         )
 
+    value_filtered_pack, low_coverage_rows, value_coverage_rows = _filter_pack_by_value_coverage(
+        filtered_pack,
+        panel_path=joined_panel_path,
+        min_field_coverage=min_field_coverage,
+        min_event_field_coverage=min_event_field_coverage,
+        min_event_nonnull_rows=min_event_nonnull_rows,
+    )
+    value_filtered_pack_path = output_root / "phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json"
+    _write_json(value_filtered_pack_path, value_filtered_pack)
+    _write_csv(report_root / "phase3ae_bounded_repair_low_coverage_candidates.csv", low_coverage_rows)
+    _write_csv(report_root / "phase3ae_bounded_repair_value_coverage_fields.csv", value_coverage_rows)
+
     enriched = enrich_pool(
         base_pool,
         max_event_rows=max_injected_rows,
@@ -416,16 +551,18 @@ def build_gate(
         include_fundamental_candidates=True,
         include_research_factor_candidates=True,
         factor_pack_only=True,
-        factor_pack_paths=[available_pack_path],
+        factor_pack_paths=[value_filtered_pack_path],
     )
     enriched["dataset_path"] = str(joined_panel_path)
     enriched["phase3ae_bounded_repair_selector_gate"] = {
         "version": VERSION,
         "source_factor_pack": str(factor_pack_path),
         "available_factor_pack": str(available_pack_path),
+        "value_filtered_factor_pack": str(value_filtered_pack_path),
         "joined_panel": str(joined_panel_path),
         "baseline_pool": str(base_pool_path),
         "scope": "selector-only dry run; no replay; no baseline update",
+        "value_filter_policy": value_filtered_pack.get("value_filter_policy"),
     }
     enriched_pool_path = output_root / "shared_candidate_pool_phase3ae_bounded_repair_enriched.json"
     _write_json(enriched_pool_path, enriched)
@@ -449,6 +586,7 @@ def build_gate(
         for row in selected
         if str(row.get("factor_pack_id") or "").startswith("phase3ae_bounded_repair_factor_pack_v1_20260604")
         or str(row.get("source_factor_pack") or "").endswith("phase3ae_bounded_repair_factor_pack_available_v1_20260604.json")
+        or str(row.get("source_factor_pack") or "").endswith("phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json")
     ]
     ae2_pool_rows = [
         row
@@ -464,6 +602,23 @@ def build_gate(
         for row in ae2_selected
         for field in _fields(str(row.get("expression") or ""))
         if field.startswith("label_") or field.startswith("next_")
+    ]
+    value_coverage_by_field = {str(row.get("field")): row for row in value_coverage_rows}
+    low_coverage_selected = [
+        {
+            "candidate_id": row.get("candidate_id"),
+            "expression": row.get("expression"),
+            "failed_fields": "|".join(
+                field
+                for field in _fields(str(row.get("expression") or ""))
+                if not value_coverage_by_field.get(field, {}).get("pass_value_gate")
+            ),
+        }
+        for row in ae2_selected
+        if any(
+            not value_coverage_by_field.get(field, {}).get("pass_value_gate")
+            for field in _fields(str(row.get("expression") or ""))
+        )
     ]
     missing_audit_metadata = [
         {
@@ -482,12 +637,16 @@ def build_gate(
     blockers: list[str] = []
     if not filtered_pack.get("candidate_rows"):
         blockers.append("no_available_candidates_after_panel_availability_filter")
+    if not value_filtered_pack.get("candidate_rows"):
+        blockers.append("no_candidates_after_value_coverage_filter")
     if selector_run["status"] != "completed":
         blockers.append(f"selector_run_{selector_run['status']}")
     if forbidden_guard.get("selector_uses_forbidden_fields") is not False and selector_report:
         blockers.append("selector_forbidden_replay_label_guard_not_clean")
     if forbidden_selected:
         blockers.append("selected_candidate_forbidden_fields")
+    if low_coverage_selected:
+        blockers.append("selected_candidate_low_value_coverage_fields")
     if missing_audit_metadata:
         blockers.append("selected_candidate_missing_audit_metadata")
     if not ae2_selected and selector_run["status"] == "completed":
@@ -501,6 +660,7 @@ def build_gate(
         "scope": "AE2 bounded repair selector-only dry run; no replay; no baseline update",
         "factor_pack": str(factor_pack_path),
         "available_factor_pack": str(available_pack_path),
+        "value_filtered_factor_pack": str(value_filtered_pack_path),
         "base_pool": str(base_pool_path),
         "enriched_pool": str(enriched_pool_path),
         "joined_panel": str(joined_panel_path),
@@ -508,7 +668,9 @@ def build_gate(
         "counts": {
             "source_factor_pack_candidates": int(factor_pack.get("candidate_count") or len(factor_pack.get("candidate_rows") or [])),
             "available_candidates": int(filtered_pack.get("candidate_count") or 0),
+            "value_filtered_candidates": int(value_filtered_pack.get("candidate_count") or 0),
             "missing_field_candidates": len(missing_rows),
+            "low_coverage_candidates": len(low_coverage_rows),
             "base_pool_rows": len(base_pool.get("candidate_pool") or []),
             "enriched_pool_rows": len(enriched.get("candidate_pool") or []),
             "ae2_rows_in_pool": len(ae2_pool_rows),
@@ -516,8 +678,10 @@ def build_gate(
             "ae2_selected_count": len(ae2_selected),
             "selector_audit_rows": len(selector_audit),
             "forbidden_selected_hits": len(forbidden_selected),
+            "low_coverage_selected_hits": len(low_coverage_selected),
             "missing_audit_metadata_rows": len(missing_audit_metadata),
         },
+        "value_filter_policy": value_filtered_pack.get("value_filter_policy"),
         "joined_panel_report": joined_report,
         "selector_run": selector_run,
         "selector_checks": selector_checks,
@@ -538,11 +702,15 @@ def build_gate(
             "ae2_selected_csv": str(report_root / "phase3ae_bounded_repair_selected_candidates.csv"),
             "missing_field_candidates_csv": str(report_root / "phase3ae_bounded_repair_missing_field_candidates.csv"),
             "field_locations_csv": str(report_root / "phase3ae_bounded_repair_field_locations.csv"),
+            "value_coverage_fields_csv": str(report_root / "phase3ae_bounded_repair_value_coverage_fields.csv"),
+            "low_coverage_candidates_csv": str(report_root / "phase3ae_bounded_repair_low_coverage_candidates.csv"),
+            "low_coverage_selected_hits_csv": str(report_root / "phase3ae_bounded_repair_low_coverage_selected_hits.csv"),
             "joined_panel_report": str(joined_report_path),
         },
     }
     _write_csv(report_root / "phase3ae_bounded_repair_selected_candidates.csv", ae2_selected)
     _write_csv(report_root / "phase3ae_bounded_repair_forbidden_selected_hits.csv", forbidden_selected)
+    _write_csv(report_root / "phase3ae_bounded_repair_low_coverage_selected_hits.csv", low_coverage_selected)
     _write_csv(report_root / "phase3ae_bounded_repair_missing_audit_metadata.csv", missing_audit_metadata)
     _write_json(report_root / "phase3ae_bounded_repair_selector_only_gate_v1.json", payload)
     _write_markdown(report_root / "PHASE3AE_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_V1_2026-06-04.md", payload)
@@ -597,6 +765,9 @@ def main() -> int:
     parser.add_argument("--warmup-days", type=int, default=45)
     parser.add_argument("--timeout-seconds", type=int, default=1800)
     parser.add_argument("--reuse-joined-panel", action="store_true")
+    parser.add_argument("--min-field-coverage", type=float, default=0.001)
+    parser.add_argument("--min-event-field-coverage", type=float, default=0.0005)
+    parser.add_argument("--min-event-nonnull-rows", type=int, default=50)
     args = parser.parse_args()
     payload = build_gate(
         factor_pack_path=args.factor_pack,
@@ -613,6 +784,9 @@ def main() -> int:
         warmup_days=max(1, int(args.warmup_days)),
         timeout_seconds=max(30, int(args.timeout_seconds)),
         reuse_joined_panel=bool(args.reuse_joined_panel),
+        min_field_coverage=max(0.0, float(args.min_field_coverage)),
+        min_event_field_coverage=max(0.0, float(args.min_event_field_coverage)),
+        min_event_nonnull_rows=max(1, int(args.min_event_nonnull_rows)),
     )
     print(json.dumps({"decision": payload["decision"], "counts": payload["counts"], "blockers": payload["blockers"]}, ensure_ascii=False, indent=2))
     return 0
