@@ -2,7 +2,7 @@ $ErrorActionPreference = "Continue"
 
 $RunRoot = "D:\p3ai\overnight_company_20260605_r4"
 $StatusPath = Join-Path $RunRoot "overnight_status.jsonl"
-$JobId = "job_20260605_011913_ed2700"
+$JobId = "job_20260605_014556_eeaa8c"
 $JobLogPath = "D:\HermesWorker\runtime\jobs\$JobId.log"
 
 Write-Output "TIME=$((Get-Date).ToString('s'))"
