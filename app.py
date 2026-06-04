@@ -385,6 +385,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Aggregate AE2 true-field, coverage-mask placebo, and shuffled-value placebo replay canary results.",
     },
+    "phase3af-split-lane-prelaunch-v1": {
+        "module": "our_system_phase2.runtime.phase3af_split_lane_prelaunch_v1",
+        "diagnostic": False,
+        "description": "Freeze Phase3AF split-lane plan after AE2 coverage-membership confound.",
+    },
+    "phase3af-canary-attribution-v1": {
+        "module": "our_system_phase2.runtime.phase3af_canary_attribution_v1",
+        "diagnostic": False,
+        "description": "Attribute Phase3AE paired canary cluster representatives by arm and input field family.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,

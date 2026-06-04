@@ -1,0 +1,72 @@
+{
+  "basis": {
+    "blockers": [
+      "true_field_not_better_than_coverage_mask_placebo"
+    ],
+    "coverage_mask_deployable": 6,
+    "paired_true_deployable": 3,
+    "phase3ae_canary_decision": "HOLD_AE2_REPLAY_CANARY_COVERAGE_MEMBERSHIP_CONFOUND",
+    "shuffled_value_deployable": 1
+  },
+  "created_at": "2026-06-04T13:02:05.266805+00:00",
+  "decision": "PASS_PHASE3AF_SPLIT_LANE_PRELAUNCH_NO_SEARCH",
+  "lanes": {
+    "AF_A_coverage_event_membership": {
+      "allowed_inputs": [
+        "coverage mask fields",
+        "event membership fields",
+        "coverage-conditioned actor motifs",
+        "matched-control and same-count random controls"
+      ],
+      "first_gate": {
+        "canary_scale": "64 audited",
+        "must_beat": "same-count random and matched-control, not the original numeric expression",
+        "required_outputs": [
+          "event_count",
+          "matched_control_excess",
+          "same_count_random_p95",
+          "tradability_failure_rate",
+          "new_vs_149_signal_cluster"
+        ]
+      },
+      "not_allowed": [
+        "claim numeric field value edge",
+        "promote to official book",
+        "skip event count/tradability checks"
+      ],
+      "objective": "Turn the coverage-mask result into a first-class event/coverage-membership lane."
+    },
+    "AF_B_numeric_value_repair": {
+      "allowed_inputs": [
+        "nonzero value-coverage fields",
+        "residualized numeric transforms",
+        "field-value-minus-coverage controls"
+      ],
+      "first_gate": {
+        "canary_scale": "64 audited",
+        "pass_condition": [
+          "true_field_deployable > coverage_mask_deployable",
+          "true_field_deployable > shuffled_value_deployable",
+          "top_cluster_share <= 20%",
+          "no PIT/cutoff violation"
+        ]
+      },
+      "not_allowed": [
+        "use schema visibility as success",
+        "use coverage-only effect as numeric proof",
+        "full large search before true-vs-coverage canary pass"
+      ],
+      "objective": "Retain only bounded numeric formulas whose true values beat coverage-mask and shuffled-value controls."
+    }
+  },
+  "large_search_policy": {
+    "next_large_search_candidate": "only after AF_A or AF_B passes its own canary",
+    "phase3ae_full_large_search_allowed_now": false,
+    "reason": "AE2 true fields did not beat coverage-mask placebo."
+  },
+  "outputs": {
+    "markdown": "reports\\phase3af_split_lane_prelaunch_v1_20260604\\PHASE3AF_SPLIT_LANE_PRELAUNCH_V1_2026-06-04.md",
+    "summary_json": "reports\\phase3af_split_lane_prelaunch_v1_20260604\\phase3af_split_lane_prelaunch_v1.json"
+  },
+  "version": "phase3af-split-lane-prelaunch-v1-2026-06-04"
+}

@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "cluster_rows": 69,
+    "pair_rows": 31,
+    "replay_positive_cluster_rows": 36
+  },
+  "created_at": "2026-06-04T13:02:05.274215+00:00",
+  "decision": "PASS_PHASE3AF_CANARY_ATTRIBUTION_READY",
+  "interpretation": {
+    "coverage_mask_cluster_strength": "Coverage-mask replay-positive clusters need event/membership validation, not numeric-field promotion.",
+    "numeric_value_strength": "True AE2 only has numeric-value evidence where it beats both coverage and shuffled controls; aggregate canary did not prove that."
+  },
+  "outputs": {
+    "cluster_attribution_csv": "reports\\phase3af_canary_attribution_v1_20260604\\phase3af_canary_cluster_attribution.csv",
+    "markdown": "reports\\phase3af_canary_attribution_v1_20260604\\PHASE3AF_CANARY_ATTRIBUTION_V1_2026-06-04.md",
+    "summary_json": "reports\\phase3af_canary_attribution_v1_20260604\\phase3af_canary_attribution_v1.json"
+  },
+  "replay_positive_by_arm": {
+    "coverage_mask_placebo": 14,
+    "paired_true_ae2": 5,
+    "shuffled_value_placebo": 17
+  },
+  "replay_positive_by_input_field_family": {
+    "billboard_flow": 15,
+    "event_limit_membership": 6,
+    "holder_announcement": 2,
+    "rzrq_leverage_flow": 13
+  },
+  "scope": "read-only attribution of Phase3AE paired canary cluster representatives",
+  "version": "phase3af-canary-attribution-v1-2026-06-04"
+}

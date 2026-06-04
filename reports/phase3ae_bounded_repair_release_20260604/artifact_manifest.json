@@ -9,7 +9,8 @@
     "factor_pack": "6294e49",
     "selector_gate": "a5cce1d",
     "value_coverage_and_placebo": "1c78fd9",
-    "replay_canary_aggregate": "included_in_current_release_update"
+    "replay_canary_aggregate": "09cc55f",
+    "phase3af_split_lane": "included_in_current_release_update"
   },
   "counts": {
     "source_fields": 94,
@@ -80,6 +81,18 @@
     },
     "blocker": "true_field_not_better_than_coverage_mask_placebo"
   },
+  "phase3af": {
+    "decision": "PASS_PHASE3AF_SPLIT_LANE_PRELAUNCH_NO_SEARCH",
+    "large_search_allowed_now": false,
+    "coverage_event_membership_lane": "allowed_for_separate_canary_with_same_count_random_and_matched_control",
+    "numeric_value_lane": "blocked_until_true_field_beats_coverage_and_shuffled_placebos",
+    "replay_positive_by_input_field_family": {
+      "billboard_flow": 15,
+      "rzrq_leverage_flow": 13,
+      "event_limit_membership": 6,
+      "holder_announcement": 2
+    }
+  },
   "artifacts": {
     "release_readme": "reports/phase3ae_bounded_repair_release_20260604/README.md",
     "factor_pack_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_factor_pack_v1.py",
@@ -112,6 +125,11 @@
     "replay_canary_markdown": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/PHASE3AE_BOUNDED_REPAIR_REPLAY_CANARY_AGGREGATE_V1_2026-06-04.md",
     "replay_canary_arm_summary": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_arm_summary.csv",
     "placebo_replay_prep": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_placebo_replay_prep_v1.json",
+    "phase3af_split_lane_report": "reports/phase3af_split_lane_prelaunch_v1_20260604/phase3af_split_lane_prelaunch_v1.json",
+    "phase3af_split_lane_markdown": "reports/phase3af_split_lane_prelaunch_v1_20260604/PHASE3AF_SPLIT_LANE_PRELAUNCH_V1_2026-06-04.md",
+    "phase3af_canary_attribution_report": "reports/phase3af_canary_attribution_v1_20260604/phase3af_canary_attribution_v1.json",
+    "phase3af_canary_attribution_markdown": "reports/phase3af_canary_attribution_v1_20260604/PHASE3AF_CANARY_ATTRIBUTION_V1_2026-06-04.md",
+    "phase3af_canary_cluster_attribution": "reports/phase3af_canary_attribution_v1_20260604/phase3af_canary_cluster_attribution.csv",
     "frozen_selection_inputs": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json",
     "selector_audit": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv",
     "replay_canary_run_plan": "runtime/run_plans/phase3ae_bounded_repair_replay_canary_run_plan_v1_20260604.json"

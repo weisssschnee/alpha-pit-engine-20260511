@@ -103,6 +103,22 @@ Policy:
 - Split the next design into coverage/event-membership lane and numeric-value lane.
 - Numeric bounded repair requires a stronger true-vs-coverage proof before large search.
 
+### Phase3AF Follow-Up
+
+Phase3AF split-lane prelaunch has been generated:
+
+- coverage/event-membership lane: allowed as a separate event/membership hypothesis, with same-count random and matched-control gates
+- numeric-value repair lane: blocked from large search until true-field beats both coverage-mask and shuffled-value placebo
+
+Read-only attribution found replay-positive clusters by input family:
+
+- `billboard_flow`: `15`
+- `rzrq_leverage_flow`: `13`
+- `event_limit_membership`: `6`
+- `holder_announcement`: `2`
+
+This supports a split-lane design. It does not support one-bucket AE2 full search.
+
 ## Git-Tracked Artifacts
 
 ### Factor Pack
@@ -140,6 +156,11 @@ Policy:
 - `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_aggregate_v1.json`
 - `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_arm_summary.csv`
 - `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_placebo_replay_prep_v1.json`
+- `reports/phase3af_split_lane_prelaunch_v1_20260604/PHASE3AF_SPLIT_LANE_PRELAUNCH_V1_2026-06-04.md`
+- `reports/phase3af_split_lane_prelaunch_v1_20260604/phase3af_split_lane_prelaunch_v1.json`
+- `reports/phase3af_canary_attribution_v1_20260604/PHASE3AF_CANARY_ATTRIBUTION_V1_2026-06-04.md`
+- `reports/phase3af_canary_attribution_v1_20260604/phase3af_canary_attribution_v1.json`
+- `reports/phase3af_canary_attribution_v1_20260604/phase3af_canary_cluster_attribution.csv`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_selection_only_report.json`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv`
