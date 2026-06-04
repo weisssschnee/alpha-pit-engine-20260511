@@ -1,0 +1,82 @@
+{
+  "audit_requirements": {
+    "capacity_candidates": 94,
+    "coverage_placebo_required": 686,
+    "event_cutoff_candidates": 268,
+    "flow_liquidity_candidates": 348,
+    "shuffled_field_placebo_required": 686
+  },
+  "by_factor_lane": {
+    "announcement_pit_formula_lane": 206,
+    "event_state_machine_formula_lane": 268,
+    "lagged_daily_formula_lane": 192,
+    "pit_context_formula_lane": 20
+  },
+  "by_field_family": {
+    "capacity_size": 5,
+    "disclosure_event_flow": 12,
+    "flow_liquidity": 13,
+    "leverage_flow": 3,
+    "limit_event": 20,
+    "limit_event_sentiment": 4,
+    "other": 4,
+    "price_state": 33
+  },
+  "by_source_group": {
+    "cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1": 20,
+    "cn_fundamental_akshare_batch_v1_20260531\\aggregated_v1\\balance_sheet_report_em\\balance_sheet_report_em.parquet": 16,
+    "cn_local_minute_daily_silver_v1_20260531": 90,
+    "cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2024_2025\\year=2024\\part.parquet": 72,
+    "cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date": 20,
+    "cn_public_xsection_no_kline_silver_v1_20260530": 200,
+    "cn_zzshare_uplimit_history_silver_v1_20260531": 140,
+    "cn_zzshare_uplimit_history_silver_v1_20260531\\uplimit_trend\\uplimit_trend.parquet": 128
+  },
+  "by_template": {
+    "bounded_flow_capacity_ratio": 80,
+    "capacity_inverse_mean_20": 5,
+    "capacity_inverse_mean_5": 5,
+    "event_state_impulse_2": 24,
+    "event_state_impulse_3": 20,
+    "event_state_mean_2": 24,
+    "event_state_mean_3": 20,
+    "flow_delta_10": 26,
+    "flow_delta_3": 26,
+    "flow_delta_5": 26,
+    "flow_mean_10": 26,
+    "flow_mean_3": 26,
+    "flow_mean_5": 26,
+    "rank_inverse": 88,
+    "rank_level": 88,
+    "rank_log_abs_level": 88,
+    "rank_zscore_level": 88
+  },
+  "candidate_count": 686,
+  "created_at": "2026-06-04T09:00:23.857188+00:00",
+  "decision": "PASS_AE2_BOUNDED_REPAIR_FACTOR_PACK_READY_FOR_SELECTOR_ONLY_CANARY",
+  "factor_pack_id": "phase3ae_bounded_repair_factor_pack_v1_20260604",
+  "factor_pack_version": "phase3ae-bounded-repair-factor-pack-v1-2026-06-04",
+  "max_candidates": 768,
+  "max_source_rows": 160,
+  "outputs": {
+    "candidate_csv": "reports\\phase3ae_bounded_repair_factor_pack_v1_20260604\\phase3ae_bounded_repair_candidates.csv",
+    "factor_pack": "runtime\\factor_packs\\phase3ae_bounded_repair_factor_pack_v1_20260604.json",
+    "markdown": "reports\\phase3ae_bounded_repair_factor_pack_v1_20260604\\PHASE3AE_BOUNDED_REPAIR_FACTOR_PACK_V1_2026-06-04.md",
+    "report_json": "reports\\phase3ae_bounded_repair_factor_pack_v1_20260604\\phase3ae_bounded_repair_factor_pack_report.json",
+    "source_field_csv": "reports\\phase3ae_bounded_repair_factor_pack_v1_20260604\\phase3ae_bounded_repair_source_fields.csv"
+  },
+  "policy": {
+    "baseline_update_allowed": false,
+    "field_safety": "panel aliases only; raw timestamp/text/future-label fields excluded",
+    "lane": "AE2_bounded_factor_pack_repair",
+    "official_book_eligible": false,
+    "pit": "announcement fields require notice/disclosure lag; lagged daily fields require prior-day availability; event fields require cutoff contract",
+    "placebos": "coverage_mask_placebo and shuffled_field_placebo required before any promotion claim",
+    "promotion": "selector_only_dry_run_then_64_audited_replay_canary_only",
+    "search_memory": "expression_memory_key and skeleton_key attached to every candidate"
+  },
+  "source_event_repair_queue": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\event_state_search_repair_queue.csv",
+  "source_field_count": 94,
+  "source_repair_queue": "runtime\\field_registry\\cn_field_searcher_adaptation_audit_v1_20260604\\formula_search_repair_queue.csv",
+  "status": "ready_for_phase3ae_lane_b_selector_only_and_64_audited_canary"
+}

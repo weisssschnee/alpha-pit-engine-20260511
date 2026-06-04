@@ -360,6 +360,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Freeze Phase3AE lane-based structured large-search prelaunch matrix and run plan.",
     },
+    "phase3ae-bounded-repair-factor-pack-v1": {
+        "module": "our_system_phase2.runtime.phase3ae_bounded_repair_factor_pack_v1",
+        "diagnostic": False,
+        "description": "Build the AE2 bounded repair factor pack with PIT, coverage-placebo, shuffled-field, and search-memory metadata.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
