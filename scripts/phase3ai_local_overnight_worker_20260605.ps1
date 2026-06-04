@@ -94,11 +94,11 @@ function Invoke-SearchLeg($leg, [bool]$canary) {
 
 $deadline = (Get-Date).AddHours(8.25)
 $legs = @(
-  [ordered]@{name="l1_forward_broad"; mode="forward_first"; canary_shards=4; shards=80; max_active=2; candidates=96; windows=72; beam_width=64; max_beam=8192; family_share=0.12; exploration=0.82; previous_limit=120; reward_limit=60; halving_fraction=0.35; halving_min=48; canary_min_eval=48},
-  [ordered]@{name="l2_rx_low_stride"; mode="rx_typed_beam"; canary_shards=6; shards=96; max_active=2; candidates=48; windows=84; beam_width=768; max_beam=131072; family_share=0.06; exploration=0.86; previous_limit=160; reward_limit=80; halving_fraction=0.40; halving_min=40; canary_min_eval=48},
-  [ordered]@{name="l3_forward_orthogonal"; mode="forward_first"; canary_shards=4; shards=80; max_active=2; candidates=96; windows=96; beam_width=64; max_beam=8192; family_share=0.08; exploration=0.86; previous_limit=180; reward_limit=90; halving_fraction=0.35; halving_min=48; canary_min_eval=48},
-  [ordered]@{name="l4_rx_deep_broad"; mode="rx_typed_beam"; canary_shards=6; shards=128; max_active=2; candidates=48; windows=120; beam_width=1024; max_beam=196608; family_share=0.08; exploration=0.80; previous_limit=240; reward_limit=120; halving_fraction=0.42; halving_min=40; canary_min_eval=48},
-  [ordered]@{name="l5_forward_extended"; mode="forward_first"; canary_shards=6; shards=128; max_active=2; candidates=96; windows=120; beam_width=64; max_beam=8192; family_share=0.10; exploration=0.80; previous_limit=240; reward_limit=120; halving_fraction=0.35; halving_min=64; canary_min_eval=64}
+  [ordered]@{name="l1_forward_broad"; mode="forward_first"; canary_shards=4; shards=80; max_active=2; candidates=96; windows=72; beam_width=64; max_beam=8192; family_share=0.12; exploration=0.80; previous_limit=18; reward_limit=8; halving_fraction=0.35; halving_min=48; canary_min_eval=48},
+  [ordered]@{name="l2_rx_low_stride"; mode="rx_typed_beam"; canary_shards=6; shards=96; max_active=2; candidates=48; windows=84; beam_width=768; max_beam=131072; family_share=0.06; exploration=0.80; previous_limit=24; reward_limit=12; halving_fraction=0.40; halving_min=40; canary_min_eval=48},
+  [ordered]@{name="l3_forward_orthogonal"; mode="forward_first"; canary_shards=4; shards=80; max_active=2; candidates=96; windows=96; beam_width=64; max_beam=8192; family_share=0.08; exploration=0.80; previous_limit=28; reward_limit=14; halving_fraction=0.35; halving_min=48; canary_min_eval=48},
+  [ordered]@{name="l4_rx_deep_broad"; mode="rx_typed_beam"; canary_shards=6; shards=128; max_active=2; candidates=48; windows=120; beam_width=1024; max_beam=196608; family_share=0.08; exploration=0.80; previous_limit=32; reward_limit=16; halving_fraction=0.42; halving_min=40; canary_min_eval=48},
+  [ordered]@{name="l5_forward_extended"; mode="forward_first"; canary_shards=6; shards=128; max_active=2; candidates=96; windows=120; beam_width=64; max_beam=8192; family_share=0.10; exploration=0.80; previous_limit=32; reward_limit=16; halving_fraction=0.35; halving_min=64; canary_min_eval=64}
 )
 
 Write-Status ([ordered]@{time=(Get-Date).ToString("s"); event="overnight_begin"; run_root=$RunRoot; deadline=$deadline.ToString("s"); python=$Python; dataset=$DatasetPath})

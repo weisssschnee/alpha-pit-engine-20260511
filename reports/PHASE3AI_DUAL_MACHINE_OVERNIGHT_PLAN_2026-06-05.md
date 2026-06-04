@@ -74,6 +74,10 @@ Local legs use lower active worker count to avoid destabilizing the desktop.
 - `NUMEXPR_MAX_THREADS`: company 8, local 6.
 - `OMP_NUM_THREADS`: 1.
 - `MKL_NUM_THREADS`: 1.
+- search memory is enabled, but root expansion is capped to avoid Windows command-line overflow:
+  - company: 32-48 previous roots, 16-24 reward roots
+  - local: 18-32 previous roots, 8-16 reward roots
+- `reward_exploration_share` is capped at 0.80 in launch configs, matching policy limits.
 
 ## Expected Checkpoints
 
