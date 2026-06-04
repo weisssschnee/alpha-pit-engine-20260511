@@ -1,0 +1,13 @@
+﻿searcher_lane,field_count,direct_formula_count,event_state_count,gate_or_context_count,blocked_count,selector_selected_count,panel_ready_needs_factor_pack_count,sidecar_or_ingestion_needed_count
+announcement_pit_formula_lane,2823,2823,0,0,0,66,70,1137
+blocked_not_search_input,489,0,0,0,489,0,0,0
+event_cutoff_contract,2,0,2,0,2,1,0,0
+event_state_machine_formula_lane,112,0,112,0,0,50,9,38
+event_state_machine_gate_lane,142,0,142,0,0,49,0,0
+lagged_daily_formula_lane,249,249,0,0,0,108,44,60
+lagged_price_context_lane,99,0,0,99,0,44,0,0
+lagged_state_context_lane,1,0,0,1,0,0,0,0
+manual_review_lane,587,0,0,0,0,14,14,553
+pit_context_formula_lane,118,118,0,0,0,10,2,103
+regime_context_interaction_lane,93,0,0,93,0,12,0,0
+tradability_risk_gate_lane,60,0,0,60,0,4,0,0
