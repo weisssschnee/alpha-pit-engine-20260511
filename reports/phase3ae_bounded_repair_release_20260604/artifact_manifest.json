@@ -2,13 +2,14 @@
   "release_id": "phase3ae_bounded_repair_release_20260604",
   "phase": "Phase3AE",
   "lane": "AE2_bounded_factor_pack_repair",
-  "decision": "PASS_AE2_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_HOLD_REPLAY_CANARY",
-  "status": "READY_FOR_AE2_REPLAY_CANARY",
+  "decision": "HOLD_AE2_REPLAY_CANARY_COVERAGE_MEMBERSHIP_CONFOUND",
+  "status": "AE2_REPLAY_CANARY_COMPLETED_HOLD",
   "not_status": "READY_FOR_AE2_FULL_LARGE_SEARCH",
   "commits": {
     "factor_pack": "6294e49",
     "selector_gate": "a5cce1d",
-    "value_coverage_and_placebo": "included_in_current_release_update"
+    "value_coverage_and_placebo": "1c78fd9",
+    "replay_canary_aggregate": "included_in_current_release_update"
   },
   "counts": {
     "source_fields": 94,
@@ -51,6 +52,34 @@
     "coverage_mask_candidates": 31,
     "shuffled_value_candidates": 31
   },
+  "replay_canary": {
+    "decision": "HOLD_AE2_REPLAY_CANARY_COVERAGE_MEMBERSHIP_CONFOUND",
+    "full64_true": {
+      "audited": 64,
+      "deployable_clusters": 14,
+      "raw_non_gap_pass": 22,
+      "top_cluster_share": 0.090909
+    },
+    "paired_true_ae2": {
+      "audited": 31,
+      "deployable_clusters": 3,
+      "raw_non_gap_pass": 5,
+      "top_cluster_share": 0.2
+    },
+    "coverage_mask_placebo": {
+      "audited": 31,
+      "deployable_clusters": 6,
+      "raw_non_gap_pass": 24,
+      "top_cluster_share": 0.125
+    },
+    "shuffled_value_placebo": {
+      "audited": 31,
+      "deployable_clusters": 1,
+      "raw_non_gap_pass": 17,
+      "top_cluster_share": 0.058824
+    },
+    "blocker": "true_field_not_better_than_coverage_mask_placebo"
+  },
   "artifacts": {
     "release_readme": "reports/phase3ae_bounded_repair_release_20260604/README.md",
     "factor_pack_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_factor_pack_v1.py",
@@ -61,6 +90,9 @@
     "factor_pack_source_fields": "reports/phase3ae_bounded_repair_factor_pack_v1_20260604/phase3ae_bounded_repair_source_fields.csv",
     "selector_gate_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_selector_only_gate_v1.py",
     "placebo_pack_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_placebo_pack_v1.py",
+    "placebo_replay_prep_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_placebo_replay_prep_v1.py",
+    "replay_canary_aggregate_script": "src/our_system_phase2/runtime/phase3ae_bounded_repair_replay_canary_aggregate_v1.py",
+    "real_market_validation_loader": "src/our_system_phase2/services/real_market_validation.py",
     "selector_gate_report": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selector_only_gate_v1.json",
     "selector_gate_markdown": "reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/PHASE3AE_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_V1_2026-06-04.md",
     "value_filtered_factor_pack": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json",
@@ -76,6 +108,10 @@
     "placebo_candidate_pairs": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_candidate_pairs.csv",
     "placebo_field_stats": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_field_stats.csv",
     "placebo_candidates": "reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_candidates.csv",
+    "replay_canary_aggregate": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_aggregate_v1.json",
+    "replay_canary_markdown": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/PHASE3AE_BOUNDED_REPAIR_REPLAY_CANARY_AGGREGATE_V1_2026-06-04.md",
+    "replay_canary_arm_summary": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_arm_summary.csv",
+    "placebo_replay_prep": "reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_placebo_replay_prep_v1.json",
     "frozen_selection_inputs": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json",
     "selector_audit": "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv",
     "replay_canary_run_plan": "runtime/run_plans/phase3ae_bounded_repair_replay_canary_run_plan_v1_20260604.json"
@@ -87,15 +123,15 @@
     "joined_panel_reason_not_tracked": "large regenerable runtime artifact"
   },
   "go_no_go": {
-    "can_run_replay_canary": true,
+    "can_run_replay_canary": false,
     "can_run_full_large_search": false,
     "required_before_full_large_search": [
-      "coverage_mask_placebo_pass",
-      "shuffled_field_placebo_pass",
-      "64_audited_replay_canary_pass",
+      "future_true_field_beats_coverage_mask_placebo",
+      "future_true_field_beats_shuffled_field_placebo",
       "new_vs_149_signal_recluster_nontrivial",
       "top_cluster_share_controlled",
       "turnover_cost_not_collapsed"
-    ]
+    ],
+    "next_allowed_work": "split coverage_event_membership_lane from numeric_value_bounded_repair_lane"
   }
 }

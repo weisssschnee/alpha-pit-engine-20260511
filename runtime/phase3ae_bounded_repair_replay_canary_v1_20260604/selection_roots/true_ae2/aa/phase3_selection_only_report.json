@@ -1,0 +1,115 @@
+{
+  "ablation_arm": "Phase3AE_true_ae2",
+  "ablation_design": {
+    "description": "Phase3AA mature-chain event-derived factor search: shared pool + event factor injection + source-priority G2 selector.",
+    "event_bucket": "event_derived_feature_layer",
+    "phase3_discovery_baseline_count": 149,
+    "phase3_metadata_policy": "DUAL_BASELINE_ACCEPTED",
+    "phase3_selector_vector_baseline_count": 137,
+    "phase3e_cumulative_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "phase3e_generation_profile": "G2_phase3i_primary_plus_event_derived_feature_layer",
+    "phase3e_selector_profile": "signal_vector_diversified_source_priority_proxy",
+    "pool_enrichment": {
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "duplicate_existing_skipped": 0,
+      "duplicate_memory_skipped": 0,
+      "event_bucket": "event_derived_feature_layer",
+      "event_rows_added": 192,
+      "expanded_memory_root_count": 0,
+      "expanded_memory_root_sample": [],
+      "factor_pack_only": true,
+      "factor_pack_paths": [
+        "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_factor_pack_value_filtered_v1_20260604.json"
+      ],
+      "factor_pack_source_rows": 294,
+      "include_fundamental_candidates": true,
+      "include_gate_candidates": false,
+      "include_research_factor_candidates": true,
+      "input_candidate_pool_count": 1065,
+      "memory_roots": [],
+      "output_candidate_pool_count": 1257,
+      "pre_dedup_event_source_rows": 294,
+      "scope": "event-derived factor candidates injected into shared pre-replay pool",
+      "version": "phase3aa-shared-pool-event-injection-v1-2026-05-29"
+    },
+    "research_bucket": "research_factor_feature_layer",
+    "shared_candidate_pool_source": "Phase3I_I0_G2_primary",
+    "source_priority": "opt_in_selector_bonus_and_audit_fields"
+  },
+  "created_at": "2026-06-04T11:41:06+00:00",
+  "dataset_path": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
+  "dataset_role": "stock_pit_panel",
+  "experiment_id": "phase3aa_mature_g2_event_selector_36",
+  "output_root": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\selector_only\\aa",
+  "parameters": {
+    "budgets": {
+      "agnostic_freeform_ast": 4,
+      "ast_failure_aware_repair": 5,
+      "event_derived_feature_layer": 19,
+      "formula_gen_v2_defined": 0,
+      "formula_gen_v2_repair_expansion": 3,
+      "fundamental_pit_feature_layer": 8,
+      "novelty_diagnostic": 0,
+      "r0_cem_led": 9,
+      "replay_aware_residual": 1,
+      "research_factor_feature_layer": 15
+    },
+    "candidate_pool_count": 384,
+    "candidate_pool_count_before_prefilter": 1257,
+    "default_selected_count": 55,
+    "fundamental_share": 0.12,
+    "pool_cap": 384,
+    "research_share": 0.24,
+    "selected_count": 64,
+    "selector_baseline_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\src\\our_system_phase2\\runtime\\baselines\\phase3H_cumulative_deployable_clusters_20260515.json",
+    "signal_recent_quarter_window_count": 1,
+    "signal_runtime_cache_dir": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\selector_only\\signal_vector_cache",
+    "signal_sample_size": 180,
+    "signal_vector_metadata": "runtime\\phase3g_signal_vectors\\vector_metadata.parquet",
+    "signal_vector_npz": "runtime\\phase3g_signal_vectors\\phase3g_signal_vectors_20260514.npz",
+    "signal_warmup_days": 30,
+    "strict_audit_budget": 64
+  },
+  "phase3_version": "phase3aa-mature-g2-source-priority-selector-v1-2026-05-29",
+  "placebo_replay_arm": "true_ae2",
+  "schema_version": "phase3ae-bounded-repair-placebo-replay-prep-v1-2026-06-04::true_ae2",
+  "selected_count": 31,
+  "selector_checks": {
+    "candidate_source_counts": {
+      "cn_phase3ad_new_data_feature_layer": 69,
+      "phase3ae_bounded_repair_feature_layer": 161,
+      "unknown": 154
+    },
+    "event_candidates_in_pool": 115,
+    "event_candidates_selected": 19,
+    "forbidden_label_guard": {
+      "forbidden_fields": [
+        "cost_survives",
+        "deployable",
+        "global_signal_cluster_id",
+        "portfolio_replay_avg_one_way_turnover",
+        "portfolio_replay_long_only_net_mean",
+        "portfolio_replay_long_only_sortino",
+        "portfolio_replay_long_short_net_mean",
+        "portfolio_replay_long_short_sortino",
+        "portfolio_replay_pass",
+        "signal_cluster_id",
+        "strict_cost_adjusted_sortino",
+        "strict_mean_one_way_turnover",
+        "strict_mean_rank_ic"
+      ],
+      "selector_uses_forbidden_fields": false
+    },
+    "fundamental_candidates_in_pool": 46,
+    "fundamental_candidates_selected": 8,
+    "research_candidates_in_pool": 69,
+    "research_candidates_selected": 15,
+    "selected_source_counts": {
+      "cn_phase3ad_new_data_feature_layer": 11,
+      "phase3ae_bounded_repair_feature_layer": 31,
+      "unknown": 22
+    },
+    "signal_vector_proxy_requirement_pass": true
+  },
+  "status": "selection_only"
+}

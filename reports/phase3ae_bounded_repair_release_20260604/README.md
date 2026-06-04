@@ -4,7 +4,7 @@ This folder is the git-tracked release index for the current Phase3AE Lane B wor
 
 ## Decision
 
-`PASS_AE2_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_HOLD_REPLAY_CANARY`
+`HOLD_AE2_REPLAY_CANARY_COVERAGE_MEMBERSHIP_CONFOUND`
 
 AE2 bounded repair fields are now:
 
@@ -14,7 +14,8 @@ AE2 bounded repair fields are now:
 - routed through the mature G2 selector-only path
 - selected into a frozen 64-row queue
 - paired coverage-mask and shuffled-value placebo packs are generated
-- blocked from promotion until paired replay canary is run
+- paired replay canary completed
+- blocked from full large search because true-field AE2 did not beat coverage-mask placebo
 
 This is not an alpha proof and not a full large-search authorization.
 
@@ -23,6 +24,7 @@ This is not an alpha proof and not a full large-search authorization.
 - `6294e49 add phase3ae bounded repair factor pack`
 - `a5cce1d add phase3ae bounded repair selector gate`
 - current worktree update adds value-coverage filtering and placebo pack generation
+- current worktree update also adds paired replay canary aggregate and mature loader sidecar-prefix support
 
 ## Core Results
 
@@ -78,6 +80,29 @@ Selected AE2 fields in the current queue have nonzero coverage:
 
 This means the current queue is value-gated. It still needs true-vs-placebo replay comparison before any alpha claim.
 
+### Replay Canary
+
+The paired replay canary completed:
+
+| arm | audited | deployable | raw non-gap | top share |
+|---|---:|---:|---:|---:|
+| `full64_true` | 64 | 14 | 22 | 0.0909 |
+| `paired_true_ae2` | 31 | 3 | 5 | 0.2000 |
+| `coverage_mask_placebo` | 31 | 6 | 24 | 0.1250 |
+| `shuffled_value_placebo` | 31 | 1 | 17 | 0.0588 |
+
+Interpretation:
+
+- Full 64 true-field queue can replay and produce deployable output, but it mixes AE2 with non-AE2 selections.
+- Paired true AE2 beats shuffled-value placebo, so stock-field numeric alignment is not pure noise.
+- Coverage-mask placebo beats paired true AE2, so the current edge is more consistent with event/coverage membership than bounded numeric field values.
+
+Policy:
+
+- Do not launch AE2 full large search from this result.
+- Split the next design into coverage/event-membership lane and numeric-value lane.
+- Numeric bounded repair requires a stronger true-vs-coverage proof before large search.
+
 ## Git-Tracked Artifacts
 
 ### Factor Pack
@@ -93,6 +118,9 @@ This means the current queue is value-gated. It still needs true-vs-placebo repl
 
 - `src/our_system_phase2/runtime/phase3ae_bounded_repair_selector_only_gate_v1.py`
 - `src/our_system_phase2/runtime/phase3ae_bounded_repair_placebo_pack_v1.py`
+- `src/our_system_phase2/runtime/phase3ae_bounded_repair_placebo_replay_prep_v1.py`
+- `src/our_system_phase2/runtime/phase3ae_bounded_repair_replay_canary_aggregate_v1.py`
+- `src/our_system_phase2/services/real_market_validation.py`
 - `reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/PHASE3AE_BOUNDED_REPAIR_SELECTOR_ONLY_GATE_V1_2026-06-04.md`
 - `reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selector_only_gate_v1.json`
 - `reports/phase3ae_bounded_repair_selector_only_gate_v1_20260604/phase3ae_bounded_repair_selected_candidates.csv`
@@ -108,6 +136,10 @@ This means the current queue is value-gated. It still needs true-vs-placebo repl
 - `reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_field_stats.csv`
 - `reports/phase3ae_bounded_repair_placebo_v1_20260604/phase3ae_placebo_candidates.csv`
 - `runtime/factor_packs/phase3ae_bounded_repair_placebo_factor_pack_v1_20260604.json`
+- `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/PHASE3AE_BOUNDED_REPAIR_REPLAY_CANARY_AGGREGATE_V1_2026-06-04.md`
+- `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_aggregate_v1.json`
+- `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_replay_canary_arm_summary.csv`
+- `reports/phase3ae_bounded_repair_replay_canary_v1_20260604/phase3ae_bounded_repair_placebo_replay_prep_v1.json`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_strict_selection_inputs.json`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3_selection_only_report.json`
 - `runtime/phase3ae_bounded_repair_selector_only_v1_20260604/selector_only/aa/phase3e_selector_audit.csv`
@@ -130,13 +162,13 @@ The joined panel is intentionally not committed because it is large and regenera
 
 ### Allowed Now
 
-Run the AE2 64-audited replay canary from the frozen selector output, after the required placebo checks:
+No full AE2 large search is allowed from this release.
 
-1. paired true-field vs coverage-mask placebo on selected AE2 rows
-2. paired true-field vs shuffled-field placebo on selected AE2 rows
-3. PIT lag / event cutoff contract check
-4. frozen queue hash record
-5. strict/replay/cluster canary on the frozen 64-row queue
+Allowed next work:
+
+1. Audit coverage-mask placebo winners as a separate event/coverage-membership lane.
+2. Redesign numeric-value bounded repair so true-field must beat coverage-mask placebo.
+3. Keep replay canary outputs as diagnostic evidence, not promotion evidence.
 
 ### Not Allowed Yet
 
@@ -160,7 +192,7 @@ It is not yet at:
 
 `READY_FOR_AE2_FULL_LARGE_SEARCH`
 
-Large-search authorization should require the 64-audited canary to show:
+Large-search authorization should require a future canary to show:
 
 - no PIT/cutoff violation
 - true-field beats coverage-mask placebo

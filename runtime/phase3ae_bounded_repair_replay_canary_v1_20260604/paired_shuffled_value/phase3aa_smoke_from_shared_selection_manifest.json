@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-06-04T12:22:09+00:00",
+  "selection_root": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\selection_roots\\shuffled_value",
+  "arm": {
+    "short": "aa",
+    "arm": "Phase3AE_shuffled_value_placebo",
+    "audit_count": 31,
+    "deployable_clusters": 1,
+    "top_cluster_share": 0.058824,
+    "median_turnover_proxy": null,
+    "output_root": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\paired_shuffled_value\\aa"
+  },
+  "schema_version": "phase2-v2_1-prototype-v1"
+}

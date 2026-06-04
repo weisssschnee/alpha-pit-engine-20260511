@@ -567,7 +567,15 @@ def _available_market_panel_usecols(path: Path | str) -> list[str]:
     integrated = sorted(
         column
         for column in columns
-        if (column.startswith("ctx_") or column.startswith("m1_") or column == "vwap")
+        if (
+            column.startswith("ctx_")
+            or column.startswith("m1_")
+            or column.startswith("evt_")
+            or column.startswith("mkt_")
+            or column.startswith("plcov_")
+            or column.startswith("plshuf_")
+            or column == "vwap"
+        )
         and not column.startswith("meta_")
         and not column.startswith("label_")
         and column not in base

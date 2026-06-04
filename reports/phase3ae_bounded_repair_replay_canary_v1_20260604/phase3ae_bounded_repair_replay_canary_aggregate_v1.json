@@ -1,0 +1,78 @@
+{
+  "arms": {
+    "coverage_mask_placebo": {
+      "ablation_arm": "Phase3AE_coverage_mask_placebo",
+      "arm": "coverage_mask_placebo",
+      "audited": 31,
+      "dataset_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_joined_panel_with_placebo_v1.parquet",
+      "deployable_clusters": 6,
+      "deployable_per_audited": 0.193548,
+      "raw_non_gap_pass": 24,
+      "raw_non_gap_pass_per_audited": 0.774194,
+      "report_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\paired_coverage_mask\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_007",
+      "top_cluster_share": 0.125,
+      "unique_return_corr_clusters": 14
+    },
+    "full64_true": {
+      "ablation_arm": "Phase3AA_G2_event_source_priority",
+      "arm": "full64_true",
+      "audited": 64,
+      "dataset_path": "runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
+      "deployable_clusters": 14,
+      "deployable_per_audited": 0.21875,
+      "raw_non_gap_pass": 22,
+      "raw_non_gap_pass_per_audited": 0.34375,
+      "report_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\true_field\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_004",
+      "top_cluster_share": 0.090909,
+      "unique_return_corr_clusters": 20
+    },
+    "paired_true_ae2": {
+      "ablation_arm": "Phase3AE_true_ae2",
+      "arm": "paired_true_ae2",
+      "audited": 31,
+      "dataset_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_joined_panel_with_placebo_v1.parquet",
+      "deployable_clusters": 3,
+      "deployable_per_audited": 0.096774,
+      "raw_non_gap_pass": 5,
+      "raw_non_gap_pass_per_audited": 0.16129,
+      "report_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\paired_true_ae2\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_019",
+      "top_cluster_share": 0.2,
+      "unique_return_corr_clusters": 5
+    },
+    "shuffled_value_placebo": {
+      "ablation_arm": "Phase3AE_shuffled_value_placebo",
+      "arm": "shuffled_value_placebo",
+      "audited": 31,
+      "dataset_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_joined_panel_with_placebo_v1.parquet",
+      "deployable_clusters": 1,
+      "deployable_per_audited": 0.032258,
+      "raw_non_gap_pass": 17,
+      "raw_non_gap_pass_per_audited": 0.548387,
+      "report_path": "runtime\\phase3ae_bounded_repair_replay_canary_v1_20260604\\paired_shuffled_value\\aa\\phase3_repair_report.json",
+      "top_cluster_id": "cluster_008",
+      "top_cluster_share": 0.058824,
+      "unique_return_corr_clusters": 17
+    }
+  },
+  "blockers": [
+    "true_field_not_better_than_coverage_mask_placebo"
+  ],
+  "created_at": "2026-06-04T12:24:28.451649+00:00",
+  "decision": "HOLD_AE2_REPLAY_CANARY_COVERAGE_MEMBERSHIP_CONFOUND",
+  "interpretation": {
+    "full64_true_field": "The full selected queue runs and has deployable output, but this mixes AE2 with non-AE2 selections.",
+    "large_search_policy": "Do not launch AE2 full large search from this result. Split coverage/event-membership lane from numeric-value lane first.",
+    "paired_true_vs_coverage": "Coverage-mask placebo beats true AE2, so current edge is more consistent with coverage/event membership than numeric bounded field values.",
+    "paired_true_vs_shuffled": "True AE2 beats shuffled-value placebo, so stock-field numeric alignment is not completely random."
+  },
+  "outputs": {
+    "markdown": "reports\\phase3ae_bounded_repair_replay_canary_v1_20260604\\PHASE3AE_BOUNDED_REPAIR_REPLAY_CANARY_AGGREGATE_V1_2026-06-04.md",
+    "summary_csv": "reports\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_replay_canary_arm_summary.csv",
+    "summary_json": "reports\\phase3ae_bounded_repair_replay_canary_v1_20260604\\phase3ae_bounded_repair_replay_canary_aggregate_v1.json"
+  },
+  "scope": "AE2 bounded repair replay canary with paired coverage-mask and shuffled-value placebo controls",
+  "version": "phase3ae-bounded-repair-replay-canary-aggregate-v1-2026-06-04"
+}

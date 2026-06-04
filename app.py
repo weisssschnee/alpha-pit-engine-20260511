@@ -375,6 +375,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build AE2 paired coverage-mask and shuffled-value placebo packs for replay canary comparison.",
     },
+    "phase3ae-bounded-repair-placebo-replay-prep-v1": {
+        "module": "our_system_phase2.runtime.phase3ae_bounded_repair_placebo_replay_prep_v1",
+        "diagnostic": False,
+        "description": "Prepare paired AE2 true, coverage-mask, and shuffled-value frozen selection roots plus placebo replay panel.",
+    },
+    "phase3ae-bounded-repair-replay-canary-aggregate-v1": {
+        "module": "our_system_phase2.runtime.phase3ae_bounded_repair_replay_canary_aggregate_v1",
+        "diagnostic": False,
+        "description": "Aggregate AE2 true-field, coverage-mask placebo, and shuffled-value placebo replay canary results.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
