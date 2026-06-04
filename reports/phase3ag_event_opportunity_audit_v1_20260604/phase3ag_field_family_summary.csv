@@ -1,0 +1,5 @@
+field_family,field_count,coverage_active_count_sum,same_count_active_count_sum,matched_active_count_sum,matched_preservation_ratio_sum,control_flags
+broad_billboard_coverage,4,2613492,2613492,1131523,0.43295445327554094,matched_control_count_loss_on_broad_field
+broad_holder_coverage,1,831992,831992,158026,0.18993692247040836,matched_control_count_loss_on_broad_field
+broad_rzrq_coverage,2,1165580,1165580,629204,0.5398205185401259,matched_control_count_loss_on_broad_field
+sparse_limit_event,4,16230,16230,16230,1.0,ok

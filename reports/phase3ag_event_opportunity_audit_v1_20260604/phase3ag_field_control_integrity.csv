@@ -1,0 +1,12 @@
+coverage_field,field_family,coverage_active_count,coverage_rate,same_count_active_count,same_count_preservation_ratio,same_count_overlap_ratio,matched_active_count,matched_preservation_ratio,matched_overlap_ratio,control_quality_flag
+plcov_ctx_billboard_billboard_deal_amt_8a6fc0e2,broad_billboard_coverage,653373,0.6613053577664081,653373,1.0,0.6701133961764566,282809,0.4328446385142943,0.0,matched_control_count_loss_on_broad_field
+plcov_ctx_billboard_billboard_net_amt_0ef5aab1,broad_billboard_coverage,653373,0.6613053577664081,653373,1.0,0.6706858104023277,283028,0.4331798222454861,0.0,matched_control_count_loss_on_broad_field
+plcov_ctx_billboard_net_bs_amt_2f2e6c31,broad_billboard_coverage,653373,0.6613053577664081,653373,1.0,0.6713867882511215,282889,0.4329670800599351,0.0,matched_control_count_loss_on_broad_field
+plcov_ctx_billboard_turnoverrate_4e2fe941,broad_billboard_coverage,653373,0.6613053577664081,653373,1.0,0.6709429376481734,282797,0.43282627228244813,0.0,matched_control_count_loss_on_broad_field
+plcov_ctx_holder_change_shares_aa9649e1,broad_holder_coverage,831992,0.8420929043881357,831992,1.0,0.8503314935720536,158026,0.18993692247040836,0.013555418802103866,matched_control_count_loss_on_broad_field
+plcov_ctx_rzrq_spj_bdcd6f28,broad_rzrq_coverage,588788,0.595936255383323,588788,1.0,0.6025224698872939,313375,0.5322374097298178,0.0,matched_control_count_loss_on_broad_field
+plcov_ctx_rzrq_zdf_780fd255,broad_rzrq_coverage,576792,0.583794616424006,576792,1.0,0.590741549813451,315829,0.5475613392696154,0.0,matched_control_count_loss_on_broad_field
+plcov_evt_limit_fengdan_rate_last_by_0930_d3da13eb,sparse_limit_event,872,0.0008825866265858978,872,1.0,0.0,872,1.0,0.0,ok
+plcov_evt_limit_fengdan_rate_last_by_0935_451420af,sparse_limit_event,2518,0.0025485700983294618,2518,1.0,0.0,2518,1.0,0.0,ok
+plcov_evt_limit_fengdan_rate_last_by_1000_2442cb7b,sparse_limit_event,5052,0.005113334446688023,5052,1.0,0.0,5052,1.0,0.0,ok
+plcov_evt_limit_fengdan_rate_last_by_1130_df29a90b,sparse_limit_event,7788,0.00788255120166396,7788,1.0,0.0,7788,1.0,0.0,ok

@@ -1,0 +1,41 @@
+{
+  "basis": {
+    "coverage_fields": 11,
+    "date_count": 163,
+    "phase3af_blockers": [
+      "coverage_mask_not_better_than_same_count_random"
+    ],
+    "phase3af_membership_control_decision": "HOLD_PHASE3AF_MEMBERSHIP_LANE_CONTROL_NOT_BEATEN",
+    "row_count": 988005
+  },
+  "blockers": [
+    "same_count_random_beats_coverage_reference_in_replay",
+    "matched_control_has_count_preservation_failure_on_broad_fields"
+  ],
+  "control_integrity_flags": {
+    "matched_control_count_loss_on_broad_field": 7,
+    "ok": 4
+  },
+  "created_at": "2026-06-04T14:00:48.060199+00:00",
+  "decision": "HOLD_PHASE3AG_EVENT_OPPORTUNITY_CONFOUND_CONFIRMED",
+  "interpretation": {
+    "field_family": "Sparse limit-event fields should be separated from broad coverage fields before any event-module canary.",
+    "matched_control": "The prior matched-control replay is not decisive for broad fields because high-coverage masks lost active-count preservation.",
+    "same_count_random": "Because same-count random beat coverage reference, the observed AF-A effect cannot be treated as symbol-specific membership edge."
+  },
+  "next_policy": {
+    "allowed_next": "Build sparse-event-only AF-A canary and corrected matched controls; keep broad coverage fields out of event-alpha promotion.",
+    "blocked_next": "Do not expand all coverage masks or numeric AE2 repair fields into a large search.",
+    "large_search_allowed": false
+  },
+  "outputs": {
+    "date_opportunity_csv": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\phase3ag_date_opportunity_summary.csv",
+    "family_summary_csv": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\phase3ag_field_family_summary.csv",
+    "field_integrity_csv": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\phase3ag_field_control_integrity.csv",
+    "markdown": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\PHASE3AG_EVENT_OPPORTUNITY_AUDIT_V1_2026-06-04.md",
+    "opportunity_context_corr_csv": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\phase3ag_opportunity_context_corr.csv",
+    "summary_json": "reports\\phase3ag_event_opportunity_audit_v1_20260604\\phase3ag_event_opportunity_audit_v1.json"
+  },
+  "scope": "Read-only audit of AF-A date/opportunity and control-integrity confounds; no search and no promotion.",
+  "version": "phase3ag-event-opportunity-audit-v1-2026-06-04"
+}

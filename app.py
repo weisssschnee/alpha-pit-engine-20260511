@@ -405,6 +405,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Aggregate AF-A coverage membership controls against coverage-mask replay reference.",
     },
+    "phase3ag-event-opportunity-audit-v1": {
+        "module": "our_system_phase2.runtime.phase3ag_event_opportunity_audit_v1",
+        "diagnostic": False,
+        "description": "Audit AF-A date/opportunity effects and control integrity before any large search.",
+    },
     "cn-integrated-factor-pack-v1": {
         "module": "our_system_phase2.runtime.cn_integrated_factor_pack_v1",
         "diagnostic": False,
