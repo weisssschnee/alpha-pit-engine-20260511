@@ -305,6 +305,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Evaluate Phase3AR sidecar candidates on true 1min trade_time cross-sections with search-memory tagging.",
     },
+    "phase3at-wide-true1min-prelaunch": {
+        "module": "our_system_phase2.runtime.phase3at_wide_true1min_prelaunch",
+        "diagnostic": False,
+        "description": "Run Phase3AT wide true-1min prelaunch: AQ stride panel, AR sidecars, and AS memory-tagged eval.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

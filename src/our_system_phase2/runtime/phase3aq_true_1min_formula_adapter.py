@@ -195,7 +195,23 @@ def _schema_names(path: Path) -> set[str]:
     return set(pq.ParquetFile(path).schema_arrow.names)
 
 
-def _source_files(raw_2023_2025: Path, raw_2026: Path, *, years: list[int], max_files: int) -> list[Path]:
+def _select_files(files: list[Path], max_files: int, source_selection: str) -> list[Path]:
+    if max_files <= 0 or len(files) <= max_files:
+        return files
+    if source_selection == "stride":
+        positions = np.linspace(0, len(files) - 1, max_files).round().astype(int)
+        return [files[int(position)] for position in positions]
+    return files[:max_files]
+
+
+def _source_files(
+    raw_2023_2025: Path,
+    raw_2026: Path,
+    *,
+    years: list[int],
+    max_files: int,
+    source_selection: str = "first",
+) -> list[Path]:
     files: list[Path] = []
     for year in years:
         if year <= 2025:
@@ -203,7 +219,7 @@ def _source_files(raw_2023_2025: Path, raw_2026: Path, *, years: list[int], max_
             files.extend(sorted(root.glob("code=*/part.parquet")))
         else:
             files.extend(sorted(raw_2026.glob("date=*.parquet")))
-    return files[:max_files]
+    return _select_files(files, max_files, source_selection)
 
 
 def _infer_vwap(amount: pd.Series, volume: pd.Series, close: pd.Series) -> tuple[pd.Series, dict[str, Any]]:
@@ -338,6 +354,7 @@ def build_adapter(
     years: list[int],
     max_files: int,
     materialize_canary: bool,
+    source_selection: str = "first",
 ) -> dict[str, Any]:
     output_root = _resolve(output_root)
     raw_2023_2025 = _resolve(raw_2023_2025)
@@ -372,10 +389,11 @@ def build_adapter(
 
     canary_report: dict[str, Any] = {"materialized": False}
     if materialize_canary:
-        files = _source_files(raw_2023_2025, raw_2026, years=years, max_files=max_files)
+        files = _source_files(raw_2023_2025, raw_2026, years=years, max_files=max_files, source_selection=source_selection)
         panel, panel_report = _normalize_raw_minute(files)
         canary_report = {
             "materialized": True,
+            "source_selection": source_selection,
             "source_file_count": len(files),
             "source_files": [str(path) for path in files[:20]],
             **panel_report,
@@ -448,6 +466,7 @@ def main() -> int:
     parser.add_argument("--raw-2026", type=Path, default=RAW_2026)
     parser.add_argument("--years", default="2025,2026")
     parser.add_argument("--max-files", type=int, default=12)
+    parser.add_argument("--source-selection", choices=["first", "stride"], default="first")
     parser.add_argument("--materialize-canary", action="store_true")
     args = parser.parse_args()
     years = [int(item.strip()) for item in args.years.split(",") if item.strip()]
@@ -458,6 +477,7 @@ def main() -> int:
         years=years,
         max_files=args.max_files,
         materialize_canary=args.materialize_canary,
+        source_selection=args.source_selection,
     )
     print(
         json.dumps(
