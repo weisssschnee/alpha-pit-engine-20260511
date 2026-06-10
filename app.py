@@ -300,6 +300,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Attach PIT context, cap/float, and cutoff event sidecars to Phase3AQ true 1min candidates without changing X0/R3.",
     },
+    "phase3as-true-1min-sidecar-canary-eval": {
+        "module": "our_system_phase2.runtime.phase3as_true_1min_sidecar_canary_eval",
+        "diagnostic": False,
+        "description": "Evaluate Phase3AR sidecar candidates on true 1min trade_time cross-sections with search-memory tagging.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
