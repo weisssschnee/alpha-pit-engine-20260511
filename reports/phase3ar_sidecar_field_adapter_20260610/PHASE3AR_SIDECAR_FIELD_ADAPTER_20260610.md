@@ -7,8 +7,8 @@ decision: `PHASE3AR_SIDECAR_FIELDS_ATTACHED_FOR_TRUE_1MIN_CANARY`
 - input blocked candidates: `1273`
 - `diagnostic_context_only`: 149
 - `event_state_cutoff_canary`: 85
-- `sidecar_context_formula`: 966
-- `still_blocked`: 73
+- `sidecar_context_formula`: 1002
+- `still_blocked`: 37
 
 ## Hard Rules
 
@@ -17,7 +17,7 @@ decision: `PHASE3AR_SIDECAR_FIELDS_ATTACHED_FOR_TRUE_1MIN_CANARY`
 - `evt_*` and `mkt_*` fields are hidden before the cutoff encoded in the field name.
 - `daily_ret` remains blocked.
 - current-day aggregate fields such as `m1_amount_day` remain blocked because they require full-day future information.
-- raw `evt_uplimit_*` fields without cutoff suffix or lag1 alias remain blocked; use `evt_limit_*_by_HHMM` or `ctx_zls_evt_*_lag1` instead.
+- whitelisted raw `evt_uplimit_*` fields are allowed only as previous-available daily lag context; non-whitelisted event fields still require cutoff suffix or lag1 alias.
 - billboard fields remain diagnostic until a disclosure timestamp contract exists.
 
 ## Outputs
@@ -31,6 +31,6 @@ decision: `PHASE3AR_SIDECAR_FIELDS_ATTACHED_FOR_TRUE_1MIN_CANARY`
 
 ## Expression Smoke
 
-- `sidecar_context_formula`: candidates=966 smoked=24 nonnull=24 errors=0
+- `sidecar_context_formula`: candidates=1002 smoked=24 nonnull=24 errors=0
 - `event_state_cutoff_canary`: candidates=85 smoked=24 nonnull=14 errors=0
 - `diagnostic_context_only`: candidates=149 smoked=24 nonnull=24 errors=0

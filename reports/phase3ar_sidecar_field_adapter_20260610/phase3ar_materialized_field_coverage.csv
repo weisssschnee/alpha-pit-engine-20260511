@@ -35,8 +35,8 @@ ctx_billboard_sum_sell_amt,10,True,349691,0.99588195,20
 ctx_fulla_bs_total_assets,9,True,292815,0.83390528,24
 ctx_sent_uplimit_num,9,True,351137,1.0,71
 ctx_sent_downlimit_num,8,True,351137,1.0,42
-evt_uplimit_fd_close,8,False,0,0.0,0
-evt_uplimit_fd_max,8,False,0,0.0,0
+evt_uplimit_fd_close,8,True,0,0.0,0
+evt_uplimit_fd_max,8,True,0,0.0,0
 evt_limit_fengdan_rate_last_by_0930,8,True,0,0.0,0
 evt_limit_fengdan_rate_last_by_0935,8,True,472,0.0013442,2
 evt_limit_fengdan_rate_last_by_1000,8,True,1266,0.00360543,6
@@ -44,7 +44,7 @@ evt_limit_fengdan_rate_last_by_1130,8,True,1452,0.00413514,11
 ctx_sent_max_lb_num,7,True,351137,1.0,9
 ctx_sent_zb_num,7,True,351137,1.0,41
 ctx_sent_damian_num,7,True,351137,1.0,6
-evt_uplimit_auction_pre1max_ratio,7,False,0,0.0,0
+evt_uplimit_auction_pre1max_ratio,7,True,58322,0.16609472,1
 ctx_ths_hot_rank,7,True,117126,0.33356211,4
 ctx_ths_hot_rank_diff,7,True,117126,0.33356211,5
 ctx_rzrq_rqjmg,6,True,233288,0.66437886,640
@@ -65,7 +65,7 @@ ctx_rzrq_rzjme10d,6,True,233288,0.66437886,968
 ctx_rzrq_rzjme3d,6,True,233288,0.66437886,968
 ctx_rzrq_rzjme5d,6,True,233288,0.66437886,968
 ctx_rzrq_rzmre,6,True,233288,0.66437886,968
-evt_uplimit_amount,6,False,0,0.0,0
+evt_uplimit_amount,6,True,0,0.0,0
 m1_amount_day,5,False,0,0.0,0
 ctx_zls_evt_amount_lag1,5,True,0,0.0,0
 ctx_zls_uplimit_num_lag1,5,True,351137,1.0,71
@@ -138,10 +138,10 @@ ctx_fulla_ps_research_expense,3,True,127730,0.36376115,11
 ctx_fulla_ps_finance_expense,3,True,234252,0.66712423,19
 ctx_sent_lb_2_num,3,True,351137,1.0,19
 ctx_sent_lb_3_num,3,True,351137,1.0,12
-evt_uplimit_auction_buy,3,False,0,0.0,0
-evt_uplimit_auction_offer,3,False,0,0.0,0
-evt_uplimit_auction_money,3,False,0,0.0,0
-evt_uplimit_auction_turnover,3,False,0,0.0,0
+evt_uplimit_auction_buy,3,True,0,0.0,0
+evt_uplimit_auction_offer,3,True,0,0.0,0
+evt_uplimit_auction_money,3,True,58322,0.16609472,1
+evt_uplimit_auction_turnover,3,True,116885,0.33287577,2
 ctx_ths_hot_circulation_value,3,True,117126,0.33356211,5
 ctx_ths_hot_last_pct,3,True,117126,0.33356211,5
 ctx_zls_evt_auction_money_lag1,3,True,58322,0.16609472,1

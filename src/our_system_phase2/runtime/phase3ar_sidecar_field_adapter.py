@@ -65,6 +65,16 @@ UPLIMIT_EVENT_NO_CUTOFF_FIELDS = {
     "evt_uplimit_fd_close",
     "evt_uplimit_fd_max",
 }
+UPLIMIT_EVENT_LAG_COMPAT_FIELDS = {
+    "evt_uplimit_amount": "amount",
+    "evt_uplimit_auction_buy": "auction_buy",
+    "evt_uplimit_auction_money": "auction_money",
+    "evt_uplimit_auction_offer": "auction_offer",
+    "evt_uplimit_auction_pre1max_ratio": "auction_pre1max_ratio",
+    "evt_uplimit_auction_turnover": "auction_turnover",
+    "evt_uplimit_fd_close": "fd_close",
+    "evt_uplimit_fd_max": "fd_max",
+}
 CAP_FIELD_ALIASES = {
     "final_total_market_cap": "market_cap_yuan",
     "final_float_market_cap": "float_market_cap_yuan",
@@ -655,6 +665,13 @@ def _load_sentiment_sidecar(
         loaded_fields.update([field for field in zls_evt_map if field in zls_evt.columns])
         source_paths.append(str(sentiment_root / "uplimit_stocks.parquet"))
 
+    uplimit_lag_map = {field: raw for field, raw in UPLIMIT_EVENT_LAG_COMPAT_FIELDS.items() if field in fields}
+    uplimit_lag = _load_stock_daily_context(sentiment_root / "uplimit_stocks.parquet", "date1", "stock_code", uplimit_lag_map)
+    if not uplimit_lag.empty:
+        panels.append(uplimit_lag)
+        loaded_fields.update([field for field in uplimit_lag_map if field in uplimit_lag.columns])
+        source_paths.append(str(sentiment_root / "uplimit_stocks.parquet"))
+
     out = base
     for panel in panels:
         next_out = _merge_previous_daily(base, panel)
@@ -689,11 +706,11 @@ def _classify_formula(
             blockers.append(f"forbidden_field:{field}")
         elif field in CURRENT_DAY_AGGREGATE_FIELDS:
             blockers.append(f"blocked_current_day_aggregate:{field}")
-        elif field in UPLIMIT_EVENT_NO_CUTOFF_FIELDS:
+        elif field in UPLIMIT_EVENT_NO_CUTOFF_FIELDS and field not in sentiment_fields:
             blockers.append(f"blocked_event_without_cutoff_or_lag:{field}")
         elif field not in available_fields:
             blockers.append(f"missing_after_sidecar:{field}")
-        elif field in event_fields:
+        elif field in event_fields and field not in sentiment_fields:
             has_event = True
         elif field in diagnostic_context_fields:
             has_diagnostic = True
@@ -788,6 +805,7 @@ def adapt(
         or field in ZLS_HOT_DAY_FIELDS
         or field in THS_HOT_FIELDS
         or field in ZLS_EVENT_FIELDS
+        or field in UPLIMIT_EVENT_LAG_COMPAT_FIELDS
     }
 
     context_panel, context_meta = _load_context_sidecar(context_root, context_fields, base_keys)
@@ -939,6 +957,9 @@ def adapt(
         elif field in UPLIMIT_EVENT_NO_CUTOFF_FIELDS:
             route = "blocked_event_without_cutoff_or_lag"
             selector_allowed = "false_requires_cutoff_suffix_or_lag1_alias"
+        if field in UPLIMIT_EVENT_LAG_COMPAT_FIELDS and field in sentiment_fields:
+            route = "uplimit_event_lag_compat_sidecar"
+            selector_allowed = "true_previous_available_daily_only_not_same_day_cutoff"
         field_contract_rows.append(
             {
                 "field_name": field,
@@ -998,7 +1019,7 @@ def adapt(
             "event fields are null before their encoded cutoff time",
             "daily_ret remains blocked",
             "current-day aggregate fields such as m1_amount_day remain blocked because they require full-day future information",
-            "raw evt_uplimit_* fields without cutoff suffix or lag1 alias remain blocked; use evt_limit_*_by_HHMM or ctx_zls_evt_*_lag1 instead",
+            "whitelisted raw evt_uplimit_* fields are allowed only as previous-available daily lag context; non-whitelisted event fields still require cutoff suffix or lag1 alias",
             "billboard fields remain diagnostic until disclosure timestamp contract is proven",
             "X0/R3 read-only",
         ],
@@ -1026,7 +1047,7 @@ def adapt(
             "- `evt_*` and `mkt_*` fields are hidden before the cutoff encoded in the field name.",
             "- `daily_ret` remains blocked.",
             "- current-day aggregate fields such as `m1_amount_day` remain blocked because they require full-day future information.",
-            "- raw `evt_uplimit_*` fields without cutoff suffix or lag1 alias remain blocked; use `evt_limit_*_by_HHMM` or `ctx_zls_evt_*_lag1` instead.",
+            "- whitelisted raw `evt_uplimit_*` fields are allowed only as previous-available daily lag context; non-whitelisted event fields still require cutoff suffix or lag1 alias.",
             "- billboard fields remain diagnostic until a disclosure timestamp contract exists.",
             "",
             "## Outputs",
