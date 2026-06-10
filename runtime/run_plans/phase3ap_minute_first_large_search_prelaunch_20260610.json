@@ -1,0 +1,133 @@
+{
+  "phase": "Phase3AP",
+  "run_type": "minute_first_large_search_prelaunch",
+  "created_at": "2026-06-10T15:50:00+08:00",
+  "status": "blocked_until_true_1min_trade_time_panel_exists",
+  "objective": "Restart broad alpha search only after replacing daily-backbone search inputs with a true 1min-row panel. Opening firstN-minute fields may be used as features, but they must not become a 5/15/30min or fixed-cutoff data backbone. Keep Phase3AN current-wide daily diagnostic evidence separate.",
+  "primary_backbone": null,
+  "required_primary_backbone_contract": {
+    "accepted_granularity": [
+      "minute_row_with_trade_time"
+    ],
+    "must_have": [
+      "trade_time",
+      "code",
+      "label_horizon",
+      "dataset_route_id"
+    ],
+    "not_accepted_as_primary_backbone": [
+      "runtime/minute_feature_panels/cn_minute_feature_panel_v2_20260602_full_retry1",
+      "runtime/phase3ae_bounded_repair_selector_only_v1_20260604/phase3ae_bounded_repair_joined_panel_v1.parquet",
+      "runtime/phase3an_daily_sentiment_joined_panel_20260609/phase3an_daily_sentiment_joined_panel.parquet",
+      "phase2_stock_tdx_official_*",
+      "phase3n_stock_tdx_official_*"
+    ]
+  },
+  "allowed_context_inputs": [
+    "runtime/nonminute_context_panels/cn_nonminute_pit_context_panel_v1_20260602",
+    "runtime/minute_feature_panels/cn_minute_feature_panel_v2_20260602_full_retry1",
+    "runtime/minute_feature_panels/cn_minute_limit_event_alignment_v2_20260602/cn_minute_limit_event_alignment_v1.parquet"
+  ],
+  "diagnostic_only_inputs": [
+    "runtime/phase3an_daily_sentiment_joined_panel_20260609/phase3an_daily_sentiment_joined_panel.parquet"
+  ],
+  "forbidden_backbones": [
+    "phase2_stock_tdx_official_*_maxopt.parquet",
+    "phase3n_stock_tdx_official_*_maxopt.parquet",
+    "tdx_official_vipdoc",
+    "phase3ao_long_history_ctx_*"
+  ],
+  "search_memory_required": true,
+  "field_contract_required": true,
+  "dataset_provenance_required": true,
+  "legacy_daily_guard_required": true,
+  "x0_r3_mode": "read_only",
+  "lanes": {
+    "phase3an_current_wide_continuation": {
+      "panel": "runtime/phase3an_daily_sentiment_joined_panel_20260609/phase3an_daily_sentiment_joined_panel.parquet",
+      "role": "recent_current_panel_diagnostic_only",
+      "status": "valid_not_invalidated",
+      "limits": [
+        "not long-history proof",
+        "not X0/R3 promotion evidence",
+        "must not be mixed with minute-first search metrics"
+      ]
+    },
+    "phase3ap_true_minute_panel_build": {
+      "source_roots": [
+        "G:/Project_V7_Rotation/data/cn_public_enrichment/cn_local_minute_daily_silver_v1_20260531/stock_1min_2023_2025_symbol_parquet_v2",
+        "G:/Project_V7_Rotation/data/cn_public_enrichment/cn_local_minute_daily_silver_v1_20260531/stock_1min_2026_parquet_by_date"
+      ],
+      "role": "required_prelaunch_build_step",
+      "target_grain": "trade_time_code",
+      "opening_window_features": [
+        "m1_first5_*",
+        "m1_first15_*",
+        "m1_first30_*"
+      ],
+      "opening_window_rule": "firstN fields are feature summaries available after the Nth minute; they are not separate data frequencies and must not split the search backbone into 5/15/30min panels.",
+      "labels": [
+        "trade_time_to_close",
+        "trade_time_to_next_open",
+        "trade_time_to_next_close"
+      ]
+    },
+    "minute_microstructure": {
+      "fields": [
+        "m1_first5_*",
+        "m1_first15_*",
+        "m1_first30_*",
+        "m1_amount_day",
+        "m1_open_gap_vs_preclose"
+      ],
+      "role": "direct_formula_and_interaction"
+    },
+    "quality_x_minute_pressure": {
+      "fields": [
+        "ctx_fund_*",
+        "m1_first15_range",
+        "m1_first30_range",
+        "m1_amount_day"
+      ],
+      "role": "bounded_interaction_formula"
+    },
+    "flow_liquidity": {
+      "fields": [
+        "ctx_rzrq_*",
+        "amount",
+        "volume",
+        "turnover_ratio",
+        "m1_*"
+      ],
+      "role": "direct_and_residual_formula"
+    },
+    "event_state": {
+      "fields": [
+        "limit",
+        "open_board",
+        "up_limit_time",
+        "auction_*",
+        "lb_*",
+        "max_lb_num"
+      ],
+      "role": "event_module_not_plain_rank_formula"
+    }
+  },
+  "acceptance_before_heavy_run": [
+    "phase3ap_data_lineage_granularity_audit is attached",
+    "true 1min-row primary backbone exists",
+    "primary backbone has trade_time",
+    "opening firstN-minute fields are treated as features only, not as data segmentation",
+    "candidate formulas validate against active dataset schema",
+    "search memory ledger is loaded",
+    "run outputs include dataset_path and data_route_id",
+    "daily-backbone diagnostic metrics are not mixed into minute-first metrics"
+  ],
+  "first_checkpoint": {
+    "selector_budget_per_lane": 512,
+    "replay_audit_per_lane": 128,
+    "stop_if_reward_hacking": true,
+    "stop_if_top_cluster_share_gt": 0.25,
+    "stop_if_legacy_dataset_detected": true
+  }
+}

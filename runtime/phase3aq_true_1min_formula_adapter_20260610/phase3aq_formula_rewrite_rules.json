@@ -1,0 +1,20 @@
+{
+  "blocked_legacy_aliases": {
+    "$daily_ret": "blocked: use $ret_1m for minute return or explicit lagged daily context",
+    "$final_float_market_cap": "requires lagged context sidecar mapping",
+    "$final_total_market_cap": "requires lagged context sidecar mapping",
+    "$float_share": "requires lagged context sidecar mapping",
+    "$return_1d": "blocked until explicit lagged daily context is materialized"
+  },
+  "opening_window_policy": "m1_firstN_* fields are features with availability guards, not data segmentation.",
+  "safe_aliases": {
+    "$amount": "$amount",
+    "$amount_yuan": "$amount_yuan",
+    "$close": "$close",
+    "$high": "$high",
+    "$low": "$low",
+    "$open": "$open",
+    "$vol": "$volume",
+    "$vwap": "$vwap"
+  }
+}

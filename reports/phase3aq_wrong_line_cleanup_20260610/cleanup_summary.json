@@ -1,0 +1,28 @@
+﻿{
+    "tracked_removed":  [
+                            "launch_phase2_maxopt_next_wave_pending_approval_20260510.ps1",
+                            "reports/PHASE2_MAXOPT_NEXT_WAVE_SEARCH_FLOW_2026-05-10.md",
+                            "reports/PHASE2_MAXOPT_NEXT_WAVE_SEARCH_OBJECTIVE_2026-05-10.json",
+                            "reports/PHASE2_MAXOPT_REWARD_GENERATOR_UPGRADE_2026-05-10.md",
+                            "scripts/build_phase2_stock_dataset_maxopt.py"
+                        ],
+    "created_at":  "2026-06-10T17:05:37.0190243+08:00",
+    "local_removed":  [
+                          "runtime\\phase3ao_current_panel_replay_20260610",
+                          "runtime\\phase3ao_current_panel_replay_20260610_logs",
+                          "runtime\\phase3ao_current_panel_expanded72_replay_20260610",
+                          "runtime\\phase3ao_current_panel_expanded72_replay_20260610_logs",
+                          "runtime\\phase3ao_selection_root_20260610",
+                          "runtime\\phase3ao_selection_root_expanded72_20260610",
+                          "runtime\\phase3ao_deep_validation_local_20260610",
+                          "runtime\\phase3ao_field_guard_selftest_fail_20260610",
+                          "runtime\\phase3ao_field_guard_selftest_filter_20260610",
+                          "reports\\phase3ao_current_panel_replay_summary_20260610",
+                          "reports\\phase3ao_current_panel_replay102_rollup_20260610",
+                          "reports\\phase3ao_current_panel_expanded72_summary_20260610",
+                          "reports\\phase3ao_current_panel_expanded_queue_20260610",
+                          "reports\\phase3ao_deep_validation_local_20260610",
+                          "reports\\phase3ao_deep_validator_compat_audit_20260610",
+                          "reports\\phase3ao_remainder384b2_triage_20260609"
+                      ]
+}

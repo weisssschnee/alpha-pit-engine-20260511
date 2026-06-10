@@ -1,0 +1,35 @@
+{
+  "adapter_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_true_1min_formula_adapter_20260610",
+  "created_at": "2026-06-10T09:00:07.792260+00:00",
+  "decision": "PHASE3AQ_FORMULA_PACKS_SANITIZED_FOR_TRUE_1MIN_CANARY",
+  "factor_pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\factor_packs\\phase3an_sanitized_v1_20260609",
+  "input_candidate_count": 1370,
+  "next": [
+    "Run expression-engine smoke on direct/opening packs against Phase3AQ canary panel.",
+    "Build context sidecar rewrite for ctx_* fields.",
+    "Build event-state adapter for evt_* fields."
+  ],
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_formula_packs_sanitized_20260610",
+  "outputs": {
+    "blocked_rows": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_formula_packs_sanitized_20260610\\phase3aq_blocked_or_sidecar_required_formula_rows.json",
+    "direct_1min_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_formula_packs_sanitized_20260610\\phase3aq_direct_1min_formula_pack.json",
+    "manifest": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_formula_packs_sanitized_20260610\\phase3aq_formula_sanitizer_manifest.csv",
+    "opening_window_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3aq_formula_packs_sanitized_20260610\\phase3aq_opening_window_1min_formula_pack.json"
+  },
+  "pack_counts": {
+    "cn_event_factor_candidate_pack_v1_20260531_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_flow_liquidity_factor_candidate_pack_v1_20260601_phase3am_sanitized_v1_20260609.json": 64,
+    "cn_integrated_feature_factor_candidate_pack_v2_coverage_aware_20260603_phase3am_sanitized_v1_20260609.json": 294,
+    "cn_phase3ad_hfq_valuation_factor_pack_v1_20260603_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_phase3ad_new_data_factor_candidate_pack_coverage_filtered_v1_20260603_phase3am_sanitized_v1_20260609.json": 581,
+    "cn_research_factor_candidate_pack_v2_20260531_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_underutilized_field_factor_candidate_pack_v1_20260601_phase3am_sanitized_v1_20260609.json": 88,
+    "cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602_phase3am_sanitized_v1_20260609.json": 49,
+    "phase3ae_bounded_repair_factor_pack_v1_20260604_phase3am_sanitized_v1_20260609.json": 294
+  },
+  "status_counts": {
+    "blocked": 1273,
+    "direct_1min": 84,
+    "opening_window_direct_1min": 13
+  }
+}

@@ -27,6 +27,12 @@ DEFAULT_NONMINUTE_PANEL = Path(
     "runtime/nonminute_context_panels/cn_nonminute_pit_context_panel_v1_20260602"
 )
 DEFAULT_SIDECAR_ROOT = Path("runtime/cn_integrated_pit_selected_sidecars_20260602")
+LEGACY_DAILY_BACKBONE_MARKERS = (
+    "phase2_stock_tdx_official_",
+    "phase3n_stock_tdx_official_",
+    "tdx_official",
+    "maxopt",
+)
 
 
 def _read_json(path: Path) -> Any:
@@ -183,7 +189,15 @@ def build_joined_panel(
     output_report: Path,
     start_date: str,
     end_date: str,
+    allow_legacy_daily_backbone: bool = False,
 ) -> dict[str, Any]:
+    normalized_base = str(base_dataset_path).replace("\\", "/").lower()
+    if not allow_legacy_daily_backbone and any(marker in normalized_base for marker in LEGACY_DAILY_BACKBONE_MARKERS):
+        raise RuntimeError(
+            "Refusing legacy 1D TDX backbone as an integrated search/replay base: "
+            f"{base_dataset_path}. Use a true minute/cutoff backbone or an explicitly diagnostic current wide panel, "
+            "or pass --allow-legacy-daily-backbone only for explicit diagnostic reproduction."
+        )
     minute_path = sidecar_root / "minute_selected_sidecar.parquet"
     nonminute_path = sidecar_root / "nonminute_selected_sidecar.parquet"
     if not minute_path.exists():
@@ -251,6 +265,7 @@ def main() -> int:
     joined.add_argument("--output-report", type=Path, required=True)
     joined.add_argument("--start-date", default="2025-08-06")
     joined.add_argument("--end-date", default="2026-04-10")
+    joined.add_argument("--allow-legacy-daily-backbone", action="store_true")
 
     args = parser.parse_args()
     if args.mode == "build-sidecars":
@@ -271,6 +286,7 @@ def main() -> int:
             output_report=args.output_report,
             start_date=args.start_date,
             end_date=args.end_date,
+            allow_legacy_daily_backbone=bool(args.allow_legacy_daily_backbone),
         )
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0

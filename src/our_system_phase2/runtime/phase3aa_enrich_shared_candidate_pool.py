@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -29,6 +30,17 @@ PHASE3AA_RESEARCH_BUCKET = "research_factor_feature_layer"
 PHASE3AA_ABLATION_ARM = "Phase3AA_G2_event_source_priority"
 PHASE3AA_ENRICH_VERSION = "phase3aa-shared-pool-event-injection-v1-2026-05-29"
 DEFAULT_CN_FACTOR_PACK = Path("runtime/factor_packs/cn_event_factor_candidate_pack_v1_20260531.json")
+FIELD_RE = re.compile(r"\$([A-Za-z_][A-Za-z0-9_]*)")
+FORBIDDEN_FORMULA_FIELD_RE = re.compile(r"^(?:label_|next_|future_|forward_return|meta_)", re.IGNORECASE)
+
+
+def _formula_fields(expression: str) -> list[str]:
+    return sorted(set(FIELD_RE.findall(expression or "")))
+
+
+def _unsafe_formula_fields(expression: str) -> list[str]:
+    fields = _formula_fields(expression)
+    return [field for field in fields if FORBIDDEN_FORMULA_FIELD_RE.match(field) or field.lower().endswith("_source")]
 
 
 def _read_json(path: Path) -> Any:
@@ -99,6 +111,9 @@ def _factor_pack_rows(factor_pack_paths: list[Path]) -> list[dict[str, Any]]:
         payload = _read_json(path)
         for raw in list(payload.get("candidate_rows") or []):
             if not raw.get("expression"):
+                continue
+            unsafe_fields = _unsafe_formula_fields(str(raw.get("expression") or ""))
+            if unsafe_fields:
                 continue
             item = dict(raw)
             item["source_lane"] = item.get("source_lane") or "event_derived_feature_layer"

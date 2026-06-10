@@ -1,0 +1,16 @@
+{
+  "codes": 6,
+  "date_equals_trade_time": true,
+  "has_daily_ret_column": false,
+  "has_ret_1m_column": true,
+  "has_trade_time": true,
+  "m1_first15_amount_post_window_nonnull": 330739,
+  "m1_first15_amount_pre_window_nonnull": 0,
+  "m1_first30_amount_post_window_nonnull": 308884,
+  "m1_first30_amount_pre_window_nonnull": 0,
+  "m1_first5_amount_post_window_nonnull": 345309,
+  "m1_first5_amount_pre_window_nonnull": 0,
+  "output_formula_fields_missing_contract": [],
+  "rows": 351137,
+  "vwap_median_abs_ratio_to_close": 0.00042183239896803615
+}

@@ -1,0 +1,143 @@
+{
+  "reports": [
+    {
+      "pack": "phase3aq_direct_1min_formula_pack.json",
+      "candidate_count": 84,
+      "eval_ok_nonnull": 84,
+      "eval_zero_nonnull": 0,
+      "eval_failed": 0,
+      "samples": [
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0001",
+          "expression": "CSRank(Div(Mean($volume,2),Add(Abs(Mean($volume,10)),0.000001)))",
+          "nonnull": 119973
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0002",
+          "expression": "CSRank(Sub(ZScore(Mean($volume,2)),ZScore(Mean($volume,10))))",
+          "nonnull": 119963
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0003",
+          "expression": "CSRank(Div(Mean($volume,3),Add(Abs(Mean($volume,20)),0.000001)))",
+          "nonnull": 119943
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0004",
+          "expression": "CSRank(Sub(ZScore(Mean($volume,3)),ZScore(Mean($volume,20))))",
+          "nonnull": 119939
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0005",
+          "expression": "CSRank(Div(Mean($volume,5),Add(Abs(Mean($volume,20)),0.000001)))",
+          "nonnull": 119943
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0006",
+          "expression": "CSRank(Sub(ZScore(Mean($volume,5)),ZScore(Mean($volume,20))))",
+          "nonnull": 119931
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0007",
+          "expression": "CSRank(Div(Mean($volume,10),Add(Abs(Mean($volume,60)),0.000001)))",
+          "nonnull": 119823
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_relative_activity_0008",
+          "expression": "CSRank(Sub(ZScore(Mean($volume,10)),ZScore(Mean($volume,60))))",
+          "nonnull": 119823
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_impulse_0009",
+          "expression": "CSRank(Delta($volume,3))",
+          "nonnull": 119991
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_volatility_0010",
+          "expression": "CSRank(Std($volume,3))",
+          "nonnull": 119994
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_impulse_0011",
+          "expression": "CSRank(Delta($volume,5))",
+          "nonnull": 119985
+        },
+        {
+          "candidate_id": "cn_flow_liq_v1_flow_volatility_0012",
+          "expression": "CSRank(Std($volume,5))",
+          "nonnull": 119988
+        }
+      ]
+    },
+    {
+      "pack": "phase3aq_opening_window_1min_formula_pack.json",
+      "candidate_count": 13,
+      "eval_ok_nonnull": 13,
+      "eval_zero_nonnull": 0,
+      "eval_failed": 0,
+      "samples": [
+        {
+          "candidate_id": "cn_integrated_v2_minute_amount_share_daily_00343",
+          "expression": "CSRank(Div($m1_first15_amount,Add(Abs($amount),0.000001)))",
+          "nonnull": 113028
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00344",
+          "expression": "CSRank(Sub(ZScore($m1_first15_last_return_vs_open),ZScore($vwap)))",
+          "nonnull": 111590
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00345",
+          "expression": "CSRank(Sub(ZScore($m1_first15_range),ZScore($vwap)))",
+          "nonnull": 112494
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_amount_share_daily_00346",
+          "expression": "CSRank(Div($m1_first15_vol,Add(Abs($amount),0.000001)))",
+          "nonnull": 113028
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00347",
+          "expression": "CSRank(Sub(ZScore($m1_first15_vwap),ZScore($vwap)))",
+          "nonnull": 112494
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00348",
+          "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore($vwap)))",
+          "nonnull": 112494
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_amount_share_daily_00349",
+          "expression": "CSRank(Div($m1_first30_amount,Add(Abs($amount),0.000001)))",
+          "nonnull": 105558
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00350",
+          "expression": "CSRank(Sub(ZScore($m1_first30_last_return_vs_open),ZScore($vwap)))",
+          "nonnull": 103336
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00351",
+          "expression": "CSRank(Sub(ZScore($m1_first30_range),ZScore($vwap)))",
+          "nonnull": 105024
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_amount_share_daily_00352",
+          "expression": "CSRank(Div($m1_first30_vol,Add(Abs($amount),0.000001)))",
+          "nonnull": 105558
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00353",
+          "expression": "CSRank(Sub(ZScore($m1_first30_vwap),ZScore($vwap)))",
+          "nonnull": 105024
+        },
+        {
+          "candidate_id": "cn_integrated_v2_minute_vs_daily_vwap_residual_00354",
+          "expression": "CSRank(Sub(ZScore($m1_first30_vwap_return_vs_open),ZScore($vwap)))",
+          "nonnull": 105024
+        }
+      ]
+    }
+  ],
+  "panel_rows_used": 120000
+}

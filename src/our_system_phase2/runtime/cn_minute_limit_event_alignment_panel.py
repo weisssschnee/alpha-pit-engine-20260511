@@ -194,8 +194,9 @@ def run(*, panel_path: Path, review_path: Path, trend_path: Path, output_root: P
     trend_nonnull = trend_coverage.get("trend_uplimit_count_nonnull")
     if trend_nonnull is None or float(trend_nonnull) < 0.1:
         blocked.append("uplimit_trend has insufficient non-null coverage; market trend fields are carried only when non-null")
+    decision = "PASS_LIMIT_EVENT_ALIGNMENT" if not blocked else "HOLD_LIMIT_EVENT_ALIGNMENT_MARKET_TREND_BLOCKED"
     summary = {
-        "decision": "PASS_LIMIT_EVENT_ALIGNMENT",
+        "decision": decision,
         "panel_path": str(panel_out),
         "rows": int(out.shape[0]),
         "days": int(out["exec_date"].nunique()),
@@ -225,7 +226,7 @@ def run(*, panel_path: Path, review_path: Path, trend_path: Path, output_root: P
         "## Findings",
         "",
         "- `up_limit_time` is aligned as stock-level timestamped intraday event features by cutoff.",
-        "- `uplimit_trend` is structurally supported, but current 2026 silver trend rows are null and blocked for 2026 use.",
+        "- `uplimit_trend` is structurally supported, but market trend fields are blocked when non-null coverage is insufficient.",
         "- Daily/fundamental/RZRQ/billboard fields remain retained as lagged/PIT context through the route audit; they are not discarded.",
     ]
     (output_root / "CN_MINUTE_LIMIT_EVENT_ALIGNMENT_REPORT_2026-06-01.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -1,0 +1,45 @@
+field_name,source,role,true_1min_status,availability,formula_allowed,notes
+date,trade_time,cross_section_group_key,required,row_trade_time,false_key_only,"Mature evaluator compatibility: date is trade_time, not trading day."
+exec_date,trade_time.date,trading_day_key,required,row_trade_time,false_key_only,Trading day key for joining lagged context.
+trade_time,raw_1min.trade_time,primary_timestamp,required,row_trade_time,false_key_only,Primary grain. Any minute-first claim must have this column.
+volume,raw_1min.vol,raw_minute_alias,direct,row_trade_time,true,Alias for raw vol. Unit is recorded as raw provider unit.
+open,raw_1min.open,raw_minute_price,direct,row_trade_time,true,Minute bar open.
+high,raw_1min.high,raw_minute_price,direct,row_trade_time,true,Minute bar high.
+low,raw_1min.low,raw_minute_price,direct,row_trade_time,true,Minute bar low.
+close,raw_1min.close,raw_minute_price,direct,row_trade_time,true,Minute bar close.
+amount,raw_1min.amount,raw_minute_column,direct,row_trade_time,true,Minute bar amount.
+amount_yuan,raw_1min.amount,raw_minute_alias,direct,row_trade_time,true,Explicit alias for amount when formulas expect currency flow.
+vwap,raw_1min.amount/raw_1min.vol with scale inference,minute_bar_vwap_alias,direct_with_semantic_note,row_trade_time,true,"Minute bar VWAP, not full-day VWAP. Scale is inferred per materialization batch."
+ret_1m,close / prior close by code - 1,minute_return,direct_derived,row_trade_time,true,Use this instead of silently mapping old daily_ret.
+intraday_ret_from_open,close / first open by code/exec_date - 1,minute_intraday_return,direct_derived,row_trade_time,true,Minute-time return since same-day open. Not an after-close field.
+daily_ret,none,blocked_legacy_daily_semantic,blocked_until_explicit_lagged_daily_context,n/a,false,Do not alias old daily_ret to minute return. Use ret_1m or an explicit lagged daily context field.
+m1_first5_bars,raw_1min first 5 rows by code/exec_date,opening_window_count,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_vol,raw_1min first 5 rows by code/exec_date,opening_window_volume,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_amount,raw_1min first 5 rows by code/exec_date,opening_window_amount,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_high,raw_1min first 5 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_low,raw_1min first 5 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_last_close,raw_1min first 5 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_vwap,raw_1min first 5 rows by code/exec_date,opening_window_vwap,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_vwap_return_vs_open,raw_1min first 5 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_last_return_vs_open,raw_1min first 5 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first5_range,raw_1min first 5 rows by code/exec_date,opening_window_range,recomputed_on_trade_time_backbone,after_first_5_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_bars,raw_1min first 15 rows by code/exec_date,opening_window_count,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_vol,raw_1min first 15 rows by code/exec_date,opening_window_volume,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_amount,raw_1min first 15 rows by code/exec_date,opening_window_amount,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_high,raw_1min first 15 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_low,raw_1min first 15 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_last_close,raw_1min first 15 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_vwap,raw_1min first 15 rows by code/exec_date,opening_window_vwap,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_vwap_return_vs_open,raw_1min first 15 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_last_return_vs_open,raw_1min first 15 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first15_range,raw_1min first 15 rows by code/exec_date,opening_window_range,recomputed_on_trade_time_backbone,after_first_15_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_bars,raw_1min first 30 rows by code/exec_date,opening_window_count,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_vol,raw_1min first 30 rows by code/exec_date,opening_window_volume,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_amount,raw_1min first 30 rows by code/exec_date,opening_window_amount,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_high,raw_1min first 30 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_low,raw_1min first 30 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_last_close,raw_1min first 30 rows by code/exec_date,opening_window_price,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_vwap,raw_1min first 30 rows by code/exec_date,opening_window_vwap,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_vwap_return_vs_open,raw_1min first 30 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_last_return_vs_open,raw_1min first 30 rows by code/exec_date,opening_window_return,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.
+m1_first30_range,raw_1min first 30 rows by code/exec_date,opening_window_range,recomputed_on_trade_time_backbone,after_first_30_minute,true_after_availability,Opening-window feature. Not a separate data frequency.

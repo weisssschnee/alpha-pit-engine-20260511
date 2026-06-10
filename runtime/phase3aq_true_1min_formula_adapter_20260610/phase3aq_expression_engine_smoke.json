@@ -1,0 +1,24 @@
+{
+  "rows": [
+    {
+      "expression": "CSRank(Sub($vwap,$close))",
+      "nonnull": 59743,
+      "mean": 0.9880153323401905
+    },
+    {
+      "expression": "CSRank($m1_first5_amount)",
+      "nonnull": 59004,
+      "mean": 0.988026235509457
+    },
+    {
+      "expression": "ZScore($ret_1m)",
+      "nonnull": 2402,
+      "mean": 2.9581296243134896e-18
+    },
+    {
+      "expression": "Mean($volume,3)",
+      "nonnull": 59996,
+      "mean": 4577.29336955797
+    }
+  ]
+}

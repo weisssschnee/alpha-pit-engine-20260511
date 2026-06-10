@@ -46,8 +46,12 @@ BLOCKED_NAME_HINTS = (
     "name",
     "text",
     "reason",
+    "source",
     "label",
     "next_",
+    "future",
+    "forward_return",
+    "meta_",
 )
 
 
@@ -283,6 +287,12 @@ def _eligible_rows(rows: list[dict[str, str]], *, max_source_rows: int) -> list[
         if not _truthy(row.get("needs_bounded_factor_pack")):
             continue
         aliases = _safe_aliases(str(row.get("panel_aliases") or ""))
+        aliases = [
+            alias
+            for alias in aliases
+            if not alias.lower().endswith("_source")
+            and not any(hint in alias.lower() for hint in BLOCKED_NAME_HINTS)
+        ]
         if not aliases:
             continue
         field_name = str(row.get("field_name") or "")

@@ -1,0 +1,967 @@
+{
+  "candidate_count": 1370,
+  "candidate_status_counts": {
+    "adaptable_after_recompute_on_trade_time": 73,
+    "adaptable_with_lagged_context_sidecar": 194,
+    "blocked_for_true_1min_search": 5,
+    "diagnostic_context_or_disclosure_contract_needed": 144,
+    "direct_true_1min_ready": 90,
+    "event_state_lane_only": 111,
+    "needs_route_mapping_or_rederivation": 753
+  },
+  "created_at": "2026-06-10T08:45:40.525529+00:00",
+  "decision": "PHASE3AP_FORMULA_ADAPTATION_AUDIT_READY_WITH_BLOCKERS",
+  "factor_pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\factor_packs\\phase3an_sanitized_v1_20260609",
+  "field_route_counts": {
+    "current_daily_or_derived_panel_only": 286,
+    "minute_derived_after_close_or_label": 1,
+    "nonminute_pit_context": 68,
+    "opening_window_feature": 17,
+    "raw_true_1min_column": 2,
+    "timestamped_event_availability_feature": 17
+  },
+  "field_status_counts": {
+    "blocked_or_context_only": 33,
+    "diagnostic_or_requires_disclosure_timestamp_contract": 15,
+    "direct_with_trade_time_semantics": 2,
+    "event_state_only_requires_availability_guard": 17,
+    "forbidden": 1,
+    "lagged_context_sidecar_allowed": 20,
+    "recompute_on_trade_time_backbone_required": 17,
+    "requires_route_mapping_or_rederivation": 286
+  },
+  "pack_count": 9,
+  "pack_counts": {
+    "cn_event_factor_candidate_pack_v1_20260531_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_flow_liquidity_factor_candidate_pack_v1_20260601_phase3am_sanitized_v1_20260609.json": 64,
+    "cn_integrated_feature_factor_candidate_pack_v2_coverage_aware_20260603_phase3am_sanitized_v1_20260609.json": 294,
+    "cn_phase3ad_hfq_valuation_factor_pack_v1_20260603_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_phase3ad_new_data_factor_candidate_pack_coverage_filtered_v1_20260603_phase3am_sanitized_v1_20260609.json": 581,
+    "cn_research_factor_candidate_pack_v2_20260531_phase3am_sanitized_v1_20260609.json": 0,
+    "cn_underutilized_field_factor_candidate_pack_v1_20260601_phase3am_sanitized_v1_20260609.json": 88,
+    "cn_zzshare_limit_sentiment_factor_candidate_pack_v1_20260602_phase3am_sanitized_v1_20260609.json": 49,
+    "phase3ae_bounded_repair_factor_pack_v1_20260604_phase3am_sanitized_v1_20260609.json": 294
+  },
+  "required_before_large_search": [
+    "Build a true trade_time-code 1min formula panel or evaluator adapter.",
+    "Recompute m1_firstN fields as opening-window features with availability guards; do not split the data into firstN frequencies.",
+    "Block m1_day_* and label_* fields as selector inputs unless they are lagged explicitly.",
+    "Route evt_* fields to event-state lanes with observable-time guards.",
+    "Map legacy/current-panel-only fields to PIT context sidecars or drop them from true 1min packs."
+  ],
+  "top_fields_by_status": {
+    "blocked_or_context_only": [
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzyezb",
+        "formula_usage_count": 10,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_spj",
+        "formula_usage_count": 10,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_zdf",
+        "formula_usage_count": 10,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqjmg",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqjmg10d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqjmg3d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqjmg5d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqmcl",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqmcl10d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqmcl3d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqmcl5d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rqye",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzche",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzche10d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzche3d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzche5d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzjme",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzjme10d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzjme3d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      },
+      {
+        "available_after": "true_lagged_only",
+        "field": "ctx_rzrq_rzjme5d",
+        "formula_usage_count": 6,
+        "reason": "source date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "blocked_or_context_only"
+      }
+    ],
+    "diagnostic_or_requires_disclosure_timestamp_contract": [
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_free_market_cap",
+        "formula_usage_count": 13,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_accum_amount",
+        "formula_usage_count": 12,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_deal_amount_ratio",
+        "formula_usage_count": 12,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_billboard_buy_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_billboard_deal_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_billboard_net_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_billboard_sell_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_buy_ratio",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_deal_net_ratio",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_net_bs_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_sell_ratio",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_sum_buy_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_sum_sell_amt",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_turnoverrate",
+        "formula_usage_count": 10,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      },
+      {
+        "available_after": "diagnostic_until_disclosure_timestamp_contract",
+        "field": "ctx_billboard_change_rate",
+        "formula_usage_count": 4,
+        "reason": "next trading day after trade-date disclosure proxy",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "diagnostic_or_requires_disclosure_timestamp_contract"
+      }
+    ],
+    "direct_with_trade_time_semantics": [
+      {
+        "available_after": "row_trade_time",
+        "field": "amount",
+        "formula_usage_count": 114,
+        "reason": "present in raw 1min schema; formula meaning must use current/lagged trade_time, not old daily semantics",
+        "route": "raw_true_1min_column",
+        "true_1min_status": "direct_with_trade_time_semantics"
+      },
+      {
+        "available_after": "row_trade_time",
+        "field": "close",
+        "formula_usage_count": 16,
+        "reason": "present in raw 1min schema; formula meaning must use current/lagged trade_time, not old daily semantics",
+        "route": "raw_true_1min_column",
+        "true_1min_status": "direct_with_trade_time_semantics"
+      }
+    ],
+    "event_state_only_requires_availability_guard": [
+      {
+        "available_after": "09:30",
+        "field": "evt_limit_fengdan_money_last_by_0930",
+        "formula_usage_count": 14,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "09:35",
+        "field": "evt_limit_fengdan_money_last_by_0935",
+        "formula_usage_count": 14,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "10:00",
+        "field": "evt_limit_fengdan_money_last_by_1000",
+        "formula_usage_count": 14,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "11:30",
+        "field": "evt_limit_fengdan_money_last_by_1130",
+        "formula_usage_count": 14,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "09:30",
+        "field": "evt_limit_fengdan_rate_last_by_0930",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "09:35",
+        "field": "evt_limit_fengdan_rate_last_by_0935",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "10:00",
+        "field": "evt_limit_fengdan_rate_last_by_1000",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "11:30",
+        "field": "evt_limit_fengdan_rate_last_by_1130",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_fd_close",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_fd_max",
+        "formula_usage_count": 8,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_auction_pre1max_ratio",
+        "formula_usage_count": 7,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_amount",
+        "formula_usage_count": 6,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_auction_buy",
+        "formula_usage_count": 3,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_auction_money",
+        "formula_usage_count": 3,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_auction_offer",
+        "formula_usage_count": 3,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "after_event_observable_time",
+        "field": "evt_uplimit_auction_turnover",
+        "formula_usage_count": 3,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      },
+      {
+        "available_after": "14:30",
+        "field": "evt_limit_fengdan_money_last_by_1430",
+        "formula_usage_count": 2,
+        "reason": "event/cutoff feature may be used after its encoded observable time; not ordinary frequency segmentation",
+        "route": "timestamped_event_availability_feature",
+        "true_1min_status": "event_state_only_requires_availability_guard"
+      }
+    ],
+    "forbidden": [
+      {
+        "available_after": "after_close",
+        "field": "m1_amount_day",
+        "formula_usage_count": 5,
+        "reason": "after-close summary or execution label cannot be selector input",
+        "route": "minute_derived_after_close_or_label",
+        "true_1min_status": "forbidden"
+      }
+    ],
+    "lagged_context_sidecar_allowed": [
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_bs_cash_to_assets",
+        "formula_usage_count": 61,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_ps_netprofit_margin",
+        "formula_usage_count": 61,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_ps_operate_profit_margin",
+        "formula_usage_count": 61,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_ps_research_to_income",
+        "formula_usage_count": 61,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_change_shares",
+        "formula_usage_count": 13,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_bs_debt_to_assets",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_bs_goodwill_to_assets",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_bs_inventory_to_assets",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_cf_end_cce",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_cf_netcash_finance",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_cf_netcash_invest",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_cf_total_operate_inflow",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_fund_cf_total_operate_outflow",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_avg_market_cap",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_close_price",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_holder_num",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_holder_num_change",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_holder_num_ratio",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_interval_chrate",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      },
+      {
+        "available_after": "true_after_notice_date",
+        "field": "ctx_holder_pre_holder_num",
+        "formula_usage_count": 4,
+        "reason": "NOTICE/HOLD_NOTICE date plus next trading day",
+        "route": "nonminute_pit_context",
+        "true_1min_status": "lagged_context_sidecar_allowed"
+      }
+    ],
+    "recompute_on_trade_time_backbone_required": [
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_amount",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_last_return_vs_open",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_range",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_vol",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_vwap",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_vwap_return_vs_open",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_amount",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_last_return_vs_open",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_range",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_vol",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_vwap",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_vwap_return_vs_open",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:35",
+        "field": "m1_first5_amount",
+        "formula_usage_count": 5,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_high",
+        "formula_usage_count": 4,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "09:45",
+        "field": "m1_first15_low",
+        "formula_usage_count": 4,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_high",
+        "formula_usage_count": 4,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      },
+      {
+        "available_after": "10:00",
+        "field": "m1_first30_low",
+        "formula_usage_count": 4,
+        "reason": "valid firstN/opening-window feature; not a 5/15/30min data frequency",
+        "route": "opening_window_feature",
+        "true_1min_status": "recompute_on_trade_time_backbone_required"
+      }
+    ],
+    "requires_route_mapping_or_rederivation": [
+      {
+        "available_after": "",
+        "field": "volume",
+        "formula_usage_count": 66,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "final_float_market_cap",
+        "formula_usage_count": 38,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "daily_ret",
+        "formula_usage_count": 32,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "final_total_market_cap",
+        "formula_usage_count": 12,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "float_share",
+        "formula_usage_count": 12,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_fulla_ps_total_operate_income",
+        "formula_usage_count": 11,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_fulla_bs_total_assets",
+        "formula_usage_count": 9,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_uplimit_num",
+        "formula_usage_count": 9,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_downlimit_num",
+        "formula_usage_count": 8,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "vwap",
+        "formula_usage_count": 8,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_damian_num",
+        "formula_usage_count": 7,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_max_lb_num",
+        "formula_usage_count": 7,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_zb_num",
+        "formula_usage_count": 7,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_ths_hot_rank",
+        "formula_usage_count": 7,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_ths_hot_rank_diff",
+        "formula_usage_count": 7,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_zls_evt_amount_lag1",
+        "formula_usage_count": 5,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_zls_uplimit_num_lag1",
+        "formula_usage_count": 5,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_zls_zb_num_lag1",
+        "formula_usage_count": 5,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_down_num",
+        "formula_usage_count": 4,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      },
+      {
+        "available_after": "",
+        "field": "ctx_sent_up_num",
+        "formula_usage_count": 4,
+        "reason": "present in current diagnostic panel but not in raw 1min/field contracts",
+        "route": "current_daily_or_derived_panel_only",
+        "true_1min_status": "requires_route_mapping_or_rederivation"
+      }
+    ]
+  },
+  "unique_formula_field_count": 391
+}

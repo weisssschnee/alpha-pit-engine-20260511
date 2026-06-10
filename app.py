@@ -233,12 +233,12 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
     "cn-minute-feature-panel-v1": {
         "module": "our_system_phase2.runtime.cn_minute_feature_panel_builder",
         "diagnostic": False,
-        "description": "Build the minute-native feature panel with prior-day daily/enrichment context and separated execution labels.",
+        "description": "Build a minute-derived code-date feature panel with prior-day daily/enrichment context and separated execution labels.",
     },
     "cn-minute-feature-panel-v2": {
         "module": "our_system_phase2.runtime.cn_minute_feature_panel_v2_builder",
         "diagnostic": False,
-        "description": "Build the multi-year 2023-2026 minute-native code-date feature panel from validated 1min parquet v2.",
+        "description": "Build the multi-year 2023-2026 minute-derived code-date feature panel from validated 1min parquet v2.",
     },
     "cn-minute-feature-panel-v2-final-qa": {
         "module": "our_system_phase2.runtime.cn_minute_feature_panel_v2_final_qa",
@@ -248,7 +248,7 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
     "cn-minute-feature-signal-scan": {
         "module": "our_system_phase2.runtime.cn_minute_feature_signal_scan",
         "diagnostic": False,
-        "description": "Run a diagnostic cross-sectional scan of minute-native and lagged-context features against minute execution labels.",
+        "description": "Run a diagnostic scan of minute-derived and lagged-context features against minute execution labels.",
     },
     "cn-minute-2023-2025-reconvert": {
         "module": "our_system_phase2.runtime.cn_minute_2023_2025_reconvert",
@@ -258,7 +258,7 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
     "cn-multifrequency-field-route-audit": {
         "module": "our_system_phase2.runtime.cn_multifrequency_field_route_audit",
         "diagnostic": False,
-        "description": "Route all CN data families into minute-native, timestamped event, lagged daily, announcement/PIT, or diagnostic use classes.",
+        "description": "Route all CN data families into raw-minute, minute-derived, timestamped event, lagged daily, announcement/PIT, or diagnostic use classes.",
     },
     "cn-public-enrichment-global-field-route-v1": {
         "module": "our_system_phase2.runtime.cn_public_enrichment_global_field_route_v1",
@@ -268,7 +268,32 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
     "cn-minute-limit-event-alignment": {
         "module": "our_system_phase2.runtime.cn_minute_limit_event_alignment_panel",
         "diagnostic": False,
-        "description": "Build timestamp-safe up_limit_time and uplimit_trend event features aligned to the 1-minute panel.",
+        "description": "Build cutoff-safe up_limit_time and uplimit_trend event features derived from 1-minute sources.",
+    },
+    "phase3ap-data-lineage-granularity-audit": {
+        "module": "our_system_phase2.runtime.phase3ap_data_lineage_granularity_audit",
+        "diagnostic": False,
+        "description": "Audit AD-AO data lineage and block daily/code-date panels from being labeled as true 1min-first search.",
+    },
+    "phase3ap-formula-derived-field-adaptation-audit": {
+        "module": "our_system_phase2.runtime.phase3ap_formula_derived_field_adaptation_audit",
+        "diagnostic": False,
+        "description": "Audit formula packs and derived-field contracts before adapting them to a true trade_time 1min search backbone.",
+    },
+    "phase3aq-true-1min-formula-adapter": {
+        "module": "our_system_phase2.runtime.phase3aq_true_1min_formula_adapter",
+        "diagnostic": False,
+        "description": "Build the true trade_time 1min formula adapter contract, rewrite rules, and optional canary panel.",
+    },
+    "phase3aq-formula-pack-sanitizer": {
+        "module": "our_system_phase2.runtime.phase3aq_formula_pack_sanitizer",
+        "diagnostic": False,
+        "description": "Sanitize existing formula packs into direct/opening-window true 1min candidate packs while preserving provenance.",
+    },
+    "phase3aq-true-1min-canary-eval": {
+        "module": "our_system_phase2.runtime.phase3aq_true_1min_canary_eval",
+        "diagnostic": False,
+        "description": "Evaluate all Phase3AQ sanitized true-1min formulas on the trade_time canary panel with minute horizons.",
     },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",

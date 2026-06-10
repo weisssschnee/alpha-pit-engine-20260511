@@ -1,0 +1,222 @@
+{
+  "core_finding": "AE/AN/AO current-wide used code-date daily backbones with minute-derived/context columns. They are not true 1min-row searches. firstN opening-window fields are features, not 5/15/30min data segmentation.",
+  "created_at": "2026-06-10T08:38:48.857245+00:00",
+  "decision": "PHASE3AP_LINEAGE_AUDIT_FAILS_EXISTING_1MIN_FIRST_CLAIM",
+  "panel_rows": [
+    {
+      "classification_reason": "has trade_time",
+      "column_count": 14,
+      "declared_role": "true_1min_silver_sample",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": true,
+      "minute_first_status": "true_1min_eligible",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet_v2\\year=2023\\code=000001.SZ\\part.parquet",
+      "phase": "raw_minute_2023_2025_sample",
+      "row_granularity": "minute_row",
+      "sample_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet_v2\\year=2023\\code=000001.SZ\\part.parquet",
+      "sample_rows": 58081,
+      "time_like_columns": "trade_time"
+    },
+    {
+      "classification_reason": "has trade_time",
+      "column_count": 12,
+      "declared_role": "true_1min_silver_sample",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": true,
+      "minute_first_status": "true_1min_eligible",
+      "path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date\\date=20260105.parquet",
+      "phase": "raw_minute_2026_sample",
+      "row_granularity": "minute_row",
+      "sample_path": "G:\\Project_V7_Rotation\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date\\date=20260105.parquet",
+      "sample_rows": 1318029,
+      "time_like_columns": "trade_time"
+    },
+    {
+      "classification_reason": "code-date panel with minute-derived columns, no trade_time",
+      "column_count": 674,
+      "declared_role": "daily_integrated_backbone",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": false,
+      "minute_first_status": "diagnostic_only_for_1min_claims",
+      "path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_v1_20260603.parquet",
+      "phase": "phase3ad_daily_integrated_base",
+      "row_granularity": "daily_backbone_plus_minute_derived",
+      "sample_path": "G:\\Project_V7_Rotation\\data\\company_phase2_panels\\phase2_stock_tdx_official_20250806_to_20260410_cn_integrated_v2_phase3ad_newdata_v1_20260603.parquet",
+      "sample_rows": 988005,
+      "time_like_columns": "m1_first15_high_minute;m1_first15_low_minute;m1_first15_range_minute;m1_first30_last_return_vs_open_minute;m1_first30_low_minute;m1_first30_range_minute;m1_first30_vwap_minute;ctx_fund_bs_cash_to_assets_nonminute;ctx_fund_bs_debt_to_assets_nonminute;ctx_fund_cf_operate_cash_to_netprofit_nonminute;ctx_fund_ps_netprofit_margin_nonminute;ctx_fund_ps_operate_profit_margin_nonminute;ctx_fund_ps_research_to_income_nonminute;ctx_holder_avg_market_cap_nonminute;ctx_rzrq_rqmcl10d_nonminute;ctx_rzrq_rqmcl3d_nonminute;ctx_rzrq_rqmcl5d_nonminute;ctx_rzrq_rqye_nonminute;ctx_rzrq_rzche_nonminute;ctx_rzrq_rzche10d_nonminute;ctx_rzrq_rzche3d_nonminute;ctx_rzrq_rzche5d_nonminute;ctx_rzrq_rzjme_nonminute;ctx_rzrq_rzjme10d_nonminute;ctx_rzrq_rzjme3d_nonminute;ctx_rzrq_rzjme5d_nonminute;ctx_rzrq_rzmre_nonminute"
+    },
+    {
+      "classification_reason": "code-date panel with minute-derived columns, no trade_time",
+      "column_count": 759,
+      "declared_role": "daily_backbone_plus_minute_derived",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": false,
+      "minute_first_status": "diagnostic_only_for_1min_claims",
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
+      "phase": "phase3ae_joined_panel",
+      "row_granularity": "daily_backbone_plus_minute_derived",
+      "sample_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ae_bounded_repair_selector_only_v1_20260604\\phase3ae_bounded_repair_joined_panel_v1.parquet",
+      "sample_rows": 988005,
+      "time_like_columns": "m1_first15_high_minute;m1_first15_low_minute;m1_first15_range_minute;m1_first30_last_return_vs_open_minute;m1_first30_low_minute;m1_first30_range_minute;m1_first30_vwap_minute;ctx_fund_bs_cash_to_assets_nonminute;ctx_fund_bs_debt_to_assets_nonminute;ctx_fund_cf_operate_cash_to_netprofit_nonminute;ctx_fund_ps_netprofit_margin_nonminute;ctx_fund_ps_operate_profit_margin_nonminute;ctx_fund_ps_research_to_income_nonminute;ctx_holder_avg_market_cap_nonminute;ctx_rzrq_rqmcl10d_nonminute;ctx_rzrq_rqmcl3d_nonminute;ctx_rzrq_rqmcl5d_nonminute;ctx_rzrq_rqye_nonminute;ctx_rzrq_rzche_nonminute;ctx_rzrq_rzche10d_nonminute;ctx_rzrq_rzche3d_nonminute;ctx_rzrq_rzche5d_nonminute;ctx_rzrq_rzjme_nonminute;ctx_rzrq_rzjme10d_nonminute;ctx_rzrq_rzjme3d_nonminute;ctx_rzrq_rzjme5d_nonminute;ctx_rzrq_rzmre_nonminute"
+    },
+    {
+      "classification_reason": "code-date panel with minute-derived columns, no trade_time",
+      "column_count": 811,
+      "declared_role": "daily_backbone_plus_minute_derived_and_sentiment",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": false,
+      "minute_first_status": "diagnostic_only_for_1min_claims",
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3an_daily_sentiment_joined_panel_20260609\\phase3an_daily_sentiment_joined_panel.parquet",
+      "phase": "phase3an_joined_panel",
+      "row_granularity": "daily_backbone_plus_minute_derived",
+      "sample_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3an_daily_sentiment_joined_panel_20260609\\phase3an_daily_sentiment_joined_panel.parquet",
+      "sample_rows": 988005,
+      "time_like_columns": "m1_first15_high_minute;m1_first15_low_minute;m1_first15_range_minute;m1_first30_last_return_vs_open_minute;m1_first30_low_minute;m1_first30_range_minute;m1_first30_vwap_minute;ctx_fund_bs_cash_to_assets_nonminute;ctx_fund_bs_debt_to_assets_nonminute;ctx_fund_cf_operate_cash_to_netprofit_nonminute;ctx_fund_ps_netprofit_margin_nonminute;ctx_fund_ps_operate_profit_margin_nonminute;ctx_fund_ps_research_to_income_nonminute;ctx_holder_avg_market_cap_nonminute;ctx_rzrq_rqmcl10d_nonminute;ctx_rzrq_rqmcl3d_nonminute;ctx_rzrq_rqmcl5d_nonminute;ctx_rzrq_rqye_nonminute;ctx_rzrq_rzche_nonminute;ctx_rzrq_rzche10d_nonminute;ctx_rzrq_rzche3d_nonminute;ctx_rzrq_rzche5d_nonminute;ctx_rzrq_rzjme_nonminute;ctx_rzrq_rzjme10d_nonminute;ctx_rzrq_rzjme3d_nonminute;ctx_rzrq_rzjme5d_nonminute;ctx_rzrq_rzmre_nonminute;evt_zls_up_limit_keep_times;ctx_zls_evt_up_limit_keep_times_lag1;evt_zls_up_limit_time;ctx_zls_evt_up_limit_time_lag1"
+    },
+    {
+      "classification_reason": "has exec_date/signal_date and opening-window fields, but no trade_time row",
+      "column_count": 48,
+      "declared_role": "minute_derived_code_date_feature_panel",
+      "exists": true,
+      "has_code": true,
+      "has_date": false,
+      "has_exec_date": true,
+      "has_signal_date": true,
+      "has_trade_time": false,
+      "minute_first_status": "not_minute_first_search",
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1",
+      "phase": "minute_feature_panel_v2_retry1_sample",
+      "row_granularity": "code_date_opening_window_feature",
+      "sample_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\minute_feature_panels\\cn_minute_feature_panel_v2_20260602_full_retry1\\year=2023\\shard=00-of-02.parquet",
+      "sample_rows": 593958,
+      "time_like_columns": ""
+    },
+    {
+      "classification_reason": "has exec_date/signal_date and opening-window fields, but no trade_time row",
+      "column_count": 78,
+      "declared_role": "intraday_event_availability_feature_panel",
+      "exists": true,
+      "has_code": true,
+      "has_date": false,
+      "has_exec_date": true,
+      "has_signal_date": true,
+      "has_trade_time": false,
+      "minute_first_status": "not_minute_first_search",
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+      "phase": "minute_limit_event_alignment",
+      "row_granularity": "code_date_opening_window_feature",
+      "sample_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+      "sample_rows": 3997944,
+      "time_like_columns": "evt_limit_first_time_by_0930;evt_limit_keep_times_max_by_0930;evt_limit_first_time_by_0935;evt_limit_keep_times_max_by_0935;evt_limit_first_time_by_1000;evt_limit_keep_times_max_by_1000;evt_limit_first_time_by_1130;evt_limit_keep_times_max_by_1130;evt_limit_first_time_by_1430;evt_limit_keep_times_max_by_1430"
+    },
+    {
+      "classification_reason": "date-code panel without trade_time",
+      "column_count": 126,
+      "declared_role": "lagged_nonminute_context_panel",
+      "exists": true,
+      "has_code": true,
+      "has_date": true,
+      "has_exec_date": false,
+      "has_signal_date": false,
+      "has_trade_time": false,
+      "minute_first_status": "not_1min",
+      "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+      "phase": "nonminute_context_panel",
+      "row_granularity": "code_date_daily_or_context",
+      "sample_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602\\year=2023\\part.parquet",
+      "sample_rows": 1186529,
+      "time_like_columns": ""
+    }
+  ],
+  "path_hit_count": 225,
+  "phase_status": [
+    {
+      "classification": "daily_backbone_integrated_panel_builder",
+      "phase": "Phase3AD",
+      "reason": "builds code-date integrated panels from daily TDX/company base; no trade_time in output",
+      "status": "diagnostic_daily_enrichment_only"
+    },
+    {
+      "classification": "daily_backbone_plus_minute_derived_selector",
+      "phase": "Phase3AE",
+      "reason": "joined panel has date/code rows, m1/ctx fields, and no trade_time",
+      "status": "diagnostic_only_for_1min_claims"
+    },
+    {
+      "classification": "derived_from_phase3ae_daily_backbone",
+      "phase": "Phase3AF-Phase3AH",
+      "reason": "prep/audit inputs chain from Phase3AE/AF code-date panels",
+      "status": "diagnostic_only_for_1min_claims"
+    },
+    {
+      "classification": "legacy_daily_field_search",
+      "phase": "Phase3AI R5",
+      "reason": "project report already records DOWNGRADE_R5_TO_LEGACY_DAILY_FIELD_SEARCH",
+      "status": "downgraded_already"
+    },
+    {
+      "classification": "phase3ae_joined_panel_search_replay",
+      "phase": "Phase3AJ-Phase3AL",
+      "reason": "launcher scripts point at phase3ae_bounded_repair_joined_panel_v1.parquet",
+      "status": "diagnostic_daily_enriched_not_1min_first"
+    },
+    {
+      "classification": "field_integration_and_sanitizer_on_phase3ae_panel",
+      "phase": "Phase3AM",
+      "reason": "audits field availability/materialization against Phase3AE daily-backbone panel",
+      "status": "valid_field_integration_audit_not_alpha_proof"
+    },
+    {
+      "classification": "daily_backbone_plus_minute_derived_plus_lagged_sentiment",
+      "phase": "Phase3AN",
+      "reason": "base is Phase3AE joined panel; output has no trade_time",
+      "status": "valid_recent_daily_diagnostic_not_1min_first"
+    },
+    {
+      "classification": "phase3an_daily_backbone_replay",
+      "phase": "Phase3AO current-panel",
+      "reason": "launcher uses Phase3AN joined panel; no trade_time",
+      "status": "diagnostic_only_for_1min_claims"
+    },
+    {
+      "classification": "old_1d_tdx_backbone",
+      "phase": "Phase3AO long-history",
+      "reason": "old long-history TDX daily route was already removed/invalidated",
+      "status": "invalidated"
+    }
+  ],
+  "required_guardrail": {
+    "forbid": [
+      "calling code-date panels minute-first because they contain m1_* fields",
+      "turning first5/first15/first30 feature summaries into separate search backbones",
+      "using tdxofficial/maxopt as new 1min search backbone",
+      "mixing Phase3AN daily diagnostics with Phase3AP minute-first metrics"
+    ],
+    "minute_first_requires": [
+      "trade_time column",
+      "label horizon tied to trade_time",
+      "dataset route recorded"
+    ]
+  },
+  "stale_daily_path_hit_count": 99
+}

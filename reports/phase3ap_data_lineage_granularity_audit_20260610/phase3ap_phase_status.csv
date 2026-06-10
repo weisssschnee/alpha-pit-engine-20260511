@@ -1,0 +1,10 @@
+phase,classification,status,reason
+Phase3AD,daily_backbone_integrated_panel_builder,diagnostic_daily_enrichment_only,builds code-date integrated panels from daily TDX/company base; no trade_time in output
+Phase3AE,daily_backbone_plus_minute_derived_selector,diagnostic_only_for_1min_claims,"joined panel has date/code rows, m1/ctx fields, and no trade_time"
+Phase3AF-Phase3AH,derived_from_phase3ae_daily_backbone,diagnostic_only_for_1min_claims,prep/audit inputs chain from Phase3AE/AF code-date panels
+Phase3AI R5,legacy_daily_field_search,downgraded_already,project report already records DOWNGRADE_R5_TO_LEGACY_DAILY_FIELD_SEARCH
+Phase3AJ-Phase3AL,phase3ae_joined_panel_search_replay,diagnostic_daily_enriched_not_1min_first,launcher scripts point at phase3ae_bounded_repair_joined_panel_v1.parquet
+Phase3AM,field_integration_and_sanitizer_on_phase3ae_panel,valid_field_integration_audit_not_alpha_proof,audits field availability/materialization against Phase3AE daily-backbone panel
+Phase3AN,daily_backbone_plus_minute_derived_plus_lagged_sentiment,valid_recent_daily_diagnostic_not_1min_first,base is Phase3AE joined panel; output has no trade_time
+Phase3AO current-panel,phase3an_daily_backbone_replay,diagnostic_only_for_1min_claims,launcher uses Phase3AN joined panel; no trade_time
+Phase3AO long-history,old_1d_tdx_backbone,invalidated,old long-history TDX daily route was already removed/invalidated

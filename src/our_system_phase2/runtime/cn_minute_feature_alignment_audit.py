@@ -2,7 +2,7 @@
 
 This script is intentionally read-only. It separates:
 
-- minute-native fields that can support intraday features,
+- raw 1min fields and derived fields that can support intraday features,
 - lagged daily/enrichment context that can be used before a minute trade date,
 - future intraday labels/execution diagnostics that must not enter selection.
 """
@@ -368,7 +368,7 @@ def run(
         "- 1min native fields are not the same object as daily/enrichment fields.",
         "- Daily/fundamental/event fields are allowed only as lagged context for a minute trade date unless a timestamp contract proves intraday availability.",
         "- Future intraday bars and close-derived returns are execution labels/diagnostics, not selector features.",
-        "- The next valid 1min feature step is to build minute-native early-session features and join lagged daily context by normalized code and prior trading day.",
+        "- The next valid 1min feature step is to build a true minute-row or explicit cutoff cross-section panel and join lagged daily context by normalized code and prior trading day.",
         "",
         "## Outputs",
         "",

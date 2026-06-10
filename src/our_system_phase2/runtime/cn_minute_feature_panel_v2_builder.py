@@ -1,4 +1,4 @@
-"""Build a multi-year CN 1min feature panel from validated minute parquet v2.
+"""Build a multi-year CN 1min-derived code-date feature panel.
 
 This is a code-date panel, not a raw minute-row table. It reads:
 

@@ -1,0 +1,6 @@
+﻿{
+    "created_at":  "2026-06-10T15:32:53.6894770+08:00",
+    "kept_daily_context_only":  "runtime/datasets/phase2_stock_tdx_official_20250806_to_20260508_cn_event_fundamental_augmented_v2_20260531.parquet",
+    "removed_count":  41,
+    "decision":  "OLD_1D_BACKBONE_PHASE3AO_INVALIDATED_AND_CLEANED"
+}

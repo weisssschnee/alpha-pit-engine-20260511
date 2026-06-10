@@ -1,4 +1,4 @@
-"""Diagnostic cross-sectional scan for minute-native and lagged-context fields."""
+"""Diagnostic scan for 1min-derived code-date and lagged-context fields."""
 
 from __future__ import annotations
 

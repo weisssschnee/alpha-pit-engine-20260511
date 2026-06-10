@@ -1,6 +1,7 @@
-"""Build a 1-minute-native feature panel with lagged daily context.
+"""Build a 1min-derived code-date feature panel with lagged daily context.
 
-The output is a research panel for intraday/minute work. It keeps:
+The output is a research panel for intraday/minute-derived work. It is not a
+raw minute-row table. It keeps:
 
 - `m1_*` features observable from early minute bars,
 - `ctx_*` features joined from the previous daily/enrichment row,
@@ -325,7 +326,7 @@ def run(
         "",
         "## Boundary",
         "",
-        "- `m1_first5/*15/*30` fields are minute-native features with explicit earliest signal times.",
+        "- `m1_first5/*15/*30` fields are 1min-derived features with explicit earliest signal times.",
         "- `ctx_*` fields are lagged daily/enrichment context from the previous trading day.",
         "- `label_*` fields are future execution/evaluation labels and are forbidden as selector inputs.",
     ]

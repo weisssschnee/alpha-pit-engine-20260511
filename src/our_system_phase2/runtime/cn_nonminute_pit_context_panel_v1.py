@@ -1,6 +1,6 @@
 """Build a PIT-safe non-1min context panel for the CN minute feature system.
 
-This panel does not create minute-native labels. It only materializes lagged or
+This panel does not create minute-row labels. It only materializes lagged or
 announcement-safe context fields that can be joined to the 1-minute code-date
 feature panel:
 

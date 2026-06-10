@@ -3,7 +3,7 @@
 The goal is to prevent data loss and leakage by explicitly routing each new
 data family into one of:
 
-- minute-native feature,
+- raw-minute or minute-derived feature,
 - timestamped intraday event feature,
 - lagged daily context,
 - announcement/PIT context,
