@@ -19,6 +19,9 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import pyarrow as pa
+import pyarrow.compute as pc
+import pyarrow.parquet as pq
 
 from our_system_phase2.services.real_market_validation import evaluate_panel_expression
 
@@ -229,6 +232,73 @@ def _compact_top_row(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _panel_trade_times(panel_path: Path) -> pd.Series:
+    parquet = pq.ParquetFile(panel_path)
+    if "trade_time" not in parquet.schema_arrow.names:
+        raise RuntimeError("panel missing required column: trade_time")
+    chunks: list[pd.Series] = []
+    for row_group in range(parquet.num_row_groups):
+        table = parquet.read_row_group(row_group, columns=["trade_time"])
+        unique = pc.unique(table["trade_time"].combine_chunks()).to_pandas()
+        chunks.append(pd.Series(pd.to_datetime(unique, errors="coerce")).dropna())
+    if not chunks:
+        return pd.Series([], dtype="datetime64[ns]")
+    return pd.concat(chunks, ignore_index=True).drop_duplicates().sort_values(ignore_index=True)
+
+
+def _sample_signal_and_read_times(
+    trade_times: pd.Series,
+    *,
+    sample_trade_times: int | None,
+    horizons: tuple[int, ...],
+) -> tuple[set[pd.Timestamp] | None, set[pd.Timestamp] | None]:
+    if sample_trade_times is None or sample_trade_times <= 0 or len(trade_times) <= sample_trade_times:
+        return None, None
+    positions = np.linspace(0, len(trade_times) - 1, sample_trade_times).round().astype(int)
+    positions = np.unique(positions)
+    signal_times = set(pd.to_datetime(trade_times.iloc[positions]).tolist())
+    max_horizon = max(horizons) if horizons else 0
+    read_positions = set(int(pos) for pos in positions)
+    for pos in positions:
+        for offset in range(1, max_horizon + 1):
+            future_pos = int(pos) + offset
+            if future_pos < len(trade_times):
+                read_positions.add(future_pos)
+    read_times = set(pd.to_datetime(trade_times.iloc[sorted(read_positions)]).tolist())
+    return signal_times, read_times
+
+
+def _arrow_time_values(values: set[pd.Timestamp], arrow_type: pa.DataType) -> pa.Array:
+    arr = pa.array(pd.to_datetime(sorted(values)).to_numpy(dtype="datetime64[ns]"))
+    if not arr.type.equals(arrow_type):
+        arr = arr.cast(arrow_type)
+    return arr
+
+
+def _read_panel_columns(
+    panel_path: Path,
+    *,
+    columns: list[str],
+    trade_times: set[pd.Timestamp] | None,
+) -> pd.DataFrame:
+    if trade_times is None:
+        return pd.read_parquet(panel_path, columns=columns)
+
+    parquet = pq.ParquetFile(panel_path)
+    trade_time_type = parquet.schema_arrow.field("trade_time").type
+    value_set = _arrow_time_values(trade_times, trade_time_type)
+    tables: list[pa.Table] = []
+    for row_group in range(parquet.num_row_groups):
+        table = parquet.read_row_group(row_group, columns=columns)
+        mask = pc.is_in(table["trade_time"], value_set=value_set)
+        filtered = table.filter(mask)
+        if filtered.num_rows:
+            tables.append(filtered)
+    if not tables:
+        return pd.DataFrame(columns=columns)
+    return pa.concat_tables(tables, promote_options="default").to_pandas()
+
+
 def evaluate(
     *,
     panel_path: Path,
@@ -268,28 +338,78 @@ def evaluate(
         out["phase3as_fresh_eligible"] = not memory_hit
         prepared_rows.append(out)
 
-    frame = pd.read_parquet(panel_path)
+    expression_fields: set[str] = set()
+    for row in prepared_rows:
+        expression_fields.update(_fields(str(row.get("expression") or "")))
+    required_columns = {
+        "code",
+        "date",
+        "exec_date",
+        "trade_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "vol",
+        "volume",
+        "amount",
+        "amount_yuan",
+        *expression_fields,
+    }
+    schema_columns = set(pq.ParquetFile(panel_path).schema_arrow.names)
+    read_columns = [column for column in sorted(required_columns) if column in schema_columns]
+    missing_core = {"code", "date", "trade_time", "close"} - set(read_columns)
+    if missing_core:
+        raise RuntimeError(f"panel missing required columns: {sorted(missing_core)}")
+    all_trade_times = _panel_trade_times(panel_path)
+    original_trade_time_count = int(len(all_trade_times))
+    signal_trade_times, read_trade_times = _sample_signal_and_read_times(
+        all_trade_times,
+        sample_trade_times=sample_trade_times,
+        horizons=horizons,
+    )
+    frame = _read_panel_columns(panel_path, columns=read_columns, trade_times=signal_trade_times)
     frame["date"] = pd.to_datetime(frame["date"], errors="coerce")
     frame["trade_time"] = pd.to_datetime(frame["trade_time"], errors="coerce")
     frame = frame.dropna(subset=["date", "trade_time", "code", "close"]).sort_values(["code", "trade_time"]).reset_index(drop=True)
-    original_trade_time_count = int(frame["trade_time"].nunique())
-    if sample_trade_times is not None and sample_trade_times > 0 and original_trade_time_count > sample_trade_times:
-        unique_times = pd.Series(frame["trade_time"].dropna().unique()).sort_values(ignore_index=True)
-        positions = np.linspace(0, len(unique_times) - 1, sample_trade_times).round().astype(int)
-        sampled_times = set(pd.to_datetime(unique_times.iloc[positions]).tolist())
-        frame = frame[frame["trade_time"].isin(sampled_times)].copy().reset_index(drop=True)
+    if signal_trade_times is None or read_trade_times is None:
+        label_frame = frame
+        labels = _future_returns(label_frame, horizons)
+        labels_eval = labels.reset_index(drop=True)
+        label_read_trade_time_count = int(label_frame["trade_time"].nunique())
+    else:
+        label_frame = _read_panel_columns(
+            panel_path,
+            columns=["code", "date", "trade_time", "close"],
+            trade_times=read_trade_times,
+        )
+        label_frame["date"] = pd.to_datetime(label_frame["date"], errors="coerce")
+        label_frame["trade_time"] = pd.to_datetime(label_frame["trade_time"], errors="coerce")
+        label_frame = label_frame.dropna(subset=["date", "trade_time", "code", "close"]).sort_values(["code", "trade_time"]).reset_index(drop=True)
+        labels = _future_returns(label_frame, horizons)
+        label_source = label_frame[["code", "trade_time"]].copy()
+        for horizon in horizons:
+            label_source[f"fwd_ret_{horizon}m"] = labels[f"fwd_ret_{horizon}m"].to_numpy()
+        labels_eval = frame[["code", "trade_time"]].merge(label_source, on=["code", "trade_time"], how="left")
+        labels_eval = labels_eval[[f"fwd_ret_{horizon}m" for horizon in horizons]]
+        label_read_trade_time_count = int(label_frame["trade_time"].nunique())
+    eval_frame = frame
+    if eval_frame.empty:
+        raise RuntimeError("sampled panel is empty after trade_time filtering")
 
-    labels = _future_returns(frame, horizons)
-    group_codes, unique_times = pd.factorize(frame["trade_time"], sort=False)
+    group_codes, unique_times = pd.factorize(eval_frame["trade_time"], sort=False)
     group_count = int(len(unique_times))
-    label_ranks = {horizon: _rank_by_group(labels[f"fwd_ret_{horizon}m"], frame["trade_time"]) for horizon in horizons}
+    label_ranks = {
+        horizon: _rank_by_group(labels_eval[f"fwd_ret_{horizon}m"], eval_frame["trade_time"])
+        for horizon in horizons
+    }
 
     result_rows: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
     for index, row in enumerate(prepared_rows, start=1):
         expression = str(row.get("expression") or "")
         try:
-            signal = pd.to_numeric(evaluate_panel_expression(frame, expression), errors="coerce")
+            signal = pd.to_numeric(evaluate_panel_expression(frame, expression), errors="coerce").reset_index(drop=True)
         except Exception as exc:
             errors.append(
                 {
@@ -300,7 +420,7 @@ def evaluate(
                 }
             )
             continue
-        signal_rank = _rank_by_group(signal, frame["trade_time"])
+        signal_rank = _rank_by_group(signal, eval_frame["trade_time"])
         base = {
             "rank_input_order": index,
             "candidate_id": row.get("candidate_id") or "",
@@ -318,7 +438,7 @@ def evaluate(
             "signal_unique": int(signal.nunique(dropna=True)),
         }
         for horizon in horizons:
-            label = labels[f"fwd_ret_{horizon}m"]
+            label = labels_eval[f"fwd_ret_{horizon}m"]
             result = dict(base)
             result["horizon_min"] = horizon
             result.update(
@@ -343,7 +463,8 @@ def evaluate(
 
     result_rows.sort(
         key=lambda item: (
-            -1.0 if item.get("ic_abs_mean") is None else -float(item["ic_abs_mean"]),
+            item.get("ic_abs_mean") is None,
+            0.0 if item.get("ic_abs_mean") is None else -float(item["ic_abs_mean"]),
             -int(item.get("ic_count") or 0),
         )
     )
@@ -371,10 +492,16 @@ def evaluate(
         "memory_hit_count": memory_hit_count,
         "exclude_memory_hits": exclude_memory_hits,
         "error_count": len(errors),
-        "panel_rows": int(len(frame)),
-        "panel_codes": int(frame["code"].nunique()),
+        "panel_rows": int(len(eval_frame)),
+        "panel_codes": int(eval_frame["code"].nunique()),
+        "panel_schema_column_count": int(len(schema_columns)),
+        "panel_read_column_count": int(len(read_columns)),
+        "expression_field_count": int(len(expression_fields)),
         "original_trade_time_count": original_trade_time_count,
-        "evaluated_trade_time_count": int(frame["trade_time"].nunique()),
+        "signal_read_trade_time_count": int(frame["trade_time"].nunique()),
+        "label_read_trade_time_count": label_read_trade_time_count,
+        "read_trade_time_count": label_read_trade_time_count,
+        "evaluated_trade_time_count": int(eval_frame["trade_time"].nunique()),
         "horizons_min": list(horizons),
         "lane_counts": dict(Counter(str(row.get("phase3as_eval_lane") or "") for row in prepared_rows)),
         "source_lane_counts": dict(Counter(str(row.get("source_lane") or "") for row in prepared_rows)),
