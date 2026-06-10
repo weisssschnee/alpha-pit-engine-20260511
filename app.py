@@ -295,6 +295,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Evaluate all Phase3AQ sanitized true-1min formulas on the trade_time canary panel with minute horizons.",
     },
+    "phase3ar-sidecar-field-adapter": {
+        "module": "our_system_phase2.runtime.phase3ar_sidecar_field_adapter",
+        "diagnostic": False,
+        "description": "Attach PIT context, cap/float, and cutoff event sidecars to Phase3AQ true 1min candidates without changing X0/R3.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
