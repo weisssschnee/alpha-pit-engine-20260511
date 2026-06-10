@@ -91,6 +91,20 @@ FULLA_RAW_ALIASES = {
     "ASSET_IMPAIRMENT_INCOME": ["ASSET_IMPAIRMENT_INCOME", "ASSET_IMPAIRMENT_LOSS"],
     "CREDIT_IMPAIRMENT_INCOME": ["CREDIT_IMPAIRMENT_INCOME", "CREDIT_IMPAIRMENT_LOSS"],
 }
+FUND_DERIVED_SOURCE_FIELDS = {
+    "ctx_fund_ps_operate_profit_margin": ("ps", ["OPERATE_PROFIT", "OPERATE_INCOME"]),
+    "ctx_fund_ps_netprofit_margin": ("ps", ["NETPROFIT", "OPERATE_INCOME"]),
+    "ctx_fund_ps_research_to_income": ("ps", ["RESEARCH_EXPENSE", "OPERATE_INCOME"]),
+    "ctx_fund_bs_cash_to_assets": ("bs", ["MONETARYFUNDS", "TOTAL_ASSETS"]),
+    "ctx_fund_bs_debt_to_assets": ("bs", ["TOTAL_LIABILITIES", "TOTAL_ASSETS"]),
+    "ctx_fund_bs_goodwill_to_assets": ("bs", ["GOODWILL", "TOTAL_ASSETS"]),
+    "ctx_fund_bs_inventory_to_assets": ("bs", ["INVENTORY", "TOTAL_ASSETS"]),
+    "ctx_fund_cf_end_cce": ("cf", ["END_CCE"]),
+    "ctx_fund_cf_netcash_finance": ("cf", ["NETCASH_FINANCE"]),
+    "ctx_fund_cf_netcash_invest": ("cf", ["NETCASH_INVEST"]),
+    "ctx_fund_cf_total_operate_inflow": ("cf", ["TOTAL_OPERATE_INFLOW"]),
+    "ctx_fund_cf_total_operate_outflow": ("cf", ["TOTAL_OPERATE_OUTFLOW"]),
+}
 OPEN_SENTIMENT_FIELDS = {
     "ctx_sent_uplimit_num": "uplimit_num",
     "ctx_sent_downlimit_num": "downlimit_num",
@@ -373,6 +387,49 @@ def _fulla_source_candidates(raw_name: str) -> list[str]:
     return list(dict.fromkeys(candidates))
 
 
+def _safe_divide(numerator: pd.Series, denominator: pd.Series) -> pd.Series:
+    denominator = pd.to_numeric(denominator, errors="coerce").replace(0, np.nan)
+    return pd.to_numeric(numerator, errors="coerce") / denominator
+
+
+def _compute_ctx_fund_field(df: pd.DataFrame, field: str) -> pd.Series | None:
+    if field == "ctx_fund_ps_operate_profit_margin" and {"OPERATE_PROFIT", "OPERATE_INCOME"}.issubset(df.columns):
+        return _safe_divide(df["OPERATE_PROFIT"], df["OPERATE_INCOME"])
+    if field == "ctx_fund_ps_netprofit_margin" and {"NETPROFIT", "OPERATE_INCOME"}.issubset(df.columns):
+        return _safe_divide(df["NETPROFIT"], df["OPERATE_INCOME"])
+    if field == "ctx_fund_ps_research_to_income" and {"RESEARCH_EXPENSE", "OPERATE_INCOME"}.issubset(df.columns):
+        return _safe_divide(df["RESEARCH_EXPENSE"], df["OPERATE_INCOME"])
+    if field == "ctx_fund_bs_cash_to_assets" and {"MONETARYFUNDS", "TOTAL_ASSETS"}.issubset(df.columns):
+        return _safe_divide(df["MONETARYFUNDS"], df["TOTAL_ASSETS"])
+    if field == "ctx_fund_bs_debt_to_assets" and {"TOTAL_LIABILITIES", "TOTAL_ASSETS"}.issubset(df.columns):
+        return _safe_divide(df["TOTAL_LIABILITIES"], df["TOTAL_ASSETS"])
+    if field == "ctx_fund_bs_goodwill_to_assets" and {"GOODWILL", "TOTAL_ASSETS"}.issubset(df.columns):
+        return _safe_divide(df["GOODWILL"], df["TOTAL_ASSETS"])
+    if field == "ctx_fund_bs_inventory_to_assets" and {"INVENTORY", "TOTAL_ASSETS"}.issubset(df.columns):
+        return _safe_divide(df["INVENTORY"], df["TOTAL_ASSETS"])
+    passthrough = {
+        "ctx_fund_cf_end_cce": "END_CCE",
+        "ctx_fund_cf_netcash_finance": "NETCASH_FINANCE",
+        "ctx_fund_cf_netcash_invest": "NETCASH_INVEST",
+        "ctx_fund_cf_total_operate_inflow": "TOTAL_OPERATE_INFLOW",
+        "ctx_fund_cf_total_operate_outflow": "TOTAL_OPERATE_OUTFLOW",
+    }
+    raw_col = passthrough.get(field)
+    if raw_col and raw_col in df.columns:
+        return _numeric(df[raw_col])
+    return None
+
+
+def _ctx_fund_source_frame(df: pd.DataFrame, field: str) -> pd.DataFrame:
+    _, raw_names = FUND_DERIVED_SOURCE_FIELDS[field]
+    out = pd.DataFrame(index=df.index)
+    for raw_name in raw_names:
+        source_col = next((candidate for candidate in _fulla_source_candidates(raw_name) if candidate in df.columns), "")
+        if source_col:
+            out[raw_name] = df[source_col]
+    return out
+
+
 def _load_fulla_sidecar(
     fulla_root: Path,
     fields: set[str],
@@ -383,10 +440,16 @@ def _load_fulla_sidecar(
     wanted: dict[str, dict[str, list[str]]] = {tag: {} for tag in FULLA_DATASETS}
     for field in sorted(fields):
         match = re.match(r"^ctx_fulla_(bs|ps|cf)_(.+)$", field)
-        if not match:
+        if match:
+            tag, raw_name = match.group(1), match.group(2)
+            wanted[tag][field] = _fulla_source_candidates(raw_name)
             continue
-        tag, raw_name = match.group(1), match.group(2)
-        wanted[tag][field] = _fulla_source_candidates(raw_name)
+        if field in FUND_DERIVED_SOURCE_FIELDS:
+            tag, raw_names = FUND_DERIVED_SOURCE_FIELDS[field]
+            expanded: list[str] = []
+            for raw_name in raw_names:
+                expanded.extend(_fulla_source_candidates(raw_name))
+            wanted[tag][field] = list(dict.fromkeys(expanded))
 
     base = canary_keys.copy()
     base["_exec_dt"] = pd.to_datetime(base["exec_date"], errors="coerce")
@@ -394,7 +457,7 @@ def _load_fulla_sidecar(
     loaded_fields: set[str] = set()
     missing_fields: set[str] = set(fields)
     source_paths: list[str] = []
-    chunks: list[pd.DataFrame] = []
+    dataset_panels: list[pd.DataFrame] = []
     for tag, dataset in FULLA_DATASETS.items():
         if not wanted.get(tag):
             continue
@@ -405,14 +468,15 @@ def _load_fulla_sidecar(
             if not path.exists():
                 continue
             schema = _schema_names(path)
-            field_map: dict[str, str] = {}
+            raw_cols_by_field: dict[str, list[str]] = {}
             for field, candidates in wanted[tag].items():
-                raw_col = next((candidate for candidate in candidates if candidate in schema), "")
-                if raw_col:
-                    field_map[field] = raw_col
-            if not field_map:
+                raw_cols = [candidate for candidate in candidates if candidate in schema]
+                if raw_cols:
+                    raw_cols_by_field[field] = raw_cols
+            raw_cols_needed = sorted({raw_col for raw_cols in raw_cols_by_field.values() for raw_col in raw_cols})
+            if not raw_cols_by_field:
                 continue
-            cols = [col for col in ["source_code6", "SECURITY_CODE", "NOTICE_DATE", "UPDATE_DATE", "REPORT_DATE", *field_map.values()] if col in schema]
+            cols = [col for col in ["source_code6", "SECURITY_CODE", "NOTICE_DATE", "UPDATE_DATE", "REPORT_DATE", *raw_cols_needed] if col in schema]
             if "NOTICE_DATE" not in cols and "UPDATE_DATE" not in cols and "REPORT_DATE" not in cols:
                 continue
             df = pd.read_parquet(path, columns=list(dict.fromkeys(cols)))
@@ -424,41 +488,53 @@ def _load_fulla_sidecar(
             if available.isna().all() and "REPORT_DATE" in df.columns:
                 available = pd.to_datetime(df["REPORT_DATE"], errors="coerce") + pd.Timedelta(days=90)
             df["available_date"] = available
-            value_cols = {field: _numeric(df[raw_col]) for field, raw_col in field_map.items()}
+            value_cols: dict[str, pd.Series] = {}
+            for field, raw_cols in raw_cols_by_field.items():
+                if field.startswith("ctx_fund_"):
+                    value = _compute_ctx_fund_field(_ctx_fund_source_frame(df, field), field)
+                    if value is not None:
+                        value_cols[field] = value
+                else:
+                    value_cols[field] = _numeric(df[raw_cols[0]])
             if value_cols:
                 df = pd.concat([df, pd.DataFrame(value_cols, index=df.index)], axis=1)
-            keep = ["code", "available_date", *field_map.keys()]
+            keep = ["code", "available_date", *value_cols.keys()]
             df = df[keep].dropna(subset=["code", "available_date"])
             if not df.empty:
-                loaded_fields.update(field_map.keys())
-                missing_fields.difference_update(field_map.keys())
+                loaded_fields.update(value_cols.keys())
+                missing_fields.difference_update(value_cols.keys())
                 source_paths.append(str(path))
                 per_code_parts.append(df)
         if not per_code_parts:
             continue
         daily = pd.concat(per_code_parts, ignore_index=True).sort_values(["code", "available_date"])
         keep_fields = sorted(field for field in wanted[tag] if field in daily.columns)
+        code_chunks: list[pd.DataFrame] = []
         for code, left in base.sort_values("_exec_dt").groupby("code", sort=False):
             right = daily[daily["code"] == code].sort_values("available_date")
             if right.empty:
-                continue
-            chunk = pd.merge_asof(
-                left.sort_values("_exec_dt"),
-                right.drop(columns=["code"]),
-                left_on="_exec_dt",
-                right_on="available_date",
-                direction="backward",
-                allow_exact_matches=False,
-            )
-            chunks.append(chunk[["code", "exec_date", "trade_time", *keep_fields]])
+                chunk = left.copy()
+                for field in keep_fields:
+                    chunk[field] = np.nan
+            else:
+                chunk = pd.merge_asof(
+                    left.sort_values("_exec_dt"),
+                    right.drop(columns=["code"]),
+                    left_on="_exec_dt",
+                    right_on="available_date",
+                    direction="backward",
+                    allow_exact_matches=False,
+                )
+            code_chunks.append(chunk[["code", "exec_date", "trade_time", *keep_fields]])
+        dataset_panels.append(pd.concat(code_chunks, ignore_index=True))
 
-    if not chunks:
+    if not dataset_panels:
         return canary_keys.copy(), {"loaded_fields": [], "source_paths": source_paths, "missing_fields": sorted(missing_fields)}
     out = canary_keys.copy()
-    for chunk in chunks:
-        add_cols = [col for col in chunk.columns if col not in {"code", "exec_date", "trade_time"} and col not in out.columns]
+    for dataset_panel in dataset_panels:
+        add_cols = [col for col in dataset_panel.columns if col not in {"code", "exec_date", "trade_time"} and col not in out.columns]
         if add_cols:
-            out = out.merge(chunk[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
+            out = out.merge(dataset_panel[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
     return out, {
         "loaded_fields": sorted(loaded_fields),
         "source_paths": sorted(set(source_paths)),
@@ -694,7 +770,7 @@ def adapt(
     for row in blocked_rows:
         for field in _fields(str(row.get("expression") or "")):
             formula_fields[field] += 1
-    context_fields = {field for field in formula_fields if field in context_contract}
+    context_fields = {field for field in formula_fields if field in context_contract and not field.startswith("ctx_fund_")}
     safe_context_fields = {
         field
         for field in context_fields
@@ -703,7 +779,7 @@ def adapt(
     diagnostic_context_fields = context_fields - safe_context_fields
     event_fields = {field for field in formula_fields if field in event_contract or field.startswith("evt_") or field.startswith("mkt_")}
     cap_fields = {field for field in formula_fields if field in CAP_FIELD_ALIASES}
-    fulla_fields = {field for field in formula_fields if field.startswith("ctx_fulla_")}
+    fulla_fields = {field for field in formula_fields if field.startswith("ctx_fulla_") or field in FUND_DERIVED_SOURCE_FIELDS}
     sentiment_fields = {
         field
         for field in formula_fields

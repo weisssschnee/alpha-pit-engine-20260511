@@ -28,3 +28,9 @@ decision: `PHASE3AR_SIDECAR_FIELDS_ATTACHED_FOR_TRUE_1MIN_CANARY`
 - diagnostic pack: `G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531\runtime\phase3ar_sidecar_field_adapter_20260610\phase3ar_diagnostic_context_only_pack.json`
 - still blocked: `G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531\runtime\phase3ar_sidecar_field_adapter_20260610\phase3ar_still_blocked_formula_rows.json`
 - field coverage: `G:\Project_V7_Rotation\alpha_pit_data_feature_workspace_20260531\reports\phase3ar_sidecar_field_adapter_20260610\phase3ar_materialized_field_coverage.csv`
+
+## Expression Smoke
+
+- `sidecar_context_formula`: candidates=966 smoked=24 nonnull=24 errors=0
+- `event_state_cutoff_canary`: candidates=85 smoked=24 nonnull=14 errors=0
+- `diagnostic_context_only`: candidates=149 smoked=24 nonnull=24 errors=0
