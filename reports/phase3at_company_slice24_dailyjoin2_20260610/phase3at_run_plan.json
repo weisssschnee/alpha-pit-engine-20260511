@@ -1,0 +1,42 @@
+{
+  "created_at": "2026-06-10T18:30:39.367790+00:00",
+  "data_roots": {
+    "context_root": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\runtime\\nonminute_context_panels\\cn_nonminute_pit_context_panel_v1_20260602",
+    "event_contract": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_contract.csv",
+    "event_panel": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\runtime\\minute_feature_panels\\cn_minute_limit_event_alignment_v2_20260602\\cn_minute_limit_event_alignment_v1.parquet",
+    "fulla_root": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_fundamental_akshare_fullA_partitioned_pit_v1_20260603\\silver_partitioned",
+    "hfq_2026": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2026\\hfq_daily_2026.parquet",
+    "hfq_root": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\hfq_daily_2024_2025",
+    "raw_2023_2025": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2023_2025_symbol_parquet_v2",
+    "raw_2026": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_local_minute_daily_silver_v1_20260531\\stock_1min_2026_parquet_by_date",
+    "sentiment_root": "D:\\HermesWorker\\data\\phase3at_data_slice24_20260610\\data\\cn_public_enrichment\\cn_zzshare_limit_sentiment_pack_v1_20260602\\silver_parquet"
+  },
+  "forbidden_inputs": [
+    "old_1d_kline_as_minute",
+    "date_cross_section_for_minute_claims",
+    "full_day_current_aggregate",
+    "daily_ret_legacy_alias",
+    "event_field_without_cutoff_or_lag_contract"
+  ],
+  "input_grain": "trade_time_1min",
+  "max_files": 24,
+  "modifies_cluster_book": false,
+  "modifies_gate": false,
+  "modifies_x0": false,
+  "official_stats_allowed": false,
+  "phase": "Phase3AT",
+  "required_checks": [
+    "panel_has_trade_time",
+    "date_equals_trade_time",
+    "search_memory_tagging",
+    "sidecar_pit_or_cutoff_contract",
+    "fresh_vs_memory_hit_split"
+  ],
+  "run_type": "wide_true_1min_structured_search_prelaunch",
+  "schema_version": "phase3at_wide_true1min_prelaunch_v1",
+  "source_selection": "stride",
+  "uses_x0_official": "read_only",
+  "years": [
+    2025
+  ]
+}

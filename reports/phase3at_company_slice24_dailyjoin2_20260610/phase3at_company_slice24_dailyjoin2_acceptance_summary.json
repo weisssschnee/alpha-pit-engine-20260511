@@ -1,0 +1,49 @@
+{
+  "aq_codes": 24,
+  "aq_rows": 1306461,
+  "aq_trade_times": 58563,
+  "ar_augmented_columns": 417,
+  "ar_augmented_rows": 1306461,
+  "ar_status_counts": {
+    "diagnostic_context_only": 149,
+    "event_state_cutoff_canary": 85,
+    "sidecar_context_formula": 1002,
+    "still_blocked": 37
+  },
+  "as_errors": 0,
+  "as_evaluated_candidates": 1087,
+  "as_input_candidates": 1087,
+  "as_memory_hits": 1007,
+  "as_panel_codes": 24,
+  "as_panel_rows": 53538,
+  "as_trade_times": 2400,
+  "date_equals_trade_time": true,
+  "decision": "COMPANY_TRUE_1MIN_SIDECAR_CHAIN_VALIDATED_NOT_ALPHA_PROOF",
+  "fresh_candidates": 80,
+  "hard_rules": [
+    "No old 1D kline is used for minute claims.",
+    "date equals trade_time only for mature evaluator compatibility; exec_date is trading-day join key.",
+    "first5/first15/first30 are opening-window features, not bar aggregation.",
+    "non-minute fields are sidecars with PIT/lag/cutoff contracts.",
+    "X0/R3 remains read-only; this run is prelaunch validation, not promotion proof."
+  ],
+  "input_grain": "true trade_time 1min",
+  "phase": "Phase3AT",
+  "robust_min_ic_count": 300,
+  "run_id": "phase3at_company_slice24_dailyjoin2_20260610",
+  "source_selection": "stride",
+  "top_fresh_robust_candidate": [
+    {
+      "candidate_id": "cn_integrated_v2_quality_size_residual_00065",
+      "horizon_min": 30,
+      "ic_abs_mean": 0.1916007657123545,
+      "ic_count": 2359,
+      "ic_mean": 0.0645937477665425,
+      "lane": "sidecar_context_formula",
+      "memory_hit": false,
+      "source_lane": "cn_integrated_feature_layer",
+      "spread_count": 2359,
+      "spread_mean": 0.00355846382007
+    }
+  ]
+}

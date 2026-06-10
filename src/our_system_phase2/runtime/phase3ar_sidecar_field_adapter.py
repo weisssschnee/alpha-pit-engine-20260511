@@ -273,6 +273,42 @@ def _context_partitions(root: Path, years: set[int]) -> list[Path]:
     return paths
 
 
+def _canary_codes(canary_keys: pd.DataFrame) -> set[str]:
+    return {code for code in canary_keys["code"].map(_normalize_cn_code).dropna().astype(str).unique() if code}
+
+
+def _daily_keys(canary_keys: pd.DataFrame) -> pd.DataFrame:
+    keys = canary_keys[["code", "exec_date"]].drop_duplicates().copy()
+    keys["_exec_dt"] = pd.to_datetime(keys["exec_date"], errors="coerce")
+    return keys
+
+
+def _expand_daily_sidecar(canary_keys: pd.DataFrame, daily_sidecar: pd.DataFrame) -> pd.DataFrame:
+    daily_sidecar = daily_sidecar.drop(columns=["_exec_dt", "source_date", "available_date"], errors="ignore")
+    add_cols = [col for col in daily_sidecar.columns if col not in {"code", "exec_date"}]
+    if not add_cols:
+        return canary_keys.copy()
+    daily_sidecar = daily_sidecar.drop_duplicates(subset=["code", "exec_date"], keep="last")
+    before = len(canary_keys)
+    out = canary_keys.merge(daily_sidecar[["code", "exec_date", *add_cols]], on=["code", "exec_date"], how="left")
+    if len(out) != before:
+        raise RuntimeError("daily sidecar expansion changed row count")
+    return out
+
+
+def _append_nan_fields(frame: pd.DataFrame, fields: list[str] | set[str]) -> pd.DataFrame:
+    names = list(fields)
+    if not names:
+        return frame.copy()
+    return pd.concat(
+        [
+            frame.reset_index(drop=True),
+            pd.DataFrame(np.nan, index=range(len(frame)), columns=names),
+        ],
+        axis=1,
+    )
+
+
 def _load_context_sidecar(root: Path, fields: set[str], canary_keys: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, Any]]:
     if not fields:
         return canary_keys.copy(), {"loaded_fields": [], "source_paths": []}
@@ -291,10 +327,11 @@ def _load_context_sidecar(root: Path, fields: set[str], canary_keys: pd.DataFram
     context = pd.concat(parts, ignore_index=True)
     context["exec_date"] = pd.to_datetime(context["date"], errors="coerce").dt.date.astype(str)
     context["code"] = context["code"].map(_normalize_cn_code)
+    context = context[context["code"].isin(_canary_codes(canary_keys))]
     context = context.drop(columns=["date"], errors="ignore")
-    before = len(base)
-    out = base.merge(context, on=["exec_date", "code"], how="left")
-    if len(out) != before:
+    daily = _daily_keys(base).merge(context, on=["exec_date", "code"], how="left")
+    out = _expand_daily_sidecar(base, daily)
+    if len(out) != len(base):
         raise RuntimeError("context sidecar join changed row count")
     return out, {
         "loaded_fields": [field for field in fields if field in context.columns],
@@ -312,10 +349,11 @@ def _load_event_sidecar(event_panel: Path, fields: set[str], canary_keys: pd.Dat
     event = pd.read_parquet(event_panel, columns=[col for col in wanted if col in schema])
     event["exec_date"] = event["exec_date"].astype(str)
     event["code"] = event["code"].map(_normalize_cn_code)
+    event = event[event["code"].isin(_canary_codes(canary_keys))]
     base = canary_keys.copy()
-    before = len(base)
-    out = base.merge(event, on=["exec_date", "code"], how="left")
-    if len(out) != before:
+    daily = _daily_keys(base).merge(event, on=["exec_date", "code"], how="left")
+    out = _expand_daily_sidecar(base, daily)
+    if len(out) != len(base):
         raise RuntimeError("event sidecar join changed row count")
     hhmm = pd.to_datetime(out["trade_time"], errors="coerce").dt.strftime("%H%M")
     for field in fields:
@@ -361,20 +399,19 @@ def _load_cap_sidecar(
     daily = pd.concat(parts, ignore_index=True)
     daily["source_date"] = pd.to_datetime(daily["date"], errors="coerce")
     daily["code"] = daily["code"].map(_normalize_cn_code)
+    daily = daily[daily["code"].isin(_canary_codes(canary_keys))]
     daily = daily.sort_values(["code", "source_date"])
     for out_name, raw_name in CAP_FIELD_ALIASES.items():
         if out_name in fields and raw_name in daily.columns:
             daily[out_name] = pd.to_numeric(daily[raw_name], errors="coerce")
     keep_cols = ["code", "source_date", *sorted(field for field in fields if field in daily.columns)]
     daily = daily[keep_cols].dropna(subset=["source_date", "code"])
-    base["_exec_dt"] = pd.to_datetime(base["exec_date"], errors="coerce")
+    daily_base = _daily_keys(base)
     chunks: list[pd.DataFrame] = []
-    for code, left in base.sort_values("_exec_dt").groupby("code", sort=False):
+    for code, left in daily_base.sort_values("_exec_dt").groupby("code", sort=False):
         right = daily[daily["code"] == code].sort_values("source_date")
         if right.empty:
-            chunk = left.copy()
-            for field in fields:
-                chunk[field] = np.nan
+            chunk = _append_nan_fields(left, fields)
         else:
             chunk = pd.merge_asof(
                 left.sort_values("_exec_dt"),
@@ -385,8 +422,8 @@ def _load_cap_sidecar(
                 allow_exact_matches=False,
             )
         chunks.append(chunk)
-    out = pd.concat(chunks, ignore_index=True).sort_index()
-    out = out.drop(columns=["_exec_dt", "source_date"], errors="ignore")
+    daily_out = pd.concat(chunks, ignore_index=True).sort_index()
+    out = _expand_daily_sidecar(base, daily_out)
     return out, {"loaded_fields": [field for field in fields if field in out.columns], "source_paths": [str(path) for path in paths]}
 
 
@@ -461,8 +498,7 @@ def _load_fulla_sidecar(
                 expanded.extend(_fulla_source_candidates(raw_name))
             wanted[tag][field] = list(dict.fromkeys(expanded))
 
-    base = canary_keys.copy()
-    base["_exec_dt"] = pd.to_datetime(base["exec_date"], errors="coerce")
+    base = _daily_keys(canary_keys)
     codes = sorted(set(base["code"].map(_compact_cn_code)))
     loaded_fields: set[str] = set()
     missing_fields: set[str] = set(fields)
@@ -523,9 +559,7 @@ def _load_fulla_sidecar(
         for code, left in base.sort_values("_exec_dt").groupby("code", sort=False):
             right = daily[daily["code"] == code].sort_values("available_date")
             if right.empty:
-                chunk = left.copy()
-                for field in keep_fields:
-                    chunk[field] = np.nan
+                chunk = _append_nan_fields(left, keep_fields)
             else:
                 chunk = pd.merge_asof(
                     left.sort_values("_exec_dt"),
@@ -535,16 +569,17 @@ def _load_fulla_sidecar(
                     direction="backward",
                     allow_exact_matches=False,
                 )
-            code_chunks.append(chunk[["code", "exec_date", "trade_time", *keep_fields]])
+            code_chunks.append(chunk[["code", "exec_date", *keep_fields]])
         dataset_panels.append(pd.concat(code_chunks, ignore_index=True))
 
     if not dataset_panels:
         return canary_keys.copy(), {"loaded_fields": [], "source_paths": source_paths, "missing_fields": sorted(missing_fields)}
-    out = canary_keys.copy()
+    out_daily = base.drop(columns=["_exec_dt"], errors="ignore")
     for dataset_panel in dataset_panels:
-        add_cols = [col for col in dataset_panel.columns if col not in {"code", "exec_date", "trade_time"} and col not in out.columns]
+        add_cols = [col for col in dataset_panel.columns if col not in {"code", "exec_date"} and col not in out_daily.columns]
         if add_cols:
-            out = out.merge(dataset_panel[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
+            out_daily = out_daily.merge(dataset_panel[["code", "exec_date", *add_cols]], on=["code", "exec_date"], how="left")
+    out = _expand_daily_sidecar(canary_keys, out_daily)
     return out, {
         "loaded_fields": sorted(loaded_fields),
         "source_paths": sorted(set(source_paths)),
@@ -590,16 +625,13 @@ def _merge_previous_daily(base: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFra
     if daily.empty:
         return base.copy()
     out_chunks: list[pd.DataFrame] = []
-    left_base = base.copy()
-    left_base["_exec_dt"] = pd.to_datetime(left_base["exec_date"], errors="coerce")
+    left_base = _daily_keys(base)
     fields = [col for col in daily.columns if col not in {"code", "source_date"}]
     if "code" in daily.columns:
         for code, left in left_base.sort_values("_exec_dt").groupby("code", sort=False):
             right = daily[daily["code"] == code].sort_values("source_date")
             if right.empty:
-                chunk = left.copy()
-                for field in fields:
-                    chunk[field] = np.nan
+                chunk = _append_nan_fields(left, fields)
             else:
                 chunk = pd.merge_asof(
                     left.sort_values("_exec_dt"),
@@ -623,8 +655,8 @@ def _merge_previous_daily(base: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFra
                     allow_exact_matches=False,
                 )
             )
-    out = pd.concat(out_chunks, ignore_index=True)
-    return out.drop(columns=["_exec_dt", "source_date"], errors="ignore")
+    out_daily = pd.concat(out_chunks, ignore_index=True)
+    return _expand_daily_sidecar(base, out_daily)
 
 
 def _load_sentiment_sidecar(
@@ -773,15 +805,35 @@ def adapt(
     output_root.mkdir(parents=True, exist_ok=True)
     report_root.mkdir(parents=True, exist_ok=True)
 
+    progress_path = output_root / "phase3ar_progress.json"
+
+    def mark_stage(stage: str, **extra: Any) -> None:
+        _write_json(
+            progress_path,
+            {
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+                "stage": stage,
+                **extra,
+            },
+        )
+
+    mark_stage("start")
     blocked_rows = _blocked_candidate_rows(blocked_rows_path)
     aq_contract = _contract_lookup(aq_contract_path)
     context_contract = _contract_lookup(context_root / "field_contract.csv")
     event_contract = _contract_lookup(event_contract_path)
+    mark_stage("read_contracts", blocked_candidate_count=len(blocked_rows))
     canary = pd.read_parquet(canary_panel)
     canary["exec_date"] = canary["exec_date"].astype(str)
     canary["code"] = canary["code"].map(_normalize_cn_code)
     canary["trade_time"] = pd.to_datetime(canary["trade_time"], errors="coerce")
     base_keys = canary[["code", "exec_date", "trade_time"]].copy()
+    mark_stage(
+        "read_canary",
+        canary_rows=len(canary),
+        canary_codes=int(canary["code"].nunique()),
+        trade_times=int(canary["trade_time"].nunique()),
+    )
 
     formula_fields: Counter[str] = Counter()
     for row in blocked_rows:
@@ -808,11 +860,21 @@ def adapt(
         or field in UPLIMIT_EVENT_LAG_COMPAT_FIELDS
     }
 
+    mark_stage("load_context_sidecar_begin", field_count=len(context_fields))
     context_panel, context_meta = _load_context_sidecar(context_root, context_fields, base_keys)
+    mark_stage("load_context_sidecar_done", loaded_fields=len(context_meta.get("loaded_fields", [])))
+    mark_stage("load_event_sidecar_begin", field_count=len(event_fields))
     event_panel_df, event_meta = _load_event_sidecar(event_panel, event_fields, base_keys)
+    mark_stage("load_event_sidecar_done", loaded_fields=len(event_meta.get("loaded_fields", [])))
+    mark_stage("load_cap_sidecar_begin", field_count=len(cap_fields))
     cap_panel, cap_meta = _load_cap_sidecar(hfq_root, hfq_2026, cap_fields, base_keys)
+    mark_stage("load_cap_sidecar_done", loaded_fields=len(cap_meta.get("loaded_fields", [])))
+    mark_stage("load_fulla_sidecar_begin", field_count=len(fulla_fields))
     fulla_panel, fulla_meta = _load_fulla_sidecar(fulla_root, fulla_fields, base_keys)
+    mark_stage("load_fulla_sidecar_done", loaded_fields=len(fulla_meta.get("loaded_fields", [])))
+    mark_stage("load_sentiment_sidecar_begin", field_count=len(sentiment_fields))
     sentiment_panel, sentiment_meta = _load_sentiment_sidecar(sentiment_root, sentiment_fields, base_keys)
+    mark_stage("load_sentiment_sidecar_done", loaded_fields=len(sentiment_meta.get("loaded_fields", [])))
 
     augmented = canary.copy()
     for sidecar in (context_panel, event_panel_df, cap_panel, fulla_panel, sentiment_panel):
@@ -821,6 +883,7 @@ def adapt(
             augmented = augmented.merge(sidecar[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
     augmented_path = output_root / "phase3ar_true_1min_sidecar_canary.parquet"
     augmented.to_parquet(augmented_path, index=False)
+    mark_stage("write_augmented_done", augmented_rows=len(augmented), augmented_columns=len(augmented.columns))
 
     available_fields = set(augmented.columns)
     pack_rows: dict[str, list[dict[str, Any]]] = {
@@ -892,6 +955,7 @@ def adapt(
         "packs": {},
     }
     if run_smoke:
+        mark_stage("expression_smoke_begin")
         smoke_frame = augmented
         original_trade_time_count = int(smoke_frame["trade_time"].nunique())
         if smoke_sample_trade_times > 0 and original_trade_time_count > smoke_sample_trade_times:
@@ -922,6 +986,7 @@ def adapt(
                 "error_count": len(errors),
                 "errors": errors[:50],
             }
+        mark_stage("expression_smoke_done")
 
     field_contract_rows: list[dict[str, Any]] = []
     for field, count in formula_fields.most_common():
@@ -1026,6 +1091,7 @@ def adapt(
     }
     _write_json(output_root / "phase3ar_sidecar_field_adapter_report.json", summary)
     _write_json(report_root / "phase3ar_sidecar_field_adapter_summary.json", summary)
+    mark_stage("complete", status_counts=status_counts)
     lines = [
         "# Phase3AR Sidecar Field Adapter",
         "",
