@@ -1,7 +1,7 @@
 {
   "summary": {
-    "attempt_count": 13,
-    "candidate_result_rows": 56524,
+    "attempt_count": 14,
+    "candidate_result_rows": 60872,
     "completed_shards": [
       "shard_00",
       "shard_01",
@@ -15,19 +15,20 @@
       "shard_09",
       "shard_10",
       "shard_11",
-      "shard_12"
+      "shard_12",
+      "shard_13"
     ],
-    "created_at": "2026-06-11T15:50:37.105124+00:00",
+    "created_at": "2026-06-11T16:17:59.789365+00:00",
     "decision": "PHASE3AU_TRUE1MIN_SHARDS_AGGREGATED_HOLD_RESEARCH",
-    "fresh_result_rows": 4160,
+    "fresh_result_rows": 4480,
     "fresh_top_count": 296,
     "hard_rules": [
       "true 1min means actual trade_time cross-section",
       "memory_hit rows are separated from fresh rows",
       "aggregate is not alpha proof and cannot modify X0/R3"
     ],
-    "memory_hit_result_rows": 52364,
-    "memory_top_count": 3523,
+    "memory_hit_result_rows": 56392,
+    "memory_top_count": 3524,
     "paths": {
       "attempt_status_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3au_company_full_true1min_sharded_20260611\\phase3au_true1min_shard_attempt_status.csv",
       "fresh_top_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3au_company_full_true1min_sharded_20260611\\phase3au_true1min_shard_fresh_top.csv",
