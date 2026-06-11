@@ -2,11 +2,11 @@
 
 decision: `PHASE3AU_TRUE1MIN_SHARDS_AGGREGATED_HOLD_RESEARCH`
 
-- generated_at: `2026-06-11T09:27:47.799702+00:00`
+- generated_at: `2026-06-11T10:11:10.977427+00:00`
 - version: `phase3au-shard-aggregate-v1-2026-06-11`
-- completed shards: `['shard_00', 'shard_01']`
-- attempt count: `2`
-- candidate rows: `8696`
+- completed shards: `['shard_00', 'shard_01', 'shard_02']`
+- attempt count: `3`
+- candidate rows: `13044`
 - unique candidates: `1087`
 - unique expressions: `1075`
 - robust min ic_count: `20`
@@ -21,51 +21,51 @@ decision: `PHASE3AU_TRUE1MIN_SHARDS_AGGREGATED_HOLD_RESEARCH`
 
 | rank | candidate | horizon | shards | mean abs IC | fields |
 |---:|---|---:|---:|---:|---|
-| 1 | `cn_flow_liq_v1_capacity_normalized_flow_0087` | 30 | 2 | 0.135180 | `amount|final_float_market_cap` |
-| 2 | `cn_flow_liq_v1_capacity_normalized_flow_0085` | 30 | 2 | 0.132960 | `amount|final_float_market_cap` |
-| 3 | `cn_flow_liq_v1_capacity_normalized_flow_0083` | 30 | 2 | 0.129753 | `amount|final_float_market_cap` |
-| 4 | `cn_underutil_v1_capacity_normalized_activity_0121` | 30 | 2 | 0.129243 | `amount|final_total_market_cap` |
-| 5 | `cn_flow_liq_v1_capacity_residual_flow_0086` | 30 | 2 | 0.128166 | `amount|final_float_market_cap` |
-| 6 | `cn_flow_liq_v1_capacity_normalized_flow_0087` | 15 | 2 | 0.126894 | `amount|final_float_market_cap` |
-| 7 | `cn_flow_liq_v1_capacity_normalized_flow_0081` | 30 | 2 | 0.126273 | `amount|final_float_market_cap` |
-| 8 | `cn_underutil_v1_capacity_normalized_activity_0119` | 30 | 2 | 0.126187 | `amount|final_total_market_cap` |
-| 9 | `cn_flow_liq_v1_capacity_normalized_flow_0085` | 15 | 2 | 0.124351 | `amount|final_float_market_cap` |
-| 10 | `cn_underutil_v1_capacity_residual_activity_0120` | 30 | 2 | 0.123242 | `amount|final_total_market_cap` |
-| 11 | `phase3ae_brepair_v1_00358` | 30 | 2 | 0.122547 | `ctx_holder_close_price` |
-| 12 | `cn_flow_liq_v1_capacity_residual_flow_0082` | 30 | 2 | 0.122411 | `amount|final_float_market_cap` |
-| 13 | `cn_flow_liq_v1_capacity_normalized_flow_0083` | 15 | 2 | 0.122353 | `amount|final_float_market_cap` |
-| 14 | `cn_flow_liq_v1_capacity_residual_flow_0086` | 15 | 2 | 0.121211 | `amount|final_float_market_cap` |
-| 15 | `cn_underutil_v1_capacity_normalized_activity_0121` | 15 | 2 | 0.120757 | `amount|final_total_market_cap` |
-| 16 | `cn_flow_liq_v1_capacity_normalized_flow_0081` | 15 | 2 | 0.119677 | `amount|final_float_market_cap` |
-| 17 | `cn_underutil_v1_capacity_normalized_activity_0119` | 15 | 2 | 0.118932 | `amount|final_total_market_cap` |
-| 18 | `phase3ae_brepair_v1_00372` | 30 | 2 | 0.118683 | `ctx_fund_cf_total_operate_inflow` |
-| 19 | `phase3ae_brepair_v1_00373` | 30 | 2 | 0.118683 | `ctx_fund_cf_total_operate_inflow` |
-| 20 | `cn_underutil_v1_capacity_residual_activity_0120` | 15 | 2 | 0.117052 | `amount|final_total_market_cap` |
+| 1 | `cn_flow_liq_v1_capacity_normalized_flow_0087` | 30 | 3 | 0.136962 | `amount|final_float_market_cap` |
+| 2 | `cn_flow_liq_v1_capacity_normalized_flow_0085` | 30 | 3 | 0.134468 | `amount|final_float_market_cap` |
+| 3 | `cn_flow_liq_v1_capacity_normalized_flow_0083` | 30 | 3 | 0.130894 | `amount|final_float_market_cap` |
+| 4 | `cn_underutil_v1_capacity_normalized_activity_0121` | 30 | 3 | 0.129913 | `amount|final_total_market_cap` |
+| 5 | `cn_flow_liq_v1_capacity_normalized_flow_0087` | 15 | 3 | 0.128169 | `amount|final_float_market_cap` |
+| 6 | `cn_flow_liq_v1_capacity_residual_flow_0086` | 30 | 3 | 0.128114 | `amount|final_float_market_cap` |
+| 7 | `cn_flow_liq_v1_capacity_normalized_flow_0081` | 30 | 3 | 0.127345 | `amount|final_float_market_cap` |
+| 8 | `cn_underutil_v1_capacity_normalized_activity_0119` | 30 | 3 | 0.126653 | `amount|final_total_market_cap` |
+| 9 | `phase3ae_brepair_v1_00358` | 30 | 3 | 0.126438 | `ctx_holder_close_price` |
+| 10 | `cn_flow_liq_v1_capacity_normalized_flow_0085` | 15 | 3 | 0.125638 | `amount|final_float_market_cap` |
+| 11 | `cn_flow_liq_v1_capacity_normalized_flow_0083` | 15 | 3 | 0.123390 | `amount|final_float_market_cap` |
+| 12 | `cn_underutil_v1_capacity_residual_activity_0120` | 30 | 3 | 0.122912 | `amount|final_total_market_cap` |
+| 13 | `cn_flow_liq_v1_capacity_residual_flow_0082` | 30 | 3 | 0.122544 | `amount|final_float_market_cap` |
+| 14 | `phase3ae_brepair_v1_00372` | 30 | 3 | 0.122158 | `ctx_fund_cf_total_operate_inflow` |
+| 15 | `phase3ae_brepair_v1_00373` | 30 | 3 | 0.122158 | `ctx_fund_cf_total_operate_inflow` |
+| 16 | `cn_underutil_v1_capacity_normalized_activity_0121` | 15 | 3 | 0.121378 | `amount|final_total_market_cap` |
+| 17 | `cn_flow_liq_v1_capacity_residual_flow_0086` | 15 | 3 | 0.120536 | `amount|final_float_market_cap` |
+| 18 | `cn_flow_liq_v1_capacity_normalized_flow_0081` | 15 | 3 | 0.120396 | `amount|final_float_market_cap` |
+| 19 | `cn_underutil_v1_capacity_normalized_activity_0119` | 15 | 3 | 0.119442 | `amount|final_total_market_cap` |
+| 20 | `phase3ae_brepair_v1_00376` | 30 | 3 | 0.118098 | `ctx_fund_cf_total_operate_outflow` |
 
 ## Memory-Hit Robust Top
 
 | rank | candidate | horizon | shards | mean abs IC | fields |
 |---:|---|---:|---:|---:|---|
-| 1 | `phase3ae_brepair_v1_00032` | 1 | 2 | 0.671003 | `evt_limit_fengdan_rate_last_by_1130` |
-| 2 | `phase3ae_brepair_v1_00074` | 1 | 2 | 0.671003 | `evt_limit_fengdan_money_last_by_1130` |
-| 3 | `phase3ae_brepair_v1_00030` | 1 | 2 | 0.655529 | `evt_limit_fengdan_rate_last_by_1130` |
-| 4 | `phase3ae_brepair_v1_00080` | 1 | 2 | 0.655529 | `evt_limit_fengdan_money_last_by_1130` |
-| 5 | `phase3ae_brepair_v1_00024` | 1 | 2 | 0.650833 | `evt_limit_fengdan_rate_last_by_1000` |
-| 6 | `phase3ae_brepair_v1_00062` | 1 | 2 | 0.650833 | `evt_limit_fengdan_money_last_by_1000` |
-| 7 | `phase3ae_brepair_v1_00022` | 1 | 2 | 0.650362 | `evt_limit_fengdan_rate_last_by_1000` |
-| 8 | `phase3ae_brepair_v1_00068` | 1 | 2 | 0.650362 | `evt_limit_fengdan_money_last_by_1000` |
-| 9 | `phase3ae_brepair_v1_00064` | 1 | 2 | 0.647303 | `evt_limit_fengdan_money_last_by_1000` |
-| 10 | `phase3ae_brepair_v1_00022` | 5 | 2 | 0.612040 | `evt_limit_fengdan_rate_last_by_1000` |
-| 11 | `phase3ae_brepair_v1_00068` | 5 | 2 | 0.612040 | `evt_limit_fengdan_money_last_by_1000` |
-| 12 | `phase3ae_brepair_v1_00024` | 5 | 2 | 0.609426 | `evt_limit_fengdan_rate_last_by_1000` |
-| 13 | `phase3ae_brepair_v1_00062` | 5 | 2 | 0.609426 | `evt_limit_fengdan_money_last_by_1000` |
-| 14 | `phase3ae_brepair_v1_00032` | 5 | 2 | 0.592894 | `evt_limit_fengdan_rate_last_by_1130` |
-| 15 | `phase3ae_brepair_v1_00074` | 5 | 2 | 0.592894 | `evt_limit_fengdan_money_last_by_1130` |
-| 16 | `phase3ae_brepair_v1_00024` | 30 | 2 | 0.570865 | `evt_limit_fengdan_rate_last_by_1000` |
-| 17 | `phase3ae_brepair_v1_00062` | 30 | 2 | 0.570865 | `evt_limit_fengdan_money_last_by_1000` |
-| 18 | `phase3ae_brepair_v1_00030` | 5 | 2 | 0.570701 | `evt_limit_fengdan_rate_last_by_1130` |
-| 19 | `phase3ae_brepair_v1_00080` | 5 | 2 | 0.570701 | `evt_limit_fengdan_money_last_by_1130` |
-| 20 | `phase3ae_brepair_v1_00013` | 15 | 2 | 0.559906 | `evt_limit_fengdan_rate_last_by_0935` |
+| 1 | `phase3ae_brepair_v1_00030` | 1 | 3 | 0.693455 | `evt_limit_fengdan_rate_last_by_1130` |
+| 2 | `phase3ae_brepair_v1_00080` | 1 | 3 | 0.693455 | `evt_limit_fengdan_money_last_by_1130` |
+| 3 | `phase3ae_brepair_v1_00032` | 1 | 3 | 0.692087 | `evt_limit_fengdan_rate_last_by_1130` |
+| 4 | `phase3ae_brepair_v1_00074` | 1 | 3 | 0.692087 | `evt_limit_fengdan_money_last_by_1130` |
+| 5 | `phase3ae_brepair_v1_00030` | 5 | 3 | 0.605422 | `evt_limit_fengdan_rate_last_by_1130` |
+| 6 | `phase3ae_brepair_v1_00080` | 5 | 3 | 0.605422 | `evt_limit_fengdan_money_last_by_1130` |
+| 7 | `phase3ae_brepair_v1_00030` | 15 | 3 | 0.580972 | `evt_limit_fengdan_rate_last_by_1130` |
+| 8 | `phase3ae_brepair_v1_00080` | 15 | 3 | 0.580972 | `evt_limit_fengdan_money_last_by_1130` |
+| 9 | `phase3ae_brepair_v1_00032` | 15 | 3 | 0.543471 | `evt_limit_fengdan_rate_last_by_1130` |
+| 10 | `phase3ae_brepair_v1_00074` | 15 | 3 | 0.543471 | `evt_limit_fengdan_money_last_by_1130` |
+| 11 | `phase3ae_brepair_v1_00010` | 15 | 3 | 0.529589 | `evt_limit_fengdan_rate_last_by_0935` |
+| 12 | `phase3ae_brepair_v1_00009` | 15 | 3 | 0.529589 | `evt_limit_fengdan_rate_last_by_0935` |
+| 13 | `phase3ae_brepair_v1_00011` | 15 | 3 | 0.529589 | `evt_limit_fengdan_rate_last_by_0935` |
+| 14 | `phase3ae_brepair_v1_00012` | 15 | 3 | 0.529589 | `evt_limit_fengdan_rate_last_by_0935` |
+| 15 | `phase3ae_brepair_v1_00013` | 15 | 3 | 0.527329 | `evt_limit_fengdan_rate_last_by_0935` |
+| 16 | `phase3ae_brepair_v1_00009` | 30 | 3 | 0.511199 | `evt_limit_fengdan_rate_last_by_0935` |
+| 17 | `phase3ae_brepair_v1_00011` | 30 | 3 | 0.511199 | `evt_limit_fengdan_rate_last_by_0935` |
+| 18 | `phase3ae_brepair_v1_00012` | 30 | 3 | 0.511199 | `evt_limit_fengdan_rate_last_by_0935` |
+| 19 | `phase3ae_brepair_v1_00010` | 30 | 3 | 0.511199 | `evt_limit_fengdan_rate_last_by_0935` |
+| 20 | `phase3ae_brepair_v1_00075` | 30 | 3 | 0.498405 | `evt_limit_fengdan_money_last_by_1130` |
 
 ## Outputs
 
