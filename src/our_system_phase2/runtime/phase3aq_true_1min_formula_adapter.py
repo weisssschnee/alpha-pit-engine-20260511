@@ -234,16 +234,16 @@ def _source_files(
 
 
 def _infer_vwap(amount: pd.Series, volume: pd.Series, close: pd.Series) -> tuple[pd.Series, dict[str, Any]]:
-    amount_num = pd.to_numeric(amount, errors="coerce")
-    volume_num = pd.to_numeric(volume, errors="coerce")
-    close_num = pd.to_numeric(close, errors="coerce")
+    amount_num = pd.to_numeric(amount, errors="coerce").astype("float32")
+    volume_num = pd.to_numeric(volume, errors="coerce").astype("float32")
+    close_num = pd.to_numeric(close, errors="coerce").astype("float32")
     raw = amount_num / volume_num.replace(0, np.nan)
     scaled100 = amount_num / (volume_num.replace(0, np.nan) * 100.0)
     raw_error = (raw / close_num.replace(0, np.nan) - 1.0).abs().replace([np.inf, -np.inf], np.nan).median()
     scaled_error = (scaled100 / close_num.replace(0, np.nan) - 1.0).abs().replace([np.inf, -np.inf], np.nan).median()
     use_scale = 100.0 if pd.notna(scaled_error) and (pd.isna(raw_error) or scaled_error < raw_error) else 1.0
     vwap = amount_num / (volume_num.replace(0, np.nan) * use_scale)
-    return vwap, {
+    return vwap.astype("float32"), {
         "volume_scale_used_for_vwap": use_scale,
         "median_abs_ratio_error_scale1": None if pd.isna(raw_error) else float(raw_error),
         "median_abs_ratio_error_scale100": None if pd.isna(scaled_error) else float(scaled_error),
@@ -251,7 +251,6 @@ def _infer_vwap(amount: pd.Series, volume: pd.Series, close: pd.Series) -> tuple
 
 
 def _add_opening_window_features(frame: pd.DataFrame, windows: tuple[int, ...] = (5, 15, 30)) -> pd.DataFrame:
-    frame = frame.sort_values(["code", "trade_time"]).copy()
     frame["_bar_index"] = frame.groupby(["code", "exec_date"], sort=False).cumcount() + 1
     grouped = frame.groupby(["code", "exec_date"], sort=False)
     for window in windows:
@@ -273,8 +272,10 @@ def _add_opening_window_features(frame: pd.DataFrame, windows: tuple[int, ...] =
         agg[f"{prefix}_last_return_vs_open"] = agg[f"{prefix}_last_close"] / agg["_open_for_window"].replace(0, np.nan) - 1.0
         agg[f"{prefix}_range"] = agg[f"{prefix}_high"] / agg[f"{prefix}_low"].replace(0, np.nan) - 1.0
         agg = agg.drop(columns=["_open_for_window"]).reset_index()
-        frame = frame.merge(agg, on=["code", "exec_date"], how="left")
         feature_cols = [col for col in agg.columns if col not in {"code", "exec_date"}]
+        for col in feature_cols:
+            agg[col] = pd.to_numeric(agg[col], errors="coerce").astype("float32")
+        frame = frame.merge(agg, on=["code", "exec_date"], how="left")
         mask_unavailable = frame["_bar_index"] < window
         frame.loc[mask_unavailable, feature_cols] = np.nan
     return frame.drop(columns=["_bar_index"])
@@ -301,19 +302,25 @@ def _normalize_raw_minute(files: list[Path]) -> tuple[pd.DataFrame, dict[str, An
     frame["exec_date"] = frame["trade_time"].dt.date.astype(str)
     frame["date"] = frame["trade_time"]
     frame["signal_time"] = frame["trade_time"]
-    frame["volume"] = pd.to_numeric(frame["vol"], errors="coerce")
-    frame["amount"] = pd.to_numeric(frame["amount"], errors="coerce")
+    frame["volume"] = pd.to_numeric(frame["vol"], errors="coerce").astype("float32")
+    frame["amount"] = pd.to_numeric(frame["amount"], errors="coerce").astype("float32")
     frame["amount_yuan"] = frame["amount"]
     for col in ["open", "high", "low", "close"]:
-        frame[col] = pd.to_numeric(frame[col], errors="coerce")
+        frame[col] = pd.to_numeric(frame[col], errors="coerce").astype("float32")
+    for col in ["pct_chg", "pre_close"]:
+        if col in frame.columns:
+            frame[col] = pd.to_numeric(frame[col], errors="coerce").astype("float32")
     frame["vwap"], vwap_report = _infer_vwap(frame["amount"], frame["volume"], frame["close"])
     frame = frame.sort_values(["code", "trade_time"]).reset_index(drop=True)
-    frame["ret_1m"] = frame.groupby("code", sort=False)["close"].pct_change()
+    frame["ret_1m"] = frame.groupby("code", sort=False)["close"].pct_change().astype("float32")
     if "pre_close" in frame.columns:
         first_mask = frame.groupby(["code", "exec_date"], sort=False).cumcount() == 0
-        pre_close = pd.to_numeric(frame["pre_close"], errors="coerce")
+        pre_close = pd.to_numeric(frame["pre_close"], errors="coerce").astype("float32")
         frame.loc[first_mask, "ret_1m"] = frame.loc[first_mask, "close"] / pre_close.loc[first_mask].replace(0, np.nan) - 1.0
-    frame["intraday_ret_from_open"] = frame["close"] / frame.groupby(["code", "exec_date"], sort=False)["open"].transform("first").replace(0, np.nan) - 1.0
+    frame["ret_1m"] = frame["ret_1m"].astype("float32")
+    frame["intraday_ret_from_open"] = (
+        frame["close"] / frame.groupby(["code", "exec_date"], sort=False)["open"].transform("first").replace(0, np.nan) - 1.0
+    ).astype("float32")
     frame["dataset_route_id"] = "phase3aq_true_1min_trade_time_v1"
     frame["label_horizon"] = "not_materialized_adapter_contract_only"
     frame = _add_opening_window_features(frame)
