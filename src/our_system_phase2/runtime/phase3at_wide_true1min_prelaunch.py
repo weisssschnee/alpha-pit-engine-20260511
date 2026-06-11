@@ -60,6 +60,8 @@ def run_prelaunch(
     years: list[int],
     max_files: int,
     source_selection: str,
+    shard_count: int,
+    shard_index: int,
     as_sample_trade_times: int,
     as_robust_min_ic_count: int,
     run_ar_smoke: bool,
@@ -95,6 +97,8 @@ def run_prelaunch(
         "years": years,
         "max_files": max_files,
         "source_selection": source_selection,
+        "shard_count": shard_count,
+        "shard_index": shard_index,
         "official_stats_allowed": False,
         "uses_x0_official": "read_only",
         "modifies_x0": False,
@@ -138,6 +142,8 @@ def run_prelaunch(
         max_files=max_files,
         materialize_canary=True,
         source_selection=source_selection,
+        shard_count=shard_count,
+        shard_index=shard_index,
     )
     panel_path = Path(str(aq_summary["canary"]["panel_path"]))
     aq_contract = aq_root / "phase3aq_true_1min_field_contract.csv"
@@ -254,6 +260,8 @@ def main() -> int:
     parser.add_argument("--years", default="2025")
     parser.add_argument("--max-files", type=int, default=240)
     parser.add_argument("--source-selection", choices=["first", "stride"], default="stride")
+    parser.add_argument("--shard-count", type=int, default=1)
+    parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--as-sample-trade-times", type=int, default=2400)
     parser.add_argument("--as-robust-min-ic-count", type=int, default=300)
     parser.add_argument("--run-ar-smoke", action="store_true")
@@ -266,6 +274,8 @@ def main() -> int:
         years=[int(item.strip()) for item in args.years.split(",") if item.strip()],
         max_files=args.max_files,
         source_selection=args.source_selection,
+        shard_count=args.shard_count,
+        shard_index=args.shard_index,
         as_sample_trade_times=args.as_sample_trade_times,
         as_robust_min_ic_count=args.as_robust_min_ic_count,
         run_ar_smoke=args.run_ar_smoke,

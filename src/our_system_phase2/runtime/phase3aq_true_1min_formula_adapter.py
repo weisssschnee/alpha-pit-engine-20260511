@@ -204,6 +204,14 @@ def _select_files(files: list[Path], max_files: int, source_selection: str) -> l
     return files[:max_files]
 
 
+def _shard_files(files: list[Path], shard_count: int, shard_index: int) -> list[Path]:
+    if shard_count <= 1:
+        return files
+    if shard_index < 0 or shard_index >= shard_count:
+        raise ValueError(f"shard_index must be in [0, {shard_count - 1}], got {shard_index}")
+    return [path for index, path in enumerate(files) if index % shard_count == shard_index]
+
+
 def _source_files(
     raw_2023_2025: Path,
     raw_2026: Path,
@@ -211,6 +219,8 @@ def _source_files(
     years: list[int],
     max_files: int,
     source_selection: str = "first",
+    shard_count: int = 1,
+    shard_index: int = 0,
 ) -> list[Path]:
     files: list[Path] = []
     for year in years:
@@ -219,6 +229,7 @@ def _source_files(
             files.extend(sorted(root.glob("code=*/part.parquet")))
         else:
             files.extend(sorted(raw_2026.glob("date=*.parquet")))
+    files = _shard_files(files, shard_count=shard_count, shard_index=shard_index)
     return _select_files(files, max_files, source_selection)
 
 
@@ -355,6 +366,8 @@ def build_adapter(
     max_files: int,
     materialize_canary: bool,
     source_selection: str = "first",
+    shard_count: int = 1,
+    shard_index: int = 0,
 ) -> dict[str, Any]:
     output_root = _resolve(output_root)
     raw_2023_2025 = _resolve(raw_2023_2025)
@@ -389,11 +402,21 @@ def build_adapter(
 
     canary_report: dict[str, Any] = {"materialized": False}
     if materialize_canary:
-        files = _source_files(raw_2023_2025, raw_2026, years=years, max_files=max_files, source_selection=source_selection)
+        files = _source_files(
+            raw_2023_2025,
+            raw_2026,
+            years=years,
+            max_files=max_files,
+            source_selection=source_selection,
+            shard_count=shard_count,
+            shard_index=shard_index,
+        )
         panel, panel_report = _normalize_raw_minute(files)
         canary_report = {
             "materialized": True,
             "source_selection": source_selection,
+            "shard_count": shard_count,
+            "shard_index": shard_index,
             "source_file_count": len(files),
             "source_files": [str(path) for path in files[:20]],
             **panel_report,
@@ -467,6 +490,8 @@ def main() -> int:
     parser.add_argument("--years", default="2025,2026")
     parser.add_argument("--max-files", type=int, default=12)
     parser.add_argument("--source-selection", choices=["first", "stride"], default="first")
+    parser.add_argument("--shard-count", type=int, default=1)
+    parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--materialize-canary", action="store_true")
     args = parser.parse_args()
     years = [int(item.strip()) for item in args.years.split(",") if item.strip()]
@@ -478,6 +503,8 @@ def main() -> int:
         max_files=args.max_files,
         materialize_canary=args.materialize_canary,
         source_selection=args.source_selection,
+        shard_count=args.shard_count,
+        shard_index=args.shard_index,
     )
     print(
         json.dumps(
