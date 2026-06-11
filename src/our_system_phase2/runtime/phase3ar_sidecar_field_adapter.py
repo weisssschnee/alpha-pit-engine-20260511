@@ -330,12 +330,14 @@ def _load_context_sidecar(root: Path, fields: set[str], canary_keys: pd.DataFram
     context = context[context["code"].isin(_canary_codes(canary_keys))]
     context = context.drop(columns=["date"], errors="ignore")
     daily = _daily_keys(base).merge(context, on=["exec_date", "code"], how="left")
-    out = _expand_daily_sidecar(base, daily)
-    if len(out) != len(base):
-        raise RuntimeError("context sidecar join changed row count")
-    return out, {
+    daily = daily.drop(columns=["_exec_dt"], errors="ignore").drop_duplicates(subset=["code", "exec_date"], keep="last")
+    value_cols = [col for col in daily.columns if col not in {"code", "exec_date"}]
+    for col in value_cols:
+        daily[col] = pd.to_numeric(daily[col], errors="coerce").astype("float32")
+    return daily, {
         "loaded_fields": [field for field in fields if field in context.columns],
         "source_paths": [str(path) for path in paths],
+        "grain": "code_exec_date_daily_sidecar",
     }
 
 
@@ -423,8 +425,16 @@ def _load_cap_sidecar(
             )
         chunks.append(chunk)
     daily_out = pd.concat(chunks, ignore_index=True).sort_index()
-    out = _expand_daily_sidecar(base, daily_out)
-    return out, {"loaded_fields": [field for field in fields if field in out.columns], "source_paths": [str(path) for path in paths]}
+    out_daily = daily_out[["code", "exec_date", *sorted(field for field in fields if field in daily_out.columns)]]
+    out_daily = out_daily.drop_duplicates(subset=["code", "exec_date"], keep="last")
+    value_cols = [col for col in out_daily.columns if col not in {"code", "exec_date"}]
+    for col in value_cols:
+        out_daily[col] = pd.to_numeric(out_daily[col], errors="coerce").astype("float32")
+    return out_daily, {
+        "loaded_fields": [field for field in fields if field in out_daily.columns],
+        "source_paths": [str(path) for path in paths],
+        "grain": "code_exec_date_daily_sidecar",
+    }
 
 
 def _fulla_source_candidates(raw_name: str) -> list[str]:
@@ -579,12 +589,15 @@ def _load_fulla_sidecar(
         add_cols = [col for col in dataset_panel.columns if col not in {"code", "exec_date"} and col not in out_daily.columns]
         if add_cols:
             out_daily = out_daily.merge(dataset_panel[["code", "exec_date", *add_cols]], on=["code", "exec_date"], how="left")
-    out = _expand_daily_sidecar(canary_keys, out_daily)
-    return out, {
+    value_cols = [col for col in out_daily.columns if col not in {"code", "exec_date"}]
+    for col in value_cols:
+        out_daily[col] = pd.to_numeric(out_daily[col], errors="coerce").astype("float32")
+    return out_daily, {
         "loaded_fields": sorted(loaded_fields),
         "source_paths": sorted(set(source_paths)),
         "missing_fields": sorted(missing_fields),
         "pit_rule": "NOTICE_DATE previous available day; exact same exec_date is not used",
+        "grain": "code_exec_date_daily_sidecar",
     }
 
 
@@ -624,6 +637,13 @@ def _load_stock_daily_context(path: Path, date_col: str, code_col: str, field_ma
 def _merge_previous_daily(base: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFrame:
     if daily.empty:
         return base.copy()
+    out_daily = _merge_previous_daily_to_daily(base, daily)
+    return _expand_daily_sidecar(base, out_daily)
+
+
+def _merge_previous_daily_to_daily(base: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFrame:
+    if daily.empty:
+        return _daily_keys(base).drop(columns=["_exec_dt"], errors="ignore")
     out_chunks: list[pd.DataFrame] = []
     left_base = _daily_keys(base)
     fields = [col for col in daily.columns if col not in {"code", "source_date"}]
@@ -656,7 +676,7 @@ def _merge_previous_daily(base: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFra
                 )
             )
     out_daily = pd.concat(out_chunks, ignore_index=True)
-    return _expand_daily_sidecar(base, out_daily)
+    return out_daily[["code", "exec_date", *fields]].drop_duplicates(subset=["code", "exec_date"], keep="last")
 
 
 def _load_sentiment_sidecar(
@@ -704,16 +724,20 @@ def _load_sentiment_sidecar(
         loaded_fields.update([field for field in uplimit_lag_map if field in uplimit_lag.columns])
         source_paths.append(str(sentiment_root / "uplimit_stocks.parquet"))
 
-    out = base
+    out = _daily_keys(base).drop(columns=["_exec_dt"], errors="ignore")
     for panel in panels:
-        next_out = _merge_previous_daily(base, panel)
-        add_cols = [col for col in next_out.columns if col not in {"code", "exec_date", "trade_time"} and col not in out.columns]
+        next_out = _merge_previous_daily_to_daily(base, panel)
+        add_cols = [col for col in next_out.columns if col not in {"code", "exec_date"} and col not in out.columns]
         if add_cols:
-            out = out.merge(next_out[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
+            out = out.merge(next_out[["code", "exec_date", *add_cols]], on=["code", "exec_date"], how="left")
+    value_cols = [col for col in out.columns if col not in {"code", "exec_date"}]
+    for col in value_cols:
+        out[col] = pd.to_numeric(out[col], errors="coerce").astype("float32")
     return out, {
         "loaded_fields": sorted(loaded_fields),
         "source_paths": sorted(set(source_paths)),
         "lag_rule": "previous available daily row; exact same exec_date is not used",
+        "grain": "code_exec_date_daily_sidecar",
     }
 
 
@@ -791,6 +815,7 @@ def adapt(
     run_smoke: bool,
     smoke_max_per_pack: int,
     smoke_sample_trade_times: int,
+    write_augmented_panel: bool = True,
 ) -> dict[str, Any]:
     canary_panel = _resolve(canary_panel)
     blocked_rows_path = _resolve(blocked_rows_path)
@@ -823,7 +848,40 @@ def adapt(
     context_contract = _contract_lookup(context_root / "field_contract.csv")
     event_contract = _contract_lookup(event_contract_path)
     mark_stage("read_contracts", blocked_candidate_count=len(blocked_rows))
-    canary = pd.read_parquet(canary_panel)
+
+    formula_fields: Counter[str] = Counter()
+    for row in blocked_rows:
+        for field in _fields(str(row.get("expression") or "")):
+            formula_fields[field] += 1
+
+    canary_schema = _schema_names(canary_panel)
+    if write_augmented_panel:
+        core_canary_cols = [
+            "code",
+            "date",
+            "exec_date",
+            "trade_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "vol",
+            "volume",
+            "amount",
+            "amount_yuan",
+        ]
+        direct_formula_cols = sorted(field for field in formula_fields if field in aq_contract and field in canary_schema)
+    else:
+        core_canary_cols = ["code", "exec_date", "trade_time"]
+        direct_formula_cols = []
+    canary_cols = [col for col in [*core_canary_cols, *direct_formula_cols] if col in canary_schema]
+    mark_stage(
+        "read_canary_begin",
+        canary_schema_columns=len(canary_schema),
+        canary_read_columns=len(canary_cols),
+        direct_formula_columns=len(direct_formula_cols),
+    )
+    canary = pd.read_parquet(canary_panel, columns=canary_cols)
     canary["exec_date"] = canary["exec_date"].astype(str)
     canary["code"] = canary["code"].map(_normalize_cn_code)
     canary["trade_time"] = pd.to_datetime(canary["trade_time"], errors="coerce")
@@ -831,14 +889,11 @@ def adapt(
     mark_stage(
         "read_canary",
         canary_rows=len(canary),
+        canary_columns=len(canary.columns),
         canary_codes=int(canary["code"].nunique()),
         trade_times=int(canary["trade_time"].nunique()),
     )
 
-    formula_fields: Counter[str] = Counter()
-    for row in blocked_rows:
-        for field in _fields(str(row.get("expression") or "")):
-            formula_fields[field] += 1
     context_fields = {field for field in formula_fields if field in context_contract and not field.startswith("ctx_fund_")}
     safe_context_fields = {
         field
@@ -876,16 +931,59 @@ def adapt(
     sentiment_panel, sentiment_meta = _load_sentiment_sidecar(sentiment_root, sentiment_fields, base_keys)
     mark_stage("load_sentiment_sidecar_done", loaded_fields=len(sentiment_meta.get("loaded_fields", [])))
 
-    augmented = canary.copy()
-    for sidecar in (context_panel, event_panel_df, cap_panel, fulla_panel, sentiment_panel):
-        add_cols = [col for col in sidecar.columns if col not in {"code", "exec_date", "trade_time"} and col not in augmented.columns]
-        if add_cols:
-            augmented = augmented.merge(sidecar[["code", "exec_date", "trade_time", *add_cols]], on=["code", "exec_date", "trade_time"], how="left")
-    augmented_path = output_root / "phase3ar_true_1min_sidecar_canary.parquet"
-    augmented.to_parquet(augmented_path, index=False)
-    mark_stage("write_augmented_done", augmented_rows=len(augmented), augmented_columns=len(augmented.columns))
+    sidecar_dir = output_root / "sidecars"
+    sidecar_dir.mkdir(parents=True, exist_ok=True)
+    sidecar_frames = {
+        "context": context_panel,
+        "event": event_panel_df,
+        "cap": cap_panel,
+        "fulla": fulla_panel,
+        "sentiment": sentiment_panel,
+    }
+    sidecar_outputs: dict[str, str] = {}
+    for name, frame in sidecar_frames.items():
+        path = sidecar_dir / f"phase3ar_{name}_sidecar.parquet"
+        frame.to_parquet(path, index=False)
+        sidecar_outputs[name] = str(path)
+    _write_json(
+        output_root / "phase3ar_sidecar_manifest.json",
+        {
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "canary_panel": str(canary_panel),
+            "write_augmented_panel": write_augmented_panel,
+            "sidecars": {
+                name: {
+                    "path": path,
+                    "rows": int(len(sidecar_frames[name])),
+                    "columns": list(sidecar_frames[name].columns),
+                    "grain": "code_exec_date_trade_time" if "trade_time" in sidecar_frames[name].columns else "code_exec_date",
+                }
+                for name, path in sidecar_outputs.items()
+            },
+        },
+    )
+    mark_stage("write_sidecars_done", sidecar_count=len(sidecar_outputs))
 
-    available_fields = set(augmented.columns)
+    augmented_path: Path | None = None
+    augmented: pd.DataFrame | None = None
+    if write_augmented_panel:
+        augmented = canary.copy()
+        for sidecar in sidecar_frames.values():
+            keys = ["code", "exec_date", "trade_time"] if "trade_time" in sidecar.columns else ["code", "exec_date"]
+            add_cols = [col for col in sidecar.columns if col not in set(keys) and col not in augmented.columns]
+            if add_cols:
+                compact_sidecar = sidecar[keys + add_cols].drop_duplicates(subset=keys, keep="last")
+                augmented = augmented.merge(compact_sidecar, on=keys, how="left")
+        augmented_path = output_root / "phase3ar_true_1min_sidecar_canary.parquet"
+        augmented.to_parquet(augmented_path, index=False)
+        mark_stage("write_augmented_done", augmented_rows=len(augmented), augmented_columns=len(augmented.columns))
+    else:
+        mark_stage("write_augmented_skipped", reason="no_augmented_panel_mode")
+
+    available_fields = set(canary.columns)
+    available_fields.update(field for field in aq_contract if field in canary_schema)
+    for sidecar in sidecar_frames.values():
+        available_fields.update(col for col in sidecar.columns if col not in {"code", "exec_date", "trade_time"})
     pack_rows: dict[str, list[dict[str, Any]]] = {
         "sidecar_context_formula": [],
         "event_state_cutoff_canary": [],
@@ -934,7 +1032,9 @@ def adapt(
         "sentiment_root": str(sentiment_root),
     }
     outputs = {
-        "augmented_canary_panel": str(augmented_path),
+        "augmented_canary_panel": "" if augmented_path is None else str(augmented_path),
+        "sidecar_manifest": str(output_root / "phase3ar_sidecar_manifest.json"),
+        **{f"{name}_sidecar": path for name, path in sidecar_outputs.items()},
         "sidecar_context_pack": str(output_root / "phase3ar_sidecar_context_formula_pack.json"),
         "event_state_pack": str(output_root / "phase3ar_event_state_cutoff_canary_pack.json"),
         "diagnostic_context_pack": str(output_root / "phase3ar_diagnostic_context_only_pack.json"),
@@ -949,12 +1049,14 @@ def adapt(
     _write_csv(Path(outputs["manifest"]), manifest_rows)
 
     smoke: dict[str, Any] = {
-        "enabled": run_smoke,
+        "enabled": bool(run_smoke and augmented is not None),
         "max_per_pack": smoke_max_per_pack,
         "sample_trade_times": smoke_sample_trade_times,
         "packs": {},
     }
-    if run_smoke:
+    if run_smoke and augmented is None:
+        smoke["skip_reason"] = "no_augmented_panel_mode"
+    if run_smoke and augmented is not None:
         mark_stage("expression_smoke_begin")
         smoke_frame = augmented
         original_trade_time_count = int(smoke_frame["trade_time"].nunique())
@@ -1038,16 +1140,34 @@ def adapt(
 
     coverage_rows: list[dict[str, Any]] = []
     for field, count in formula_fields.most_common():
-        if field in augmented.columns:
-            nonnull = int(augmented[field].notna().sum())
+        source_frame = None
+        for frame in [canary, *sidecar_frames.values()]:
+            if field in frame.columns:
+                source_frame = frame
+                break
+        if source_frame is not None:
+            nonnull = int(source_frame[field].notna().sum())
             coverage_rows.append(
                 {
                     "field_name": field,
                     "formula_reference_count": count,
                     "materialized": True,
                     "nonnull_rows": nonnull,
-                    "nonnull_rate": round(nonnull / len(augmented), 8) if len(augmented) else 0.0,
-                    "unique_nonnull": int(augmented[field].dropna().nunique()),
+                    "nonnull_rate": round(nonnull / len(source_frame), 8) if len(source_frame) else 0.0,
+                    "unique_nonnull": int(source_frame[field].dropna().nunique()),
+                    "coverage_grain": "code_exec_date_trade_time" if "trade_time" in source_frame.columns else "code_exec_date",
+                }
+            )
+        elif not write_augmented_panel and field in aq_contract and field in canary_schema:
+            coverage_rows.append(
+                {
+                    "field_name": field,
+                    "formula_reference_count": count,
+                    "materialized": True,
+                    "nonnull_rows": None,
+                    "nonnull_rate": None,
+                    "unique_nonnull": None,
+                    "coverage_grain": "schema_available_lazy_direct_1min",
                 }
             )
         else:
@@ -1059,6 +1179,7 @@ def adapt(
                     "nonnull_rows": 0,
                     "nonnull_rate": 0.0,
                     "unique_nonnull": 0,
+                    "coverage_grain": "",
                 }
             )
     _write_csv(report_root / "phase3ar_materialized_field_coverage.csv", coverage_rows)
@@ -1069,8 +1190,10 @@ def adapt(
         "decision": "PHASE3AR_SIDECAR_FIELDS_ATTACHED_FOR_TRUE_1MIN_CANARY",
         "input_blocked_candidate_count": len(blocked_rows),
         "status_counts": status_counts,
-        "augmented_panel_rows": int(len(augmented)),
-        "augmented_panel_columns": int(len(augmented.columns)),
+        "write_augmented_panel": write_augmented_panel,
+        "augmented_panel_rows": None if augmented is None else int(len(augmented)),
+        "augmented_panel_columns": None if augmented is None else int(len(augmented.columns)),
+        "sidecar_outputs": sidecar_outputs,
         "context_meta": context_meta,
         "event_meta": event_meta,
         "cap_meta": cap_meta,
@@ -1118,7 +1241,8 @@ def adapt(
             "",
             "## Outputs",
             "",
-            f"- augmented canary: `{outputs['augmented_canary_panel']}`",
+            f"- augmented canary: `{outputs['augmented_canary_panel'] or 'SKIPPED_NO_AUGMENTED_PANEL_MODE'}`",
+            f"- sidecar manifest: `{outputs['sidecar_manifest']}`",
             f"- context pack: `{outputs['sidecar_context_pack']}`",
             f"- event pack: `{outputs['event_state_pack']}`",
             f"- diagnostic pack: `{outputs['diagnostic_context_pack']}`",
@@ -1153,6 +1277,11 @@ def main() -> int:
     parser.add_argument("--run-smoke", action="store_true")
     parser.add_argument("--smoke-max-per-pack", type=int, default=24)
     parser.add_argument("--smoke-sample-trade-times", type=int, default=2400)
+    parser.add_argument(
+        "--no-augmented-panel",
+        action="store_true",
+        help="Write sidecar packs/manifests only and skip the memory-heavy combined 1min augmented parquet.",
+    )
     args = parser.parse_args()
     summary = adapt(
         canary_panel=args.canary_panel,
@@ -1170,6 +1299,7 @@ def main() -> int:
         run_smoke=args.run_smoke,
         smoke_max_per_pack=args.smoke_max_per_pack,
         smoke_sample_trade_times=args.smoke_sample_trade_times,
+        write_augmented_panel=not args.no_augmented_panel,
     )
     print(
         json.dumps(

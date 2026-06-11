@@ -310,6 +310,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run Phase3AT wide true-1min prelaunch: AQ stride panel, AR sidecars, and AS memory-tagged eval.",
     },
+    "phase3au-aq-shard-manifest": {
+        "module": "our_system_phase2.runtime.phase3au_aq_shard_manifest",
+        "diagnostic": False,
+        "description": "Manifest Phase3AU AQ-only true 1min shard outputs with counts, sizes, and quick hashes.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

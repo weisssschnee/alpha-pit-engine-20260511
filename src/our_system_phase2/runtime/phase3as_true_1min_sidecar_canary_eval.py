@@ -299,6 +299,63 @@ def _read_panel_columns(
     return pa.concat_tables(tables, promote_options="default").to_pandas()
 
 
+def _load_lazy_sidecars(
+    *,
+    frame: pd.DataFrame,
+    sidecar_manifest: Path | None,
+    needed_fields: set[str],
+) -> tuple[pd.DataFrame, dict[str, Any]]:
+    if sidecar_manifest is None:
+        return frame, {"enabled": False, "loaded_fields": [], "source_paths": []}
+    sidecar_manifest = _resolve(sidecar_manifest)
+    if not sidecar_manifest.exists():
+        return frame, {"enabled": False, "missing_manifest": str(sidecar_manifest), "loaded_fields": [], "source_paths": []}
+    payload = _read_json(sidecar_manifest)
+    sidecars = payload.get("sidecars") if isinstance(payload, dict) else {}
+    if not isinstance(sidecars, dict):
+        return frame, {"enabled": False, "bad_manifest": str(sidecar_manifest), "loaded_fields": [], "source_paths": []}
+
+    out = frame.copy()
+    loaded_fields: set[str] = set()
+    source_paths: list[str] = []
+    for name, meta in sidecars.items():
+        if not isinstance(meta, dict):
+            continue
+        path_text = str(meta.get("path") or "")
+        if not path_text:
+            continue
+        path = _resolve(Path(path_text))
+        if not path.exists():
+            continue
+        schema = set(pq.ParquetFile(path).schema_arrow.names)
+        keys = ["code", "exec_date", "trade_time"] if "trade_time" in schema else ["code", "exec_date"]
+        fields = sorted((needed_fields - set(out.columns)) & (schema - set(keys)))
+        if not fields:
+            continue
+        cols = [col for col in [*keys, *fields] if col in schema]
+        if "trade_time" in schema and "trade_time" in out.columns:
+            trade_times = pd.to_datetime(out["trade_time"], errors="coerce").dropna().drop_duplicates().sort_values().tolist()
+            table = pq.read_table(path, columns=cols, filters=[("trade_time", "in", trade_times)])
+            sidecar = table.to_pandas()
+        else:
+            sidecar = pd.read_parquet(path, columns=cols)
+        if "code" in sidecar.columns:
+            sidecar["code"] = sidecar["code"].astype(str)
+        sidecar["exec_date"] = sidecar["exec_date"].astype(str)
+        if "trade_time" in sidecar.columns:
+            sidecar["trade_time"] = pd.to_datetime(sidecar["trade_time"], errors="coerce")
+        sidecar = sidecar.drop_duplicates(subset=keys, keep="last")
+        out = out.merge(sidecar[keys + fields], on=keys, how="left")
+        loaded_fields.update(fields)
+        source_paths.append(str(path))
+    return out, {
+        "enabled": True,
+        "manifest": str(sidecar_manifest),
+        "loaded_fields": sorted(loaded_fields),
+        "source_paths": source_paths,
+    }
+
+
 def evaluate(
     *,
     panel_path: Path,
@@ -312,6 +369,7 @@ def evaluate(
     memory_roots: list[Path],
     exclude_memory_hits: bool,
     robust_min_ic_count: int,
+    sidecar_manifest: Path | None = None,
 ) -> dict[str, Any]:
     panel_path = _resolve(panel_path)
     pack_root = _resolve(pack_root)
@@ -369,9 +427,17 @@ def evaluate(
         horizons=horizons,
     )
     frame = _read_panel_columns(panel_path, columns=read_columns, trade_times=signal_trade_times)
+    frame["code"] = frame["code"].astype(str)
     frame["date"] = pd.to_datetime(frame["date"], errors="coerce")
     frame["trade_time"] = pd.to_datetime(frame["trade_time"], errors="coerce")
+    if "exec_date" in frame.columns:
+        frame["exec_date"] = frame["exec_date"].astype(str)
     frame = frame.dropna(subset=["date", "trade_time", "code", "close"]).sort_values(["code", "trade_time"]).reset_index(drop=True)
+    frame, sidecar_meta = _load_lazy_sidecars(
+        frame=frame,
+        sidecar_manifest=sidecar_manifest,
+        needed_fields=expression_fields,
+    )
     if signal_trade_times is None or read_trade_times is None:
         label_frame = frame
         labels = _future_returns(label_frame, horizons)
@@ -497,6 +563,7 @@ def evaluate(
         "panel_schema_column_count": int(len(schema_columns)),
         "panel_read_column_count": int(len(read_columns)),
         "expression_field_count": int(len(expression_fields)),
+        "lazy_sidecar": sidecar_meta,
         "original_trade_time_count": original_trade_time_count,
         "signal_read_trade_time_count": int(frame["trade_time"].nunique()),
         "label_read_trade_time_count": label_read_trade_time_count,
@@ -565,6 +632,7 @@ def main() -> int:
     parser.add_argument("--memory-root", action="append", type=Path, default=[Path("runtime/search_memory")])
     parser.add_argument("--exclude-memory-hits", action="store_true")
     parser.add_argument("--robust-min-ic-count", type=int, default=50)
+    parser.add_argument("--sidecar-manifest", type=Path, default=None)
     args = parser.parse_args()
 
     horizons = tuple(int(item.strip()) for item in args.horizons.split(",") if item.strip())
@@ -580,6 +648,7 @@ def main() -> int:
         memory_roots=args.memory_root,
         exclude_memory_hits=args.exclude_memory_hits,
         robust_min_ic_count=args.robust_min_ic_count,
+        sidecar_manifest=args.sidecar_manifest,
     )
     return 0
 
