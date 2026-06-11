@@ -315,6 +315,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Manifest Phase3AU AQ-only true 1min shard outputs with counts, sizes, and quick hashes.",
     },
+    "phase3au-shard-aggregate": {
+        "module": "our_system_phase2.runtime.phase3au_shard_aggregate",
+        "diagnostic": False,
+        "description": "Aggregate Phase3AU true 1min shard AS outputs into fresh, memory-hit, and source-attribution reports.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
