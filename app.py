@@ -330,6 +330,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3AW direction-corrected capacity-flow packs from the Phase3AV true-1min aggregate.",
     },
+    "phase3ax-capacity-flow-refinement-pack": {
+        "module": "our_system_phase2.runtime.phase3ax_capacity_flow_refinement_pack",
+        "diagnostic": False,
+        "description": "Build Phase3AX refined true-1min capacity-flow packs from Phase3AV/AW aggregates.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

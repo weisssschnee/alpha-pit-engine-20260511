@@ -1,0 +1,24 @@
+{
+  "by_factor_lane": {
+    "ax_capacity_acceleration_residual": 24,
+    "ax_capacity_flow_x_price_momentum": 234,
+    "ax_capacity_residual_vs_price_momentum": 47,
+    "ax_inverse_capacity_flow_acceleration": 24,
+    "ax_inverse_capacity_flow_level": 21,
+    "ax_inverse_capacity_flow_volatility": 34
+  },
+  "candidate_count": 384,
+  "created_at": "2026-06-12T05:52:17.389990+00:00",
+  "decision": "PHASE3AX_CAPACITY_FLOW_REFINEMENT_PACK_READY",
+  "hard_rules": [
+    "research-only refinement",
+    "not an X0/R3 modification",
+    "must be evaluated on true trade_time 1min shards"
+  ],
+  "max_candidates": 384,
+  "outputs": {
+    "candidate_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ax_capacity_flow_refinement_pack_20260612\\phase3ax_capacity_flow_refinement_candidates.csv",
+    "context_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ax_capacity_flow_refinement_pack_20260612\\phase3ar_sidecar_context_formula_pack.json",
+    "pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ax_capacity_flow_refinement_pack_20260612"
+  }
+}
