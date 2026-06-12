@@ -1,0 +1,29 @@
+{
+  "by_factor_lane": {
+    "av_capacity_context_interaction": 162,
+    "av_capacity_context_residual": 162,
+    "av_capacity_flow_acceleration": 72,
+    "av_capacity_flow_impulse": 132,
+    "av_capacity_flow_volatility": 132,
+    "av_capacity_normalized_flow": 120,
+    "av_capacity_residual_flow": 120
+  },
+  "candidate_count": 900,
+  "created_at": "2026-06-12T00:25:46.011181+00:00",
+  "decision": "PHASE3AV_FRESH_NEIGHBOR_PACK_READY",
+  "hard_rules": [
+    "not a promotion object",
+    "not an X0/R3 modification",
+    "must be evaluated on true trade_time 1min shards",
+    "memory hits remain excluded from fresh interpretation downstream"
+  ],
+  "max_candidates": 900,
+  "min_ic_count": 400,
+  "min_shard_coverage": 12,
+  "outputs": {
+    "candidate_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3av_fresh_neighbor_pack_20260612\\phase3av_fresh_neighbor_candidates.csv",
+    "context_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3av_fresh_neighbor_pack_20260612\\phase3ar_sidecar_context_formula_pack.json",
+    "pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3av_fresh_neighbor_pack_20260612"
+  },
+  "seed_count": 268
+}

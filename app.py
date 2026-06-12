@@ -320,6 +320,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Aggregate Phase3AU true 1min shard AS outputs into fresh, memory-hit, and source-attribution reports.",
     },
+    "phase3av-fresh-neighbor-pack": {
+        "module": "our_system_phase2.runtime.phase3av_fresh_neighbor_pack",
+        "diagnostic": False,
+        "description": "Build Phase3AV fresh-neighborhood true-1min candidate packs from the Phase3AU full-shard aggregate.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
