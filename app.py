@@ -345,6 +345,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3AZ light broad true-1min microstructure packs.",
     },
+    "phase3ba-focused-minute-expansion-pack": {
+        "module": "our_system_phase2.runtime.phase3ba_focused_minute_expansion_pack",
+        "diagnostic": False,
+        "description": "Build Phase3BA focused true-1min expansion packs from AX/AZB/AY aggregates.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
