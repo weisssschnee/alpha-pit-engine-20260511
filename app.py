@@ -325,6 +325,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3AV fresh-neighborhood true-1min candidate packs from the Phase3AU full-shard aggregate.",
     },
+    "phase3aw-directional-capacity-pack": {
+        "module": "our_system_phase2.runtime.phase3aw_directional_capacity_pack",
+        "diagnostic": False,
+        "description": "Build Phase3AW direction-corrected capacity-flow packs from the Phase3AV true-1min aggregate.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
