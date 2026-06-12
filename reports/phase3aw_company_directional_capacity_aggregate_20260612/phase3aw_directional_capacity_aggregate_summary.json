@@ -1,0 +1,435 @@
+{
+  "created_at": "2026-06-12T05:41:57.469204+00:00",
+  "decision": "PHASE3AW_DIRECTIONAL_CAPACITY_TRUE1MIN_AGGREGATED_RESEARCH_ONLY",
+  "job_status": "done",
+  "shard_summary_count": 16,
+  "row_file_count": 16,
+  "unique_candidates": 96,
+  "total_candidate_horizon_rows": 6144,
+  "horizons": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "total_errors": 0,
+  "total_memory_hits": 0,
+  "all_shards_evaluated_96": true,
+  "true_1min_guard": "panel_path contains phase3au_company_full_true1min_sharded_20260611 and phase3aq_true_1min_formula_canary.parquet for every shard",
+  "top_by_horizon": {
+    "1": [
+      {
+        "candidate_id": "phase3aw_directional_capacity_00024",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.01837893066821625,
+        "ic_mean_min": 0.0159231049408528,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.4438773547861634e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00025",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.01837893066821625,
+        "ic_mean_min": 0.0159231049408528,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.4438773547861634e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00027",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.018347373912746687,
+        "ic_mean_min": 0.0159159963336442,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 2.611135482551077e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00021",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.018281634374069187,
+        "ic_mean_min": 0.0158222196650316,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.4927953578493693e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00022",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.018281634374069187,
+        "ic_mean_min": 0.0158222196650316,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.4927953578493693e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00016",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.018237696370025643,
+        "ic_mean_min": 0.0150179644808464,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 4.25372038565335e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00017",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.018237696370025643,
+        "ic_mean_min": 0.0150179644808464,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 4.25372038565335e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00032",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.018226591731628845,
+        "ic_mean_min": 0.0160541462251641,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 2.8846987455740043e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00033",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.018226591731628845,
+        "ic_mean_min": 0.0160541462251641,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 2.8846987455740043e-06,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00043",
+        "fields": "amount|final_total_market_cap",
+        "ic_mean_avg": 0.018156103243075043,
+        "ic_mean_min": 0.0159558117333942,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 2.1675883178963642e-06,
+        "positive_shard_all": true
+      }
+    ],
+    "5": [
+      {
+        "candidate_id": "phase3aw_directional_capacity_00039",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.03083084564904792,
+        "ic_mean_min": 0.0279298028636544,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.7556277420644106e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00027",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.030770089981991475,
+        "ic_mean_min": 0.0276110338217515,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.216454682025089e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00045",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.030683905862747225,
+        "ic_mean_min": 0.0278296852234693,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 4.209544621585243e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00058",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.030683905862747225,
+        "ic_mean_min": 0.0278296852234693,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 4.209544621585243e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00047",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.030656389082596967,
+        "ic_mean_min": 0.0277504307294623,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 2.700173776086604e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00054",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.030630399444088182,
+        "ic_mean_min": 0.02767487307544,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.103394522176175e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00032",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.030541808005119093,
+        "ic_mean_min": 0.0276053729709571,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.080663398712252e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00033",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.030541808005119093,
+        "ic_mean_min": 0.0276053729709571,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.080663398712252e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00024",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.030516213445542017,
+        "ic_mean_min": 0.0277980492374604,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.493141215490687e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00025",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.030516213445542017,
+        "ic_mean_min": 0.0277980492374604,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.493141215490687e-05,
+        "positive_shard_all": true
+      }
+    ],
+    "15": [
+      {
+        "candidate_id": "phase3aw_directional_capacity_00039",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.042318377393353035,
+        "ic_mean_min": 0.0404266051876587,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 6.803266486106661e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00054",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.04205286018017027,
+        "ic_mean_min": 0.0404284059817134,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 5.875039252495532e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00045",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.04183793801613393,
+        "ic_mean_min": 0.0396513112927636,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 7.912691346690364e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00058",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.04183793801613393,
+        "ic_mean_min": 0.0396513112927636,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 7.912691346690364e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00032",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.041713823408243804,
+        "ic_mean_min": 0.0397352513709929,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 6.440154726270314e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00033",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.041713823408243804,
+        "ic_mean_min": 0.0397352513709929,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 6.440154726270314e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00056",
+        "fields": "amount|final_total_market_cap",
+        "ic_mean_avg": 0.0415001067057514,
+        "ic_mean_min": 0.0396238605257873,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 6.761303271589552e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00069",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.0415001067057514,
+        "ic_mean_min": 0.0396238605257873,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 6.761303271589552e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00062",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.04147010925305799,
+        "ic_mean_min": 0.0395802956781091,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 8.200897348895083e-05,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00050",
+        "fields": "amount|final_total_market_cap",
+        "ic_mean_avg": 0.041416747311227596,
+        "ic_mean_min": 0.0397490830410974,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 5.634961001571247e-05,
+        "positive_shard_all": true
+      }
+    ],
+    "30": [
+      {
+        "candidate_id": "phase3aw_directional_capacity_00039",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.051089963487503644,
+        "ic_mean_min": 0.0483234547503826,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00012896370920412816,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00054",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.05104826066490953,
+        "ic_mean_min": 0.0490883400896052,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00012284488454144434,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00045",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.050737316384275186,
+        "ic_mean_min": 0.048054434100194,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.0001529594400196977,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00058",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.050737316384275186,
+        "ic_mean_min": 0.048054434100194,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.0001529594400196977,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00056",
+        "fields": "amount|final_total_market_cap",
+        "ic_mean_avg": 0.050629048328346804,
+        "ic_mean_min": 0.0481565012931405,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00014506344355655473,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00069",
+        "fields": "amount_yuan|final_total_market_cap",
+        "ic_mean_avg": 0.050629048328346804,
+        "ic_mean_min": 0.0481565012931405,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00014506344355655473,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00062",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.05026597953137183,
+        "ic_mean_min": 0.0475419109946823,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00016666156260354735,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00032",
+        "fields": "amount|final_float_market_cap",
+        "ic_mean_avg": 0.050104499332539354,
+        "ic_mean_min": 0.047531713429083,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00011275845351220725,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00033",
+        "fields": "amount_yuan|final_float_market_cap",
+        "ic_mean_avg": 0.050104499332539354,
+        "ic_mean_min": 0.047531713429083,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.00011275845351220725,
+        "positive_shard_all": true
+      },
+      {
+        "candidate_id": "phase3aw_directional_capacity_00050",
+        "fields": "amount|final_total_market_cap",
+        "ic_mean_avg": 0.05007455000128004,
+        "ic_mean_min": 0.0478956879579978,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 0.0001094123534142845,
+        "positive_shard_all": true
+      }
+    ]
+  },
+  "hard_limits": [
+    "research-only canary, not alpha proof",
+    "direction-corrected IC is not replay/cost proof",
+    "requires turnover, cost, placebo, and new-vs-149 checks",
+    "X0/R3 read-only"
+  ]
+}
