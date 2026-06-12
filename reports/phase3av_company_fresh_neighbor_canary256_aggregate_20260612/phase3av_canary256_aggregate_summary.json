@@ -1,0 +1,589 @@
+{
+  "created_at": "2026-06-12T04:34:13.011659+00:00",
+  "decision": "PHASE3AV_CANARY256_TRUE1MIN_AGGREGATED_RESEARCH_ONLY",
+  "job_status": "done",
+  "shard_summary_count": 16,
+  "row_file_count": 16,
+  "total_evaluated_rows": 16384,
+  "unique_candidates": 256,
+  "horizons": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "total_errors": 0,
+  "total_memory_hits": 0,
+  "all_shards_evaluated_256": true,
+  "true_1min_guard": "panel_path contains phase3au_company_full_true1min_sharded_20260611 and phase3aq_true_1min_formula_canary.parquet for every shard",
+  "top_by_horizon": {
+    "1": [
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00125",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09727540798254394,
+        "ic_mean_avg": -0.017325721382775945,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -4.534759249508855e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00121",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09702312771467872,
+        "ic_mean_avg": -0.017400495052483842,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -4.4443168159043115e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00117",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09666005499017033,
+        "ic_mean_avg": -0.01740034467629275,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -2.1902235386762667e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00113",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09610061953126298,
+        "ic_mean_avg": -0.01755447503735954,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.505096215805928e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00109",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.0956314532480142,
+        "ic_mean_avg": -0.01759528640201812,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -2.383389488162788e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00105",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09515791451999954,
+        "ic_mean_avg": -0.01766348350067538,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -1.4554462106983975e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00255",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.09515791451999954,
+        "ic_mean_avg": -0.01766348350067538,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -1.4554462106983975e-06
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00101",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09483972408496442,
+        "ic_mean_avg": -0.01753591258319288,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.157667890056369e-08
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00251",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.09483972408496442,
+        "ic_mean_avg": -0.01753591258319288,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.157667890056369e-08
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00097",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.09434864617158711,
+        "ic_mean_avg": -0.01708764995011445,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": 3.602755749255895e-06
+      }
+    ],
+    "5": [
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00125",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.13254717074143282,
+        "ic_mean_avg": -0.02753674728609985,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.268254109162207e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00121",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.13201985725602164,
+        "ic_mean_avg": -0.02767037307894628,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.076337946723739e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00117",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.13135868242324264,
+        "ic_mean_avg": -0.028329140865877313,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.51970309118213e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00113",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.13043975739816416,
+        "ic_mean_avg": -0.02880434404572332,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.741326647554921e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00109",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.1298939930752149,
+        "ic_mean_avg": -0.02881098561911404,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.383366988982702e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00105",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.12896132864965293,
+        "ic_mean_avg": -0.029116465277671668,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.7979022346663355e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00255",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.12896132864965293,
+        "ic_mean_avg": -0.029116465277671668,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.7979022346663355e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00101",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.12868010991168766,
+        "ic_mean_avg": -0.029163206439177032,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.928831484791077e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00251",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.12868010991168766,
+        "ic_mean_avg": -0.029163206439177032,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.928831484791077e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00097",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.12824014990631333,
+        "ic_mean_avg": -0.028909394863499326,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -3.597763680411504e-05
+      }
+    ],
+    "15": [
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00125",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14884966288209303,
+        "ic_mean_avg": -0.037601175313584374,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.010529865167468e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00121",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14832389895699954,
+        "ic_mean_avg": -0.03796450625727725,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -4.594997581354348e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00117",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14705813894843967,
+        "ic_mean_avg": -0.03873174938330463,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.020785046513588e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00113",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14595996737946598,
+        "ic_mean_avg": -0.039640096678609474,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.829628374360772e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00109",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14524201053394403,
+        "ic_mean_avg": -0.040082157608652504,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -5.638957878300555e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00105",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14439429859854364,
+        "ic_mean_avg": -0.04066754157954902,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.521854686545807e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00255",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.14439429859854364,
+        "ic_mean_avg": -0.04066754157954902,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.521854686545807e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00101",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.1439230545933711,
+        "ic_mean_avg": -0.040553204255697646,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.753878232880061e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00251",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.1439230545933711,
+        "ic_mean_avg": -0.040553204255697646,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.753878232880061e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00097",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.14283468560990292,
+        "ic_mean_avg": -0.04058985500029938,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.930259277742649e-05
+      }
+    ],
+    "30": [
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00125",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.1580238955313618,
+        "ic_mean_avg": -0.04394249396645303,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.484470188650361e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00121",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15749731366607533,
+        "ic_mean_avg": -0.04444358743919145,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.121562713042e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00117",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15628426780276927,
+        "ic_mean_avg": -0.04519921976228809,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -6.463194464571296e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00113",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15520074696510264,
+        "ic_mean_avg": -0.04636440411856743,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -8.173398410322684e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00109",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15443375219788805,
+        "ic_mean_avg": -0.046986108084333976,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -8.306119500744972e-05
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00105",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15352299469203312,
+        "ic_mean_avg": -0.0479075135407659,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -0.00010086578030492953
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00255",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.15352299469203312,
+        "ic_mean_avg": -0.0479075135407659,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -0.00010086578030492953
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00101",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.15285727924794676,
+        "ic_mean_avg": -0.047838727412014795,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -0.00011022004047805877
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00251",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount_yuan|float_share",
+        "ic_abs_mean_avg": 0.15285727924794676,
+        "ic_mean_avg": -0.047838727412014795,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -0.00011022004047805877
+      },
+      {
+        "candidate_id": "phase3av_fresh_neighbor_00097",
+        "factor_lane": "av_capacity_normalized_flow",
+        "fields": "amount|float_share",
+        "ic_abs_mean_avg": 0.1516179993658371,
+        "ic_mean_avg": -0.04792106464558948,
+        "ic_sign_consistency": 1.0,
+        "shard_count": 16,
+        "spread_mean_avg": -0.00011948700087442942
+      }
+    ]
+  },
+  "top_field_family_by_horizon": {
+    "1": [
+      {
+        "fields": "amount_yuan|float_share",
+        "candidate_count": 22,
+        "ic_abs_mean_avg": 0.08141504179860898,
+        "ic_abs_mean_median": 0.08428075115584245
+      },
+      {
+        "fields": "amount|float_share",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.07910287667896235,
+        "ic_abs_mean_median": 0.08458878382968195
+      },
+      {
+        "fields": "amount_yuan|final_float_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.07015590723667517,
+        "ic_abs_mean_median": 0.07241543823206074
+      },
+      {
+        "fields": "amount_yuan|final_total_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.06898142706436045,
+        "ic_abs_mean_median": 0.07073278211471909
+      },
+      {
+        "fields": "amount|final_float_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.06822828824306121,
+        "ic_abs_mean_median": 0.0686491830023492
+      },
+      {
+        "fields": "amount|final_total_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.06713307086058325,
+        "ic_abs_mean_median": 0.06693693442292906
+      }
+    ],
+    "5": [
+      {
+        "fields": "amount_yuan|float_share",
+        "candidate_count": 22,
+        "ic_abs_mean_avg": 0.10648617436026082,
+        "ic_abs_mean_median": 0.11207393149527135
+      },
+      {
+        "fields": "amount|float_share",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.10282399774333431,
+        "ic_abs_mean_median": 0.11193820055802531
+      },
+      {
+        "fields": "amount_yuan|final_float_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.09240026567720298,
+        "ic_abs_mean_median": 0.09910289583274705
+      },
+      {
+        "fields": "amount_yuan|final_total_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.09027741108673855,
+        "ic_abs_mean_median": 0.09678354953319229
+      },
+      {
+        "fields": "amount|final_float_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.0889877999560382,
+        "ic_abs_mean_median": 0.09479715527048595
+      },
+      {
+        "fields": "amount|final_total_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.08699801747050771,
+        "ic_abs_mean_median": 0.0921431106975012
+      }
+    ],
+    "15": [
+      {
+        "fields": "amount_yuan|float_share",
+        "candidate_count": 22,
+        "ic_abs_mean_avg": 0.11773966695139018,
+        "ic_abs_mean_median": 0.124725908557806
+      },
+      {
+        "fields": "amount|float_share",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.11367494008600348,
+        "ic_abs_mean_median": 0.12533890779114684
+      },
+      {
+        "fields": "amount_yuan|final_float_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.10320753966798618,
+        "ic_abs_mean_median": 0.11259212241096425
+      },
+      {
+        "fields": "amount_yuan|final_total_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.10070804267158784,
+        "ic_abs_mean_median": 0.1096728874499113
+      },
+      {
+        "fields": "amount|final_float_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.09913124437591035,
+        "ic_abs_mean_median": 0.1077243617468043
+      },
+      {
+        "fields": "amount|final_total_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.09677206331378464,
+        "ic_abs_mean_median": 0.10488861352871255
+      }
+    ],
+    "30": [
+      {
+        "fields": "amount_yuan|float_share",
+        "candidate_count": 22,
+        "ic_abs_mean_avg": 0.12410221193338704,
+        "ic_abs_mean_median": 0.13268430949847115
+      },
+      {
+        "fields": "amount|float_share",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.11984730712531623,
+        "ic_abs_mean_median": 0.1329276477402217
+      },
+      {
+        "fields": "amount_yuan|final_float_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.10843137896234727,
+        "ic_abs_mean_median": 0.11927860547317179
+      },
+      {
+        "fields": "amount_yuan|final_total_market_cap",
+        "candidate_count": 50,
+        "ic_abs_mean_avg": 0.10582563077929687,
+        "ic_abs_mean_median": 0.11640459580343965
+      },
+      {
+        "fields": "amount|final_float_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.10392719594512835,
+        "ic_abs_mean_median": 0.1139326880769989
+      },
+      {
+        "fields": "amount|final_total_market_cap",
+        "candidate_count": 42,
+        "ic_abs_mean_avg": 0.10148174771657427,
+        "ic_abs_mean_median": 0.11094190136776125
+      }
+    ]
+  },
+  "hard_limits": [
+    "research-only canary, not alpha proof",
+    "no X0/R3 modification",
+    "no promotion decision",
+    "requires replay/cost/new-vs-149/marginal audit before any stronger claim"
+  ]
+}
