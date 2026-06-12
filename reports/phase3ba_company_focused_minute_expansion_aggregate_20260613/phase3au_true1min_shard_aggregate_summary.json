@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "attempt_count": 112,
+    "candidate_result_rows": 49152,
+    "completed_shards": [
+      "shard_00",
+      "shard_01",
+      "shard_02",
+      "shard_03",
+      "shard_04",
+      "shard_05",
+      "shard_06",
+      "shard_07",
+      "shard_08",
+      "shard_09",
+      "shard_10",
+      "shard_11",
+      "shard_12",
+      "shard_13",
+      "shard_14",
+      "shard_15"
+    ],
+    "created_at": "2026-06-12T18:55:22.912882+00:00",
+    "decision": "PHASE3AU_TRUE1MIN_SHARDS_AGGREGATED_HOLD_RESEARCH",
+    "fresh_result_rows": 49152,
+    "fresh_top_count": 3072,
+    "hard_rules": [
+      "true 1min means actual trade_time cross-section",
+      "memory_hit rows are separated from fresh rows",
+      "aggregate is not alpha proof and cannot modify X0/R3"
+    ],
+    "memory_hit_result_rows": 0,
+    "memory_top_count": 0,
+    "paths": {
+      "attempt_status_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\phase3au_true1min_shard_attempt_status.csv",
+      "fresh_top_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\phase3au_true1min_shard_fresh_top.csv",
+      "markdown": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\PHASE3AU_TRUE1MIN_SHARD_AGGREGATE_20260611.md",
+      "memory_top_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\phase3au_true1min_shard_memory_hit_top.csv",
+      "source_attribution_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\phase3au_true1min_shard_source_attribution.csv",
+      "summary_json": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613\\phase3au_true1min_shard_aggregate_summary.json"
+    },
+    "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_company_focused_minute_expansion_aggregate_20260613",
+    "robust_min_ic_count": 450,
+    "run_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ba_company_focused_minute_expansion_20260612",
+    "unique_candidate_count": 768,
+    "unique_expression_count": 768,
+    "version": "phase3au-shard-aggregate-v1-2026-06-11"
+  }
+}

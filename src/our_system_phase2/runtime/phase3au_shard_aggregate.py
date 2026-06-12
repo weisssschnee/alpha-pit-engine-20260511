@@ -19,6 +19,7 @@ DEFAULT_REPORT_ROOT = Path("reports/phase3au_company_full_true1min_sharded_20260
 SUMMARY_NAME = "phase3as_true_1min_sidecar_canary_eval_summary.json"
 ROWS_NAME = "phase3as_true_1min_sidecar_canary_eval_rows.csv"
 AGGREGATE_VERSION = "phase3au-shard-aggregate-v1-2026-06-11"
+MERGED_ATTEMPT_RE = re.compile(r"^shard_\d+_as_v\d+$")
 
 
 def _resolve(path: Path) -> Path:
@@ -114,13 +115,22 @@ def _iter_attempts(run_root: Path) -> list[dict[str, Any]]:
 
 
 def _latest_attempts(attempts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def priority(attempt: dict[str, Any]) -> tuple[int, int, int, float]:
+        attempt_name = str(attempt.get("attempt") or "")
+        rows_exists = 1 if attempt.get("rows_exists") else 0
+        evaluated = _safe_int(attempt.get("evaluated_candidate_count")) or 0
+        # Parallel runs can keep both per-chunk outputs and the final merged shard
+        # under one root. Prefer the merged shard even when a chunk is newer.
+        merged = 1 if MERGED_ATTEMPT_RE.match(attempt_name) else 0
+        return (rows_exists, merged, evaluated, float(attempt.get("_mtime") or 0.0))
+
     by_shard: dict[str, dict[str, Any]] = {}
     for attempt in attempts:
         summary_path = Path(str(attempt["summary_path"]))
         mtime = summary_path.stat().st_mtime if summary_path.exists() else 0.0
         attempt["_mtime"] = mtime
         current = by_shard.get(str(attempt["shard"]))
-        if current is None or mtime >= float(current.get("_mtime") or 0.0):
+        if current is None or priority(attempt) >= priority(current):
             by_shard[str(attempt["shard"])] = attempt
     return [by_shard[key] for key in sorted(by_shard)]
 
