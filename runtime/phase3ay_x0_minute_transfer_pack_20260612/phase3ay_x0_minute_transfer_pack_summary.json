@@ -1,0 +1,28 @@
+{
+  "by_factor_lane": {
+    "ay_old_family_amount_yuan_alias": 11,
+    "ay_old_family_capacity_add": 143,
+    "ay_old_family_capacity_mul": 143,
+    "ay_old_family_capacity_residual": 143,
+    "ay_old_family_minute_base": 36,
+    "ay_old_family_minute_neg": 36
+  },
+  "by_source_family": {
+    "phase3k_149_representative": 426,
+    "x0_official_cluster_formula": 86
+  },
+  "candidate_count": 512,
+  "created_at": "2026-06-12T06:09:10.976098+00:00",
+  "decision": "PHASE3AY_X0_MINUTE_TRANSFER_PACK_READY",
+  "hard_rules": [
+    "X0 official object is read-only",
+    "not a production or promotion route",
+    "must be evaluated on true trade_time 1min shards"
+  ],
+  "outputs": {
+    "candidate_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ay_x0_minute_transfer_pack_20260612\\phase3ay_x0_minute_transfer_candidates.csv",
+    "context_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ay_x0_minute_transfer_pack_20260612\\phase3ar_sidecar_context_formula_pack.json",
+    "pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ay_x0_minute_transfer_pack_20260612"
+  },
+  "seed_count": 155
+}

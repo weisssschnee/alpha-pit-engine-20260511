@@ -335,6 +335,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3AX refined true-1min capacity-flow packs from Phase3AV/AW aggregates.",
     },
+    "phase3ay-x0-minute-transfer-pack": {
+        "module": "our_system_phase2.runtime.phase3ay_x0_minute_transfer_pack",
+        "diagnostic": False,
+        "description": "Build Phase3AY read-only X0/core-family true-1min transfer packs.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
