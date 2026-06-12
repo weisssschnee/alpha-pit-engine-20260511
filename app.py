@@ -350,6 +350,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3BA focused true-1min expansion packs from AX/AZB/AY aggregates.",
     },
+    "phase3ba-stability-parent-audit": {
+        "module": "our_system_phase2.runtime.phase3ba_stability_parent_audit",
+        "diagnostic": False,
+        "description": "Audit Phase3BA true-1min candidate stability and parent-family strength.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

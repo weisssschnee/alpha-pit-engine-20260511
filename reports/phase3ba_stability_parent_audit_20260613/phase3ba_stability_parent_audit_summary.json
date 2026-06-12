@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "candidate_horizon_count": 3072,
+    "created_at": "2026-06-12T19:08:17.728969+00:00",
+    "decision": "PHASE3BA_STABILITY_PARENT_AUDIT_HOLD_RESEARCH",
+    "hard_rules": [
+      "true trade_time 1min shard outputs only",
+      "X0/R3 read-only",
+      "research-only; not alpha proof"
+    ],
+    "min_ic_count": 450,
+    "outputs": {
+      "candidate_stability_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_stability_parent_audit_20260613\\phase3ba_candidate_stability.csv",
+      "lane_summary_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_stability_parent_audit_20260613\\phase3ba_lane_stability_summary.csv",
+      "markdown": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_stability_parent_audit_20260613\\PHASE3BA_STABILITY_PARENT_AUDIT_20260613.md",
+      "summary_json": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_stability_parent_audit_20260613\\phase3ba_stability_parent_audit_summary.json"
+    },
+    "parent_summaries": [
+      {
+        "label": "AX capacity-flow",
+        "mean_top200_ic_abs_mean": 0.12403910620655217,
+        "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ax_company_capacity_flow_refinement_aggregate_20260612\\phase3au_true1min_shard_fresh_top.csv",
+        "row_count": 1520,
+        "top_candidate_id": "phase3ax_capacity_refine_00325",
+        "top_factor_lane": "ax_inverse_capacity_flow_level",
+        "top_mean_ic_abs_mean": 0.15970064510437587
+      },
+      {
+        "label": "AZB opening-window",
+        "mean_top200_ic_abs_mean": 0.09564056532240718,
+        "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3azb_company_opening_window_corrected_aggregate_20260612\\phase3au_true1min_shard_fresh_top.csv",
+        "row_count": 576,
+        "top_candidate_id": "phase3azb_opening_window_corrected_00105",
+        "top_factor_lane": "azb_opening_direct",
+        "top_mean_ic_abs_mean": 0.12403355807298115
+      },
+      {
+        "label": "AY X0/core minute transfer",
+        "mean_top200_ic_abs_mean": 0.09921063052661237,
+        "path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ay_company_x0_minute_transfer_aggregate_20260612\\phase3au_true1min_shard_fresh_top.csv",
+        "row_count": 1936,
+        "top_candidate_id": "phase3ay_x0_minute_transfer_00499",
+        "top_factor_lane": "ay_old_family_capacity_add",
+        "top_mean_ic_abs_mean": 0.14707123143453601
+      }
+    ],
+    "raw_row_count": 49152,
+    "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3ba_stability_parent_audit_20260613",
+    "run_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3ba_company_focused_minute_expansion_20260612",
+    "unique_candidate_count": 768
+  }
+}
