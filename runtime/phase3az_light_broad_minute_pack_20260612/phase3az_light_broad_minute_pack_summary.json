@@ -1,0 +1,29 @@
+{
+  "by_factor_lane": {
+    "az_flow_acceleration": 28,
+    "az_flow_acceleration_reversal": 28,
+    "az_intraminute_range": 11,
+    "az_intraminute_range_reversal": 11,
+    "az_opening_window_direct": 6,
+    "az_opening_window_flow_exhaustion": 12,
+    "az_opening_window_flow_interaction": 12,
+    "az_opening_window_inverse": 6,
+    "az_price_acceleration": 35,
+    "az_price_acceleration_reversal": 35,
+    "az_price_flow_confirmation": 66,
+    "az_price_flow_exhaustion": 66
+  },
+  "candidate_count": 316,
+  "created_at": "2026-06-12T07:34:29.462070+00:00",
+  "decision": "PHASE3AZ_LIGHT_BROAD_MINUTE_PACK_READY",
+  "hard_rules": [
+    "true trade_time 1min only",
+    "no 1D kline fallback",
+    "not an X0/R3 modification"
+  ],
+  "outputs": {
+    "candidate_csv": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3az_light_broad_minute_pack_20260612\\phase3az_light_broad_minute_candidates.csv",
+    "context_pack": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3az_light_broad_minute_pack_20260612\\phase3ar_sidecar_context_formula_pack.json",
+    "pack_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3az_light_broad_minute_pack_20260612"
+  }
+}

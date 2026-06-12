@@ -340,6 +340,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3AY read-only X0/core-family true-1min transfer packs.",
     },
+    "phase3az-light-broad-minute-pack": {
+        "module": "our_system_phase2.runtime.phase3az_light_broad_minute_pack",
+        "diagnostic": False,
+        "description": "Build Phase3AZ light broad true-1min microstructure packs.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
