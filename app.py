@@ -365,6 +365,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run fixed Phase3BA/BB expression-level pandas vs numba parity on true-1min sidecar data.",
     },
+    "phase3bd-replay-metric-diff-canary": {
+        "module": "our_system_phase2.runtime.phase3bd_replay_metric_diff_canary",
+        "diagnostic": False,
+        "description": "Run Phase3AS-style replay metric diff canary for pandas vs numba-hybrid true-1min signals.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

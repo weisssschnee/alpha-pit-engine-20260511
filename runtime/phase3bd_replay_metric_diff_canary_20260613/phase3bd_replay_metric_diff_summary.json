@@ -1,0 +1,115 @@
+{
+  "candidates": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3bb_company_ba_parent_deepening_aggregate_20260613\\phase3au_true1min_shard_fresh_top.csv",
+  "created_at": "2026-06-13T08:25:25.759867+00:00",
+  "decision": "HOLD_REPLAY_METRIC_DIFF_CANARY",
+  "errors": {
+    "count": 0,
+    "rows": []
+  },
+  "input": {
+    "candidate_count": 16,
+    "codes": 24,
+    "date_equals_trade_time": true,
+    "date_groups": 58563,
+    "horizons": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "max_rows": null,
+    "rows": 1306461,
+    "trade_time_groups": 58563
+  },
+  "launch_contract": {
+    "may_add_explicit_backend_flag": false,
+    "may_enable_numba_backend_by_default": false,
+    "official_x0_r3_changed": false,
+    "requires_default_pandas_for_proof": true,
+    "search_results_changed": false
+  },
+  "metric_diff": {
+    "max_abs_diff_by_metric": {
+      "ic_abs_mean": 3.8629149698099496e-05,
+      "ic_mean": 3.494869850998589e-05,
+      "spread_abs_mean": 2.6568936529348247e-06,
+      "spread_hit_rate": 0.00033895113454474046,
+      "spread_mean": 3.2595703779211133e-06
+    },
+    "max_metric_abs_diff": 0.00033895113454474046,
+    "metric_pass": false,
+    "metric_tolerance": 0.0001,
+    "row_count": 64
+  },
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3bd_replay_metric_diff_canary_20260613",
+  "package_versions": {
+    "bottleneck": "1.6.0",
+    "joblib": "1.4.2",
+    "numba": "0.64.0",
+    "numexpr": "2.14.1",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "polars": "1.41.0",
+    "pyarrow": "19.0.1",
+    "sklearn": "1.6.1"
+  },
+  "panel": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3at_company_slice24_dailyjoin2_20260610_pull\\phase3ar_wide_sidecar\\phase3ar_true_1min_sidecar_canary.parquet",
+  "phase": "Phase3BD",
+  "purpose": "pandas vs numba-hybrid replay metric-diff canary after Phase3BC element parity hold",
+  "python": {
+    "platform": "Windows-10-10.0.22631-SP0",
+    "version": "3.11.9"
+  },
+  "ranking_diff": {
+    "ranking_pass": true,
+    "rows": [
+      {
+        "horizon_min": 1,
+        "numba_top": "phase3ba_focused_minute_expansion_00443|phase3ba_focused_minute_expansion_00275|phase3ba_focused_minute_expansion_00272|phase3ba_focused_minute_expansion_00440|phase3ba_focused_minute_expansion_00437",
+        "pandas_top": "phase3ba_focused_minute_expansion_00443|phase3ba_focused_minute_expansion_00275|phase3ba_focused_minute_expansion_00272|phase3ba_focused_minute_expansion_00440|phase3ba_focused_minute_expansion_00437",
+        "passed": true,
+        "required_overlap": 5,
+        "top1_same": true,
+        "top_n": 5,
+        "top_overlap": 5
+      },
+      {
+        "horizon_min": 5,
+        "numba_top": "phase3ba_focused_minute_expansion_00275|phase3ba_focused_minute_expansion_00443|phase3ba_focused_minute_expansion_00272|phase3ba_focused_minute_expansion_00440|phase3ba_focused_minute_expansion_00437",
+        "pandas_top": "phase3ba_focused_minute_expansion_00275|phase3ba_focused_minute_expansion_00443|phase3ba_focused_minute_expansion_00272|phase3ba_focused_minute_expansion_00440|phase3ba_focused_minute_expansion_00437",
+        "passed": true,
+        "required_overlap": 5,
+        "top1_same": true,
+        "top_n": 5,
+        "top_overlap": 5
+      },
+      {
+        "horizon_min": 15,
+        "numba_top": "phase3ba_focused_minute_expansion_00683|phase3ba_focused_minute_expansion_00663|phase3ba_focused_minute_expansion_00667|phase3ba_focused_minute_expansion_00687|phase3ba_focused_minute_expansion_00443",
+        "pandas_top": "phase3ba_focused_minute_expansion_00683|phase3ba_focused_minute_expansion_00663|phase3ba_focused_minute_expansion_00667|phase3ba_focused_minute_expansion_00687|phase3ba_focused_minute_expansion_00443",
+        "passed": true,
+        "required_overlap": 5,
+        "top1_same": true,
+        "top_n": 5,
+        "top_overlap": 5
+      },
+      {
+        "horizon_min": 30,
+        "numba_top": "phase3ba_focused_minute_expansion_00663|phase3ba_focused_minute_expansion_00667|phase3ba_focused_minute_expansion_00683|phase3ba_focused_minute_expansion_00687|phase3ba_focused_minute_expansion_00275",
+        "pandas_top": "phase3ba_focused_minute_expansion_00663|phase3ba_focused_minute_expansion_00667|phase3ba_focused_minute_expansion_00683|phase3ba_focused_minute_expansion_00687|phase3ba_focused_minute_expansion_00275",
+        "passed": true,
+        "required_overlap": 5,
+        "top1_same": true,
+        "top_n": 5,
+        "top_overlap": 5
+      }
+    ],
+    "top_n": 5
+  },
+  "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3bd_replay_metric_diff_canary_20260613",
+  "timing": {
+    "eval_speedup": 5.103314780662775,
+    "numba_hybrid_eval_seconds": 3.6971495999996478,
+    "pandas_eval_seconds": 18.867718199999672
+  }
+}
