@@ -132,6 +132,73 @@ if njit is not None:
         return out
 
 
+    @njit(cache=True)
+    def _rolling_mean_grouped_numba(values: np.ndarray, order: np.ndarray, starts: np.ndarray, ends: np.ndarray, window: int) -> np.ndarray:
+        out = np.empty(values.shape[0], dtype=np.float64)
+        out[:] = np.nan
+        for group_idx in range(starts.shape[0]):
+            start = starts[group_idx]
+            end = ends[group_idx]
+            rolling_sum = 0.0
+            valid_count = 0
+            for pos in range(start, end):
+                idx = order[pos]
+                value = values[idx]
+                if not np.isnan(value):
+                    rolling_sum += value
+                    valid_count += 1
+                old_pos = pos - window
+                if old_pos >= start:
+                    old_idx = order[old_pos]
+                    old_value = values[old_idx]
+                    if not np.isnan(old_value):
+                        rolling_sum -= old_value
+                        valid_count -= 1
+                if (pos - start + 1) >= window and valid_count >= window:
+                    out[idx] = rolling_sum / window
+        return out
+
+
+    @njit(cache=True)
+    def _delta_grouped_numba(values: np.ndarray, order: np.ndarray, starts: np.ndarray, ends: np.ndarray, window: int) -> np.ndarray:
+        out = np.empty(values.shape[0], dtype=np.float64)
+        out[:] = np.nan
+        for group_idx in range(starts.shape[0]):
+            start = starts[group_idx]
+            end = ends[group_idx]
+            for pos in range(start + window, end):
+                idx = order[pos]
+                lag_idx = order[pos - window]
+                out[idx] = values[idx] - values[lag_idx]
+        return out
+
+
+    @njit(cache=True)
+    def _mom_grouped_numba(values: np.ndarray, order: np.ndarray, starts: np.ndarray, ends: np.ndarray, window: int) -> np.ndarray:
+        out = np.empty(values.shape[0], dtype=np.float64)
+        out[:] = np.nan
+        for group_idx in range(starts.shape[0]):
+            start = starts[group_idx]
+            end = ends[group_idx]
+            for pos in range(start + window, end):
+                idx = order[pos]
+                lag_idx = order[pos - window]
+                current = values[idx]
+                lagged = values[lag_idx]
+                if np.isnan(current) or np.isnan(lagged):
+                    out[idx] = np.nan
+                elif lagged == 0.0:
+                    if current == 0.0:
+                        out[idx] = np.nan
+                    elif current > 0.0:
+                        out[idx] = np.inf
+                    else:
+                        out[idx] = -np.inf
+                else:
+                    out[idx] = current / lagged - 1.0
+        return out
+
+
 def _group_order(codes: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     order = np.argsort(codes, kind="mergesort")
     sorted_codes = codes[order]
@@ -144,6 +211,22 @@ def _group_order(codes: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]
     starts = np.r_[0, boundaries].astype(np.int64)
     ends = np.r_[boundaries, len(sorted_codes)].astype(np.int64)
     return order.astype(np.int64), starts, ends
+
+
+def _diff_stats(left: np.ndarray, right: np.ndarray) -> dict[str, Any]:
+    both_nan = np.isnan(left) & np.isnan(right)
+    both_pos_inf = np.isposinf(left) & np.isposinf(right)
+    both_neg_inf = np.isneginf(left) & np.isneginf(right)
+    comparable = ~(both_nan | both_pos_inf | both_neg_inf)
+    mismatch = comparable & ((np.isnan(left) != np.isnan(right)) | (np.isposinf(left) != np.isposinf(right)) | (np.isneginf(left) != np.isneginf(right)))
+    finite = comparable & np.isfinite(left) & np.isfinite(right)
+    diffs = np.abs(left[finite] - right[finite]) if np.any(finite) else np.array([0.0])
+    return {
+        "max_abs_diff": float(np.nanmax(diffs)) if len(diffs) else 0.0,
+        "mean_abs_diff": float(np.nanmean(diffs)) if len(diffs) else 0.0,
+        "nonfinite_mismatch_count": int(np.sum(mismatch)),
+        "finite_compare_count": int(np.sum(finite)),
+    }
 
 
 def _read_panel(panel_path: Path, max_rows: int | None) -> pd.DataFrame:
@@ -179,6 +262,10 @@ def _benchmark_once(frame: pd.DataFrame, value_col: str, *, compile_only: bool =
     group_codes = group_codes.astype(np.int64)
     group_count = int(len(groups))
     order, starts, ends = _group_order(group_codes)
+    code_codes, code_groups = pd.factorize(frame["code"], sort=False)
+    code_codes = code_codes.astype(np.int64)
+    code_order, code_starts, code_ends = _group_order(code_codes)
+    rolling_window = 30
 
     t0 = time.perf_counter()
     pandas_rank = pd.Series(values).groupby(frame["trade_time"], sort=False).rank(pct=True).to_numpy(dtype=np.float64)
@@ -190,11 +277,28 @@ def _benchmark_once(frame: pd.DataFrame, value_col: str, *, compile_only: bool =
     pandas_z = ((pd.Series(values) - pandas_mean) / pandas_std).to_numpy(dtype=np.float64)
     pandas_z_seconds = time.perf_counter() - t0
 
+    value_series = pd.Series(values)
+    value_by_code = value_series.groupby(frame["code"], sort=False)
+    t0 = time.perf_counter()
+    pandas_mean_code = value_by_code.transform(lambda item: item.rolling(rolling_window, min_periods=rolling_window).mean()).to_numpy(dtype=np.float64)
+    pandas_mean_code_seconds = time.perf_counter() - t0
+
+    t0 = time.perf_counter()
+    pandas_delta_code = (value_series - value_by_code.shift(rolling_window)).to_numpy(dtype=np.float64)
+    pandas_delta_code_seconds = time.perf_counter() - t0
+
+    t0 = time.perf_counter()
+    pandas_mom_code = (value_series / value_by_code.shift(rolling_window) - 1.0).to_numpy(dtype=np.float64)
+    pandas_mom_code_seconds = time.perf_counter() - t0
+
     if njit is None:
         return {
             "numba_available": False,
             "pandas_rank_seconds": pandas_rank_seconds,
             "pandas_zscore_seconds": pandas_z_seconds,
+            "pandas_rolling_mean_seconds": pandas_mean_code_seconds,
+            "pandas_delta_seconds": pandas_delta_code_seconds,
+            "pandas_mom_seconds": pandas_mom_code_seconds,
         }
 
     t0 = time.perf_counter()
@@ -205,27 +309,62 @@ def _benchmark_once(frame: pd.DataFrame, value_col: str, *, compile_only: bool =
     numba_z = _zscore_grouped_numba(values, group_codes, group_count)
     numba_z_seconds = time.perf_counter() - t0
 
-    valid_rank = np.isfinite(pandas_rank) | np.isfinite(numba_rank)
-    valid_z = np.isfinite(pandas_z) | np.isfinite(numba_z)
-    rank_diff = np.abs(pandas_rank[valid_rank] - numba_rank[valid_rank]) if np.any(valid_rank) else np.array([0.0])
-    z_diff = np.abs(pandas_z[valid_z] - numba_z[valid_z]) if np.any(valid_z) else np.array([0.0])
+    t0 = time.perf_counter()
+    numba_mean_code = _rolling_mean_grouped_numba(values, code_order, code_starts, code_ends, rolling_window)
+    numba_mean_code_seconds = time.perf_counter() - t0
+
+    t0 = time.perf_counter()
+    numba_delta_code = _delta_grouped_numba(values, code_order, code_starts, code_ends, rolling_window)
+    numba_delta_code_seconds = time.perf_counter() - t0
+
+    t0 = time.perf_counter()
+    numba_mom_code = _mom_grouped_numba(values, code_order, code_starts, code_ends, rolling_window)
+    numba_mom_code_seconds = time.perf_counter() - t0
+
+    rank_diff = _diff_stats(pandas_rank, numba_rank)
+    z_diff = _diff_stats(pandas_z, numba_z)
+    mean_diff = _diff_stats(pandas_mean_code, numba_mean_code)
+    delta_diff = _diff_stats(pandas_delta_code, numba_delta_code)
+    mom_diff = _diff_stats(pandas_mom_code, numba_mom_code)
 
     return {
         "numba_available": True,
         "compile_included": compile_only,
         "row_count": int(len(frame)),
         "group_count": group_count,
+        "code_group_count": int(len(code_groups)),
+        "rolling_window": rolling_window,
         "value_col": value_col,
         "pandas_rank_seconds": pandas_rank_seconds,
         "numba_rank_seconds": numba_rank_seconds,
         "rank_speedup": None if numba_rank_seconds == 0 else pandas_rank_seconds / numba_rank_seconds,
-        "rank_max_abs_diff": float(np.nanmax(rank_diff)) if len(rank_diff) else 0.0,
-        "rank_mean_abs_diff": float(np.nanmean(rank_diff)) if len(rank_diff) else 0.0,
+        "rank_max_abs_diff": rank_diff["max_abs_diff"],
+        "rank_mean_abs_diff": rank_diff["mean_abs_diff"],
+        "rank_nonfinite_mismatch_count": rank_diff["nonfinite_mismatch_count"],
         "pandas_zscore_seconds": pandas_z_seconds,
         "numba_zscore_seconds": numba_z_seconds,
         "zscore_speedup": None if numba_z_seconds == 0 else pandas_z_seconds / numba_z_seconds,
-        "zscore_max_abs_diff": float(np.nanmax(z_diff)) if len(z_diff) else 0.0,
-        "zscore_mean_abs_diff": float(np.nanmean(z_diff)) if len(z_diff) else 0.0,
+        "zscore_max_abs_diff": z_diff["max_abs_diff"],
+        "zscore_mean_abs_diff": z_diff["mean_abs_diff"],
+        "zscore_nonfinite_mismatch_count": z_diff["nonfinite_mismatch_count"],
+        "pandas_rolling_mean_seconds": pandas_mean_code_seconds,
+        "numba_rolling_mean_seconds": numba_mean_code_seconds,
+        "rolling_mean_speedup": None if numba_mean_code_seconds == 0 else pandas_mean_code_seconds / numba_mean_code_seconds,
+        "rolling_mean_max_abs_diff": mean_diff["max_abs_diff"],
+        "rolling_mean_mean_abs_diff": mean_diff["mean_abs_diff"],
+        "rolling_mean_nonfinite_mismatch_count": mean_diff["nonfinite_mismatch_count"],
+        "pandas_delta_seconds": pandas_delta_code_seconds,
+        "numba_delta_seconds": numba_delta_code_seconds,
+        "delta_speedup": None if numba_delta_code_seconds == 0 else pandas_delta_code_seconds / numba_delta_code_seconds,
+        "delta_max_abs_diff": delta_diff["max_abs_diff"],
+        "delta_mean_abs_diff": delta_diff["mean_abs_diff"],
+        "delta_nonfinite_mismatch_count": delta_diff["nonfinite_mismatch_count"],
+        "pandas_mom_seconds": pandas_mom_code_seconds,
+        "numba_mom_seconds": numba_mom_code_seconds,
+        "mom_speedup": None if numba_mom_code_seconds == 0 else pandas_mom_code_seconds / numba_mom_code_seconds,
+        "mom_max_abs_diff": mom_diff["max_abs_diff"],
+        "mom_mean_abs_diff": mom_diff["mean_abs_diff"],
+        "mom_nonfinite_mismatch_count": mom_diff["nonfinite_mismatch_count"],
     }
 
 
@@ -243,9 +382,36 @@ def run_canary(*, panel: Path, output_root: Path, report_root: Path, max_rows: i
     compile_run = _benchmark_once(frame, value_col, compile_only=True)
     warm_run = _benchmark_once(frame, value_col, compile_only=False)
 
-    rank_pass = bool(warm_run.get("numba_available")) and float(warm_run.get("rank_max_abs_diff") or 0.0) <= 1e-12
-    z_pass = bool(warm_run.get("numba_available")) and float(warm_run.get("zscore_max_abs_diff") or 0.0) <= 1e-9
-    decision = "PASS_NUMBA_KERNEL_PARITY_CANARY" if rank_pass and z_pass else "HOLD_NUMBA_KERNEL_PARITY_FAILED"
+    rank_pass = (
+        bool(warm_run.get("numba_available"))
+        and float(warm_run.get("rank_max_abs_diff") or 0.0) <= 1e-12
+        and int(warm_run.get("rank_nonfinite_mismatch_count") or 0) == 0
+    )
+    z_pass = (
+        bool(warm_run.get("numba_available"))
+        and float(warm_run.get("zscore_max_abs_diff") or 0.0) <= 1e-9
+        and int(warm_run.get("zscore_nonfinite_mismatch_count") or 0) == 0
+    )
+    rolling_mean_pass = (
+        bool(warm_run.get("numba_available"))
+        and float(warm_run.get("rolling_mean_max_abs_diff") or 0.0) <= 1e-9
+        and int(warm_run.get("rolling_mean_nonfinite_mismatch_count") or 0) == 0
+    )
+    delta_pass = (
+        bool(warm_run.get("numba_available"))
+        and float(warm_run.get("delta_max_abs_diff") or 0.0) <= 1e-12
+        and int(warm_run.get("delta_nonfinite_mismatch_count") or 0) == 0
+    )
+    mom_pass = (
+        bool(warm_run.get("numba_available"))
+        and float(warm_run.get("mom_max_abs_diff") or 0.0) <= 1e-12
+        and int(warm_run.get("mom_nonfinite_mismatch_count") or 0) == 0
+    )
+    decision = (
+        "PASS_NUMBA_KERNEL_PARITY_CANARY"
+        if rank_pass and z_pass and rolling_mean_pass and delta_pass and mom_pass
+        else "HOLD_NUMBA_KERNEL_PARITY_FAILED"
+    )
 
     summary = {
         "created_at": datetime.now(timezone.utc).isoformat(),
@@ -267,7 +433,13 @@ def run_canary(*, panel: Path, output_root: Path, report_root: Path, max_rows: i
                 "Phase3AS _rank_by_group uses pandas groupby(...).rank(pct=True)",
                 "IC/spread aggregation already uses numpy bincount",
             ],
-            "numba_scope_this_canary": ["CSRank-compatible grouped pct rank", "ZScore-compatible grouped transform"],
+            "numba_scope_this_canary": [
+                "CSRank-compatible grouped pct rank",
+                "ZScore-compatible grouped transform",
+                "Mean-compatible rolling mean by code",
+                "Delta-compatible shift difference by code",
+                "Mom-compatible pct-change by code",
+            ],
             "not_changed": ["Phase3AS official evaluator route", "X0/R3", "candidate selection", "label alignment"],
         },
         "input": {
@@ -284,11 +456,16 @@ def run_canary(*, panel: Path, output_root: Path, report_root: Path, max_rows: i
             "rank_tolerance": 1e-12,
             "zscore_pass": z_pass,
             "zscore_tolerance": 1e-9,
+            "rolling_mean_pass": rolling_mean_pass,
+            "rolling_mean_tolerance": 1e-9,
+            "delta_pass": delta_pass,
+            "delta_tolerance": 1e-12,
+            "mom_pass": mom_pass,
+            "mom_tolerance": 1e-12,
         },
         "launch_contract": {
             "may_replace_phase3as": False,
             "required_before_large_search": [
-                "extend numba backend to rolling Mean/Delta/Mom",
                 "candidate-expression parity on same expression set",
                 "same panel and same horizons before/after metric diff",
             ],
@@ -322,13 +499,25 @@ def run_canary(*, panel: Path, output_root: Path, report_root: Path, max_rows: i
         f"- numba zscore seconds: `{warm_run.get('numba_zscore_seconds')}`",
         f"- zscore speedup: `{warm_run.get('zscore_speedup')}`",
         f"- zscore max abs diff: `{warm_run.get('zscore_max_abs_diff')}`",
+        f"- pandas rolling mean seconds: `{warm_run.get('pandas_rolling_mean_seconds')}`",
+        f"- numba rolling mean seconds: `{warm_run.get('numba_rolling_mean_seconds')}`",
+        f"- rolling mean speedup: `{warm_run.get('rolling_mean_speedup')}`",
+        f"- rolling mean max abs diff: `{warm_run.get('rolling_mean_max_abs_diff')}`",
+        f"- pandas delta seconds: `{warm_run.get('pandas_delta_seconds')}`",
+        f"- numba delta seconds: `{warm_run.get('numba_delta_seconds')}`",
+        f"- delta speedup: `{warm_run.get('delta_speedup')}`",
+        f"- delta max abs diff: `{warm_run.get('delta_max_abs_diff')}`",
+        f"- pandas mom seconds: `{warm_run.get('pandas_mom_seconds')}`",
+        f"- numba mom seconds: `{warm_run.get('numba_mom_seconds')}`",
+        f"- mom speedup: `{warm_run.get('mom_speedup')}`",
+        f"- mom max abs diff: `{warm_run.get('mom_max_abs_diff')}`",
         "",
         "## Audit Reading",
         "",
-        "The current true 1min evaluator is pandas-heavy in expression evaluation and grouped rank/zscore. "
-        "This canary validates the first low-risk numba kernels only. It does not change Phase3AS behavior.",
+        "The current true 1min evaluator is pandas-heavy in expression evaluation and grouped rank/zscore/rolling operators. "
+        "This canary validates low-risk numba kernels for the most common grouped and rolling operators. It does not change Phase3AS behavior.",
         "",
-        "Next allowed step: add rolling `Mean/Delta/Mom` kernels and run expression-level parity on a fixed candidate pack.",
+        "Next allowed step: run expression-level parity on a fixed candidate pack, then wire the numba backend behind an explicit evaluator flag.",
         "",
     ]
     report_path = report_root / "PHASE3BC_NUMBA_FAST_EVAL_CANARY_20260613.md"
