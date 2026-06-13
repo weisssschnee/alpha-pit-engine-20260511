@@ -360,6 +360,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run Phase3BC numba parity and benchmark canary for true-1min evaluator hot paths.",
     },
+    "phase3bc-expression-parity-canary": {
+        "module": "our_system_phase2.runtime.phase3bc_expression_parity_canary",
+        "diagnostic": False,
+        "description": "Run fixed Phase3BA/BB expression-level pandas vs numba parity on true-1min sidecar data.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
