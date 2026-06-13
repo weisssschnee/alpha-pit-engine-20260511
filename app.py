@@ -370,6 +370,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Run Phase3AS-style replay metric diff canary for pandas vs numba-hybrid true-1min signals.",
     },
+    "phase3bf-ba-exploit-fresh-pack": {
+        "module": "our_system_phase2.runtime.phase3bf_ba_exploit_fresh_pack",
+        "diagnostic": False,
+        "description": "Build Phase3BF BA/BB survivor exploitation plus bounded pure-fresh true-1min candidate packs.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
