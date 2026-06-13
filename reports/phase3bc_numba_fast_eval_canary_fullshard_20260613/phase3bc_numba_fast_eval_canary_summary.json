@@ -1,0 +1,99 @@
+{
+  "compile_run": {
+    "compile_included": true,
+    "group_count": 58563,
+    "numba_available": true,
+    "numba_rank_seconds": 3.549609799999871,
+    "numba_zscore_seconds": 0.18904529999986153,
+    "pandas_rank_seconds": 29.555367899999965,
+    "pandas_zscore_seconds": 2.899868200000128,
+    "rank_max_abs_diff": 0.0,
+    "rank_mean_abs_diff": 0.0,
+    "rank_speedup": 8.326370943645985,
+    "row_count": 18931032,
+    "value_col": "amount",
+    "zscore_max_abs_diff": 1.4566126083082054e-13,
+    "zscore_mean_abs_diff": 2.071278779688892e-16,
+    "zscore_speedup": 15.339541369196972
+  },
+  "created_at": "2026-06-13T07:41:17.683440+00:00",
+  "decision": "PASS_NUMBA_KERNEL_PARITY_CANARY",
+  "hot_path_scan": {
+    "current_phase3as_hot_path": [
+      "evaluate_panel_expression uses pandas groupby/rank/rolling operators",
+      "Phase3AS _rank_by_group uses pandas groupby(...).rank(pct=True)",
+      "IC/spread aggregation already uses numpy bincount"
+    ],
+    "not_changed": [
+      "Phase3AS official evaluator route",
+      "X0/R3",
+      "candidate selection",
+      "label alignment"
+    ],
+    "numba_scope_this_canary": [
+      "CSRank-compatible grouped pct rank",
+      "ZScore-compatible grouped transform"
+    ]
+  },
+  "input": {
+    "codes": 340,
+    "max_rows": 0,
+    "rows": 18931032,
+    "trade_time_groups": 58563,
+    "value_col": "amount"
+  },
+  "launch_contract": {
+    "may_replace_phase3as": false,
+    "required_before_large_search": [
+      "extend numba backend to rolling Mean/Delta/Mom",
+      "candidate-expression parity on same expression set",
+      "same panel and same horizons before/after metric diff"
+    ],
+    "safe_worker_limit_after_backend": "not decided until expression parity benchmark",
+    "safe_worker_limit_before_backend": "prefer 1-2 heavy pandas workers per machine"
+  },
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3bc_numba_fast_eval_canary_fullshard_20260613",
+  "package_versions": {
+    "bottleneck": "1.6.0",
+    "joblib": "1.4.2",
+    "numba": "0.64.0",
+    "numexpr": "2.14.1",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "polars": "1.41.0",
+    "pyarrow": "19.0.1",
+    "sklearn": "1.6.1"
+  },
+  "panel": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_full_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+  "parity": {
+    "rank_pass": true,
+    "rank_tolerance": 1e-12,
+    "zscore_pass": true,
+    "zscore_tolerance": 1e-09
+  },
+  "phase": "Phase3BC",
+  "purpose": "numba fast evaluator canary for true 1min rank/zscore hot paths",
+  "python": {
+    "executable_note": "current process",
+    "platform": "Windows-10-10.0.22631-SP0",
+    "version": "3.11.9"
+  },
+  "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3bc_numba_fast_eval_canary_fullshard_20260613",
+  "warm_run": {
+    "compile_included": false,
+    "group_count": 58563,
+    "numba_available": true,
+    "numba_rank_seconds": 1.5426152999998521,
+    "numba_zscore_seconds": 0.0969551999999112,
+    "pandas_rank_seconds": 27.476269000000002,
+    "pandas_zscore_seconds": 3.5506557000001067,
+    "rank_max_abs_diff": 0.0,
+    "rank_mean_abs_diff": 0.0,
+    "rank_speedup": 17.81148482061771,
+    "row_count": 18931032,
+    "value_col": "amount",
+    "zscore_max_abs_diff": 1.4566126083082054e-13,
+    "zscore_mean_abs_diff": 2.071278779688892e-16,
+    "zscore_speedup": 36.62161183725431
+  }
+}

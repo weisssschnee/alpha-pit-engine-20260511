@@ -355,6 +355,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Audit Phase3BA true-1min candidate stability and parent-family strength.",
     },
+    "phase3bc-numba-fast-eval-canary": {
+        "module": "our_system_phase2.runtime.phase3bc_numba_fast_eval_canary",
+        "diagnostic": False,
+        "description": "Run Phase3BC numba parity and benchmark canary for true-1min evaluator hot paths.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
