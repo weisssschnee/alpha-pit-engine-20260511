@@ -1,0 +1,72 @@
+{
+  "allowed_next_actions": [
+    "continue large search using pandas proof evaluator",
+    "use numba kernels for isolated diagnostic benchmarks",
+    "design a future explicit numba_hybrid backend only after stronger replay metric diff passes",
+    "use numba in non-proof selector prefilter only if candidate ordering is revalidated by pandas"
+  ],
+  "created_at": "2026-06-13",
+  "decision": "KEEP_PANDAS_AS_DEFAULT_PROOF_EVALUATOR",
+  "evidence": {
+    "phase3bc_expression_parity_canary": {
+      "candidate_count": 16,
+      "decision": "HOLD_EXPRESSION_PARITY_FAILED",
+      "failure_pattern": "nested CSRank finite-value divergence; no missing-field or old-1D evidence",
+      "panel_date_equals_trade_time": true,
+      "pass_count": 0
+    },
+    "phase3bc_numba_fast_eval_canary": {
+      "decision": "PASS_NUMBA_KERNEL_PARITY_CANARY",
+      "meaning": "individual rank/zscore/rolling/delta/mom kernels can be fast and parity-safe in isolation"
+    },
+    "phase3bd_replay_metric_diff_canary": {
+      "candidate_count": 16,
+      "decision": "HOLD_REPLAY_METRIC_DIFF_CANARY",
+      "eval_speedup": 5.103314780662775,
+      "horizons": [
+        1,
+        5,
+        15,
+        30
+      ],
+      "max_abs_diff_by_metric": {
+        "ic_abs_mean": 3.8629149698099496e-05,
+        "ic_mean": 3.494869850998589e-05,
+        "spread_abs_mean": 2.6568936529348247e-06,
+        "spread_hit_rate": 0.00033895113454474046,
+        "spread_mean": 3.2595703779211133e-06
+      },
+      "max_metric_abs_diff": 0.00033895113454474046,
+      "metric_tolerance": 0.0001,
+      "panel_rows": 1306461,
+      "ranking_top5_pass": true
+    }
+  },
+  "forbidden_actions": [
+    "make numba_hybrid the default proof evaluator",
+    "claim Phase3BC/BD as alpha proof",
+    "promote candidates based on numba_hybrid-only metrics",
+    "change X0/R3 or official chain state from BC/BD/BE"
+  ],
+  "object_id": "phase3be_backend_decision_record_v1",
+  "official_scope": {
+    "diagnostic_backend_allowed": "numba_hybrid_only_with_explicit_flag_after_metric_canary",
+    "production_proof_backend": "pandas",
+    "search_results_changed": false,
+    "x0_r3_changed": false
+  },
+  "phase": "Phase3BE",
+  "source_commits": [
+    "c4f27ca",
+    "73a6ca3",
+    "90e1d80",
+    "5a4ee7a"
+  ],
+  "source_reports": [
+    "reports/phase3bc_numba_fast_eval_canary_rolling_fullshard_20260613/PHASE3BC_NUMBA_FAST_EVAL_CANARY_20260613.md",
+    "reports/phase3bc_expression_parity_canary_20260613/PHASE3BC_EXPRESSION_PARITY_CANARY_20260613.md",
+    "reports/phase3bd_replay_metric_diff_canary_20260613/PHASE3BD_REPLAY_METRIC_DIFF_CANARY_20260613.md"
+  ],
+  "stable_object_hash_sha256": "4673a6cce15838e5135825c6c6ff7968f540381dd254d798d3ab1628a2d867e4",
+  "status": "locked_diagnostic_backend_policy"
+}
