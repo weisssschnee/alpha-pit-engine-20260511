@@ -1,0 +1,27 @@
+{
+  "by_source_lane": {
+    "phase3bh_bf_parent_deepen": 922,
+    "phase3bh_pure_fresh": 614
+  },
+  "candidate_count": 1536,
+  "chunk_count": 12,
+  "chunk_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3bh_bf_deepening_pack_20260614_chunks",
+  "created_at": "2026-06-13T19:05:56.225126+00:00",
+  "decision": "PHASE3BH_BF_DEEPENING_PACK_READY",
+  "hard_rules": [
+    "true_1min_only",
+    "pandas_proof_only",
+    "x0_r3_read_only",
+    "prior_bf_hashes_blocked"
+  ],
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3bh_bf_deepening_pack_20260614",
+  "parent_count": 72,
+  "pure_fresh_ratio": 0.4,
+  "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3bh_bf_deepening_pack_20260614",
+  "top_factor_lanes": {
+    "bh_deepen_bf_fresh_capacity_price_add_add": 461,
+    "bh_deepen_bf_fresh_capacity_price_add_resid": 461,
+    "bh_pure_fresh_capacity_term_add": 307,
+    "bh_pure_fresh_capacity_term_resid": 307
+  }
+}

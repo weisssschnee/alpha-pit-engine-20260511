@@ -375,6 +375,16 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3BF BA/BB survivor exploitation plus bounded pure-fresh true-1min candidate packs.",
     },
+    "phase3bg-bf-robust-audit": {
+        "module": "our_system_phase2.runtime.phase3bg_bf_robust_audit",
+        "diagnostic": False,
+        "description": "Audit Phase3BF true-1min outputs for cross-shard robustness and lane stability.",
+    },
+    "phase3bh-bf-deepening-pack": {
+        "module": "our_system_phase2.runtime.phase3bh_bf_deepening_pack",
+        "diagnostic": False,
+        "description": "Build Phase3BH deepening packs from Phase3BF/BG robust true-1min results.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

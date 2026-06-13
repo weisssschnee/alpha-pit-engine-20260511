@@ -1,0 +1,20 @@
+{
+  "audited_rows": 4608,
+  "completed_chunks": 128,
+  "created_at": "2026-06-13T19:02:47.241144+00:00",
+  "decision": "PHASE3BG_BF_ROBUST_AUDIT_COMPLETE_HOLD_RESEARCH",
+  "expected_chunks": 128,
+  "hard_rules": [
+    "true_1min_only",
+    "x0_r3_read_only",
+    "robust_audit_not_alpha_proof"
+  ],
+  "raw_result_rows": 73728,
+  "report_root": "D:\\HermesWorker\\workspace\\phase3aj_new_data_current\\reports\\phase3bg_bf_robust_audit_20260614",
+  "run_root": "D:\\HermesWorker\\workspace\\phase3aj_new_data_current\\runtime\\phase3bf_company_ba_exploit_fresh_20260613",
+  "source_lane_counts": {
+    "phase3bf_exploit": 51648,
+    "phase3bf_pure_fresh": 22080
+  },
+  "stable_rows": 2715
+}
