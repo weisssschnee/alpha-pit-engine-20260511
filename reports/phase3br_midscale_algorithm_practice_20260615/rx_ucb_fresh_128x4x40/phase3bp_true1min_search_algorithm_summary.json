@@ -1,0 +1,1022 @@
+{
+  "algorithm_mode": "rx_ucb",
+  "best_followup": {
+    "abs_aligned_ic_mean": 0.0594746618353661,
+    "aligned_ic_mean": 0.0594746618353661,
+    "aligned_spread_mean": -8.385841431871228e-05,
+    "blocker_flags": "",
+    "candidate_id": "phase3bp_02123",
+    "eval_rows_sum": 51736,
+    "expected_direction": 1,
+    "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Std(Div(Sub($high,$low),Add(Abs($open),0.000001)),8))))",
+    "expression_hash": "33de1a530fa113fd5ddc0be8",
+    "factor_lane": "rx_interaction::rx_range_location::rx_range_location::product",
+    "fields": "close|high|low|open",
+    "horizon_min": 1,
+    "ic_abs_mean": 0.07050162584728989,
+    "ic_hit_rate": 0.8552631578947367,
+    "ic_mean": 0.0594746618353661,
+    "mean_one_way_turnover": 0.775704310024741,
+    "note": "rx interaction bar_loc_shift_30 x range_vol_8 product",
+    "open_direction": "long_top",
+    "phase3bk_rank": "",
+    "phase3bl_decision": "bl_signal_materialized_pass",
+    "phase3bp_blocker_flags": "",
+    "phase3bp_decision": "bp_followup_priority",
+    "policy_score": 0.24606554,
+    "positive_horizon_count": 2,
+    "primary_horizon_min": 0,
+    "shard_count": 4,
+    "signal_nonnull_sum": 50464,
+    "signal_unique_min": 1945,
+    "source_generator": "phase3bp_true1min_rx_ucb_native",
+    "source_lane": "phase3bp_true1min_rx_ucb_native",
+    "spread_abs_mean": 0.0004557635736088865,
+    "spread_hit_rate": 0.5460526315789473,
+    "spread_mean": -8.385841431871228e-05,
+    "wrong_lag_future_ic_mean": -0.044334550672418364,
+    "wrong_lag_prev_ic_mean": -0.003789678519221576
+  },
+  "blocked_hash_count": 2172,
+  "candidate_count": 128,
+  "cem_elite_frac": 0.18,
+  "cem_population_size": 384,
+  "cem_rounds": 2,
+  "created_at": "2026-06-15T06:36:17.884367+00:00",
+  "decision": "PHASE3BP_TRUE1MIN_SEARCH_ALGORITHM_SMOKE_COMPLETE_DIAGNOSTIC_ONLY",
+  "followup_priority_count": 1,
+  "generator_mode": "true1min_rx_ucb_smoke",
+  "hard_boundary": [
+    "true trade_time minute panels only",
+    "old daily stock-PIT default dataset not used",
+    "search algorithm smoke only, not production proof",
+    "future wrong-lag is a hard blocker",
+    "X0/R3 read-only"
+  ],
+  "horizons_min": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "include_residual": false,
+  "max_expression_window": 30,
+  "max_horizon": 30,
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3br_midscale_algorithm_practice_20260615\\rx_ucb_fresh_128x4x40",
+  "panel_count": 4,
+  "panel_paths": [
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+  ],
+  "policy": {
+    "examples": [
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.124051,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.126434,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128238,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128435,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131274,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131488,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131931,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.132218,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13321,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.133477,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.134481,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.135076,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,30))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.04296,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13869,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.139873,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first5_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.221875,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first15_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.222362,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,15)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,20)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,5)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.089593,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      }
+    ],
+    "exploration": 0.85,
+    "policy_version": "phase3bp_true1min_ucb_smoke_v1",
+    "scope": "true1min_prior_routing_not_production_reward",
+    "scores": {
+      "field": {
+        "amount": 0.15914,
+        "close": 0.862829,
+        "high": 0.669168,
+        "intraday_ret_from_open": 0.997503,
+        "low": 0.669168,
+        "m1_first15_amount": 0.48739,
+        "m1_first15_last_close": 1.520593,
+        "m1_first15_range": 0.332425,
+        "m1_first15_vol": 0.316926,
+        "m1_first15_vwap_return_vs_open": 0.494235,
+        "m1_first30_amount": 0.461558,
+        "m1_first30_range": 0.756295,
+        "m1_first30_vol": 0.756295,
+        "m1_first30_vwap": 1.305949,
+        "m1_first5_amount": 0.425961,
+        "m1_first5_last_close": 1.521079,
+        "m1_first5_range": 0.333271,
+        "m1_first5_vol": 0.333271,
+        "m1_first5_vwap_return_vs_open": 0.493219,
+        "open": 0.12137,
+        "ret_1m": 0.264493,
+        "volume": 0.130293,
+        "vwap": 1.02277
+      },
+      "fieldset": {
+        "amount|m1_first15_amount|m1_first15_range|open": 0.807958,
+        "amount|m1_first15_amount|m1_first15_vol|volume": 0.756295,
+        "amount|m1_first30_amount|m1_first30_range|open": 0.756295,
+        "amount|m1_first30_amount|m1_first30_vol|volume": 0.756295,
+        "amount|m1_first5_amount|m1_first5_range|open": 0.756295,
+        "amount|m1_first5_amount|m1_first5_vol|volume": 0.756295,
+        "amount|m1_first5_amount|vwap": 1.221391,
+        "amount|volume": 0.895774,
+        "close|high|low": 1.141664,
+        "close|m1_first30_vwap": 1.818391,
+        "close|m1_first30_vwap|vwap": 1.814507,
+        "high|low|open|ret_1m": 0.882981,
+        "intraday_ret_from_open|ret_1m": 0.997503,
+        "m1_first15_last_close|open": 1.520593,
+        "m1_first15_range|m1_first15_vol|open|volume": 0.431282,
+        "m1_first15_vwap_return_vs_open|ret_1m": 0.494235,
+        "m1_first5_last_close|open": 1.521079,
+        "m1_first5_range|m1_first5_vol|open|volume": 0.445635,
+        "m1_first5_vwap_return_vs_open|ret_1m": 0.493219
+      },
+      "lane": {
+        "amount_volume_flow": 0.895774,
+        "bounded_vwap_mixed": 1.221391,
+        "intraday_efficiency_fresh": 0.997503,
+        "opening_amount_pressure_orthogonal": 0.330985,
+        "opening_directional_return": 1.010336,
+        "opening_divergence_representative": 1.674784,
+        "opening_range_location": 0.318558,
+        "opening_volume_range_imbalance": 0.252883,
+        "opening_vs_intraday_return_divergence": 0.323907,
+        "opening_vwap_residual": 1.818391,
+        "pure_fresh_cross": 1.814507,
+        "range_volatility_residual": 0.882981
+      },
+      "operator": {
+        "Abs": 0.079779,
+        "Add": 0.079779,
+        "CSRank": 0.055588,
+        "Delta": 0.258276,
+        "Div": 0.079779,
+        "Mean": 0.087104,
+        "Mul": 0.348206,
+        "Std": 0.61238,
+        "Sub": 0.082192,
+        "ZScore": 0.058921
+      },
+      "window": {
+        "10": 0.683405,
+        "15": 0.679874,
+        "2": 0.298745,
+        "20": 0.640471,
+        "3": 0.29914,
+        "30": 0.885918,
+        "5": 0.297861,
+        "8": 0.720803
+      }
+    },
+    "top_keys": {
+      "field": [
+        [
+          "m1_first5_last_close",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close",
+          1.520593
+        ],
+        [
+          "m1_first30_vwap",
+          1.305949
+        ],
+        [
+          "vwap",
+          1.02277
+        ],
+        [
+          "intraday_ret_from_open",
+          0.997503
+        ],
+        [
+          "close",
+          0.862829
+        ],
+        [
+          "m1_first30_vol",
+          0.756295
+        ],
+        [
+          "m1_first30_range",
+          0.756295
+        ],
+        [
+          "high",
+          0.669168
+        ],
+        [
+          "low",
+          0.669168
+        ],
+        [
+          "m1_first15_vwap_return_vs_open",
+          0.494235
+        ],
+        [
+          "m1_first5_vwap_return_vs_open",
+          0.493219
+        ]
+      ],
+      "fieldset": [
+        [
+          "close|m1_first30_vwap",
+          1.818391
+        ],
+        [
+          "close|m1_first30_vwap|vwap",
+          1.814507
+        ],
+        [
+          "m1_first5_last_close|open",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close|open",
+          1.520593
+        ],
+        [
+          "amount|m1_first5_amount|vwap",
+          1.221391
+        ],
+        [
+          "close|high|low",
+          1.141664
+        ],
+        [
+          "intraday_ret_from_open|ret_1m",
+          0.997503
+        ],
+        [
+          "amount|volume",
+          0.895774
+        ],
+        [
+          "high|low|open|ret_1m",
+          0.882981
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_range|open",
+          0.807958
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_vol|volume",
+          0.756295
+        ]
+      ],
+      "lane": [
+        [
+          "opening_vwap_residual",
+          1.818391
+        ],
+        [
+          "pure_fresh_cross",
+          1.814507
+        ],
+        [
+          "opening_divergence_representative",
+          1.674784
+        ],
+        [
+          "bounded_vwap_mixed",
+          1.221391
+        ],
+        [
+          "opening_directional_return",
+          1.010336
+        ],
+        [
+          "intraday_efficiency_fresh",
+          0.997503
+        ],
+        [
+          "amount_volume_flow",
+          0.895774
+        ],
+        [
+          "range_volatility_residual",
+          0.882981
+        ],
+        [
+          "opening_amount_pressure_orthogonal",
+          0.330985
+        ],
+        [
+          "opening_vs_intraday_return_divergence",
+          0.323907
+        ],
+        [
+          "opening_range_location",
+          0.318558
+        ],
+        [
+          "opening_volume_range_imbalance",
+          0.252883
+        ]
+      ],
+      "operator": [
+        [
+          "Std",
+          0.61238
+        ],
+        [
+          "Mul",
+          0.348206
+        ],
+        [
+          "Delta",
+          0.258276
+        ],
+        [
+          "Mean",
+          0.087104
+        ],
+        [
+          "Sub",
+          0.082192
+        ],
+        [
+          "Abs",
+          0.079779
+        ],
+        [
+          "Div",
+          0.079779
+        ],
+        [
+          "Add",
+          0.079779
+        ],
+        [
+          "ZScore",
+          0.058921
+        ],
+        [
+          "CSRank",
+          0.055588
+        ]
+      ],
+      "window": [
+        [
+          "30",
+          0.885918
+        ],
+        [
+          "8",
+          0.720803
+        ],
+        [
+          "10",
+          0.683405
+        ],
+        [
+          "15",
+          0.679874
+        ],
+        [
+          "20",
+          0.640471
+        ],
+        [
+          "3",
+          0.29914
+        ],
+        [
+          "2",
+          0.298745
+        ],
+        [
+          "5",
+          0.297861
+        ]
+      ]
+    },
+    "total_observation_count": 66
+  },
+  "read_fields": [
+    "amount",
+    "close",
+    "high",
+    "intraday_ret_from_open",
+    "low",
+    "m1_first15_amount",
+    "m1_first15_range",
+    "m1_first15_vol",
+    "m1_first15_vwap_return_vs_open",
+    "m1_first30_amount",
+    "m1_first30_range",
+    "m1_first30_vol",
+    "m1_first30_vwap_return_vs_open",
+    "m1_first5_amount",
+    "m1_first5_range",
+    "m1_first5_vol",
+    "m1_first5_vwap_return_vs_open",
+    "open",
+    "ret_1m",
+    "volume"
+  ],
+  "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3br_midscale_algorithm_practice_20260615\\rx_ucb_fresh_128x4x40",
+  "sample_trade_times_per_shard": 40,
+  "shards": [
+    {
+      "code_count": 340,
+      "eval_rows": 12958,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 771136,
+      "read_trade_time_count": 2380,
+      "shard_index": 0,
+      "signal_trade_time_count": 40
+    },
+    {
+      "code_count": 340,
+      "eval_rows": 13013,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 774443,
+      "read_trade_time_count": 2380,
+      "shard_index": 1,
+      "signal_trade_time_count": 40
+    },
+    {
+      "code_count": 340,
+      "eval_rows": 12885,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 766815,
+      "read_trade_time_count": 2380,
+      "shard_index": 2,
+      "signal_trade_time_count": 40
+    },
+    {
+      "code_count": 340,
+      "eval_rows": 12880,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 766492,
+      "read_trade_time_count": 2380,
+      "shard_index": 3,
+      "signal_trade_time_count": 40
+    }
+  ],
+  "top_decisions": [
+    {
+      "abs_aligned_ic_mean": 0.22053278085802933,
+      "aligned_ic_mean": -0.22053278085802933,
+      "aligned_spread_mean": -0.0006552947506726378,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02188",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "eac8039dd584de14582c9d95",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2247909747512828,
+      "ic_hit_rate": 0.022058823529411763,
+      "ic_mean": -0.22053278085802933,
+      "mean_one_way_turnover": 0.789163941667865,
+      "note": "rx interaction bar_loc_shift_30 x m1_first30_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.24876148,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 45322,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0008405382775328219,
+      "spread_hit_rate": 0.03676470588235294,
+      "spread_mean": -0.0006552947506726378,
+      "wrong_lag_future_ic_mean": 0.5604125948262639,
+      "wrong_lag_prev_ic_mean": -0.0059676149604255095
+    },
+    {
+      "abs_aligned_ic_mean": 0.2192557261224342,
+      "aligned_ic_mean": -0.2192557261224342,
+      "aligned_spread_mean": -0.0007150640590240395,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02184",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first5_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "b4534e0bb90bc0a942afca65",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first5_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22246665847211256,
+      "ic_hit_rate": 0.02027027027027027,
+      "ic_mean": -0.2192557261224342,
+      "mean_one_way_turnover": 0.7906418451498904,
+      "note": "rx interaction bar_loc_shift_30 x m1_first5_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.22845632,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 49181,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0008257704851130573,
+      "spread_hit_rate": 0.02702702702702703,
+      "spread_mean": -0.0007150640590240395,
+      "wrong_lag_future_ic_mean": 0.5669829986794032,
+      "wrong_lag_prev_ic_mean": -0.0072766766602780555
+    },
+    {
+      "abs_aligned_ic_mean": 0.21844292127645754,
+      "aligned_ic_mean": -0.21844292127645754,
+      "aligned_spread_mean": -0.0006927228242663544,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02186",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first15_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "8563d3c7e146fa9af386e693",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first15_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22207816572196373,
+      "ic_hit_rate": 0.02027027027027027,
+      "ic_mean": -0.21844292127645754,
+      "mean_one_way_turnover": 0.7915689909821065,
+      "note": "rx interaction bar_loc_shift_30 x m1_first15_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.22767176,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 49181,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0008416562163746541,
+      "spread_hit_rate": 0.02702702702702703,
+      "spread_mean": -0.0006927228242663544,
+      "wrong_lag_future_ic_mean": 0.5665853008231013,
+      "wrong_lag_prev_ic_mean": -0.007528478375518162
+    },
+    {
+      "abs_aligned_ic_mean": 0.21786568724798608,
+      "aligned_ic_mean": -0.21786568724798608,
+      "aligned_spread_mean": -0.0006577671571200242,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00105",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))))",
+      "expression_hash": "c70970f75bba91b06e076457",
+      "factor_lane": "rx_range_location::rank",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22536195987023921,
+      "ic_hit_rate": 0.05263157894736842,
+      "ic_mean": -0.21786568724798608,
+      "mean_one_way_turnover": 0.7835046688089783,
+      "note": "rx atom transform bar_loc_shift_30",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.48214205,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 50464,
+      "signal_unique_min": 2167,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0009078227941824341,
+      "spread_hit_rate": 0.05921052631578947,
+      "spread_mean": -0.0006577671571200242,
+      "wrong_lag_future_ic_mean": 0.5684782154944718,
+      "wrong_lag_prev_ic_mean": -0.009184767604081741
+    },
+    {
+      "abs_aligned_ic_mean": 0.21786568724798602,
+      "aligned_ic_mean": 0.21786568724798602,
+      "aligned_spread_mean": 0.0006490895632718753,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00106",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "Neg(CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30)))))",
+      "expression_hash": "99d1e7f5a79f49f3a2661218",
+      "factor_lane": "rx_range_location::inverted",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2253619598702392,
+      "ic_hit_rate": 0.9473684210526315,
+      "ic_mean": 0.21786568724798602,
+      "mean_one_way_turnover": 0.7822972076035029,
+      "note": "rx atom transform bar_loc_shift_30",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.48064736,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 50464,
+      "signal_unique_min": 2167,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000909129034993513,
+      "spread_hit_rate": 0.9407894736842105,
+      "spread_mean": 0.0006490895632718753,
+      "wrong_lag_future_ic_mean": -0.5684782154944718,
+      "wrong_lag_prev_ic_mean": 0.009184767604081741
+    },
+    {
+      "abs_aligned_ic_mean": 0.2140891183281414,
+      "aligned_ic_mean": 0.2140891183281414,
+      "aligned_spread_mean": 0.0007279829375766207,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02187",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "c8af19143070433e5893b16e",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.21523245197611898,
+      "ic_hit_rate": 0.9779411764705883,
+      "ic_mean": 0.2140891183281414,
+      "mean_one_way_turnover": 0.7807579968579392,
+      "note": "rx interaction bar_loc_shift_30 x m1_first30_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.2542309,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 45322,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000744510805952696,
+      "spread_hit_rate": 0.9779411764705883,
+      "spread_mean": 0.0007279829375766207,
+      "wrong_lag_future_ic_mean": -0.5548837312348489,
+      "wrong_lag_prev_ic_mean": 0.008894320336526873
+    },
+    {
+      "abs_aligned_ic_mean": 0.2089219327783056,
+      "aligned_ic_mean": 0.2089219327783056,
+      "aligned_spread_mean": 0.0006617969420190455,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00050",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "Neg(CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8)))))",
+      "expression_hash": "40d0c61f06fc8f8c8ebe806f",
+      "factor_lane": "rx_range_location::inverted",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2147870637227181,
+      "ic_hit_rate": 0.9671052631578948,
+      "ic_mean": 0.2089219327783056,
+      "mean_one_way_turnover": 0.791267639911458,
+      "note": "rx atom transform bar_loc_shift_8",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.46413586,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 50464,
+      "signal_unique_min": 2366,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0008881471114866655,
+      "spread_hit_rate": 0.9473684210526315,
+      "spread_mean": 0.0006617969420190455,
+      "wrong_lag_future_ic_mean": -0.5848881564135483,
+      "wrong_lag_prev_ic_mean": 0.01026268852573638
+    },
+    {
+      "abs_aligned_ic_mean": 0.20892193277830556,
+      "aligned_ic_mean": -0.20892193277830556,
+      "aligned_spread_mean": -0.0006716844541854426,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00049",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8))))",
+      "expression_hash": "919d4ed87c7ad94cd1a0cf0a",
+      "factor_lane": "rx_range_location::rank",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2147870637227181,
+      "ic_hit_rate": 0.03289473684210526,
+      "ic_mean": -0.20892193277830556,
+      "mean_one_way_turnover": 0.7908208988471086,
+      "note": "rx atom transform bar_loc_shift_8",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.46563055,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 50464,
+      "signal_unique_min": 2366,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0008799064254960831,
+      "spread_hit_rate": 0.05263157894736842,
+      "spread_mean": -0.0006716844541854426,
+      "wrong_lag_future_ic_mean": 0.5848881564135483,
+      "wrong_lag_prev_ic_mean": -0.010262688525736382
+    },
+    {
+      "abs_aligned_ic_mean": 0.20724387840635256,
+      "aligned_ic_mean": 0.20724387840635256,
+      "aligned_spread_mean": 0.0007225560773683017,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02185",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first15_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "a54442f9861634d17f663086",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first15_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2083440984318564,
+      "ic_hit_rate": 0.9864864864864864,
+      "ic_mean": 0.20724387840635256,
+      "mean_one_way_turnover": 0.7820819561955683,
+      "note": "rx interaction bar_loc_shift_30 x m1_first15_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.23314119,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 49181,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007567173857805659,
+      "spread_hit_rate": 0.972972972972973,
+      "spread_mean": 0.0007225560773683017,
+      "wrong_lag_future_ic_mean": -0.5582914257534883,
+      "wrong_lag_prev_ic_mean": 0.01002092587016616
+    },
+    {
+      "abs_aligned_ic_mean": 0.2070769034816928,
+      "aligned_ic_mean": 0.2070769034816928,
+      "aligned_spread_mean": 0.0007081034960534516,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02183",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first5_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "561e0458e2352b1a47c9f279",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first5_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.20858276579977425,
+      "ic_hit_rate": 0.972972972972973,
+      "ic_mean": 0.2070769034816928,
+      "mean_one_way_turnover": 0.7817820618387298,
+      "note": "rx interaction bar_loc_shift_30 x m1_first5_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.23392575,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 49181,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007418467492445486,
+      "spread_hit_rate": 0.972972972972973,
+      "spread_mean": 0.0007081034960534516,
+      "wrong_lag_future_ic_mean": -0.5591671183730574,
+      "wrong_lag_prev_ic_mean": 0.009169865058599262
+    },
+    {
+      "abs_aligned_ic_mean": 0.2062489283684724,
+      "aligned_ic_mean": 0.2062489283684724,
+      "aligned_spread_mean": 0.0007039936063441478,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_01425",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),10))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "a8bb8f6b9d907b866a13ef26",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.20787554968340602,
+      "ic_hit_rate": 0.9779411764705882,
+      "ic_mean": 0.2062489283684724,
+      "mean_one_way_turnover": 0.7885635637055002,
+      "note": "rx interaction bar_loc_shift_10 x m1_first30_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.2339796,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 45322,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007200938062220262,
+      "spread_hit_rate": 0.9779411764705883,
+      "spread_mean": 0.0007039936063441478,
+      "wrong_lag_future_ic_mean": -0.5696890038152338,
+      "wrong_lag_prev_ic_mean": 0.009835527948364085
+    },
+    {
+      "abs_aligned_ic_mean": 0.2039991216452688,
+      "aligned_ic_mean": 0.2039991216452688,
+      "aligned_spread_mean": 0.0007061550405030981,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_01171",
+      "eval_rows_sum": 51736,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "c0d92f5dd8f353b0f3612d24",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2048999023110974,
+      "ic_hit_rate": 0.9779411764705882,
+      "ic_mean": 0.2039991216452688,
+      "mean_one_way_turnover": 0.7912787440428612,
+      "note": "rx interaction bar_loc_shift_8 x m1_first30_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.2377194,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 4,
+      "signal_nonnull_sum": 45322,
+      "signal_unique_min": 1924,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007228101562246085,
+      "spread_hit_rate": 0.9705882352941178,
+      "spread_mean": 0.0007061550405030981,
+      "wrong_lag_future_ic_mean": -0.5745476202597688,
+      "wrong_lag_prev_ic_mean": 0.01220798564367793
+    }
+  ],
+  "total_eval_rows": 51736
+}

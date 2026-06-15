@@ -420,6 +420,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Benchmark true-1min search algorithm arms for compute allocation.",
     },
+    "phase3br-midscale-algorithm-practice": {
+        "module": "our_system_phase2.runtime.phase3br_midscale_algorithm_practice",
+        "diagnostic": True,
+        "description": "Run a medium true-1min algorithm practice benchmark with research-pool scoring.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

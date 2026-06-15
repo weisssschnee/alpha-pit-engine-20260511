@@ -1,0 +1,8 @@
+factor_lane,count,best_abs_aligned_ic,followup_count
+intraday_efficiency_fresh,3,0.1803127391,0
+opening_range_location,12,0.1257407848,0
+opening_divergence_representative,1,0.1172449353,0
+bounded_vwap_mixed,2,0.07256752947,1
+opening_amount_pressure_orthogonal,9,0.02620350255,0
+range_volatility_residual,3,0.02259058128,0
+amount_volume_flow,2,0.01099899539,0
