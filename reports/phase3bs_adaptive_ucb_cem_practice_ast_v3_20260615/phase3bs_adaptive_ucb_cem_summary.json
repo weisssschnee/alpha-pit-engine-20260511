@@ -1,0 +1,2030 @@
+{
+  "adaptive_policy": {
+    "examples": [
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.124051,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.126434,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128238,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128435,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131274,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131488,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131931,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.132218,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13321,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.133477,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.134481,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.135076,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,30))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.04296,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13869,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.139873,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first5_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.221875,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first15_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.222362,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,15)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,20)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,5)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.089593,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      }
+    ],
+    "exploration": 0.85,
+    "feedback": {
+      "decision_count": 96,
+      "entropy_floor": 0.015,
+      "learning_rate": 0.55,
+      "top_feedback": {
+        "ast_complexity_bin": [
+          [
+            "complexity_le_6",
+            0.028358
+          ],
+          [
+            "complexity_le_10",
+            0.004403
+          ],
+          [
+            "complexity_le_18",
+            -0.031777
+          ],
+          [
+            "complexity_gt_18",
+            -0.04837
+          ],
+          [
+            "complexity_le_14",
+            -0.069562
+          ]
+        ],
+        "ast_depth_bin": [
+          [
+            "depth_le_4",
+            0.01004
+          ],
+          [
+            "depth_gt_8",
+            -0.04837
+          ],
+          [
+            "depth_le_6",
+            -0.049878
+          ],
+          [
+            "depth_le_8",
+            -0.085753
+          ]
+        ],
+        "ast_field_count_bin": [
+          [
+            "fieldcount_le_1",
+            0.028358
+          ],
+          [
+            "fieldcount_le_2",
+            0.004403
+          ],
+          [
+            "fieldcount_le_6",
+            -0.034279
+          ],
+          [
+            "fieldcount_le_4",
+            -0.061702
+          ]
+        ],
+        "ast_max_window_bin": [
+          [
+            "maxwin_le_15",
+            -0.013356
+          ],
+          [
+            "maxwin_le_30",
+            -0.058175
+          ]
+        ],
+        "ast_operator_count_bin": [
+          [
+            "opcount_le_3",
+            0.028358
+          ],
+          [
+            "opcount_le_6",
+            0.007597
+          ],
+          [
+            "opcount_le_12",
+            -0.031777
+          ],
+          [
+            "opcount_gt_12",
+            -0.04837
+          ],
+          [
+            "opcount_le_9",
+            -0.069562
+          ]
+        ],
+        "ast_operator_multiset": [
+          [
+            "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Mul:1|Std:1|Sub:6|ZScore:2",
+            0.127533
+          ],
+          [
+            "CSRank:1|Delta:2|Sub:1|ZScore:2",
+            0.10671
+          ],
+          [
+            "Abs:2|Add:2|CSRank:1|Div:2|Std:1|Sub:2|ZScore:2",
+            0.069202
+          ],
+          [
+            "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Std:1|Sub:2|ZScore:2",
+            0.067706
+          ],
+          [
+            "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Mul:1|ZScore:2",
+            0.064107
+          ],
+          [
+            "CSRank:1|Delta:1|Neg:1|ZScore:1",
+            0.028358
+          ],
+          [
+            "CSRank:1|Delta:1|ZScore:1",
+            0.028358
+          ],
+          [
+            "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Mul:1|Std:1|Sub:5|ZScore:2",
+            0.025183
+          ],
+          [
+            "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Sub:6|ZScore:2",
+            -0.025442
+          ],
+          [
+            "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Sub:1|ZScore:2",
+            -0.028082
+          ],
+          [
+            "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Neg:1|Sub:5|ZScore:1",
+            -0.030009
+          ],
+          [
+            "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Mul:1|Sub:5|ZScore:2",
+            -0.037225
+          ],
+          [
+            "Abs:2|Add:2|CSRank:1|Div:2|Mul:1|Std:1|Sub:1|ZScore:2",
+            -0.041137
+          ],
+          [
+            "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Std:1|Sub:7|ZScore:2",
+            -0.062365
+          ],
+          [
+            "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Std:1|Sub:6|ZScore:2",
+            -0.06369
+          ],
+          [
+            "Abs:1|Add:1|CSRank:1|Div:1|Std:1|Sub:2|ZScore:2",
+            -0.09869
+          ]
+        ],
+        "ast_operator_sequence": [
+          [
+            "CSRank>Sub>ZScore>Delta>ZScore>Delta",
+            0.10671
+          ],
+          [
+            "CSRank>Sub>ZScore>Delta>ZScore>Div>Add>Abs",
+            0.088275
+          ],
+          [
+            "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Std>Div>Sub",
+            0.069202
+          ],
+          [
+            "CSRank>Sub>ZScore>Delta>ZScore>Std>Div>Sub>Add>Abs",
+            0.067706
+          ],
+          [
+            "CSRank>Mul>ZScore>Delta>ZScore>Div>Add>Abs",
+            0.064107
+          ],
+          [
+            "Neg>CSRank>ZScore>Delta",
+            0.028358
+          ],
+          [
+            "CSRank>ZScore>Delta",
+            0.028358
+          ],
+          [
+            "Neg>CSRank>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean",
+            -0.030009
+          ],
+          [
+            "CSRank>Sub>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean",
+            -0.040476
+          ],
+          [
+            "CSRank>Mul>ZScore>Div>Add>Abs>ZScore>Std>Div>Sub",
+            -0.041137
+          ],
+          [
+            "CSRank>Mul>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean",
+            -0.054642
+          ],
+          [
+            "CSRank>Sub>ZScore>ZScore>Std>Div>Sub>Add>Abs",
+            -0.09869
+          ],
+          [
+            "CSRank>Mul>ZScore>Div>Add>Abs>ZScore>Std",
+            -0.113173
+          ],
+          [
+            "CSRank>Mul>ZScore>Delta>ZScore>Std>Div>Sub>Add>Abs",
+            -0.127329
+          ],
+          [
+            "CSRank>Mul>ZScore>Delta>ZScore>Std",
+            -0.127694
+          ],
+          [
+            "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Std",
+            -0.172761
+          ]
+        ],
+        "ast_root_operator": [
+          [
+            "Neg",
+            -0.034644
+          ],
+          [
+            "CSRank",
+            -0.046429
+          ]
+        ],
+        "ast_skeleton": [
+          [
+            "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            0.127533
+          ],
+          [
+            "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Delta($F,N))))",
+            0.10671
+          ],
+          [
+            "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Div($F,Add(Abs($F),N)))))",
+            0.088275
+          ],
+          [
+            "CSRank(Sub(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            0.069202
+          ],
+          [
+            "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            0.067706
+          ],
+          [
+            "CSRank(Mul(ZScore(Delta($F,N)),ZScore(Div($F,Add(Abs($F),N)))))",
+            0.064107
+          ],
+          [
+            "Neg(CSRank(ZScore(Delta($F,N))))",
+            0.028358
+          ],
+          [
+            "CSRank(ZScore(Delta($F,N)))",
+            0.028358
+          ],
+          [
+            "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std($F,N))))",
+            0.025183
+          ],
+          [
+            "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Div($F,Add(Abs($F),N)))))",
+            -0.025442
+          ],
+          [
+            "Neg(CSRank(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N)))))",
+            -0.030009
+          ],
+          [
+            "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Div($F,Add(Abs($F),N)))))",
+            -0.037225
+          ],
+          [
+            "CSRank(Mul(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            -0.041137
+          ],
+          [
+            "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            -0.062365
+          ],
+          [
+            "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std($F,N))))",
+            -0.06369
+          ],
+          [
+            "CSRank(Sub(ZScore($F),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+            -0.09869
+          ]
+        ],
+        "ast_window_count_bin": [
+          [
+            "wincount_le_2",
+            -0.021763
+          ],
+          [
+            "wincount_le_1",
+            -0.050693
+          ]
+        ],
+        "field": [
+          [
+            "intraday_ret_from_open",
+            0.06233
+          ],
+          [
+            "m1_first5_vol",
+            0.058009
+          ],
+          [
+            "volume",
+            0.030477
+          ],
+          [
+            "m1_first15_vol",
+            0.025132
+          ],
+          [
+            "m1_first30_vol",
+            0.003825
+          ],
+          [
+            "close",
+            -0.04837
+          ],
+          [
+            "high",
+            -0.071595
+          ],
+          [
+            "low",
+            -0.071595
+          ],
+          [
+            "m1_first30_range",
+            -0.077958
+          ],
+          [
+            "m1_first15_amount",
+            -0.091509
+          ],
+          [
+            "open",
+            -0.093322
+          ],
+          [
+            "ret_1m",
+            -0.10917
+          ],
+          [
+            "amount",
+            -0.125376
+          ],
+          [
+            "m1_first15_vwap_return_vs_open",
+            -0.127567
+          ],
+          [
+            "m1_first30_vwap_return_vs_open",
+            -0.145058
+          ],
+          [
+            "m1_first30_amount",
+            -0.16983
+          ]
+        ],
+        "fieldset": [
+          [
+            "intraday_ret_from_open|m1_first5_vol|volume",
+            0.151527
+          ],
+          [
+            "intraday_ret_from_open|volume",
+            0.135309
+          ],
+          [
+            "intraday_ret_from_open|m1_first30_vol|volume",
+            0.088921
+          ],
+          [
+            "intraday_ret_from_open|m1_first15_vol|volume",
+            0.086005
+          ],
+          [
+            "close|high|low|open",
+            0.080059
+          ],
+          [
+            "amount|intraday_ret_from_open",
+            0.07811
+          ],
+          [
+            "intraday_ret_from_open",
+            0.028358
+          ],
+          [
+            "high|low|m1_first30_range|open",
+            0.014033
+          ],
+          [
+            "close|high|low|ret_1m",
+            -0.004441
+          ],
+          [
+            "high|intraday_ret_from_open|low|open",
+            -0.006644
+          ],
+          [
+            "close|high|low",
+            -0.030009
+          ],
+          [
+            "close|high|low|m1_first30_vol|volume",
+            -0.031587
+          ],
+          [
+            "close|high|low|m1_first5_vol|volume",
+            -0.035509
+          ],
+          [
+            "close|high|low|m1_first15_vol|volume",
+            -0.035742
+          ],
+          [
+            "m1_first30_vol|ret_1m|volume",
+            -0.045857
+          ],
+          [
+            "m1_first30_range|open|ret_1m",
+            -0.078529
+          ]
+        ],
+        "lane": [
+          [
+            "rx_interaction::rx_range_location::rx_range_location::product",
+            0.127533
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_flow_amount_volume::spread",
+            0.10671
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_opening_amount::spread",
+            0.088275
+          ],
+          [
+            "rx_interaction::rx_opening_range::rx_range_location::spread",
+            0.069202
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_range_location::spread",
+            0.067706
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_opening_amount::product",
+            0.064107
+          ],
+          [
+            "rx_intraday_return::inverted",
+            0.028358
+          ],
+          [
+            "rx_intraday_return::rank",
+            0.028358
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_volatility_state::product",
+            0.025183
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_opening_amount::spread",
+            -0.025442
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_opening_amount::product",
+            -0.037225
+          ],
+          [
+            "rx_interaction::rx_opening_range::rx_range_location::product",
+            -0.041137
+          ],
+          [
+            "rx_range_location::inverted",
+            -0.059844
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_range_location::spread",
+            -0.062365
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_volatility_state::spread",
+            -0.06369
+          ],
+          [
+            "rx_interaction::rx_opening_divergence::rx_range_location::spread",
+            -0.09869
+          ]
+        ],
+        "operator": [
+          [
+            "Delta",
+            -0.006293
+          ],
+          [
+            "Neg",
+            -0.034644
+          ],
+          [
+            "ZScore",
+            -0.04557
+          ],
+          [
+            "CSRank",
+            -0.04557
+          ],
+          [
+            "Mean",
+            -0.04837
+          ],
+          [
+            "Mul",
+            -0.055213
+          ],
+          [
+            "Sub",
+            -0.056703
+          ],
+          [
+            "Div",
+            -0.057536
+          ],
+          [
+            "Abs",
+            -0.057536
+          ],
+          [
+            "Add",
+            -0.057536
+          ],
+          [
+            "Std",
+            -0.094124
+          ]
+        ],
+        "window": [
+          [
+            "10",
+            -0.002554
+          ],
+          [
+            "8",
+            -0.023161
+          ],
+          [
+            "20",
+            -0.028713
+          ],
+          [
+            "30",
+            -0.058608
+          ]
+        ]
+      }
+    },
+    "policy_version": "phase3bs_adaptive_ucb_cem_feedback_v1",
+    "scope": "true1min_feedback_updated_generator_policy_not_production_reward",
+    "scores": {
+      "ast_complexity_bin": {
+        "complexity_gt_18": 0.487146,
+        "complexity_le_10": 0.115225,
+        "complexity_le_14": 0.308138,
+        "complexity_le_18": 0.019026,
+        "complexity_le_6": 0.022347
+      },
+      "ast_depth_bin": {
+        "depth_gt_8": 0.015,
+        "depth_le_4": 0.118325,
+        "depth_le_6": 0.421444,
+        "depth_le_8": 0.015
+      },
+      "ast_field_count_bin": {
+        "fieldcount_le_1": 0.022347,
+        "fieldcount_le_2": 0.110926,
+        "fieldcount_le_4": 0.015,
+        "fieldcount_le_6": 0.015
+      },
+      "ast_max_window_bin": {
+        "maxwin_le_0": 0.883362,
+        "maxwin_le_15": 0.139519,
+        "maxwin_le_30": 0.185898,
+        "maxwin_le_5": 0.104293
+      },
+      "ast_operator_count_bin": {
+        "opcount_gt_12": 0.409725,
+        "opcount_le_12": 0.017342,
+        "opcount_le_3": 0.022347,
+        "opcount_le_6": 0.116981,
+        "opcount_le_9": 0.308138
+      },
+      "ast_operator_multiset": {
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Mean:1|Sub:1|ZScore:2": 1.221391,
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Mul:1|Std:1|Sub:1|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Mul:1|ZScore:2": 0.042009,
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Std:1|Sub:2|ZScore:2": 0.043988,
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Std:1|ZScore:2": 0.997503,
+        "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Sub:1|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Mul:1|Std:1|Sub:1|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Mul:1|Std:1|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Neg:1|Std:1|Sub:1|ZScore:1": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Std:1|Sub:1|ZScore:1": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Std:1|Sub:1|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Std:1|Sub:2|ZScore:2": 0.015,
+        "Abs:1|Add:1|CSRank:1|Div:1|Std:2|Sub:2|ZScore:2": 0.882981,
+        "Abs:1|Add:1|CSRank:1|Div:1|Sub:1": 0.883362,
+        "Abs:2|Add:2|CSRank:1|Delta:1|Div:2|Mean:1|Mul:1|Sub:5|ZScore:2": 0.015,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Mul:1|Std:1|Sub:5|ZScore:2": 0.020601,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Mul:1|ZScore:2": 0.348206,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Neg:1|Sub:5|ZScore:1": 0.015,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Std:1|Sub:2|ZScore:2": 1.814507,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Std:1|Sub:6|ZScore:2": 0.015,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Sub:1|ZScore:2": 0.252883,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Sub:5|ZScore:2": 1.141664,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mean:2|Sub:1|ZScore:2": 0.330985,
+        "Abs:2|Add:2|CSRank:1|Div:2|Mul:1|Std:1|Sub:1|ZScore:2": 0.015,
+        "Abs:2|Add:2|CSRank:1|Div:2|Std:1|Sub:2|ZScore:2": 0.044811,
+        "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Mul:1|Std:1|Sub:6|ZScore:2": 0.076893,
+        "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Mul:1|Sub:5|ZScore:2": 0.015,
+        "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Std:1|Sub:7|ZScore:2": 0.015,
+        "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Sub:6|ZScore:2": 0.015,
+        "CSRank:1|Delta:1|Mul:1|Std:1|ZScore:2": 0.015,
+        "CSRank:1|Delta:1|Neg:1|ZScore:1": 0.022347,
+        "CSRank:1|Delta:1|Sub:1|ZScore:2": 0.313238,
+        "CSRank:1|Delta:1|ZScore:1": 0.022347,
+        "CSRank:1|Delta:2|Sub:1|ZScore:2": 0.461789,
+        "CSRank:1|Std:1|Sub:1|ZScore:2": 0.015
+      },
+      "ast_operator_sequence": {
+        "CSRank>Div>Sub>Add>Abs": 0.883362,
+        "CSRank>Div>ZScore>Delta>Add>Abs>ZScore>Std": 0.997503,
+        "CSRank>Mul>ZScore>Delta>ZScore>Div>Add>Abs": 0.042009,
+        "CSRank>Mul>ZScore>Delta>ZScore>Std": 0.015,
+        "CSRank>Mul>ZScore>Delta>ZScore>Std>Div>Sub>Add>Abs": 0.015,
+        "CSRank>Mul>ZScore>Div>Add>Abs>Mean>ZScore>Div>Add": 0.348206,
+        "CSRank>Mul>ZScore>Div>Add>Abs>ZScore>Std": 0.015,
+        "CSRank>Mul>ZScore>Div>Add>Abs>ZScore>Std>Div>Sub": 0.015,
+        "CSRank>Mul>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean": 0.015,
+        "CSRank>Mul>ZScore>ZScore>Std>Div>Sub>Add>Abs": 0.015,
+        "CSRank>Sub>ZScore>Delta>ZScore>Delta": 0.461789,
+        "CSRank>Sub>ZScore>Delta>ZScore>Div>Add>Abs": 0.055301,
+        "CSRank>Sub>ZScore>Delta>ZScore>Std>Div>Sub>Add>Abs": 0.043988,
+        "CSRank>Sub>ZScore>Div>Add>Abs>Mean>ZScore>Delta": 1.221391,
+        "CSRank>Sub>ZScore>Div>Add>Abs>Mean>ZScore>Div>Add": 0.138813,
+        "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Delta": 0.015,
+        "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Std": 0.015,
+        "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Std>Div>Sub": 0.044811,
+        "CSRank>Sub>ZScore>Div>Std>Add>Abs>Mean>ZScore>Div": 1.814507,
+        "CSRank>Sub>ZScore>Div>Sub>Add>Abs>Sub>ZScore>Mean": 1.141664,
+        "CSRank>Sub>ZScore>Std>Div>Sub>Add>Abs>ZScore>Std": 0.882981,
+        "CSRank>Sub>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean": 0.015,
+        "CSRank>Sub>ZScore>ZScore>Delta": 0.313238,
+        "CSRank>Sub>ZScore>ZScore>Std": 0.015,
+        "CSRank>Sub>ZScore>ZScore>Std>Div>Sub>Add>Abs": 0.015,
+        "CSRank>ZScore>Delta": 0.022347,
+        "CSRank>ZScore>Std>Div>Sub>Add>Abs": 0.015,
+        "Neg>CSRank>ZScore>Delta": 0.022347,
+        "Neg>CSRank>ZScore>Std>Div>Sub>Add>Abs": 0.015,
+        "Neg>CSRank>ZScore>Sub>Div>Sub>Add>Abs>Sub>Mean": 0.015
+      },
+      "ast_root_operator": {
+        "CSRank": 0.015,
+        "Neg": 0.015
+      },
+      "ast_skeleton": {
+        "CSRank(Div(Sub($F,$F),Add(Abs($F),N)))": 0.883362,
+        "CSRank(Div(ZScore(Delta($F,N)),Add(Abs(ZScore(Std($F,N))),N)))": 0.997503,
+        "CSRank(Mul(ZScore($F),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "CSRank(Mul(ZScore(Delta($F,N)),ZScore(Div($F,Add(Abs($F),N)))))": 0.042009,
+        "CSRank(Mul(ZScore(Delta($F,N)),ZScore(Std($F,N))))": 0.015,
+        "CSRank(Mul(ZScore(Delta($F,N)),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "CSRank(Mul(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std($F,N))))": 0.015,
+        "CSRank(Mul(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "CSRank(Mul(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs($F),N)))))": 0.348206,
+        "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Delta($F,N))))": 0.015,
+        "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Div($F,Add(Abs($F),N)))))": 0.015,
+        "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std($F,N))))": 0.020601,
+        "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.076893,
+        "CSRank(Sub(ZScore($F),ZScore(Delta($F,N))))": 0.313238,
+        "CSRank(Sub(ZScore($F),ZScore(Std($F,N))))": 0.015,
+        "CSRank(Sub(ZScore($F),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Delta($F,N))))": 0.461789,
+        "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Div($F,Add(Abs($F),N)))))": 0.055301,
+        "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.043988,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs($F),N))),ZScore(Delta($F,N))))": 0.015,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std($F,N))))": 0.015,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs($F),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.044811,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Delta($F,N))))": 1.221391,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs($F),N)))))": 0.252883,
+        "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs(Mean($F,N)),N)))))": 0.330985,
+        "CSRank(Sub(ZScore(Div(Std($F,N),Add(Abs(Mean($F,N)),N))),ZScore(Div(Sub($F,$F),Add(Abs($F),N)))))": 1.814507,
+        "CSRank(Sub(ZScore(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N))),ZScore(Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))))": 1.141664,
+        "CSRank(Sub(ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N)),ZScore(Std($F,N))))": 0.882981,
+        "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Div($F,Add(Abs($F),N)))))": 0.015,
+        "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std($F,N))))": 0.015,
+        "CSRank(Sub(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "CSRank(ZScore(Delta($F,N)))": 0.022347,
+        "CSRank(ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N)))": 0.015,
+        "Neg(CSRank(ZScore(Delta($F,N))))": 0.022347,
+        "Neg(CSRank(ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))": 0.015,
+        "Neg(CSRank(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N)))))": 0.015
+      },
+      "ast_window_count_bin": {
+        "wincount_le_0": 0.883362,
+        "wincount_le_1": 0.015,
+        "wincount_le_2": 0.015
+      },
+      "field": {
+        "amount": 0.015,
+        "close": 0.36167,
+        "high": 0.261748,
+        "intraday_ret_from_open": 0.483158,
+        "low": 0.261748,
+        "m1_first15_amount": 0.168995,
+        "m1_first15_last_close": 1.520593,
+        "m1_first15_range": 0.029693,
+        "m1_first15_vol": 0.156439,
+        "m1_first15_vwap_return_vs_open": 0.152244,
+        "m1_first30_amount": 0.114294,
+        "m1_first30_range": 0.297456,
+        "m1_first30_vol": 0.342437,
+        "m1_first30_vwap": 1.305949,
+        "m1_first30_vwap_return_vs_open": 0.015,
+        "m1_first5_amount": 0.096061,
+        "m1_first5_last_close": 1.521079,
+        "m1_first5_range": 0.0314,
+        "m1_first5_vol": 0.181877,
+        "m1_first5_vwap_return_vs_open": 0.101029,
+        "open": 0.015,
+        "ret_1m": 0.058978,
+        "volume": 0.075394,
+        "vwap": 1.02277
+      },
+      "fieldset": {
+        "amount|close|high|low": 0.015,
+        "amount|intraday_ret_from_open": 0.049711,
+        "amount|m1_first15_amount|m1_first15_range|open": 0.807958,
+        "amount|m1_first15_amount|m1_first15_vol|volume": 0.756295,
+        "amount|m1_first15_amount|ret_1m": 0.015,
+        "amount|m1_first30_amount|m1_first30_range|open": 0.756295,
+        "amount|m1_first30_amount|m1_first30_vol|volume": 0.756295,
+        "amount|m1_first30_amount|ret_1m": 0.015,
+        "amount|m1_first30_range|open": 0.015,
+        "amount|m1_first5_amount|m1_first5_range|open": 0.756295,
+        "amount|m1_first5_amount|m1_first5_vol|volume": 0.756295,
+        "amount|m1_first5_amount|ret_1m": 0.015,
+        "amount|m1_first5_amount|vwap": 1.221391,
+        "amount|volume": 0.895774,
+        "close|high|low": 0.497244,
+        "close|high|low|m1_first15_vol|volume": 0.015,
+        "close|high|low|m1_first30_vol|volume": 0.015,
+        "close|high|low|m1_first5_vol|volume": 0.015,
+        "close|high|low|open": 0.050782,
+        "close|high|low|ret_1m": 0.015,
+        "close|m1_first30_vwap": 1.818391,
+        "close|m1_first30_vwap|vwap": 1.814507,
+        "high|intraday_ret_from_open|low|open": 0.015,
+        "high|low|m1_first15_vwap_return_vs_open|open": 0.015,
+        "high|low|m1_first30_range|open": 0.015,
+        "high|low|m1_first30_vwap_return_vs_open|open": 0.015,
+        "high|low|m1_first5_vwap_return_vs_open|open": 0.015,
+        "high|low|open": 0.015,
+        "high|low|open|ret_1m": 0.332446,
+        "intraday_ret_from_open": 0.022347,
+        "intraday_ret_from_open|m1_first15_vol|volume": 0.054053,
+        "intraday_ret_from_open|m1_first30_vol|volume": 0.055656,
+        "intraday_ret_from_open|m1_first5_vol|volume": 0.09009,
+        "intraday_ret_from_open|ret_1m": 0.378645,
+        "intraday_ret_from_open|volume": 0.08117,
+        "m1_first15_last_close|open": 1.520593,
+        "m1_first15_range|m1_first15_vol|open|volume": 0.431282,
+        "m1_first15_range|open|ret_1m": 0.015,
+        "m1_first15_vwap_return_vs_open|ret_1m": 0.099922,
+        "m1_first30_range|open|ret_1m": 0.015,
+        "m1_first30_range|open|volume": 0.015,
+        "m1_first30_vol|ret_1m|volume": 0.015,
+        "m1_first5_last_close|open": 1.521079,
+        "m1_first5_range|m1_first5_vol|open|volume": 0.445635,
+        "m1_first5_range|open|ret_1m": 0.015,
+        "m1_first5_vwap_return_vs_open|ret_1m": 0.117088
+      },
+      "lane": {
+        "amount_volume_flow": 0.895774,
+        "bounded_vwap_mixed": 1.221391,
+        "intraday_efficiency_fresh": 0.997503,
+        "opening_amount_pressure_orthogonal": 0.330985,
+        "opening_directional_return": 1.010336,
+        "opening_divergence_representative": 1.674784,
+        "opening_range_location": 0.318558,
+        "opening_volume_range_imbalance": 0.252883,
+        "opening_vs_intraday_return_divergence": 0.323907,
+        "opening_vwap_residual": 1.818391,
+        "pure_fresh_cross": 1.814507,
+        "range_volatility_residual": 0.882981,
+        "rx_interaction::rx_intraday_return::rx_flow_amount_volume::spread": 0.06544,
+        "rx_interaction::rx_intraday_return::rx_opening_amount::product": 0.042009,
+        "rx_interaction::rx_intraday_return::rx_opening_amount::spread": 0.055301,
+        "rx_interaction::rx_intraday_return::rx_range_location::product": 0.015,
+        "rx_interaction::rx_intraday_return::rx_range_location::spread": 0.043988,
+        "rx_interaction::rx_intraday_return::rx_volatility_state::product": 0.015,
+        "rx_interaction::rx_opening_amount::rx_volatility_state::product": 0.015,
+        "rx_interaction::rx_opening_amount::rx_volatility_state::spread": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_range_location::product": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_range_location::spread": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_volatility_state::spread": 0.015,
+        "rx_interaction::rx_opening_range::rx_flow_amount_volume::spread": 0.015,
+        "rx_interaction::rx_opening_range::rx_range_location::product": 0.015,
+        "rx_interaction::rx_opening_range::rx_range_location::spread": 0.044811,
+        "rx_interaction::rx_opening_range::rx_volatility_state::product": 0.015,
+        "rx_interaction::rx_opening_range::rx_volatility_state::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_flow_amount_volume::product": 0.015,
+        "rx_interaction::rx_range_location::rx_opening_amount::product": 0.015,
+        "rx_interaction::rx_range_location::rx_opening_amount::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_range_location::product": 0.076893,
+        "rx_interaction::rx_range_location::rx_range_location::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_volatility_state::product": 0.020601,
+        "rx_interaction::rx_range_location::rx_volatility_state::spread": 0.015,
+        "rx_intraday_return::inverted": 0.022347,
+        "rx_intraday_return::rank": 0.022347,
+        "rx_range_location::inverted": 0.015,
+        "rx_range_location::rank": 0.015
+      },
+      "operator": {
+        "Abs": 0.015,
+        "Add": 0.015,
+        "CSRank": 0.015,
+        "Delta": 0.112763,
+        "Div": 0.015,
+        "Mean": 0.015,
+        "Mul": 0.126326,
+        "Neg": 0.015,
+        "Std": 0.223803,
+        "Sub": 0.015,
+        "ZScore": 0.015
+      },
+      "window": {
+        "10": 0.306127,
+        "15": 0.679874,
+        "2": 0.298745,
+        "20": 0.27242,
+        "3": 0.29914,
+        "30": 0.366428,
+        "5": 0.297861,
+        "8": 0.311623
+      }
+    },
+    "top_keys": {
+      "ast_complexity_bin": [
+        [
+          "complexity_gt_18",
+          0.487146
+        ],
+        [
+          "complexity_le_14",
+          0.308138
+        ],
+        [
+          "complexity_le_10",
+          0.115225
+        ],
+        [
+          "complexity_le_6",
+          0.022347
+        ],
+        [
+          "complexity_le_18",
+          0.019026
+        ]
+      ],
+      "ast_depth_bin": [
+        [
+          "depth_le_6",
+          0.421444
+        ],
+        [
+          "depth_le_4",
+          0.118325
+        ],
+        [
+          "depth_le_8",
+          0.015
+        ],
+        [
+          "depth_gt_8",
+          0.015
+        ]
+      ],
+      "ast_field_count_bin": [
+        [
+          "fieldcount_le_2",
+          0.110926
+        ],
+        [
+          "fieldcount_le_1",
+          0.022347
+        ],
+        [
+          "fieldcount_le_4",
+          0.015
+        ],
+        [
+          "fieldcount_le_6",
+          0.015
+        ]
+      ],
+      "ast_max_window_bin": [
+        [
+          "maxwin_le_0",
+          0.883362
+        ],
+        [
+          "maxwin_le_30",
+          0.185898
+        ],
+        [
+          "maxwin_le_15",
+          0.139519
+        ],
+        [
+          "maxwin_le_5",
+          0.104293
+        ]
+      ],
+      "ast_operator_count_bin": [
+        [
+          "opcount_gt_12",
+          0.409725
+        ],
+        [
+          "opcount_le_9",
+          0.308138
+        ],
+        [
+          "opcount_le_6",
+          0.116981
+        ],
+        [
+          "opcount_le_3",
+          0.022347
+        ],
+        [
+          "opcount_le_12",
+          0.017342
+        ]
+      ],
+      "ast_operator_multiset": [
+        [
+          "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Std:1|Sub:2|ZScore:2",
+          1.814507
+        ],
+        [
+          "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Mean:1|Sub:1|ZScore:2",
+          1.221391
+        ],
+        [
+          "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Sub:5|ZScore:2",
+          1.141664
+        ],
+        [
+          "Abs:1|Add:1|CSRank:1|Delta:1|Div:1|Std:1|ZScore:2",
+          0.997503
+        ],
+        [
+          "Abs:1|Add:1|CSRank:1|Div:1|Sub:1",
+          0.883362
+        ],
+        [
+          "Abs:1|Add:1|CSRank:1|Div:1|Std:2|Sub:2|ZScore:2",
+          0.882981
+        ],
+        [
+          "CSRank:1|Delta:2|Sub:1|ZScore:2",
+          0.461789
+        ],
+        [
+          "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Mul:1|ZScore:2",
+          0.348206
+        ],
+        [
+          "Abs:2|Add:2|CSRank:1|Div:2|Mean:2|Sub:1|ZScore:2",
+          0.330985
+        ],
+        [
+          "CSRank:1|Delta:1|Sub:1|ZScore:2",
+          0.313238
+        ],
+        [
+          "Abs:2|Add:2|CSRank:1|Div:2|Mean:1|Sub:1|ZScore:2",
+          0.252883
+        ],
+        [
+          "Abs:3|Add:3|CSRank:1|Div:3|Mean:1|Mul:1|Std:1|Sub:6|ZScore:2",
+          0.076893
+        ]
+      ],
+      "ast_operator_sequence": [
+        [
+          "CSRank>Sub>ZScore>Div>Std>Add>Abs>Mean>ZScore>Div",
+          1.814507
+        ],
+        [
+          "CSRank>Sub>ZScore>Div>Add>Abs>Mean>ZScore>Delta",
+          1.221391
+        ],
+        [
+          "CSRank>Sub>ZScore>Div>Sub>Add>Abs>Sub>ZScore>Mean",
+          1.141664
+        ],
+        [
+          "CSRank>Div>ZScore>Delta>Add>Abs>ZScore>Std",
+          0.997503
+        ],
+        [
+          "CSRank>Div>Sub>Add>Abs",
+          0.883362
+        ],
+        [
+          "CSRank>Sub>ZScore>Std>Div>Sub>Add>Abs>ZScore>Std",
+          0.882981
+        ],
+        [
+          "CSRank>Sub>ZScore>Delta>ZScore>Delta",
+          0.461789
+        ],
+        [
+          "CSRank>Mul>ZScore>Div>Add>Abs>Mean>ZScore>Div>Add",
+          0.348206
+        ],
+        [
+          "CSRank>Sub>ZScore>ZScore>Delta",
+          0.313238
+        ],
+        [
+          "CSRank>Sub>ZScore>Div>Add>Abs>Mean>ZScore>Div>Add",
+          0.138813
+        ],
+        [
+          "CSRank>Sub>ZScore>Delta>ZScore>Div>Add>Abs",
+          0.055301
+        ],
+        [
+          "CSRank>Sub>ZScore>Div>Add>Abs>ZScore>Std>Div>Sub",
+          0.044811
+        ]
+      ],
+      "ast_root_operator": [
+        [
+          "CSRank",
+          0.015
+        ],
+        [
+          "Neg",
+          0.015
+        ]
+      ],
+      "ast_skeleton": [
+        [
+          "CSRank(Sub(ZScore(Div(Std($F,N),Add(Abs(Mean($F,N)),N))),ZScore(Div(Sub($F,$F),Add(Abs($F),N)))))",
+          1.814507
+        ],
+        [
+          "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Delta($F,N))))",
+          1.221391
+        ],
+        [
+          "CSRank(Sub(ZScore(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N))),ZScore(Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))))",
+          1.141664
+        ],
+        [
+          "CSRank(Div(ZScore(Delta($F,N)),Add(Abs(ZScore(Std($F,N))),N)))",
+          0.997503
+        ],
+        [
+          "CSRank(Div(Sub($F,$F),Add(Abs($F),N)))",
+          0.883362
+        ],
+        [
+          "CSRank(Sub(ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N)),ZScore(Std($F,N))))",
+          0.882981
+        ],
+        [
+          "CSRank(Sub(ZScore(Delta($F,N)),ZScore(Delta($F,N))))",
+          0.461789
+        ],
+        [
+          "CSRank(Mul(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs($F),N)))))",
+          0.348206
+        ],
+        [
+          "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs(Mean($F,N)),N)))))",
+          0.330985
+        ],
+        [
+          "CSRank(Sub(ZScore($F),ZScore(Delta($F,N))))",
+          0.313238
+        ],
+        [
+          "CSRank(Sub(ZScore(Div($F,Add(Abs(Mean($F,N)),N))),ZScore(Div($F,Add(Abs($F),N)))))",
+          0.252883
+        ],
+        [
+          "CSRank(Mul(ZScore(Sub(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),Mean(Div(Sub($F,$F),Add(Abs(Sub($F,$F)),N)),N))),ZScore(Std(Div(Sub($F,$F),Add(Abs($F),N)),N))))",
+          0.076893
+        ]
+      ],
+      "ast_window_count_bin": [
+        [
+          "wincount_le_0",
+          0.883362
+        ],
+        [
+          "wincount_le_1",
+          0.015
+        ],
+        [
+          "wincount_le_2",
+          0.015
+        ]
+      ],
+      "field": [
+        [
+          "m1_first5_last_close",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close",
+          1.520593
+        ],
+        [
+          "m1_first30_vwap",
+          1.305949
+        ],
+        [
+          "vwap",
+          1.02277
+        ],
+        [
+          "intraday_ret_from_open",
+          0.483158
+        ],
+        [
+          "close",
+          0.36167
+        ],
+        [
+          "m1_first30_vol",
+          0.342437
+        ],
+        [
+          "m1_first30_range",
+          0.297456
+        ],
+        [
+          "high",
+          0.261748
+        ],
+        [
+          "low",
+          0.261748
+        ],
+        [
+          "m1_first5_vol",
+          0.181877
+        ],
+        [
+          "m1_first15_amount",
+          0.168995
+        ]
+      ],
+      "fieldset": [
+        [
+          "close|m1_first30_vwap",
+          1.818391
+        ],
+        [
+          "close|m1_first30_vwap|vwap",
+          1.814507
+        ],
+        [
+          "m1_first5_last_close|open",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close|open",
+          1.520593
+        ],
+        [
+          "amount|m1_first5_amount|vwap",
+          1.221391
+        ],
+        [
+          "amount|volume",
+          0.895774
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_range|open",
+          0.807958
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first30_amount|m1_first30_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first30_amount|m1_first30_range|open",
+          0.756295
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_range|open",
+          0.756295
+        ]
+      ],
+      "lane": [
+        [
+          "opening_vwap_residual",
+          1.818391
+        ],
+        [
+          "pure_fresh_cross",
+          1.814507
+        ],
+        [
+          "opening_divergence_representative",
+          1.674784
+        ],
+        [
+          "bounded_vwap_mixed",
+          1.221391
+        ],
+        [
+          "opening_directional_return",
+          1.010336
+        ],
+        [
+          "intraday_efficiency_fresh",
+          0.997503
+        ],
+        [
+          "amount_volume_flow",
+          0.895774
+        ],
+        [
+          "range_volatility_residual",
+          0.882981
+        ],
+        [
+          "opening_amount_pressure_orthogonal",
+          0.330985
+        ],
+        [
+          "opening_vs_intraday_return_divergence",
+          0.323907
+        ],
+        [
+          "opening_range_location",
+          0.318558
+        ],
+        [
+          "opening_volume_range_imbalance",
+          0.252883
+        ]
+      ],
+      "operator": [
+        [
+          "Std",
+          0.223803
+        ],
+        [
+          "Mul",
+          0.126326
+        ],
+        [
+          "Delta",
+          0.112763
+        ],
+        [
+          "CSRank",
+          0.015
+        ],
+        [
+          "Sub",
+          0.015
+        ],
+        [
+          "ZScore",
+          0.015
+        ],
+        [
+          "Div",
+          0.015
+        ],
+        [
+          "Abs",
+          0.015
+        ],
+        [
+          "Add",
+          0.015
+        ],
+        [
+          "Mean",
+          0.015
+        ],
+        [
+          "Neg",
+          0.015
+        ]
+      ],
+      "window": [
+        [
+          "15",
+          0.679874
+        ],
+        [
+          "30",
+          0.366428
+        ],
+        [
+          "8",
+          0.311623
+        ],
+        [
+          "10",
+          0.306127
+        ],
+        [
+          "3",
+          0.29914
+        ],
+        [
+          "2",
+          0.298745
+        ],
+        [
+          "5",
+          0.297861
+        ],
+        [
+          "20",
+          0.27242
+        ]
+      ]
+    },
+    "total_observation_count": 66
+  },
+  "created_at": "2026-06-15T10:30:12.478169+00:00",
+  "decision": "PHASE3BS_ADAPTIVE_UCB_CEM_PRACTICE_COMPLETE_DIAGNOSTIC_ONLY",
+  "experiment_id": "20260615_phase3bs_adaptive_ucb_cem_practice",
+  "hard_boundary": [
+    "true trade_time minute panels only",
+    "no old daily stock-PIT default panel",
+    "no X0/R3 modification",
+    "algorithm practice only, not alpha promotion"
+  ],
+  "hot_path_scan": {
+    "files": {
+      "src\\our_system_phase2\\runtime\\phase3bl_bk_priority_signal_materialization.py": [
+        "groupby(",
+        "sort=False",
+        "pyarrow"
+      ],
+      "src\\our_system_phase2\\runtime\\phase3bo_mature_cem_bridge_true1min_pack.py": [],
+      "src\\our_system_phase2\\runtime\\phase3bp_true1min_search_algorithm_smoke.py": []
+    },
+    "interpretation": "current true1min smoke hot path is pandas/numpy materialization; numba is available only if called by evaluator code"
+  },
+  "objective": "test multi-round feedback-updated UCB-CEM on true1min panels",
+  "package_versions": {
+    "bottleneck": "1.6.0",
+    "joblib": "1.4.2",
+    "numba": "0.64.0",
+    "numexpr": "2.14.1",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "polars": "1.41.0",
+    "pyarrow": "19.0.1",
+    "scikit-learn": "1.6.1"
+  },
+  "parameters": {
+    "adaptive_cem_candidates": 128,
+    "adaptive_hybrid_candidates": 160,
+    "cem_dominant_rx_candidates": 160,
+    "cem_dominant_ucb_candidates": 160,
+    "entropy_floor": 0.015,
+    "horizons": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "learning_rate": 0.55,
+    "max_shards": 4,
+    "sample_trade_times_per_shard": 40,
+    "seed_candidates": 128,
+    "seed_exploration": 0.85
+  },
+  "python_executable": "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+  "recommendation": {
+    "best_round": "round2_adaptive_cem_feedback",
+    "decision": "ADAPTIVE_UCB_CEM_SHOWS_INCREMENTAL_SEARCH_VALUE_DIAGNOSTIC_ONLY",
+    "improvement_vs_seed": 0.04979166,
+    "interpretation": "feedback-updated CEM/hybrid improved research-pool score enough to justify a larger adaptive run"
+  },
+  "round_meta": {
+    "adaptive_cem": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first5_amount",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "adaptive_hybrid": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "cem_dominant_rx": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "cem_dominant_ucb": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "seed": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "best_abs_ic": 0.2205327809,
+      "candidate_count": 128,
+      "decision_rows": 96,
+      "elapsed_seconds": 879.891,
+      "hard_blocked_count": 90,
+      "hard_blocked_ratio": 0.9375,
+      "legacy_followup_count": 2,
+      "non_future_count": 36,
+      "panel_count": 4,
+      "research_pool_count": 31,
+      "research_pool_ratio": 0.322917,
+      "research_quality_score": 0.59697917,
+      "round_id": "round1_seed_rx_ucb_fresh",
+      "rows_per_second": 58.798,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.2139926648,
+      "total_eval_rows": 51736,
+      "unique_ast_shape_count": 8,
+      "unique_ast_skeleton_count": 26,
+      "unique_fieldset_count": 32,
+      "unique_lane_count": 27
+    },
+    {
+      "best_abs_ic": 0.2178656872,
+      "candidate_count": 128,
+      "decision_rows": 96,
+      "elapsed_seconds": 932.387,
+      "hard_blocked_count": 94,
+      "hard_blocked_ratio": 0.979167,
+      "legacy_followup_count": 2,
+      "non_future_count": 40,
+      "panel_count": 4,
+      "research_pool_count": 37,
+      "research_pool_ratio": 0.385417,
+      "research_quality_score": 0.64677083,
+      "round_id": "round2_adaptive_cem_feedback",
+      "rows_per_second": 55.488,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.2112175194,
+      "total_eval_rows": 51736,
+      "unique_ast_shape_count": 12,
+      "unique_ast_skeleton_count": 39,
+      "unique_fieldset_count": 33,
+      "unique_lane_count": 38
+    },
+    {
+      "best_abs_ic": 0.215048724,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 1262.945,
+      "hard_blocked_count": 94,
+      "hard_blocked_ratio": 0.979167,
+      "legacy_followup_count": 2,
+      "non_future_count": 31,
+      "panel_count": 4,
+      "research_pool_count": 31,
+      "research_pool_ratio": 0.322917,
+      "research_quality_score": 0.55789583,
+      "round_id": "round3_adaptive_hybrid_rx_cem",
+      "rows_per_second": 40.965,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.1936698914,
+      "total_eval_rows": 51736,
+      "unique_ast_shape_count": 9,
+      "unique_ast_skeleton_count": 19,
+      "unique_fieldset_count": 22,
+      "unique_lane_count": 21
+    },
+    {
+      "best_abs_ic": 0.2117119988,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 1183.731,
+      "hard_blocked_count": 95,
+      "hard_blocked_ratio": 0.989583,
+      "legacy_followup_count": 1,
+      "non_future_count": 25,
+      "panel_count": 4,
+      "research_pool_count": 25,
+      "research_pool_ratio": 0.260417,
+      "research_quality_score": 0.55127083,
+      "round_id": "round4_cem_dominant_ucb",
+      "rows_per_second": 43.706,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.202123405,
+      "total_eval_rows": 51736,
+      "unique_ast_shape_count": 12,
+      "unique_ast_skeleton_count": 31,
+      "unique_fieldset_count": 28,
+      "unique_lane_count": 33
+    },
+    {
+      "best_abs_ic": 0.2175969885,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 1493.932,
+      "hard_blocked_count": 93,
+      "hard_blocked_ratio": 0.96875,
+      "legacy_followup_count": 3,
+      "non_future_count": 28,
+      "panel_count": 4,
+      "research_pool_count": 28,
+      "research_pool_ratio": 0.291667,
+      "research_quality_score": 0.52558333,
+      "round_id": "round5_cem_dominant_rx",
+      "rows_per_second": 34.631,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.2087741006,
+      "total_eval_rows": 51736,
+      "unique_ast_shape_count": 9,
+      "unique_ast_skeleton_count": 22,
+      "unique_fieldset_count": 19,
+      "unique_lane_count": 23
+    }
+  ]
+}

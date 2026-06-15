@@ -40,6 +40,7 @@ from our_system_phase2.runtime.phase3bp_true1min_search_algorithm_smoke import (
     PRIOR_DECISION_FILES,
     PRIOR_HASH_FILES,
     _aggregate_decisions,
+    _ast_variables,
     _build_policy,
     _fields,
     _generate_cem_elite_candidates,
@@ -57,8 +58,8 @@ from our_system_phase2.runtime.phase3bq_compute_allocation_benchmark import (
 
 
 REPO = Path(__file__).resolve().parents[3]
-DEFAULT_OUTPUT_ROOT = Path("runtime/phase3bs_adaptive_ucb_cem_practice_v2_20260615")
-DEFAULT_REPORT_ROOT = Path("reports/phase3bs_adaptive_ucb_cem_practice_v2_20260615")
+DEFAULT_OUTPUT_ROOT = Path("runtime/phase3bs_adaptive_ucb_cem_practice_ast_v3_20260615")
+DEFAULT_REPORT_ROOT = Path("reports/phase3bs_adaptive_ucb_cem_practice_ast_v3_20260615")
 
 
 def _resolve(path: Path) -> Path:
@@ -97,15 +98,39 @@ def _policy_with_feedback(base_policy: dict[str, Any], decisions: list[dict[str,
         "window": defaultdict(list),
         "lane": defaultdict(list),
         "fieldset": defaultdict(list),
+        "ast_skeleton": defaultdict(list),
+        "ast_operator_sequence": defaultdict(list),
+        "ast_operator_multiset": defaultdict(list),
+        "ast_root_operator": defaultdict(list),
+        "ast_depth_bin": defaultdict(list),
+        "ast_operator_count_bin": defaultdict(list),
+        "ast_field_count_bin": defaultdict(list),
+        "ast_window_count_bin": defaultdict(list),
+        "ast_max_window_bin": defaultdict(list),
+        "ast_complexity_bin": defaultdict(list),
     }
     for row in decisions:
         expression = str(row.get("expression") or "")
         fields = _fields(expression)
         fieldset = "|".join(fields)
         lane = str(row.get("factor_lane") or row.get("source_lane") or "unknown")
+        ast = _ast_variables(expression)
         quality = _quality(row)
         credits["lane"][lane].append(quality)
         credits["fieldset"][fieldset].append(quality)
+        for key in (
+            "ast_skeleton",
+            "ast_operator_sequence",
+            "ast_operator_multiset",
+            "ast_root_operator",
+            "ast_depth_bin",
+            "ast_operator_count_bin",
+            "ast_field_count_bin",
+            "ast_window_count_bin",
+            "ast_max_window_bin",
+            "ast_complexity_bin",
+        ):
+            credits[key][str(ast[key])].append(quality)
         for field in fields:
             credits["field"][field].append(quality)
         for op in _operators(expression):
@@ -157,6 +182,15 @@ def _round_metrics(round_id: str, candidates: list[dict[str, Any]], decisions: l
             research_pool.append(row)
     fields = {str(row.get("fields") or "") for row in decisions if row.get("fields")}
     lanes = {str(row.get("factor_lane") or "") for row in decisions if row.get("factor_lane")}
+    ast_skeletons = {str(_ast_variables(str(row.get("expression") or "")).get("ast_skeleton")) for row in decisions if row.get("expression")}
+    ast_shapes = {
+        "|".join(
+            str(_ast_variables(str(row.get("expression") or "")).get(key))
+            for key in ("ast_depth_bin", "ast_operator_count_bin", "ast_field_count_bin", "ast_complexity_bin")
+        )
+        for row in decisions
+        if row.get("expression")
+    }
     top_abs = sorted([abs(_f(row.get("abs_aligned_ic_mean") or row.get("aligned_ic_mean"), 0.0)) for row in decisions], reverse=True)
     top10_mean = sum(top_abs[:10]) / max(1, min(10, len(top_abs)))
     total_eval_rows = sum(int(shard.get("eval_rows") or 0) for shard in meta.get("shards", []))
@@ -165,6 +199,7 @@ def _round_metrics(round_id: str, candidates: list[dict[str, Any]], decisions: l
         + (0.20 * len(non_future) / max(1, len(decisions)))
         + (0.15 * min(1.0, len(lanes) / 18.0))
         + (0.12 * min(1.0, len(fields) / 30.0))
+        + (0.08 * min(1.0, len(ast_shapes) / 24.0))
         + (0.08 * min(1.0, top10_mean / 0.08))
     )
     return {
@@ -184,6 +219,8 @@ def _round_metrics(round_id: str, candidates: list[dict[str, Any]], decisions: l
         "research_pool_ratio": round(len(research_pool) / max(1, len(decisions)), 6),
         "unique_lane_count": len(lanes),
         "unique_fieldset_count": len(fields),
+        "unique_ast_skeleton_count": len(ast_skeletons),
+        "unique_ast_shape_count": len(ast_shapes),
         "top10_abs_ic_mean": round(top10_mean, 10),
         "best_abs_ic": round(max(top_abs, default=0.0), 10),
         "research_quality_score": round(score, 8),
@@ -281,19 +318,19 @@ def _render_md(summary: dict[str, Any]) -> str:
         "",
         "## Purpose",
         "",
-        "Test adaptive UCB-CEM as a multi-round generator: RX/UCB seed, feedback-updated CEM, adaptive hybrid, and two CEM-dominant variants.",
+        "Test AST-aware adaptive UCB-CEM as a multi-round generator: RX/UCB seed, feedback-updated CEM, adaptive hybrid, and two CEM-dominant variants.",
         "The winner metric is research-pool quality, not first clean followup.",
         "",
         "## Round Results",
         "",
-        "| round | candidates | sec | rows | rows/sec | legacy followup | hard-blocked | research pool | lanes | fieldsets | top10 abs IC | score |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| round | candidates | sec | rows | rows/sec | legacy followup | hard-blocked | research pool | lanes | fieldsets | ast shapes | top10 abs IC | score |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in summary["rounds"]:
         lines.append(
             f"| `{row['round_id']}` | {row['candidate_count']} | {_fmt(row['elapsed_seconds'])} | {row['total_eval_rows']} | "
             f"{_fmt(row['rows_per_second'])} | {row['legacy_followup_count']} | {_fmt(row['hard_blocked_ratio'])} | "
-            f"{row['research_pool_count']} | {row['unique_lane_count']} | {row['unique_fieldset_count']} | "
+            f"{row['research_pool_count']} | {row['unique_lane_count']} | {row['unique_fieldset_count']} | {row['unique_ast_shape_count']} | "
             f"{_fmt(row['top10_abs_ic_mean'])} | {_fmt(row['research_quality_score'])} |"
         )
     rec = summary["recommendation"]
@@ -311,6 +348,8 @@ def _render_md(summary: dict[str, Any]) -> str:
             f"- seed feedback updated policy: `{summary['adaptive_policy']['policy_version']}`",
             f"- top feedback lanes: `{summary['adaptive_policy']['feedback']['top_feedback'].get('lane')}`",
             f"- top feedback fields: `{summary['adaptive_policy']['feedback']['top_feedback'].get('field')}`",
+            f"- top feedback AST shapes: `{summary['adaptive_policy']['feedback']['top_feedback'].get('ast_complexity_bin')}`",
+            f"- top feedback AST operator sequences: `{summary['adaptive_policy']['feedback']['top_feedback'].get('ast_operator_sequence')}`",
             "",
             "## Boundary",
             "",

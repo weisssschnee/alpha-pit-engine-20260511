@@ -45,6 +45,8 @@ DEFAULT_REPORT_ROOT = Path("reports/phase3bp_true1min_search_algorithm_smoke_202
 EPS = "0.000001"
 OP_RE = re.compile(r"\b([A-Za-z][A-Za-z0-9_]*)\s*\(")
 WIN_RE = re.compile(r"(?<![A-Za-z0-9_])([1-9][0-9]{0,2})(?![A-Za-z0-9_])")
+FIELD_RE = re.compile(r"\$[A-Za-z_][A-Za-z0-9_]*")
+NUM_RE = re.compile(r"(?<![A-Za-z0-9_])(?:\d+\.\d+|\d+)(?![A-Za-z0-9_])")
 
 
 PRIOR_DECISION_FILES = [
@@ -84,6 +86,56 @@ def _operators(expression: str) -> set[str]:
 
 def _windows(expression: str) -> set[str]:
     return {match.group(1) for match in WIN_RE.finditer(expression or "") if 1 <= int(match.group(1)) <= 252}
+
+
+def _bin_int(value: int, edges: tuple[int, ...], prefix: str) -> str:
+    for edge in edges:
+        if value <= edge:
+            return f"{prefix}_le_{edge}"
+    return f"{prefix}_gt_{edges[-1]}"
+
+
+def _ast_variables(expression: str) -> dict[str, Any]:
+    expression = expression or ""
+    ops_in_order = [match.group(1) for match in OP_RE.finditer(expression) if match.group(1) in OPERATORS]
+    fields = _fields(expression)
+    wins = sorted({int(win) for win in _windows(expression)})
+    depth = 0
+    max_depth = 0
+    for char in expression:
+        if char == "(":
+            depth += 1
+            max_depth = max(max_depth, depth)
+        elif char == ")":
+            depth = max(0, depth - 1)
+    skeleton = FIELD_RE.sub("$F", expression)
+    skeleton = NUM_RE.sub("N", skeleton)
+    skeleton = re.sub(r"\s+", "", skeleton)
+    op_sequence = ">".join(ops_in_order[:10]) or "none"
+    op_multiset = "|".join(f"{op}:{count}" for op, count in sorted(Counter(ops_in_order).items())) or "none"
+    field_count = len(fields)
+    op_count = len(ops_in_order)
+    window_count = len(wins)
+    max_window = max(wins, default=0)
+    complexity = op_count + field_count + window_count
+    return {
+        "ast_skeleton": skeleton[:240],
+        "ast_operator_sequence": op_sequence,
+        "ast_operator_multiset": op_multiset,
+        "ast_root_operator": ops_in_order[0] if ops_in_order else "none",
+        "ast_depth": max_depth,
+        "ast_depth_bin": _bin_int(max_depth, (2, 4, 6, 8), "depth"),
+        "ast_operator_count": op_count,
+        "ast_operator_count_bin": _bin_int(op_count, (3, 6, 9, 12), "opcount"),
+        "ast_field_count": field_count,
+        "ast_field_count_bin": _bin_int(field_count, (1, 2, 4, 6), "fieldcount"),
+        "ast_window_count": window_count,
+        "ast_window_count_bin": _bin_int(window_count, (0, 1, 2, 4), "wincount"),
+        "ast_max_window": max_window,
+        "ast_max_window_bin": _bin_int(max_window, (0, 5, 15, 30, 60), "maxwin"),
+        "ast_complexity": complexity,
+        "ast_complexity_bin": _bin_int(complexity, (6, 10, 14, 18), "complexity"),
+    }
 
 
 def _prior_reward(row: dict[str, Any]) -> float:
@@ -130,6 +182,16 @@ def _build_policy(prior_files: list[Path], *, exploration: float) -> dict[str, A
         "window": defaultdict(list),
         "lane": defaultdict(list),
         "fieldset": defaultdict(list),
+        "ast_skeleton": defaultdict(list),
+        "ast_operator_sequence": defaultdict(list),
+        "ast_operator_multiset": defaultdict(list),
+        "ast_root_operator": defaultdict(list),
+        "ast_depth_bin": defaultdict(list),
+        "ast_operator_count_bin": defaultdict(list),
+        "ast_field_count_bin": defaultdict(list),
+        "ast_window_count_bin": defaultdict(list),
+        "ast_max_window_bin": defaultdict(list),
+        "ast_complexity_bin": defaultdict(list),
     }
     examples: list[dict[str, Any]] = []
     total = 0
@@ -143,8 +205,22 @@ def _build_policy(prior_files: list[Path], *, exploration: float) -> dict[str, A
             lane = str(row.get("factor_lane") or row.get("primitive_family") or "unknown")
             fields = _fields(expression)
             fieldset = "|".join(fields)
+            ast = _ast_variables(expression)
             buckets["lane"][lane].append(reward)
             buckets["fieldset"][fieldset].append(reward)
+            for key in (
+                "ast_skeleton",
+                "ast_operator_sequence",
+                "ast_operator_multiset",
+                "ast_root_operator",
+                "ast_depth_bin",
+                "ast_operator_count_bin",
+                "ast_field_count_bin",
+                "ast_window_count_bin",
+                "ast_max_window_bin",
+                "ast_complexity_bin",
+            ):
+                buckets[key][str(ast[key])].append(reward)
             for field in fields:
                 buckets["field"][field].append(reward)
             for operator in _operators(expression):
@@ -182,8 +258,33 @@ def _policy_score(expression: str, lane: str, policy: dict[str, Any]) -> float:
     op_score = np.mean([float((scores.get("operator") or {}).get(op, 0.0)) for op in ops]) if ops else 0.0
     win_score = np.mean([float((scores.get("window") or {}).get(win, 0.0)) for win in wins]) if wins else 0.0
     fieldset_score = float((scores.get("fieldset") or {}).get(fieldset, 0.0))
+    ast = _ast_variables(expression)
+    ast_score_keys = (
+        "ast_skeleton",
+        "ast_operator_sequence",
+        "ast_operator_multiset",
+        "ast_root_operator",
+        "ast_depth_bin",
+        "ast_operator_count_bin",
+        "ast_field_count_bin",
+        "ast_window_count_bin",
+        "ast_max_window_bin",
+        "ast_complexity_bin",
+    )
+    ast_scores = [float((scores.get(key) or {}).get(str(ast[key]), 0.0)) for key in ast_score_keys]
+    ast_score = float(np.mean(ast_scores)) if ast_scores else 0.0
     novelty_bonus = 0.01 * sum(1 for field in fields if field not in (scores.get("field") or {}))
-    return float((0.22 * lane_score) + (0.24 * field_score) + (0.16 * op_score) + (0.10 * win_score) + (0.18 * fieldset_score) + novelty_bonus)
+    ast_novelty_bonus = 0.006 * sum(1 for key in ast_score_keys if str(ast[key]) not in (scores.get(key) or {}))
+    return float(
+        (0.18 * lane_score)
+        + (0.21 * field_score)
+        + (0.12 * op_score)
+        + (0.08 * win_score)
+        + (0.15 * fieldset_score)
+        + (0.20 * ast_score)
+        + novelty_bonus
+        + ast_novelty_bonus
+    )
 
 
 def _add_candidate(
@@ -206,6 +307,7 @@ def _add_candidate(
         return
     seen.add(digest)
     fields = _fields(expression)
+    ast = _ast_variables(expression)
     rows.append(
         {
             "candidate_id": f"phase3bp_{len(rows) + 1:05d}",
@@ -217,6 +319,7 @@ def _add_candidate(
             "fields": "|".join(fields),
             "fields_list": fields,
             "max_window": _max_expression_window(expression),
+            **ast,
             "search_memory_key": memory_key,
             "policy_score": round(_policy_score(expression, lane, policy), 8),
             "expected_direction": 1,
