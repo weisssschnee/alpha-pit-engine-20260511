@@ -1,8 +1,8 @@
 """True-1min search algorithm smoke test.
 
-Phase3BP compares a conservative BO-style template reference against a broader
-true-1min native rx/UCB-style generator. This is still a smoke test: it measures
-whether the generator core deserves a larger run, not whether any candidate is
+Phase3BP compares a conservative BO-style template reference against broader
+true-1min native generator arms. This is still a smoke test: it measures whether
+the generator core deserves a larger run, not whether any candidate is
 production-ready.
 """
 
@@ -344,6 +344,231 @@ def _generate_rx_ucb_candidates(
     return selected
 
 
+def _proposal_score(row: dict[str, Any], policy: dict[str, Any]) -> float:
+    base = float(row.get("policy_score") or 0.0)
+    fields = set(str(row.get("fields") or "").split("|")) - {""}
+    ops = _operators(str(row.get("expression") or ""))
+    complexity_penalty = 0.006 * max(0, len(ops) - 5)
+    novelty = 0.004 * len(fields)
+    jitter = (int(str(row.get("expression_hash") or "0")[:6], 16) % 1000) / 1000_000.0
+    return float(base + novelty + jitter - complexity_penalty)
+
+
+def _generate_cem_elite_candidates(
+    max_candidates: int,
+    blocked: set[str],
+    policy: dict[str, Any],
+    *,
+    include_residual: bool,
+    population_size: int,
+    elite_frac: float,
+    rounds: int,
+) -> list[dict[str, Any]]:
+    """Prior-guided CEM-style elite resampling over true-1min expression atoms.
+
+    This is not the old daily CEM chain. It is a true-1min native arm that uses
+    cross-entropy-style elite selection to bias formula generation before the
+    strict minute materialization pass.
+    """
+
+    atoms = _raw_atoms()
+    event_atoms = [atom for atom in atoms if atom["side"] == "event"]
+    state_atoms = [atom for atom in atoms if atom["side"] == "state"]
+
+    def add_pool(pool: list[dict[str, Any]], seen: set[str], expression: str, lane: str, note: str) -> None:
+        before = len(pool)
+        _add_candidate(
+            pool,
+            seen,
+            blocked,
+            expression,
+            lane=lane,
+            source_generator="phase3bp_true1min_cem_elite",
+            note=note,
+            policy=policy,
+        )
+        if len(pool) > before:
+            pool[-1]["cem_prior_score"] = round(_proposal_score(pool[-1], policy), 8)
+
+    pool: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for atom in atoms:
+        for transform, expression in {
+            "rank": f"CSRank(ZScore({atom['expr']}))",
+            "inverted": f"Neg(CSRank(ZScore({atom['expr']})))",
+        }.items():
+            add_pool(pool, seen, expression, f"cem_atom::{atom['lane']}::{transform}", f"cem seed atom {atom['name']}")
+    for left in event_atoms:
+        for right in state_atoms:
+            if left["name"].split("_")[0] == right["name"].split("_")[0]:
+                continue
+            variants = {
+                "product": f"CSRank(Mul(ZScore({left['expr']}),ZScore({right['expr']})))",
+                "spread": f"CSRank(Sub(ZScore({left['expr']}),ZScore({right['expr']})))",
+                "signed_state": f"CSRank(Mul(Sign(ZScore({left['expr']})),ZScore({right['expr']})))",
+            }
+            if include_residual:
+                variants["residual"] = f"CSRank(CSResidual(CSRank({left['expr']}),CSRank({right['expr']})))"
+            for kind, expression in variants.items():
+                add_pool(
+                    pool,
+                    seen,
+                    expression,
+                    f"cem_interaction::{left['lane']}::{right['lane']}::{kind}",
+                    f"cem seed interaction {left['name']} x {right['name']} {kind}",
+                )
+
+    population_size = max(max_candidates, int(population_size))
+    elite_frac = min(0.50, max(0.05, float(elite_frac)))
+    for round_idx in range(max(1, int(rounds))):
+        pool.sort(key=lambda row: (_proposal_score(row, policy), row["expression_hash"]), reverse=True)
+        population = pool[:population_size]
+        elite_count = max(4, int(math.ceil(len(population) * elite_frac)))
+        elites = population[:elite_count]
+        field_credit: Counter[str] = Counter()
+        lane_credit: Counter[str] = Counter()
+        for row in elites:
+            field_credit.update(str(row.get("fields") or "").split("|"))
+            lane_credit.update([str(row.get("factor_lane") or "")])
+        event_ranked = sorted(
+            event_atoms,
+            key=lambda atom: (
+                field_credit.get("|".join(_fields(atom["expr"])), 0),
+                _policy_score(atom["expr"], atom["lane"], policy),
+                atom["name"],
+            ),
+            reverse=True,
+        )
+        state_ranked = sorted(
+            state_atoms,
+            key=lambda atom: (
+                field_credit.get("|".join(_fields(atom["expr"])), 0),
+                _policy_score(atom["expr"], atom["lane"], policy),
+                atom["name"],
+            ),
+            reverse=True,
+        )
+        for left in event_ranked[: max(6, max_candidates // 8)]:
+            for right in state_ranked[: max(6, max_candidates // 8)]:
+                if left["name"].split("_")[0] == right["name"].split("_")[0]:
+                    continue
+                if (round_idx + int(_hash(left["name"] + right["name"], 8), 16)) % 3 == 0:
+                    expression = f"CSRank(Sub(ZScore({left['expr']}),ZScore(Mean({right['expr']},3))))"
+                    kind = "elite_spread_mean3"
+                elif (round_idx + int(_hash(right["name"] + left["name"], 8), 16)) % 3 == 1:
+                    expression = f"CSRank(Mul(ZScore(Delta({left['expr']},2)),ZScore({right['expr']})))"
+                    kind = "elite_delta_product"
+                else:
+                    expression = f"Neg(CSRank(Mul(ZScore({left['expr']}),ZScore({right['expr']}))))"
+                    kind = "elite_inverted_product"
+                add_pool(
+                    pool,
+                    seen,
+                    expression,
+                    f"cem_resample::{left['lane']}::{right['lane']}::{kind}",
+                    f"cem round {round_idx + 1} elite resample {left['name']} x {right['name']}",
+                )
+
+    pool.sort(key=lambda row: (_proposal_score(row, policy), row["expression_hash"]), reverse=True)
+    selected: list[dict[str, Any]] = []
+    lane_counts: Counter[str] = Counter()
+    fieldset_counts: Counter[str] = Counter()
+    lane_cap = max(4, int(math.ceil(max_candidates * 0.12)))
+    fieldset_cap = 5
+    for row in pool:
+        lane = str(row.get("factor_lane"))
+        fieldset = str(row.get("fields"))
+        if lane_counts[lane] >= lane_cap:
+            continue
+        if fieldset_counts[fieldset] >= fieldset_cap:
+            continue
+        selected.append(row)
+        lane_counts[lane] += 1
+        fieldset_counts[fieldset] += 1
+        if len(selected) >= max_candidates:
+            break
+    for idx, row in enumerate(selected, 1):
+        row["candidate_id"] = f"phase3bp_{idx:05d}"
+    return selected
+
+
+def _generate_hybrid_candidates(
+    max_candidates: int,
+    blocked: set[str],
+    policy: dict[str, Any],
+    *,
+    include_residual: bool,
+    population_size: int,
+    elite_frac: float,
+    rounds: int,
+) -> list[dict[str, Any]]:
+    rx_budget = max(1, int(math.ceil(max_candidates * 0.45)))
+    cem_budget = max_candidates - rx_budget
+    rx_rows = _generate_rx_ucb_candidates(rx_budget, blocked, policy, include_residual=False)
+    cem_rows = _generate_cem_elite_candidates(
+        cem_budget + max(8, cem_budget // 4),
+        blocked | {str(row.get("expression_hash")) for row in rx_rows},
+        policy,
+        include_residual=include_residual,
+        population_size=max(population_size, max_candidates * 3),
+        elite_frac=elite_frac,
+        rounds=rounds,
+    )
+    rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in [*rx_rows, *cem_rows]:
+        digest = str(row.get("expression_hash"))
+        if digest in seen:
+            continue
+        seen.add(digest)
+        item = dict(row)
+        item["source_generator"] = "phase3bp_true1min_hybrid_rx_cem"
+        item["source_lane"] = "phase3bp_true1min_hybrid_rx_cem"
+        item["note"] = f"hybrid arm from {row.get('source_generator')}: {row.get('note')}"
+        rows.append(item)
+        if len(rows) >= max_candidates:
+            break
+    for idx, row in enumerate(rows, 1):
+        row["candidate_id"] = f"phase3bp_{idx:05d}"
+    return rows
+
+
+def _generate_candidates(
+    mode: str,
+    max_candidates: int,
+    blocked: set[str],
+    policy: dict[str, Any],
+    *,
+    include_residual: bool,
+    population_size: int,
+    elite_frac: float,
+    rounds: int,
+) -> list[dict[str, Any]]:
+    if mode == "rx_ucb":
+        return _generate_rx_ucb_candidates(max_candidates, blocked, policy, include_residual=include_residual)
+    if mode == "cem_elite":
+        return _generate_cem_elite_candidates(
+            max_candidates,
+            blocked,
+            policy,
+            include_residual=include_residual,
+            population_size=population_size,
+            elite_frac=elite_frac,
+            rounds=rounds,
+        )
+    if mode == "hybrid_rx_cem":
+        return _generate_hybrid_candidates(
+            max_candidates,
+            blocked,
+            policy,
+            include_residual=include_residual,
+            population_size=population_size,
+            elite_frac=elite_frac,
+            rounds=rounds,
+        )
+    raise ValueError(f"unknown algorithm mode: {mode}")
+
+
 def _aggregate_decisions(
     aggregate_rows: list[dict[str, Any]],
     pairwise_rows: list[dict[str, Any]],
@@ -475,6 +700,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--min-obs-per-time", type=int, default=20)
     parser.add_argument("--policy-exploration", type=float, default=0.45)
     parser.add_argument("--include-residual", action="store_true")
+    parser.add_argument("--algorithm-mode", choices=["rx_ucb", "cem_elite", "hybrid_rx_cem"], default="rx_ucb")
+    parser.add_argument("--cem-population-size", type=int, default=384)
+    parser.add_argument("--cem-elite-frac", type=float, default=0.18)
+    parser.add_argument("--cem-rounds", type=int, default=2)
     args = parser.parse_args(argv)
 
     output_root = _resolve(args.output_root)
@@ -483,11 +712,15 @@ def main(argv: list[str] | None = None) -> int:
     report_root.mkdir(parents=True, exist_ok=True)
     policy = _build_policy(PRIOR_DECISION_FILES, exploration=args.policy_exploration)
     blocked = _load_memory_hashes(args.memory_root) | _prior_hashes(PRIOR_HASH_FILES)
-    candidates = _generate_rx_ucb_candidates(
+    candidates = _generate_candidates(
+        args.algorithm_mode,
         args.max_candidates,
         blocked,
         policy,
         include_residual=bool(args.include_residual),
+        population_size=args.cem_population_size,
+        elite_frac=args.cem_elite_frac,
+        rounds=args.cem_rounds,
     )
     horizons = tuple(int(item.strip()) for item in str(args.horizons).split(",") if item.strip())
     panels = _discover_panels(_resolve(args.shard_root), args.max_shards)
@@ -508,8 +741,12 @@ def main(argv: list[str] | None = None) -> int:
     summary = {
         "created_at": datetime.now(timezone.utc).isoformat(),
         "decision": "PHASE3BP_TRUE1MIN_SEARCH_ALGORITHM_SMOKE_COMPLETE_DIAGNOSTIC_ONLY",
-        "generator_mode": "true1min_rx_ucb_native_smoke",
+        "generator_mode": f"true1min_{args.algorithm_mode}_smoke",
+        "algorithm_mode": args.algorithm_mode,
         "include_residual": bool(args.include_residual),
+        "cem_population_size": args.cem_population_size,
+        "cem_elite_frac": args.cem_elite_frac,
+        "cem_rounds": args.cem_rounds,
         "candidate_count": len(candidates),
         "blocked_hash_count": len(blocked),
         "panel_count": len(panels),

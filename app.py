@@ -415,6 +415,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run a larger true-1min rx/UCB-style search algorithm smoke test.",
     },
+    "phase3bq-compute-allocation-benchmark": {
+        "module": "our_system_phase2.runtime.phase3bq_compute_allocation_benchmark",
+        "diagnostic": True,
+        "description": "Benchmark true-1min search algorithm arms for compute allocation.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,

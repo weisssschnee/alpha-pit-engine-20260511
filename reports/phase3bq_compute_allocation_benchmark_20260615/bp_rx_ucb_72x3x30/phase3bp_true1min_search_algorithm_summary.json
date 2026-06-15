@@ -1,0 +1,1007 @@
+{
+  "algorithm_mode": "rx_ucb",
+  "best_followup": {
+    "abs_aligned_ic_mean": 0.06019362556782117,
+    "aligned_ic_mean": 0.06019362556782117,
+    "aligned_spread_mean": 4.7787665812607415e-05,
+    "blocker_flags": "",
+    "candidate_id": "phase3bp_02123",
+    "eval_rows_sum": 28437,
+    "expected_direction": 1,
+    "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Std(Div(Sub($high,$low),Add(Abs($open),0.000001)),8))))",
+    "expression_hash": "33de1a530fa113fd5ddc0be8",
+    "factor_lane": "rx_interaction::rx_range_location::rx_range_location::product",
+    "fields": "close|high|low|open",
+    "horizon_min": 1,
+    "ic_abs_mean": 0.07546683171625262,
+    "ic_hit_rate": 0.8095238095238096,
+    "ic_mean": 0.06019362556782117,
+    "mean_one_way_turnover": 0.7855118779210094,
+    "note": "rx interaction bar_loc_shift_30 x range_vol_8 product",
+    "open_direction": "long_top",
+    "phase3bk_rank": "",
+    "phase3bl_decision": "bl_signal_materialized_pass",
+    "phase3bp_blocker_flags": "",
+    "phase3bp_decision": "bp_followup_priority",
+    "policy_score": 0.099386,
+    "positive_horizon_count": 3,
+    "primary_horizon_min": 0,
+    "shard_count": 3,
+    "signal_nonnull_sum": 27482,
+    "signal_unique_min": 1744,
+    "source_generator": "phase3bp_true1min_rx_ucb_native",
+    "source_lane": "phase3bp_true1min_rx_ucb_native",
+    "spread_abs_mean": 0.000348057308987588,
+    "spread_hit_rate": 0.4880952380952381,
+    "spread_mean": 4.7787665812607415e-05,
+    "wrong_lag_future_ic_mean": -0.034831930641365166,
+    "wrong_lag_prev_ic_mean": 0.006786529336866687
+  },
+  "blocked_hash_count": 2172,
+  "candidate_count": 72,
+  "cem_elite_frac": 0.18,
+  "cem_population_size": 384,
+  "cem_rounds": 2,
+  "created_at": "2026-06-15T05:41:44.390882+00:00",
+  "decision": "PHASE3BP_TRUE1MIN_SEARCH_ALGORITHM_SMOKE_COMPLETE_DIAGNOSTIC_ONLY",
+  "followup_priority_count": 1,
+  "generator_mode": "true1min_rx_ucb_smoke",
+  "hard_boundary": [
+    "true trade_time minute panels only",
+    "old daily stock-PIT default dataset not used",
+    "search algorithm smoke only, not production proof",
+    "future wrong-lag is a hard blocker",
+    "X0/R3 read-only"
+  ],
+  "horizons_min": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "include_residual": false,
+  "max_expression_window": 30,
+  "max_horizon": 30,
+  "output_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3bq_compute_allocation_benchmark_20260615\\bp_rx_ucb_72x3x30",
+  "panel_count": 3,
+  "panel_paths": [
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+    "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+  ],
+  "policy": {
+    "examples": [
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.124051,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.126434,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128238,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128435,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131274,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131488,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131931,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.132218,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13321,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.133477,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.134481,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.135076,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,30))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.04296,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13869,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.139873,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first5_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.221875,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first15_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.222362,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,15)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,20)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,5)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.089593,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      }
+    ],
+    "exploration": 0.45,
+    "policy_version": "phase3bp_true1min_ucb_smoke_v1",
+    "scope": "true1min_prior_routing_not_production_reward",
+    "scores": {
+      "field": {
+        "amount": -0.011887,
+        "close": 0.452722,
+        "high": 0.302357,
+        "intraday_ret_from_open": 0.523952,
+        "low": 0.302357,
+        "m1_first15_amount": 0.152539,
+        "m1_first15_last_close": 0.700379,
+        "m1_first15_range": 0.07305,
+        "m1_first15_vol": 0.057551,
+        "m1_first15_vwap_return_vs_open": 0.204246,
+        "m1_first30_amount": 0.126707,
+        "m1_first30_range": 0.282745,
+        "m1_first30_vol": 0.282745,
+        "m1_first30_vwap": 0.725971,
+        "m1_first5_amount": 0.135972,
+        "m1_first5_last_close": 0.700865,
+        "m1_first5_range": 0.085968,
+        "m1_first5_vol": 0.085968,
+        "m1_first5_vwap_return_vs_open": 0.203229,
+        "open": -0.03094,
+        "ret_1m": 0.089623,
+        "volume": -0.027557,
+        "vwap": 0.549219
+      },
+      "fieldset": {
+        "amount|m1_first15_amount|m1_first15_range|open": 0.334407,
+        "amount|m1_first15_amount|m1_first15_vol|volume": 0.282745,
+        "amount|m1_first30_amount|m1_first30_range|open": 0.282745,
+        "amount|m1_first30_amount|m1_first30_vol|volume": 0.282745,
+        "amount|m1_first5_amount|m1_first5_range|open": 0.282745,
+        "amount|m1_first5_amount|m1_first5_vol|volume": 0.282745,
+        "amount|m1_first5_amount|vwap": 0.641412,
+        "amount|volume": 0.422224,
+        "close|high|low": 0.561685,
+        "close|m1_first30_vwap": 0.998177,
+        "close|m1_first30_vwap|vwap": 0.994293,
+        "high|low|open|ret_1m": 0.40943,
+        "intraday_ret_from_open|ret_1m": 0.523952,
+        "m1_first15_last_close|open": 0.700379,
+        "m1_first15_range|m1_first15_vol|open|volume": 0.12127,
+        "m1_first15_vwap_return_vs_open|ret_1m": 0.204246,
+        "m1_first5_last_close|open": 0.700865,
+        "m1_first5_range|m1_first5_vol|open|volume": 0.155646,
+        "m1_first5_vwap_return_vs_open|ret_1m": 0.203229
+      },
+      "lane": {
+        "amount_volume_flow": 0.422224,
+        "bounded_vwap_mixed": 0.641412,
+        "intraday_efficiency_fresh": 0.523952,
+        "opening_amount_pressure_orthogonal": 0.05758,
+        "opening_directional_return": 0.430357,
+        "opening_divergence_representative": 0.85457,
+        "opening_range_location": 0.071254,
+        "opening_volume_range_imbalance": 0.041105,
+        "opening_vs_intraday_return_divergence": 0.112128,
+        "opening_vwap_residual": 0.998177,
+        "pure_fresh_cross": 0.994293,
+        "range_volatility_residual": 0.40943
+      },
+      "operator": {
+        "Abs": -0.039861,
+        "Add": -0.039861,
+        "CSRank": -0.045374,
+        "Delta": 0.090851,
+        "Div": -0.039861,
+        "Mean": -0.045953,
+        "Mul": 0.074801,
+        "Std": 0.302368,
+        "Sub": -0.029425,
+        "ZScore": -0.044416
+      },
+      "window": {
+        "10": 0.273298,
+        "15": 0.269767,
+        "2": 0.086967,
+        "20": 0.27366,
+        "3": 0.087362,
+        "30": 0.412368,
+        "5": 0.070375,
+        "8": 0.310697
+      }
+    },
+    "top_keys": {
+      "field": [
+        [
+          "m1_first30_vwap",
+          0.725971
+        ],
+        [
+          "m1_first5_last_close",
+          0.700865
+        ],
+        [
+          "m1_first15_last_close",
+          0.700379
+        ],
+        [
+          "vwap",
+          0.549219
+        ],
+        [
+          "intraday_ret_from_open",
+          0.523952
+        ],
+        [
+          "close",
+          0.452722
+        ],
+        [
+          "high",
+          0.302357
+        ],
+        [
+          "low",
+          0.302357
+        ],
+        [
+          "m1_first30_vol",
+          0.282745
+        ],
+        [
+          "m1_first30_range",
+          0.282745
+        ],
+        [
+          "m1_first15_vwap_return_vs_open",
+          0.204246
+        ],
+        [
+          "m1_first5_vwap_return_vs_open",
+          0.203229
+        ]
+      ],
+      "fieldset": [
+        [
+          "close|m1_first30_vwap",
+          0.998177
+        ],
+        [
+          "close|m1_first30_vwap|vwap",
+          0.994293
+        ],
+        [
+          "m1_first5_last_close|open",
+          0.700865
+        ],
+        [
+          "m1_first15_last_close|open",
+          0.700379
+        ],
+        [
+          "amount|m1_first5_amount|vwap",
+          0.641412
+        ],
+        [
+          "close|high|low",
+          0.561685
+        ],
+        [
+          "intraday_ret_from_open|ret_1m",
+          0.523952
+        ],
+        [
+          "amount|volume",
+          0.422224
+        ],
+        [
+          "high|low|open|ret_1m",
+          0.40943
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_range|open",
+          0.334407
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_vol|volume",
+          0.282745
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_vol|volume",
+          0.282745
+        ]
+      ],
+      "lane": [
+        [
+          "opening_vwap_residual",
+          0.998177
+        ],
+        [
+          "pure_fresh_cross",
+          0.994293
+        ],
+        [
+          "opening_divergence_representative",
+          0.85457
+        ],
+        [
+          "bounded_vwap_mixed",
+          0.641412
+        ],
+        [
+          "intraday_efficiency_fresh",
+          0.523952
+        ],
+        [
+          "opening_directional_return",
+          0.430357
+        ],
+        [
+          "amount_volume_flow",
+          0.422224
+        ],
+        [
+          "range_volatility_residual",
+          0.40943
+        ],
+        [
+          "opening_vs_intraday_return_divergence",
+          0.112128
+        ],
+        [
+          "opening_range_location",
+          0.071254
+        ],
+        [
+          "opening_amount_pressure_orthogonal",
+          0.05758
+        ],
+        [
+          "opening_volume_range_imbalance",
+          0.041105
+        ]
+      ],
+      "operator": [
+        [
+          "Std",
+          0.302368
+        ],
+        [
+          "Delta",
+          0.090851
+        ],
+        [
+          "Mul",
+          0.074801
+        ],
+        [
+          "Sub",
+          -0.029425
+        ],
+        [
+          "Abs",
+          -0.039861
+        ],
+        [
+          "Div",
+          -0.039861
+        ],
+        [
+          "Add",
+          -0.039861
+        ],
+        [
+          "ZScore",
+          -0.044416
+        ],
+        [
+          "CSRank",
+          -0.045374
+        ],
+        [
+          "Mean",
+          -0.045953
+        ]
+      ],
+      "window": [
+        [
+          "30",
+          0.412368
+        ],
+        [
+          "8",
+          0.310697
+        ],
+        [
+          "20",
+          0.27366
+        ],
+        [
+          "10",
+          0.273298
+        ],
+        [
+          "15",
+          0.269767
+        ],
+        [
+          "3",
+          0.087362
+        ],
+        [
+          "2",
+          0.086967
+        ],
+        [
+          "5",
+          0.070375
+        ]
+      ]
+    },
+    "total_observation_count": 66
+  },
+  "read_fields": [
+    "amount",
+    "close",
+    "high",
+    "intraday_ret_from_open",
+    "low",
+    "m1_first15_vol",
+    "m1_first15_vwap_return_vs_open",
+    "m1_first30_range",
+    "m1_first30_vol",
+    "m1_first30_vwap_return_vs_open",
+    "m1_first5_vol",
+    "m1_first5_vwap_return_vs_open",
+    "open",
+    "ret_1m",
+    "volume"
+  ],
+  "report_root": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\reports\\phase3bq_compute_allocation_benchmark_20260615\\bp_rx_ucb_72x3x30",
+  "sample_trade_times_per_shard": 30,
+  "shards": [
+    {
+      "code_count": 340,
+      "eval_rows": 9484,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 559196,
+      "read_trade_time_count": 1770,
+      "shard_index": 0,
+      "signal_trade_time_count": 30
+    },
+    {
+      "code_count": 340,
+      "eval_rows": 9524,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 561586,
+      "read_trade_time_count": 1770,
+      "shard_index": 1,
+      "signal_trade_time_count": 30
+    },
+    {
+      "code_count": 340,
+      "eval_rows": 9429,
+      "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+      "read_rows": 555999,
+      "read_trade_time_count": 1770,
+      "shard_index": 2,
+      "signal_trade_time_count": 30
+    }
+  ],
+  "top_decisions": [
+    {
+      "abs_aligned_ic_mean": 0.23960529267890096,
+      "aligned_ic_mean": -0.23960529267890096,
+      "aligned_spread_mean": -0.000771770205986275,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02188",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "eac8039dd584de14582c9d95",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.23960529267890096,
+      "ic_hit_rate": 0.0,
+      "ic_mean": -0.23960529267890096,
+      "mean_one_way_turnover": 0.8009306063172632,
+      "note": "rx interaction bar_loc_shift_30 x m1_first30_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.09773416,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 24581,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000771770205986275,
+      "spread_hit_rate": 0.0,
+      "spread_mean": -0.000771770205986275,
+      "wrong_lag_future_ic_mean": 0.5698406836783968,
+      "wrong_lag_prev_ic_mean": -0.007907969313441688
+    },
+    {
+      "abs_aligned_ic_mean": 0.23352753378973304,
+      "aligned_ic_mean": 0.23352753378973304,
+      "aligned_spread_mean": 0.0007631422063208494,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00106",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "Neg(CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30)))))",
+      "expression_hash": "99d1e7f5a79f49f3a2661218",
+      "factor_lane": "rx_range_location::inverted",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.23352753378973304,
+      "ic_hit_rate": 1.0,
+      "ic_mean": 0.23352753378973304,
+      "mean_one_way_turnover": 0.7991868885786334,
+      "note": "rx atom transform bar_loc_shift_30",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.22123996,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 1917,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007894215027739373,
+      "spread_hit_rate": 0.9761904761904763,
+      "spread_mean": 0.0007631422063208494,
+      "wrong_lag_future_ic_mean": -0.5881987392695934,
+      "wrong_lag_prev_ic_mean": 0.012123581844299592
+    },
+    {
+      "abs_aligned_ic_mean": 0.23352753378973304,
+      "aligned_ic_mean": -0.23352753378973304,
+      "aligned_spread_mean": -0.000761933566827158,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00105",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))))",
+      "expression_hash": "c70970f75bba91b06e076457",
+      "factor_lane": "rx_range_location::rank",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.23352753378973304,
+      "ic_hit_rate": 0.0,
+      "ic_mean": -0.23352753378973304,
+      "mean_one_way_turnover": 0.7992603723711923,
+      "note": "rx atom transform bar_loc_shift_30",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.22042639,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 1917,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000789257743470676,
+      "spread_hit_rate": 0.023809523809523808,
+      "spread_mean": -0.000761933566827158,
+      "wrong_lag_future_ic_mean": 0.5881987392695934,
+      "wrong_lag_prev_ic_mean": -0.012123581844299592
+    },
+    {
+      "abs_aligned_ic_mean": 0.22915276612984725,
+      "aligned_ic_mean": -0.22915276612984725,
+      "aligned_spread_mean": -0.000768765605559852,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_01172",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "eb4b97fd2cd1153daeddd57c",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22915276612984725,
+      "ic_hit_rate": 0.0,
+      "ic_mean": -0.22915276612984725,
+      "mean_one_way_turnover": 0.797748220341845,
+      "note": "rx interaction bar_loc_shift_8 x m1_first30_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.08756706,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 24581,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000768765605559852,
+      "spread_hit_rate": 0.0,
+      "spread_mean": -0.000768765605559852,
+      "wrong_lag_future_ic_mean": 0.5829654180592835,
+      "wrong_lag_prev_ic_mean": -0.008431351017329258
+    },
+    {
+      "abs_aligned_ic_mean": 0.22899504325729067,
+      "aligned_ic_mean": -0.22899504325729067,
+      "aligned_spread_mean": -0.0007354494302538044,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02184",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first5_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "b4534e0bb90bc0a942afca65",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::spread",
+      "fields": "close|high|low|m1_first5_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22899504325729067,
+      "ic_hit_rate": 0.0,
+      "ic_mean": -0.22899504325729067,
+      "mean_one_way_turnover": 0.8035297299006738,
+      "note": "rx interaction bar_loc_shift_30 x m1_first5_vol spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.08828886,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007631110045530288,
+      "spread_hit_rate": 0.023809523809523808,
+      "spread_mean": -0.0007354494302538044,
+      "wrong_lag_future_ic_mean": 0.5692679277602838,
+      "wrong_lag_prev_ic_mean": -0.011702517128778504
+    },
+    {
+      "abs_aligned_ic_mean": 0.22664287689613208,
+      "aligned_ic_mean": 0.22664287689613208,
+      "aligned_spread_mean": 0.0007148490965216761,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02187",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "c8af19143070433e5893b16e",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22664287689613208,
+      "ic_hit_rate": 1.0,
+      "ic_mean": 0.22664287689613208,
+      "mean_one_way_turnover": 0.7986284257989392,
+      "note": "rx interaction bar_loc_shift_30 x m1_first30_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.10004375,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 24581,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007152474043808005,
+      "spread_hit_rate": 0.9866666666666667,
+      "spread_mean": 0.0007148490965216761,
+      "wrong_lag_future_ic_mean": -0.5565304772550564,
+      "wrong_lag_prev_ic_mean": 0.010572436028670069
+    },
+    {
+      "abs_aligned_ic_mean": 0.22240488919237222,
+      "aligned_ic_mean": 0.22240488919237222,
+      "aligned_spread_mean": 0.000756352897343405,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00050",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "Neg(CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8)))))",
+      "expression_hash": "40d0c61f06fc8f8c8ebe806f",
+      "factor_lane": "rx_range_location::inverted",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22240488919237222,
+      "ic_hit_rate": 1.0,
+      "ic_mean": 0.22240488919237222,
+      "mean_one_way_turnover": 0.8042334986550284,
+      "note": "rx atom transform bar_loc_shift_8",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.21107286,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 2077,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007640033852237361,
+      "spread_hit_rate": 0.9761904761904763,
+      "spread_mean": 0.000756352897343405,
+      "wrong_lag_future_ic_mean": -0.603705075463501,
+      "wrong_lag_prev_ic_mean": 0.011208717410061618
+    },
+    {
+      "abs_aligned_ic_mean": 0.22240488919237222,
+      "aligned_ic_mean": -0.22240488919237222,
+      "aligned_spread_mean": -0.0007530447055081826,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_00049",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8))))",
+      "expression_hash": "919d4ed87c7ad94cd1a0cf0a",
+      "factor_lane": "rx_range_location::rank",
+      "fields": "close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.22240488919237222,
+      "ic_hit_rate": 0.0,
+      "ic_mean": -0.22240488919237222,
+      "mean_one_way_turnover": 0.8030223356014087,
+      "note": "rx atom transform bar_loc_shift_8",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.21025929,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 2077,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007633244188555559,
+      "spread_hit_rate": 0.03571428571428571,
+      "spread_mean": -0.0007530447055081826,
+      "wrong_lag_future_ic_mean": 0.603705075463501,
+      "wrong_lag_prev_ic_mean": -0.011208717410061618
+    },
+    {
+      "abs_aligned_ic_mean": 0.21838060607394216,
+      "aligned_ic_mean": 0.21838060607394216,
+      "aligned_spread_mean": 0.0007334819648164372,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_01171",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),8))),ZScore(Div($m1_first30_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "c0d92f5dd8f353b0f3612d24",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first30_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.21838060607394216,
+      "ic_hit_rate": 1.0,
+      "ic_mean": 0.21838060607394216,
+      "mean_one_way_turnover": 0.803637367084496,
+      "note": "rx interaction bar_loc_shift_8 x m1_first30_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.08987665,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 24581,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.000738736071189692,
+      "spread_hit_rate": 0.9866666666666667,
+      "spread_mean": 0.0007334819648164372,
+      "wrong_lag_future_ic_mean": -0.5703680282837348,
+      "wrong_lag_prev_ic_mean": 0.012127785638062561
+    },
+    {
+      "abs_aligned_ic_mean": 0.21665579383870728,
+      "aligned_ic_mean": -0.21665579383870728,
+      "aligned_spread_mean": -0.0007427544673187526,
+      "blocker_flags": "primary_direction_not_reproduced|future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02158",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Sub(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Delta($amount,30))))",
+      "expression_hash": "f3ddbd421833366ee329ec75",
+      "factor_lane": "rx_interaction::rx_range_location::rx_flow_amount_volume::spread",
+      "fields": "amount|close|high|low",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2172652502109489,
+      "ic_hit_rate": 0.011904761904761904,
+      "ic_mean": -0.21665579383870728,
+      "mean_one_way_turnover": 0.797913154496638,
+      "note": "rx interaction bar_loc_shift_30 x amount_delta_30 spread",
+      "open_direction": "short_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.10009174,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 1731,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0007551637291640588,
+      "spread_hit_rate": 0.03571428571428571,
+      "spread_mean": -0.0007427544673187526,
+      "wrong_lag_future_ic_mean": 0.5233011701413329,
+      "wrong_lag_prev_ic_mean": -0.00929680947382741
+    },
+    {
+      "abs_aligned_ic_mean": 0.215135010108084,
+      "aligned_ic_mean": 0.215135010108084,
+      "aligned_spread_mean": 0.0006764338538739896,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02185",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first15_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "a54442f9861634d17f663086",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first15_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2167897916837899,
+      "ic_hit_rate": 0.9876543209876543,
+      "ic_mean": 0.215135010108084,
+      "mean_one_way_turnover": 0.8003110997910131,
+      "note": "rx interaction bar_loc_shift_30 x m1_first15_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.08923444,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 26518,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0006889501736831519,
+      "spread_hit_rate": 0.9876543209876543,
+      "spread_mean": 0.0006764338538739896,
+      "wrong_lag_future_ic_mean": -0.5514293664745872,
+      "wrong_lag_prev_ic_mean": 0.012154269982303989
+    },
+    {
+      "abs_aligned_ic_mean": 0.21360952409416423,
+      "aligned_ic_mean": 0.21360952409416423,
+      "aligned_spread_mean": 0.000671665617523686,
+      "blocker_flags": "future_signal_wrong_lag_too_strong",
+      "candidate_id": "phase3bp_02183",
+      "eval_rows_sum": 28437,
+      "expected_direction": 1,
+      "expression": "CSRank(Mul(ZScore(Sub(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),Mean(Div(Sub($close,$low),Add(Abs(Sub($high,$low)),0.000001)),30))),ZScore(Div($m1_first5_vol,Add(Abs($volume),0.000001)))))",
+      "expression_hash": "561e0458e2352b1a47c9f279",
+      "factor_lane": "rx_interaction::rx_range_location::rx_opening_amount::product",
+      "fields": "close|high|low|m1_first5_vol|volume",
+      "horizon_min": 1,
+      "ic_abs_mean": 0.2145084917195704,
+      "ic_hit_rate": 0.9880952380952381,
+      "ic_mean": 0.21360952409416423,
+      "mean_one_way_turnover": 0.8010979942664864,
+      "note": "rx interaction bar_loc_shift_30 x m1_first5_vol product",
+      "open_direction": "long_top",
+      "phase3bk_rank": "",
+      "phase3bl_decision": "bl_signal_materialized_watch",
+      "phase3bp_blocker_flags": "signal_corr_abs_ge_0.75|future_signal_wrong_lag_too_strong",
+      "phase3bp_decision": "bp_watch_or_reject",
+      "policy_score": 0.09059846,
+      "positive_horizon_count": 4,
+      "primary_horizon_min": 0,
+      "shard_count": 3,
+      "signal_nonnull_sum": 27482,
+      "signal_unique_min": 1726,
+      "source_generator": "phase3bp_true1min_rx_ucb_native",
+      "source_lane": "phase3bp_true1min_rx_ucb_native",
+      "spread_abs_mean": 0.0006901072151784395,
+      "spread_hit_rate": 0.9523809523809524,
+      "spread_mean": 0.000671665617523686,
+      "wrong_lag_future_ic_mean": -0.5500106439009188,
+      "wrong_lag_prev_ic_mean": 0.010500617503073273
+    }
+  ],
+  "total_eval_rows": 28437
+}
