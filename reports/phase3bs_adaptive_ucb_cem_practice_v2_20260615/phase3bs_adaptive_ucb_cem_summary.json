@@ -1,0 +1,1294 @@
+{
+  "adaptive_policy": {
+    "examples": [
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.124051,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.126434,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,10))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128238,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.128435,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,5))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131274,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131488,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.131931,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.132218,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first15_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13321,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,8))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.133477,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,15))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.134481,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,20))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.135076,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,30))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.04296,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,2))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.13869,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore($m1_first5_vwap_return_vs_open),ZScore(Delta($ret_1m,3))))",
+        "lane": "opening_vs_intraday_return_divergence",
+        "reward": -0.139873,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first5_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.221875,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Div(Sub($m1_first15_last_close,$open),Add(Abs($open),0.000001)))",
+        "lane": "opening_directional_return",
+        "reward": -0.222362,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,15)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,20)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.25,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      },
+      {
+        "expression": "CSRank(Sub(ZScore(Div($m1_first5_vol,Add(Abs(Mean($volume,5)),0.000001))),ZScore(Div($m1_first5_range,Add(Abs($open),0.000001)))))",
+        "lane": "opening_volume_range_imbalance",
+        "reward": -0.089593,
+        "source": "reports\\phase3bn_open_diversified_true1min_canary_20260615\\phase3bn_top_decisions.csv"
+      }
+    ],
+    "exploration": 0.85,
+    "feedback": {
+      "decision_count": 96,
+      "entropy_floor": 0.015,
+      "learning_rate": 0.55,
+      "top_feedback": {
+        "field": [
+          [
+            "m1_first5_vol",
+            0.058009
+          ],
+          [
+            "intraday_ret_from_open",
+            0.033167
+          ],
+          [
+            "m1_first15_vol",
+            0.025132
+          ],
+          [
+            "volume",
+            0.007728
+          ],
+          [
+            "m1_first30_vol",
+            0.006742
+          ],
+          [
+            "m1_first15_range",
+            -0.011655
+          ],
+          [
+            "close",
+            -0.021708
+          ],
+          [
+            "high",
+            -0.054198
+          ],
+          [
+            "low",
+            -0.054198
+          ],
+          [
+            "m1_first30_range",
+            -0.055292
+          ],
+          [
+            "m1_first30_amount",
+            -0.059887
+          ],
+          [
+            "m1_first5_amount",
+            -0.062288
+          ],
+          [
+            "open",
+            -0.065581
+          ],
+          [
+            "m1_first5_range",
+            -0.06825
+          ],
+          [
+            "amount",
+            -0.074865
+          ],
+          [
+            "ret_1m",
+            -0.078857
+          ]
+        ],
+        "fieldset": [
+          [
+            "intraday_ret_from_open|m1_first5_vol|volume",
+            0.151527
+          ],
+          [
+            "intraday_ret_from_open|ret_1m",
+            0.106206
+          ],
+          [
+            "intraday_ret_from_open|m1_first30_vol|volume",
+            0.088921
+          ],
+          [
+            "intraday_ret_from_open|m1_first15_vol|volume",
+            0.086005
+          ],
+          [
+            "close|high|low|open",
+            0.080059
+          ],
+          [
+            "intraday_ret_from_open",
+            0.026218
+          ],
+          [
+            "high|low|m1_first15_vwap_return_vs_open|open",
+            0.011228
+          ],
+          [
+            "close|high|low|ret_1m",
+            -0.004441
+          ],
+          [
+            "high|low|m1_first30_range|open",
+            -0.007822
+          ],
+          [
+            "high|low|m1_first15_range|open",
+            -0.011655
+          ],
+          [
+            "close|high|low",
+            -0.029955
+          ],
+          [
+            "close|high|low|m1_first30_vol|volume",
+            -0.031587
+          ],
+          [
+            "close|high|low|m1_first5_vol|volume",
+            -0.035509
+          ],
+          [
+            "close|high|low|m1_first15_vol|volume",
+            -0.035742
+          ],
+          [
+            "close|high|low|volume",
+            -0.046203
+          ],
+          [
+            "amount|intraday_ret_from_open",
+            -0.046571
+          ]
+        ],
+        "lane": [
+          [
+            "rx_intraday_return::inverted",
+            0.14136
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_range_location::product",
+            0.127533
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_volatility_state::product",
+            0.106284
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_volatility_state::spread",
+            0.106128
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_opening_amount::spread",
+            0.088275
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_opening_amount::product",
+            0.079079
+          ],
+          [
+            "rx_interaction::rx_opening_range::rx_range_location::spread",
+            0.054195
+          ],
+          [
+            "rx_interaction::rx_intraday_return::rx_range_location::spread",
+            0.032706
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_volatility_state::product",
+            0.025183
+          ],
+          [
+            "rx_intraday_return::rank",
+            -0.012163
+          ],
+          [
+            "rx_interaction::rx_opening_amount::rx_range_location::product",
+            -0.023693
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_opening_amount::spread",
+            -0.025442
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_opening_amount::product",
+            -0.037225
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_flow_amount_volume::spread",
+            -0.045326
+          ],
+          [
+            "rx_interaction::rx_opening_range::rx_range_location::product",
+            -0.057055
+          ],
+          [
+            "rx_interaction::rx_range_location::rx_range_location::spread",
+            -0.062365
+          ]
+        ],
+        "operator": [
+          [
+            "Delta",
+            0.001128
+          ],
+          [
+            "Mean",
+            -0.021708
+          ],
+          [
+            "Mul",
+            -0.030285
+          ],
+          [
+            "Add",
+            -0.034594
+          ],
+          [
+            "Div",
+            -0.034594
+          ],
+          [
+            "Abs",
+            -0.034594
+          ],
+          [
+            "CSRank",
+            -0.036299
+          ],
+          [
+            "ZScore",
+            -0.036299
+          ],
+          [
+            "Sub",
+            -0.049956
+          ],
+          [
+            "Std",
+            -0.062993
+          ],
+          [
+            "Neg",
+            -0.063062
+          ]
+        ],
+        "window": [
+          [
+            "10",
+            0.031231
+          ],
+          [
+            "8",
+            -0.047692
+          ],
+          [
+            "30",
+            -0.054386
+          ]
+        ]
+      }
+    },
+    "policy_version": "phase3bs_adaptive_ucb_cem_feedback_v1",
+    "scope": "true1min_feedback_updated_generator_policy_not_production_reward",
+    "scores": {
+      "field": {
+        "amount": 0.030437,
+        "close": 0.376334,
+        "high": 0.271317,
+        "intraday_ret_from_open": 0.467118,
+        "low": 0.271317,
+        "m1_first15_amount": 0.172551,
+        "m1_first15_last_close": 1.520593,
+        "m1_first15_range": 0.143181,
+        "m1_first15_vol": 0.156439,
+        "m1_first15_vwap_return_vs_open": 0.164251,
+        "m1_first30_amount": 0.174763,
+        "m1_first30_range": 0.309922,
+        "m1_first30_vol": 0.344041,
+        "m1_first30_vwap": 1.305949,
+        "m1_first30_vwap_return_vs_open": 0.015,
+        "m1_first5_amount": 0.157424,
+        "m1_first5_last_close": 1.521079,
+        "m1_first5_range": 0.112434,
+        "m1_first5_vol": 0.181877,
+        "m1_first5_vwap_return_vs_open": 0.116292,
+        "open": 0.018547,
+        "ret_1m": 0.07565,
+        "volume": 0.062882,
+        "vwap": 1.02277
+      },
+      "fieldset": {
+        "amount|close|high|low": 0.015,
+        "amount|high|low|m1_first15_amount|open": 0.015,
+        "amount|high|low|m1_first30_amount|open": 0.015,
+        "amount|high|low|m1_first5_amount|open": 0.015,
+        "amount|intraday_ret_from_open": 0.015,
+        "amount|m1_first15_amount|m1_first15_range|open": 0.807958,
+        "amount|m1_first15_amount|m1_first15_vol|volume": 0.756295,
+        "amount|m1_first15_amount|ret_1m": 0.015,
+        "amount|m1_first30_amount|m1_first30_range|open": 0.756295,
+        "amount|m1_first30_amount|m1_first30_vol|volume": 0.756295,
+        "amount|m1_first5_amount|m1_first5_range|open": 0.756295,
+        "amount|m1_first5_amount|m1_first5_vol|volume": 0.756295,
+        "amount|m1_first5_amount|vwap": 1.221391,
+        "amount|volume": 0.895774,
+        "close|high|low": 0.497274,
+        "close|high|low|m1_first15_vol|volume": 0.015,
+        "close|high|low|m1_first30_vol|volume": 0.015,
+        "close|high|low|m1_first5_vol|volume": 0.015,
+        "close|high|low|open": 0.050782,
+        "close|high|low|ret_1m": 0.015,
+        "close|high|low|volume": 0.015,
+        "close|m1_first30_vwap": 1.818391,
+        "close|m1_first30_vwap|vwap": 1.814507,
+        "high|intraday_ret_from_open|low|open": 0.015,
+        "high|low|m1_first15_range|open": 0.015,
+        "high|low|m1_first15_vwap_return_vs_open|open": 0.015,
+        "high|low|m1_first30_range|open": 0.015,
+        "high|low|m1_first30_vwap_return_vs_open|open": 0.015,
+        "high|low|m1_first5_range|open": 0.015,
+        "high|low|m1_first5_vwap_return_vs_open|open": 0.015,
+        "high|low|open": 0.015,
+        "high|low|open|ret_1m": 0.332446,
+        "intraday_ret_from_open": 0.02117,
+        "intraday_ret_from_open|m1_first15_vol|volume": 0.054053,
+        "intraday_ret_from_open|m1_first30_vol|volume": 0.055656,
+        "intraday_ret_from_open|m1_first5_vol|volume": 0.09009,
+        "intraday_ret_from_open|ret_1m": 0.50729,
+        "intraday_ret_from_open|volume": 0.015,
+        "m1_first15_last_close|open": 1.520593,
+        "m1_first15_range|m1_first15_vol|open|volume": 0.431282,
+        "m1_first15_vwap_return_vs_open|ret_1m": 0.099922,
+        "m1_first30_range|open|ret_1m": 0.015,
+        "m1_first30_vol|ret_1m|volume": 0.015,
+        "m1_first5_last_close|open": 1.521079,
+        "m1_first5_range|m1_first5_vol|open|volume": 0.445635,
+        "m1_first5_vwap_return_vs_open|ret_1m": 0.117088
+      },
+      "lane": {
+        "amount_volume_flow": 0.895774,
+        "bounded_vwap_mixed": 1.221391,
+        "intraday_efficiency_fresh": 0.997503,
+        "opening_amount_pressure_orthogonal": 0.330985,
+        "opening_directional_return": 1.010336,
+        "opening_divergence_representative": 1.674784,
+        "opening_range_location": 0.318558,
+        "opening_volume_range_imbalance": 0.252883,
+        "opening_vs_intraday_return_divergence": 0.323907,
+        "opening_vwap_residual": 1.818391,
+        "pure_fresh_cross": 1.814507,
+        "range_volatility_residual": 0.882981,
+        "rx_interaction::rx_intraday_return::rx_flow_amount_volume::product": 0.015,
+        "rx_interaction::rx_intraday_return::rx_opening_amount::product": 0.050244,
+        "rx_interaction::rx_intraday_return::rx_opening_amount::spread": 0.055301,
+        "rx_interaction::rx_intraday_return::rx_range_location::product": 0.015,
+        "rx_interaction::rx_intraday_return::rx_range_location::spread": 0.024738,
+        "rx_interaction::rx_intraday_return::rx_volatility_state::product": 0.065206,
+        "rx_interaction::rx_intraday_return::rx_volatility_state::spread": 0.06512,
+        "rx_interaction::rx_opening_amount::rx_range_location::product": 0.015,
+        "rx_interaction::rx_opening_amount::rx_range_location::spread": 0.015,
+        "rx_interaction::rx_opening_amount::rx_volatility_state::product": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_range_location::product": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_range_location::spread": 0.015,
+        "rx_interaction::rx_opening_divergence::rx_volatility_state::spread": 0.015,
+        "rx_interaction::rx_opening_range::rx_range_location::product": 0.015,
+        "rx_interaction::rx_opening_range::rx_range_location::spread": 0.036557,
+        "rx_interaction::rx_opening_range::rx_volatility_state::product": 0.015,
+        "rx_interaction::rx_opening_range::rx_volatility_state::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_flow_amount_volume::product": 0.015,
+        "rx_interaction::rx_range_location::rx_flow_amount_volume::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_opening_amount::product": 0.015,
+        "rx_interaction::rx_range_location::rx_opening_amount::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_range_location::product": 0.076893,
+        "rx_interaction::rx_range_location::rx_range_location::spread": 0.015,
+        "rx_interaction::rx_range_location::rx_volatility_state::product": 0.020601,
+        "rx_interaction::rx_range_location::rx_volatility_state::spread": 0.015,
+        "rx_intraday_return::inverted": 0.084498,
+        "rx_intraday_return::rank": 0.015,
+        "rx_range_location::inverted": 0.015,
+        "rx_range_location::rank": 0.015
+      },
+      "operator": {
+        "Abs": 0.016874,
+        "Add": 0.016874,
+        "CSRank": 0.015,
+        "Delta": 0.116844,
+        "Div": 0.016874,
+        "Mean": 0.027258,
+        "Mul": 0.140036,
+        "Neg": 0.015,
+        "Std": 0.240925,
+        "Sub": 0.015,
+        "ZScore": 0.015
+      },
+      "window": {
+        "10": 0.324709,
+        "15": 0.679874,
+        "2": 0.298745,
+        "20": 0.640471,
+        "3": 0.29914,
+        "30": 0.368751,
+        "5": 0.297861,
+        "8": 0.298131
+      }
+    },
+    "top_keys": {
+      "field": [
+        [
+          "m1_first5_last_close",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close",
+          1.520593
+        ],
+        [
+          "m1_first30_vwap",
+          1.305949
+        ],
+        [
+          "vwap",
+          1.02277
+        ],
+        [
+          "intraday_ret_from_open",
+          0.467118
+        ],
+        [
+          "close",
+          0.376334
+        ],
+        [
+          "m1_first30_vol",
+          0.344041
+        ],
+        [
+          "m1_first30_range",
+          0.309922
+        ],
+        [
+          "high",
+          0.271317
+        ],
+        [
+          "low",
+          0.271317
+        ],
+        [
+          "m1_first5_vol",
+          0.181877
+        ],
+        [
+          "m1_first30_amount",
+          0.174763
+        ]
+      ],
+      "fieldset": [
+        [
+          "close|m1_first30_vwap",
+          1.818391
+        ],
+        [
+          "close|m1_first30_vwap|vwap",
+          1.814507
+        ],
+        [
+          "m1_first5_last_close|open",
+          1.521079
+        ],
+        [
+          "m1_first15_last_close|open",
+          1.520593
+        ],
+        [
+          "amount|m1_first5_amount|vwap",
+          1.221391
+        ],
+        [
+          "amount|volume",
+          0.895774
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_range|open",
+          0.807958
+        ],
+        [
+          "amount|m1_first15_amount|m1_first15_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first30_amount|m1_first30_vol|volume",
+          0.756295
+        ],
+        [
+          "amount|m1_first30_amount|m1_first30_range|open",
+          0.756295
+        ],
+        [
+          "amount|m1_first5_amount|m1_first5_range|open",
+          0.756295
+        ]
+      ],
+      "lane": [
+        [
+          "opening_vwap_residual",
+          1.818391
+        ],
+        [
+          "pure_fresh_cross",
+          1.814507
+        ],
+        [
+          "opening_divergence_representative",
+          1.674784
+        ],
+        [
+          "bounded_vwap_mixed",
+          1.221391
+        ],
+        [
+          "opening_directional_return",
+          1.010336
+        ],
+        [
+          "intraday_efficiency_fresh",
+          0.997503
+        ],
+        [
+          "amount_volume_flow",
+          0.895774
+        ],
+        [
+          "range_volatility_residual",
+          0.882981
+        ],
+        [
+          "opening_amount_pressure_orthogonal",
+          0.330985
+        ],
+        [
+          "opening_vs_intraday_return_divergence",
+          0.323907
+        ],
+        [
+          "opening_range_location",
+          0.318558
+        ],
+        [
+          "opening_volume_range_imbalance",
+          0.252883
+        ]
+      ],
+      "operator": [
+        [
+          "Std",
+          0.240925
+        ],
+        [
+          "Mul",
+          0.140036
+        ],
+        [
+          "Delta",
+          0.116844
+        ],
+        [
+          "Mean",
+          0.027258
+        ],
+        [
+          "Add",
+          0.016874
+        ],
+        [
+          "Div",
+          0.016874
+        ],
+        [
+          "Abs",
+          0.016874
+        ],
+        [
+          "Sub",
+          0.015
+        ],
+        [
+          "CSRank",
+          0.015
+        ],
+        [
+          "ZScore",
+          0.015
+        ],
+        [
+          "Neg",
+          0.015
+        ]
+      ],
+      "window": [
+        [
+          "15",
+          0.679874
+        ],
+        [
+          "20",
+          0.640471
+        ],
+        [
+          "30",
+          0.368751
+        ],
+        [
+          "10",
+          0.324709
+        ],
+        [
+          "3",
+          0.29914
+        ],
+        [
+          "2",
+          0.298745
+        ],
+        [
+          "8",
+          0.298131
+        ],
+        [
+          "5",
+          0.297861
+        ]
+      ]
+    },
+    "total_observation_count": 66
+  },
+  "created_at": "2026-06-15T08:45:16.868910+00:00",
+  "decision": "PHASE3BS_ADAPTIVE_UCB_CEM_PRACTICE_COMPLETE_DIAGNOSTIC_ONLY",
+  "experiment_id": "20260615_phase3bs_adaptive_ucb_cem_practice",
+  "hard_boundary": [
+    "true trade_time minute panels only",
+    "no old daily stock-PIT default panel",
+    "no X0/R3 modification",
+    "algorithm practice only, not alpha promotion"
+  ],
+  "hot_path_scan": {
+    "files": {
+      "src\\our_system_phase2\\runtime\\phase3bl_bk_priority_signal_materialization.py": [
+        "groupby(",
+        "sort=False",
+        "pyarrow"
+      ],
+      "src\\our_system_phase2\\runtime\\phase3bo_mature_cem_bridge_true1min_pack.py": [],
+      "src\\our_system_phase2\\runtime\\phase3bp_true1min_search_algorithm_smoke.py": []
+    },
+    "interpretation": "current true1min smoke hot path is pandas/numpy materialization; numba is available only if called by evaluator code"
+  },
+  "objective": "test multi-round feedback-updated UCB-CEM on true1min panels",
+  "package_versions": {
+    "bottleneck": "1.6.0",
+    "joblib": "1.4.2",
+    "numba": "0.64.0",
+    "numexpr": "2.14.1",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "polars": "1.41.0",
+    "pyarrow": "19.0.1",
+    "scikit-learn": "1.6.1"
+  },
+  "parameters": {
+    "adaptive_cem_candidates": 128,
+    "adaptive_hybrid_candidates": 160,
+    "cem_dominant_rx_candidates": 160,
+    "cem_dominant_ucb_candidates": 160,
+    "entropy_floor": 0.015,
+    "horizons": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "learning_rate": 0.55,
+    "max_shards": 4,
+    "sample_trade_times_per_shard": 40,
+    "seed_candidates": 128,
+    "seed_exploration": 0.85
+  },
+  "python_executable": "G:\\PythonProject\\.venv\\Scripts\\python.exe",
+  "recommendation": {
+    "best_round": "round1_seed_rx_ucb_fresh",
+    "decision": "ADAPTIVE_UCB_CEM_HOLD_KEEP_RX_FRESH_PRIMARY",
+    "improvement_vs_seed": 0.0,
+    "interpretation": "adaptive feedback ran correctly, but did not beat RX/UCB seed by enough under this budget"
+  },
+  "round_meta": {
+    "adaptive_cem": {
+      "max_expression_window": 20,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 644746,
+          "read_trade_time_count": 1990,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 647513,
+          "read_trade_time_count": 1990,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 641115,
+          "read_trade_time_count": 1990,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 640862,
+          "read_trade_time_count": 1990,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "adaptive_hybrid": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "cem_dominant_rx": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "cem_dominant_ucb": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    },
+    "seed": {
+      "max_expression_window": 30,
+      "max_horizon": 30,
+      "panel_count": 4,
+      "panel_paths": [
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+        "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet"
+      ],
+      "read_fields": [
+        "amount",
+        "close",
+        "high",
+        "intraday_ret_from_open",
+        "low",
+        "m1_first15_amount",
+        "m1_first15_range",
+        "m1_first15_vol",
+        "m1_first15_vwap_return_vs_open",
+        "m1_first30_amount",
+        "m1_first30_range",
+        "m1_first30_vol",
+        "m1_first30_vwap_return_vs_open",
+        "m1_first5_amount",
+        "m1_first5_range",
+        "m1_first5_vol",
+        "m1_first5_vwap_return_vs_open",
+        "open",
+        "ret_1m",
+        "volume"
+      ],
+      "sample_trade_times_per_shard": 40,
+      "shards": [
+        {
+          "code_count": 340,
+          "eval_rows": 12958,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_00\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 771136,
+          "read_trade_time_count": 2380,
+          "shard_index": 0,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 13013,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_01\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 774443,
+          "read_trade_time_count": 2380,
+          "shard_index": 1,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12885,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_02\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766815,
+          "read_trade_time_count": 2380,
+          "shard_index": 2,
+          "signal_trade_time_count": 40
+        },
+        {
+          "code_count": 340,
+          "eval_rows": 12880,
+          "panel_path": "G:\\Project_V7_Rotation\\alpha_pit_data_feature_workspace_20260531\\runtime\\phase3au_aq_only_true1min_sharded_20260611\\shard_03\\phase3aq_wide_true1min\\canary\\phase3aq_true_1min_formula_canary.parquet",
+          "read_rows": 766492,
+          "read_trade_time_count": 2380,
+          "shard_index": 3,
+          "signal_trade_time_count": 40
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "best_abs_ic": 0.2205327809,
+      "candidate_count": 128,
+      "decision_rows": 96,
+      "elapsed_seconds": 667.911,
+      "hard_blocked_count": 94,
+      "hard_blocked_ratio": 0.979167,
+      "legacy_followup_count": 1,
+      "non_future_count": 41,
+      "panel_count": 4,
+      "research_pool_count": 37,
+      "research_pool_ratio": 0.385417,
+      "research_quality_score": 0.60885417,
+      "round_id": "round1_seed_rx_ucb_fresh",
+      "rows_per_second": 77.459,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.2140216569,
+      "total_eval_rows": 51736,
+      "unique_fieldset_count": 32,
+      "unique_lane_count": 29
+    },
+    {
+      "best_abs_ic": 0.2175969885,
+      "candidate_count": 128,
+      "decision_rows": 96,
+      "elapsed_seconds": 656.675,
+      "hard_blocked_count": 96,
+      "hard_blocked_ratio": 1.0,
+      "legacy_followup_count": 0,
+      "non_future_count": 37,
+      "panel_count": 4,
+      "research_pool_count": 37,
+      "research_pool_ratio": 0.385417,
+      "research_quality_score": 0.58452083,
+      "round_id": "round2_adaptive_cem_feedback",
+      "rows_per_second": 78.785,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.2145009618,
+      "total_eval_rows": 51736,
+      "unique_fieldset_count": 26,
+      "unique_lane_count": 25
+    },
+    {
+      "best_abs_ic": 0.2117119988,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 897.499,
+      "hard_blocked_count": 94,
+      "hard_blocked_ratio": 0.979167,
+      "legacy_followup_count": 1,
+      "non_future_count": 41,
+      "panel_count": 4,
+      "research_pool_count": 41,
+      "research_pool_ratio": 0.427083,
+      "research_quality_score": 0.60360417,
+      "round_id": "round3_adaptive_hybrid_rx_cem",
+      "rows_per_second": 57.645,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.1967508589,
+      "total_eval_rows": 51736,
+      "unique_fieldset_count": 24,
+      "unique_lane_count": 35
+    },
+    {
+      "best_abs_ic": 0.2108427141,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 877.624,
+      "hard_blocked_count": 87,
+      "hard_blocked_ratio": 0.90625,
+      "legacy_followup_count": 3,
+      "non_future_count": 39,
+      "panel_count": 4,
+      "research_pool_count": 35,
+      "research_pool_ratio": 0.364583,
+      "research_quality_score": 0.5873125,
+      "round_id": "round4_cem_dominant_ucb",
+      "rows_per_second": 58.95,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.1994504268,
+      "total_eval_rows": 51736,
+      "unique_fieldset_count": 28,
+      "unique_lane_count": 42
+    },
+    {
+      "best_abs_ic": 0.2076829346,
+      "candidate_count": 160,
+      "decision_rows": 96,
+      "elapsed_seconds": 1012.272,
+      "hard_blocked_count": 88,
+      "hard_blocked_ratio": 0.916667,
+      "legacy_followup_count": 2,
+      "non_future_count": 26,
+      "panel_count": 4,
+      "research_pool_count": 23,
+      "research_pool_ratio": 0.239583,
+      "research_quality_score": 0.49597917,
+      "round_id": "round5_cem_dominant_rx",
+      "rows_per_second": 51.109,
+      "sample_trade_times_per_shard": 40,
+      "top10_abs_ic_mean": 0.1835485801,
+      "total_eval_rows": 51736,
+      "unique_fieldset_count": 26,
+      "unique_lane_count": 33
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+round_id,elapsed_seconds,candidate_count,decision_rows,panel_count,sample_trade_times_per_shard,total_eval_rows,rows_per_second,legacy_followup_count,hard_blocked_count,hard_blocked_ratio,non_future_count,research_pool_count,research_pool_ratio,unique_lane_count,unique_fieldset_count,top10_abs_ic_mean,best_abs_ic,research_quality_score
+round1_seed_rx_ucb_fresh,667.911,128,96,4,40,51736,77.459,1,94,0.979167,41,37,0.385417,29,32,0.2140216569,0.2205327809,0.60885417
+round2_adaptive_cem_feedback,656.675,128,96,4,40,51736,78.785,0,96,1,37,37,0.385417,25,26,0.2145009618,0.2175969885,0.58452083
+round3_adaptive_hybrid_rx_cem,897.499,160,96,4,40,51736,57.645,1,94,0.979167,41,41,0.427083,35,24,0.1967508589,0.2117119988,0.60360417
+round4_cem_dominant_ucb,877.624,160,96,4,40,51736,58.95,3,87,0.90625,39,35,0.364583,42,28,0.1994504268,0.2108427141,0.5873125
+round5_cem_dominant_rx,1012.272,160,96,4,40,51736,51.109,2,88,0.916667,26,23,0.239583,33,26,0.1835485801,0.2076829346,0.49597917

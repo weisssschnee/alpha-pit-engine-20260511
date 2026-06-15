@@ -425,6 +425,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run a medium true-1min algorithm practice benchmark with research-pool scoring.",
     },
+    "phase3bs-adaptive-ucb-cem-practice": {
+        "module": "our_system_phase2.runtime.phase3bs_adaptive_ucb_cem_practice",
+        "diagnostic": True,
+        "description": "Run multi-round true-1min adaptive UCB-CEM practice with feedback-updated sampling.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
