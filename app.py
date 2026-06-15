@@ -435,6 +435,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run AST-aware true-1min search algorithm bakeoff before large-search allocation.",
     },
+    "phase3bu-ast-fresh-winner-variants": {
+        "module": "our_system_phase2.runtime.phase3bu_ast_fresh_winner_variants",
+        "diagnostic": True,
+        "description": "Run fresher AST winner variants around the Phase3BT fresh-preserving hybrid.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
