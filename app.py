@@ -395,6 +395,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Materialize true-1min signal vectors for Phase3BK replay-priority candidates.",
     },
+    "phase3bm-bl-pass-focused-replay": {
+        "module": "our_system_phase2.runtime.phase3bm_bl_pass_focused_replay",
+        "diagnostic": True,
+        "description": "Rerun denser true-1min materialization for Phase3BL pass candidates with direction-adjusted crowding checks.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
