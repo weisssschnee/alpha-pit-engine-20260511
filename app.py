@@ -410,6 +410,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Bridge mature CEM-like policy controls into a true-1min diversified candidate pack.",
     },
+    "phase3bp-true1min-search-algorithm-smoke": {
+        "module": "our_system_phase2.runtime.phase3bp_true1min_search_algorithm_smoke",
+        "diagnostic": True,
+        "description": "Run a larger true-1min rx/UCB-style search algorithm smoke test.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
