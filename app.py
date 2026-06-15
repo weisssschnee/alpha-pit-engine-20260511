@@ -390,6 +390,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Audit Phase3BJ top64 true-1min candidates with memory, crowding, and metric-vector clustering guardrails.",
     },
+    "phase3bl-bk-priority-signal-materialization": {
+        "module": "our_system_phase2.runtime.phase3bl_bk_priority_signal_materialization",
+        "diagnostic": True,
+        "description": "Materialize true-1min signal vectors for Phase3BK replay-priority candidates.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
