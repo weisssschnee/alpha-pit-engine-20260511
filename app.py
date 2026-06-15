@@ -385,6 +385,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": False,
         "description": "Build Phase3BH deepening packs from Phase3BF/BG robust true-1min results.",
     },
+    "phase3bk-bj-top64-strict-audit": {
+        "module": "our_system_phase2.runtime.phase3bk_bj_top64_strict_audit",
+        "diagnostic": True,
+        "description": "Audit Phase3BJ top64 true-1min candidates with memory, crowding, and metric-vector clustering guardrails.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
