@@ -405,6 +405,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run an open diversified true-1min canary away from the crowded close/vwap family.",
     },
+    "phase3bo-mature-cem-bridge-true1min-pack": {
+        "module": "our_system_phase2.runtime.phase3bo_mature_cem_bridge_true1min_pack",
+        "diagnostic": True,
+        "description": "Bridge mature CEM-like policy controls into a true-1min diversified candidate pack.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
