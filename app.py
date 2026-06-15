@@ -400,6 +400,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Rerun denser true-1min materialization for Phase3BL pass candidates with direction-adjusted crowding checks.",
     },
+    "phase3bn-open-diversified-true1min-canary": {
+        "module": "our_system_phase2.runtime.phase3bn_open_diversified_true1min_canary",
+        "diagnostic": True,
+        "description": "Run an open diversified true-1min canary away from the crowded close/vwap family.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
