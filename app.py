@@ -430,6 +430,11 @@ COMMANDS: dict[str, dict[str, str | bool]] = {
         "diagnostic": True,
         "description": "Run multi-round true-1min adaptive UCB-CEM practice with feedback-updated sampling.",
     },
+    "phase3bt-ast-algorithm-bakeoff": {
+        "module": "our_system_phase2.runtime.phase3bt_ast_algorithm_bakeoff",
+        "diagnostic": True,
+        "description": "Run AST-aware true-1min search algorithm bakeoff before large-search allocation.",
+    },
     "cn-nonminute-field-integration-registry": {
         "module": "our_system_phase2.runtime.cn_nonminute_field_integration_registry",
         "diagnostic": False,
